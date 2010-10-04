@@ -1,5 +1,11 @@
 <%if true%>
-  ISFiT 2011 har for tiden ingen opptak
+  <%if Language.to_s == "no"%>
+    ISFiT har snart nytt opptakmed søknadsfrist 1. november. <br /> <br />
+    Stillingene vil bli utlyst snart.
+  <%else%>
+    ISFiT will soon be having new admissions. Application deadline is 1th of November.<br /> <br />
+    Positions will be announced soon.
+  <%end%>
 <%else%>
 <% content_for :script do %>
   <%= javascript_include_tag 'new_applicant' %>
