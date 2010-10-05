@@ -70,7 +70,7 @@
   </div><!-- Slutt header -->
   <div id="meny" class="grid_25"><!-- Start meny -->
     <div id="faner" class="grid_20"><!-- Start faner -->
-      <%Tab.find(:all, :conditions => {:top_bar=>"0"}).each do |tab|%>
+      <%Tab.where(:top_bar => 0).order('weight').each do |tab|%>
       <% if tab.name != ""%>
         <% style = "" %>
         <%if tab.tag == params[:tab] 
@@ -167,6 +167,7 @@
     <div id="hoyreramme" class="grid_5"><!-- Start hoyreramme -->
       <div id="boksgronn_bg" class="grid_5 alpha omega"><!-- Start grønn -->
         <div id="boksgronn" class="grid_5 alpha omega">
+          <%=link_to  image_tag("applyforisfit_before_dialogue.png"), new_dialogue_participant_path(:tab=>"participant")%>
         <!-- promoboks -->
         </div>
       </div><!-- Slutt grønn -->
