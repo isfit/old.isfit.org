@@ -3,11 +3,11 @@
 <%= image_tag("chronicle_comment_#{Language.to_s}.png", :style=>"margin:0px;")%>
 
 <div class="boks-left">
-<h1><%= @chronicle.title %></h1>
+  <h1><%= link_to @chronicle.title, chronicle_path(params[:tab], @chronicle), :style => "color: black" %></h1>
 <h4>  <%= @chronicle.author %></h4>
 <p class="ingress">
   <%=raw format(@chronicle.ingress) %>
 </p>
-<%= link_to "Les mer", chronicle_path(params[:tab], @chronicle), :style => "color: black"%>
+<%= link_to t('layout.read_more'), chronicle_path(params[:tab], @chronicle), :style => "color: black"%>
 </div>
 <!-- Tip of the hat til deg som oppdaget denne! -Dag -->
