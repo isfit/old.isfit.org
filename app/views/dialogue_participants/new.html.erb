@@ -51,6 +51,11 @@ $(document).ready(function() {
 
 </script>
 <%end%>
+<%if true%>
+  The deadline for the applications has passed. <br />
+  Contact info-dialogue@isfit.org for questions.
+
+<%else%>
 <h1>Application and travel support form for the Dialogue Groups 2011</h1>
 
 <% if @dialogue_participant.errors.any? %>
@@ -410,3 +415,4 @@ $(document).ready(function() {
   <br />
   <br />
   <br />
+<%end%>
