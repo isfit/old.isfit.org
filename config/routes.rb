@@ -2,6 +2,8 @@ WwwIsfitOrg::Application.routes.draw do
 
 
 
+  resources :tips_osses
+
   resources :isfit_media_links
 
   scope "(/:tab)" do
@@ -23,7 +25,11 @@ WwwIsfitOrg::Application.routes.draw do
     
     resources :dialogue_participants
 
-    resources :chronicles
+    resources :chronicles do
+	collection do
+	  get :all
+	end
+	end
 
     resources :photos do
       member do

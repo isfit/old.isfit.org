@@ -21,4 +21,7 @@ class ChroniclesController < ApplicationController
     end
   end
 
+  def all
+    @chronicles= Chronicle.find(:all, :order=> "weight DESC")
+  end
 end
