@@ -1,14 +1,16 @@
 class Position < ActiveRecord::Base
-	has_and_belongs_to_many :groups
-        belongs_to :group
+  has_and_belongs_to_many :groups
+  belongs_to :group
 
-        lang_attr :title, :description
+  lang_attr :title, :description
 
   def self.find_all_active_positions
-    positions = Position.find_all_by_admission_id(2)
+    positions = Position.find_all_by_admission_id(3)
     positions.sort_by {|x| [(x.group.section == nil ? "" :  x.group.section.name_no), x.group.name_no] }
+    positions
   end
+
   def self.find_all_active_positions_alfa #sorterer alfabetisk
-    positions = Position.find_all_by_admission_id(2, :order => "title_no")
+    positions = Position.find_all_by_admission_id(3, :order => "title_no")
   end
 end

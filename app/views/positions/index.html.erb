@@ -1,7 +1,11 @@
-<% if @positions.length < 1 %>
-      ISFiT har for tiden ingen opptak, neste opptak er i november.i<br /><br />
-
-      Har du søkt på opptaket i august og ønsker å gjøre om prioriteringene på søknaden din, ta kontakt med recruiting[at]isfit.org. 
+<% if false %>
+  <%if Language.to_s == "no"%>
+    ISFiT har snart nytt opptakmed søknadsfrist 1. november. <br /> <br />
+    Stillingene vil bli utlyst snart.
+  <%else%>
+    ISFiT will soon be having new admissions. Application deadline is 1th of November.<br /> <br />
+    Positions will be announced soon.
+  <%end%>
 <% else %>
   <h1><%= t("position.new_positions") %></h1>
   <% active_group = nil %>

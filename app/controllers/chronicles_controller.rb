@@ -2,7 +2,7 @@ class ChroniclesController < ApplicationController
   # GET /chronicles
   # GET /chronicles.xml
   def index
-    @chronicles = Chronicle.all
+    @chronicles = Chronicle.order("updated_at DESC")
   
     respond_to do |format|
       format.html # index.html.erb
