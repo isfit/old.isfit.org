@@ -1,0 +1,8 @@
+<div class="boks-left">
+<h1> <%= link_to chronicle.title, chronicle_path(params[:tab], chronicle), :style => "color: black" %> </h1>
+<h4>  <%= chronicle.author %></h4>
+<p class="ingress">
+  <%=raw format(chronicle.ingress) %>
+</p>
+<%= link_to "Les mer", chronicle_path(params[:tab], chronicle), :style => "color: black"%> <br>
+<%= link_to  t("layout.show_all"), :action=>'all' ), :style => "color:black"%>
