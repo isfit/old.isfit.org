@@ -6,6 +6,7 @@
     search: "Søk..."
     media: "ISFiT i media"
     back: "Tilbake"
+    show_all: "Vis alle"
   article:
     header: "NYHETER"
   position:

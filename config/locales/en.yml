@@ -9,6 +9,7 @@ en:
     search: "Search..."
     media: "ISFiT in the media"
     back: "Back"
+    show_all: "Show all"
   article:
     header: "NEWS"
   position:
