@@ -10,8 +10,7 @@
 </p>
 
 <%= link_to "Les mer", chronicle_path(params[:tab], chronicle), :style => "color: black"%>
-<br>
-<%= link_to "Show all", all_chronicles_path(params[:tab]),:style => "color: black;"%>
+<%= link_to  t('layout.show_all'), all_chronicles_path(params[:tab]), :class =>"black_left"%>
 
 </div>
 

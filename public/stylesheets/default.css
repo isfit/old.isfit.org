@@ -55,13 +55,15 @@ a:hover {
 }
 
 #header {
-	/*background: #fff url(../images/header-eng.png);*/
+	/*background: #fff url(../images/header-eng.png);
+*/
 	height: 246px;
 	clear: both;
 }
 
 .isfitlogo {
-	/*margin: 71px 0 0 28px;*/
+	/*margin: 71px 0 0 28px;
+*/
 
 }
 
@@ -317,13 +319,16 @@ div.field_with_errors textarea {
 }
 
 #boksgronn_bg {
-/*	background: url(../images/boksgronnbg.png) repeat-y;*/
+/*	background: url(../images/boksgronnbg.png) repeat-y;
+*/
 	margin-bottom: 10px;
 }
 
 #boksgronn {
-/*	background: url(../images/boksgronn.png) no-repeat;*/
-/*	height: 218px;*/
+/*	background: url(../images/boksgronn.png) no-repeat;
+*/
+/*	height: 218px;
+*/
 height:auto;
 }
 
@@ -353,4 +358,8 @@ height:auto;
   float:right;
   width:253px;
   padding-left: 10px;
+}
+.black_left {
+  float:right;
+  color:black;
 }
