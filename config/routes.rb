@@ -8,7 +8,11 @@ WwwIsfitOrg::Application.routes.draw do
 
   scope "(/:tab)" do
     resources :sublinks
-
+    resources :hosts do 
+      collection do 
+        get :done
+      end
+    end
     resources :pages
 
     resources :articles do

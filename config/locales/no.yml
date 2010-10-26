@@ -36,6 +36,15 @@
       messages:
         blank: "må fylles ut"
         format: "Tullball"
+        inclusion: "må være valgt i gyldig mengde"
+        invalid: har ikke riktig format
+      models:
+        host:
+          attributes:
+            age:
+              inclusion: må være mellom 18 og 100
+            number: 
+              inclusion: må være mellom 1 og 10
     attributes:
       firstname:
         blank: "Tull"
@@ -53,4 +62,14 @@
         phone: Telefonnummer
         email: E-post
         description: Beskrivelse 
-        base: "" 
+        base: ""
+      host:
+        first_name: Fornavn
+        last_name: Etternavn
+        email: E-post
+        phone: Telefonnummer
+        address: Adresse
+        zipcode: Postnummer
+        place: Poststed
+        age: Alder
+        number: Antall deltakere

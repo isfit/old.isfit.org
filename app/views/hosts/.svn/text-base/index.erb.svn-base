@@ -1,0 +1,297 @@
+<% form_for :host, @host do |f| %>
+
+<% if Language.to_s == "en" %>
+<H1>Become an ISFiT host!</H1>
+
+<p><b>Do you want to be a host?</b></p>
+<p>On the 20th of February 450 participants from all over the world are coming to Trondheim for the 10th ISFiT festival.
+They will spend 10 days here living with our hosts. Do you want to experience the ISFiT festival in a new and exiting way?</p>
+
+<p>We need hosts for our participants from 20th of February to the 1st of March 2009.</p>
+<p>
+During the day our participants spend their time in Workshops.
+There are 17 workshops at ISFiT 2009 working with different subjects under our title "peacebuilding".
+In the evenings ISFiT organizes a range of cultural activities like theatre, art, meetings and lectures.
+This offer is open for our participants, students and the people of Trondheim - and you as our hosts!</p>
+<p>
+The participants spend much of their time at ISFiT events and ISFiT is therefore responsible for lunch and dinner.</p>
+<p>
+Everyone who signs up to be a host at ISFiT will receive the information they need at an information meeting for hosts in February.
+If you have any questions please send an e-mail to verter[at]isfit.org.</p>
+<p>
+Thank you,
+<br /><br />
+On behalf of ISFiT 2009
+<br>
+Heidi Sommernes Pedersen
+<br>
+Head of Recruiting
+<h3>Registration form</h3>
+<p>
+Please fill in the following form and press the Submit button to submit your application.
+</p>
+<TABLE>
+	<tr>
+		<td colspan="2"><b>Mandatory fields</b></td>
+	</tr>
+	<TR>
+		<TD >First name: </TD>
+		<TD><%= f.text_field :first_name %></TD>
+	</TR>
+	<TR>
+		<TD>Last name: </TD>
+		<TD><%= f.text_field :last_name %></TD>
+	</TR>
+	<TR>
+		<TD>Address: </TD>
+		<TD><%= f.text_field :address %></TD>
+	</TR>
+	<TR>
+		<TD>Postal code: </TD>
+		<TD><%= f.text_field :zipcode %></TD>
+	</TR>
+	<TR>
+		<TD>Postal place: </TD>
+		<TD><%= f.text_field :place %></TD>
+	</TR>
+	<TR>
+		<TD>Phone number: </TD>
+		<TD><%= f.text_field :phone %></TD>
+	</TR>
+	<TR>
+		<TD>Email address: </TD>
+		<TD><%= f.text_field :email %></TD>
+	</TR>
+	<TR>
+		<TD>Your age: </TD>
+		<%
+		ages = []
+		for i in 0..99
+			ages[i] = i
+		end
+		%>
+		<TD><%= f.select :age , ages %></TD>
+	</TR>	
+	<TR>
+		<TD>Number participants you would you like to host:</TD>
+		<% 
+		choices = []
+		for i in 0..9
+			choices[i] = i+1
+		end
+		 %>
+		<TD><%= f.select :number , choices %></TD>
+	</TR>
+	<tr>
+		<td colspan="2"><br /><b>Optional fields</b></td>
+	</tr>
+	<TR>
+		<TD>Where will the participant(s) sleep?</TD>
+		<TD><%= f.text_field :where %></TD>
+	</TR>
+	<TR>
+	<TR>
+		<td>Participant(s) may arrive one day earlier (February 19th):  </td>
+		<td><%= f.check_box :arrival_before %> </td>
+	</TR>
+	<TR>
+		<td>Participant(s) may stay one day longer (March 2nd):</td>
+		<td><%= f.check_box :leave_late %> </td>
+	</TR>
+		<td>Number of pairs of skies you have for participant(s) to loan:</td>
+		<%
+				choice = []
+				for i in 0..9
+					choice[i] = i
+				end
+				%>
+		<td><%= f.select:skies, choice %> </td>
+	</TR>	
+	<TR>
+		<TD>Preferences (e.g. gender, country, age, language, etc.):</TD>
+		<TD> <%= f.text_area :preference, :rows => 2 %> </TD>
+	</tr>
+	<tr>
+	 <td> What pets do you have, if any? </td>
+	 <td> <%= f.text_field :pet, :rows => 1 %></TD>
+	</tr>
+	<TR>
+	<TR>
+		<TD>Have been hosting for ISFiT before:</TD>
+		<TD><%= f.check_box :before %> </TD>
+	</TR>
+	<TR>
+		<TD>How did you hear about ISFiT?</TD>
+		<TD><%= f.select(:know_isfit, {'Written media' => 'Written media', 'E-mail' => 'E-mail', 'Friends' => 'Friends', 'Posters, screens, stands, flyers' => 'Posters, screens, stand, flyer', 'Other' => 'Other', 'Members of the ISFiT organization' => 'Members of the ISFiT organization'}) %></TD>
+	</TR>
+	<TR>
+	 <TD></TD>
+	 <TD>Name of member (only if the option "member of ISFiT" is chosen): <br>
+	   <%= f.text_field :member_name %>
+   </TD>
+	</TR>
+	<TR>
+		<TD>Why do you want to volunteer?</TD>
+		<TD><%= f.text_area :why , :rows => 2 %></TD>
+	</TR>
+	<TR>
+		<TD colspan="2"><%= form_tag ({:action=> "done", :id => params[:id]} ) %>
+		<%= submit_tag "Submit" %><br>
+		</TD>
+	</TR>
+	
+</TABLE>
+
+<% else %>
+
+<h1>Bli ISFiT-vert!</h1>
+
+<p><b>Lyst til å være vert?</b></p>
+
+<p>Den 20. februar setter vi igang med den 10. ISFiT festivalen. 450
+deltakere kommer fra over 100 land for å tilbringe 10 dager i Trondheim
+der de skal bo hjemme hos våre verter. Ønsker du og oppleve festivalen på
+en ny og spennende måte?</p>
+
+<p>Vi trenger verter til våre deltakere fra 20. februar til 1. mars 2009.</p>
+
+<p>På dagtid tilbringer deltakerene sin tid i Workshops. Det er 17 workshops
+i ISFiT 2009 som jobber med ulike tema under tittelen "Peacebuilding". På
+kvelden tilbyr ISFiT et stort festivaltilbud med kulturarrangmenter som
+konserter, teater, utstillinger og oppsetninger, samt møter og foredrag.
+Dette tilbudet er åpent for deltkaerne, studenter og øvrige interesserte i
+Trondheim - det vil si også deg som vert!</p>
+
+<p>Detakerene tilbringer mye tid både morgen og kveld på våre arrangemanger.
+Dermed står ISFiT for lunsj og middag for deltakerne.</p>
+
+<p>Alle verter som har registrert seg under vil få den informasjonen de
+trenger under ett felles informasjonsmøte. Hvis du har spørsmål kan du
+også sende en mail til verter[at]isfit.org</p>
+
+<p>
+Tusen Takk,
+<br /><br />
+på vegne av ISFiT 2009<br />
+Heidi Sommernes Pedersen<br />
+Rekrutteringssjef</p>
+
+<h3>Registreringsskjema</h3>
+<p>
+Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skjemaet.
+</p>
+<TABLE>
+	<tr>
+		<td colspan="2"><b>Obligatoriske felter</b></td>
+	</tr>
+	<TR>
+		<TD >Fornavn: </TD>
+		<TD><%= f.text_field :first_name %></TD>
+	</TR>
+	<TR>
+		<TD>Etternavn: </TD>
+		<TD><%= f.text_field :last_name %></TD>
+	</TR>
+	<TR>
+		<TD>Adresse: </TD>
+		<TD><%= f.text_field :address %></TD>
+	</TR>
+	<TR>
+		<TD>Postnr: </TD>
+		<TD><%= f.text_field :zipcode %></TD>
+	</TR>
+	<TR>
+		<TD>Poststed: </TD>
+		<TD><%= f.text_field :place %></TD>
+	</TR>
+	<TR>
+		<TD>Tlf: </TD>
+		<TD><%= f.text_field :phone %></TD>
+	</TR>
+	<TR>
+		<TD>E-post: </TD>
+		<TD><%= f.text_field :email %></TD>
+	</TR>
+	<TR>
+		<TD>Din alder: </TD>
+		<%
+		ages = []
+		for i in 0..99
+			ages[i] = i
+		end
+		%>
+		<TD><%= f.select :age , ages %></TD>
+	</TR>	
+	<TR>
+		<TD>Antall deltakere som kan bo hos deg:</TD>
+		<% 
+		choices = []
+		for i in 0..9
+			choices[i] = i
+		end
+		 %>
+		<TD><%= f.select :number , choices %></TD>
+	</TR>
+	<tr>
+		<td colspan="2"><br /><b>Valgfrie felter</b></td>
+	</tr>
+	<TR>
+		<TD>Hvor vil deltakeren(e) sove? </TD>
+		<TD><%= f.text_field :where %></TD>
+	</TR>
+	<TR>
+		<td>Deltakeren(e) kan komme en dag tidligere (19. februar):</td>
+		<td><%= f.check_box :arrival_before %> </td>
+	</TR>
+	<TR>
+		<td>Deltakeren(e) kan dra en dag senere (2. mars):</td>
+		<td><%= f.check_box :leave_late %> </td>
+	</TR>
+	<TR>
+		<td>Antall ski-par du kan l&aring;ne bort til deltakeren(e):</td>
+		<%
+		choice = []
+		for i in 0..9
+			choice[i] = i
+		end
+		%>
+		<td><%= f.select:skies, choice %> </td>
+	</TR>	
+	<TR>
+		<TD>Preferanser (f. eks. kj&oslash;nn, land, alder, spr&aring;k, osv.):</TD>
+		<TD> <%= f.text_area :preference, :rows => 3 %> </TD>
+	</tr>
+	<tr>
+	 <td> Hvis du har husdyr, hvilke husdyr har du? </td>
+	 <td> <%= f.text_field :pet %></TD>
+	</tr>
+	<TR>
+		<TD>Har v&aelig;rt vert for ISFiT f&oslash;r:</TD>
+		<TD><%= f.check_box :before %> </TD>
+	</TR>
+	<TR>
+	 
+		<TD>Hvordan h&oslash;rte du om ISFiT?</TD>
+		<TD><%= f.select(:know_isfit, {'Skriftlig media' => 'Skriftlig media', 'E-Mail' => 'Mail', 'Venner' => 'Venner', 'Plakater, skjermer, stands, flyers' => 'Plakater, skjermer, stand, flyer', 'Annet' => 'Annet', 'Medlemmer av ISFiT organisasjonen' => 'Medlemmer av ISFiT organisasjonen'}) %></TD>
+	</TR>
+		<TR>
+	 <TD></TD>
+	 <TD>Navn på medlem (Besvares kun hvis "medlem av ISFiT" er valgt): <br>
+	   <%= f.text_field :member_name %>
+   </TD>
+	</TR>
+	<TR>
+		<TD>Hvorfor vil du v&aelig;re vert?</TD>
+		<TD><%= f.text_area :why , :rows => 3 %></TD>
+	</TR>
+	<TR>
+		<TD colspan="2"><%= form_tag ({:action=> "done", :id => params[:id]} ) %>
+		<%= submit_tag "Send" %><br>
+		</TD>
+	</TR>
+	
+</TABLE>
+
+
+<% end %>
+<% end %>

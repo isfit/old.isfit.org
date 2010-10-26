@@ -1,0 +1,5 @@
+<% if Language.to_s == "en" %>
+<h3>Thank you applying to ISFiT 2009 participant hosting!</h3><br>
+<% else %>
+<h3> Takk for at du s&oslash;kte som ISFiT vert!</h3> <br>
+<% end %>
