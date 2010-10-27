@@ -2,31 +2,20 @@
 <% form_for @host, :url => hosts_path(params[:tab])  do |f| %>
 
 <% if Language.to_s == "en" %>
-<H1>Become an ISFiT host!</H1>
+<H1>Become a host for ISFiT!</H1>
 
 <p><b>Do you want to be a host?</b></p>
-<p>On the 20th of February 450 participants from all over the world are coming to Trondheim for the 10th ISFiT festival.
-They will spend 10 days here living with our hosts. Do you want to experience the ISFiT festival in a new and exiting way?</p>
+<p>The 11th ISFiT festival starts at 11 February 2011. 450 participants from more than a hundred countries will come to spend ten days in Trondheim; here they will live in the homes of our host families. </p>
+<p>Do you wish to experience the festival in a different and exciting way? We need hosts for our participants from 11 February to 20 February 2011.</p>
+<p>During the day the participant will spend their time in workshops. The participants are signed up for 17 different workshops, who discuss the festival theme, Global Health, from different angles. At night ISFiT offers a large festival program with cultural events such as concerts, theatre, exhibitions and shows, as well as plenary sessions and lectures. The festival program is open for the participants, students and the rest of Trondheim’s population - this means for you as a host as well.</p>
+<p>The participants will spend a lot of time during both day and night at ISFiT’s events. ISFiT will provide the participants with lunch and dinner. You, as a host, will provide breakfast.</p>
 
-<p>We need hosts for our participants from 20th of February to the 1st of March 2009.</p>
-<p>
-During the day our participants spend their time in Workshops.
-There are 17 workshops at ISFiT 2009 working with different subjects under our title "peacebuilding".
-In the evenings ISFiT organizes a range of cultural activities like theatre, art, meetings and lectures.
-This offer is open for our participants, students and the people of Trondheim - and you as our hosts!</p>
-<p>
-The participants spend much of their time at ISFiT events and ISFiT is therefore responsible for lunch and dinner.</p>
-<p>
-Everyone who signs up to be a host at ISFiT will receive the information they need at an information meeting for hosts in February.
-If you have any questions please send an e-mail to verter[at]isfit.org.</p>
-<p>
-Thank you,
-<br /><br />
-On behalf of ISFiT 2009
-<br>
-Heidi Sommernes Pedersen
-<br>
-Head of Recruiting
+<p>If you have any questions, please send a mail to verter[at]isfit.org</p>
+
+<p>On behalf of ISFiT 2011, thank you very much</p>
+
+<p>Marthe Asheim Underthun<br />
+Head of Recruiting</p>
 <h3>Registration form</h3>
 <p>
 Please fill in the following form and press the Submit button to submit your application.
@@ -92,11 +81,11 @@ Please fill in the following form and press the Submit button to submit your app
 	</tr>
 	<tr>
 	<tr>
-		<td>Participant(s) may arrive one day earlier (February 19th):  </td>
+		<td>Participant(s) may arrive one day earlier (February 10th):  </td>
 		<td><%= f.check_box :arrival_before %> </td>
 	</tr>
 	<tr>
-		<td>Participant(s) may stay one day longer (March 2nd):</td>
+		<td>Participant(s) may stay one day longer (February 21th):</td>
 		<td><%= f.check_box :leave_late %> </td>
 	</tr>
 		<td>Number of pairs of skies you have for participant(s) to loan:</td>
@@ -109,14 +98,26 @@ Please fill in the following form and press the Submit button to submit your app
 		<td><%= f.select:skies, choice %> </td>
 	</tr>	
 	<tr>
-		<td>Preferences (e.g. gender, country, age, language, etc.):</td>
-		<td> <%= f.text_area :preference, :rows => 2 %> </td>
+		<td>Can the participant be vegetarian?</td>
+		<td> <%= f.check_box :vegetarian %> </td>
 	</tr>
-	<tr>
-	 <td> What pets do you have, if any? </td>
-	 <td> <%= f.text_field :pet, :rows => 1 %></td>
+  <tr>
+		<td>Can the participant smoke?</td>
+		<td> <%= f.check_box :smoker %> </td>
 	</tr>
+
 	<tr>
+	 <td> If you have animals, what kind of animals do you have? </td>
+	 <td> <%= f.text_field :pet %></td>
+	</tr>
+  <tr>
+	 <td> If you have animals, how many do you have? </td>
+	 <td> <%= f.select :animal_number, choice %></td>
+	</tr>
+  <tr>
+	 <td> What languages do you speak?</td>
+	 <td> <%= f.text_field :language_speak %></td>
+	</tr>
 	<tr>
 		<td>Have been hosting for ISFiT before:</td>
 		<td><%= f.check_box :before %> </td>
@@ -165,13 +166,12 @@ Trondheim - det vil si også deg som vert!</p>
 Dermed står ISFiT for lunsj og middag for deltakerne. Du som vert står for
 frokost.</p>
 
-<p>Alle verter som har registrert seg under vil få den informasjonen de trenger
-under ett felles informasjonsmøte. Hvis du har spørsmål kan du også sende en
+<p>Hvis du har spørsmål kan du sende en
 mail til verter[at]isfit.org</p>
 <br />
 Tusen Takk, på vegne av ISFiT 2011
 <br /><br />
-Marthe Asheim Underthun
+Marthe Asheim Underthun<br />
 Rekrutteringssjef
 <br /><br />
 
@@ -184,7 +184,7 @@ Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skje
 		<td colspan="2"><b>Obligatoriske felter</b></td>
 	</tr>
 	<tr>
-		<TD >Fornavn: </td>
+		<td>Fornavn: </td>
 		<td><%= f.text_field :first_name %></td>
 	</tr>
 	<tr>
@@ -257,11 +257,11 @@ Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skje
 		<td><%= f.select :skies, choice %> </td>
 	</tr>	
 	<tr>
-		<td>Vegetarian</td>
+		<td>Kan deltakeren være vegetarianer?</td>
 		<td> <%= f.check_box :vegetarian %> </td>
 	</tr>
   <tr>
-		<td>Smoker</td>
+		<td>Kan deltakeren røyke?</td>
 		<td> <%= f.check_box :smoker %> </td>
 	</tr>
 
@@ -274,7 +274,7 @@ Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skje
 	 <td> <%= f.select :animal_number, choice %></td>
 	</tr>
   <tr>
-	 <td> Hvilke språk du snakker </td>
+	 <td> Hvilke språk snakker du?</td>
 	 <td> <%= f.text_field :language_speak %></td>
 	</tr>
 

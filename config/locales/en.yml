@@ -34,4 +34,26 @@ en:
     phone_nor: "Phone"
     email: "Email address"
     email_ntnu: "Email address (at place of study)"
+  helpers:
+    label:
+      host:
+        first_name: "First name"
+        last_name: "Last name"
+        address: "Address"
+        phone: "Phone"
+        email: "Email address"
+        zipcode: "Zipcode"
+        place: "Place"
+        age: Age
+  activerecord:
+    errors:
+      messages:
+      models:
+        host:
+          attributes:
+            age:
+              inclusion: must be between 18 and 100
+            number: 
+              inclusion: must be between 1 and 10
+
 
