@@ -15,9 +15,9 @@ _gaq.push(['_setAccount', 'UA-18016792-1']);
 _gaq.push(['_trackPageview']);
 
 (function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
 </script>
@@ -26,33 +26,38 @@ _gaq.push(['_trackPageview']);
 <div id="hovedramme" class="container_24"> <!-- Start hovedramme -->
 <div id="omeny" class="grid_25"> <!-- Start omeny -->
 <div id="olinker" class="grid_20"> <!-- Start olinker -->
-<%current_tab = nil%>
-<% style = "" %>
-<%Tab.find(:all, :conditions => {:top_bar=>"1"}).each do |tab|%>
-  <%if tab.tag == params[:tab] 
-  current_tab = tab
-  style = "selected"
-else
-  style = ""
+<%
+current_tab = nil
+style = ""
+Tab.find(:all, :conditions => {:top_bar=>"1"}).each do |tab|
+
+	if tab.tag == params[:tab] 
+		current_tab = tab
+		style = "selected"
+	else
+		style = ""
+	end
+
+	link = nil
+
+	if tab.sublinks.first.page_id == 0
+		if tab.sublinks.first.url != nil
+			arr = tab.sublinks.first.url.partition("#")
+			link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag) 
+		else
+			link = tab.sublinks.first.external_url
+		end
+	else
+		link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
+	end
+
+	if style == "" %>
+		<%= link_to tab.name, link, :class=>"olink" %>
+<%	else %>
+		<%= link_to tab.name, link,:id => style, :class=>"olink"%>
+<%	end
 end
-link = nil
-if tab.sublinks.first.page_id == 0
-  if tab.sublinks.first.url != nil
-    arr = tab.sublinks.first.url.partition("#")
-    link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag) 
-  else
-    link = tab.sublinks.first.external_url
-  end
-else
-  link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
-end
-        %>
-        <%if style == ""%>
-          <%= link_to tab.name, link, :class=>"olink"%>      
-        <%else%>
-          <%= link_to tab.name, link,:id => style, :class=>"olink"%>      
-        <%end%>
-      <%end%>
+%>
       <a href="http://internal.isfit.org/" class="olink"><%= t('layout.internal')%></a>
 
       </div><!-- Slutt olinker -->
@@ -66,61 +71,65 @@ end
       </div><!-- Slutt odiverse -->
       </div><!-- Slutt omeny -->
       <div id="header" class="grid_25" ><!-- Start header -->
-      <%=link_to (image_tag("header_#{Language.to_s}.png", :class=>"isfitlogo"), root_path) %>
-      </div><!-- Slutt header -->
+		<%=link_to (image_tag("header_#{Language.to_s}.png", :class=>"isfitlogo"), root_path) %>
+		</div><!-- Slutt header -->
       <div id="meny" class="grid_25"><!-- Start meny -->
       <div id="faner" class="grid_20"><!-- Start faner -->
-      <%Tab.where(:top_bar => 0).order('weight').each do |tab|%>
-        <% if tab.name != ""%>
-          <% style = "" %>
-          <%if tab.tag == params[:tab] 
-          current_tab = tab
-          style="selected"
-      else
-        style = ""
-      end
-      link = nil
-      if tab.sublinks.first.page_id == 0
-        if tab.sublinks.first.url != nil
-          arr = tab.sublinks.first.url.partition("#")
-          link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag) 
-        end
-      else
-        link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
-      end
-    %>
-    <%= link_to tab.name, link, :class => style%><%=image_tag("menyspacer.png", :class=>"menyspacer")%>
-  <%end%>
-<%end%>
+<%
+Tab.where(:top_bar => 0).order('weight').each do |tab|
+	if tab.name != ""
+		style = ""
+		if tab.tag == params[:tab]
+			current_tab = tab
+			style="selected"
+		else
+			style = ""
+		end
+		link = nil
+		if tab.sublinks.first.page_id == 0 or tab.sublinks.first.page_id == nil
+			if tab.sublinks.first.url != nil
+				arr = tab.sublinks.first.url.partition("#")
+				link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag)
+			end
+		else
+			link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
+		end
+%>
+		<%= link_to tab.name, link, :class => style%><%=image_tag("menyspacer.png", :class=>"menyspacer")%>
+<%	end
+end %>
+
 </div><!-- Slutt faner -->
 <div id="sok" class="grid_4"><!-- Start søk -->
 <!-- <input type="button" value="" class="btn"><input name="search" type="text" value="<%=t('layout.search')%>">-->
 </div><!-- Slutt søk -->
 </div><!-- Slutt meny -->
 <div id="submeny" class="grid_25"><!-- Start submeny -->
-<%current_tab.sublinks.each do |sub|%>
-  <%
-    active = false
-    link = nil
-    if sub.page_id == 0
-      if sub.url != nil
-        arr = sub.url.partition("#")
-        link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>current_tab.tag)
-      else
-        link = sub.external_url
-      end
-    else
-      link = page_path(sub.page, :tab=>current_tab.tag)
-    end
-    if request.request_uri == link
-      active = true
-    end
-    if link != nil
-    %>
-    <%=link_to(sub.title, link, :class=> active ? "a_sublink" : "ina_sublink")%>
-    <%
-    end
-end%>    
+<%
+current_tab.sublinks.each do |sub|
+	active = false
+	link = nil
+
+	if sub.page_id == 0 or sub.page_id == nil
+		if sub.url != nil
+			arr = sub.url.partition("#")
+			link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>current_tab.tag)
+		elsif sub.external_url != nil
+			link = sub.external_url
+		end
+	else
+		link = page_path(sub.page, :tab=>current_tab.tag)
+	end
+
+	if request.request_uri == link
+		active = true
+	end
+
+	if link != nil %>
+		<%=link_to(sub.title, link, :class=> active ? "a_sublink" : "ina_sublink")%><%
+	end
+end %>
+
 </div><!-- Slutt submeny -->
 <div id="ramme" class="grid_25"><!-- Start ramme -->
 <div id="venstreramme" class="grid_5"><!-- Start venstreramme -->
@@ -132,12 +141,14 @@ end%>
 </div><!-- Slutt turkis -->
 </div><!-- Slutt venstreramme -->
 <div id="midtramme" class="grid_14"><!-- Start midtramme -->
-<% if flash[:notice] %>
+<%
+if flash[:notice] %>
   <div id="notice">
   <%= flash[:notice] %>
-  </div>
-<% end %>
-<% if flash[:warnings] %>
+  </div><%
+end
+
+if flash[:warnings] %>
   <div id="warning">
   Your application could not be sent because of the following conditions:
     <ul>
@@ -145,14 +156,16 @@ end%>
     <li><%= msg %></li>
     <% } %>
     </ul>
-    </div>
-  <% end %>
-  <% if flash[:warning] %>
+    </div> <%
+end
+
+if flash[:warning] %>
     <div id="warning">
     <%= flash[:warning] %>
-    </div>
-  <%end%>
-  <% if flash[:warnings2] %>
+    </div> <%
+end
+
+if flash[:warnings2] %>
     <div id="warning">
     Your application could not be sent because of the following conditions:
       <ul>
@@ -160,8 +173,8 @@ end%>
       <li><%= attr + " " + msg %></li>
       <% } %>
       </ul>
-      </div>
-    <% end %>
+      </div><%
+end %>
     <%= yield %>
     </div><!-- Slutt midtramme -->
     <div id="hoyreramme" class="grid_5"><!-- Start hoyreramme -->
@@ -181,9 +194,11 @@ end%>
     <div class="boks">
     <h3>Student Peace Prize</h3><br />
     <ul style="list-style-type:none; margin: 0 0 0 -20px;">
-    <%SppArticle.find_five_latest.each do |article|%>
-      <li><%=link_to( article.title_en, "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank" )%></li>
-    <%end%>
+<%
+SppArticle.find_five_latest.each do |article|%>
+      <li><%=link_to( article.title_en, "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank" )%></li><%
+end %>
+
     </ul>
     <p><a style="font-style: italic" href="http://www.studentpeaceprize.org">studentpeaceprize.org</a></p>
     </div>
@@ -194,11 +209,12 @@ end%>
     <div class="boks">
     <h3><%= t("layout.media") %></h3><br>
     <ul style="list-style-type:none; margin: 0 0 0 -20px;">
-    <%IsfitMediaLink.find_five_latest.each do |link|%>
-      <li><%=link_to( link.short_desc, link.link, :target=>"_blank" )%></li>
-    <%end%>
-    </ul>
+<%
+IsfitMediaLink.find_five_latest.each do |link|%>
+      <li><%=link_to( link.short_desc, link.link, :target=>"_blank" )%></li><%
+end %>
 
+    </ul>
 
     </div>
     </div>
