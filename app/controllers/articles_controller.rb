@@ -2,8 +2,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.xml
   def index
-    #@articles = Article.find(:all, :order => "weight DESC",:conditions=> {:deleted=>"0", :list=>"1"}, :limit =>"7")
-    @articles = Article.find(:all, :order => "weight DESC",:conditions=> {:deleted=>"0", :list=>"1"})
+    #@articles = Article.find(:all, :conditions=>"show_article <="+Time.now.to_s+" OR show_article IS NULL", :order => "weight DESC",:conditions=> {:deleted=>"0", :list=>"1"})
+    @articles = Article.find(:all, :conditions=>"(show_article <='"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"' OR show_article IS NULL) AND deleted='0'AND list='1'", :order => "weight DESC")
     if Language.to_s =="en"
       @articles.reject!{|x| x.title_en == "" }
     else
@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   end
 
   def all
-    @articles = Article.find(:all, :order => "weight DESC",:conditions=> {:deleted=>"0", :list=>"1"})
+    @articles = Article.find(:all, :conditions=>"(show_article <='"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"' OR show_article IS NULL) AND deleted='0'AND list='1'", :order => "weight DESC")
     if Language.to_s =="en"
       @articles.reject!{|x| x.title_en == "" }
     else
@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.xml
   def show
-    @article = Article.find(params[:id])
+    @article = Article.where(:id=>params[:id]).where("(show_article <='"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"' OR show_article IS NULL) AND deleted='0'AND list='1'").first
 
     respond_to do |format|
       format.html # show.html.erb
