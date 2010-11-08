@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ISFiT 2011</title>
+<%= stylesheet_link_tag :all %>
+<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+<%= javascript_include_tag 'jquery','application', 'jquery.simplemodal-1.3.5.min', 'imgareaselect'%>
+<%= yield :script %>
+<%= csrf_meta_tag %>
+<!-- Google Analytics, LA STÅ til ISFiT 2013. Eier av konto er Dag-Inge Aas for ISFiT 2011 -->
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-18016792-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+</head>
+<body>
+<div id="hovedramme" class="container_24"> <!-- Start hovedramme -->
+<div id="omeny" class="grid_25"> <!-- Start omeny -->
+<div id="olinker" class="grid_20"> <!-- Start olinker -->
+<%
+current_tab = nil
+style = ""
+Tab.find(:all, :conditions => {:top_bar=>"1"}).each do |tab|
+
+	if tab.tag == params[:tab] 
+		current_tab = tab
+		style = "selected"
+	else
+		style = ""
+	end
+
+	link = nil
+
+	if tab.sublinks.first.page_id == 0
+		if tab.sublinks.first.url != nil
+			arr = tab.sublinks.first.url.partition("#")
+			link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag) 
+		else
+			link = tab.sublinks.first.external_url
+		end
+	else
+		link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
+	end
+
+	if style == "" %>
+		<%= link_to tab.name, link, :class=>"olink" %>
+<%	else %>
+		<%= link_to tab.name, link,:id => style, :class=>"olink"%>
+<%	end
+end
+%>
+
+   
+      </div><!-- Slutt olinker -->
+      <div id="odiverse" class="grid_4"><!-- Start odiverse -->
+
+      <%= link_to (image_tag("gb.png"),{:tab=>params[:tab], :locale=>"en"}, :class=>"oflagg") %>
+      <%= link_to (image_tag("no.png"),{:tab=>params[:tab], :locale=>"no"}, :class=>"oflagg") %>
+      <%= link_to (image_tag("facebook.png"), "http://www.facebook.com/group.php?gid=116305974170&ref=ts", :target=>"_blank", :class=>"obilde")%>
+      <%= link_to (image_tag("twitter.png"), "http://twitter.com/isfit", :class=>"obilde", :target=>"_blank")%>
+      <!--<a href="#rss" class="obilde"><img src="images/rss.png"></a>-->
+      </div><!-- Slutt odiverse -->
+      </div><!-- Slutt omeny -->
+      <div id="header" class="grid_25" ><!-- Start header -->
+		<%=link_to (image_tag("header_#{Language.to_s}.png", :class=>"isfitlogo"), root_path) %>
+		
+		</div><!-- Slutt header -->
+      <div id="meny" class="grid_25"><!-- Start meny -->
+      <div id="faner" class="grid_20">
+<!-- Start faner -->
+<%
+Tab.where(:top_bar => 0).order('weight').each do |tab|
+	if tab.name != ""
+		style = ""
+		if tab.tag == params[:tab]
+			current_tab = tab
+			style="selected"
+		else
+			style = ""
+		end
+		link = nil
+		if tab.sublinks.first.page_id == 0 or tab.sublinks.first.page_id == nil
+			if tab.sublinks.first.url != nil
+				arr = tab.sublinks.first.url.partition("#")
+				link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag)
+			end
+		else
+			link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
+		end
+%>
+		<%= link_to tab.name, link, :class => style%><%=image_tag("menyspacer.png", :class=>"menyspacer")%>
+<%	end
+end %>
+		
+</div><!-- Slutt faner -->
+<div id="sok" class="grid_4"><!-- Start søk -->
+<!-- <input type="button" value="" class="btn"><input name="search" type="text" value="<%=t('layout.search')%>">-->
+<div id="counter" class="counter">
+		<ul class="countdown">
+			<li><div class="countdown_num" id="countdown_day"></div><div id="Days"></div></li>
+			<li><div class="countdown_num" id="countdown_hour"></div><div id="Hours"></div></li>
+			<li><div class="countdown_num" id="countdown_min"></div><div id="Minutes"></div></li>
+			<li><div class="countdown_num" id="countdown_sec"></div><div id="Seconds"></div></li>
+		</ul>
+	</div>
+	
+	<script type="text/javascript">
+	countdown(2011, 2, 11);
+	</script>
+</div><!-- Slutt søk -->
+
+</div><!-- Slutt meny -->
+<div id="submeny" class="grid_25"><!-- Start submeny -->
+<%
+current_tab.sublinks.each do |sub|
+	active = false
+	link = nil
+
+	if sub.page_id == 0 or sub.page_id == nil
+		if sub.url != nil
+			arr = sub.url.partition("#")
+			link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>current_tab.tag)
+		elsif sub.external_url != nil
+			link = sub.external_url
+		end
+	else
+		link = page_path(sub.page, :tab=>current_tab.tag)
+	end
+
+	if request.request_uri == link
+		active = true
+	end
+
+	if link != nil %>
+		<%=link_to(sub.title, link, :class=> active ? "a_sublink" : "ina_sublink")%><%
+	end
+end %>
+
+</div><!-- Slutt submeny -->
+<div id="ramme" class="grid_25"><!-- Start ramme -->
+<div id="venstreramme" class="grid_5"><!-- Start venstreramme -->
+<div id="boksturkis_bg" class="grid_5 alpha omega"><!-- Start turkis -->
+<%#= image_tag ("chronicle-top.png")%>
+<div id="boksturkis" class="grid_5 alpha omega">
+<%= render :template =>'chronicles/index'%>
+</div>
+</div><!-- Slutt turkis -->
+</div><!-- Slutt venstreramme -->
+<div id="midtramme" class="grid_14"><!-- Start midtramme -->
+<%
+if flash[:notice] %>
+  <div id="notice">
+  <%= flash[:notice] %>
+  </div><%
+end
+
+if flash[:warnings] %>
+  <div id="warning">
+  Your application could not be sent because of the following conditions:
+    <ul>
+  <% flash[:warnings].each { |attr,msg|  %>
+    <li><%= msg %></li>
+    <% } %>
+    </ul>
+    </div> <%
+end
+
+if flash[:warning] %>
+    <div id="warning">
+    <%= flash[:warning] %>
+    </div> <%
+end
+
+if flash[:warnings2] %>
+    <div id="warning">
+    Your application could not be sent because of the following conditions:
+      <ul>
+    <% flash[:warnings2].each { |attr,msg|  %>
+      <li><%= attr + " " + msg %></li>
+      <% } %>
+      </ul>
+      </div><%
+end %>
+    <%= yield %>
+    </div><!-- Slutt midtramme -->
+
+    </div><!-- Slutt ramme -->
+    <div id="footer" class="grid_25"><!-- Start footer -->
+    <%=link_to(image_tag("isfitliten.png", :class=>"footerlogo"), root_path)%>
+    <p style="color:pink; text-align:center">Editor in Chief: Sanna Drogset Børstad, sannadro[at]isfit.org. All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2011. </p>
+    </div><!-- Slutt footer -->
+    </div><!-- Slutt hovedramme -->
+    </body>
+    </html>
