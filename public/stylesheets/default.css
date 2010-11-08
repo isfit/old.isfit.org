@@ -42,8 +42,9 @@ a:hover {
 .counter ul.countdown{
 	list-style-type: none;
 	color: white;
-	text-align: center;
+	text-align: left;
 	font-weight: bold;
+
 }
 .counter ul.countdown li{
 	float: left;
