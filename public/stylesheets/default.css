@@ -34,6 +34,36 @@ a:hover {
 	height: 27px;
 }
 
+/*COUNTER STYLE */
+#odiverse .counter{
+	width: 200px;
+	
+}
+.counter ul.countdown{
+	list-style-type: none;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}
+.counter ul.countdown li{
+	float: left;
+	height:10px;
+	margin: 0 6px 0 0;
+	padding-top: 4px;
+}
+.counter ul.countdown li div{
+	font-size: 9px;
+}
+.counter ul.countdown li div.countdown_num{
+	font-size: 13px;
+}
+.counter ul.countdown li.no_countdown{
+	background:transparent;
+	height:3px;
+	width:10px;
+}
+/*COUNTER STYLE END*/
+
 .olink {
 	color: #faa61f;
 	font-size: 12px;

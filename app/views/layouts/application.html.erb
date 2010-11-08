@@ -58,8 +58,8 @@ Tab.find(:all, :conditions => {:top_bar=>"1"}).each do |tab|
 <%	end
 end
 %>
-      <a href="http://internal.isfit.org/" class="olink"><%= t('layout.internal')%></a>
 
+   
       </div><!-- Slutt olinker -->
       <div id="odiverse" class="grid_4"><!-- Start odiverse -->
 
@@ -72,9 +72,11 @@ end
       </div><!-- Slutt omeny -->
       <div id="header" class="grid_25" ><!-- Start header -->
 		<%=link_to (image_tag("header_#{Language.to_s}.png", :class=>"isfitlogo"), root_path) %>
+		
 		</div><!-- Slutt header -->
       <div id="meny" class="grid_25"><!-- Start meny -->
-      <div id="faner" class="grid_20"><!-- Start faner -->
+      <div id="faner" class="grid_20">
+<!-- Start faner -->
 <%
 Tab.where(:top_bar => 0).order('weight').each do |tab|
 	if tab.name != ""
@@ -98,11 +100,24 @@ Tab.where(:top_bar => 0).order('weight').each do |tab|
 		<%= link_to tab.name, link, :class => style%><%=image_tag("menyspacer.png", :class=>"menyspacer")%>
 <%	end
 end %>
-
+		
 </div><!-- Slutt faner -->
 <div id="sok" class="grid_4"><!-- Start søk -->
 <!-- <input type="button" value="" class="btn"><input name="search" type="text" value="<%=t('layout.search')%>">-->
+<div id="counter" class="counter">
+		<ul class="countdown">
+			<li><div class="countdown_num" id="countdown_day"></div><div>Days</div></li>
+			<li><div class="countdown_num" id="countdown_hour"></div><div>Hours</div></li>
+			<li><div class="countdown_num" id="countdown_min"></div><div>Minutes</div></li>
+			<li><div class="countdown_num" id="countdown_sec"></div><div>Seconds</div></li>
+		</ul>
+	</div>
+	
+	<script type="text/javascript">
+	countdown(2011, 2, 11);
+	</script>
 </div><!-- Slutt søk -->
+
 </div><!-- Slutt meny -->
 <div id="submeny" class="grid_25"><!-- Start submeny -->
 <%
