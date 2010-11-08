@@ -13,6 +13,7 @@ en:
     show_all: "Show all"
   article:
     header: "NEWS"
+    more: "More news"
   position:
     no_new_positions: "We do not currently have any open positions for volunteers. Please check back later"
     new_positions: "Currently ISFiT has admissions for the following positions"
