@@ -85,16 +85,16 @@ $(document).ajaxSend(function(event, request, settings) {
 			document.getElementById('countdown_sec').innerHTML=dsec;
 			setTimeout("countdown(theyear,themonth,theday)",1000)
 			document.getElementById('Days').innerHTML="Days";
-			if (dday < 2)
+			if (dday == 1)
 				document.getElementById('Days').innerHTML="Day";
 			document.getElementById('Hours').innerHTML="Hours";
-			if (dhour < 2)
+			if (dhour == 1)
 				document.getElementById('Hours').innerHTML="Hour";
 			document.getElementById('Minutes').innerHTML="Minutes";
-			if (dmin < 2)
+			if (dmin == 1)
 				document.getElementById('Minutes').innerHTML="Minutes";
 			document.getElementById('Seconds').innerHTML="Seconds";
-			if (dsec < 2)
+			if (dsec == 1)
 				document.getElementById('Seconds').innerHTML="Second";
 		}
 	}

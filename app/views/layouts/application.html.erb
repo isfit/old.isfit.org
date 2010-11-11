@@ -25,7 +25,7 @@ _gaq.push(['_trackPageview']);
 <body>
 <div id="hovedramme" class="container_24"> <!-- Start hovedramme -->
 <div id="omeny" class="grid_25"> <!-- Start omeny -->
-<div id="olinker" class="grid_20"> <!-- Start olinker -->
+<div id="olinker" class="grid_10"> <!-- Start olinker -->
 <%= link_to t('layout.internal'), "https://internal.isfit.org/", :class => "olink" %>
 <%
 current_tab = nil
@@ -60,14 +60,33 @@ Tab.find(:all, :conditions => {:top_bar=>"1"}).each do |tab|
 end
 %>
 
-   
+
       </div><!-- Slutt olinker -->
+
+
+	<!--COUNTDOWN-->
+	<div id="counter" class="counter grid_10">
+			<ul class="countdown">
+				<li><div class="countdown_num" id="countdown_day"></div><div id="Days"></div></li>
+				<li><div class="countdown_num" id="countdown_hour"></div><div id="Hours"></div></li>
+				<li><div class="countdown_num" id="countdown_min"></div><div id="Minutes"></div></li>
+				<li><div class="countdown_num" id="countdown_sec"></div><div id="Seconds"></div></li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+		countdown(2011, 2, 11);
+		</script>
+	<!--SLUTT COUNTDOWN-->
+	
       <div id="odiverse" class="grid_4"><!-- Start odiverse -->
 
       <%= link_to (image_tag("gb.png"),{:tab=>params[:tab], :locale=>"en"}, :class=>"oflagg") %>
       <%= link_to (image_tag("no.png"),{:tab=>params[:tab], :locale=>"no"}, :class=>"oflagg") %>
       <%= link_to (image_tag("facebook.png"), "http://www.facebook.com/#!/pages/ISFiT/11541693212", :target=>"_blank", :class=>"obilde")%>
       <%= link_to (image_tag("twitter.png"), "http://twitter.com/isfit", :class=>"obilde", :target=>"_blank")%>
+
+
       <!--<a href="#rss" class="obilde"><img src="images/rss.png"></a>-->
       </div><!-- Slutt odiverse -->
       </div><!-- Slutt omeny -->
@@ -105,18 +124,7 @@ end %>
 </div><!-- Slutt faner -->
 <div id="sok" class="grid_4"><!-- Start søk -->
 <!-- <input type="button" value="" class="btn"><input name="search" type="text" value="<%=t('layout.search')%>">-->
-<div id="counter" class="counter">
-		<ul class="countdown">
-			<li><div class="countdown_num" id="countdown_day"></div><div id="Days"></div></li>
-			<li><div class="countdown_num" id="countdown_hour"></div><div id="Hours"></div></li>
-			<li><div class="countdown_num" id="countdown_min"></div><div id="Minutes"></div></li>
-			<li><div class="countdown_num" id="countdown_sec"></div><div id="Seconds"></div></li>
-		</ul>
-	</div>
-	
-	<script type="text/javascript">
-	countdown(2011, 2, 11);
-	</script>
+
 </div><!-- Slutt søk -->
 
 </div><!-- Slutt meny -->
