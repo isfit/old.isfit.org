@@ -12,7 +12,7 @@ first = true
 	<a href="<%=article_url(params[:tab], article)%>">
 	<%=image_tag("article_images/"+article.id.to_s+"_"+ (first ? "1" : "2")+".jpg") %>
 	<h1><%=article.title%></h1>
-	<p><%=article.sub_title%></p>
+	<p><%=truncate(article.sub_title, :length=>150, :separator => ' ')%></p>
 	</a>
 	</div>
 	<% first = false if first %>
