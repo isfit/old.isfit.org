@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:og="http://opengraphprotocol.org/schema/"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+      
 <head>
 <title>ISFiT 2011</title>
 <%= stylesheet_link_tag :all %>
@@ -21,6 +23,7 @@ _gaq.push(['_trackPageview']);
 })();
 
 </script>
+<%=yield :head%>
 </head>
 <body>
 <div id="hovedramme" class="container_24"> <!-- Start hovedramme -->
