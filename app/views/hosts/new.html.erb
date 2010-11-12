@@ -297,6 +297,9 @@ Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skje
 		<td>Hvorfor vil du v&aelig;re vert?</td>
 		<td><%= f.text_area :why , :rows => 3 %></td>
 	</tr>
+  <tr>
+    <td></td>
+    <td><%= raw recaptcha_tags %></td>
 	<tr>
 		<td colspan="2"><%= form_tag ({:action=> "done", :id => params[:id]} ) %>
 		<%= submit_tag "Send" %><br>

@@ -14,7 +14,10 @@ class PagesController < ApplicationController
   # GET /pages/1.xml
   def show
     @page = Page.find(params[:id])
-
+    if @page.id == 28 || @page.id == 10
+      render :layout => 'application_no_boxes'
+      return
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @page }

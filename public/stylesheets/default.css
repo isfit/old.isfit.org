@@ -34,6 +34,38 @@ a:hover {
 	height: 27px;
 }
 
+/*COUNTER STYLE */
+.counter{
+	width: 100px;
+	margin: auto;
+}
+.counter ul.countdown{
+	text-align: center;
+	list-style-type: none;
+	color: #faa61f;
+	font-weight: bold;
+
+}
+
+.counter ul.countdown li{
+	height:10px;
+	margin: 0 6px 5px 0px;
+	padding-top: 0;
+	float: left;
+}
+.counter ul.countdown li div{
+	font-size: 9px;
+}
+.counter ul.countdown li div.countdown_num{
+	font-size: 13px;
+}
+.counter ul.countdown li.no_countdown{
+	background:transparent;
+	height:3px;
+	width:10px;
+}
+/*COUNTER STYLE END*/
+
 .olink {
 	color: #faa61f;
 	font-size: 12px;

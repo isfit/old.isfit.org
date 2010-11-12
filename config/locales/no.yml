@@ -10,6 +10,7 @@
     show_all: "Vis alle"
   article:
     header: "NYHETER"
+    more: "Flere saker"
   position:
     no_new_positions: "Vi har dessverre ingen opptak for tiden, men følg med på nettsiden for nye oppdateringer"
     new_positions: "ISFiT har for øyeblikket opptak på følgende stillinger"
@@ -73,3 +74,4 @@
         place: Poststed
         age: Alder
         number: Antall deltakere
+        base: ""

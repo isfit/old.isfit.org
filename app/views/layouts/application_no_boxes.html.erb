@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:og="http://opengraphprotocol.org/schema/"
-      xmlns:fb="http://www.facebook.com/2008/fbml">
-      
+<html>
 <head>
 <title>ISFiT 2011</title>
 <%= stylesheet_link_tag :all %>
@@ -23,13 +21,11 @@ _gaq.push(['_trackPageview']);
 })();
 
 </script>
-<%=yield :head%>
 </head>
 <body>
 <div id="hovedramme" class="container_24"> <!-- Start hovedramme -->
 <div id="omeny" class="grid_25"> <!-- Start omeny -->
-<div id="olinker" class="grid_10"> <!-- Start olinker -->
-<%= link_to t('layout.internal'), "https://internal.isfit.org/", :class => "olink" %>
+<div id="olinker" class="grid_20"> <!-- Start olinker -->
 <%
 current_tab = nil
 style = ""
@@ -63,33 +59,14 @@ Tab.find(:all, :conditions => {:top_bar=>"1"}).each do |tab|
 end
 %>
 
-
+   
       </div><!-- Slutt olinker -->
-
-
-	<!--COUNTDOWN-->
-	<div id="counter" class="counter grid_10">
-			<ul class="countdown">
-				<li><div class="countdown_num" id="countdown_day"></div><div id="Days"></div></li>
-				<li><div class="countdown_num" id="countdown_hour"></div><div id="Hours"></div></li>
-				<li><div class="countdown_num" id="countdown_min"></div><div id="Minutes"></div></li>
-				<li><div class="countdown_num" id="countdown_sec"></div><div id="Seconds"></div></li>
-			</ul>
-		</div>
-
-		<script type="text/javascript">
-		countdown(2011, 2, 11);
-		</script>
-	<!--SLUTT COUNTDOWN-->
-	
       <div id="odiverse" class="grid_4"><!-- Start odiverse -->
 
       <%= link_to (image_tag("gb.png"),{:tab=>params[:tab], :locale=>"en"}, :class=>"oflagg") %>
       <%= link_to (image_tag("no.png"),{:tab=>params[:tab], :locale=>"no"}, :class=>"oflagg") %>
-      <%= link_to (image_tag("facebook.png"), "http://www.facebook.com/#!/pages/ISFiT/11541693212", :target=>"_blank", :class=>"obilde")%>
+      <%= link_to (image_tag("facebook.png"), "http://www.facebook.com/group.php?gid=116305974170&ref=ts", :target=>"_blank", :class=>"obilde")%>
       <%= link_to (image_tag("twitter.png"), "http://twitter.com/isfit", :class=>"obilde", :target=>"_blank")%>
-
-
       <!--<a href="#rss" class="obilde"><img src="images/rss.png"></a>-->
       </div><!-- Slutt odiverse -->
       </div><!-- Slutt omeny -->
@@ -127,7 +104,18 @@ end %>
 </div><!-- Slutt faner -->
 <div id="sok" class="grid_4"><!-- Start søk -->
 <!-- <input type="button" value="" class="btn"><input name="search" type="text" value="<%=t('layout.search')%>">-->
-
+<div id="counter" class="counter">
+		<ul class="countdown">
+			<li><div class="countdown_num" id="countdown_day"></div><div id="Days"></div></li>
+			<li><div class="countdown_num" id="countdown_hour"></div><div id="Hours"></div></li>
+			<li><div class="countdown_num" id="countdown_min"></div><div id="Minutes"></div></li>
+			<li><div class="countdown_num" id="countdown_sec"></div><div id="Seconds"></div></li>
+		</ul>
+	</div>
+	
+	<script type="text/javascript">
+	countdown(2011, 2, 11);
+	</script>
 </div><!-- Slutt søk -->
 
 </div><!-- Slutt meny -->
@@ -204,50 +192,7 @@ if flash[:warnings2] %>
 end %>
     <%= yield %>
     </div><!-- Slutt midtramme -->
-    <div id="hoyreramme" class="grid_5"><!-- Start hoyreramme -->
-    <div id="boksgronn_bg" class="grid_5 alpha omega"><!-- Start grønn -->
-    <div id="boksgronn" class="grid_5 alpha omega">
-    </div>
-    </div><!-- Slutt grønn -->
-    <!--
-      <div id="boksbla_bg" class="grid_5 alpha omega">
-    <div id="boksbla" class="grid_5 alpha omega">
-    <#%=render :template => 'cal/index' %>
-    </div>
-    </div>
-    -->
-    <div id="boksrod_bg" class="grid_5 alpha omega"><!-- Start rød -->
-    <div id="boksrod" class="grid_5 alpha omega">
-    <div class="boks">
-    <h3>Student Peace Prize</h3><br />
-    <ul style="list-style-type:none; margin: 0 0 0 -20px;">
-<%
-SppArticle.find_five_latest.each do |article|%>
-      <li><%=link_to( article.title_en, "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank" )%></li><%
-end %>
 
-    </ul>
-    <p><a style="font-style: italic" href="http://www.studentpeaceprize.org">studentpeaceprize.org</a></p>
-    </div>
-    </div>
-    </div><!-- Slutt rød -->
-    <div id="boksoransje_bg" class="grid_5 alpha omega"><!-- Start oransje -->
-    <div id="boksoransje" class="grid_5 alpha omega">
-    <div class="boks">
-    <h3><%= t("layout.media") %></h3><br>
-    <ul style="list-style-type:none; margin: 0 0 0 -20px;">
-<%
-IsfitMediaLink.find_five_latest.each do |link|%>
-      <li><%=link_to( link.short_desc, link.link, :target=>"_blank" )%></li><%
-end %>
-
-    </ul>
-
-    </div>
-    </div>
-    </div><!-- Slutt oransje -->
-
-    </div><!-- Slutt hoyreramme -->
     </div><!-- Slutt ramme -->
     <div id="footer" class="grid_25"><!-- Start footer -->
     <%=link_to(image_tag("isfitliten.png", :class=>"footerlogo"), root_path)%>
