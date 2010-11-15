@@ -5,7 +5,7 @@ module ArticlesHelper
 
   def format(str)
     set_correct_tags(str)
-    reg = Regexp.new(/\[([\w ,:"]+)\]\(([A-Za-z0-9_:.\/]+)\)/)
+    reg = Regexp.new(/\[([\w ,:"]+)\]\(([A-Za-z0-9_:.=&+-?\/]+)\)/)
     str.gsub!(reg, "<a href=\"\\2\" target=\"_blank\">\\1</a>")
 
     bc = BlueCloth.new(str) 
