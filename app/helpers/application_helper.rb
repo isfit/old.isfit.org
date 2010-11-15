@@ -3,9 +3,6 @@ require 'rubygems'
 
 module ApplicationHelper
 #  include ReCaptcha::ViewHelper
-
-
-
 end
 
 class Array
