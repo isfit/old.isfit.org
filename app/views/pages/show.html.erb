@@ -1,3 +1,12 @@
+<%content_for :head do %>
+  <meta property="og:title" content="<%if @page.title%><%end%>."/>
+  <meta property="og:type" content="non_profit"/>
+  <meta property="og:image" content="<%="http://www.isfit.org/images/isfitliten.png"%>"/>
+  <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/])/)[1]%>"/>
+  <meta property="og:site_name" content="ISFiT 2011"/>
+  <meta property="fb:app_id" content="111446192243028"/>
+  <meta property="og:description" content="<%=@page.ingress%>"/>
+<%end%>
 <div id="article">
 <p>
   <h1>
@@ -14,5 +23,5 @@
 <p>
   <%=raw format ( @page.body ) %>
 </p>
-
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/])/)[1]%>" action="recommend"></fb:like>
 </div>

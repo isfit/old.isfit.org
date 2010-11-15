@@ -1,3 +1,12 @@
+<%content_for :head do %>
+  <meta property="og:title" content="Support a participant"/>
+  <meta property="og:type" content="non_profit"/>
+  <meta property="og:image" content="<%="http://www.isfit.org/images/isfitliten.png"%>"/>
+  <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/])/)[1]%>"/>
+  <meta property="og:site_name" content="ISFiT 2011"/>
+  <meta property="fb:app_id" content="111446192243028"/>
+  <meta property="og:description" content="Support at participant at ISFiT 2011"/>
+<%end%>
 <h1><%= t('donations.donate') %></h1>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
   <input type="hidden" name="cmd" value="_s-xclick">
@@ -44,4 +53,5 @@
   on what is happening during the festival. We will say it here as well: Thank you for your support, it
   will mean the world for a whole lot of people.
 </p>
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/])/)[1]%>" action="recommend"></fb:like>
 <% end %>
