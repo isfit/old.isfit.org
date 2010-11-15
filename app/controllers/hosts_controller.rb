@@ -15,7 +15,8 @@ class HostsController < ApplicationController
     end
   end
 
-#	def index
+  def index
+    redirect_to :action => :new, :tab=>params[:tab]
 #		if params[:host]
 #			@host = Host.new(params[:host])
 #			if @host.save
@@ -24,7 +25,7 @@ class HostsController < ApplicationController
 #				flash[:warnings] = @host.errors
 #			end
 #		end	
-#	end
+  end
 	
 	def done
 		
