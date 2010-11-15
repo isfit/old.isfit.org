@@ -1,4 +1,6 @@
-"no": 
+"no":
+  donations:
+    donate: "Støtt en deltaker"
   layout:
     contact: "Kontakt"
     press: "Presse"
