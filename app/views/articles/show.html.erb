@@ -2,7 +2,7 @@
   <meta property="og:title" content="<%if @article.title_en != ""%><%=@article.title_en%><%else%><%=@article.title_no%><%end%>."/>
   <meta property="og:type" content="non_profit"/>
   <meta property="og:image" content="<%="http://www.isfit.org/images/article_images/"+@article.id.to_s + "_3.jpg"%>"/>
-  <meta property="og:url" content="<%=request.url%>"/>
+  <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/])/)[1]%>"/>
   <meta property="og:site_name" content="ISFiT 2011"/>
   <meta property="fb:app_id" content="111446192243028"/>
   <meta property="og:description" content="<%=@article.ingress%>"/>
