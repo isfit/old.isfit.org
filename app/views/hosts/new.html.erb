@@ -1,3 +1,12 @@
+<%content_for :head do %>
+  <meta property="og:title" content="Become a ISFiT host"/>
+  <meta property="og:type" content="non_profit"/>
+  <meta property="og:image" content="<%="http://www.isfit.org/images/isfitliten.png"%>"/>
+  <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>"/>
+  <meta property="og:site_name" content="ISFiT 2011"/>
+  <meta property="fb:app_id" content="111446192243028"/>
+  <meta property="og:description" content="Become a host at ISFiT 2011"/>
+<%end%>
 <%=render "partials/error", :locals => {:model => @host}%>
 <% form_for @host, :url => hosts_path(params[:tab])  do |f| %>
 
@@ -311,3 +320,5 @@ Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skje
 
 <% end %>
 <% end %>
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="recommend"></fb:like>
+
