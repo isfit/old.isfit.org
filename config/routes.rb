@@ -1,7 +1,6 @@
 WwwIsfitOrg::Application.routes.draw do  
 
 
-
   resources :tips_osses
 
   resources :isfit_media_links
@@ -48,6 +47,11 @@ WwwIsfitOrg::Application.routes.draw do
       end
     end 
     resources :events      
+
+    get "donations/donate", :controller => "donations", :action => "donate"
+
+   get "donations/thank_you", :controller => "donations", :action => "thank_you"
+
 
     resources :wop_propositions
   end
