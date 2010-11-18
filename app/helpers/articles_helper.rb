@@ -58,10 +58,15 @@ module ArticlesHelper
     img_text = Language.to_s == "en" ? picture.image_text_en : picture.image_text_no
     pic_url = type == 1 ? picture.full_article_picture.url : picture.half_article_picture.url
     #Change on prod!
+<<<<<<< HEAD
     if (link)
       url = "<a href=/images/#{picture.original_picture.url}><div class=#{style}><img src =/images/#{pic_url}  /><br /><i>#{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div></a>"
     else
       url = "<div class=#{style}><img src =/images/#{pic_url}  /><br /><i>#{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div>"
     end 
  end
+=======
+    url = "<div class=#{style}><img src =/images/#{pic_url}  /><br /><i>Foto: #{picture.credits}</i><br /><i>#{picture.image_text}</i></div>"
+  end
+>>>>>>> 99360cc2da3fcebfd168ee4ed9e47a354d50ef18
 end
