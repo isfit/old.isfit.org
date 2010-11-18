@@ -28,7 +28,7 @@ module ArticlesHelper
       #img_type = text[t_start+8].chr
       img_id = match[1]
       img_type = match[2]
-      url = article_image(img_id.to_i, img_type.to_i)
+      url = article_image(img_id.to_i, img_type.to_i, false)
       text[t_start..t_end+4] = url
     end
 
