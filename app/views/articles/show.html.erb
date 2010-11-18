@@ -28,6 +28,15 @@
 </h3>
 <p>
 <%=image_tag "article_images/"+@article.id.to_s + "_3.jpg"%>
+<%if @article.image_credit != ""%>
+  Foto: <%=@article.image_credits%><br />
+<%end%>
+<% if I18n.locale.to_s == 'no' %>
+  <%=@article.image_text_no%>
+<%else%>
+  <%=@article.image_text_en%>
+<%end%>
+</p>
 <br />
 <%=raw @article.byline%>
 </p>
