@@ -28,7 +28,7 @@
 </h3>
 <p>
 <%=image_tag "article_images/"+@article.id.to_s + "_3.jpg"%>
-<%if @article.image_credit != ""%>
+<%if @article.image_credits != ""%>
   Foto: <%=@article.image_credits%><br />
 <%end%>
 <% if I18n.locale.to_s == 'no' %>
