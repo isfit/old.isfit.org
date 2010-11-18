@@ -37,14 +37,11 @@
   <%=@article.image_text_en%>
 <%end%>
 </p>
-<br />
-<%=raw @article.byline%>
-</p>
 <p>
+<%=raw @article.byline%>
+<br>
 <%=  @article.created_at.strftime("%F")%>
 </p>
-<br />
-<br />
 <%if in_language%>
 <p>
   <b><%=raw format( @article.ingress) %></b>
