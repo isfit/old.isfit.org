@@ -28,7 +28,7 @@ module ArticlesHelper
       #img_type = text[t_start+8].chr
       img_id = match[1]
       img_type = match[2]
-      url = article_image(img_id.to_i, img_type.to_i)
+      url = article_image(img_id.to_i, img_type.to_i, false)
       text[t_start..t_end+4] = url
     end
 
@@ -59,9 +59,9 @@ module ArticlesHelper
     pic_url = type == 1 ? picture.full_article_picture.url : picture.half_article_picture.url
     #Change on prod!
     if (link)
-      url = "<a href=/images/#{picture.original_picture.url}><div class=#{style}><img src =/images/#{pic_url}  /><br /><i>#{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div></a>"
+      url = "<a href=/images/#{picture.original_picture.url}><div class=#{style}><img src =/images/#{pic_url}  /><br /><i>Foto: #{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div></a>"
     else
-      url = "<div class=#{style}><img src =/images/#{pic_url}  /><br /><i>#{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div>"
+      url = "<div class=#{style}><img src =/images/#{pic_url}  /><br /><i>Foto: #{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div>"
     end 
  end
 end
