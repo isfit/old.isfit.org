@@ -18,7 +18,7 @@ class PagesController < ApplicationController
       render :layout => 'application_no_boxes'
       return
     elsif @page.id == 10
-      render :layout => :false
+      render :layout => false
       return
     end
     respond_to do |format|
