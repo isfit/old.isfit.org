@@ -28,14 +28,20 @@
 </h3>
 <p>
 <%=image_tag "article_images/"+@article.id.to_s + "_3.jpg"%>
-<br />
-<%=raw @article.byline%>
+<%if @article.image_credits != ""%>
+  Foto: <%=@article.image_credits%><br />
+<%end%>
+<% if I18n.locale.to_s == 'no' %>
+  <%=@article.image_text_no%>
+<%else%>
+  <%=@article.image_text_en%>
+<%end%>
 </p>
 <p>
+<%=raw @article.byline%>
+<br>
 <%=  @article.created_at.strftime("%F")%>
 </p>
-<br />
-<br />
 <%if in_language%>
 <p>
   <b><%=raw format( @article.ingress) %></b>
@@ -46,7 +52,7 @@
 </p>
 <%else%>
 <p>
-  <b><%=raw format( I18n.locale.to_s == 'no' ? @article.ingress_en : @article.ingress_no) %></b>
+  <b><%=raw format(I18n.locale.to_s == 'no' ? @article.ingress_en : @article.ingress_no) %></b>
 </p>
 <br />
 <p style="text-align:justify">

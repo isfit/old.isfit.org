@@ -28,12 +28,26 @@ module ArticlesHelper
       #img_type = text[t_start+8].chr
       img_id = match[1]
       img_type = match[2]
-      url = article_image(img_id.to_i, img_type.to_i)
+      url = article_image(img_id.to_i, img_type.to_i, false)
       text[t_start..t_end+4] = url
     end
+
+    while text.index('#l#pic') != nil
+      t_start = text.index('#l#pic')
+      t_end = text.index('pic#l#')
+      reg = Regexp.new(/#l#pic (\d+) (\d+) pic#l#/)
+      match = reg.match(text[t_start..t_end+5])
+      #img_id = text[t_start+6].chr
+      #img_type = text[t_start+8].chr
+      img_id = match[1]
+      img_type = match[2]
+      url = article_image(img_id.to_i, img_type.to_i, true)
+      text[t_start..t_end+5] = url
+    end 
+
   end
 
-  def article_image(picture_id, type)
+  def article_image(picture_id, type, link)
     picture = Photo.find_by_id(picture_id)
     style = case type.to_s
       when "1" then "photo_full"
@@ -44,6 +58,10 @@ module ArticlesHelper
     img_text = Language.to_s == "en" ? picture.image_text_en : picture.image_text_no
     pic_url = type == 1 ? picture.full_article_picture.url : picture.half_article_picture.url
     #Change on prod!
-    url = "<div class=#{style}><img src =/images/#{pic_url}  /><br /><i>#{picture.credits}</i><br /><i>#{picture.image_text}</i></div>"
-  end
+    if (link)
+      url = "<a href=/images/#{picture.original_picture.url}><div class=#{style}><img src =/images/#{pic_url}  /><br /><i>Foto: #{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div></a>"
+    else
+      url = "<div class=#{style}><img src =/images/#{pic_url}  /><br /><i>Foto: #{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div>"
+    end 
+ end
 end
