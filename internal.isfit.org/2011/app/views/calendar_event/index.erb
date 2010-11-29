@@ -1,0 +1,21 @@
+<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag 'prototype' %>
+<h1>Events in <%=Date::MONTHNAMES[session[:calendar_month]]%> </h1>
+
+<%= link_to "Create new calendar event", :controller => "calendar_event", 
+	:action => "create" %>
+<br/><br/>
+<span style="float: left"><%= will_paginate @events %></span>
+&nbsp;	
+
+<% if @events.size == 0%>
+	<p>No events this month!</p>
+<%end%>
+<div class="article">
+	<table>
+		<% for event in @events %>
+			<%= render(:partial => 'calendar_event/info', :locals => {:event => event, :current_user => current_user, :action_param => "index"}) %>	
+		<% end %>
+	</table>
+</div>
+

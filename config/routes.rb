@@ -1,6 +1,7 @@
 WwwIsfitOrg::Application.routes.draw do  
 
 
+
   resources :tips_osses
 
   resources :isfit_media_links
@@ -13,6 +14,7 @@ WwwIsfitOrg::Application.routes.draw do
       end
     end
     resources :pages
+  resources :press_accreditations
 
     resources :articles do
       collection do

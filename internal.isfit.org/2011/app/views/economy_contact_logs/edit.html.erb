@@ -1,0 +1,23 @@
+<h1>Editing economy_contact_log</h1>
+
+<% form_for(@economy_contact_log, :url => {:controller => "economy_contact_logs", :tab => params[:tab], :action => "update" }) do |f| %>
+ 
+  <p>
+    <%= f.label :festival %><br />
+    <%= f.select :festival_id, Festival.to_select %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.label :advice %><br />
+    <%= f.text_area :advice %>
+  </p>
+  <%= f.hidden_field :functionary_id, :value => current_user.id %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', economy_contact_log_url(params[:tab],@economy_contact_log) %>

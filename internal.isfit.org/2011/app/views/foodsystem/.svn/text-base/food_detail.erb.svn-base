@@ -1,0 +1,62 @@
+<h1>ISFiT 2009</h1>
+<h3><%=@meals[params[:id].to_i]%></h3>
+<%date = 19%>
+<%month = 02%>
+<%if params[:day] == "10"%>
+	<%date = 01%>
+	<%month = 03%>
+<%else%>
+	<%date += params[:day].to_i%>
+<%end%>
+<h3><%=date%>.<%=month%>.2009</h3>
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc" border ="1">
+	<tr align ="center">
+		<th width ="150" align ="center">Group</th>
+		<th width ="150" align ="center">Firstname</th>
+		<th width ="150" align ="center">Lastname</th>
+		<th width ="150" align ="center">Allergies</th>
+		<th width ="150" align ="center">X</th>
+	</tr>
+	<%@current_eaters.each do |eater|%>
+		
+		<%if eater.user_id == -1%>
+			<%person_counter = 1%>
+			<%1.upto(eater.will_eat) do%>
+				<tr align = "center">
+					<td><%=eater.group_id%></td>
+					<td><%=person_counter%></td>
+					<td><%=person_counter%></td>
+					<td>-</td>
+					<td>&nbsp;</td>
+					<%person_counter+=1%>
+				</tr>
+
+			<%end%>
+
+
+
+
+		<%elsif (!(LdapUser.get_by_id(eater.user_id).unit.name=~/ws\d+/) && !(LdapUser.get_by_id(eater.user_id).title =~ /Workshopcontact /) && !(LdapUser.get_by_id(eater.user_id).unit.dn == "ou=dialogue,ou=project,ou=isfit09,ou=units,dc=isfit,dc=org")) || (params[:day] == "5" && params[:id] == "0")%>
+			<tr align ="center">
+			<td><%=LdapUser.get_by_id(eater.user_id).unit.description%></td>
+			<td><%=LdapUser.get_by_id(eater.user_id).firstname%></td>
+			<td><%=LdapUser.get_by_id(eater.user_id).lastname%></td>
+			<td>
+
+			<%if @current_allergies[eater.user_id] != nil%>
+				<%@current_allergies[eater.user_id].each do |allergie|%>
+					<%=allergie%>, 
+					<%=@current_allergies[eater.user_id][4]%>
+				<%end%>
+			<%else%>
+				-
+			<%end%>
+			</td>
+			<td>&nbsp;</td>
+			</tr>
+		<%end%>
+		
+		
+	<%end%>
+
+</table>

@@ -1,0 +1,177 @@
+<h1><%=params[:trip].capitalize%>s</h1>
+<p><b><%= @count %></b> participants found based on you query</p>
+<table cellspacing="0" cellpadding="4" style="border: 2px solid #ccc; border-collapse: collapse" border="1">
+	<tr>
+		<% if params[:trip] == "arrival"%>
+			<td colspan="12">
+		<%else%>
+			<td colspan="10">
+		<%end%>
+
+<% form_tag({}, :method => :get) do %>
+<table cellpadding="8" width="100%">
+	<tr>
+		<td>
+			<%= select_tag(:trip, options_for_select([['Arrival', 'arrival'],['Departure', 'departure']], params[:trip])) %>
+		</td>
+		<td>
+			Transport:
+		</td>
+		<td>
+			<%= select_tag(:tr, options_for_select([['Show all', 'all'],['Train', 'train'],['Airplane', 'air'],['Other', 'other']], params[:tr])) %>
+		</td>
+		<td>
+			<%=params[:trip].capitalize%> place:
+		</td>
+		<td>
+			<%= select_tag(:pl, options_for_select([['Show all', 'all'],['Trondheim', 'trd'],['Oslo', 'osl'],['Other', 'other']], params[:pl])) %>
+		</td>
+		<td>
+			<%=params[:trip].capitalize%> date:
+		</td>
+		<td>
+			<% if params[:trip] == "arrival"%>
+				<%= select_tag(:date, options_for_select([['Show all', 'all'],['18. Feb','18'],['19. Feb','19'],['20. Feb','20'],['Other','other']], params[:date])) %>
+			<%else%>
+				<%= select_tag(:date, options_for_select([['Show all', 'all'],['1. Mar','1'],['2. Mar','2'],['3. Mar','3'],['Other','other']], params[:date])) %>
+			<%end%>
+		</td>
+		<td>
+			Visa:
+		</td>
+		<td>
+			<%= select_tag(:visa, options_for_select([['Show all', 0], ['Granted or not needed',1], ['Rejected or still processing', 2]], params[:visa].to_i)) %>
+		</td>
+		<td>
+			Per page:
+		</td>
+		<td>
+			<%= select_tag(:per_page, options_for_select([15, 20, 25, 30, ['Unlimited', 0]], 
+				@per_page))%>
+		</td>
+		<td>
+			ID:
+		</td>
+		<td>
+			<%= text_field_tag (:id, '', :size =>5) %>
+		</td>
+		<td>
+			Check-in:
+		</td>
+		<td>
+			<%= select_tag(:checkin, options_for_select([['Show all', 0], ['Checked in',1], ['Not checked in', 2]], params[:checkin].to_i)) %>
+		</td>
+		<td align="right">
+			<%= submit_tag('Update') %>
+		</td>
+	</tr>
+
+</table>
+<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td width="25"><b><%= sort_header_tag('id',
+            :text => 'ID') %></b></td>
+		<td width="80"><b><%= sort_header_tag('last_name',
+            :text => 'Last name') %></b></td>
+        <td width="60"><b><%= sort_header_tag('first_name',
+            :text => 'First name') %></b></td>
+        <td width="60"><b><%= sort_header_tag('countries.name',
+            :text => 'Country') %></b></td>
+		<% if params[:trip] == "arrival"%>
+	        <td width="80"><b><%= sort_header_tag('arrival_place',
+	            :text => 'Arrival place') %></b></td>
+		    <td width="50"><b><%= sort_header_tag('arrival_carrier',
+		        :text => 'Transport') %></b></td>
+	        <td width="50"><b><%= sort_header_tag('arrival_date',
+	            :text => 'Arrival date') %></b></td>
+	        <td width="50"><b><%= sort_header_tag('arrival_time',
+	            :text => 'Arrival time') %></b></td>
+	        <td width="70"><b><%= sort_header_tag('arrival_isfit_trans',
+	            :text => 'ISFiT transport?') %></b></td>
+		    <td width="100"><b><%= sort_header_tag('arrival_airline',
+		        :text => 'Airline') %></b></td>
+		    <td width="60"><b><%= sort_header_tag('arrival_flight_number',
+	       		:text => 'Flight number') %></b></td>
+
+		<%else%>
+			<td width="80"><b><%= sort_header_tag('departure_place',
+			    :text => 'Departure place') %></b></td>
+			<td width="50"><b><%= sort_header_tag('departure_carrier',
+			    :text => 'Transport') %></b></td>
+			<td width="50"><b><%= sort_header_tag('departure_date',
+			    :text => 'Departure date') %></b></td>
+			<td width="50"><b><%= sort_header_tag('departure_time',
+			    :text => 'Departure time') %></b></td>
+			<td width="70"><b><%= sort_header_tag('departure_isfit_trans',
+			    :text => 'ISFiT transport?') %></b></td>
+		<%end%>
+        <td width="40" align="center"><b>VISA</b></td>
+    </tr>
+<% row = 1 %>
+<% @arrivals.each do |a| %>
+   <tr class="page_tr<%= row % 2 == 1 ? ' alternate' : '' %>">
+	   <td><%= a.id %> </td>
+	   <td><%= a.last_name %> </td>
+       <td><%= a.first_name %> </td>
+       <td><%= a.country.name %> </td>
+		<% if params[:trip] == "arrival"%>
+			<td>
+			<%if a.arrival_place =="trd" %>
+				<%if a.arrival_carrier == "train"%>
+					Trondheim Sentralstasjon
+				<%else%>
+					Trondheim Værnes
+				<%end%>
+			<%elsif a.arrival_place == "osl"%>
+				<%if a.arrival_carrier == "train"%>
+					Oslo Sentralstasjon
+				<%else%>
+					Oslo Gardermoen
+				<%end%>
+			<%else%>
+				<%= a.arrival_place %> 
+			<%end%>
+			
+			</td>
+			<td><%= a.arrival_carrier ? a.arrival_carrier.capitalize : '-' %> </td>
+			<td><%= a.arrival_date ? a.arrival_date.strftime("%d %b %Y") :'-' %> </td>
+			<td><%= a.arrival_time ? a.arrival_time.strftime("%H:%M") : '-' %> </td>
+			<td>
+			<%if a.arrival_isfit_trans == true%>Yes
+			<%elsif a.arrival_isfit_trans == false%>No
+			<%else%>Not applicable<%end%>	
+			</td>
+			<td><%= a.arrival_airline %> </td>
+			<td><%= a.arrival_flight_number %> </td>
+
+		<%else%>
+			<td>
+				<%if a.departure_place =="trd" %>
+					Trondheim Værnes
+				<%elsif a.departure_place == "osl"%>
+					Oslo Gardermoen
+				<%else%>
+					<%= a.departure_place %> 
+				<%end%>	
+			</td>
+			<td><%= a.departure_carrier ? a.departure_carrier.capitalize : '-' %> </td>
+			<td><%= a.departure_date ? a.departure_date.strftime("%d %b %Y") : '-' %> </td>
+			<td><%= a.departure_time ? a.departure_time.strftime("%H:%M") : '-' %> </td>
+			<td>
+			<%if a.departure_isfit_trans == true%>Yes
+			<%elsif a.departure_isfit_trans == false%>No
+			<%else%>Not applicable<%end%>
+			</td>
+		<%end%>
+		<td align="center"><%= (a.answer.visa == 'NO_NEED_OF_VISA' or a.answer.visa == 
+			'VISA_BEEN_GRANTED') ? 'Yes' : 'No' %></td>
+
+  </tr>
+<% row += 1 %>
+<% end %>
+</table>
+<% if @per_page != 0 %>
+<p><%= will_paginate @arrivals %></p>
+<% end %>

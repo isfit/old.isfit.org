@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  organization: MyString
+  firstname: MyString
+  surname: MyString
+  function: MyString
+  day_period: MyString
+  access_whole_festival: false
+  email: MyString
+  phone: MyString
+  birth: MyString
+  remarks: MyText
+
+two:
+  organization: MyString
+  firstname: MyString
+  surname: MyString
+  function: MyString
+  day_period: MyString
+  access_whole_festival: false
+  email: MyString
+  phone: MyString
+  birth: MyString
+  remarks: MyText

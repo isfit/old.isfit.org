@@ -1,0 +1,39 @@
+<% if !@names.nil? %>
+  <h3>Find details for workshop:<h3> 
+  <% 
+  temp = []
+  for i in 0..@names.length - 1 do
+     temp.push(@names[i].id.to_s + " - " + @names[i].name)
+  end
+  %>  
+  <%= form_tag ({:action=> "workshop"} ) %>
+  <%= select_tag :workshop, options_for_select(temp) %>
+  <%= submit_tag "Select" %>
+<% elsif !@results.nil? %>
+  <%= "<h1>Dietary needs for workshop: " + @workshop.name + "</h1>"%>
+  <table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+    <% i = 0 %>
+    <% @results.each do |f| %>
+      <% if i % 2 == 0 %>
+        
+        <tr class="alternate">
+      <% else %>
+        <tr>
+      <% end %>
+      <% i = i + 1 %>
+        <% f.each do |a| %>
+          <% if i == 1 %>
+            <th width="150" align ="center"><%= a %></th>
+          <% else %>
+            <td align ="center"><%= a %></td>
+          <% end %>
+        <% end %>
+         </tr>
+      <% end %>
+		</table>
+		<!-- @results.size har to elementer mer enn det som listet opp; trekker fra 2 og legger på en for å få med WOK for WS  -->
+		Count: <%= @results.size-1 %>
+    
+<% else %>
+  <%= "Ops! Something went wrong. You probably accessed this page in an incorrect way" %>
+<% end %>

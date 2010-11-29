@@ -1,0 +1,45 @@
+<%= render(:partial => 'grade') %>
+<% form_for :participant, @participant, :url => {:page => params[:page]} do |f| %>
+
+<h3>Participant grading</h3>
+<table>
+	<tr>
+		<td width="80"><b>Grade:</b></td>
+		<td><%= f.select(:participant_grade, 0..10) %></td>
+	</tr>
+	<tr valign="top">
+		<td><b>Comment:</b></td>
+		<td><%= f.text_area(:participant_comment, :rows => 4,
+			:style => "width:490px") %></td>
+	</tr>
+	<tr>
+		<td><b>Functionary:</b></td>
+		<td><%= @participant.participant_functionary_id != 0 ?
+			LdapUser.get_by_id(@participant.participant_functionary_id).name :
+			"(not yet graded)" %></td>
+	</tr>
+</table>
+
+<h3>Theme grading</h3>
+<table>
+	<tr>
+		<td width="80"><b>Grades:</b></td>
+		<td><%= @participant.theme_grade1 %>,
+			<%= @participant.theme_grade2 %></td>
+	</tr>
+	<tr valign="top">
+		<td><b>Comment:</b></td>
+		<td width="490"><%= @participant.theme_comment %></td>
+	</tr>
+	<tr>
+		<td><b>Functionary:</b></td>
+		<td><%= @participant.theme_functionary_id != 0 ?
+			LdapUser.get_by_id(@participant.theme_functionary_id).name :
+			"(not yet graded)" %></td>
+	</tr>
+</table>
+<br />
+<%= submit_tag 'Submit', :value => "Save grading" %>
+<%= submit_tag 'SubmitAndContinue', :value => "Save grading, and go to next" %>
+
+<% end %>

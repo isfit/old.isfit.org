@@ -1,0 +1,11 @@
+<h1><%= t('press_accreditations.header') %></h1>
+	<% if Language.to_s == 'en' %>
+	<p>You can now apply for media accreditation for ISFiT 2011. This will give you access to the public areas and the press center.<p>
+	<p>Most artists and speakers have restrictions on recordings of pictures and sound. These are mandatory and will be posted at the press center during the festival.</p>
+	<p>Small publications, websites and frilance journalists are requested to state previous material, references and the purpose of accreditation under "remarks".</p><br/>
+	<% else %>
+	<p>Vi har åpnet for presseakkreditering for ISFiT 2011. Dette gir adgang til publikumsområdet og pressesenter.</p>
+	<p>Mange artister og innledere har foto- og lydrestriksjoner, disse må respekteres. Regler for dette vil befinne seg i pressesenteret under festivalen.</p>
+	<p>Små publikasjoner, nettsteder og frilancefotografer bes oppgi tidligere publisert materiale, referanse og formål med akkrediteringen under "merknader".</p><br/>
+	<% end %>
+<%= render 'form' %>

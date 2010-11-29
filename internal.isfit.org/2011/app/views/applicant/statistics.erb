@@ -1,0 +1,56 @@
+<h1>Statistics for all positions</h1>
+<h4>ISFiT har nå <%=@applicants.size%> søkere.</h4> 
+<h4>Følgende stillinger har ingen søkere på 1. 2. eller 3. valg:</h4>
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+<tr>
+<th>Stilling</th>
+<th>Gjeng</th>
+<th>Seksjon</th>
+</tr>
+<%row = 1%>
+<%@no_apply.each do |p|%>
+<tr class="article_tr<%= row % 2 == 1 ? ' alternate' : '' %>">
+<td><%=p.title_en%></td>
+<td><%=p.group.name_en%></td>
+<td><%=p.group.section.name_en%></td>
+</tr>
+<%row +=1%>
+<%end%>
+</table>
+<br /> 
+<br />
+
+<h4>Number of first choice / number of positions</h4>
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+<tr>
+<th>Position</th>
+<th>Score</th>
+<th>Number of positions</th>
+</tr>
+<%row = 1%>
+<%@simple_stat.each do |key,value|%>
+<tr class="article_tr<%= row % 2 == 1 ? ' alternate' : '' %>">
+<td><%=key.title_en%></td>
+<td><%="%.2f" % value%></td>
+<td><%=key.number%></td>
+</tr>
+<%row +=1%>
+<%end%>
+</table>
+<br /> 
+<br />
+<h4>position 1 weight 5, position 2 weight 3, position 1 weight 1</h4>
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+<tr>
+<th>Position</th>
+<th>Score</th>
+</tr>
+<%row = 1%>
+<%@stat.each do |key,value|%>
+<tr class="article_tr<%= row % 2 == 1 ? ' alternate' : '' %>">
+<td><%=key%></td>
+<td><%="%.3f" % value%></td>
+</tr>
+<%row +=1%>
+<%end%>
+</table>

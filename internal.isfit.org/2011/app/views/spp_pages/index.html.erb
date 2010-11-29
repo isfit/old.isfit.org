@@ -1,0 +1,31 @@
+<h1>Listing pages</h1>
+
+<table cellspacing="0" cellpadding="4" stylee="border: 1px solid #ccc">
+  <tr>
+
+          <td width="50">
+          <b><%#= sort_header_tag('id', :text => 'ID') %></b>
+          </td>
+          <td width="300">
+          <b><%#= sort_header_tag('title_en', :text => 'Title') %></b>
+          </td>
+          <td></td>
+  </tr>
+
+<% row = 1 %>
+<% @pages.each do |p| %>
+<tr class="article_tr<%= row % 2 == 1 ? ' alternate' : '' %>">
+<td> <%= p.id %> </td>
+<td><%= p.title_en %> </td>
+<td>
+<%= link_to(image_tag("icon/edit.png",:alt => "E", :title => "Edit", :border => 0),edit_spp_page_path(params[:tab],p))%>
+</td>
+</tr>
+<% row += 1 %>
+<% end %>
+
+</table>
+
+<br />
+
+<%= link_to 'New page', new_spp_page_path %>

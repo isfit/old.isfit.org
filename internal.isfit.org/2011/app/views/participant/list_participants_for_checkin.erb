@@ -1,0 +1,99 @@
+<h1>Check-in Participants</h1>
+<p>
+	Matched participants: <%= @matched_count %> / <%= @total_count %>
+</p>
+<p id="search_tips">
+	Search for either ID, firstname or lastname.
+</p>
+<% form_tag(:action => "browse_for_checkin") do %>
+	<%=text_field_tag('search_criteria', '',:size => '35', :maxlength => '35') %>
+	<%= submit_tag "Search" %>
+<% end -%>
+<p>
+<span style="float: left"><%= will_paginate @participants %></span>
+</p><br/><br/>
+<% if @participants %>
+<div id="search_results">
+	<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+		<tr>
+			<th><%= sort_header_tag('participants.id',:text => 'ID') %></th>
+			<th><%= sort_header_tag('participants.first_name',:text => 'Firstname') %></th>
+			<th><%= sort_header_tag('participants.last_name',:text => 'Lastname') %></th>
+			<th><%= sort_header_tag('countries.name',:text => 'Country') %></th>
+			<th><%= sort_header_tag('participants.final_workshop',:text => 'Workshop') %></th>
+			<th width="145">
+				<b><%= sort_header_tag('answers.stay_with',
+					:text => 'Prefers to stay with') %></b>
+			</th>
+			<th>
+				<b><%= sort_header_tag('answers.smoke',
+					:text => 'Smoke') %></b>
+			</th>
+			<th>
+				<b><%= sort_header_tag('answers.handicap',
+					:text => 'Has a handicap') %></b>
+			</th>
+			<th width="100px">
+				<b><%= sort_header_tag('answers.hadicap_description',
+					:text => 'Handicap description') %></b>
+			</th>
+			<th><b>VISA</b></th>
+			<th>Travel support</th>
+			<th><%= sort_header_tag('participants.host_id',:text => 'Matched') %></th>
+			<th width="60px"><%= sort_header_tag('participants.checked_in',:text => 'Check in') %></th>
+		</tr>
+	<% row = 1 %>
+	<% for participant in @participants%>
+		<tr <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+			<td><%= participant.id %></td>
+			<td><%= participant.first_name%></td>
+			<td><%= participant.last_name%></td>
+			<td><%= participant.country.name%></td>
+			<td><%= participant.final_workshop%></td>
+			<td><% if (participant.answer.stay_with == 'FEMALE') %>
+				<%= "Female"%>		  
+				<% end %>
+			    <% if (participant.answer.stay_with == 'MALE') %>
+				<%= "Male" %>
+				<% end %>
+			    <% if (participant.answer.stay_with == 'NO_MATTER') %>
+			    	<%= "No preference" %>
+			    <% end %>
+			</td>
+			<td>
+				<% if (participant.answer.smoke == 1) %>
+					<%= "Yes" %>
+				    <% else %>
+				    	<%= "No" %>
+				    <% end%>
+			</td>
+			<td>
+				<% if (participant.answer.handicap  == 1) %>
+					<%= "Yes" %>
+				    <% else %>
+				    	<%= "No" %>
+				    <% end%>
+			</td>
+			<td><%= participant.answer.handicap_description %></td>
+			<td align="center"><%= (participant.answer.visa == 'NO_NEED_OF_VISA' or participant.answer.visa == 
+				'VISA_BEEN_GRANTED') ? 'Yes' : 'No' %></td>
+			<td><%= (participant.travel_assigned == 1 && participant.travel_assigned_amount > 0) ? "$ "+participant.travel_assigned_amount.to_s : ""%></td>
+			<td align ="center" >
+      <%= (participant.host_id == nil) ? 'No' : 
+				link_to("Yes", :controller => :host, :action => :match, :id =>
+					participant.host_id) %> 
+      </td>
+			<td>
+			<% if !participant.checked_in and (participant.travel_assigned == 1 && participant.travel_assigned_amount > 0) %>
+				<%= link_to("Check in", {:controller => "participant", :action => "check_in_participant", :id => participant.id, :undo => false}, :confirm => "This participant should receive $ "+participant.travel_assigned_amount.to_s+ " in travel support!")%>
+			<% else %>
+			<%= participant.checked_in ? "Checked in at "+participant.checked_in.strftime("%d %b %Y %H:%M")+" "+link_to("Undo check-in", {:controller => "participant", :action => "check_in_participant", :id => participant.id, :undo => true}, :confirm => "Are you sure you will undo check-in?") : link_to("Check in", :controller => "participant", :action => "check_in_participant", :id => participant.id, :undo => false)%>
+			<%end%>
+			</td>
+		</tr>
+		<% row += 1%>
+	<%end%>
+	</table>
+</div>
+<% end %>
+<span style="float: left"><%= will_paginate @participants %></span>

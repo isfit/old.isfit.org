@@ -1,0 +1,41 @@
+<h1>Browse dialogue participants</h1>
+<p>Below is the list of dialogue participant applications registered.</p>
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+    <tr>
+        <td align="center" width="40"><b><%= sort_header_tag('dialogue_participants.id',
+            :text => 'ID') %></b></td>
+        <td width="200"><b><%= sort_header_tag('last_name',
+            :text => 'Last name') %></b></td>
+        <td width="230"><b><%= sort_header_tag('countries.name',
+            :text => 'Country') %></b></td>
+        <td width="230"><b><%= sort_header_tag('nationality',
+            :text => 'Nationality') %></b></td>
+        <td width="80"><b><%= sort_header_tag('birthdate',
+            :text => 'Date of B.') %></b></td>
+        <td width="45"><b><%= sort_header_tag('sex', :text => 'Sex') %></b></td>
+        <td width="60"><b><%= sort_header_tag('invited', :text => 'Invited') %></b></td>
+				<td><b>Password</b></td>
+		<td></td>
+    </tr>
+<% row = 1 %>
+<% @dialogue_participants.each do |participant| %>
+    <tr<%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+        <td align="right" style="padding-right: 12px"><%= participant.id %></td>
+        <td><%= participant.last_name %></td>
+        <td><%= participant.country.name %></td>
+        <td><%= participant.nationality %></td>
+        <td><%= participant.birthdate.strftime("%d.%m.%Y") %></td>
+        <td><%= participant.sex == 'm' ? 'Male' : 'Female' %></td>
+				<td align="center"><%= participant.invited == 1 ? "Yes" : "No" %></td>
+        <td><%= participant.password %></td>
+        <td>
+            <%= link_to(image_tag("icon/edit.png",
+                :alt => "E", :title => "Edit", :border => 0),
+                {:action => 'update', :id => participant.id}) %>
+        </td>
+    </tr>
+<% row += 1 %>
+<% end %>
+</table>
+<p><%= will_paginate @dialogue_participants %></p>
+

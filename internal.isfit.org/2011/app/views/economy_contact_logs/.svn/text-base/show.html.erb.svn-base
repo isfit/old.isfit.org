@@ -1,0 +1,24 @@
+<% div_for @economy_contact_log, :class => "comment" do %>
+<span class="author">
+  <% if @economy_contact_log.author %>
+    <%=h @economy_contact_log.author%>
+  <% else %>
+    <%=h LdapUser.get_by_id(@economy_contact_log.functionary_id).firstname %>
+  <% end %> 
+  for <%=h @economy_contact_log.festival.name %>
+</span>
+<h4 class="economy_contact_log">Description</h4>
+  <p class="economy_contact_log_text">
+    <%= @economy_contact_log.body %>
+  </p>
+<h4 class="economy_contact_log">Advice</h4>
+<p class="economy_contact_log_text">
+  <%= @economy_contact_log.advice %>
+</p>
+<% end %>
+
+
+
+
+<%= link_to 'Edit', edit_economy_contact_log_path(params[:tab],@economy_contact_log) %> |
+<%= link_to 'Back', economy_contact_unit_url(params[:tab],@economy_contact_log.economy_contact_unit_id) %>

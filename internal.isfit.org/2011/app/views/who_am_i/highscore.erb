@@ -1,0 +1,73 @@
+<h1> Who Am I Highscores </h1>
+
+<h2>Best Guessers </h2>
+<table cellspacing="0" cellpadding="4" border="1">
+	<tr> 
+		<td> Name </td>
+		<td> Guesses </td>
+		<td> Correct </td>
+		<td> Hit rate (%) </td>
+	</tr>
+<% @best_guessers.each do |g| %>
+	<tr>
+		<td> <%= link_to("#{LdapUser.get_by_id(g.guesser_id.to_i).name}", :controller => "user", :action => "show", :id => LdapUser.get_by_id(g.guesser_id.to_i).dn) %> </td>
+		<td align="right"> <%= g.count %> </td>
+		<td align="right"> <%= g.sum_correct %> </td>
+		<td align="right"> <%= g.rating %> </td>
+	</tr>
+<% end %>
+</table>
+
+<h2> Most Guesses </h2>
+<table cellspacing="0" cellpadding="4" border="1">
+	<tr> 
+		<td> Name </td>
+		<td> Guesses </td>
+		<td> Correct </td>
+	</tr>
+<% @most_guesses.each do |g| %>
+	<tr>
+		<td> <%= link_to("#{LdapUser.get_by_id(g.guesser_id.to_i).name}", :controller => "user", :action => "show", :id => LdapUser.get_by_id(g.guesser_id.to_i).dn) %> </td>
+		<td align="right"> <%= g.count %> </td>
+		<td align="right"> <%= g.sum_correct %> </td>
+	</tr>
+<% end %>
+</table>
+
+<h2> Most Recognized </h2>
+<table cellspacing="0" cellpadding="4" border="1">
+	<tr> 
+		<td> Name </td>
+		<td> Guessed on </td>
+		<td> Times recognised </td>
+		<td> Hit rate (%) </td>
+	</tr>
+<% @best_guessed_on.each do |b| %>
+
+	<tr>	
+		<td>	<%= link_to("#{LdapUser.get_by_id(b.guessed_on_id.to_i).name}", :controller => "user", :action => "show", :id => LdapUser.get_by_id(b.guessed_on_id.to_i).dn) %> </td>
+		<td align="right">	<%= b.count %> </td>
+		<td align="right">	<%= b.sum_correct %> </td>
+		<td align="right"> 	<%= b.rating %> </td>
+	</tr>
+<% end %>
+</table>
+
+<h2> Most Guessed On </h2>
+<table cellspacing="0" cellpadding="4" border="1">
+	<tr> 
+		<td> Name </td>
+		<td> times guessed on </td>
+	</tr>
+<% @most_guessed_on.each do |o| %>
+
+	<tr>	
+		<td>	<%= link_to("#{LdapUser.get_by_id(o.guessed_on_id.to_i).name}", :controller => "user", :action => "show", :id => LdapUser.get_by_id(o.guessed_on_id.to_i).dn) %> </td>
+		<td align="right">	<%= o.count %> </td>
+	</tr>
+<% end %>
+</table>
+
+<br>
+<br>
+<%= link_to("Back to game", :controller=>"who_am_i", :action=>"index") %>

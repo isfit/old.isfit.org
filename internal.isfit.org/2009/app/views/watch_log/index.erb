@@ -1,0 +1,40 @@
+<h1>Watch Logs</h1>
+<p>
+<%= link_to "Create new watch log", :controller => "watch_log", :action => "create" %>
+</p>
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+	<tr>
+        <td width="200"><b><%= sort_header_tag('watching_functionary',
+            :text => 'Watching functionary') %></b></td>
+        <td width="230"><b><%= sort_header_tag('start_time',
+            :text => 'Start time') %></b></td>
+        <td width="200"><b><%= sort_header_tag('end_time',
+            :text => 'End time') %></b></td>        
+		<td width="200"><b><%= sort_header_tag('logged_by',
+            :text => 'Logged by') %></b></td>
+		<td></td>
+		<td></td>
+    </tr>
+<% row = 1 %>
+<% @watch_logs.each do |watch_log| %>   
+ 	<tr class="article_tr<%= row % 2 == 1 ? ' alternate' : '' %>">
+        <td><%= link_to watch_log.watching_functionary, :controller => "watch_log", :action => "view", :id => watch_log.id %></td>
+        <td><%= link_to watch_log.start_time.strftime("%d %b %Y @ %H:%M"), :controller => "watch_log", :action => "view", :id => watch_log.id %></td>
+        <td><%= link_to watch_log.end_time.strftime("%d %b %Y @ %H:%M"), :controller => "watch_log", :action => "view", :id => watch_log.id %></td>
+		<td><%= link_to watch_log.logged_by, :controller => "watch_log", :action => "view", :id => watch_log.id %></td>
+        <td>
+            <%= link_to(image_tag("icon/edit.png",
+                :alt => "E", :title => "Edit", :border => 0),
+                {:action => 'create', :id => watch_log.id}) %>
+        </td>
+		<td>
+            <%= link_to(image_tag("icon/trash.png",
+				:alt => "Delete", :title => "Delete",:border => 0), 
+				{:action => "delete", :id => watch_log.id},
+				:confirm => 'Are you sure you want to delete this watch log?') %>
+        </td>
+    </tr>
+<% row += 1 %>
+<% end %>
+</table>
+<p><%= will_paginate @watch_logs %></p>

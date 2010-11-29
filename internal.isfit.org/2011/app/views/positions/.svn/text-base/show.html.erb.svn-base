@@ -1,0 +1,6 @@
+<%=link_to('Edit position', edit_position_path(params[:tab],@position))%>
+<br>
+<h1><p><%=@position.title_no%></p></h1>
+<p><%=@position.description_no%></p>
+<h1><p><%=@position.title_en%></p></h1>
+<p><%=@position.description_en%></p>

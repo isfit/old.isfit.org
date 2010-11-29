@@ -1,0 +1,131 @@
+<h1>Participant questions for <%= @c.name %></h1>
+<p>Select a participant to narrow the list of questions.</p>
+<table width="100%">
+	<tr valign="top">
+		<td width="200" style="padding-right: 20px; border-right: 1px solid #ccc">
+			<%= link_to("Show all questions", :id => params[:id]) %><br /><br />
+			<% @p.each do |p| %>
+				<%= p.kind == "dialogue" ? "<em>" : '' %>
+				<%= link_to(p.last_name + ", " + p.first_name, :pid => p.id,
+					:type => p.kind) %>
+				<%= p.kind == "dialogue" ? "</em>" : '' %>
+				<% if p.count.to_i > 0 %>
+				(<%= p.count %>)
+				<% end %>
+				<br />
+			<% end %>
+		</td>
+		<td width="10"></td>
+		<td>
+			<% if params[:pid] %>
+			<h2>Showing questions for <%= @cp.last_name + ", " + @cp.first_name %></h2>
+			<% else %>
+			<h2>Showing all questions</h2>
+			<% end %>
+
+			<% if params[:rid] %>
+				<% if params[:rid] == -1.to_s %>
+				<h3>Create question</h3>
+				<% else %>
+				<h3>Reply to question</h3>
+				<% end %>
+
+				<% form_for :question, @question, :url => {:rid => params[:rid], :pid => params[:pid], :id => params[:id], :type => params[:type]} do |f| %>
+
+					<table style="width: 600px; border: 1px solid #ccc; margin-top: 20px"
+						cellspacing="0" cellpadding="6"<%= @question.answer ? '':' bgcolor=#eeeeee' %>>
+						<tr>
+							<td colspan="3">
+								<%= link_to(@cp.last_name + ", " + @cp.first_name, :controller => (params[:type] == "dialogue" ? "dialogue" : "participant"), :action => :update, :id => @cp.id) %>
+							</td>
+						</tr>
+						<tr>	
+							<td style="width: 20px"><b>S:</b></td>
+							<td style="width: 450px"><b><%= params[:rid] == -1.to_s ? f.text_field(:subject, :style => "width: 440px") : @question.subject %></b></td>
+							<td style="width: 110px"><%= (@question.question_datetime ? @question.question_datetime : DateTime.now).strftime("%d.%m.%Y %H:%M") %></td>
+						</tr>
+						<tr valign="top">
+							<td><b>Q:</b></td><td colspan="2">
+								<%=  params[:rid] == -1.to_s ? f.text_area(:question, :rows => "10", :style => "width: 550px") : format(@question.question) %>
+							</td>
+						</tr>
+						<tr valign="top">
+							<td><b>A:</b></td><td colspan="2">
+								<%= f.text_area(:answer, :rows => "10", :style => "width: 550px") %>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<% if params[:rid] == -1.to_s %>
+								<%= f.submit("Create") %>
+								<% else %>
+								<%= f.submit("Reply", :style => "float: left; margin-right: 10px") %>
+								<%= button_to("Delete", {:action => :delete_question, :id =>
+									@question.id, :cid => @c.id}, :pid => params[:pid], :confirm => "Are you sure you want to delete this question?") %>
+								<% end %>
+							</td>
+						</tr>
+					</table>
+				
+				<% end %>
+
+			<% else %>
+
+				<% if params[:pid] %>
+				<%= button_to("Create", :id => params[:id], :pid => params[:pid], :rid => -1, :type => params[:type]) %>
+				<% end %>
+
+				<% if @q.size > 0 %>
+					<% @q.each do |q| 
+						if q.participant_type == "workshop"
+							p = q.participant
+						else
+							p = DialogueParticipant.find(q.participant_id)
+						end
+					%>
+					<table width="600" style="border: 1px solid #ccc; margin-top: 20px" 
+						cellspacing="0" cellpadding="6"<%= q.answer ? '':' bgcolor=#eeeeee' %>>
+						<tr>
+							<td colspan="3">
+								<%= link_to(p.last_name + ", " + p.first_name, :controller =>
+								(p.is_a?(DialogueParticipant) ? 'dialogue' : 'participant'), 
+								:action => :update, :id => p.id) %>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" style="border-bottom: 1px solid #ccc"><b><%= q.subject %></b></td>
+							<td style="border-bottom: 1px solid #ccc" width="120" align="right">
+								<%= q.question_datetime.strftime("%d.%m.%Y %H:%M") %>
+							</td>
+						</tr>
+						<tr>
+							<td width="20"><b>Q:</b></td><td colspan="2"><%= format(q.question) %></td>
+						</tr>
+						<tr>
+							<td><b>A:</b></td><td colspan="2">
+								<%= q.answer ? format(q.answer) : '<em>Not yet answered!</em>' %>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<%= button_to("Reply", {:id => params[:id], :pid => params[:pid],
+								:rid => q.id, :type => (p.is_a?(DialogueParticipant) ? 'dialogue' : 'participant')}, 
+								:style => "float: left; margin-right: 10px") %>
+								<%= button_to("Delete", {:action => :delete_question, :id =>
+									q.id, :cid => @c.id, :pid => params[:pid], :type =>
+									params[:type]}, :style => "float: left; margin-right: 10px", :confirm => "Are you sure you want to delete this question?") %>
+									<% if p.is_a?(DialogueParticipant) %>
+									<%= button_to("Send to Dialogue", {:action => :send_to_dialogue, :id =>
+										q.id, :cid => @c.id}, :pid => params[:pid], :confirm => "Are you sure you want to send this question to Dialoge?") %>
+									<% end %>
+									<div style="clear:both"></div></td>
+						</tr>
+					</table>
+				<% end %>
+				<% else %>
+					<p>No questions.</p>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+</table>

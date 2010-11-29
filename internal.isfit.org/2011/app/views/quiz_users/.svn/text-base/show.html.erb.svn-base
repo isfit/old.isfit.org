@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%=h @quiz_user.user_id %>
+</p>
+
+<p>
+  <b>Question:</b>
+  <%=h @quiz_user.question %>
+</p>
+
+<p>
+  <b>Points:</b>
+  <%=h @quiz_user.points %>
+</p>
+
+<p>
+  <b>Guesses:</b>
+  <%=h @quiz_user.guesses %>
+</p>
+
+
+<%= link_to 'Edit', edit_quiz_user_path(@quiz_user) %> |
+<%= link_to 'Back', quiz_users_path %>

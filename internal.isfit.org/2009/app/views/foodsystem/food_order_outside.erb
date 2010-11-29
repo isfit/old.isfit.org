@@ -1,0 +1,101 @@
+<%date = 19%>
+<%month = 02%>
+<%if params[:id] == "10"%>
+	<%date = 01%>
+	<%month = 03%>
+<%else%>
+	<%date += params[:id].to_i%>
+<%end%>
+<h1><%=date%>.<%=month%>.2009</h1>
+<%if @edit%>
+	<h1>Edit current order:</h1>
+	<%row = 1%>
+
+	<table>
+		<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+			<th width ="212">Group name</th>
+			<th width ="150">Number of people</th>
+			<th width ="150">Meal</th>
+		</tr>
+		<% row+=1%>
+		
+			<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+				<td><%=@edit_order.group_id%></td>
+				<td><%=@edit_order.will_eat%></td>
+				<td><%=@meals[@edit_order.meal_id]%></td>
+			</tr>
+		
+<%else%>
+	<h1>Order food for groups outside ISFiT</h1>
+<%end%>
+
+
+	<table>
+		<tr>
+			<th width ="212">Group name</th>
+			<th width ="150">Number of people</th>
+			<th width ="150">Meal</th>
+		</tr>
+		<%form_for :food, @food, :url => { :action => "update_outside", :id=>"#{params[:id]}", :edit=>@edit, :db_id => @db_id} do |f|%>
+		<tr align="center">
+			<td>
+				<%if @edit%>
+					<%=f.text_field(:group, :size => 40, :value =>params[:group_id])%>
+				<%else%>
+					<%=f.text_field(:group, :size => 40)%>
+				<%end%>
+			</td>
+			<td>
+				<%if @edit%>
+					<%=f.text_field(:number, :size => 5, :value => params[:will_eat])%>
+				<%else%>
+					<%=f.text_field(:number, :size => 5)%>
+				<%end%>
+			</td>
+				
+			<td>
+				<%if @edit%>
+					<%=select_tag( :meal, options_for_select([['Lunch', 0], ['Dinner',1], ['Dinner-vegetarian', 2], ['Supper', 3]], params[:meal_id].to_i)) %>
+				<%else%>
+					<%=select_tag( :meal, options_for_select([['Lunch', 0], ['Dinner',1], ['Dinner-vegetarian', 2], ['Supper', 3]], 0 )) %>
+				<%end%>
+			</td>
+			
+		</tr>
+	</table>
+	<%if @edit%>
+  		<%= f.submit "Update", :onclick => "return #{confirm_javascript_function("Are you sure you want to update this food order?")}" %>
+  		<br />
+  		<%=link_to "Back", :controller => "foodsystem", :action => "food_order_outside", :id => params[:id]%>
+  	<%else%>
+  		<%= f.submit "Order" %>
+  	<%end%>
+  	
+<%end%>
+<%if not @edit%>
+	<h3>Current orders:</h3>
+	<%row = 1%>
+
+	<table>
+		<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+			<th width="150">Group name</th>
+			<th width="150">Number of people</th>
+			<th width="150">Meal</th>
+			<th width="150">Edit</th>
+			<th width="150">Delete</th>
+		</tr>
+		<%row += 1%>
+		<%@current_orders.each do |order|%>
+
+			<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+				<td><%=order.group_id%></td>
+				<td><%=order.will_eat%></td>
+				<td><%=@meals[order.meal_id]%></td>
+				<td><%=link_to "Edit", :controller => "foodsystem", :action => "food_order_outside", :id => params[:id], :group_id => order.group_id, :meal_id => order.meal_id, :will_eat => order.will_eat, :edit => 1, :db_id => order.id  %></td>
+				<td><%=link_to "Delete", :controller => "foodsystem", :action => "remove_outside", :id => params[:id], :group_id => order.group_id, :meal_id => order.meal_id, :will_eat => order.will_eat  %></td>
+			</tr>
+			<%row += 1%>
+
+		<%end%>
+	</table>
+<%end%>

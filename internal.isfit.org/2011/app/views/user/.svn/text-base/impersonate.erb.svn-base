@@ -1,0 +1,6 @@
+<h1>Impersonate user</h1>
+<p>Enter the username of the user to impersonate:</p>
+<% form_for :user do |f| %>
+<%= f.text_field :username %>
+<p><%= f.submit 'Impersonate' %></p>
+<% end %>

@@ -1,0 +1,182 @@
+<h1>Edit application</h1>
+
+<% form_for :participant, @participant, :url => { :action => "save",
+:id => params[:id] } do |f| %>
+
+<h3>Additional information</h3>
+<table>
+	<tr valign="top">
+		<td width="120"><b>Assigned workshop: </b></td>
+		<td width="200"><%= f.text_field :final_workshop, 
+			:style => "width:97%" %> </td>
+		<td width="20"></td>
+		<td colspan="2"></td>
+	</tr>
+	<tr>
+		<td colspan="5">&nbsp;</td>
+	</tr>
+	<tr valign="top">
+		<td><b>Travel support assessed: </b></td>
+		<td><%= f.check_box :travel_assigned %> </td>
+		<td></td>
+		<td><b>Travel support amount: </b></td>
+		<td><%= f.text_field :travel_assigned_amount, 
+			:style => "width:97%" %></td>
+	</tr>
+	<tr valign="top">
+		<td><b>Travel support comment: </b></td>
+		<td colspan="4"><%= f.text_area :travel_comment, 
+			:style => "width:99%", :rows => 3 %></td>
+	</tr>
+	<tr>
+		<td colspan="5">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="5" align="right"><%= f.submit %></td>
+	</tr>
+</table>
+<% end %>
+
+<h3>Grading</h3>
+<table cellspacing="0" cellpadding="2">
+	<tr valign="top">
+		<td width="120"><b>Participant grade: </b></td>
+		<td width="200"><%= @participant.participant_grade %></td>
+		<td width="20"></td>
+		<td width="100"><b>Theme grade: </b></td>
+		<td width="200"><%= ((@participant.theme_grade1 + 
+			@participant.theme_grade2)/2).ceil %></td>
+	</tr>
+	<tr class="alternate" valign="top">
+		<td width="120"><b>Functionary: </b></td>
+		<td><%= @participant.participant_functionary_id != 0 ?
+			LdapUser.get_by_id(@participant.participant_functionary_id).name :
+			"(not graded)" %></td>
+		<td width="20"></td>
+		<td width="100"><b>Functionary: </b></td>
+		<td><%= @participant.theme_functionary_id != 0 ?
+			LdapUser.get_by_id(@participant.theme_functionary_id).name :
+			"(not graded)" %></td>
+	</tr>
+	<tr valign="top">
+		<td><b>Comment: </b></td>
+		<td><%= @participant.participant_comment %></td>
+		<td width="20"></td>
+		<td><b>Comment: </b></td>
+		<td><%= @participant.theme_comment %></td>
+	</tr>
+</table>
+
+<h3>Supplied information</h3>
+<table cellspacing="0" cellpadding="2">
+	<tr valign="top">
+		<td width="120"><b>First name: </b></td>
+		<td width="200"><%= @participant.first_name %></td>
+		<td width="20"></td>
+		<td width="100"><b>Telephone: </b></td>
+		<td width="200"><%= @participant.phone %></td>
+	</tr>
+	<tr class="alternate" valign="top">
+		<td><b>Middle name: </b></td>
+		<td><%= @participant.middle_name %></td>
+		<td width="20"></td>
+		<td><b>Fax/facsimile: </b></td>
+		<td>
+			<%= @participant.fax %>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td><b>Last name: </b></td>
+		<td><%= @participant.last_name %></td>
+		<td width="20"></td>
+		<td><b>Email address: </b></td>
+		<td><%= @participant.email %></td>
+	</tr>
+	<tr class="alternate" valign="top">
+		<td>
+			<b>Address: </b>
+		</td>
+		<td>
+			<%= @participant.address1 %>
+		</td>
+		<td width="20"></td>
+		<td><b>Nationality: </b></td>
+		<td><%= @participant.nationality %></td>
+	</tr>
+	<tr valign="top">
+		<td>
+		</td>
+		<td>
+			<%= @participant.address2 %>
+		</td>
+		<td width="20"></td>
+		<td><b>Date of birth: </b></td>
+		<td><%= @participant.birthdate %></td>
+	</tr>
+	<tr class="alternate" valign="top">
+		<td>	
+			<b>ZIP code: </b>
+		</td>
+		<td><%= @participant.zipcode %></td>
+		<td width="20"></td>
+		<td><b>Sex:</b></td>
+		<td><%= @participant.sex == 'm' ? 'Male' : 'Female' %></td>
+	</tr>
+	<tr valign="top">
+		<td><b>City/Town:</b></td>
+		<td><%= @participant.city %></td>
+		<td width="20"></td>
+		<td><b>University: </b></td>
+		<td><%= @participant.university %>	</td>
+	</tr>
+	<tr class="alternate" valign="top">
+		<td><b>Country:</b></td>
+		<td><%= @participant.country.name %></td>
+		<td width="20"></td>
+		<td><b>Field of study: </b></td>
+		<td><%= @participant.field_of_study %>	</td>
+	</tr>
+	<tr valign="top">
+		<td><b>Organization name:</b></td>
+		<td><%= @participant.org_name %></td>
+		<td></td>
+		<td><b>Workshop 1:</b></td>
+		<td><%= @participant.workshop1 %></td>
+	</tr>
+	<tr class="alternate" valign="top">
+		<td><b>Postion: </b></td>
+		<td><%= @participant.org_function %></td>
+		<td></td>
+		<td><b>Workshop 2: </b></td>
+		<td><%= @participant.workshop2 %></td>
+	</tr>
+	<tr valign="top">
+		<td><b>Travel support requested:</b></td>
+		<td><%= @participant.travel_apply == 1 ? 'Yes' : 'No' %></td>
+		<td></td>
+		<td><b>Travel support required:</b></td>
+		<td><%= @participant.travel_nosupport_cancome == 1 ? 'No' : 'Yes' %></td>
+	</tr>
+	<tr valign="top" class="alternate">
+		<td><b>Travel support amount:</b></td>
+		<td><%= @participant.travel_amount %></td>
+		<td colspan="3"></td>
+	</tr>
+</table
+
+<h3>Essays</h3>
+<div style="width:660px">
+	<h4>Travel support essay</h4>
+	<div style="border: 1px solid #ccc; padding: 2px">
+		<%= format(@participant.travel_essay) %>
+	</div>
+	<h4>Essay 1 - Background</h4>
+	<div style="border: 1px solid #ccc; padding: 2px">
+		<%= format(@participant.essay1) %>
+	</div>
+	<h4>Essay 2 - Workshops</h4>
+	<div style="border: 1px solid #ccc; padding: 2px">
+		<%= format(@participant.essay2) %>
+	</div>
+</div>
+

@@ -1,0 +1,69 @@
+<br />
+<%= link_to 'Vis alle quiz\'er', quizzes_path %> | <%= link_to 'Tilbake til quiz\'en', edit_quiz_path(params[:tab], @quiz) %>
+<br /><br />
+
+<table id="quizformtable">
+  <tr>
+    <th class="quizform">Endre spørsmålet</th>
+  </tr>
+  <tr>
+    <td class="quizform">
+	<% form_for(@quiz_question, :url => { :action => "update" }) do |f| %>
+	<%= f.error_messages %>
+	<%= f.hidden_field :quiz, :value => @quiz.id %>
+	Spørsmål<br />
+	<%= f.text_area :body, :cols => '86', :rows => '5' %>
+	<br /><br />
+	<%= f.submit 'Oppdater' %>
+	<% end %>
+    </td>
+  </tr>
+</table>
+
+<br />
+
+<table id="quizformtable">
+  <tr>
+    <th class="quizform">Legg til/endre alternativ</th>
+  </tr>
+  <tr>
+    <td class="quizform">
+	<table id="quiztable">
+	  <tr>
+	    <th class="quiz">Alternativ</th>
+	    <th class="quiz">Poeng</th>
+	  </tr>
+
+	<% td_class = "quiz_alt"
+	if @quiz_question.quiz_choices.length > 0 then
+    @quiz_question.quiz_choices.each do |choice|
+      td_class == "quiz" ? td_class = "quiz_alt" : td_class = "quiz" %>
+      <tr>
+        <td class="<%= td_class %>">
+        <%= link_to image_tag("isfit-quiz/trash.png", :border=>0, :alt=>'Fjern alternativ'), quiz_choice_path(params[:tab], choice), :confirm => 'Vil du virkelig fjerne dette alternativet?', :method => :delete %>
+        <%= link_to image_tag("isfit-quiz/edit.png", :border=>0, :alt=>'Endre alternativ'), edit_quiz_choice_path(params[:tab], choice) %>
+        <%= choice.description %>
+        </td>
+        <td class="<%= td_class %>">
+      <%=h choice.points %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+	</table>
+	
+	<br />
+	<% form_for(@quiz_choice) do |f| %>
+	<%= f.error_messages %>
+	<%= f.hidden_field :quiz_question, :value => @quiz_question.id %>
+	Nytt alternativ<br />
+	<%= f.text_area :description, :cols => '86', :rows => '5' %>
+	<br /><br />
+	<%= f.check_box :points, :value => '0' %> Riktig svar
+	<br /><br />
+	<%= f.submit 'Legg til alternativ' %>
+	<% end %>
+    </td>
+  </tr>
+</table>
+

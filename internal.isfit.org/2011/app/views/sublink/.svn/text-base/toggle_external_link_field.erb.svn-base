@@ -1,0 +1,10 @@
+
+<% if $show_external_link %>
+<tr>
+	<td>
+	</td>
+	<td>
+		<%= f.text_field :external_link,:size =>'40' %>
+	</td>
+</tr>
+<%end%>

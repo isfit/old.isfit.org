@@ -1,0 +1,27 @@
+<% per_group = (group.length.to_f / count).ceil %>
+<% so_far = 0 %>
+<% no = 1 %>
+<table>
+<tr>
+<td width="20"><b><%= @count += 1 %></b></td>
+<td>
+<% for i in 0..(group.length-1) do %>
+<%= link_to(group[i].name, :action => :country_group, :id => group[i].id) %>
+<% if group[i].count.to_i > 0 %>
+(<%= group[i].count %>)
+<% end %>
+<% so_far += 1 %>
+<% if so_far >= per_group and no < count  %>
+<% so_far = 0 %>
+<% no += 1 %>
+</td>
+</tr>
+<tr>
+<td><b><%= @count += 1 %></b></td>
+<td>
+<% end %>
+<% end %>
+</td>
+</tr>
+</table>
+

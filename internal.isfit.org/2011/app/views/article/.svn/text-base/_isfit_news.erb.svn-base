@@ -1,0 +1,29 @@
+<% @isfit_articles = FrontendArticle.find(
+		:all,
+		:conditions => "NOT title_en IS NULL and title_en != '' AND list = 1 AND deleted = 0", 
+		:order => "weight, created_at desc",
+      	:limit => 10)
+%>
+<div class="feed">
+<h1>Latest news from isfit.org</h1><br /> 
+<% for a in @isfit_articles %>
+
+	<h3>
+		<a href="http://www.isfit.org/news/article/show/<%=a.id%>">
+			<%= a.title_en %>
+		</a>
+	</h3>
+	<table width="100%">
+	<tr><td valign="top">
+		<%=format_bc(a.ingress_en)%>
+	</td><td>
+	<% if FileTest.exist?("#{RAILS_ROOT}/public/images/isfit_org_article_images/#{a.id}.jpg")%>
+		<a href="http://www.isfit.org/news/article/show/<%=a.id%>">
+		<%= image_tag "isfit_org_article_images/#{a.id}.jpg", :title=> "",
+			:height => "100px", :style => "float: right", :border => "0" %>
+		</a>
+	<% end %>
+	</td></tr></table>
+
+<% end %>
+</div>

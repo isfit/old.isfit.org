@@ -1,0 +1,10 @@
+<% if not imf_contact_comment.deleted == 1 %> 
+<% div_for imf_contact_comment, :class => "comment" do %>
+<span class="author">
+  <%=h LdapUser.get_by_id(imf_contact_comment.functionary_id).firstname %> said <%=h time_ago_in_words(imf_contact_comment.created_at) %> ago:
+</span>
+  <p>
+    <%=h imf_contact_comment.content %>
+  </p>
+<% end %>
+<% end %>

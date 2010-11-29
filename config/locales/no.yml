@@ -1,4 +1,17 @@
 "no":
+  press_accreditations:
+    header: "Presseakkreditering"
+    organization: "Mediebedrift:"
+    firstname: "Fornavn:"
+    surname: "Etternavn:"
+    function: "Funksjon:"
+    day_period: "Dag eller tidsrom:"
+    access_whole_festival: "Kryss av om du ønsker tilgang under hele festivalen:"
+    email: "Epost:"
+    phone: "Mobilnummer:"
+    birth: "Fødselsdato:"
+    remarks: "Merknader:"
+    submit: "Send"
   donations:
     donate: "Støtt en deltaker"
   layout:

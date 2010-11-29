@@ -1,0 +1,35 @@
+<h1>Forums</h1>
+<div id="forum_description">
+	Choose the forum you would like to visit
+</div>
+<table border="0" id="forums_list" cellspacing="0" cellpadding="3">
+	<tr>
+		<th>Forum</th>
+		<th>Subjects</th>
+		<th>Posts</th>
+		<th>Last post</th>
+	</tr>
+	<% i = 0 %>
+	<% for forum in @forums %>
+	<% i = i.succ %>
+	
+	<tr class="forum_list_<%=i%2 == 0 ? 'even' : 'odd' %>">
+		<td>
+			<%= link_to forum.name, :controller => "forum", :action => "show_forum", :id => forum.id %>
+		</td>
+		<td><%=forum.get_number_of_threads%></td>
+		<td><%=forum.get_number_of_posts%></td>
+		<td>
+		<% last_post = forum.get_last_forum_post%>
+		<% if last_post != nil %>
+			<% user = LdapUser.get_by_id(last_post.user_id) %>
+			Last post by <%=user.firstname + " " + user.lastname%><br/>
+			written at <%=last_post.created_at.strftime("%d %b %Y %H:%M")%>
+		<% else %>
+			No posts yet
+		<% end %>
+		</td>
+	</tr>
+	<% end %>		
+</table>
+<span style="float: left"><%= will_paginate @forums %></span>	

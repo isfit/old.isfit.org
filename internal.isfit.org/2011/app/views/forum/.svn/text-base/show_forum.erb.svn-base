@@ -1,0 +1,37 @@
+<h1>Discussions</h1>
+<p>
+	<%= link_to "Create new subject", :controller => "forum", :action => "create_thread", :id => @forum.id %>
+</p>
+<table border="0" cellspacing="0" cellpadding="5" id="forums_list">
+	<tr>
+		<th>Subjects</th>
+		<th>Answers</th>
+		<th>Last post</th>
+	</tr>
+<% i = 0 %>
+<%@threads.each do |thread| %>
+	<% i = i.succ %>
+	<tr class="forum_list_<%=i%2 == 0 ? 'even' : 'odd' %>">
+		<td>
+			<%= link_to (thread.is_new(current_user) ? "<strong>(NEW) "+thread.title+"</strong>" : thread.title), :controller => "forum", :action => "show_thread", :id => thread.id %>
+		</td>
+		<td><%=thread.forum_posts.size%></td>
+		<td>
+			<% last_post = thread.get_last_post%>
+			<% if last_post != nil %>
+				<% user = LdapUser.get_by_id(last_post.user_id) %>
+				Last post by <%=user.firstname + " " + user.lastname%><br/>
+				written at <%=last_post.created_at.strftime("%d %b %Y %H:%M")%>
+			<% else %>
+				No posts yet
+			<% end %>
+		</td>
+	</tr>
+<% end %>
+
+</table>
+<%	if @threads.size==0 %>
+	<p>
+		There are no subjects here yet!
+	</p>
+<% end %>

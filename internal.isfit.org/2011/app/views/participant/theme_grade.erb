@@ -1,0 +1,26 @@
+<%= render(:partial => 'grade') %>
+<% form_for :participant, @participant, :url => {:page => params[:page]} do |f| %>
+
+<h3>Theme grading</h3>
+<table>
+	<tr>
+		<td width="80"><b>Grade:</b></td>
+		<td><%= f.select(:theme_grade1, 1..10) %>
+			<%= f.select(:theme_grade2, 1..10) %></td>
+	</tr>
+	<tr valign="top">
+		<td><b>Comment:</b></td>
+		<td><%= f.text_area(:theme_comment, :rows => 4,
+			:style => "width:490px") %></td>
+	</tr>
+	<tr>
+		<td><b>Functionary:</b></td>
+		<td><%= @participant.theme_functionary_id != 0 ?
+			LdapUser.get_by_id(@participant.theme_functionary_id).name :
+			"(not yet graded)" %></td>
+	</tr>
+</table>
+<br />
+<%= submit_tag 'Submit', :value => "Save grading" %>
+
+<% end %>

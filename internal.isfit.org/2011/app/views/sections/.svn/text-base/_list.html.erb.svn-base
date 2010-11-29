@@ -1,0 +1,3 @@
+<% sections.each do |section| %>
+	<%= render :partial => 'sections/entry', :locals => {:section => section} %>
+<%end%>

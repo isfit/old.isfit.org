@@ -1,0 +1,28 @@
+<div id="internal_main">
+<!-- Rigth menu -->
+  <div style="
+		float: right;
+		padding-left: 10px;
+		color:gray;
+		width:170px;
+		border-left: 1px solid silver;
+		">
+	<%= render :partial => "calendar.erb" %>
+	<%= render :partial => "birtdaybox.erb" %>
+	<br />
+  </div>
+
+<!-- MainPage -->
+  <div>
+	<table>
+	  <tr valign="top">
+	    <td width="50%" style="padding-right:5px;border-right: 1px solid silver;">
+		  <%= render :partial => "news" %>
+		</td>
+		<td width="50%" style="padding-left:5px">
+		  <%= render :partial => "isfit_news" %>
+		</td>
+	  </tr>
+	</table>
+  </div>	
+</div>

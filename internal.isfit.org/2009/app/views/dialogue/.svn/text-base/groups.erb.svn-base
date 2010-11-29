@@ -1,0 +1,5 @@
+<h1>Participant questions</h1>
+<% @g.each do |c| %>
+<%= link_to c.name, {:action => :country_group, :id => c.id} %>
+<%= c.count.to_i > 0 ? "(#{c.count})" : "" %>
+<% end %>

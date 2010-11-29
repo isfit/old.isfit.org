@@ -1,0 +1,22 @@
+<table>
+  <tr>
+	<!--Uses sort helper to sort importen info. Need solution on region -->
+		<th><%= sort_header_tag('id', :title => 'Sort by contact ID')%></th>
+		<th><%= sort_header_tag('firstname', :text=> 'Firstname')%></th>
+		<th>Lastname</th>
+		<th width=80>Address</th>
+		<th>Zip code</th>
+		<th>Email</th>
+		<th><%= sort_header_tag('city', :text=> 'City')%></th>
+		<th><%= sort_header_tag('country_id', :text =>'Country')%></th>
+		<th>Region</th>
+	</tr>
+
+	<% row = 1 %>
+	<% personal_contacts.each do |personal_contact| %>
+		<tr<%= row  % 2 == 1 ? ' class="alternate"' : '' %> >
+			<%= render :partial => 'personal_contacts/entry', :locals => {:personal_contact =>personal_contact} %>
+		</tr>
+	<% row+=1 %>
+	<%end%>
+</table>
