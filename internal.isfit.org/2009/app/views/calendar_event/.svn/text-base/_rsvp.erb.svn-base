@@ -1,0 +1,33 @@
+<%flag = 0%><%count = 0%>
+<% 1.upto($rsvp_text.length) do |i|%>
+	<% temp = CalendarEventController.get_attendants(event.id,i) %>
+	<% if count < 8 %>
+		<% if not temp.empty?%>
+			<%flag = 1%>
+			<%=$rsvp_text[i-1]%>
+			<% for user_id in temp%>
+				<% count = count + 1 %>
+				<%= link_to LdapUser.get_by_id(user_id).firstname + " " +
+					LdapUser.get_by_id(user_id).lastname, 
+					:controller => "user", :action => "show", 
+					:id => LdapUser.get_by_id(user_id).dn %>
+				<% if count >= 8%>
+				<%= link_to "...", 
+					:controller => "calendar_event", :action => "show_attendants", 
+					:id => event.id%>
+					<%break%>
+				<%end%>
+			<%end%>
+			<br>
+		<%end%>
+
+	<%else%>
+		
+		<%break%>
+	<%end%>
+
+<%end%>
+
+<%if flag == 0%>
+	No one has replied yet!
+<%end%>

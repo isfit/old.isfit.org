@@ -1,0 +1,155 @@
+<% if @spp %>
+   <h1> Edit article for the "Student Peace Prize" homepage: </h1>
+  <% form_for :spp_article, @spp, :url => { :action => "new" }, :html => {:multipart => true} do |f| %>
+Title: <br>
+<%= f.text_field "title", "value" => @spp.title, :size => 102 %>
+    
+<br>Ingress:<br>
+<%= f.text_area "ingress", "value" => @spp.ingress, :rows => 10, :cols => 100 %>
+   
+<br>Article:<br>
+<%= f.text_area  "body", "value" => @spp.body, :rows => 25, :cols => 100 %>
+
+<table>
+  <tr>
+    <td></td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>
+      Is this a press release?
+    </td>
+    <td>
+    
+      <%= f.check_box 'press_release'%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    Do you want the article to be visible?
+    </td>
+    <td>
+     <%= f.check_box 'visible'%>
+     </td>
+  </tr>
+
+</table>
+<br>
+<h3>Picture</h3>
+<div class="leftline">
+<%#= clever_image_tag "article_images/#{@spp.id}.jpg",
+	:style => "margin-bottom: 20px; display: block" %>
+Upload new picture:
+<div><%= file_field_tag "image" %></div>
+</div>
+<br>
+<%= submit_tag "Edit article"%> <br>
+<% end %>
+<% else %>
+  <h1> Create a new article for the "Student Peace Prize" homepage: </h1>
+
+<% form_for :spp_article, @spp_article, :url => { :action => "new" }, :html => {:multipart => true} do |f| %>
+Title: <br>
+<%= f.text_field "title", :size => 102 %>
+    
+<br>Ingress:<br>
+<%= f.text_area "ingress", :rows => 10, :cols => 100 %>
+   
+<br>Article:<br>
+<%= f.text_area  "body", :rows => 25, :cols => 100 %>
+
+<table>
+  <tr>
+    <td></td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>
+      Is this a press release?
+    </td>
+    <td>
+    
+      <%= f.check_box 'press_release' %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    Do you want the article to be visible?
+    </td>
+    <td>
+     <%= f.check_box 'visible' %>
+     </td>
+  </tr>
+
+</table>
+<br>
+<h3>Picture</h3>
+<div class="leftline">
+<%#= clever_image_tag "article_images/#{@spp.id}.jpg",
+	:style => "margin-bottom: 20px; display: block" %>
+Upload new picture:
+<div><%= file_field_tag "image" %></div>
+</div>
+<br>
+<%= submit_tag "Add new article"%> <br>
+<% end %>
+<% end %>
+<h3>Formatting</h3>
+<p>This section describes the formatting options available in article body contents.</p>
+<table class="leftline">
+	<tr>
+		<td width="100"><b>Type</b></td>
+		<td width="200"><b>Usage</b></td>
+		<td><b>Example</b></td>
+	</tr>
+	<tr valign="top">
+		<td>Heading</td>
+		<td>
+			### Heading,<br /> #### Sub heading
+		</td>
+		<td>
+			<h3 style="margin:0;padding:0">Heading</h3>
+			<h4 style="margin:0;padding:0">Sub heading</h4>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td>Emphasis</td>
+		<td>
+			*emphasized text* or<br />_emphasized text_
+			<br />and<br />
+			**emphasized text** or<br />__emphasized text__
+		</td>
+		<td>
+			<em>emphasized text</em>
+			<br /><br /><br />
+			<strong>emphasized text</strong>
+		</td>
+	</tr>
+	<tr valign="top"> 
+		<td>Unordered list</td>
+		<td> - Candy<br /> - Gum<br /> - Booze</td>
+		<td>
+			<ul>
+				<li>Candy</li>
+				<li>Gum</li>
+				<li>Booze</li>
+			</ul>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td>Ordered list</td>
+		<td> 1. Candy<br /> 2. Gum<br /> 3. Booze</td>
+		<td>
+			<ol>
+				<li>Candy</li>
+				<li>Gum</li>
+				<li>Booze</li>
+			</ol>
+		</td>
+	</tr>
+	<tr>
+		<td>Link</td>
+		<td>[NTNU](http://www.ntnu.no)</td>
+		<td><a href="http://www.ntnu.no">NTNU</a></td>
+	</tr>
+</table>

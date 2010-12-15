@@ -1,0 +1,23 @@
+<h1>New imf_contact_comment</h1>
+
+<% form_for(@imf_contact_comment) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :functionary_id %><br />
+    <%= f.text_field :functionary_id %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.label :imf_contact_unit_id %><br />
+    <%= f.text_field :imf_contact_unit_id %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', imf_contact_comments_path %>

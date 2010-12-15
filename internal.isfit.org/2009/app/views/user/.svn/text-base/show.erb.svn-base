@@ -1,0 +1,77 @@
+<h1>Organization structure</h1>
+
+<div class="table">
+	<div class="column">You are here:</div>
+	<div>
+<%= 
+	parts = @user.dn.split(",")
+	pos = 1
+	str = ""
+	parts[1..-4].each do |part|
+		part_unit = LdapUnit.get_by_dn(parts[pos..-1].join(","))
+		str = " &gt; #{link_to(part_unit.description, {:controller =>
+			"unit", :action => "show", :id => part_unit.dn})}#{str}"
+		pos = pos + 1
+	end
+	str = "#{link_to("ISFiT", {:controller => 'unit', :action => 'show',
+		:id => "ou=units,dc=isfit,dc=org"})}#{str}"
+%>
+	</div>
+</div>
+
+<h2>Functionary details</h2>
+<div class="table">
+	<div class="column"><b>Name</b>:</div>
+	<div>
+		<%= "#{@user.lastname}, #{@user.firstname}" %>
+	</div>
+
+	<div class="column"><b>Position</b>:</div>
+	<div>
+		<%= @user.title %>&nbsp;
+	</div>
+
+	<div class="column"><b>E-mail(s)</b>:</div>
+	<div>
+		<%= 
+			emails = [] 
+			if @user.has_system_account?
+				emails.push(@user.username)
+			end
+			emails.concat(@user.mails)
+			emails.collect! do |email|
+				unless email.index('@')
+					email += '@isfit.org'
+				end
+				email
+			end
+			emails.join(", ")
+		%>&nbsp;
+	</div>
+
+	<div class="column"><b>Phone(s)</b>:</div>
+	<div>
+		<%= @user.phones.join(", ") %>&nbsp;
+	</div>
+
+	<div class="column"><b>Address</b>:</div>
+	<div>
+		<%= "#{@user.street}, #{@user.postal_code} #{@user.postal_address}" %>
+	</div>
+
+	<div class="column"><b>Date of birth</b>:</div>
+	<div>
+		<%= @user.date_of_birth ? 
+			@user.date_of_birth.strftime("%d.%m.%Y") : '' %>&nbsp;
+	</div>
+
+	<div class="column"><b>Gender</b>:</div>
+	<div>
+		<%= ['', 'Male', 'Female'].at(@user.gender ? @user.gender.to_i : 0) %> 
+		&nbsp;
+	</div>
+	<div class="column"><b>Image</b>:</div>
+	<div>
+		<%= image_tag "profile_images/#{@user.id}.jpg" ,:title=> "" %>
+	</div>
+</div>

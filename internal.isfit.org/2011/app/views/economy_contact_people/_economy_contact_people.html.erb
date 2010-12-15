@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Title</th>
+    <th>Phone1</th>
+    <th>Email</th>
+  </tr>
+  <% row = 1 %>
+<% for economy_contact_person in economy_contact_people %>
+<% if not economy_contact_person.deleted == 1 %>
+  <tr <%= row  % 2 == 1 ? ' class="alternate"' : '' %>>
+    <td><%=h economy_contact_person.firstname %></td>
+    <td><%=h economy_contact_person.lastname %></td>
+    <td><%=h economy_contact_person.title %></td>
+    <td><%=h economy_contact_person.phone1 %></td>
+    <td><%=h economy_contact_person.email %></td>
+    <td><%= link_to 'Show', economy_contact_person_url(params[:tab], economy_contact_person) %></td>
+    <td><%= link_to 'Edit', edit_economy_contact_person_path(params[:tab],economy_contact_person) %></td>
+    <td><%= link_to 'Delete', economy_contact_person_url(params[:tab], economy_contact_person), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% row += 1 %>
+<%end%>
+<% end %>
+</table>
+

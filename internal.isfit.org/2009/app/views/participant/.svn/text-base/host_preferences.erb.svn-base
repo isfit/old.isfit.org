@@ -1,0 +1,124 @@
+<h1>Participants host preferences</h1>
+<p>Listing <b><%= @count %></b> attending participants.</p>
+			
+	<table cellspacing="0" cellpadding="4" style="border: 2px solid #ccc; border-collapse: collapse" border="1">
+	<tr>
+		<td colspan="8">
+
+<% form_tag({}, :method => :get) do %>
+<table cellpadding="8" width="100%">
+	<tr>
+		<td>
+			Prefers to stay with:
+		</td>
+		<td>
+			<%= select_tag(:stay_with, options_for_select([['Show all', 0], ['Female', 1], ['Male', 2], ['No preferance', 3]], params[:stay_with].to_i)) %>
+		</td>
+		<td>
+			Smoke:
+		</td>
+		<td>
+			<%= select_tag(:smoke, options_for_select([['Show all', 0], ['No', 1], ['Yes', 2]], params[:smoke].to_i)) %>
+		</td>
+		<td>
+			Handicap:
+		</td>
+		<td>
+			<%= select_tag(:handicap, options_for_select([['Show all', 0], ['No', 1], ['Yes', 2]], params[:handicap].to_i)) %>
+		</td>
+		<td>
+			Visa:
+		</td>
+		<td>
+			<%= select_tag(:visa, options_for_select([['Show all', 0], ['Granted or not needed',1], ['Rejected or still processing', 2]], params[:visa].to_i)) %>
+		</td>
+		<td>
+			Per page:
+		</td>
+		<td>
+			<%= select_tag(:per_page, options_for_select([15, 20, 25, 30, ['Unlimited', 0]], 
+				@per_page))%>
+		</td>
+		<td align="right">
+			<%= submit_tag('Update') %>
+		</td>
+	</tr>
+</table>
+<% end %>
+	</tr>
+	<tr>
+		<td align="center" width="40">
+			<b><%= sort_header_tag('participants.id', :text => 'ID') %></b>
+		</td>
+		<td width="100">
+			<b><%= sort_header_tag('participants.last_name',
+				:text => 'Last name') %></b>
+		</td>
+		<td width="100">
+			<b><%= sort_header_tag('participants.first_name',
+				:text => 'First name') %></b>
+		</td>
+		<td width="145">
+			<b><%= sort_header_tag('answers.stay_with',
+				:text => 'Prefers to stay with') %></b>
+		</td>
+		<td width="100">
+			<b><%= sort_header_tag('answers.smoke',
+				:text => 'Smoke') %></b>
+		</td>
+		<td width="100">
+			<b><%= sort_header_tag('answers.handicap',
+				:text => 'Has a handicap') %></b>
+		</td>
+		<td width="145">
+			<b><%= sort_header_tag('answers.hadicap_description',
+				:text => 'Handicap description') %></b>
+		</td>
+		<td width="40" align="center"><b>VISA</b></td>
+	</tr>
+<% 
+	alternate = true
+	@participants.each do |p| 
+
+%>
+	<tr<%= alternate ? ' class="alternate"' : '' %>>
+		<td align="right"><%= p.id %></td>
+		<td><%= p.last_name %></td>
+		<td><%= p.first_name %></td>
+		<td><% if (p.answer.stay_with == 'FEMALE') %>
+			<%= "Female"%>		  
+			<% end %>
+		    <% if (p.answer.stay_with == 'MALE') %>
+			<%= "Male" %>
+			<% end %>
+		    <% if (p.answer.stay_with == 'NO_MATTER') %>
+		    	<%= "No preference" %>
+		    <% end %>
+		</td>
+		<td><% if (p.answer.smoke == 1) %>
+			<%= "Yes" %>
+		    <% else %>
+		    	<%= "No" %>
+		    <% end%>
+			
+		</td>
+		<td><% if (p.answer.handicap  == 1) %>
+			<%= "Yes" %>
+		    <% else %>
+		    	<%= "No" %>
+		    <% end%>
+		</td>
+		<td><%= p.answer.handicap_description %></td>
+		<td align="center"><%= (p.answer.visa == 'NO_NEED_OF_VISA' or p.answer.visa == 
+			'VISA_BEEN_GRANTED') ? 'Yes' : 'No' %></td>
+	</tr>
+<% 
+	alternate = !alternate
+
+	end
+%>
+</table>
+
+<% if @per_page != 0 %>
+<p><%= will_paginate @participants %></p>
+<% end %>

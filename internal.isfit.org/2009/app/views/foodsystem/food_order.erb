@@ -1,0 +1,83 @@
+<%if params[:id] == "-1"%>
+	<%1.upto(10) do |i|%>
+		<%date = 19%>
+		<%month = 02%>
+		<%if i == 10%>
+			<%date = 01%>
+			<%month = 03%>
+		<%else%>
+			<%date += i%>
+		<%end%>
+		<h3><%=date%>.<%=month%>.2009</h3>
+		<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+		<%row = 1%>
+		
+		<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+			<th width = 150>Name</th>
+			<th>Meals</th>
+		</tr>
+		<%row+=1%>
+		<%@meals_ordered[i].each do |person|%>
+			<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+				<th><%=LdapUser.get_by_id(person[0]).firstname%> <%=LdapUser.get_by_id(person[0]).lastname%></th>
+				<th>
+					<%count = 0%>
+					<%person[1].each do |meal|%>
+						<%if meal == 1%>
+							<%if count == 3%>
+								<%=@meals[count-1][1]%>,
+							<%else%>
+								<%=@meals[count][1]%>,
+							<%end%>
+						<%end%>
+						<%count+=1%>
+					<%end%>
+				</th>
+			</tr>
+		<%row+=1%>
+		<%end%>
+		</table>
+	<%end%>
+<%else%>
+	<%if !@access%>
+		<h1>Ordering deadline has passed. Food must be ordered before 20:00 a day before the food is needed</h1>
+	<%end%>
+	<%date = 19%>
+	<%month = 02%>
+	<%if params[:id] == "10"%>
+		<%date = 01%>
+		<%month = 03%>
+	<%else%>
+		<%date += params[:id].to_i%>
+	<%end%>
+	<h1><%=date%>.<%=month%>.2009</h1>
+	<%form_for :food, @food, :url => { :action => "update", :id=>"#{params[:id]}"} do |f|%>
+		<table border ="1">
+			<tr align ="center">
+				<th width ="200"></th>
+				<th width ="200">Lunch</th>
+				<th width ="200">Dinner</th>
+				<th width ="200">Supper</th>
+			</tr>
+			<%row = 1%>
+			<%@persons.each do |person|%>
+				<%if !(person.title =~ /Workshopcontact /) %>
+					<tr<%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+						<td><%=person.name%></td>
+						<%@meals.each do |meal|%>
+							<%if @meals_ordered[person.id][meal[0]] == 1 %>
+								<td bgcolor='#66EE33'><%=f.check_box("#{person.id}_#{meal[0]}", {:checked=>"checked"} )%></td>
+							<%else%>
+								<td><%=f.check_box("#{person.id}_#{meal[0]}")%></td>
+							<%end%>
+						<%end%>
+					</tr>
+					<%row +=1%>
+				<%end%>
+			<%end%>
+		</table>
+		<%if @access%>
+			<%= submit_tag "Update", :onclick => "return #{confirm_javascript_function("Are you sure?")}" %>
+		<%end%>
+	<%end%>
+<%end%>

@@ -1,0 +1,36 @@
+<h1> Birthdays </h1>
+<table cellspacing="0" cellpadding="4">
+<% 
+	day = -1	
+	count = 0
+	month = Date.today.month
+	@users.each do |user| 
+
+	if user.date_of_birth.day != day
+		day = user.date_of_birth.day 
+		count += 1
+%>
+<% if day != -1 %>
+		</td>
+	</tr>
+<% end %>
+	<tr valign="top"<%= count % 2 == 0 ? " class=\"alternate\"" : "" %>>
+		<td>
+			<b><%= Date::ABBR_MONTHNAMES[user.date_of_birth.month] + " " +
+				user.date_of_birth.day.to_s.rjust(2, '0') %></b>
+		</td>
+		<td>
+<% end %>
+<%= link_to("#{user.lastname}, #{user.firstname}", :controller => "user", 
+		:action => "show", :id => user.dn) %>
+	<% if user.date_of_birth.month < Date.today.month %>
+		<%= " (#{Date.today.year - user.date_of_birth.year + 1}, #{user.unit.description})" %><br />
+	<% else %>	
+		<%= " (#{Date.today.year - user.date_of_birth.year}, #{user.unit.description})" %><br />
+	<% end %>
+<% end %>
+<% if day != -1 %>
+		<td>
+	</tr>
+<% end %>
+</table>

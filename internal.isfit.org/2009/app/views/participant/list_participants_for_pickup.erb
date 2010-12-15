@@ -1,0 +1,32 @@
+<h1>Pick up participants</h1>
+<% if @participants %>
+<div id="search_results">
+	<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+		<tr>
+			<th><%= sort_header_tag('participants.id',:text => 'ID') %></th>
+			<th><%= sort_header_tag('participants.first_name',:text => 'Firstname') %></th>
+			<th><%= sort_header_tag('participants.last_name',:text => 'Lastname') %></th>
+			<th><%= sort_header_tag('countries.name',:text => 'Country') %></th>
+			<th><%= sort_header_tag('participants.final_workshop',:text => 'Workshop') %></th>
+			<th><%= sort_header_tag('participants.picked_up',:text => 'Pick up') %></th>
+
+		</tr>
+		<% row = 1 %>
+	<% for participant in @participants%>
+		<tr <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+			<td><%= participant.id %></td>
+			<td><%= participant.first_name%></td>
+			<td><%= participant.last_name%></td>
+			<td><%= participant.country.name%></td>
+			<td><%= participant.final_workshop%></td>
+			<td><%= participant.picked_up ? "Picked up at "+participant.picked_up.strftime("%d %b %Y %H:%M")+" "+link_to("Undo pick-up", {:controller => "participant", :action => "pickup_participant", :id => participant.id, :host_id => params[:id], :undo => true}, :confirm => "Are you sure you will undo pick-up?") : link_to("Pick up", :controller => "participant", :action => "pickup_participant", :id => participant.id, :host_id => params[:id], :undo => false)%>
+
+			</td>
+		</tr>
+		<% row += 1%>
+		
+	<%end%>
+	</table>
+</div>
+<span style="float: left"><%= will_paginate @participants %></span>
+<% end %>

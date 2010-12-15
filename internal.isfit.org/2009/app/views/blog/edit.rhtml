@@ -1,0 +1,11 @@
+<% form_for :blog, @blog do |b| %>
+  <%= b.error_messages %>
+  <table>
+    <tr><td>Title</td></tr>
+    <tr><td><%= b.text_field :title %></td></tr>
+    <tr><td>Blog post</td></tr>
+    <tr><td><%= b.text_area :body, :size => "130x30" %></td></tr>
+  </table>
+  <%= submit_tag 'Update post' %><br>
+  
+<% end %>

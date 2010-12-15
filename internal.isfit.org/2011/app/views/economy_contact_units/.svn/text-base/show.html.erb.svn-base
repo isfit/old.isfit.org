@@ -1,0 +1,43 @@
+<h1><%=h @economy_contact_unit.name %> - <%=h @economy_contact_unit.economy_contact_unit_type.name %></h1>
+
+<%= link_to 'Edit', edit_economy_contact_unit_path(params[:tab],@economy_contact_unit) %> |
+<%= link_to 'Back', economy_contact_units_path %>
+<h3>Address:</h3>
+<p>
+  <%=h @economy_contact_unit.address %><br> 
+  <%=h @economy_contact_unit.zipcode %> <%=h @economy_contact_unit.city %><br>
+  <%=h @economy_contact_unit.country %>
+</p>
+
+<h3>Contact information</h3>
+<p>
+  <b>Phone:</b> <%=h @economy_contact_unit.phone %><br>
+  <b>Email:</b> <%=h @economy_contact_unit.email %><br>
+  <b>Homepage:</b> <%=h @economy_contact_unit.homepage %>
+</p>
+
+<h3>Primary Contact</h3>
+<p>
+  <% if @economy_contact_unit.economy_contact_person %>
+    <%= render :partial => @economy_contact_unit.economy_contact_person %>
+  <% else %>
+    You must first create new Contacts
+  <%end%>
+</p>
+
+<h3>Contacts</h3>
+<p>
+  <% economy_contact_people = EconomyContactPerson.find_all_by_economy_contact_unit_id(@economy_contact_unit.id) %>
+  <%= render :partial => 'economy_contact_people/economy_contact_people', :locals => { :economy_contact_people => economy_contact_people } %>
+  <br><%= link_to 'Create new contact', new_economy_contact_person_url(params[:tab], :economy_contact_unit => @economy_contact_unit) %>
+  
+  <!-- Render partial with all contacts here (list?) -->
+</p>
+
+<h2>Logs</h2>
+<p>
+  <%= link_to 'Create new log', new_economy_contact_log_url(params[:tab], :economy_contact_unit => @economy_contact_unit) %>
+  <%= render :partial => @economy_contact_unit.economy_contact_logs.reverse %>
+</p>
+
+

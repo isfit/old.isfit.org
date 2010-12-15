@@ -1,0 +1,10 @@
+<% form_for :blog, @blog, :url => { :action => "create" }, :html => {:method => "get"} do |b| %>
+  <%= b.error_messages %>
+  <table>
+    <tr><td>Title</td></tr>
+    <tr><td><%= b.text_field :title %></td></tr>
+    <tr><td>Blog post</td></tr>
+    <tr><td><%= b.text_area :body, :size => "130x30" %></td></tr>
+  </table>
+  <%= submit_tag 'Add post' %><br>
+<% end %>

@@ -1,0 +1,147 @@
+<h1>Matcing for <%=@host.name%></h1>
+<div id="matching_fieldset" style="width: 400px">
+<fieldset>
+<legend><%=@host.name%>'s Preferences</legend>
+	<%=@host.preference%>
+</fieldset>
+
+			<fieldset>
+				<legend>Statistics</legend>
+			<b>Total number of beds:</b> <%=@host.number%>
+			<br/>
+			<b>Assigned participants:</b> <%=@host.get_assigned_participants.size%>
+			<br/>
+			<b>Pets:</b> <%=@host.pet%>
+			</fieldset>			
+
+			<% if !@assigned_participants.blank? %>
+			<fieldset>
+				<legend>Assigned participants</legend>
+				  <ul>
+					<% for p in @assigned_participants %>
+				    	<li><%=p.first_name + " " + p.last_name+" ("+p.country.name+")"%></li>
+				  	<% end %>
+				  </ul>
+			</fieldset>
+			<% end %>
+			<% if !@participants_not_matched.blank? %>
+				<div id="matching_error">
+					<fieldset style="border: #FF0000 2px solid;">
+						<legend>These participants where not matched</legend>
+						<ul>
+						<% for p in @participants_not_matched %>
+							<li><%=p.id.to_s+" - "+p.first_name + " " + p.last_name%></li>
+						<% end %>
+						</ul>
+					</fieldset>
+				</div>
+			<% end %>
+
+<fieldset>
+<legend>Search</legend>
+<% form_tag do %>
+
+<p id="search_tips">
+	Search for any information about a participant:
+</p>
+	<%=text_field_tag('search_criteria', '',:size => '35', :maxlength => '35') %>
+		<table border="0" cellspacing="5" cellpadding="5">
+			<tr>
+				<td>Male</td> 
+				<td><%=check_box_tag('male')%></td>
+				<td>Female</td>
+				<td><%=check_box_tag('female')%></td>
+			</tr>
+			<tr>
+				<td>Smoke</td>
+				<td><%=check_box_tag('smoke')%></td>
+				<td>Vegetarian</td>
+				<td><%=check_box_tag('vegetarian')%></td>		
+			</tr>
+			<tr>
+				<td>Lactose</td>
+				<td><%=check_box_tag('lactose')%></td>
+				<td>Gluten</td>
+				<td><%=check_box_tag('gluten')%></td>		
+			</tr>
+			<tr>
+				<td>Kosher</td>
+				<td><%=check_box_tag('kosher')%></td>
+				<td>Halal</td>
+				<td><%=check_box_tag('halal')%></td>		
+			</tr>
+			<tr>
+				<td colspan="2">Prefers to stay with</td>
+				<td colspan="2"><%=select_tag 'stay_with',options_for_select([ "","Male", "Female", "No matter" ], "")%></td>
+			</tr>			
+			<tr>
+				<td colspan="4">
+					<em>Show only participants that have received VISA:</em> <%=check_box_tag('visa')%>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<em>Also show "non checked-in" participants:</em> <%=check_box_tag('not_checked_in')%>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<%= submit_tag "Search" %>
+				</td>
+		</table>
+		<%=hidden_field_tag(:host_id, @host.id)%>
+		
+<% end -%>
+</fieldset>
+</div>
+	<% form_tag(:action => "make_match") do %>
+			<%=hidden_field_tag(:host_id, @host.id)%>
+	<h2>Results:</h2>
+	<p>	
+		<% if !@participants.blank? %>
+		<span style="float: left"><%= will_paginate @participants %></span>
+		</p>
+		<br/>
+		<div id="search_results">
+			<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+				<tr>
+					<th>ID</th>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Sex</th>
+					<th>Country</th>
+					<th>Workshop</th>
+					<th>Select</th>
+				</tr>
+			<% row = 1 %>
+			<% for participant in @participants%>
+				<tr <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+					<td><%= participant.id%></td>
+					<td><%= participant.first_name%></td>
+					<td><%= participant.last_name%></td>
+					<td><%= participant.sex%></td>
+					<td><%= participant.country.name%></td>
+					<td><%= participant.final_workshop%></td>
+					<% if participant.host_id == @host.id %>
+						<td><%=check_box_tag 'selected_participants[]', participant.id, :checked => true %></td>					
+					<% else %>
+						<td><%=check_box_tag 'selected_participants[]', participant.id %></td>
+					<% end %>
+				</tr>
+				<% row += 1%>
+			<%end%>			
+			</table>
+			<br/>
+			<%= submit_tag "Save Changes" %>
+		</div>
+		<span style="float: left"><%= will_paginate @participants %></span>	
+		<% else %>
+			No results
+		<% end %>
+	<% end -%>
+		
+<% if !@participants_not_matched.blank? %>
+	<script type="text/javascript" charset="utf-8">
+	      alert("Some participants where not matched!")
+	</script>
+<% end %>

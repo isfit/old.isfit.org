@@ -1,0 +1,21 @@
+<table>
+  <th>Places</th><th>Total</th>
+  <% types = InfopackageContactsType.find(:all) %>
+  <% types.each do |t| %>
+    <th>#<%=h t.name %></th>
+  <% end %>
+
+  
+  <% countries = PersonalContact.find_country_by_region_id(rid) %>
+    <% countries.each do |c| %>
+      <tr>
+        <% count_total = PersonalContact.count_contacts_by_country_id(c.id) %>
+        <% count_pc = PersonalContact.count_contacts_by_country_id_and_type(c.id,1) %>
+        <td><%= link_to c.name, list_personal_contacts_url( :cid => c.id ) %></td>
+        <td><%= count_total %></td>
+        <% types.each do |t| %>
+          <td><%= PersonalContact.count_contacts_by_country_id_and_type(c.id,t.id) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+</table>

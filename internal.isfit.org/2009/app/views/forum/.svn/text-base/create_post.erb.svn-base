@@ -1,0 +1,8 @@
+<h1><%=@thread.title%></h1>
+<h2>Write an anwser</h2>
+<% form_for :forum_post do |f| -%>
+	<%= f.text_area :body, :style => 'width: 500px; height: 200px;' %><br/>
+	<%= submit_tag "Create"%>
+<% end -%>
+
+<iframe src="<%=url_for(:action => 'show_thread', :controller => 'forum', :id => @thread.id, :iframe => true)%>" width="750px" height="400px"/>

@@ -1,0 +1,33 @@
+<%if params[:id]%>
+	<h1>Edit car</h1>
+	<br>
+	<%form_for :car, @car, :url => { :action => "update", :id=>"#{params[:id]}"}, :html=> { :multipart => true }  do |f|%>
+		<%f.hidden_field :id, :value=>"#{params[:id]}"%>
+		<table>
+			<tr>
+				<th align=left>Name:
+				<td onFocus=""><%=f.text_field :name, :value=>"#{@name}", :size => "40"%>
+			<tr>
+				<th align=left>Description:
+				<td><%=f.text_area :description, :value=>"#{@description}", :size=>"39x5"%>
+			<tr>
+				<th align=left>Short description:
+				<td><%=f.text_field :short_description, :value=>"#{@short_description}"%>
+			<tr>
+				<th align=left>Picture:
+				<td width=400 align=left valign=top><%=image_tag "car_images/#{@name}.jpg", :alt=> "#{@short_description}"%>
+			<tr>
+				<th>New picture:
+				<td><%=file_field_tag "image", :size => "31"%>
+			<tr>
+				<th align=left>Maximum passengers:
+				<td><%=f.text_field :max_passengers, :value=>"#{@max}", :size => "40"%>
+		</table>
+		<br>
+		<%=submit_tag'Update car'%>
+	<%end%>
+<%else%>
+	<h1>Edit car</h1>
+	<br>
+	No car selected...
+<%end%>

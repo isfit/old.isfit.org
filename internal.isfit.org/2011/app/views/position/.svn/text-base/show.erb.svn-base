@@ -1,0 +1,8 @@
+<h1>Stillinger</h1>
+<%@sections.each do |section| %>
+<b><%=section.name_no%></b><p>
+	<% section.getPositions("no").each do |position| %>
+		<%=position.title_no%><p>
+	<%end%>
+	<%=link_to('New position', :action=>"new", :id=>"#{section.id}")%><p>
+<%end%>

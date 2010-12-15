@@ -1,0 +1,46 @@
+<br />
+<%= link_to 'Vis alle quiz\'er', quizzes_path %> | <%= link_to 'Vis highscore', :controller=>"quizzes", :action=>"highscore", :id=>@quiz.id %>
+<br /><br />
+
+<table id="quizformtable">
+  <tr>
+    <th class="quizform">Quiz: <%= @quiz.title %></th>
+  </tr>
+  <tr>
+    <td class="quizform">
+    <%= flash[:notice] %>
+  
+    <% if @question == nil then %>
+      Ikke nok spørsmål (trenger minimum 5) eller annen feil.
+      Antall spørsmål i quiz'en nå: <%= @questions_length %>.
+    <% else %>
+      <%= @question.body %>
+    <% end %>
+
+<br /><br />
+<% if (@quiz_user == nil) then %>
+	FATAL FEIL: Kan ikke registrere deg til denne quiz'en. Ingen svar blir registrert!
+<% end %>
+
+<% if @choices != nil then %>
+  <% form_for(QuizChoice.new, :url => { :action => "register_answer" }, :html => {:name => "quiz_guess_form"}) do |f| %>
+    <table id="quiztable">
+    <% td_class = "quiz_alt"
+    @choices.each do |choice|
+      td_class == "quiz" ? td_class = "quiz_alt" : td_class = "quiz" %>
+      <tr>
+        <td class="<%= td_class %>">
+          <%= f.radio_button :id, choice.id, {:onclick => "document.quiz_guess_form.submit();"} %>
+          <%= choice.description %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  <% end %>
+<% end %>
+
+    </td>
+  </tr>
+</table>
+
+

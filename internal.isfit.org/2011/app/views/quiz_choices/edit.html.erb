@@ -1,0 +1,23 @@
+<br />
+<%= link_to 'Tilbake til spørsmålet', edit_quiz_question_path(params[:tab], @quiz_choice.quiz_question) %>
+<br /><br />
+
+<table id="quizformtable">
+  <tr>
+    <th class="quizform">Endre spørsmålsalternativ</th>
+  </tr>
+  <tr>
+    <td class="quizform">
+	<% form_for(@quiz_choice, :url => { :action => "update" }) do |f| %>
+	<%= f.error_messages %>
+	Beskrivelse<br />
+	<%= f.text_area :description, :cols => '86', :rows => '5' %>
+	<br /><br />
+	<%= f.check_box :points %> Riktig svar
+	<br /><br />
+	<%= f.submit 'Oppdater' %>
+	<% end %>
+    </td>
+  </tr>
+</table>
+

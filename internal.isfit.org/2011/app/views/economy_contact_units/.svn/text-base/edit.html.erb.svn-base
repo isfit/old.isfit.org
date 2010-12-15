@@ -1,0 +1,52 @@
+<h1>Editing economy_contact_unit</h1>
+
+<% form_for(@economy_contact_unit, :url => {:controller => "economy_contact_units", :tab => params[:tab], :action => "update" }) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label "street name" %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :zipcode %><br />
+    <%= f.text_field :zipcode %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </p>
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :homepage %><br />
+    <%= f.text_field :homepage %>
+  </p>
+  <p>
+    <!-- primærkontakt skal her -->
+    <%= f.label "Primary Contact" %><br />
+    <%= f.select :economy_contact_person_id, EconomyContactPerson.to_select_people(@economy_contact_unit.id) %>
+  </p>
+  <p>
+    <%= f.label "Unit type" %><br />
+    <%= f.select 'economy_contact_unit_type_id', EconomyContactUnitType.to_select %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', economy_contact_units_path %>

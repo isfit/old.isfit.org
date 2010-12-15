@@ -1,0 +1,91 @@
+<script type="text/javascript">
+  function ShowContact(id)
+  {
+  document.location.href = "contact/add/"+id;
+  }
+</script>
+<h1>Contact Log, ISFiT 2009</h1>
+
+<!--Retningslinjer-->
+<% if !@read_eula %>
+	<%= render (:partial => "retningslinjer") %>
+	<%= link_to("Jeg har lest og godtar retningslinjene. (Trykk for å skjule dem)",:action => "eula_read" )%>
+	<br />
+<% else %>
+	<%= link_to("Vis retningslinjer",:action => "eula_read" )%>
+<% end %>
+<br />
+
+<!--SEARCH AREA-->
+<div style="margin-left: 160px">
+Enter name or organization or both, separate with space
+<%= form_tag ({:action=> "index"} ) %>
+<%= text_field_tag :query, @query ,:size => 60 %>
+<%= submit_tag "Search" %>
+
+<p style="margin-top: 1px;">
+..or you can <%= link_to("add a new contact", {:action => 'add'}) %>
+</p>
+</div>
+
+<!-- LIST START -->
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc; 
+	width: 700px">
+<!-- HEADER -->
+	<tr>
+		<td width="40">
+			<b><%= sort_header_tag('contacts.id', :text => 'ID' ) %></b>
+		</td>
+		<td>
+			<b><%=sort_header_tag('contacts.last_name', :text =>'Contact')%></b>
+		</td>
+		<td>
+			<b><%= sort_header_tag('contacts.organization',
+            	:text => 'Organization') %></b>
+		</td>
+		<td>
+			<b><%= sort_header_tag('contacts.isfit_responsible',
+            	:text => 'Responsible') %></b>
+		</td>
+		<td><b><!--Operations--></b></td>
+	</tr>
+
+<!-- CONTENT -->
+<% @contacts.each do |contact| %>
+	<tr<%=contact.status == 
+		'Bare ta kontakt' ? ' class="green"' : ' class="red"'%>>
+		<td onclick="ShowContact('<%=contact.id%>');">
+			<%= contact.id%>
+		</td>
+		<td onclick="ShowContact('<%=contact.id%>');">
+			<%= contact.last_name%>, <%=contact.first_name %>
+		    <%=# link_to(contact.last_name+", "+contact.first_name, 
+			   # :action => 'show', :id => contact.id) 
+			%>
+		</td>
+		<td onclick="ShowContact('<%=contact.id%>');">
+			<%= contact.organization %>
+		</td>
+		<td onclick="ShowContact('<%=contact.id%>');">
+			<%= LdapUser.get_by_id(contact.isfit_responsible).firstname %>
+			<%= LdapUser.get_by_id(contact.isfit_responsible).lastname  %>
+		</td>
+		<td style="text-align: center">
+			<% if Integer(contact.isfit_responsible) == current_user.id %>
+			<%= link_to(image_tag("icon/trash.png", 
+				:alt => "D ", :title => "Delete", :border => 0), 
+				{:action => 'destroy', :id => contact.id}, 
+				:confirm => "Do you really want to delete "+ 
+				"#{contact.first_name} #{contact.last_name}?")%>
+			<% end %>
+			<%= #link_to(image_tag("icon/edit.png", 
+				#:alt => "E", :title => "Edit", :border => 0), 
+				#{:action => 'add', :id => contact.id}) 
+			%> 
+		</td>
+	</tr>
+<% end %>
+
+<!-- BOTTOM -->
+</table>
+<p><%= will_paginate @contacts %></p>

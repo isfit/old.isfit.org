@@ -1,0 +1,85 @@
+<h1>Arrival Statistics</h1>
+<fieldset style="width: 500px">
+	<legend style="font-size: 16px;">Hosts</legend>
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr>
+			<td>Hosts:</td>
+			<td><%=@hosts%></td>
+		</tr>		
+		<tr>
+			<td>Hosts with preferences:</td>
+			<td><%=@hosts_with_preferences%></td>
+		</tr>
+		<tr>
+			<td>Beds:</td>
+			<td><%=@beds%></td>
+		</tr>
+		<tr>
+			<td>Free beds:</td>
+			<td><%=@free_beds%></td>
+		</tr>
+	</table>
+</fieldset>
+
+<fieldset style="width: 500px">
+	<legend style="font-size: 16px;">Participants</legend>
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr>
+			<td>Participants:</td>
+			<td><%=@participants%></td>
+		</tr>		
+		<tr>
+			<td>Checked in:</td>
+			<td><%=@checked_in%></td>
+		</tr>		
+		<tr>
+			<td>Checked in and host assigned:</td>
+			<td><%=@checked_in_host%></td>
+		</tr>
+
+		<tr>
+			<td>Checked in - host not assigned:</td>
+			<td><%=@checked_in_no_host%></td>
+		</tr>
+		<tr>
+			<td>Picked up by host:</td>
+			<td><%=@picked_up%></td>
+		</tr>		
+		<tr>
+			<td>Not checked in - host assigned</td>
+			<td><%=@not_checked_in_host%></td>
+		</tr>
+		<tr>
+			<td>Not checked in - host not assigned</td>
+			<td><%=@not_checked_in_no_host%></td>
+		</tr>
+		
+	</table>
+</fieldset>
+<fieldset style="width: 500px">
+	The list below show special food needs for the checked in participants.<br/>
+	<legend style="font-size: 16px;">Food needs</legend>
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr>
+			<td>Vegetarians:</td>
+			<td><%=@vegetarians%></td>
+		</tr>		
+		<tr>
+			<td>Lactose:</td>
+			<td><%=@lactoses%></td>
+		</tr>		
+		<tr>
+			<td>Gluten:</td>
+			<td><%=@glutens%></td>
+		</tr>
+
+		<tr>
+			<td>Kosher:</td>
+			<td><%=@koshers%></td>
+		</tr>
+		<tr>
+			<td>Halal:</td>
+			<td><%=@halals%></td>
+		</tr>				
+	</table>
+</fieldset>

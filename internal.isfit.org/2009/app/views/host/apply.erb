@@ -1,0 +1,86 @@
+<% form_for :host, @host, :url => { :action => "apply" } do |f| %>
+<H1> Apply for ISFit 2009 participant hosting</H1>
+
+
+<TABLE BORDER="0" WIDTH=500 ALIGN="LEFT">
+	<TR>
+		<TD >First name: </TD>
+		<TD><%= f.text_field :first_name %></TD>
+	</TR>
+	<TR>
+		<TD>Last name: </TD>
+		<TD><%= f.text_field :last_name %></TD>
+	</TR>
+	<TR>
+		<TD>Address: </TD>
+		<TD><%= f.text_field :address %></TD>
+	</TR>
+	<TR>
+		<TD>Postal code: </TD>
+		<TD><%= f.text_field :zipcode %></TD>
+	</TR>
+	<TR>
+		<TD>Postal place: </TD>
+		<TD><%= f.text_field :place %></TD>
+	</TR>
+	<TR>
+		<TD>Phone number: </TD>
+		<TD><%= f.text_field :phone %></TD>
+	</TR>
+	<TR>
+		<TD>Email address: </TD>
+		<TD><%= f.text_field :email %></TD>
+	</TR>
+	<TR>
+		<TD>Your age: </TD>
+		<%
+		ages = []
+		for i in 0..99
+			ages[i] = i
+		end
+		%>
+		<TD><%= f.select :age , ages %></TD>
+	</TR>	
+	<TR>
+		<TD>How many participants would you like to host? </TD>
+		<% 
+		choices = []
+		for i in 0..9
+			choices[i] = i+1
+		end
+		 %>
+		<TD><%= f.select :number , choices %></TD>
+	</TR>
+	<TR>
+		<TD>Where will your host sleep?* </TD>
+		<TD><%= f.text_field :where %></TD>
+	</TR>
+	<TR>
+		<TD>Have you been hosting for ISFiT before?* </TD>
+		<TD>Yes: <%= f.check_box :before %></TD>
+		
+	</TR>
+	<TR>
+		<TD>How do you hear about ISFiT?* </TD>
+		<TD><%= f.text_area :know_isfit , options ={"rows" => 3} %></TD>
+	</TR>
+	<TR>
+		<TD>Do you have any preferences? E.g. gender, country, age, language etc.*</TD>
+		<TD> <%= f.text_area :preference, optionas ={"rows" => 3} %> </TD>
+	<TR>
+		<TD>Why do you want to volunteer?* </TD>
+		<TD><%= f.text_area :why , options ={"rows" => 3} %></TD>
+	</TR>
+	<TR>
+		<TD> </TD>
+		<TD><%= form_tag ({:action=> "done", :id => params[:id]} ) %>
+		<%= submit_tag "Submit" %><br>
+		<I>Fields marked with * are optional</I>
+		</TD>
+	</TR>
+	
+</TABLE>
+
+
+
+<% end %>

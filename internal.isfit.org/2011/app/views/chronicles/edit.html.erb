@@ -1,0 +1,13 @@
+<style>
+.leftline {
+  padding-left: 10px;
+  margin-left: 2px;
+  border-left: 4px solid #ccc;
+}
+</style>
+<h1>Editing chronicle</h1>
+
+<%= render :partial => 'form' %>
+
+<%= link_to 'Show', chronicle_path(params[:tab],@chronicle) %> |
+<%= link_to 'Back', chronicles_path(params[:tab]) %>

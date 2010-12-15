@@ -1,0 +1,54 @@
+<h1>Browse volunteers</h1>
+<p>Below is the list of volunteer applications registered.</p>
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+	<tr>
+		<td></td>
+		<td style="border-left: 1px solid #ccc"></td>
+		<td align="center" colspan="3" style="border-left: 1px solid #ccc; border-bottom: 1px solid #ccc"><em>Position choices</em></td>
+		<td style="border-left: 1px solid #ccc"></td>
+		<td align="center" colspan="3" style="border-left: 1px solid #ccc; border-bottom: 1px solid #ccc"><em>Position choices interview times</em></td>
+	</tr>
+	<tr>
+		<td align="center" width="40"><b><%= sort_header_tag('applicants.id',
+			:text => 'ID') %></b></td>
+		<td width="80" style="border-left: 1px solid #ccc"><b><%= sort_header_tag('lastname',
+			:text => 'Last name') %></b></td>
+		<td width="150" style="border-left: 1px solid #ccc"><b><%= sort_header_tag('positions.title_no',
+			:text => 'First') %></b></td>
+		<td width="150" style="border-left: 1px solid #ccc"><b><%= 
+			sort_header_tag('second_positions_applicants.title_no',
+			:text => 'Second') %></b></td>
+		<td width="150" style="border-left: 1px solid #ccc"><b><%= 
+			sort_header_tag('third_positions_applicants.title_no',
+			:text => 'Third') %></b></td>
+		<td width="100" style="border-left: 1px solid #ccc"><b><%=
+			sort_header_tag('status', :text => 'Status') %></b></td>
+		<td width="70" style="border-left: 1px solid #ccc"><b><%=
+			sort_header_tag('interview_time_1', :text => 'First') %></b></td>
+		<td width="70" style="border-left: 1px solid #ccc"><b><%=
+			sort_header_tag('interview_time_2', :text => 'Second') %></b></td>
+		<td width="70" style="border-left: 1px solid #ccc"><b><%=
+			sort_header_tag('interview_time_3', :text => 'Third') %></b></td>
+	</tr>
+<% row = 1 %>
+<% @applicants.each do |applicant| %>
+	<tr<%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+		<td align="right" style="padding-right: 12px">
+			<%= link_to(applicant.id, :action => @recruiting ? 'edit' : 'show',
+				:id => applicant.id) %>
+		</td>
+		<td><%= applicant.lastname %></td>
+		<td><%= applicant.first_position.title_no %></td>
+		<td><%= applicant.second_position ? 
+			applicant.second_position.title_no : '-' %></td>
+		<td><%= applicant.third_position ? 
+			applicant.third_position.title_no : '-' %></td>
+		<td><%= @status[applicant.status] %></td>
+		<td><%= (applicant.interview_place_1 != '' and applicant.interview_time_1) ? applicant.interview_time_1.strftime("%d.%m %H:%M") : '-' %></td>
+		<td><%= (applicant.interview_place_2 != '' and applicant.interview_time_2) ? applicant.interview_time_2.strftime("%d.%m %H:%M") : '-' %></td>
+		<td><%= (applicant.interview_place_3 != '' and applicant.interview_time_3) ? applicant.interview_time_3.strftime("%d.%m %H:%M") : '-' %></td>
+	</tr>
+<% row += 1 %>
+<% end %>
+</table>
+<p><%= will_paginate @applicants %></p>

@@ -1,0 +1,25 @@
+<script type="text/javascript">
+$(function () { 
+    $('#article').imgAreaSelect({ minWidth: 460, minHeight: 346,aspectRatio: '1.29:1',  handles: true , onSelectEnd: function (img, selection) { $('input[name=x1]').val(selection.x1); $('input[name=y1]').val(selection.y1); $('input[name=x2]').val(selection.x2); $('input[name=y2]').val(selection.y2); } 
+      });
+
+    });
+</script>
+
+
+
+
+<h1>Velg beskjæring:</h1> 
+<%= image_tag @path , :alt=>"Tullball", :id=> "article"%> 
+
+<%form_tag( {:action => "crop_page_save", :tab => params[:tab], :page_id=> params[:page_id]}) do  %>
+  <%= hidden_field_tag :x1, ""%>
+   <%= hidden_field_tag :y1, ""%> 
+  <%= hidden_field_tag :x2, ""%>
+  <%= hidden_field_tag :y2, ""%>
+  <h4>Image text:</h4>
+  <%=text_field_tag :image_text, ""%>
+
+  <%= submit_tag 'Save' %>
+<%end%>
+  

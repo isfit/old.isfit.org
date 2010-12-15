@@ -1,0 +1,166 @@
+<% 		
+	today = @users.select do |user| 
+		user.date_of_birth.day == Date.today.day && user.date_of_birth.month == Date.today.month
+		end
+	
+	if !today.empty?
+%>
+<b>
+<%=
+	"Today:"
+%>
+</b>
+<br>
+<%
+		today.each do |user|
+%>
+<%= 
+	link_to("#{user.lastname}, #{user.firstname}", :controller=>"user", :action=>"show", :id=>user.dn) + " (#{Date.today.year - user.date_of_birth.year})."
+%>
+<br>
+<%
+		end
+	end 
+%>
+
+<br>
+<br>
+
+<% 		
+	tomorrow = @users.select do |user| 
+		user.date_of_birth.day == Date.today.next.day && user.date_of_birth.month == Date.today.next.month
+		end
+	
+	if !tomorrow.empty?
+%>
+<b>
+<%=
+	"Tomorrow:"
+%>
+</b>
+<br>
+<%
+		tomorrow.each do |user|
+%>
+<%= 
+	link_to("#{user.lastname}, #{user.firstname}", :controller=>"user", :action=>"show", :id=>user.dn) + " (#{Date.today.year - user.date_of_birth.year})."
+%>
+<br>
+<%
+		end
+	end 
+%>
+
+<br>
+<br>
+
+<% 		
+	d3 = @users.select do |user| 
+		user.date_of_birth.day == Date.today.next.next.day && user.date_of_birth.month == Date.today.next.next.month
+		end
+	
+	if !d3.empty?
+%>
+<b>
+<%=
+	"#{Date.today.next.next.strftime("%A")}: "
+%>
+</b>
+<br>
+<%
+		d3.each do |user|
+%>
+<%= 
+	link_to("#{user.lastname}, #{user.firstname}", :controller=>"user", :action=>"show", :id=>user.dn) + " (#{Date.today.year - user.date_of_birth.year})."
+%>
+<br>
+<%
+		end
+	end 
+%>
+<br>
+<% 		
+	d4 = @users.select do |user| 
+		user.date_of_birth.day == Date.today.next.next.next.day && user.date_of_birth.month == Date.today.next.next.next.month
+		end
+	
+	if !d4.empty?
+%>
+<b>
+<%=
+	"#{Date.today.next.next.next.strftime("%A")}: "
+%>
+</b>
+<br>
+<%
+		d4.each do |user|
+%>
+<%= 
+	link_to("#{user.lastname}, #{user.firstname}", :controller=>"user", :action=>"show", :id=>user.dn) + " (#{Date.today.year - user.date_of_birth.year})."
+%>
+
+<br>
+<br>
+
+<%
+		end
+	end 
+%>
+
+<br>
+<br>
+
+<% 		
+	d5 = @users.select do |user| 
+		user.date_of_birth.day == Date.today.next.next.next.next.day && user.date_of_birth.month == Date.today.next.next.next.next.month
+		end
+	
+	if !d5.empty?
+%>
+<b>
+<%=
+	"#{Date.today.next.next.next.next.strftime("%A")}: "
+%>
+</b>
+<br>
+<%
+		d5.each do |user|
+%>
+<%= 
+	link_to("#{user.lastname}, #{user.firstname}", :controller=>"user", :action=>"show", :id=>user.dn) + " (#{Date.today.year - user.date_of_birth.year})."
+%>
+<br>
+<%
+		end
+	end 
+%>
+
+
+<br>
+<br>
+
+
+<% 		
+	d6 = @users.select do |user| 
+		user.date_of_birth.day == Date.today.next.next.next.next.next.day && user.date_of_birth.month == Date.today.next.next.next.next.next.month
+		end
+	
+	if !d6.empty?
+%>
+<b>
+<%=
+	"#{Date.today.next.next.next.next.next.strftime("%A")}: "
+%>
+</b>
+<br>
+<%
+		d6.each do |user|
+%>
+<%= 
+	link_to("#{user.lastname}, #{user.firstname}", :controller=>"user", :action=>"show", :id=>user.dn) + " (#{Date.today.year - user.date_of_birth.year})."
+%>
+<br>
+<%
+		end
+	end 
+%>

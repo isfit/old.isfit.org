@@ -1,0 +1,62 @@
+<h1>Functionary details</h1>
+<% form_for :filter, @filter, :html => {:method => :get} do |f| %>
+<h2>Filter</h2>
+<table cellpadding="5" style="padding-left: 10px;margin-left:2px;border-left:4px solid #ccc">
+	<tr>
+		<td>Only show functionaries without NTNU card no.</td>
+		<td<%= f.check_box :miss_ntnu, :checked => (params[:filter] and 
+			params[:filter][:miss_ntnu] == '1') %></td>
+	</tr>
+	<tr>
+		<td>&nbsp;- Only show functionaries not studying at NTNU</td>
+		<td<%= f.check_box :not_ntnu, :checked => (params[:filter] and 
+			params[:filter][:not_ntnu] == '1') %></td>
+	</tr>
+	<tr>
+		<td>Only show functionaries without ISFiT card no.</td>
+		<td<%= f.check_box :miss_isfit, :checked => (params[:filter] and 
+			params[:filter][:miss_isfit] == '1') %></td>
+	</tr>
+	<tr>
+		<td>Only show functionaries without Samfundet card no.</td>
+		<td<%= f.check_box :miss_samfundet, :checked => (params[:filter] and 
+			params[:filter][:miss_samfundet] == '1') %></td>
+	</tr>
+</table>
+<br />
+<%= f.submit "Filter" %>
+<% end %>
+<h2><%= @admin.description %></h2>
+<% @admin.units.each do |a| %> 
+	<%= render :layout => 'user/list_functionaries', :locals => {:group => a} %>
+<% end %>
+<br>
+
+<h2><%= @cult.description %></h2>
+<% @cult.units.each do |c| %> 
+<%= render :layout => 'user/list_functionaries', :locals => {:group => c} %>
+<% end %>
+<br>
+
+<h2><%= @eco.description %></h2>
+<% @eco.units.each do |e| %> 
+<%= render :layout => 'user/list_functionaries', :locals => {:group => e} %>
+<% end %>
+<br>
+
+<h2><%= @pr.description %></h2>
+<% @pr.units.each do |pr| %> 
+<%= render :layout => 'user/list_functionaries', :locals => {:group => pr} %>
+<% end %>
+<br>
+
+<h2><%= @proj.description %></h2>
+<% @proj.units.each do |p| %> 
+<%= render :layout => 'user/list_functionaries', :locals => {:group => p} %>
+<% end %>
+<br>
+
+<h2><%= @theme.description %></h2>
+<% @theme.units.each do |t| %> 
+<%= render :layout => 'user/list_functionaries', :locals => {:group => t} %>
+<% end %>

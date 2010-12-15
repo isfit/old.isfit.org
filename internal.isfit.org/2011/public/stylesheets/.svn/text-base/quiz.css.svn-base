@@ -1,0 +1,66 @@
+#quiztable {
+	width: 700px;
+	padding: 0;
+	margin: 0;
+}
+
+th.quiz {
+	font: bold 11px Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+	border-right: 1px solid #C1DAD7;
+	border-left: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background: #CAE8EA;
+}
+
+td.quiz {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	background: #fff;
+	padding: 6px 6px 6px 12px;
+	color: #4f6b72;
+}
+
+td.quiz_alt {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	background: #F5FAFA;
+	padding: 6px 6px 6px 12px;
+	color: #797268;
+}
+
+
+#quizformtable {
+	width: 750px;
+	padding: 0;
+	margin: 0;
+}
+
+th.quizform {
+	font: bold 11px Verdana, Arial, Helvetica, sans-serif;
+	color: #fff;
+	border-right: 1px solid #000;
+	border-left: 1px solid #000;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background: #6C8E48;
+}
+
+td.quizform {
+	border-right: 1px solid #6C8E48;
+	border-bottom: 1px solid #6C8E48;
+	background: #fff;
+	padding: 6px 6px 6px 12px;
+	color: #000;
+}
+
+

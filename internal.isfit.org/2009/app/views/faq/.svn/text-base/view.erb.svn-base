@@ -1,0 +1,16 @@
+<h1>
+<%= @results.title %></h1>
+<% 
+@results.body.gsub!(/\[([img]+) ([^\]]+)\]/ , image_tag('\2')) 
+@results.body.gsub!(/\[([^\s]+) ([^\]]+)\]/) do |b|
+	link_to($2, :id => $1)
+end
+
+%>
+
+<%= @results.body %>
+<BR><BR>
+<% if @access %>
+<%= link_to(image_tag("icon/edit.png", :alt => "Edit", :title => "Edit", :border => 0), :controller => "faq", :action => "edit", :id => @results.id )%>
+<%= link_to(image_tag("icon/trash.png", :alt => "Delete", :title => "Delete", :border => 0), :controller => "faq", :action => "delete", :id => @results.id )%>
+<% end %>

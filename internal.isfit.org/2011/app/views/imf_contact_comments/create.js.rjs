@@ -1,0 +1,3 @@
+page.insert_html :top, :comments, :partial => @imf_contact_comment
+#page[@imf_contact_comment].visual_effect :grow
+page[:new_imf_contact_comment].reset

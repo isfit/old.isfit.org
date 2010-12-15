@@ -1,0 +1,38 @@
+<h1>Editing page</h1>
+<style>
+	.leftline {
+		padding-left: 10px;
+		margin-left: 2px;
+		border-left: 4px solid #ccc;
+	}
+</style>
+
+<% form_for(@page, :url => {:tab => params[:tab], :action=>'update'}) do |f| %>
+  <%= f.error_messages %>
+  <h2>Picture</h2>
+  <p>
+  <%=link_to 'Edit Main Picture', {:controller => 'pictures', :action => 'new_page', :tab=>params[:tab], :page_id => @page.id}, {:popup => true} %>
+</p>
+ <h2>Content</h2>
+  <h3>English version</h3>
+  <div class="leftline">
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title_en , :style => "width: 80%"%>
+  </p>
+  <p>
+    <%= f.label :ingress %><br />
+    <%= f.text_area :ingress_en , :style => "width: 80%"%>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body_en , :style => "width: 80%"%>
+  </p>
+</div>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', spp_page_path(params[:tab], @page) %> |
+<%= link_to 'Back', spp_pages_path %>

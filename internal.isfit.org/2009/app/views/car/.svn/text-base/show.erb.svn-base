@@ -1,0 +1,52 @@
+<%if params[:id]%>
+	<h1>Car details</h1>
+	<table>
+		<tr>
+			<th width=110 align=left>Name:</th>
+			<td width=400 align=left valign=top><%=@name%></td>
+		</tr>
+		<tr>
+			<th width=110 align=left>Max passengers:</th>
+			<td width=400 align=left><%=@max%></td>
+		</tr>
+		<tr>
+			<th width=110 align=left>Description:</th>
+			<td width=400 align=left valign=top><%=@description%></td>
+		</tr>
+		<tr>
+			<th width=110 align=left valign=top>Picture:</th>
+			<td width=400 align=left valign=top><%=image_tag "car_images/#{@name}.jpg", :alt=> "#{@short_description}"%></td>
+		</tr>
+	</table>
+	<br>
+	<%=link_to "Back to car selection", :controller => "car", :action =>"show", :id =>""%>	
+	<%if @access%>
+		<%=link_to "Edit car", :controller => "car", :action =>"edit", :id =>params[:id]%>	
+		<%=link_to "Delete car", :controller => "car", :action =>"delete", :id =>params[:id]%>
+	<%end%>
+			
+<%else%>
+	<h1>Cars</h1>
+	<br>
+	<table cellspacing=0 cellpadding=1>
+		<tr>
+			<th width=100 align=left>Name</th>
+			<th width=100 align=left>Max passengers</th>
+			<th width=200 align=left>Short description</th>
+		</tr>
+		<% @cars.each do |car| %>
+			<%if car.deleted==0%>
+				<tr>
+					<td><%=link_to "#{car.name}", :controller => "car", :action =>"show", :id =>"#{car.id}"%></td>
+					<td align=center><%=car.max_passengers%></td>
+					<td><%=car.short_description%></td>
+				</tr>
+			<%end%>
+		<%end%>
+	</table>
+	<br>
+	<%if @access%>
+		<%=link_to "<button>Add new car</button>", :controller => "car", :action =>"add", :id =>""%>
+	<%end%>
+	<br>
+<%end%>

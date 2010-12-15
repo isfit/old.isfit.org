@@ -1,0 +1,1 @@
+<%=link_to(section.name_no, section_path(( params[:tab]) , section))%><br>

@@ -14,6 +14,17 @@ class Postoffice < ActionMailer::Base
     mail(:to => email, :subject => "Application registered")
 
   end
+  
+  def press_acc(id)
+    @recipients   = "nicolajbroby@gmail.com"
+    @subject      = "Ny presseakkreditering"
+    @sent_on      = Time.now
+    @content_type = "text/plain"
+	@press_accreditation = PressAccreditation.find(id)
+	
+	mail(:to => @recipients, :subject => @subject)
+
+  end
 
   def fund(application, files, mails)
     #@recipients   = "leader.stiftelsen@isfit.org"

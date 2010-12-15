@@ -1,0 +1,39 @@
+<h1>Editing economy_contact_person</h1>
+
+<% form_for(@economy_contact_person, :url => {:controller => "economy_contact_people", :tab => params[:tab], :action => "update" }) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname %>
+  </p>
+  <p>
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname %>
+  </p>
+  <p>
+    <%= f.label :phone1 %><br />
+    <%= f.text_field :phone1 %>
+  </p>
+  <p>
+    <%= f.label :phone2 %><br />
+    <%= f.text_field :phone2 %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', economy_contact_person_url(params[:tab],@economy_contact_person) %>

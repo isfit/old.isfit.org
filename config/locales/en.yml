@@ -2,6 +2,19 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  press_accreditations:
+    header: "Press accreditation"
+    organization: "Organization:"
+    firstname: "First name:"
+    surname: "Surname:"
+    function: "Function:"
+    day_period: "Day [DD.MM.YYYY] or period [DD.MM.YYYY - DD.MM.YYYY]:"
+    access_whole_festival: "Check off if you want access for the whole festival:"
+    email: "E-mail:"
+    phone: "Phone:"
+    birth: "Date of birth:"
+    remarks: "Remarks:"
+    submit: "Submit"
   donations:
     donate: "Support a participant"
   layout:

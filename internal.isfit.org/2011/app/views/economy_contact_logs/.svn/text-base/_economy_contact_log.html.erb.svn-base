@@ -1,0 +1,25 @@
+<% if not economy_contact_log.deleted == 1 %> 
+<% div_for economy_contact_log, :class => "comment" do %>
+<hr>
+<span class="author">
+  <% if economy_contact_log.author %>
+    <%=h economy_contact_log.author%>
+  <% else %>
+    <%=h LdapUser.get_by_id(economy_contact_log.functionary_id).firstname %>
+  <% end %> 
+  for <%=h economy_contact_log.festival.name %> 
+  <% if @edit_all || current_user.id == economy_contact_log.functionary_id %>
+    | <%= link_to 'Edit', edit_economy_contact_log_url(params[:tab], economy_contact_log) %> 
+    | <%= link_to 'Destroy', economy_contact_log_url(params[:tab], economy_contact_log), :confirm => 'Are you sure? This cannot be undone!', :method => :delete %>
+  <% end %>
+</span>
+<h4 class="economy_contact_log">Description</h4>
+  <p class="economy_contact_log_text">
+    <%= economy_contact_log.body %>
+  </p>
+<h4 class="economy_contact_log">Advice</h4>
+<p class="economy_contact_log_text">
+  <%= economy_contact_log.advice %>
+</p>
+<% end %>
+<% end %>

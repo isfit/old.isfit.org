@@ -1,0 +1,26 @@
+<h1>Car Reservation</h1>
+
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+<tr>
+	<th>When:</th> 
+	<td><%=@time_from%> <%=@time_to%></td>
+</tr>
+<tr>
+	<th>Travel route:</th> 
+	<td><%=@reservation.route%></td>
+</tr>
+<tr>
+	<th>Comment:</th>
+	<td><%=@reservation.comment%></td>
+</tr>
+<tr>
+	<th>Reserved by:</th>
+	<td><%=LdapUser.get_by_id(@reservation.user_id).firstname%> <%=LdapUser.get_by_id(@reservation.user_id).lastname%> (<%=LdapUser.get_by_id(@reservation.user_id).phones%>), <%=LdapUser.get_by_id(@reservation.user_id).unit.description%></td>
+</tr>
+</table>
+
+<%if @transportmember || @reservation.user_id == @user%>
+	<%=link_to "Edit", :controller => "car_reservation", :action =>"edit", :res_id=>@reservation.id, :car_id=>params[:car_id], :month=>params[:month], :day=>params[:day], :hour=>params[:hour]%>
+	<%=link_to "Delete", :controller => "car_reservation", :action =>"delete", :res_id=>@reservation.id%>
+<%end%>	
+	

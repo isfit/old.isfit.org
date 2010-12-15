@@ -1,0 +1,20 @@
+<%=@rominfo_1%>
+
+	<!--Checks wether the booking was accepted-->
+	<%if @cancel == true%>
+		<br>
+		<h4>Something went wrong:</h4>
+		Sorry, someone else just booked that (or one of those) time(s). Please try again.
+	<%else%>
+		<br>
+		<h4>You have reserved <%=@antall_tider_booket%> times:</h4>
+		
+		<!-- Prints out every booking done by the user-->
+		<%for i in 0..@day.size-1%>
+			<br><b><%=i+1%>.</b> <%=@room_name[i]%> for <%=@day[i]%> at <%=@time[i]%> in week <%=@week[i]%>, <%=@this_year[i]%>
+		<%end%>
+		
+	<%end%>
+	<br>
+	<br>
+	<%=link_to "Back to roomreservation", :controller =>"roombooking", :action =>"show", :id =>"#{@week[0]}_#{@this_year[0]}"%>

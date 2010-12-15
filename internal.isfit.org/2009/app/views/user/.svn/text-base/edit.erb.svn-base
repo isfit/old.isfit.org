@@ -1,0 +1,245 @@
+	<% form_for :user, @user,:html=> { :multipart => true } do |f| %>
+		<% form_for :func, @func,:html=> { :multipart => true } do |g| %>
+
+<table cellpadding=10>
+	<tr>
+		<td><h1>Edit profile</h1></td>
+	</tr>
+	<tr>
+		<td>
+			<table cellpadding=2>
+				<tr>
+					<td><b>Name</b>:</td>
+					<td><%= "#{@user.lastname}, #{@user.firstname}" %></td>
+					<td> </td>
+					<td><b>* Place of study: </b></td>
+					<td><%= g.collection_select(:study_place, StudyPlace.find(:all),
+						:id, :name) %>
+					</td>
+				</tr>
+					
+				<tr>
+					<td><b>Position</b>:</td>
+					<td><%= @user.title %></td>
+					<td>   </td>
+					<td><b>* Field of study: </b></td>
+					<td><%= g.text_field (:study, {:class => 'form'})%></td>
+				</tr>
+					
+				<tr>
+					<td valign=top><b>E-mail(s)</b>:</td>
+					<td><%= 
+						emails = [] 
+						if @user.has_system_account?
+							emails.push(@user.username)
+						end
+						emails.concat(@user.mails)
+						emails.collect! do |email|
+							unless email.index('@')
+								email += '@isfit.org'
+							end
+							email
+						end
+						emails.join(", <br />")
+					%></td>
+					<td>   </td>
+					<td><b>* Private e-mail:</b></td>
+					<td><%= g.text_field (:private_mail, {:class => 'form'})%></td>
+				</tr>
+					
+				<tr>
+					<td valign=top><b>* Phone(s)</b>:</td>
+					<td><%= f.text_field(:phones, {:value => (params[:user] and
+								params[:user][:phones]) ? params[:user][:phones] : 
+								@user.phones.join(', '), :class => 'form'}) %><br />
+						(<em>Separate by comma</em>)
+					</td>
+					<td>   </td>
+					<td><b>Cardnumber NTNU</b>:</td>
+					<td><%= g.text_field (:cardnumber_ntnu, {:class => 'form'})%><br />
+					(<em>Enter -1 if you don't study at NTNU</em>)</td>
+				</tr>
+					
+				<tr>
+					<td valign=top><b>* Address</b>:</td>
+					<td>Street:<br />
+					 <%= f.text_field(:street, {:class => 'form'}) %></td>
+					<td>   </td>
+					<td><b>Cardnumber Samfundet</b>:</td>
+					<td><%= g.text_field (:cardnumber_samfundet, {:class => 'form'})%></td>
+				</tr>
+				   
+				<tr>
+					<td></td>
+					<td>Postal code:<br />
+					<%= f.text_field(:postal_code, {:class => 'form'}) %></td>
+					<td>   </td>
+					<td><b>* Already have internal<br /> Samfundet card:</b> (Gjengkort)</td>
+					<td>
+						<%= g.radio_button(:have_group_card, "1") %> Yes
+						<%= g.radio_button(:have_group_card, "0") %> No
+					</td>
+				</tr>
+					
+				<tr>
+					<td></td>
+					<td>Postal place:<br />
+						<%= f.text_field(:postal_address, {:class => 'form'}) %></td>
+					<td>   </td>
+					<td valign=top><b>* Next of kin:</b></td><td>Name:<br>
+					<%= g.text_field (:next_of_kin_name, {:class => 'form'})%> </td>
+				 </tr>
+				  
+				 <tr>
+					<td><b>* Date of birth</b>:</td>
+					<td><%= f.text_field(:date_of_birth, {:value => (params[:user] and
+						params[:user][:date_of_birth]) ? params[:user][:date_of_birth] :
+						(@user.date_of_birth ? @user.date_of_birth.strftime('%d.%m.%Y') : ''), 
+						:class => 'form'}) %>
+						(<em>dd.mm.yyyy</em>)</td>
+					<td>   </td>
+					<td></td> <td>Phone number: <br>
+					<%= g.text_field (:next_of_kin_tlf, {:class => 'form'})%></td>
+				</tr>
+
+				<tr>
+					<td><b>Gender</b>:</td>
+					<td><%= f.select(:gender, {'Not selected' => 0,
+							'Male' => 1, 'Female' => 2}) %></td>
+					<td>   </td>
+					<td> <b> Can lend skies to a participant: </td>
+					<td> 
+					     <%= g.radio_button(:has_skies, "1") %> Yes
+					     <%= g.radio_button(:has_skies, "0") %> No
+					</td>
+				</tr>
+				  
+				<tr>
+					<td><b>Portrait:</b></td>
+					<td><%= file_field_tag "image" %></td>
+					<td> </td>
+					<td> <b>Ski boots size: </b></td>
+					<%	sizes = []
+					    	for i in 0..15 	
+					    		sizes[i] = i+30
+					    	end
+					    %>
+					    
+					<td> <%= g.select :shoe_size , sizes %> </td>
+				</tr>
+					
+				<tr>
+					<td valign=top><b>Work tasks in ISFiT</b>:</td>
+					<td><%= g.text_area :tasks, :size => "50x3"%></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+<!--	
+	<tr>
+		<td>
+			<table>
+				<tr>
+					<td><b><h3>* Dietary needs: </b></h3></td>
+				</tr>
+				 
+				<tr>
+					<td><b>No dietary needs</b>:</td>
+					<td><%= g.check_box :no_allergies %></td>
+				</tr>
+				  
+				<tr>
+					<td><b>Vegetarian</b>:</td>
+					<td><%= g.check_box :vegetarian %></td>
+				</tr>
+					
+				<tr>
+					<td><b>Lactose</b>:</td>
+					<td><%= g.check_box :lactose %></td>
+				</tr>
+					
+				<tr>
+					<td><b>Gluten</b>:</td>
+					<td><%= g.check_box :gluten %></td>
+				</tr>
+				
+				<tr>
+					<td><b>Nut intolerance</b>:</td>
+					<td><%= g.check_box :nut_allergy %></td>
+				</tr>
+					
+				<tr>
+					<td><b>Fruit intolerance</b>:</td>
+					<td><%= g.check_box :fruit %></td>
+				</tr>
+					
+				<tr>
+					<td valign=top><b>Other food intolerances</b>:</td>
+					<td><%= g.text_area :other, :size => "50x5"%>
+					</td>	  
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td><i>(Applies only for food intolerances or allergies)</i></td>
+				</tr>
+				  
+			</table>
+		</td>	
+	</tr>
+-->	
+	<tr>
+		<td>
+			<table cellpadding=2>
+				<tr>
+					<td><b><h3>Change password:</h3></b></td>
+					
+				</tr>
+					
+				<tr>
+					<td><b>New password</b>:</td>
+					<td><%= password_field_tag(:new_password, nil, {:class => 'form', :autocomplete => false}) %></td>
+					<td>&nbsp;&nbsp;&nbsp;</td>
+					<td rowspan=3><i>Password must be at least 8 characters long,<br>
+						containing both uppercase (A-Z) and lowercase (a-z)<br>
+						and letters as well as digits (0-9). </i></td>
+				</tr>
+				  
+				<tr>
+					<td><b>Verify password</b>:</td>
+					<td><%= password_field_tag(:verify_password, nil, {:class => 'form'}) %></td>
+				</tr>
+					
+			</table>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+			<table>
+					
+				<tr>
+					<td><b><h3>Save changes:</h3></b></td>
+				</tr>
+				
+				<tr>
+					<td colspan=2>
+						<i>Please enter your password to authorize the changes</i>
+					</td>	
+				</tr>
+				<tr>
+					<td><b>Password</b>:</td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= password_field_tag(:password, nil, {:class => 'form', :autocomplete => false}) %></td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>	
+				  
+				<tr><td><%= submit_tag %></td></tr>
+			</table>
+		</td>
+	</tr>	
+</table>			
+  <% end %>
+<% end %>

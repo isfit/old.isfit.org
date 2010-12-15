@@ -1,0 +1,62 @@
+<style>
+	.leftline {
+		padding-left: 10px;
+		margin-left: 2px;
+		border-left: 4px solid #ccc;
+	}
+</style>
+
+<h1><%= params[:id] ? "Edit" : "Create new" %> page</h1>
+
+	<% form_for :page, @page, :html=> { :multipart => true },
+		:url => { :action => "create", 
+		:id => params[:id]  } do |f|
+	%>
+
+<h2>Content</h2>
+
+<h3>Select tab for page</h3>
+<div class="leftline">
+	<%#= select_tag "temp_url", options_for_select(@links)%>
+	<%=select(:page,:tag, @links)%>
+</div>
+	
+
+<h3>Norwegian version</h3>
+<div class="leftline">
+<p><b>Title:</b><br />
+<%= f.text_field :title_no, :style => "width: 750px" %>
+</p>
+<p><b>Ingress:</b><br />
+<%= f.text_area :ingress_no, :rows => 5, :style => "width: 750px" %>
+</p>
+<p><b>Body:</b><br />
+<%= f.text_area :body_no, :rows => 15, :style => "width: 750px" %>
+</p>
+</div>
+
+<h3>English version</h3>
+<div class="leftline">
+<p><b>Title:</b><br />
+<%= f.text_field :title_en, :style => "width: 750px" %>
+</p>
+<p><b>Ingress:</b><br />
+<%= f.text_area :ingress_en, :rows => 5, :style => "width: 750px" %>
+</p>
+<p><b>Body:</b><br />
+<%= f.text_area :body_en, :rows => 15, :style => "width: 750px" %>
+</p>
+</div>
+
+<!-- <h3>Picture</h3>
+<div class="leftline">
+ <%#= clever_image_tag "page_images/#{@page.id}.jpg",
+	:style => "margin-bottom: 20px; display: block" %>
+Upload new picture:
+<div><%#= file_field_tag "image" %></div>
+</div> -->
+
+<p><%= f.submit "Save page" %></p>
+<% end %>
+
+<%= render :partial =>"frontend_article/formatting"%>

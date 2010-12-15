@@ -1,0 +1,196 @@
+<h1>Participant Statistics</h1>
+<%= 
+	new_params = params.clone
+	new_params[:id] = 'country'
+
+link_to('Country distribution', new_params) %> |
+<%= 
+	new_params = params.clone
+	new_params[:id] = 'region'
+
+link_to('Region distribution', new_params) %> |
+<%= 
+	new_params = params.clone
+	new_params[:id] = 'gender'
+
+link_to('Gender distribution', new_params) %> |
+<%= 
+	new_params = params.clone
+	new_params[:id] = 'age'
+
+link_to('Age distribution', new_params) %> |
+<%= 
+	new_params = params.clone
+	new_params[:id] = 'ws'
+
+link_to('Workshop distribution', new_params) %>
+<% if params[:id] == "region" %>
+<p>
+  <%= render(:partial => 'search') %>
+</p>
+<h3>Region Distribution</h3>
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+	<tr>
+		<td><b>Region</b></td>
+		<td style="text-align: right"><b>Count</b></td>
+		<td style="text-align: right"><b>TS A.</b></td>
+	</tr>
+	<% row = 1 %>
+	<% @participants.each do |participant| %>
+	<tr<%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+		<td><%= participant.region_name %></td>
+		<td style="text-align: right"><%= participant.count %></td>
+		<td style="text-align: right"><%= participant.amount %></td>
+	</tr>		
+	<% row += 1 %>
+	<% end %>
+	<tr>
+		<td><b>Total:</b></td>
+		<td style="text-align: right"><b><%= @total%></b></td>
+		<td style="text-align: right"><b><%= @total_amount%></b></td>
+	</tr>
+</table>
+<% elsif params[:id] == "gender" %>
+<p>
+  <%= render(:partial => 'search') %>
+</p>
+<h3>Gender Distribution</h3>
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+	<tr>
+		<td><b>Gender</b></td>
+		<td style="text-align: right"><b>Count</b></td>
+	</tr>
+	<% row = 1 %>
+	<% @participants.each do |participant| %>
+	<tr<%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+		<td><%=@genders[participant[0]]%></td>
+		<td style="text-align: right"><%=participant[1]%></td>
+	</tr>
+	<% row += 1 %>
+	<% end %>
+	<tr>
+		<td><b>Total:</b></td>
+		<td style="text-align: right"><b><%= @total%></b></td>
+	</tr>
+</table>
+<% elsif params[:id] == "age" %>
+<p>
+  <%= render(:partial => 'search') %>
+</p>
+<h3>Age Distribution</h3>
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+	<tr>
+		<td><b>Age</b></td>
+		<td style="text-align: right"><b>Count</b></td>
+	</tr>
+	<% row = 1 %>
+	<% @participants.each do |participant| %>
+	<tr<%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+		<td><%=participant[0]%></td>
+		<td style="text-align: right"><%=participant[1]%></td>
+	</tr>
+		
+	<% row += 1 %>
+	<% end %>
+	<tr>
+		<td><b>Total:</b></td>
+		<td style="text-align: right"><b><%= @total%></b></td>
+	</tr>
+</table>
+
+<% elsif params[:id] == "ws"%>
+<p>
+<%= render(:partial => 'search') %>
+</p>
+<h3>Workshop Distribution</h3>
+<table cellspacing="0" cellpadding="4">
+<tr valign="top">
+  <td>
+   <table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+   	<tr>
+   		<td><b>Workshop</b></td>
+   		<td style="text-align: right"><b>1st choice</b></td>
+   	</tr>
+   	<% row = 1 %>
+   	<% @participants1.each do |participant1| %>
+   	<tr<%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+   		<td><%=participant1[0]%></td>
+   		<td style="text-align: right"><%=participant1[1]%></td>
+   	</tr>
+   	<% row += 1 %>
+   	<% end %>
+   	<tr>
+   		<td><b>Total:</b></td>
+   		<td style="text-align: right"><b><%= @total%></b></td>
+   	</tr>
+   </table>
+   </td> 
+   <td>
+   <table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+   	<tr>
+   	  <td><b>Workshop</b></td>
+   		<td style="text-align: right"><b>2nd choice</b></td>
+   	</tr>
+   	<% row = 1 %>
+   	<% @participants2.each do |participant2| %>
+   	<tr<%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+   	  <td><%=participant2[0]%></td>
+   		<td style="text-align: right"><%=participant2[1]%></td>
+   	</tr>
+   	<% row += 1 %>
+   	<% end %>
+   	<tr>
+   		<td><b>Total:</b></td>
+   		<td style="text-align: right"><b><%= @total%></b></td>
+   	</tr>
+   </table>
+   </td>
+   <td>
+   <table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+   	<tr>
+   	  <td><b>Workshop</b></td>
+   		<td style="text-align: right"><b>assigned</b></td>
+   	</tr>
+   	<% row = 1 %>
+   	<% @participants3.each do |participant3| %>
+   	<tr<%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+   	  <td><%=participant3[0]%></td>
+   		<td style="text-align: right"><%=participant3[1]%></td>
+   	</tr>
+   	<% row += 1 %>
+   	<% end %>
+   	<tr>
+   		<td><b>Total:</b></td>
+   		<td style="text-align: right"><b><%= @total%></b></td>
+   	</tr>
+   </table>
+   </td>
+ </tr>
+</table>
+<% else params[:id] == "country"%>
+<p>
+  <%= render(:partial => 'search') %>
+</p>
+<h3>Country Distribution</h3>
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+	<tr>
+		<td><b>Country</b></td>
+		<td style="text-align: right"><b>Count</b></td>
+		<td style="text-align: right"><b>TS A.</b></td>
+	</tr>
+	<% row = 1 %>
+	<% @participants.each do |participant| %>
+	<tr<%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+		<td><%= participant.country_name %></td>
+		<td style="text-align: right"><%= participant.count %></td>
+		<td style="text-align: right"><%= participant.amount %></td>
+	</tr>
+	<% row += 1 %>
+	<% end %>
+	<tr>
+		<td><b>Total:</b></td>
+		<td style="text-align: right"><b><%= @total%></b></td>
+		<td style="text-align: right"><b><%= @total_amount%></b></td>
+	</tr>
+</table>
+<% end %>

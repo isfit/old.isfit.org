@@ -1,0 +1,26 @@
+<% form_for :faq, @faq, :url => { :action => "edit" } do |f| %>
+
+<TABLE aLIGN="LEFT">
+	<TR>
+		<TD><H3>Edit FAQ for <%= @faq.id %></H3></TD>
+		
+	</TR>
+	<TR>
+			<TD>
+			<%= f.hidden_field :id , :value => @faq.id%> 
+			<%= f.text_field :title, :style => "width: 800px" %>
+			</TD>
+	</TR>
+	<TR>
+		<TD><%= f.text_area :body, :rows => 30, :style => "width: 800px" %></TD>
+	</TR>
+	<TR>
+		
+		<TD>
+		<%= submit_tag "Submit changes" %>
+		
+		</TD>
+		
+	</TR>
+</TABLE>
+<%end%>

@@ -1,0 +1,20 @@
+<% if @error %>
+<h1>ISFiT 2009 Sweater Collection</h1>
+<h2>Noe gikk desverre galt. Venligst prøv en gang til.</h2> 
+
+>Typisk feil: 
+<ul>
+<li>Feil medlemsnummer på samfundet...</li>
+<li>Event solgt ut...</li>
+<li>For sent å handle...</li>
+</ul>
+
+<br />
+	<% unless @exception.nil? %>
+	Din feil: <br />
+	<i><%= @exception.message %></i>
+
+	<br /><br />
+	Rapporter gjerne feilen til orakel@isfit.org om den ikke gir mening.
+	<% end %>
+<%end %>

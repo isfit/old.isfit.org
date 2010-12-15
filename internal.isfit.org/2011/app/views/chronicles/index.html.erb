@@ -1,0 +1,28 @@
+<h1>Chronicles</h1>
+
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+	<tr>
+        <td width="200"><b>English title</b></td>
+        <td width="230"><b>Norwegian title</b></td>
+        <td width="80"><b>Created</b></td>
+        <td width="70"><b>Priority</b></td>
+		<td></td>
+		<td></td>
+    </tr>
+<% row = 1 %>
+<% @chronicles.each do |chronicle| %> 
+    <tr class="article_tr<%= row % 2 == 1 ? ' alternate' : '' %>">
+      <td><%= chronicle.title_en != '' ? chronicle.title_en : "<em>No English version</em>" %> </td>
+      <td><%= chronicle.title_no != '' ? chronicle.title_no : "<em>No Norwegian version</em>" %></td>
+      <td><%= chronicle.created_at.strftime("%d %b %Y") %></td>
+      <td><%=link_to("up", :action=>"moveup", :id => chronicle.id)%> <%=link_to("down", :action=>"movedown", :id => chronicle.id)%></td>
+    <td><%= link_to 'Edit', edit_chronicle_path(params[:tab],chronicle) %></td>
+    <td><%= link_to 'Destroy', chronicle_path(params[:tab], chronicle), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% row += 1 %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Chronicle', new_chronicle_path(params[:tab]) %>

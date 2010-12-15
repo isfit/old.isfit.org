@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  		<%= stylesheet_link_tag('default') %>
+                <%= stylesheet_link_tag('calendar') %>
+		<%= stylesheet_link_tag 'quiz' %>
+                <%= javascript_include_tag 'prototype' %>
+                <%= stylesheet_link_tag "imgareaselect-default"%>
+                <%= stylesheet_link_tag "imgareaselect-animated"%>
+                <%= stylesheet_link_tag "imgareaselect-deprecated"%>
+                <%= javascript_include_tag 'jquery', 'application' %>
+                <%= javascript_include_tag 'jquery', 'jquery.min'%>
+                <%= javascript_include_tag 'jquery', 'imgareaselect'%>
+		<title>ISFiT Intranet</title>
+	</head>
+	<body>
+		<div id="page">
+			<div id="header">
+					<div style="position:absolute;bottom:0;right:0;color:gray">
+				<% if logged_in? %>
+				<table>
+					<tr>
+				<% #if FestivalenController.is_party == 1 
+					if false %>
+				<td><div style ="margin-top:20px; border: 1px solid silver; padding: 3px; background: #f5f5f5; width:130px; color: black; height: 55px;">
+    				<%= image_tag("banana.gif", :width => "50", :style => "float:left; margin-right:9px; margin-left: 2px;") %>
+    				<%= link_to "Fest på Festivalen!", :action => "lastfm", :controller => :festivalen, :style => "margin-top: 20px" %>
+				</div></td>
+				<%end%>
+        <!--
+				<td><div style="margin-top:20px; border: 1px solid silver; padding: 3px; 
+						background: #f5f5f5;width:130px;color:black; height: 55px">
+					<%= image_tag "duff.jpg", :width => "30", :style => "float:left;margin-right:9px;margin-left:2px;" %>
+					<strong>Andelsbevis</strong><br />
+					Trafoen <br/> 
+					<span style="color: #a20000">200kr kontant</span>
+				</div></td>-->
+				</tr>
+				</table>
+				<% end %>
+					<%if Time.now > Time.local(2011,'feb',10)%>
+					&nbsp; ISFiT has begun
+					<%else%>
+					&nbsp;<%= distance_of_time_in_words(Time.now, Time.local(2011,'feb',10)) %>
+					until ISFiT 2011 
+					<%end%>
+					</div>
+				<div id="bar"> 
+					<%= render(:partial => 'menu/tabs') %>
+				</div>
+			</div>
+			<div id="leftbar">
+				<%= render(:partial => 'menu/groups') %>
+			</div>
+			<div id="content">
+				<% if flash[:warnings] %>
+				<div id="warning">
+					The following errors occured:
+					<ul>
+					<% flash[:warnings].each { |attr,msg| %>
+						<li><%= msg %></li>
+					<% } %>
+					</ul>
+				</div>
+				<% flash[:warnings] = nil %>
+				<% elsif flash[:warning] and not flash[:custom] %>
+				<div id="warning">
+					<%= flash[:warning] %>
+				</div>
+				<% flash[:warning] = nil %>
+				<% end %>
+
+<%= yield %>
+
+			</div>
+		</div>
+	</body>
+</html>

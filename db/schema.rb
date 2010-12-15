@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101026193309) do
+ActiveRecord::Schema.define(:version => 20101116212043) do
 
   create_table "answers", :force => true do |t|
     t.integer "attend",               :limit => 1,                          :null => false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20101026193309) do
   end
 
   create_table "articles", :id => false, :force => true do |t|
-    t.integer  "id",                         :default => 0, :null => false
+    t.integer  "id",                          :default => 0, :null => false
     t.string   "title_en"
     t.string   "title_no"
     t.text     "ingress_en"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(:version => 20101026193309) do
     t.integer  "weight"
     t.datetime "created_at"
     t.boolean  "deleted"
-    t.integer  "press_release", :limit => 1
+    t.integer  "press_release",  :limit => 1
     t.string   "sub_title_no"
     t.string   "sub_title_en"
     t.string   "image_text_no"
@@ -81,7 +81,11 @@ ActiveRecord::Schema.define(:version => 20101026193309) do
     t.boolean  "main_article"
     t.boolean  "published"
     t.string   "byline"
+    t.integer  "byline_func_id"
     t.string   "image_credits"
+    t.integer  "mail_sent"
+    t.datetime "show_article"
+    t.boolean  "got_comments"
   end
 
   create_table "articles_old", :force => true do |t|
@@ -227,7 +231,7 @@ ActiveRecord::Schema.define(:version => 20101026193309) do
     t.text     "why"
     t.string   "where"
     t.integer  "number"
-    t.boolean  "skies"
+    t.integer  "skies"
     t.boolean  "arrival_before"
     t.boolean  "leave_late"
     t.text     "preference"
@@ -253,7 +257,19 @@ ActiveRecord::Schema.define(:version => 20101026193309) do
     t.timestamp "created_at",                   :null => false
   end
 
-  create_table "pages", :force => true do |t|
+  create_table "pages", :id => false, :force => true do |t|
+    t.integer "id",                      :default => 0, :null => false
+    t.string  "title_en",                               :null => false
+    t.string  "title_no",                               :null => false
+    t.text    "ingress_en",                             :null => false
+    t.text    "ingress_no",                             :null => false
+    t.text    "body_en",                                :null => false
+    t.text    "body_no",                                :null => false
+    t.string  "tag",                                    :null => false
+    t.integer "deleted",    :limit => 1, :default => 0, :null => false
+  end
+
+  create_table "pages_old", :force => true do |t|
     t.string  "title_en",                               :null => false
     t.string  "title_no",                               :null => false
     t.text    "ingress_en",                             :null => false
@@ -451,6 +467,21 @@ ActiveRecord::Schema.define(:version => 20101026193309) do
     t.integer "admission_nr",   :limit => 1, :default => 0,     :null => false
   end
 
+  create_table "press_accreditations", :force => true do |t|
+    t.string   "organization"
+    t.string   "firstname"
+    t.string   "surname"
+    t.string   "function"
+    t.string   "day_period"
+    t.boolean  "access_whole_festival"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "birth"
+    t.text     "remarks"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "questions", :force => true do |t|
     t.integer  "participant_id",                                :null => false
     t.datetime "question_datetime",                             :null => false
@@ -501,7 +532,8 @@ ActiveRecord::Schema.define(:version => 20101026193309) do
     t.boolean  "main_article"
   end
 
-  create_table "sublinks", :force => true do |t|
+  create_table "sublinks", :id => false, :force => true do |t|
+    t.integer "id",           :default => 0,     :null => false
     t.integer "tab_id",                          :null => false
     t.text    "title_en",                        :null => false
     t.text    "title_no",                        :null => false
@@ -523,11 +555,23 @@ ActiveRecord::Schema.define(:version => 20101026193309) do
     t.integer "page_id",                         :null => false
   end
 
-  create_table "tabs", :force => true do |t|
-    t.string  "name_en", :limit => 32, :null => false
-    t.string  "name_no", :limit => 32, :null => false
-    t.string  "tag",     :limit => 32, :null => false
-    t.integer "weight",  :limit => 1,  :null => false
+  create_table "sublinks_old2", :force => true do |t|
+    t.integer "tab_id",                          :null => false
+    t.text    "title_en",                        :null => false
+    t.text    "title_no",                        :null => false
+    t.text    "url"
+    t.text    "external_url"
+    t.integer "order",                           :null => false
+    t.boolean "deleted",      :default => false, :null => false
+    t.integer "page_id",      :default => 0
+  end
+
+  create_table "tabs", :id => false, :force => true do |t|
+    t.integer "id",                    :default => 0, :null => false
+    t.string  "name_en", :limit => 32,                :null => false
+    t.string  "name_no", :limit => 32,                :null => false
+    t.string  "tag",     :limit => 32,                :null => false
+    t.integer "weight",  :limit => 1,                 :null => false
     t.boolean "top_bar"
   end
 
@@ -536,6 +580,14 @@ ActiveRecord::Schema.define(:version => 20101026193309) do
     t.string  "name_no", :limit => 32, :null => false
     t.string  "tag",     :limit => 32, :null => false
     t.integer "order",   :limit => 1,  :null => false
+  end
+
+  create_table "tabs_old2", :force => true do |t|
+    t.string  "name_en", :limit => 32, :null => false
+    t.string  "name_no", :limit => 32, :null => false
+    t.string  "tag",     :limit => 32, :null => false
+    t.integer "weight",  :limit => 1,  :null => false
+    t.boolean "top_bar"
   end
 
   create_table "wop_propositions", :force => true do |t|

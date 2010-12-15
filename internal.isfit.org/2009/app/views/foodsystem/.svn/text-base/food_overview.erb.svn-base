@@ -1,0 +1,48 @@
+<%current_meal_count = 0%>
+<%@current_meals_information.each do |meal|%>
+	<h1><%=meal[0]%></h1><%=link_to "Details", :action=>"food_detail", :id=>current_meal_count, :day=>params[:id] %>
+	<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+		<%row = 1%>
+		<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+			<th width="150">GROUP</td>
+			<th width="150">Number of People</td>
+		</tr>
+		<%total=0%>
+		<%row += 1%>
+		<%meal[1].each do |group|%>
+			<%total += group[1]%>
+			<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+				<td><%=group[0]%></td>
+				<td><%=group[1]%></td>
+			</tr>
+			<%row += 1%>
+		<%end%>
+		<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+			<td>Total</td>
+			<td><%=total%>
+		</tr>
+	</table>
+	<h5>Allergies present at this meal:</h5>
+	<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+		<tr align ="center">
+			<th width="150">Name</td>
+			<th width="150">Allergies</td>
+		</tr>
+		
+		<%row = 1%>
+		<%meal[2].each do |allergies|%>
+		<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+			<td><%=LdapUser.get_by_id(allergies[0]).name%></td>
+			<td>
+			<%allergies[1].each do |allergie|%>
+				<%=allergie%>,
+			<%end%>
+			</td>
+		</tr>
+		<%row += 1%>
+		<%end%>
+	</table>
+	<%current_meal_count +=1%>
+	<br />
+	<br />
+<%end%>

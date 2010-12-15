@@ -1,0 +1,8 @@
+<pre>
+<% @controllers.keys.each do |controller| %>
+<%= controller %>
+<% @controllers[controller].each do |action| %>
+- <%= action %>
+<% end %>
+<% end %>
+</pre>

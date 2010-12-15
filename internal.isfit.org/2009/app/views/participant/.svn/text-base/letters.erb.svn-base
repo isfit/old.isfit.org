@@ -1,0 +1,216 @@
+<%
+
+	# Hash containing workshop titles
+	ws = {}
+	ws[1] = "Peace as concept"
+	ws[2] = "Arms Inc. & Tech."
+	ws[3] = "Governing systems"
+	ws[4] = "International Trade"
+	ws[5] = "Health - The cure for conflicts"
+	ws[6] = "Children - the silent voices in society"
+	ws[7] = "Film & Photo - Shooting for Peace"
+	ws[8] = "Peace enforcement"
+	ws[9] = "Religion - Belief in Peace?"
+	ws[10] = "Sports - building a common ground?"
+	ws[11] = "Human rights"
+	ws[12] = "Demobilisation, disarmament & reintegration"
+	ws[13] = "Wo:men"
+	ws[14] = "Development through migration"
+	ws[15] = "Energy & technology"
+	ws[16] = "Music - Jamming for peace"
+	ws[17] = "Student Peace Action Movement"
+
+%>
+<style>
+	body, td {
+		font-family: 'BellGothic BT';
+		font-size: 11pt;
+	}
+	body {
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+</style>
+<% @participants.each do |participant| %>
+<table width="100%">
+	<tr height="100"><td colspan="2"></td></tr>
+	<tr>
+		<td>
+			<b>ISFiT</b><br />
+			Hovedbygget, NTNU<br />
+			Høgskoleringen 1<br />
+			7491 Trondheim<br />
+			NORWAY
+		</td>
+		<td align="right">
+			<%= image_tag('logo.gif', :width => 160) %>
+		</td>
+	</tr>
+	<tr height="20"><td colspan="2"></td></tr>
+	<tr>
+		<td align="right" colspan="2">Trondheim, 01.11.08</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<p>Dear <%= participant.first_name + " " + participant.last_name %>, </p>
+			<p>
+				the International Student Festival in Trondheim (ISFiT) 2009 and the 
+				ISFiT Foundation, hereby confirm that you are invited to participate 
+				in ISFiT 2009, in workshop <%= participant.final_workshop %>: 
+				<%= ws[participant.final_workshop] %>. The conference takes 
+				place in Trondheim, Norway, from 20 February to 1 March 2009.
+			</p>
+			<p>
+				ISFiT 2009 has received about 4300 applications from 149 nations. All 
+				applications have gone through a thorough selection process, where 
+				only the most motivated and dedicated students were selected. On 
+				this basis you are one of the 450 students who we look forward to 
+				meeting in February. 
+			</p>
+			<p>
+				The title of ISFiT 2009 is «Building a Future». Our main topic is 
+				peacebuilding. To build lasting peace is among the most fundamental 
+				challenges the international society face today. ISFiT 2009 wants to 
+				explore how a peaceful future can be built, and what role students 
+				can play in this process. ISFiT is a meeting place where future 
+				leaders are given a chance to be heard, establish networks and learn 
+				from each other.
+			</p>
+			<p>
+				ISFiT 2009 is able to provide travel support for only a few of the 
+				participants. Those who are granted travel support will receive a 
+				separate letter concerning this. Food and accommodation in Trondheim 
+				is free of charge for the participants, and will be taken care of by 
+				ISFiT. 
+			</p>
+			<p>
+				The ISFiT Foundation consists of the Norwegian University of Science 
+				and Technology (NTNU), Sør-Trøndelag University College (HiST), the 
+				Student Society of Trondheim, “Studentsamskipnaden i Trondheim” (SiT), 
+				Trondheim local authority and Sør-Trøndelag County Authority. 
+				Representing the city of Trondheim and its institutions for higher 
+				education, the ISFiT Foundation proudly welcomes you to Trondheim and 
+				ISFiT 2009.
+			</p>
+			<p>
+				We consider it most important that all those who are invited are able 
+				to attend ISFiT 2009. We therefore hope that universities, companies 
+				and embassies will do their best to help the selected participants. 
+			</p>
+			<p>Yours sincerely,</p>
+		</td>
+	</tr>
+	<tr height="20"><td colspan="2"></td></tr>
+	<tr valign="bottom">
+		<td>
+			<%= image_tag('signatures/trygve.jpg', :width => 200,
+				:style => "border-bottom: 1px solid black") %>
+				<p>
+					Trygve Thorson<br />
+					President, ISFiT 2009
+				</p>
+		</td>
+		<td align="right">
+			<%= image_tag('signatures/vineet.jpg', :width => 200,
+				:style => "border-bottom: 1px solid black") %>
+				<p>
+					Vineet Sharma<br />
+					Leader, the ISFiT foundation
+				</p>
+		</td>
+	</tr>
+</table>
+<div style="page-break-after:always"></div>
+<% if participant.travel_assigned == 1 and participant.travel_assigned_amount > 0 %>
+<table width="100%">
+	<tr height="100"><td colspan="2"></td></tr>
+	<tr>
+		<td>
+			<b>ISFiT</b><br />
+			Hovedbygget, NTNU<br />
+			Høgskoleringen 1<br />
+			7491 Trondheim<br />
+			NORWAY
+		</td>
+		<td align="right">
+			<%= image_tag('logo.gif', :width => 160) %>
+		</td>
+	</tr>
+	<tr height="20"><td colspan="2"></td></tr>
+	<tr>
+		<td align="right" colspan="2">Trondheim, 01.11.08</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<p>Dear <%= participant.first_name + " " + participant.last_name %>, </p>
+			<p>
+				You have been granted travel support in the amount of USD 
+				<%= participant.travel_assigned_amount %>.
+			</p>
+			<p>
+				Please note that the travel support will be refunded during the 
+				festival in February 2009. You will be asked to present your ticket 
+				stubs and travel receipts, so please do not throw these away. From 
+				your application and our conducted research, this sum should help you 
+				cover what you need for a round trip ticket from your home country to 
+				Trondheim, Norway. Please note that the travel support does not cover 
+				passport or visa expenses. 
+			</p>
+			<p>
+				We would like you to find tickets directly to Værnes airport in 
+				Trondheim. If you are only able to fly into Gardermoen airport in 
+				Oslo, bus and train transportation to Trondheim will be arranged by 
+				ISFiT. Whether you take ISFiT-transportation one-way or round trip, 
+				it will cost you NOK 400 (approximately USD 65). More information on 
+				travel options is available in the information brochure.
+			</p>
+			<p>
+				An invitation email has been sent to you, where you have been given 
+				access to your own personal profile at 
+				https://www.isfit.org/participant. In this profile there is a scheme 
+				regarding travel information. You must remember to fill in your 
+				travel plans in this scheme by December 15th. If you fail to show us 
+				some proof that you have started to plan your trip by this date, you 
+				risk losing your travel support, as it might be given to someone else.
+			</p>
+			<p>
+				Due to our limited funds, the majority of the travel support 
+				applications have been rejected. For this reason, we kindly ask you 
+				to be discrete towards other participants about your advantageous 
+				situation.
+			</p>
+			<p>
+				We wish you good luck planning your trip and look forward to see you 
+				in Trondheim in February 2009. If you have further questions, please 
+				contact us through your profile at https://www.isfit.org/participant. 
+			</p>
+			<p>Best regards,</p>
+			<p>
+				The Participant Team<br />
+				ISFiT 2009
+			</p>
+		</td>
+	</tr>
+	<tr height="20"><td colspan="2"></td></tr>
+	<tr valign="bottom">
+		<td>
+			<%= image_tag('signatures/hanne.jpg', :width => 200,
+				:style => "border-bottom: 1px solid black") %>
+				<p>
+					Hanne S. Goldstein<br />
+					Head of Participants, ISFiT 2009
+				</p>
+		</td>
+		<td align="right">
+			<%= image_tag('signatures/iina.jpg', :width => 200,
+				:style => "border-bottom: 1px solid black") %>
+				<p>
+					Iina Kristensen<br />
+					Head of Administration, ISFiT 2009
+				</p>
+		</td>
+	</tr>
+</table>
+<div style="page-break-after:always"></div>
+<% end #Travel %>
+<% end #Loop %>

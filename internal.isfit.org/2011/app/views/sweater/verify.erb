@@ -1,0 +1,35 @@
+<h1>ISFiT 2009 Sweater Collection</h1>
+<h2>Verify your order</h2>
+
+You have chosen to buy: <br />
+
+<!-- Bruke id som bildenavn? -->
+
+	<% if FileTest.exists?("#{RAILS_ROOT}/public/images/sweater/#{@event_id}_front.png")%>
+	<div>	
+		<%= image_tag ("sweater/#{@event_id}_front.png" ,:width=>"180") %>
+		<br />
+		&nbsp;&nbsp;							
+		<%= link_to(image_tag("magnify.png", :title => "Zoom", :border=>"0",:width=>"22"),
+			{:action => :show_image, :id => "#{@event_id}"},
+			:popup => ['Zoom', 'height=600,width=1200']) %>
+	</div>				
+	<% else %>
+		<%= image_tag "profile_images/NoPictureAvailable.jpg" ,:align=>"left", :width=>"180", :alt=> "" %>
+	<% end %>
+
+<h3><%=@title%></h3>
+<b>Size: </b><%=@size%><br />
+<b>Price:</b> NOK <%=@price%>
+<br /><br />
+<% form_for :purchase, @purchase,  :url => {:action => :order} do |f| %>
+	<b>Samfundet member id:</b> (Optional, but simplifies distribution)<br />
+	<%= f.text_field :member_id %><br />
+
+	<%= f.hidden_field :price_group, :value => @price_group %>
+	<%= f.hidden_field :price, :value => @price %>
+	<p>Remember to have your Visa or Master card ready before pushing Purchase button.</p>
+	<%= f.submit "Purchase Now!" %><br/>
+<% end %>
+
+

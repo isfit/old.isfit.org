@@ -1,0 +1,43 @@
+<style>
+.leftline {
+  padding-left: 10px;
+  margin-left: 2px;
+  border-left: 4px solid #ccc;
+}
+</style>
+
+<h1>New isfit_media_link</h1>
+
+<% form_for(@isfit_media_link) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :link %><br />
+    <%= f.text_field :link , :style => "width: 80%" %>
+  </p>
+  <div class="leftline">
+  <p>
+    <%= f.label "Norsk tittel (kort beskrivelse på hovedsiden)" %><br />
+    <%= f.text_field :short_desc_no , :style => "width: 80%" %>
+  </p>
+  <p>
+    <%= f.label "Norsk beskrivelse av link" %><br />
+    <%= f.text_area :long_desc_no , :style => "width: 80%" %>
+  </p>
+</div>
+<div class="leftline">
+  <p>
+    <%= f.label "Engelsk tittel (kort beskrivelse på hovedsiden)" %><br />
+    <%= f.text_field :short_desc_en , :style => "width: 80%" %>
+  </p>
+  <p>
+    <%= f.label "Engelsk beskivelse av link" %><br />
+    <%= f.text_area :long_desc_en , :style => "width: 80%" %>
+  </p>
+</div>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', isfit_media_links_path %>

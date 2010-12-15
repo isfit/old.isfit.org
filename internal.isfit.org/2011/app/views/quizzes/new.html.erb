@@ -1,0 +1,24 @@
+<br />
+<%= link_to 'Tilbake', quizzes_path %>
+<br /><br />
+
+<table id="quizformtable">
+  <tr>
+    <th class="quizform">Ny quiz</th>
+  </tr>
+  <tr>
+    <td class="quizform">
+	<% form_for(@quiz) do |f| %>
+	<%= f.error_messages %>
+	Tittel<br />
+	<%= f.text_field :title, :size => '35' %>
+	<br /><br />
+	Beskrivelse<br />
+	<%= f.text_area :description, :cols => '86', :rows => '5' %>
+	<br /><br />
+	<%= f.submit 'Lag quiz' %>
+	<% end %>
+    </td>
+  </tr>
+</table>
+

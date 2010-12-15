@@ -1,0 +1,46 @@
+<%
+
+	def find_people_by_birth_date(date)
+		
+		LdapUser.search("ou=isfit11,ou=units,dc=isfit,dc=org", true,
+			"(&(objectClass=inetOrgPerson)(dateOfBirth=#{
+			date.strftime("%m%d")}*))", ["sn", 
+			"givenName", "dateOfBirth"])
+	end
+
+%>
+<%= image_tag("13.png", :border => 0)%>
+<strong>Upcoming birthdays</strong>
+<br />
+<% 		
+	today = DateTime.now
+	date = today
+
+	for n in 1..7 do
+		people = find_people_by_birth_date(date)
+		unless people.empty?
+%>
+<%= 
+			case n
+				when 1
+					"Today"
+				when 2
+					"Tomorrow"
+				else
+					date.strftime("%A")	
+			end
+%>:<br />
+<% 
+			people.each do |user| 
+%>
+
+<%= link_to("#{user.lastname}, #{user.firstname}", :controller=>"user", 
+	:action=>"show", :id=>user.dn) + " (#{Date.today.year - 
+	user.date_of_birth.year})." %><br />
+
+<% 
+			end
+		end
+		date = date.next
+	end
+%>

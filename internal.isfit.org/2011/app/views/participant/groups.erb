@@ -1,0 +1,15 @@
+<h1>Participant questions</h1>
+<p>Participants that have logged in: <%= @logged_in[0].count %><br />
+Participants attending: <%= @answered.size > 0 ? @answered[0].count : 0 %><br />
+Participants not attending: <%= @answered.size > 1 ? @answered[1].count : 0 %></p>
+<% @count = 0 %>
+<h3>Asia, Oceania and the Middle East</h3>
+<%= render("participant/group", {:group => @g1, :count => 4}) %>
+<h3>Europe and North America</h3>
+<%= render("participant/group", {:group => @g2, :count => 4}) %>
+<h3>North and East Africa</h3>
+<%= render("participant/group", {:group => @g3, :count => 2}) %>
+<h3>South and West Africa</h3>
+<%= render("participant/group", {:group => @g4, :count => 3}) %>
+<h3>Central and South America</h3>
+<%= render("participant/group", {:group => @g5, :count => 2}) %>

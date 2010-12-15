@@ -1,0 +1,37 @@
+<h1><%=@name%></h1>
+
+Do you really want to delete this car?
+<br><br><%=image_tag "car_images/#{@name}.jpg", :alt=> "#{@short_description}"%><br><br>
+This will affect the following reservations:
+<table cellspacing="0" cellpadding="4" style="border: 1px solid #ccc">
+<%row = 1%>
+	<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+		<th width =75>Date</th>
+		<th width =75>Time from</th>
+		<th width =75>Time to</th>
+		<th width =75>From</th>
+		<th width =75>To</th>
+		<th width =150>Comment</th>
+		<th width =50>Unit</th>
+		<th width =150>Contact information</th>
+	</tr>
+	<%row+=1%>
+	<%if @reservation !=nil%>
+		<%@reservation.each do |res|%>
+			<tr align ="center" <%= row % 2 == 1 ? ' class="alternate"' : '' %>>
+				<td align = center><%=res.time_from.strftime("%Y-%m-%d")%></td>
+				<td align = center><%=res.time_from.strftime("%H:%M:%S")%></td>
+				<td align = center><%=res.time_to.strftime("%H:%M:%S")%></td>
+				<td align = center><%=res.from%></td>
+				<td align = center><%=res.to%></td>
+				<td align = center><%=res.comment%></td>
+				<td align = center><%=LdapUser.get_by_id(res.user_id).unit.description%></td>
+				<td align = center><%=LdapUser.get_by_id(res.user_id).firstname%> <%=LdapUser.get_by_id(res.user_id).lastname%> <%=LdapUser.get_by_id(res.user_id).phones%></td>
+			<tr>
+		
+		<%row+=1%>
+
+		<%end%>
+	<%end%>
+</table>
+<%=link_to "Yes, I do,", :controller => "car", :action =>"del", :id => "#{params[:id]}"%> or <%=link_to "No, take me back!", :controller => "car", :action =>"show", :id => "#{params[:id]}"%>

@@ -1,0 +1,86 @@
+<style>
+.leftline {
+  padding-left: 10px;
+  margin-left: 2px;
+  border-left: 4px solid #ccc;
+}
+</style>
+<h1><%= params[:id] ? "Edit" : "Create new" %> article</h1>
+
+<% form_for :article, @article, :html=> { :multipart => true },
+  :url => { :action => "create", 
+    :id => params[:id]  } do |f|
+    %>
+
+    <p><%= params[:id] ? "Edit information and press Save article to update the article." : "Enter article meta and content information and press Save article to create the new article."  %></p>
+
+    <h2>Meta</h2>
+    <table class="leftline">
+    <tr>
+    <td>Article is visible on isfit.org:</td>
+    <td><%= f.check_box "list"%></td>
+    </tr>
+    <tr>
+    <td>Article is a press release:</td>
+    <td><%= f.check_box "press_release"%></td>
+    </tr>
+    <tr>
+    <td>Editor (byline)</td>
+    <td>
+    <%= select_tag 'byline_func[func]',
+    options_from_collection_for_select(@functionaries,:id,:name_reversed,@current_byline.id.to_i)
+    %></td>
+    </table>
+    <p><%= f.submit "Save article" %></p>
+
+    <h2>Content</h2>
+    <h3>Norwegian version</h3>
+    <div class="leftline">
+    <p><b>Title:</b><br />
+    <%= f.text_field :title_no, :style => "width: 750px" %>
+    </p>
+    <p><b>Subtitle:</b><br />
+    <%= f.text_field :sub_title_no, :style => "width: 750px" %>
+    </p>
+    <p><b>Ingress:</b><br />
+    <%= f.text_area :ingress_no, :rows => 5, :style => "width: 750px" %>
+    </p>
+    <p><b>Body:</b><br />
+    <%= f.text_area :body_no, :rows => 15, :style => "width: 750px" %>
+    </p>
+    </div>
+
+    <h3>English version</h3>
+    <div class="leftline">
+    <p><b>Title:</b><br />
+    <%= f.text_field :title_en, :style => "width: 750px" %>
+    </p>
+    <p><b>Subtitle:</b><br />
+    <%= f.text_field :sub_title_en, :style => "width: 750px" %>
+    </p>
+    <p><b>Ingress:</b><br />
+    <%= f.text_area :ingress_en, :rows => 5, :style => "width: 750px" %>
+    </p>
+    <p><b>Body:</b><br />
+    <%= f.text_area :body_en, :rows => 15, :style => "width: 750px" %>
+    </p>
+    </div>
+    <h3>Main photo</h3>
+    <div class="leftline">
+      <%=image_tag "frontend_article_images/#{@article.id}_1.jpg", :size=>"200x100"%><br />
+      <%=link_to "Change main photo", :action=>"new_pic", :id=>@article.id%>
+      <p><b>Image text norwegian</b></p>
+      <%= f.text_field :image_text_no %>
+      <p><b>Image text english</b></p>
+      <%= f.text_field :image_text_en %>
+      <p><b>Image credits</b></p>
+      <%= f.text_field :image_credits %>
+
+    </div> 
+    <p><%= f.submit "Save article" %></p>
+    <% end %>
+
+    <%=render :partial =>"formatting"%>
+</div>
+
+
