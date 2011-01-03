@@ -50,10 +50,12 @@
   activerecord:
     errors:
       messages:
-        blank: "må fylles ut"
-        format: "Tullball"
-        inclusion: "må være valgt i gyldig mengde"
+        blank: må fylles ut
+        format: Tullball
+        inclusion: må være valgt i gyldig mengde
         invalid: har ikke riktig format
+        not_a_number: må bestå av tall
+        taken: er allerede registrert
       models:
         host:
           attributes:
@@ -61,6 +63,9 @@
               inclusion: må være mellom 18 og 100
             number: 
               inclusion: må være mellom 1 og 10
+        alumni_reservation:
+          attributes:
+            phone:
     attributes:
       firstname:
         blank: "Tull"
@@ -68,6 +73,9 @@
     description: "feil forhindret skjemaet fra å bli sendt"
     count: "feil"
   helpers:
+    submit:
+      alumni_reservation:
+        create: Send reservasjon
     label:
       wop_proposition:
         firstname: Fornavn
@@ -90,3 +98,12 @@
         age: Alder
         number: Antall deltakere
         base: ""
+      alumni_reservation:
+        firstname: Fornavn
+        surname: Etternavn
+        isfit_year: År du var med på ISFiT
+        phone: Telefonnummer
+        restaurant: Restaurant lørdag
+        peaceprize_ceremony: Fredsprisseremoni
+        hybel_friday: Innslipp hyblene fredag
+        hybel_saturday: Innslipp hyblene lørdag

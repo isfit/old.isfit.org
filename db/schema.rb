@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101116212043) do
+ActiveRecord::Schema.define(:version => 20110103200248) do
+
+  create_table "alumni_reservations", :force => true do |t|
+    t.string   "firstname"
+    t.string   "surname"
+    t.integer  "isfit_year"
+    t.integer  "phone"
+    t.boolean  "restaurant"
+    t.boolean  "peaceprize_ceremony"
+    t.boolean  "hybel_friday"
+    t.boolean  "hybel_sunday"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "answers", :force => true do |t|
     t.integer "attend",               :limit => 1,                          :null => false
