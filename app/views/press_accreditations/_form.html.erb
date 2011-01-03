@@ -1,7 +1,7 @@
 	<%= form_for(:press_accreditation, @press_accreditation, :url => {:tab =>params[:tab], :action => "create"}) do |f| %>
   <% if @press_accreditation.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@press_accreditation.errors.count, "error") %> prohibited this press_accreditation from being saved:</h2>
+      <h4><%= pluralize(@press_accreditation.errors.count, "error") %> prohibited this press_accreditation from being saved:</h4>
 
       <ul>
       <% @press_accreditation.errors.full_messages.each do |msg| %>
