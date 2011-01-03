@@ -16,7 +16,7 @@ class Postoffice < ActionMailer::Base
   end
   
   def press_acc(id)
-    @recipients   = "nicolajbroby@gmail.com"
+    @recipients   = "boxaspen@isfit.org"
     @subject      = "Ny presseakkreditering"
     @sent_on      = Time.now
     @content_type = "text/plain"
