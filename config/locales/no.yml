@@ -101,6 +101,7 @@
       alumni_reservation:
         firstname: Fornavn
         surname: Etternavn
+        mail: E-post
         isfit_year: År du var med på ISFiT
         phone: Telefonnummer
         restaurant: Restaurant lørdag

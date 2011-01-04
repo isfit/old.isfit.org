@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110103200248) do
+ActiveRecord::Schema.define(:version => 20110104103617) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(:version => 20110103200248) do
     t.boolean  "restaurant"
     t.boolean  "peaceprize_ceremony"
     t.boolean  "hybel_friday"
-    t.boolean  "hybel_sunday"
+    t.boolean  "hybel_saturday"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mail"
   end
 
   create_table "answers", :force => true do |t|
