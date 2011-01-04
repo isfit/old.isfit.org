@@ -1,3 +1,0 @@
-page.insert_html :bottom, :comment, :partial => @imf_contact_comment
-page[@imf_contact_comment].visual_effect :highlight
-page[:new_imf_contact_comment].reset

@@ -1,3 +1,0 @@
-<%positions.each do |position| %>
-	<%= render :partial => 'positions/entry', :locals => {:position => position} %>
-<% end %>

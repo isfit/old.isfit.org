@@ -1,3 +1,0 @@
-<%if @carsavail%>
-	<%= select_tag :time_to, options_for_select(@houres_for_res) %> hours
-<%end%>

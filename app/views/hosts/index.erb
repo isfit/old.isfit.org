@@ -26,7 +26,7 @@ This offer is open for our participants, students and the people of Trondheim - 
 The participants spend much of their time at ISFiT events and ISFiT is therefore responsible for lunch and dinner.</p>
 <p>
 Everyone who signs up to be a host at ISFiT will receive the information they need at an information meeting for hosts in February.
-If you have any questions please send an e-mail to verter[at]isfit.org.</p>
+If you have any questions please send an e-mail to verter[at]isfit.org or call 91 56 95 61.</p>
 <p>
 Thank you,
 <br /><br />
@@ -179,7 +179,7 @@ frokost.</p>
 
 <p>Alle verter som har registrert seg under vil få den informasjonen de trenger
 under ett felles informasjonsmøte. Hvis du har spørsmål kan du også sende en
-mail til verter[at]isfit.org</p>
+mail til verter[at]isfit.org eller ringe 91 56 95 61</p>
 <br />
 Tusen Takk, på vegne av ISFiT 2011
 <br /><br />
@@ -269,6 +269,10 @@ Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skje
 		<td><%= f.select :skies, choice %> </td>
 	</tr>	
 	<tr>
+		<td>Preferanser (eks. kjønn, land, alder, språk, etc.):</td>
+		<td> <%= f.text_area :preference, :rows => 2 %> </td>
+	</tr>
+  <tr>
 		<td>Vegetarian</td>
 		<td> <%= f.check_box :vegetarian %> </td>
 	</tr>

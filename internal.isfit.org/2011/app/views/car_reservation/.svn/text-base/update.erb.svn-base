@@ -1,7 +1,0 @@
-<h1>An error has occured.</h1>
-The system could not reserve the car for the selected hours.<br>
-Probabliy someone reserved it right in front of your nose.<br>
-
-<br>
-<%=link_to "Take me back for another try!", :controller => "car_reservation", :action =>"show"%>
-

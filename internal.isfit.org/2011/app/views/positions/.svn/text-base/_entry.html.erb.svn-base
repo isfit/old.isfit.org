@@ -1,1 +1,0 @@
-<%=link_to(position.title_no, position_path(params[:tab], position))%> <br>

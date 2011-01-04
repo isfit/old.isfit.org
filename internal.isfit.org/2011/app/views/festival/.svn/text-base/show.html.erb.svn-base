@@ -1,5 +1,0 @@
-<% if Festival.sections.any?%>
-	<%= render :partial => 'sections/list', :locals => {:sections => Festival.sections}%>
-<%else%>
-	<%='Ingen seksjoner'%>
-<%end%>

@@ -1,8 +1,0 @@
-<%=link_to('Edit Section', edit_section_path(params[:tab],@section)) %> |  
-<%=link_to('New Position',new_section_position_path(params[:tab],@section)) %><br<br>
-<% if @section.positions.any? %>
-	<%= render :partial => 'positions/list', :locals => {:positions => @section.positions} %>
-<%else%>
-	<%='Ingen stillinger'%>
-<%end%>
-<%=LdapUser.get_by_id(33)%>

@@ -1,8 +1,0 @@
-<%= javascript_include_tag :defaults %>
-<%= javascript_include_tag 'prototype' %>
-
-<div class="article">
-<table>
-	<%= render(:partial => 'calendar_event/info', :locals => {:event => @event, :current_user => current_user, :action_param => "show_event"}) %>
-</table>
-</div>

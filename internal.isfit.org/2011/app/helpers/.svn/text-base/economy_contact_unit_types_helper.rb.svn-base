@@ -1,2 +1,0 @@
-module EconomyContactUnitTypesHelper
-end

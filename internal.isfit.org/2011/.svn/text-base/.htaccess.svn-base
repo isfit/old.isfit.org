@@ -1,4 +1,0 @@
-<FilesMatch "\.(rb|yml)$">
-Order allow,deny
-Deny from all
-</FilesMatch>

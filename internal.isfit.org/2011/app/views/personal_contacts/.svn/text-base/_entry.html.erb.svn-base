@@ -1,9 +1,0 @@
-<td><%=link_to( personal_contact.id, personal_contact_path(params[:tab], personal_contact) ) %> </td>
-<td><%=h personal_contact.firstname%> </td>
-<td><%=h personal_contact.lastname%> </td>
-<td><%=h personal_contact.address%> </td>
-<td><%=h personal_contact.zip_code%></td>
-<td><%=h personal_contact.email %></td>
-<td><%=h personal_contact.city %></td>
-<td><%=h personal_contact.country.name%></td>
-<td><%=h personal_contact.country.region.name%></td>

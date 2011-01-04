@@ -1,4 +1,0 @@
-<% for s in @subcategories %>
-  (<%= s.title_en %>) 
-<% end %>
-

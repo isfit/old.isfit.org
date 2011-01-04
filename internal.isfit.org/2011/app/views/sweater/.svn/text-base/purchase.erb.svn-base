@@ -1,7 +1,0 @@
-<h1>ISFiT 2009 Sweater Collection</h1>
-<h2>Purchase</h2>
-<% if @abort %>
-Successfully aborted purchase.
-<% elsif ! @success %>
-<h2> Something went wrong, please contact the it-gang: orakel@isfit.org </h2>
-<% end %>
