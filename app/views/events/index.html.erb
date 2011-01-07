@@ -1,13 +1,21 @@
-<% for e in @events %> 
-  <h3>
-    <%= e.title %>
-  </h3>
-  <br />
-  <p>
-  <%= e.date.strftime("%F")%>
-  </p>
-  <br />
-  <%= link_to "Delete Event", { :action=>"destroy", :tab=>params[:tab], :id=>e}, :confirm=>"Are you sure you want to delete "+e.title+"?", :method=>:delete  %>
-  <%= link_to "Edit Event", { :action=>"edit", :tab=>params[:tab], :id=>e}  %> 
-  <hr />
+<div class="event_category">
+<% @categories.each do |category| %>
+  <span class="event_category_button" id="<%= category.name %>">
+    <%= link_to_unless_current category.name, events_path(params[:tab], category.id) %>
+  </span>
+<% end %>
+</div>
+<% @events.each do |event| %>
+  <div class="event" id="event<%= event.id %>">
+    <div class="event_date">
+      <span class="event_day_name"><%= event.event_dates.first.date.strftime("%A") %></span>
+      <span class="event_day"><%= event.event_dates.first.date.strftime("%e")%></span>
+      <span class="event_month"><%= event.event_dates.first.date.strftime("%B") %></span>
+    </div>
+    <h1 class="event_title"><%= link_to event.title, event_path(params[:tab],event.id) %></h1>
+    <span class="event_info"><%= event.place %>, kl. <%= event.event_dates.first.date.strftime("%R") %></span>
+    <span class="event_type"><%= event.event_type.name %></span>
+    <p class="event_ingress"><%= event.ingress %></p>
+
+  </div>
 <% end %>
