@@ -1,4 +1,12 @@
 "no":
+  event:
+    information: "Informasjon"
+    type: "Type"
+    place: "Sted"
+    time: "Når"
+    price: "Prisinformasjon"
+    price_member: "Medlem"
+    price_other: "Andre"
   press_accreditations:
     header: "Presseakkreditering"
     organization: "Mediebedrift:"

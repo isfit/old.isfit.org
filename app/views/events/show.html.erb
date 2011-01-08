@@ -1,9 +1,30 @@
-  <h3>
-    <%= @event.title %>
-  </h3>
-  <br />
-  <p>
-  <%= @event.date.strftime("%F")%>
-  </p>
-  <br />
-  <hr />
+<h1><%= @event.title %></h1>
+<div class="event_image">
+  <%= image_tag @event.image.url %>
+</div>
+<div class="event_ingress">
+<%= @event.ingress %>
+</div>
+<div class="event_description">
+  <%= raw format @event.description %>
+</div>
+<div class="event_information">
+  <h2><%= t('event.information') %></h2>
+  <ul>
+    <li><b><%= t('event.type') %>:</b> <%= @event.event_type.name %></li>
+    <li><b><%= t('event.place') %>:</b> <%= @event.place %></li>
+    <li><b><%= t('event.time') %>:</b><br>
+      <ul>
+        <% @event.event_dates.each do |edate| %>
+          <li><%= edate.date.strftime("%a %e. %b kl. %R") %> (BILLIG LINK?)</li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+  <h3><%= t('event.price') %></h3>
+  <ul>
+    <li><b><%= t('event.price_member') %>:</b> <%= @event.price_member %> kr</li>
+    <li><b><%= t('event.price_other') %>:</b> <%= @event.price_other %> kr</li>
+  </ul>
+  <p>BILLIGLINK ?!?! BAT HOW</p>
+</div>
