@@ -6,7 +6,7 @@ body {
 }
 
 a {
-	color: #fff;
+	color: #000;
 	text-decoration: none;
 }
 
@@ -321,32 +321,32 @@ div.field_with_errors textarea {
 }
 
 #boksbla_bg {
-	background: url(../images/boksblabg.png) repeat-y;
+	/*background: url(../images/boksblabg.png) repeat-y;*/
 	margin-bottom: 10px;
 }
 
 #boksbla {
-	background: url(../images/boksbla.png) no-repeat;
+/*	background: url(../images/boksbla.png) no-repeat;*/
 	height: 218px;
 }
 
 #boksrod_bg {
-	background: url(../images/boksrodbg.png) repeat-y;
+/*	background: url(../images/boksrodbg.png) repeat-y;*/
 	margin-bottom: 10px;
 }
 
 #boksrod {
-	background: url(../images/boksrod.png) no-repeat;
-	height: 218px;
+/*	background: url(../images/boksrod.png) no-repeat;*/
+	height: 300px;
 }
 
 #boksoransje_bg {
-	background: url(../images/boksoransjebg.png) repeat-y;
+/*	background: url(../images/boksoransjebg.png) repeat-y;*/
 	margin-bottom: 10px;
 }
 
 #boksoransje {
-	background: url(../images/boksoransje.png) no-repeat;
+/*	background: url(../images/boksoransje.png) no-repeat;*/
 	height: 218px;
 }
 

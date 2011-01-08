@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110104103617) do
+ActiveRecord::Schema.define(:version => 20110106123757) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -527,6 +527,16 @@ ActiveRecord::Schema.define(:version => 20110104103617) do
   create_table "sections_bak", :force => true do |t|
     t.string "name_no", :limit => 64, :null => false
     t.string "name_en", :limit => 32, :null => false
+  end
+
+  create_table "slides", :force => true do |t|
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "spp_articles", :id => false, :force => true do |t|
