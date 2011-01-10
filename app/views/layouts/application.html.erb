@@ -269,6 +269,11 @@ link = page_path(sub.page, :tab=>current_tab.tag)
           <%= yield %>
           </div><!-- Slutt midtramme -->
           <div id="hoyreramme" class="grid_5"><!-- Start hoyreramme -->
+ <div id="boksbla_bg" class="grid_5 alpha omega">
+        <div id="boksbla" class="grid_5 alpha omega">
+           <%= render :partial => 'events/calendar' %>
+          </div>
+        </div>
           <div id="artists" class="grid_5 alpha omega">
             Artists!!!!
           </div>
@@ -284,7 +289,7 @@ link = page_path(sub.page, :tab=>current_tab.tag)
 new TWTR.Widget({
   version: 2,
   type: 'search',
-  search: 'isfit -biz',
+  search: '@isfit',
   interval: 6000,
   title: '',
   subject: 'Said about ISFiT on twitter',

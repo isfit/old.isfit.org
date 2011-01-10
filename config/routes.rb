@@ -10,11 +10,14 @@ WwwIsfitOrg::Application.routes.draw do
       end
     end
     resources :alumni_reservations
+   
+    get "events/:year/:month/:day" => "events#index", :as => "events"
+
     get "events/:category" => "events#index", :as => "events"
 
     get "event/:id" => "events#show", :as => "event"
 
-
+    
     resources :pages
     resources :press_accreditations
 
