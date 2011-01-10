@@ -5,16 +5,43 @@
 		#month = @month
     year = nil
     month = nil
+    nextyear = nil
+    nextmonth = nil
+    prevyear = nil
+
     day = DateTime.now.day
-		if year == nil
+   
+   nextyear = nil
+   nextmonth = nil
+   prevyear = nil
+   if params[:month] && params[:year]
+      month = params[:month].to_i
+      year = params[:year].to_i
+    else 
 			month = (Time.new).month
-	                year = (Time.new).year
-		end
-		if month < 10
-			events = Event.find(:all, :conditions => "date LIKE '"+year.to_s+"-0"+month.to_s+"%'")
-		elsif
-			events = Event.find(:all, :conditions => "date LIKE '"+year.to_s+"-"+month.to_s+"%'")
-		end
+	    year = (Time.new).year
+    end
+    if month == 12
+      prevmonth = 11
+      nextmonth = 1
+      prevyear = year
+      nextyear = year+1
+    elsif month == 1
+      prevmonth = 12
+      nextmonth = 2
+      prevyear = year-1
+      nextyear = year
+    else
+      prevmonth = month-1
+      nextmonth = month+1
+      nextyear = year
+      prevyear = year
+    end
+	  if month < 10
+      events = Event.find(:all, :conditions => "date LIKE '"+year.to_s+"-0"+month.to_s+"%'")
+    elsif
+      events = Event.find(:all, :conditions => "date LIKE '"+year.to_s+"-"+month.to_s+"%'")
+    end
 
                 dates = Array.new(31)
                 for e in events do
@@ -97,7 +124,12 @@
 				<% end
 			end 
 		%>
-		<tr class="calendar-row"><td style="color:#EAAE0D;text-transform:lowercase;" colspan=7>[ <%= Date::MONTHNAMES[month] %> ]</td></tr>
+		<tr class="calendar-row"><td style="color:#EAAE0D;text-transform:lowercase;" colspan=7>
+        [<%= link_to Date::ABBR_MONTHNAMES[prevmonth], url_for(:tab=>params[:tab], :year=>prevyear, :month=>prevmonth), :style=>"font-size:90%;color:#EAAE0D;text-transform:lowercase;" %>]
+        [<%= Date::MONTHNAMES[month] %>]
+        [<%= link_to Date::ABBR_MONTHNAMES[nextmonth], url_for(:tab=>params[:tab], :year=>nextyear, :month=>nextmonth), :style=>"font-size:90%;color:#EAAE0D;text-transform:lowercase;" %>]
+    </td></tr>
+
 		<!--final row -->
 		</tr>
 		<!--end the table-->

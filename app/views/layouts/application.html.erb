@@ -269,17 +269,18 @@ link = page_path(sub.page, :tab=>current_tab.tag)
           <%= yield %>
           </div><!-- Slutt midtramme -->
           <div id="hoyreramme" class="grid_5"><!-- Start hoyreramme -->
- <div id="boksbla_bg" class="grid_5 alpha omega">
-        <div id="boksbla" class="grid_5 alpha omega">
-           <%= render :partial => 'events/calendar' %>
-          </div>
-        </div>
-          <div id="artists" class="grid_5 alpha omega">
-            Artists!!!!
-          </div>
+            
+            <div id="artists" class="grid_5 alpha omega">
+              <%= render :partial => 'events/lineup' %>
+            </div>
           <div id="tickets" class="grid_5 alpha omega">
             Tickets!!!!
           </div>
+          <div id="boksbla_bg" class="grid_5 alpha omega">
+              <div id="boksbla" class="grid_5 alpha omega">
+                <%= render :partial => 'events/calendar' %>
+              </div>
+            </div>
           <div id="facebook" class="grid_5 alpha omega">
           <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/pages/ISFiT/11541693212" width="190" show_faces="true" stream="false" header="true"></fb:like-box>
           </div>
@@ -292,7 +293,7 @@ new TWTR.Widget({
   search: '@isfit',
   interval: 6000,
   title: '',
-  subject: 'Said about ISFiT on twitter',
+  subject: 'Twitter',
   width: 'auto',
   height: 0,
   theme: {
