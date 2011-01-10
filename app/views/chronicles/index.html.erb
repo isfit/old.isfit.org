@@ -1,6 +1,5 @@
 <!-- Localize this! -->
 <%@chronicles = Chronicle.find_most_recent%>
-<h1>Kommentar</h1>
 <% @chronicles.each do |chronicle| %>
 <div class="boks-left">
 <h1> <%= link_to chronicle.title, chronicle_path(params[:tab], chronicle), :style => "color: black" %> </h1>
