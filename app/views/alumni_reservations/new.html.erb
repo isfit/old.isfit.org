@@ -58,23 +58,26 @@ her er det førstemann til mølla!</p>
     <%= f.text_field :phone %>
 </div>
 <div class="field">
-    <%= f.label :peaceprize_ceremony %><br />
-    <%= f.check_box :peaceprize_ceremony %>
+ <%= f.check_box :peaceprize_ceremony, :disabled=> (@peaceprice_ceremony_count >100) %>    
+ <%= f.label :peaceprize_ceremony %> (<%= @peaceprice_ceremony_count %>/100)
+   
 </div>
 <div class="field">
-    <%= f.label :hybel_friday %><br />
-    <%= f.check_box :hybel_friday %>
+   <%= f.check_box :hybel_friday, :disabled=> (@hybel_friday_count >100)%>
+   <%= f.label :hybel_friday %> (<%= @hybel_friday_count %>/100)
 </div>
 <div class="field">
-    <%= f.label :restaurant %><br />
-    <%= f.check_box :restaurant %>
+  <%= f.check_box :restaurant, :disabled=> (@restaurant_count >100)%>
+  <%= f.label :restaurant %> (<%= @restaurant_count %>/100)
+    
 </div>
 <div class="field">
-    <%= f.label :hybel_saturday %><br />
-    <%= f.check_box :hybel_saturday %>
+  <%= f.check_box :hybel_saturday, :disabled=> (@hybel_saturday_count >100)%>  
+  <%= f.label :hybel_saturday %> (<%= @hybel_saturday_count %>/100)
+   
 </div>
 <div class="actions">
     <%= f.submit  %>
-  </div>
+</div>
 
 <% end %>
