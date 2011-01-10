@@ -3,7 +3,12 @@ class EventsController < ApplicationController
     @categories = EventType.all
     if params[:category]
       @category = EventType.where(:id => params[:category]).first
-      @events = @category.events
+      if params[:year] && params[:month] && params[:day]
+        @date = Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
+        @events = @category.events.joins(:event_dates).all(:conditions=>"visible=1 AND event_dates.date LIKE '"+@date.to_s+"%'")
+      else
+        @events = @category.events.where(:visible => 1)
+      end
     elsif params[:year] && params[:month] && params[:day]
       @date = Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
       @events = Event.joins(:event_dates).all(:conditions=>"visible=1 AND event_dates.date LIKE '"+@date.to_s+"%'")
