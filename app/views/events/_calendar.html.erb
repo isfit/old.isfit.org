@@ -9,7 +9,7 @@
     nextmonth = nil
     prevyear = nil
 
-    day = DateTime.now.day
+    day = Time.now.day
    
    nextyear = nil
    nextmonth = nil
@@ -18,8 +18,8 @@
       month = params[:month].to_i
       year = params[:year].to_i
     else 
-			month = (Time.new).month
-	    year = (Time.new).year
+			month = (Time.now).month
+	    year = (Time.now).year
     end
     if month == 12
       prevmonth = 11
