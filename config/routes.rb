@@ -19,6 +19,7 @@ WwwIsfitOrg::Application.routes.draw do
 
     get "event/:id" => "events#show", :as => "event"
 
+    get "event/:id/:event_date_id" => "events#show", :as => "event"
     
     resources :pages
     resources :press_accreditations
