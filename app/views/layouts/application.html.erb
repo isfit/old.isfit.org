@@ -200,7 +200,7 @@ link = page_path(sub.page, :tab=>current_tab.tag)
   <div id="boksrod_bg" class="grid_5 alpha omega"><!-- Start rød -->
   <div id="boksrod" class="grid_5 alpha omega">
   <div class="boks">
-  <h3>Student Peace Prize</h3><br />
+  <h3><%= link_to "Student Peace Prize", "http://www.studentpeaceprize.org" %></h3><br />
   <ul style="list-style-type:none; margin: 0 0 0 -20px;">
   <%
   SppArticle.find_five_latest.each do |article|%>
@@ -209,14 +209,13 @@ link = page_path(sub.page, :tab=>current_tab.tag)
   <% end %>
 
   </ul>
-  <p><a style="font-style: italic" href="http://www.studentpeaceprize.org">studentpeaceprize.org</a></p>
   </div>
   </div>
   </div><!-- Slutt rød -->
   <div id="boksoransje_bg" class="grid_5 alpha omega"><!-- Start oransje -->
   <div id="boksoransje" class="grid_5 alpha omega">
   <div class="boks">
-  <h3><%= t("layout.media") %></h3><br>
+  <h3><%= link_to t("layout.media"), isfit_media_links_path(:tab=>:press) %></h3><br>
   <ul style="list-style-type:none; margin: 0 0 0 -20px;">
   <%
   IsfitMediaLink.find_five_latest.each do |link|%>

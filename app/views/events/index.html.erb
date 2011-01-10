@@ -16,9 +16,9 @@
       <span class="event_day"><%= event.event_dates.first.date.strftime("%e")%></span>
       <span class="event_month"><%= event.event_dates.first.date.strftime("%B") %></span>
     </div>
-    <h1 class="event_title"><%= link_to event.title, event_path(params[:tab],event.id) %></h1>
-    <span class="event_info"><%= event.place %>, kl. <%= event.event_dates.first.date.strftime("%R") %></span>
-    <span class="event_type"><%= event.event_type.name %></span>
+    <h1 class="event_title"><%= link_to event.title, event_path(params[:tab],event.id) %></h1><br />
+    <span class="event_info"><%= event.place %>, kl. <%= event.event_dates.first.date.strftime("%R") %></span><br />
+    <span class="event_type"><%= event.event_type.name %></span><br />
     <p class="event_ingress"><%= event.ingress %></p>
 
   </div>

@@ -16,7 +16,7 @@
     <li><b><%= t('event.time') %>:</b><br>
       <ul>
         <% @event.event_dates.each do |edate| %>
-          <li><%= edate.date.strftime("%a %e. %b kl. %R") %> (BILLIG LINK?)</li>
+          <li><%= edate.date.strftime("%a %e. %b kl. %R") %> <%=link_to (image_tag "kjop_billett"), edate.url %></li>
         <% end %>
       </ul>
     </li>
@@ -26,5 +26,5 @@
     <li><b><%= t('event.price_member') %>:</b> <%= @event.price_member %> kr</li>
     <li><b><%= t('event.price_other') %>:</b> <%= @event.price_other %> kr</li>
   </ul>
-  <p>BILLIGLINK ?!?! BAT HOW</p>
+  <p>Link til event</p>
 </div>

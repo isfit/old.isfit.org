@@ -1,5 +1,5 @@
 <table>
 <%Event.where(:show_headline=>1).order(:weight).each do |e|%>
-  <tr><td style="color:<%=e.color%>; font-size:<%=e.size%>px;"><%=e.title%></td></tr>
+  <tr><td style="color:<%=e.color%>; font-size:<%=e.size%>px;"><b><%=e.title%></b></td></tr>
 <%end%>
 </table>
