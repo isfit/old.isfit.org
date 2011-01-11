@@ -206,6 +206,10 @@ a:hover {
 	height: auto;
 }
 
+#artists {
+  background:#fff;
+}
+
 #midtramme {
 	padding-top: 15px;
 }
