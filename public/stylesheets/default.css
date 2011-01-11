@@ -206,6 +206,10 @@ a:hover {
 	height: auto;
 }
 
+#artists {
+  background:#fff;
+}
+
 #midtramme {
 	padding-top: 15px;
 }
@@ -356,10 +360,11 @@ div.field_with_errors textarea {
 	}
 	
 .event_information {
-	width: 400px;
-	background: #DAF0F9;
-	border: 3px #00394A solid;
+	width: 190px;
+	background: #EDEFF4;
+	border: 1px #00394A solid;
 	float: left;
+  padding: 10px 0px 10px 10px;
 }
 	
 #event_infobox {
@@ -367,6 +372,7 @@ div.field_with_errors textarea {
 	padding: 10px;
 	float: left;
 	width: 530px;
+  padding-bottom:20px;
 }
 
 #hoyreramme {
@@ -390,7 +396,7 @@ div.field_with_errors textarea {
 
 #boksrod {
 	background: #fff; /* url(../images/boksrod.png) no-repeat;*/
-	height: 300px;
+	height: 400px;
 }
 
 #boksoransje_bg {
@@ -400,7 +406,7 @@ div.field_with_errors textarea {
 
 #boksoransje {
 /*	background: url(../images/boksoransje.png) no-repeat;*/
-	height: 218px;
+	height: 400px;
 }
 
 #boksgronn_bg {
