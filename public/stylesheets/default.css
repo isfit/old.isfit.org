@@ -358,7 +358,7 @@ div.field_with_errors textarea {
 .event_information {
 	width: 190px;
 	background: #EDEFF4;
-	border: 2px #00394A solid;
+	border: 1px #00394A solid;
 	float: left;
   padding: 10px 0px 10px 10px;
 }
@@ -402,7 +402,7 @@ div.field_with_errors textarea {
 
 #boksoransje {
 /*	background: url(../images/boksoransje.png) no-repeat;*/
-	height: 218px;
+	height: 300px;
 }
 
 #boksgronn_bg {
