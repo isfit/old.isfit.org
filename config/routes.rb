@@ -3,6 +3,7 @@ WwwIsfitOrg::Application.routes.draw do
   resources :isfit_media_links
 
   scope "(/:tab)" do
+
     resources :sublinks
     resources :hosts do 
       collection do 
@@ -25,6 +26,7 @@ WwwIsfitOrg::Application.routes.draw do
     
     resources :pages
     resources :press_accreditations
+    resources :isfit_media_links
 
     resources :articles do
       collection do
