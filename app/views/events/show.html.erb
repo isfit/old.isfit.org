@@ -1,9 +1,41 @@
-  <h3>
-    <%= @event.title %>
-  </h3>
-  <br />
-  <p>
-  <%= @event.date.strftime("%F")%>
-  </p>
-  <br />
-  <hr />
+<div id="event_infobox">
+<h1><%= @event.event.title %></h1>
+<div class="event_image">
+  <%= image_tag @event.event.image.url %>
+</div>
+<div class="event_ingress">
+<%= @event.event.ingress %>
+</div>
+<div class="event_description">
+  <%= raw format @event.event.description %>
+</div>
+<div class="event_information">
+  <h2><%= t('event.information') %></h2>
+  <ul>
+    <li><b><%= t('event.type') %>:</b> <%= @event.event.event_type.name %></li>
+    <li><b><%= t('event.place') %>:</b> <%= @event.event.place %></li>
+    <li><b><%= t('event.time') %>:</b><br>
+      <ul>
+          <li><%= @event.date.strftime("%a %e. %b kl. %R") %> <%=link_to (image_tag "kjop_billett"), "http://www.samfundet.no/arrangement/billetter/betal/"+@event.url %></li>
+      </ul>
+    </li>
+    <% if @event.event.event_dates.count > 1 %>
+    <li><b>Andre datoer:</b><br>
+      <ul>
+        <% @event.event.event_dates.each do |edate| %>
+          <% if edate.id != @event.id%>
+            <li><%= link_to edate.date.strftime("%a %e. %b kl. %R"),  event_path(params[:tab],edate.event.id,:event_date_id=>edate.id)%></li>
+          <% end %>
+        <% end%>
+      </ul>
+    </li>
+    <%end%>
+  </ul>
+  <h3><%= t('event.price') %></h3>
+  <ul>
+    <li><b><%= t('event.price_member') %>:</b> <%= @event.event.price_member %> kr</li>
+    <li><b><%= t('event.price_other') %>:</b> <%= @event.event.price_other %> kr</li>
+  </ul>
+  <p>Link til event</p>
+</div>
+</div>

@@ -1,5 +1,5 @@
 WwwIsfitOrg::Application.routes.draw do  
-  resources :tips_osses
+    resources :tips_osses
   resources :isfit_media_links
 
   scope "(/:tab)" do
@@ -10,7 +10,17 @@ WwwIsfitOrg::Application.routes.draw do
       end
     end
     resources :alumni_reservations
+    
+    get "events/:year/:month/:day" => "events#index", :as => "events"
 
+    get "events/:category/:year/:month/:day" => "events#index", :as => "events_with_date_cat"
+    
+    get "events/:category" => "events#index", :as => "events"
+
+    get "event/:id" => "events#show", :as => "event"
+
+    get "event/:id/:event_date_id" => "events#show", :as => "event"
+    
     resources :pages
     resources :press_accreditations
 
@@ -46,7 +56,6 @@ WwwIsfitOrg::Application.routes.draw do
         post :validate
       end
     end 
-    resources :events      
 
     get "donations/donate", :controller => "donations", :action => "donate"
 
@@ -56,9 +65,7 @@ WwwIsfitOrg::Application.routes.draw do
     resources :wop_propositions
   end
 
-  resources :events
 
-  match ':tab/events/:year/:month/:day' => 'events#showDate', :as => :events
 
   match 'opptak' => "positions#index", :tab => "admission"
   match 'apply/position' => "positions#index", :tab => "admission"
@@ -122,9 +129,6 @@ WwwIsfitOrg::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   match ':tab(/:controller(/:action(:id)))', :id => /.*/
 
-
-
-    match 'events/:year/:month/:day' => 'events#show', :as => :events
 
 
 end

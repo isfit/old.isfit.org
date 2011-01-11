@@ -9,7 +9,8 @@
 ----------------------------------------------------------------------------------------------------*/
 
 body {
-	font: 13px 'Helvetica','Times New Roman',Arial, Geneva, sans-serif;
+	font: 14px 'Georgia','Arial';
+	line-height: 1.5;
 }
 
 a:focus {
@@ -73,10 +74,10 @@ li {
 /* IT ER KUL */
 div.boks {
   padding: 5px;
-  color: white;
+  color: black;
 }
 div.boks h1 {
-  color: white;
+  color: black;
 }
 
 div.boks-left {
@@ -84,7 +85,7 @@ div.boks-left {
 }
 
 div.boks h3 {
-  color: white;
+  color: black;
   font-size:16px;
 }
 

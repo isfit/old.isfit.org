@@ -2,6 +2,14 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  event:
+    information: "Information"
+    type: "Type"
+    place: "Place"
+    time: "When"
+    price: "Price information"
+    price_member: "Member"
+    price_other: "Other"
   press_accreditations:
     header: "Press accreditation"
     organization: "Organization:"
