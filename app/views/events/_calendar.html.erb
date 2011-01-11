@@ -125,9 +125,9 @@
 			end 
 		%>
 		<tr class="calendar-row"><td style="color:#EAAE0D;text-transform:lowercase;" colspan=7>
-        [<%= link_to Date::ABBR_MONTHNAMES[prevmonth], url_for(:tab=>params[:tab], :year=>prevyear, :month=>prevmonth), :style=>"font-size:90%;color:#EAAE0D;text-transform:lowercase;" %>]
+        [<%= link_to Date::ABBR_MONTHNAMES[prevmonth], url_for(:id => nil, :action=>:index, :tab=>params[:tab], :year=>prevyear, :month=>prevmonth), :style=>"font-size:90%;color:#EAAE0D;text-transform:lowercase;" %>]
         [<%= Date::MONTHNAMES[month] %>]
-        [<%= link_to Date::ABBR_MONTHNAMES[nextmonth], url_for(:tab=>params[:tab], :year=>nextyear, :month=>nextmonth), :style=>"font-size:90%;color:#EAAE0D;text-transform:lowercase;" %>]
+        [<%= link_to Date::ABBR_MONTHNAMES[nextmonth], url_for(:id => nil, :action=>:index, :tab=>params[:tab], :year=>nextyear, :month=>nextmonth), :style=>"font-size:90%;color:#EAAE0D;text-transform:lowercase;" %>]
     </td></tr>
 
 		<!--final row -->

@@ -22,9 +22,10 @@
     </div>
 
     <div class="event_content">
-    <h1 class="event_title"><%= link_to ed.event.title, event_date_path(params[:tab],ed.event.id,:event_date_id=>ed.id) %></h1><br />
-    <span class="event_info"><%= ed.event.place %>, kl. <%= ed.date.strftime("%R") %></span><br />
-    <span class="event_type"><%= ed.event.event_type.name %></span><br />
+    <h1 class="event_title"><%= link_to ed.event.title, event_date_path(params[:tab],ed.event.id,:event_date_id=>ed.id) %></h1>
+    <span class="event_info"><b>Where:</b> <%= ed.event.place %> </span><br />
+    <span class="event_info"><b>When: </b> <%= ed.date.strftime("%R") %></span><br />
+    <span class="event_type"><b><%= ed.event.event_type.name %><%unless ed.event.event_type_text.blank?%> - <%=ed.event.event_type_text%><%end%></b></span><br />
     <p class="event_ingress"><%= ed.event.ingress %></p>
     </div>
   </div>
