@@ -1,6 +1,6 @@
 
 body {
-  background: #1a96b8  url(../images/bg.png) repeat-x !important;
+  background: #00394A  url(../images/b.png) repeat-x !important;
 	color: #333;
 	font-size: 11px;
 }
@@ -11,7 +11,8 @@ a {
 }
 
 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
+	color: #666;
 }
 
 .container_24 {
@@ -38,6 +39,7 @@ a:hover {
 .counter{
 	width: 100px;
 	margin: auto;
+	
 }
 .counter ul.countdown{
 	text-align: center;
@@ -109,7 +111,7 @@ a:hover {
 	height: 34px;
 }
 #faner a.selected {
-        text-decoration: underline;
+        text-decoration: none;
 }
 #selected {
   text-decoration: underline;
@@ -300,7 +302,7 @@ div.field_with_errors textarea {
 .artikkel h1 {
 	margin: 0px 10px 0 10px;
 	color: #000;
-	font-size: 12px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -314,6 +316,46 @@ div.field_with_errors textarea {
 	margin: 0px 10px 0 10px;
 	color: #000;
 	font-size: 12px;
+}
+
+.event_category {
+	background: #fff;
+	margin: 5px;
+	padding: 5px;
+	text-align: center;
+}
+.event {
+	background: #fff;
+	margin: 5px;
+	padding: 5px;
+}
+.event_day_name {
+	color: #00394A;
+	font-weight: bold;
+} 
+.event_day {
+	font-size: 40px;
+}
+.event_month {
+	color: #00394A;
+	font-weight: bold;
+} 
+.event_date {
+	text-align: center;
+	width: 80px;
+	height: auto;
+	float: left;
+	margin: 5px 20px 5px 5px;
+}
+.event_content {
+	width: 450px;
+}
+.event_category_button {
+	margin: 0px 15px 0px 15px;
+	}
+#event_infobox {
+	background: #fff;
+	padding: 10px;
 }
 
 #hoyreramme {
@@ -336,12 +378,12 @@ div.field_with_errors textarea {
 }
 
 #boksrod {
-/*	background: url(../images/boksrod.png) no-repeat;*/
+	background: #fff; /* url(../images/boksrod.png) no-repeat;*/
 	height: 300px;
 }
 
 #boksoransje_bg {
-/*	background: url(../images/boksoransjebg.png) repeat-y;*/
+	background: #fff;  /* url(../images/boksoransjebg.png) repeat-y;*/
 	margin-bottom: 10px;
 }
 
@@ -364,20 +406,28 @@ div.field_with_errors textarea {
 height:auto;
 }
 
+#facebook { 
+	background: #fff;
+}
+.header-kommentar {
+	text-align: center;
+	font-size: 21px;
+}
+
 #footer {
 	background: #001625 url(../images/footer.png) repeat-x;
 }
 
 .footerlogo {
-	margin: 31px 20px 20px 5px;
-}
-
-.articleheight {
-  height: 250px;
+	margin: 31px 20px 20px 40px;
 }
 
 .photo_full {
   width: 530px;
+}
+
+.articleheight {
+	height: 250px;
 }
 
 .photo_left {

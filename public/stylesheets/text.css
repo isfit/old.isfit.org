@@ -9,7 +9,8 @@
 ----------------------------------------------------------------------------------------------------*/
 
 body {
-	font: 13px 'Helvetica','Times New Roman',Arial, Geneva, sans-serif;
+	font: 14px 'Georgia','Arial';
+	line-height: 1.5;
 }
 
 a:focus {
