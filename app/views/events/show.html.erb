@@ -4,12 +4,8 @@
   <%= image_tag @event.event.image.url %>
   <br /><br />
 </div>
-<div class="event_description" style="float:left">
-<%= @event.event.ingress %>
-<br />
-  <%= raw format @event.event.description %>
-</div>
-<div class="event_information" style="float:right">
+<div style="text-align:justify;">
+<div class="event_information" style="float:right;margin-left:15px;margin-bottom:10px;">
     <h4>Information</h4><br />
     <b>Place:</b> <%= @event.event.place %><br />
     <b>Time:</b> <%= @event.date.strftime("%a %e. %b kl. %R") %> <br />
@@ -31,6 +27,9 @@
         <% end%>
     <%end%>
 </div>
+</div>
+
+  <%= raw format @event.event.description %>
 </div>
 
 </div>
