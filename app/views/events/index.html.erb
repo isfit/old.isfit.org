@@ -1,17 +1,14 @@
 <div class="event_category">
 <span class="event_category_button" id="All">
-  <%if params[:year] && params[:month] && params[:day] %>
-    <%= link_to "All", :tab=>params[:tab], :year=>params[:year], :month=>params[:month], :day=>params[:day] %>
-  <%else%>
-    <%= link_to "All", :tab=>params[:tab], :action=>:index %>
-  <%end%>
+  <%params.delete(:category) %>
+  <%= link_to_unless_current "All", events_path(params[:tab]) %>
 </span>
 <% @categories.each do |category| %>
   <span class="event_category_button" id="<%= category.name %>">
   <%if params[:year] && params[:month] && params[:day] %>
     <%= link_to_unless_current category.name, events_with_date_cat_path(:tab=>params[:tab], :category=>category.id, :year=>params[:year], :month=>params[:month], :day=>params[:day]) %>
   <%else%>
-    <%= link_to_unless_current category.name, events_path(params[:tab], category.id) %>
+    <%= link_to_unless_current category.name, events_cat_path(params[:tab], category.id) %>
   <%end%>
   </span>
 <% end %>
