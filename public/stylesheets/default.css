@@ -356,10 +356,11 @@ div.field_with_errors textarea {
 	}
 	
 .event_information {
-	width: 400px;
-	background: #DAF0F9;
-	border: 3px #00394A solid;
+	width: 190px;
+	background: #EDEFF4;
+	border: 2px #00394A solid;
 	float: left;
+  padding: 10px 0px 10px 10px;
 }
 	
 #event_infobox {
@@ -367,6 +368,7 @@ div.field_with_errors textarea {
 	padding: 10px;
 	float: left;
 	width: 530px;
+  padding-bottom:20px;
 }
 
 #hoyreramme {
