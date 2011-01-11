@@ -353,9 +353,19 @@ div.field_with_errors textarea {
 .event_category_button {
 	margin: 0px 15px 0px 15px;
 	}
+	
+.event_information {
+	width: 400px;
+	background: #DAF0F9;
+	border: 3px #00394A solid;
+	float: left;
+}
+	
 #event_infobox {
 	background: #fff;
 	padding: 10px;
+	float: left;
+	width: 530px;
 }
 
 #hoyreramme {
