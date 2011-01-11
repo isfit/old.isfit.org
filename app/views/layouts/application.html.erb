@@ -208,7 +208,7 @@ link = page_path(sub.page, :tab=>current_tab.tag)
   <ul style="list-style-type:none; margin: 0 0 0 -20px;">
   <% count = 0
   SppArticle.find_five_latest.each do |article|%>
-  <li><%= link_to (image_tag  "spp_article_images/" + "#{article.id}_3.jpg", :width=>"50"), "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank"%> <%=link_to article.title_en, "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank" %></li>
+  <li><%= link_to_if article.youtube_link.blank?, (image_tag  "spp_article_images/" + "#{article.id}_3.jpg", :width=>"50"), "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank"%> <%=link_to article.title_en, "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank" %></li>
    <%  count = count +1
 unless count == 5%>
   <hr style="margin-left:20px">
