@@ -10,17 +10,18 @@
   <%= raw format @event.event.description %>
 </div>
 <div class="event_information">
-  <h2><%= t('event.information') %></h2>
-  <ul>
-    <li><b><%= t('event.type') %>:</b> <%= @event.event.event_type.name %></li>
-    <li><b><%= t('event.place') %>:</b> <%= @event.event.place %></li>
-    <li><b><%= t('event.time') %>:</b><br>
-      <ul>
-          <li><%= @event.date.strftime("%a %e. %b kl. %R") %> <%=link_to (image_tag "kjop_billett"), "http://www.samfundet.no/arrangement/billetter/betal/"+@event.url %></li>
-      </ul>
-    </li>
-    <% if @event.event.event_dates.count > 1 %>
-    <li><b>Andre datoer:</b><br>
+  <h4><%= @event.event.event_type.name %></h4><br />
+    <b><%= t('event.place') %>:</b> <%= @event.event.place %><br />
+    <b><%= t('event.time') %>:</b> <%= @event.date.strftime("%a %e. %b kl. %R") %> <br /><br />
+      
+    <b><%= t('event.price_member') %>:</b> <%= @event.event.price_member %> kr<br />
+    <b><%= t('event.price_other') %>:</b> <%= @event.event.price_other %> kr<br /><br /><br />
+<%=link_to (image_tag "kjop_billett", :style=>"margin-left:20px"), "http://www.samfundet.no/arrangement/billetter/betal/"+@event.url %>
+</div>
+<div class="event-other-dates" style="float:left">
+<br />
+<% if @event.event.event_dates.count > 1 %>
+    <b>Andre datoer:</b><br>
       <ul>
         <% @event.event.event_dates.each do |edate| %>
           <% if edate.id != @event.id%>
@@ -28,14 +29,6 @@
           <% end %>
         <% end%>
       </ul>
-    </li>
     <%end%>
-  </ul>
-  <h3><%= t('event.price') %></h3>
-  <ul>
-    <li><b><%= t('event.price_member') %>:</b> <%= @event.event.price_member %> kr</li>
-    <li><b><%= t('event.price_other') %>:</b> <%= @event.event.price_other %> kr</li>
-  </ul>
-  <p>Link til event</p>
 </div>
 </div>
