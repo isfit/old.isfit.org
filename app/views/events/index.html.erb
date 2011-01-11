@@ -1,4 +1,11 @@
 <div class="event_category">
+<span class="event_category_button" id="All">
+  <%if params[:year] && params[:month] && params[:day] %>
+    <%= link_to "All", :tab=>params[:tab], :year=>params[:year], :month=>params[:month], :day=>params[:day] %>
+  <%else%>
+    <%= link_to "All", :tab=>params[:tab], :action=>:index %>
+  <%end%>
+</span>
 <% @categories.each do |category| %>
   <span class="event_category_button" id="<%= category.name %>">
   <%if params[:year] && params[:month] && params[:day] %>

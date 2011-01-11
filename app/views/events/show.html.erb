@@ -19,6 +19,7 @@
           <li><%= @event.date.strftime("%a %e. %b kl. %R") %> <%=link_to (image_tag "kjop_billett"), "http://www.samfundet.no/arrangement/billetter/betal/"+@event.url %></li>
       </ul>
     </li>
+    <% if @event.event.event_dates.count > 1 %>
     <li><b>Andre datoer:</b><br>
       <ul>
         <% @event.event.event_dates.each do |edate| %>
@@ -28,6 +29,7 @@
         <% end%>
       </ul>
     </li>
+    <%end%>
   </ul>
   <h3><%= t('event.price') %></h3>
   <ul>
