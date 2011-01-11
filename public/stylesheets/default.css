@@ -396,7 +396,7 @@ div.field_with_errors textarea {
 
 #boksrod {
 	background: #fff; /* url(../images/boksrod.png) no-repeat;*/
-	height: 400px;
+	height: 450px;
 }
 
 #boksoransje_bg {
@@ -406,7 +406,7 @@ div.field_with_errors textarea {
 
 #boksoransje {
 /*	background: url(../images/boksoransje.png) no-repeat;*/
-	height: 400px;
+	height: 500px;
 }
 
 #boksgronn_bg {
@@ -444,7 +444,7 @@ height:auto;
 }
 
 .articleheight {
-	height: 250px;
+	height: 260px;
 }
 
 .photo_left {
