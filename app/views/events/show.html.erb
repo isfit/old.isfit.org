@@ -1,3 +1,12 @@
+<%content_for :head do %>
+  <meta property="og:title" content="<%if @event.event.title%><%=@event.event.title%><%end%>."/>
+  <meta property="og:type" content="non_profit"/>
+  <meta property="og:image" content="<%="http://www.isfit.org/images/"+@event.event.image.url%>"/>
+  <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>"/>
+  <meta property="og:site_name" content="ISFiT 2011"/>
+  <meta property="fb:app_id" content="111446192243028"/>
+  <meta property="og:description" content="<%=@event.event.description%>"/>
+<%end%>
 <div id="event_infobox">
 <h1><%= @event.event.title %></h1>
 <div class="event_image">
@@ -31,5 +40,6 @@
 
   <%= raw format @event.event.description %>
 </div>
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="like"></fb:like>
 
 </div>
