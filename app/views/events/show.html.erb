@@ -31,7 +31,7 @@
     <b>Other dates:</b><br>
         <% @event.event.event_dates.each do |edate| %>
           <% if edate.id != @event.id%>
-            <%= link_to edate.date.strftime("%a %e. %b kl. %R"),  event_path(params[:tab],edate.event.id,:event_date_id=>edate.id)%><br />
+            <%= link_to edate.date.strftime("%a %e. %b kl. %R"),  event_date_path(params[:tab],edate.event.id,:event_date_id=>edate.id)%><br />
           <% end %>
         <% end%>
     <%end%>
