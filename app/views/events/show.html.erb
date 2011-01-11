@@ -1,5 +1,5 @@
 <%content_for :head do %>
-  <meta property="og:title" content="<%if @event.event.title%><%=@event.event.title%><%end%>."/>
+  <meta property="og:title" content="<%unless @event.event.title.blank?%><%=@event.event.title%><%else%>.<%end%>"/>
   <meta property="og:type" content="non_profit"/>
   <meta property="og:image" content="<%="http://www.isfit.org/images/"+@event.event.image.url%>"/>
   <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>"/>
