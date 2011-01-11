@@ -325,7 +325,9 @@ div.field_with_errors textarea {
 
 .event_category {
 	background: #fff;
-	margin: 0px;
+	margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 	padding: 5px;
 	text-align: center;
 }
