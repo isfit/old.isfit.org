@@ -18,7 +18,7 @@
     <h4>Information</h4><br />
     <b>Place:</b> <%= @event.event.place %><br />
     <b>Time:</b> <%= @event.date.strftime("%a %e. %b kl. %R") %> <br />
-    <b>What:</b> <%= @event.event.event_type.name %><br />
+    <b>What:</b> <%= @event.event.event_type.name %><%unless @event.event.event_type_text.blank?%> - <%=@event.event.event_type_text%><%end%><br />
     <br />
     
 
