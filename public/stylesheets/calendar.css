@@ -1,5 +1,5 @@
 /* calendar */
-table.calendar		{ text-align:center}
+table.calendar		{ text-align:center; background: #fff; width: 100%;}
 td.calendar-day	{  min-height:10px; color:white; font-size:9px; font-weight:bold; position:relative; }
 td.calendar-day-np	{ font-size: 8px; min-height:10px; }
 td.calendar-day-head {  color: #008AD2; }

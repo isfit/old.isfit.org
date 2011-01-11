@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  firstname: MyString
+  surname: MyString
+  isfit_year: 1
+  phone: 1
+  restaurant: false
+  peaceprize_ceremony: false
+  hybel_friday: false
+  hybel_sunday: false
+
+two:
+  firstname: MyString
+  surname: MyString
+  isfit_year: 1
+  phone: 1
+  restaurant: false
+  peaceprize_ceremony: false
+  hybel_friday: false
+  hybel_sunday: false

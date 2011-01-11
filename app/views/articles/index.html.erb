@@ -1,25 +1,20 @@
-  <%counter = 0
-  first = true
-  @articles.each do |article| %>
-      <%if first %>
-        <div id="hoved_artikkel" class="grid_14 alpha omega">
+<%
+first = true
+@articles.each do |article| %>
+	<% if first %>
+		<div id="hoved_artikkel" class="grid_14 alpha omega">
 
-        <%else
-          %>
-          <%#=raw counter%2 == 0 ? "<div>" : ""%>
-          <%classtext = "artikkel grid_7 articleheight "+  (counter%2 == 0 ? "alpha" : "omega")
-          counter +=1
-        %>
+	<%else%>
+		<%classtext = "artikkel grid_7 articleheight " + cycle("alpha","omega")%>
 
-            <div class="<%=classtext%>">
-      <%end%>
-      <a href="<%=article_path(article, :tab=>params[:tab])%>">
-        <%=image_tag("article_images/"+article.id.to_s+"_"+ (first ? "1" : "2")+".jpg") %>
-        <h1><%=article.title%></h1>
-        <p><%=article.sub_title%></p>
-      </a>
-    </div>
-    <%#= raw counter%2 == 0 ? "</div>" : ""%>
-    <% first = false if first %>
+		<div class="<%=classtext%>">
+	<%end%>
+	<a href="<%=article_url(params[:tab], article)%>">
+	<%=image_tag("article_images/"+article.id.to_s+"_"+ (first ? "1" : "2")+".jpg") %>
+	<h1><%=article.title%></h1>
+	<p><%=truncate(article.sub_title, :length=>150, :separator => ' ')%></p>
+	</a>
+	</div>
+	<% first = false if first %>
 <%end%>
-
+<%= link_to t('article.more'), all_articles_path(params[:tab]) %>

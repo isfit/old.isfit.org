@@ -1,0 +1,83 @@
+<h1>Tilbud til ISFiT-alumnier siste helgen av ISFiT 2011</h1>
+
+<%=render "partials/error", :locals => {:model => @alumni_reservation}%>
+<p>I forbindelse med ISFiT 2011 ønsker vi å gi dere som tidligere har
+vært med på å arrangere ISFiT et påskudd til å komme til Trondheim
+under festivalen. Vi har derfor satt sammen et program med gratis
+tilbud slik at dere kan få et gjensyn med Samfundet, ISFiT og
+hverandre. Programmet består av:</p>
+<p>
+<b>Fredag 18.02:</b>
+<ul>
+<li>Reservert plass til Fredsprisseremonien i Olavshallen</li>
+<li>Tilgang til hyblene på Samfundet</li>
+</ul>
+</p>
+<p>
+<b>Lørdag  19.02:</b>
+<ul>
+<li>Reservert plass på restaurant (hvilken restaurant kommer vi tilbake
+til). Vi kommer ikke til å bestille mat så hva dere vil spise er helt
+opp til dere selv, vi ønsker bare å legge til rette for at dere kan
+møtes og spise på samme sted.</li>
+<li>Tilgang til hyblene på Samfundet</li>
+</ul>
+</p>
+<p>(Denne kvelden vil det også være mulighet for å delta på dagens
+kulturprogram som vil bli offentliggjort i januar.)</p>
+<p>Påmelding: Påmeldingen skjer på ISFiT.org og stenger tirsdag 18.01 kl
+12.00. Det er mulig å melde seg på hele eller deler av programmet
+(f.eks bare opplegget på lørdagen). Totalt vil det være 100 plasser så
+her er det førstemann til mølla!</p>
+
+<p>Vi gleder oss til å se dere i februar!</p>
+<br> 
+<br>
+<br>
+<% form_for @alumni_reservation, :url => alumni_reservations_path(params[:tab])  do |f| %>
+<div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname %>
+</div>
+
+<div class="field">
+    <%= f.label :surname %><br />
+    <%= f.text_field :surname %>
+</div>
+<div class="field">
+    <%= f.label :mail %><br />
+    <%= f.text_field :mail %>
+</div>
+<div class="field">
+    <%= f.label :isfit_year %><br />
+    <%= f.text_field :isfit_year %>
+</div>
+
+<div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+</div>
+<div class="field">
+ <%= f.check_box :peaceprize_ceremony, :disabled=> (@peaceprice_ceremony_count >100) %>    
+ <%= f.label :peaceprize_ceremony %> (<%= @peaceprice_ceremony_count %>/100)
+   
+</div>
+<div class="field">
+   <%= f.check_box :hybel_friday, :disabled=> (@hybel_friday_count >100)%>
+   <%= f.label :hybel_friday %> (<%= @hybel_friday_count %>/100)
+</div>
+<div class="field">
+  <%= f.check_box :restaurant, :disabled=> (@restaurant_count >100)%>
+  <%= f.label :restaurant %> (<%= @restaurant_count %>/100)
+    
+</div>
+<div class="field">
+  <%= f.check_box :hybel_saturday, :disabled=> (@hybel_saturday_count >100)%>  
+  <%= f.label :hybel_saturday %> (<%= @hybel_saturday_count %>/100)
+   
+</div>
+<div class="actions">
+    <%= f.submit  %>
+</div>
+
+<% end %>

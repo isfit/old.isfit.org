@@ -1,4 +1,27 @@
-"no": 
+"no":
+  event:
+    information: "Informasjon"
+    type: "Type"
+    place: "Sted"
+    time: "Når"
+    price: "Prisinformasjon"
+    price_member: "Medlem"
+    price_other: "Andre"
+  press_accreditations:
+    header: "Presseakkreditering"
+    organization: "Mediebedrift:"
+    firstname: "Fornavn:"
+    surname: "Etternavn:"
+    function: "Funksjon:"
+    day_period: "Dag eller tidsrom:"
+    access_whole_festival: "Kryss av om du ønsker tilgang under hele festivalen:"
+    email: "Epost:"
+    phone: "Mobilnummer:"
+    birth: "Fødselsdato:"
+    remarks: "Merknader:"
+    submit: "Send"
+  donations:
+    donate: "Støtt en deltaker"
   layout:
     contact: "Kontakt"
     press: "Presse"
@@ -10,6 +33,7 @@
     show_all: "Vis alle"
   article:
     header: "NYHETER"
+    more: "Flere saker"
   position:
     no_new_positions: "Vi har dessverre ingen opptak for tiden, men følg med på nettsiden for nye oppdateringer"
     new_positions: "ISFiT har for øyeblikket opptak på følgende stillinger"
@@ -34,10 +58,12 @@
   activerecord:
     errors:
       messages:
-        blank: "må fylles ut"
-        format: "Tullball"
-        inclusion: "må være valgt i gyldig mengde"
+        blank: må fylles ut
+        format: Tullball
+        inclusion: må være valgt i gyldig mengde
         invalid: har ikke riktig format
+        not_a_number: må bestå av tall
+        taken: er allerede registrert
       models:
         host:
           attributes:
@@ -45,6 +71,9 @@
               inclusion: må være mellom 18 og 100
             number: 
               inclusion: må være mellom 1 og 10
+        alumni_reservation:
+          attributes:
+            phone:
     attributes:
       firstname:
         blank: "Tull"
@@ -52,6 +81,9 @@
     description: "feil forhindret skjemaet fra å bli sendt"
     count: "feil"
   helpers:
+    submit:
+      alumni_reservation:
+        create: Send reservasjon
     label:
       wop_proposition:
         firstname: Fornavn
@@ -73,3 +105,14 @@
         place: Poststed
         age: Alder
         number: Antall deltakere
+        base: ""
+      alumni_reservation:
+        firstname: Fornavn
+        surname: Etternavn
+        mail: E-post
+        isfit_year: År du var med på ISFiT
+        phone: Telefonnummer
+        restaurant: Restaurant lørdag
+        peaceprize_ceremony: Fredsprisseremoni
+        hybel_friday: Innslipp hyblene fredag
+        hybel_saturday: Innslipp hyblene lørdag

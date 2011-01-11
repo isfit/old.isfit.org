@@ -1,9 +1,5 @@
 WwwIsfitOrg::Application.routes.draw do  
-
-
-
-  resources :tips_osses
-
+    resources :tips_osses
   resources :isfit_media_links
 
   scope "(/:tab)" do
@@ -13,27 +9,40 @@ WwwIsfitOrg::Application.routes.draw do
         get :done
       end
     end
+    resources :alumni_reservations
+    
+    get "events/:year/:month/:day" => "events#index", :as => "events"
+
+    get "events/:category/:year/:month/:day" => "events#index", :as => "events_with_date_cat"
+    
+    get "events/:category" => "events#index", :as => "events"
+
+    get "event/:id" => "events#show", :as => "event"
+
+    get "event/:id/:event_date_id" => "events#show", :as => "event"
+    
     resources :pages
+    resources :press_accreditations
 
     resources :articles do
       collection do
-       get :new_pic
-       get :crop_main
-       get :all
+        get :new_pic
+        get :crop_main
+        get :all
       end
     end
-    
+
     resources :workshops
 
     resources :participants
-    
+
     resources :dialogue_participants
 
     resources :chronicles do
-	collection do
-	  get :all
-	end
-	end
+      collection do
+        get :all
+      end
+    end
 
     resources :photos do
       member do
@@ -43,21 +52,23 @@ WwwIsfitOrg::Application.routes.draw do
 
     resources :positions do
       collection do
-       get :apply
-       post :validate
+        get :apply
+        post :validate
       end
     end 
-    resources :events      
+
+    get "donations/donate", :controller => "donations", :action => "donate"
+
+    get "donations/thank_you", :controller => "donations", :action => "thank_you"
+
 
     resources :wop_propositions
   end
-  
-  resources :events
 
-  match ':tab/events/:year/:month/:day' => 'events#showDate', :as => :events
+
 
   match 'opptak' => "positions#index", :tab => "admission"
-   match 'apply/position' => "positions#index", :tab => "admission"
+  match 'apply/position' => "positions#index", :tab => "admission"
   match 'wop' => redirect("http://www.isfit.org/wop/wop_propositions/new")
   root :to => "articles#index" , :tab=>"news"
 
@@ -118,9 +129,6 @@ WwwIsfitOrg::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   match ':tab(/:controller(/:action(:id)))', :id => /.*/
 
-
-
-  match 'events/:year/:month/:day' => 'events#show', :as => :events
 
 
 end

@@ -1,9 +1,34 @@
-  <h3>
-    <%= @event.title %>
-  </h3>
-  <br />
-  <p>
-  <%= @event.date.strftime("%F")%>
-  </p>
-  <br />
-  <hr />
+<div id="event_infobox">
+<h1><%= @event.event.title %></h1>
+<div class="event_image">
+  <%= image_tag @event.event.image.url %>
+</div>
+<div class="event_ingress">
+<%= @event.event.ingress %>
+</div>
+<div class="event_description">
+  <%= raw format @event.event.description %>
+</div>
+<div class="event_information">
+  <h4><%= @event.event.event_type.name %></h4><br />
+    <b><%= t('event.place') %>:</b> <%= @event.event.place %><br />
+    <b><%= t('event.time') %>:</b> <%= @event.date.strftime("%a %e. %b kl. %R") %> <br /><br />
+      
+    <b><%= t('event.price_member') %>:</b> <%= @event.event.price_member %> kr<br />
+    <b><%= t('event.price_other') %>:</b> <%= @event.event.price_other %> kr<br /><br /><br />
+<%=link_to (image_tag "kjop_billett", :style=>"margin-left:20px"), "http://www.samfundet.no/arrangement/billetter/betal/"+@event.url %>
+</div>
+<div class="event-other-dates" style="float:left">
+<br />
+<% if @event.event.event_dates.count > 1 %>
+    <b>Andre datoer:</b><br>
+      <ul>
+        <% @event.event.event_dates.each do |edate| %>
+          <% if edate.id != @event.id%>
+            <li><%= link_to edate.date.strftime("%a %e. %b kl. %R"),  event_path(params[:tab],edate.event.id,:event_date_id=>edate.id)%></li>
+          <% end %>
+        <% end%>
+      </ul>
+    <%end%>
+</div>
+</div>

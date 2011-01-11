@@ -1,3 +1,13 @@
+<%content_for :head do %>
+  <meta property="og:title" content="<%if @article.title_en != ""%><%=@article.title_en%><%else%><%=@article.title_no%><%end%>."/>
+  <meta property="og:type" content="non_profit"/>
+  <meta property="og:image" content="<%="http://www.isfit.org/images/article_images/"+@article.id.to_s + "_3.jpg"%>"/>
+  <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>"/>
+  <meta property="og:site_name" content="ISFiT 2011"/>
+  <meta property="fb:app_id" content="111446192243028"/>
+  <meta property="og:description" content="<%=@article.ingress%>"/>
+<%end%>
+
 <% if @article.body == "" || @article.ingress == ""
     in_language = false
   else
@@ -18,14 +28,20 @@
 </h3>
 <p>
 <%=image_tag "article_images/"+@article.id.to_s + "_3.jpg"%>
-<br />
-<%=raw @article.byline%>
+<%if @article.image_credits != ""%>
+  Foto: <%=@article.image_credits%><br />
+<%end%>
+<% if I18n.locale.to_s == 'no' %>
+  <%=@article.image_text_no%>
+<%else%>
+  <%=@article.image_text_en%>
+<%end%>
 </p>
 <p>
+<%=raw @article.byline%>
+<br>
 <%=  @article.created_at.strftime("%F")%>
 </p>
-<br />
-<br />
 <%if in_language%>
 <p>
   <b><%=raw format( @article.ingress) %></b>
@@ -36,7 +52,7 @@
 </p>
 <%else%>
 <p>
-  <b><%=raw format( I18n.locale.to_s == 'no' ? @article.ingress_en : @article.ingress_no) %></b>
+  <b><%=raw format(I18n.locale.to_s == 'no' ? @article.ingress_en : @article.ingress_no) %></b>
 </p>
 <br />
 <p style="text-align:justify">
@@ -44,6 +60,9 @@
 </p>
 
 
+<%end%>
+<%if @article.got_comments%>
+<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=111446192243028&amp;xfbml=1"></script><fb:comments width="550"></fb:comments>
 <%end%>
 </div>
 

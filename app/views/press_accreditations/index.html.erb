@@ -1,0 +1,41 @@
+<h1>Listing press_accreditations</h1>
+
+<table>
+  <tr>
+    <th>Organization</th>
+    <th>Firstname</th>
+    <th>Surname</th>
+    <th>Function</th>
+    <th>Day period</th>
+    <th>Access whole festival</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Birth</th>
+    <th>Remarks</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @press_accreditations.each do |press_accreditation| %>
+  <tr>
+    <td><%= press_accreditation.organization %></td>
+    <td><%= press_accreditation.firstname %></td>
+    <td><%= press_accreditation.surname %></td>
+    <td><%= press_accreditation.function %></td>
+    <td><%= press_accreditation.day_period %></td>
+    <td><%= press_accreditation.access_whole_festival %></td>
+    <td><%= press_accreditation.email %></td>
+    <td><%= press_accreditation.phone %></td>
+    <td><%= press_accreditation.birth %></td>
+    <td><%= press_accreditation.remarks %></td>
+    <td><%= link_to 'Show', press_accreditation %></td>
+    <td><%= link_to 'Edit', edit_press_accreditation_path(press_accreditation) %></td>
+    <td><%= link_to 'Destroy', press_accreditation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Press accreditation', new_press_accreditation_path %>

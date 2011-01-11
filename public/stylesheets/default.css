@@ -1,17 +1,18 @@
 
 body {
-  background: #1a96b8  url(../images/bg.png) repeat-x !important;
+  background: #00394A  url(../images/b.png) repeat-x !important;
 	color: #333;
 	font-size: 11px;
 }
 
 a {
-	color: #fff;
+	color: #000;
 	text-decoration: none;
 }
 
 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
+	color: #666;
 }
 
 .container_24 {
@@ -33,6 +34,40 @@ a:hover {
 #odiverse {
 	height: 27px;
 }
+
+/*COUNTER STYLE */
+.counter{
+	width: 100px;
+	margin: auto;
+  position: relative;
+  top: -8px;
+}
+.counter ul.countdown{
+	text-align: center;
+	list-style-type: none;
+	color: #faa61f;
+	font-weight: bold;
+
+}
+
+.counter ul.countdown li{
+	height:10px;
+	margin: 0 6px 5px 0px;
+	padding-top: 0;
+	float: left;
+}
+.counter ul.countdown li div{
+	font-size: 9px;
+}
+.counter ul.countdown li div.countdown_num{
+	font-size: 13px;
+}
+.counter ul.countdown li.no_countdown{
+	background:transparent;
+	height:3px;
+	width:10px;
+}
+/*COUNTER STYLE END*/
 
 .olink {
 	color: #faa61f;
@@ -57,7 +92,7 @@ a:hover {
 #header {
 	/*background: #fff url(../images/header-eng.png);
 */
-	height: 246px;
+	height: 150px;
 	clear: both;
 }
 
@@ -77,7 +112,7 @@ a:hover {
 	height: 34px;
 }
 #faner a.selected {
-        text-decoration: underline;
+        text-decoration: none;
 }
 #selected {
   text-decoration: underline;
@@ -268,7 +303,7 @@ div.field_with_errors textarea {
 .artikkel h1 {
 	margin: 0px 10px 0 10px;
 	color: #000;
-	font-size: 12px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -284,37 +319,87 @@ div.field_with_errors textarea {
 	font-size: 12px;
 }
 
+.event_category {
+	background: #fff;
+	margin: 5px;
+	padding: 5px;
+	text-align: center;
+}
+.event {
+	background: #fff;
+	margin: 5px;
+	padding: 5px;
+}
+.event_day_name {
+	color: #00394A;
+	font-weight: bold;
+} 
+.event_day {
+	font-size: 40px;
+}
+.event_month {
+	color: #00394A;
+	font-weight: bold;
+} 
+.event_date {
+	text-align: center;
+	width: 80px;
+	height: auto;
+	float: left;
+	margin: 5px 20px 5px 5px;
+}
+.event_content {
+	width: 450px;
+}
+.event_category_button {
+	margin: 0px 15px 0px 15px;
+	}
+	
+.event_information {
+	width: 400px;
+	background: #DAF0F9;
+	border: 3px #00394A solid;
+	float: left;
+}
+	
+#event_infobox {
+	background: #fff;
+	padding: 10px;
+	float: left;
+	width: 530px;
+}
+
 #hoyreramme {
 	padding-top: 15px;
 }
 
 #boksbla_bg {
-	background: url(../images/boksblabg.png) repeat-y;
+	/*background: url(../images/boksblabg.png) repeat-y;*/
 	margin-bottom: 10px;
 }
 
 #boksbla {
-	background: url(../images/boksbla.png) no-repeat;
+/*	background: url(../images/boksbla.png) no-repeat;*/
 	height: 218px;
 }
 
 #boksrod_bg {
-	background: url(../images/boksrodbg.png) repeat-y;
+/*	background: url(../images/boksrodbg.png) repeat-y;*/
 	margin-bottom: 10px;
 }
 
 #boksrod {
-	background: url(../images/boksrod.png) no-repeat;
-	height: 218px;
+	background: #fff; /* url(../images/boksrod.png) no-repeat;*/
+	height: 300px;
 }
 
 #boksoransje_bg {
-	background: url(../images/boksoransjebg.png) repeat-y;
+	background: #fff;  /* url(../images/boksoransjebg.png) repeat-y;*/
 	margin-bottom: 10px;
 }
 
 #boksoransje {
-	background: url(../images/boksoransje.png) no-repeat;
+/*	background: url(../images/boksoransje.png) no-repeat;*/
 	height: 218px;
 }
 
@@ -332,20 +417,28 @@ div.field_with_errors textarea {
 height:auto;
 }
 
+#facebook { 
+	background: #fff;
+}
+.header-kommentar {
+	text-align: center;
+	font-size: 21px;
+}
+
 #footer {
 	background: #001625 url(../images/footer.png) repeat-x;
 }
 
 .footerlogo {
-	margin: 31px 20px 20px 5px;
-}
-
-.articleheight {
-  height: 250px;
+	margin: 31px 20px 20px 40px;
 }
 
 .photo_full {
   width: 530px;
+}
+
+.articleheight {
+	height: 250px;
 }
 
 .photo_left {

@@ -1,0 +1,52 @@
+<p>
+  <b>Organization:</b>
+  <%= @press_accreditation.organization %>
+</p>
+
+<p>
+  <b>Firstname:</b>
+  <%= @press_accreditation.firstname %>
+</p>
+
+<p>
+  <b>Surname:</b>
+  <%= @press_accreditation.surname %>
+</p>
+
+<p>
+  <b>Function:</b>
+  <%= @press_accreditation.function %>
+</p>
+
+<p>
+  <b>Day [DD.MM.YYYY] or period [DD.MM.YYYY - DD.MM.YYYY]:</b>
+  <%= @press_accreditation.day_period %>
+</p>
+
+<p>
+  <b>Access whole festival:</b>
+  <%= @press_accreditation.access_whole_festival %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @press_accreditation.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @press_accreditation.phone %>
+</p>
+
+<p>
+  <b>Birth:</b>
+  <%= @press_accreditation.birth %>
+</p>
+
+<p>
+  <b>Remarks:</b>
+  <%= @press_accreditation.remarks %>
+</p>
+
+
+<%= link_to 'Back', new_press_accreditation_path(params[:tab]) %>

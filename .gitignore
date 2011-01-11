@@ -15,5 +15,6 @@ public/images/participant_forum
 public/images/page_images/*
 public/images/workshops/*
 public/images/participant_forum/*
+public/.htaccess
 
 *.swp

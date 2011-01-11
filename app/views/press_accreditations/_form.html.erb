@@ -1,0 +1,57 @@
+	<%= form_for(:press_accreditation, @press_accreditation, :url => {:tab =>params[:tab], :action => "create"}) do |f| %>
+  <% if @press_accreditation.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@press_accreditation.errors.count, "error") %> prohibited this press_accreditation from being saved:</h4>
+
+      <ul>
+      <% @press_accreditation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label t("press_accreditations.organization") %><br />
+    <%= f.text_field :organization %>
+  </div>
+  <div class="field">
+    <%= f.label t("press_accreditations.firstname") %><br />
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label t("press_accreditations.surname") %><br />
+    <%= f.text_field :surname %>
+  </div>
+  <div class="field">
+    <%= f.label t("press_accreditations.function") %><br />
+    <%= f.text_field :function %>
+  </div>
+  <div class="field">
+    <%= f.label t("press_accreditations.day_period") %><br />
+    <%= f.text_field :day_period %>
+  </div>
+  <div class="field">
+    <%= f.label t("press_accreditations.access_whole_festival") %><br />
+    <%= f.check_box :access_whole_festival %>
+  </div>
+  <div class="field">
+    <%= f.label t("press_accreditations.email") %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label t("press_accreditations.phone") %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label t("press_accreditations.birth") %><br />
+    <%= f.text_field :birth %>
+  </div>
+  <div class="field">
+    <%= f.label t("press_accreditations.remarks") %><br />
+    <%= f.text_area :remarks %>
+  </div>
+  <div class="actions">
+    <%= f.submit t("press_accreditations.submit") %>
+  </div>
+<% end %>

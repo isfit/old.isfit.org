@@ -1,3 +1,12 @@
+<%content_for :head do %>
+  <meta property="og:title" content="Become a ISFiT host"/>
+  <meta property="og:type" content="non_profit"/>
+  <meta property="og:image" content="<%="http://www.isfit.org/images/isfitliten.png"%>"/>
+  <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>"/>
+  <meta property="og:site_name" content="ISFiT 2011"/>
+  <meta property="fb:app_id" content="111446192243028"/>
+  <meta property="og:description" content="Become a host at ISFiT 2011"/>
+<%end%>
 <% form_for :host, @host do |f| %>
 
 <% if Language.to_s == "en" %>
@@ -17,7 +26,7 @@ This offer is open for our participants, students and the people of Trondheim - 
 The participants spend much of their time at ISFiT events and ISFiT is therefore responsible for lunch and dinner.</p>
 <p>
 Everyone who signs up to be a host at ISFiT will receive the information they need at an information meeting for hosts in February.
-If you have any questions please send an e-mail to verter[at]isfit.org.</p>
+If you have any questions please send an e-mail to verter[at]isfit.org or call 91 56 95 61.</p>
 <p>
 Thank you,
 <br /><br />
@@ -26,6 +35,10 @@ On behalf of ISFiT 2009
 Heidi Sommernes Pedersen
 <br>
 Head of Recruiting
+
+<br />
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="recommend"></fb:like>
+<br />
 <h3>Registration form</h3>
 <p>
 Please fill in the following form and press the Submit button to submit your application.
@@ -166,7 +179,7 @@ frokost.</p>
 
 <p>Alle verter som har registrert seg under vil få den informasjonen de trenger
 under ett felles informasjonsmøte. Hvis du har spørsmål kan du også sende en
-mail til verter[at]isfit.org</p>
+mail til verter[at]isfit.org eller ringe 91 56 95 61</p>
 <br />
 Tusen Takk, på vegne av ISFiT 2011
 <br /><br />
@@ -256,6 +269,10 @@ Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skje
 		<td><%= f.select :skies, choice %> </td>
 	</tr>	
 	<tr>
+		<td>Preferanser (eks. kjønn, land, alder, språk, etc.):</td>
+		<td> <%= f.text_area :preference, :rows => 2 %> </td>
+	</tr>
+  <tr>
 		<td>Vegetarian</td>
 		<td> <%= f.check_box :vegetarian %> </td>
 	</tr>
@@ -307,3 +324,5 @@ Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skje
 
 <% end %>
 <% end %>
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="recommend"></fb:like>
+

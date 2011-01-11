@@ -1,7 +1,30 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en: 
+en:
+  event:
+    information: "Information"
+    type: "Type"
+    place: "Place"
+    time: "When"
+    price: "Price information"
+    price_member: "Member"
+    price_other: "Other"
+  press_accreditations:
+    header: "Press accreditation"
+    organization: "Organization:"
+    firstname: "First name:"
+    surname: "Surname:"
+    function: "Function:"
+    day_period: "Day [DD.MM.YYYY] or period [DD.MM.YYYY - DD.MM.YYYY]:"
+    access_whole_festival: "Check off if you want access for the whole festival:"
+    email: "E-mail:"
+    phone: "Phone:"
+    birth: "Date of birth:"
+    remarks: "Remarks:"
+    submit: "Submit"
+  donations:
+    donate: "Support a participant"
   layout:
     contact: "Contact"
     read_more: "Read More"
@@ -13,6 +36,7 @@ en:
     show_all: "Show all"
   article:
     header: "NEWS"
+    more: "More news"
   position:
     no_new_positions: "We do not currently have any open positions for volunteers. Please check back later"
     new_positions: "Currently ISFiT has admissions for the following positions"

@@ -1,6 +1,8 @@
   <% @chronicles.each do |chronicle| %>
   <h1> <%= link_to chronicle.title, chronicle_path(params[:tab],   chronicle), :style => "color: black" %> </h1>
   <h4>  <%= chronicle.author %></h4>
+  <!--<div style="float: right;"><%= image_tag("chronicle_images/"+chronicle.id.to_s+".jpg") %></div>
+  -->
   <p class="ingress">
    <%=raw format(chronicle.ingress) %>
   </p>

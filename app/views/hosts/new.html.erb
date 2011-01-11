@@ -1,3 +1,12 @@
+<%content_for :head do %>
+  <meta property="og:title" content="Become a ISFiT host"/>
+  <meta property="og:type" content="non_profit"/>
+  <meta property="og:image" content="<%="http://www.isfit.org/images/isfitliten.png"%>"/>
+  <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>"/>
+  <meta property="og:site_name" content="ISFiT 2011"/>
+  <meta property="fb:app_id" content="111446192243028"/>
+  <meta property="og:description" content="Become a host at ISFiT 2011"/>
+<%end%>
 <%=render "partials/error", :locals => {:model => @host}%>
 <% form_for @host, :url => hosts_path(params[:tab])  do |f| %>
 
@@ -10,12 +19,15 @@
 <p>During the day the participant will spend their time in workshops. The participants are signed up for 17 different workshops, who discuss the festival theme, Global Health, from different angles. At night ISFiT offers a large festival program with cultural events such as concerts, theatre, exhibitions and shows, as well as plenary sessions and lectures. The festival program is open for the participants, students and the rest of Trondheim’s population - this means for you as a host as well.</p>
 <p>The participants will spend a lot of time during both day and night at ISFiT’s events. ISFiT will provide the participants with lunch and dinner. You, as a host, will provide breakfast.</p>
 
-<p>If you have any questions, please send a mail to verter[at]isfit.org</p>
+<p>If you have any questions, please send a mail to verter[at]isfit.org or call 91 56 95 61</p>
 
 <p>On behalf of ISFiT 2011, thank you very much</p>
 
 <p>Marthe Asheim Underthun<br />
 Head of Recruiting</p>
+<br /><br />
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="recommend"></fb:like>
+<br />
 <h3>Registration form</h3>
 <p>
 Please fill in the following form and press the Submit button to submit your application.
@@ -98,6 +110,10 @@ Please fill in the following form and press the Submit button to submit your app
 		<td><%= f.select:skies, choice %> </td>
 	</tr>	
 	<tr>
+		<td>Preferences (e.g. gender, country, age, language, etc.):</td>
+		<td> <%= f.text_area :preference, :rows => 2 %> </td>
+	</tr>
+  <tr>
 		<td>Can the participant be vegetarian?</td>
 		<td> <%= f.check_box :vegetarian %> </td>
 	</tr>
@@ -167,7 +183,7 @@ Dermed står ISFiT for lunsj og middag for deltakerne. Du som vert står for
 frokost.</p>
 
 <p>Hvis du har spørsmål kan du sende en
-mail til verter[at]isfit.org</p>
+mail til verter[at]isfit.org eller ringe 91 56 95 61</p>
 <br />
 Tusen Takk, på vegne av ISFiT 2011
 <br /><br />
@@ -175,6 +191,8 @@ Marthe Asheim Underthun<br />
 Rekrutteringssjef
 <br /><br />
 
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="recommend"></fb:like>
+<br />
 <h3>Registreringsskjema</h3>
 <p>
 Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skjemaet.
@@ -257,6 +275,10 @@ Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skje
 		<td><%= f.select :skies, choice %> </td>
 	</tr>	
 	<tr>
+		<td>Preferanser (f.eks. kjønn, land, alder, språk, etc.):</td>
+		<td> <%= f.text_area :preference, :rows => 2 %> </td>
+	</tr>
+  <tr>
 		<td>Kan deltakeren være vegetarianer?</td>
 		<td> <%= f.check_box :vegetarian %> </td>
 	</tr>
@@ -297,6 +319,9 @@ Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skje
 		<td>Hvorfor vil du v&aelig;re vert?</td>
 		<td><%= f.text_area :why , :rows => 3 %></td>
 	</tr>
+  <tr>
+    <td></td>
+    <td><%= raw recaptcha_tags %></td>
 	<tr>
 		<td colspan="2"><%= form_tag ({:action=> "done", :id => params[:id]} ) %>
 		<%= submit_tag "Send" %><br>
@@ -308,3 +333,4 @@ Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skje
 
 <% end %>
 <% end %>
+

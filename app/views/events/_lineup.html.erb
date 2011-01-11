@@ -1,0 +1,6 @@
+<table>
+<%now = Time.now.strftime("%Y-%m-%d %H:%M:%S")%>
+<%Event.where(:show_headline=>1).where("visible_at <= '"+now+"'").where(:visible => 1).order("weight DESC").each do |e|%>
+  <tr><td style="color:<%=e.color%>; font-size:<%=e.size%>px;"><b><%=e.title%></b></td></tr>
+<%end%>
+</table>
