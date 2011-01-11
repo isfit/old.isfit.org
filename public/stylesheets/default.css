@@ -39,7 +39,8 @@ a:hover {
 .counter{
 	width: 100px;
 	margin: auto;
-	
+  position: relative;
+  top: -8px;
 }
 .counter ul.countdown{
 	text-align: center;
