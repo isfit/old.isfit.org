@@ -2,6 +2,7 @@ class AlumniReservationsController < ApplicationController
   respond_to :html
   def new
     @alumni_reservation = AlumniReservation.new
+    @psize = AlumniReservation.where(:restaurant=> true)
     respond_with(@alumni_reservation)
   end
 
