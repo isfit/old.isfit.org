@@ -16,7 +16,6 @@ class EventsController < ApplicationController
     else
       @event_dates = EventDate.joins(:event).where("events.visible = 1").where("events.visible_at <= '"+now+"'")
     end
-
   end
 
   def show
