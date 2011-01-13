@@ -34,50 +34,51 @@ her er det førstemann til mølla!</p>
 <br> 
 <br>
 <br>
-<% form_for @alumni_reservation, :url => alumni_reservations_path(params[:tab])  do |f| %>
-<div class="field">
-    <%= f.label :firstname %><br />
+<% form_for @alumni_reservation, :html => {:class => "yform columnar"}, :url => alumni_reservations_path(params[:tab] )  do |f| %>
+<fieldset>
+  <div class="type-text">
+    <%= f.label :firstname %>
     <%= f.text_field :firstname %>
 </div>
 
-<div class="field">
-    <%= f.label :surname %><br />
+<div class="type-text">
+    <%= f.label :surname %>
     <%= f.text_field :surname %>
 </div>
-<div class="field">
-    <%= f.label :mail %><br />
+<div class="type-text">
+  <%= f.label :mail %>
     <%= f.text_field :mail %>
 </div>
-<div class="field">
-    <%= f.label :isfit_year %><br />
+<div class="type-text">
+    <%= f.label :isfit_year %>
     <%= f.text_field :isfit_year %>
 </div>
 
-<div class="field">
-    <%= f.label :phone %><br />
+<div class="type-text">
+    <%= f.label :phone %>
     <%= f.text_field :phone %>
 </div>
-<div class="field">
+<div class="type-check">
  <%= f.check_box :peaceprize_ceremony, :disabled=> (@peaceprice_ceremony_count >100) %>    
  <%= f.label :peaceprize_ceremony %> (<%= @peaceprice_ceremony_count %>/100)
    
 </div>
-<div class="field">
+<div class="type-check">
    <%= f.check_box :hybel_friday, :disabled=> (@hybel_friday_count >100)%>
    <%= f.label :hybel_friday %> (<%= @hybel_friday_count %>/100)
 </div>
-<div class="field">
+<div class="type-check">
   <%= f.check_box :restaurant, :disabled=> (@restaurant_count >100)%>
   <%= f.label :restaurant %> (<%= @restaurant_count %>/100)
     
 </div>
-<div class="field">
+<div class="type-check">
   <%= f.check_box :hybel_saturday, :disabled=> (@hybel_saturday_count >100)%>  
   <%= f.label :hybel_saturday %> (<%= @hybel_saturday_count %>/100)
    
 </div>
-<div class="actions">
-    <%= f.submit  %>
+<div class="type-button">
+  <%= f.submit %>
 </div>
-
+</fieldset>
 <% end %>

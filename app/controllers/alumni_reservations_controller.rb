@@ -17,6 +17,12 @@ class AlumniReservationsController < ApplicationController
 #    @restaurant_count=AlumniReservation.where(:restaurant =>1).count
 #    @hybel_saturday_count=AlumniReservation.where(:hybel_saturday =>1).count
     @alumni_reservation = AlumniReservation.new(params[:alumni_reservation])
+
+    @peaceprice_ceremony_count=AlumniReservation.where(:peaceprize_ceremony =>1).count
+    @hybel_friday_count= AlumniReservation.where(:hybel_friday =>1).count
+    @restaurant_count=AlumniReservation.where(:restaurant =>1).count
+    @hybel_saturday_count=AlumniReservation.where(:hybel_saturday =>1).count
+ 
 #    
 #    if @peaceprice_ceremony_count >= 100 && params[:alumni_reservation][:peaceprize_ceremony]
 #      @alumni_reservation.errors.add :peaceprize_ceremony, "The peaceprice ceremony is unfortunate fully booked."	
