@@ -88,6 +88,7 @@ en:
         know_isfit: Have been hosting for ISFiT before?
         member_name: Name of member (only if the option 'member of ISFiT' is chosen)
         why: Why do you want to volunteer?
+        base: ""
 
   activerecord:
     errors:

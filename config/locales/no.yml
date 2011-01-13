@@ -99,17 +99,6 @@
         email: E-post
         description: Beskrivelse 
         base: ""
-      host:
-        first_name: Fornavn
-        last_name: Etternavn
-        email: E-post
-        phone: Telefonnummer
-        address: Adresse
-        zipcode: Postnummer
-        place: Poststed
-        age: Alder
-        number: Antall deltakere
-        base: ""
       alumni_reservation:
         firstname: Fornavn
         surname: Etternavn
@@ -144,3 +133,4 @@
         know_isfit: Hvordan hørte du om ISFiT?
         member_name: Navn på medlem (Besvares kun hvis 'medlem av ISFiT' er valgt)
         why: Hvorfor vil du være vert?
+        base: ""
