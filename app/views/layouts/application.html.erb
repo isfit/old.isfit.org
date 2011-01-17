@@ -98,8 +98,9 @@ link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
 
   <div id="slider-wrapper">
   <div id="slider" class="nivoSlider">
-  <%Slide.all.shuffle.each do |s|%>
-  <%if s.cropped %>
+  <%Slide.where("published_at <= '"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"'").shuffle.each do |s|%>
+  <%if s.cropped%>
+  
   <%=link_to (image_tag s.image.url, :title=>s.content), s.link%>
   <%end%>
   <%end%>
@@ -186,7 +187,7 @@ link = page_path(sub.page, :tab=>current_tab.tag)
   <div id="boksturkis_bg" class="grid_5 alpha omega"><!-- Start turkis -->
   <%#= image_tag ("chronicle-top.png")%>
   <div id="boksturkis" class="grid_5 alpha omega">
-  <div class="boks">
+  <div class="boks" onclick="location.href='<%=chronicle_path(params[:tab], Chronicle.find_most_recent.first)%>'" style="cursor:pointer">
   <h3>Kommentar</h3>
   <hr>
   <%= render :template =>'chronicles/index'%>
