@@ -1,30 +1,45 @@
-<h1><%= @event.title %></h1>
+<%content_for :head do %>
+  <meta property="og:title" content="<%unless @event.event.title.blank?%><%=@event.event.title%><%else%>.<%end%>"/>
+  <meta property="og:type" content="non_profit"/>
+  <meta property="og:image" content="<%="http://www.isfit.org/images/"+@event.event.image.url%>"/>
+  <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>"/>
+  <meta property="og:site_name" content="ISFiT 2011"/>
+  <meta property="fb:app_id" content="111446192243028"/>
+  <meta property="og:description" content="<%=@event.event.description%>"/>
+<%end%>
+<div id="event_infobox">
+<h1><%= @event.event.title %></h1>
 <div class="event_image">
-  <%= image_tag @event.image.url %>
+  <%= image_tag @event.event.image.url %>
+  <br /><br />
 </div>
-<div class="event_ingress">
-<%= @event.ingress %>
+<div style="text-align:justify;">
+<div class="event_information" style="float:right;margin-left:15px;margin-bottom:10px;">
+    <h4>Information</h4><br />
+    <b>Place:</b> <%= @event.event.place %><br />
+    <b>Time:</b> <%= @event.date.strftime("%a %e. %b kl. %R") %> <br />
+    <b>What:</b> <%= @event.event.event_type.name %><%unless @event.event.event_type_text.blank?%> - <%=@event.event.event_type_text%><%end%><br />
+    <br />
+    
+
+    <b>Members:</b> <%= @event.event.price_member %> kr<br />
+    <b>Others:</b> <%= @event.event.price_other %> kr<br /><br />
+<%=link_to (image_tag "buy_ticket.jpg"), "http://www.samfundet.no/arrangement/billetter/betal/"+@event.url, :target=>"_blank"%>
+<div class="event-other-dates">
+<br />
+<% if @event.event.event_dates.count > 1 %>
+    <b>Other dates:</b><br>
+        <% @event.event.event_dates.each do |edate| %>
+          <% if edate.id != @event.id%>
+            <%= link_to edate.date.strftime("%a %e. %b kl. %R"),  event_date_path(params[:tab],edate.event.id,:event_date_id=>edate.id)%><br />
+          <% end %>
+        <% end%>
+    <%end%>
 </div>
-<div class="event_description">
-  <%= raw format @event.description %>
 </div>
-<div class="event_information">
-  <h2><%= t('event.information') %></h2>
-  <ul>
-    <li><b><%= t('event.type') %>:</b> <%= @event.event_type.name %></li>
-    <li><b><%= t('event.place') %>:</b> <%= @event.place %></li>
-    <li><b><%= t('event.time') %>:</b><br>
-      <ul>
-        <% @event.event_dates.each do |edate| %>
-          <li><%= edate.date.strftime("%a %e. %b kl. %R") %> (BILLIG LINK?)</li>
-        <% end %>
-      </ul>
-    </li>
-  </ul>
-  <h3><%= t('event.price') %></h3>
-  <ul>
-    <li><b><%= t('event.price_member') %>:</b> <%= @event.price_member %> kr</li>
-    <li><b><%= t('event.price_other') %>:</b> <%= @event.price_other %> kr</li>
-  </ul>
-  <p>BILLIGLINK ?!?! BAT HOW</p>
+
+  <%= raw format @event.event.description %>
+</div>
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="like"></fb:like>
+
 </div>

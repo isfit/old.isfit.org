@@ -1,21 +1,32 @@
 <div class="event_category">
+<span class="event_category_button" id="All">
+  <%params.delete(:category) %>
+  <%= link_to_unless_current "All", events_path(params[:tab]) %>
+</span>
 <% @categories.each do |category| %>
   <span class="event_category_button" id="<%= category.name %>">
-    <%= link_to_unless_current category.name, events_path(params[:tab], category.id) %>
+  <%if params[:year] && params[:month] && params[:day] %>
+    <%= link_to_unless_current category.name, events_with_date_cat_path(:tab=>params[:tab], :category=>category.id, :year=>params[:year], :month=>params[:month], :day=>params[:day]) %>
+  <%else%>
+    <%= link_to_unless_current category.name, events_cat_path(params[:tab], category.id) %>
+  <%end%>
   </span>
 <% end %>
 </div>
-<% @events.each do |event| %>
-  <div class="event" id="event<%= event.id %>">
+<% @event_dates.each do |ed| %>
+  <div class="event" id="event<%= ed.event.id %>">
     <div class="event_date">
-      <span class="event_day_name"><%= event.event_dates.first.date.strftime("%A") %></span>
-      <span class="event_day"><%= event.event_dates.first.date.strftime("%e")%></span>
-      <span class="event_month"><%= event.event_dates.first.date.strftime("%B") %></span>
+      <span class="event_day_name"><%= ed.date.strftime("%A") %></span>
+      <span class="event_day"><%= ed.date.strftime("%e")%></span>
+      <span class="event_month"><%= ed.date.strftime("%B") %></span>
     </div>
-    <h1 class="event_title"><%= link_to event.title, event_path(params[:tab],event.id) %></h1>
-    <span class="event_info"><%= event.place %>, kl. <%= event.event_dates.first.date.strftime("%R") %></span>
-    <span class="event_type"><%= event.event_type.name %></span>
-    <p class="event_ingress"><%= event.ingress %></p>
 
+    <div class="event_content">
+    <h1 class="event_title"><%= link_to ed.event.title, event_date_path(params[:tab],ed.event.id,:event_date_id=>ed.id) %></h1>
+    <span class="event_info"><b>Where:</b> <%= ed.event.place %> </span><br />
+    <span class="event_info"><b>When: </b> <%= ed.date.strftime("%R") %></span><br />
+    <span class="event_type"><b><%= ed.event.event_type.name %><%unless ed.event.event_type_text.blank?%> - <%=ed.event.event_type_text%><%end%></b></span><br />
+    <p class="event_ingress"><%= ed.event.ingress %></p>
+    </div>
   </div>
 <% end %>

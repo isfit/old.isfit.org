@@ -1,9 +1,8 @@
 <!-- Localize this! -->
 <%@chronicles = Chronicle.find_most_recent%>
-<%= image_tag("chronicle_comment_#{Language.to_s}.png", :style=>"margin:0px;")%>
 <% @chronicles.each do |chronicle| %>
 <div class="boks-left">
-<h1> <%= link_to chronicle.title, chronicle_path(params[:tab], chronicle), :style => "color: black" %> </h1>
+<h3> <%= link_to chronicle.title, chronicle_path(params[:tab], chronicle), :style => "color: black" %> </h3>
 <h4>  <%= chronicle.author %></h4>
 <p class="ingress">
   <%=raw format(chronicle.ingress) %>
