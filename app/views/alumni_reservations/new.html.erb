@@ -58,15 +58,9 @@ her er det førstemann til mølla!</p>
     <%= f.label :phone %>
     <%= f.text_field :phone %>
 </div>
-<<<<<<< HEAD:app/views/alumni_reservations/new.html.erb
-<div class="field">
- <%= f.check_box :peaceprize_ceremony, :disabled=> (@peaceprize_ceremony_count >100) %>    
-=======
 <div class="type-check">
  <%= f.check_box :peaceprize_ceremony, :disabled=> (@peaceprice_ceremony_count >100) %>    
->>>>>>> 2c38169250732aad823addd5e1628d1be9a6d9cf:app/views/alumni_reservations/new.html.erb
  <%= f.label :peaceprize_ceremony %> (<%= @peaceprice_ceremony_count %>/100)
-   
 </div>
 <div class="type-check">
    <%= f.check_box :hybel_friday, :disabled=> (@hybel_friday_count >100)%>

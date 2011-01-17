@@ -12,11 +12,10 @@ class AlumniReservationsController < ApplicationController
   end
   def create
     valid=true
-<<<<<<< HEAD:app/controllers/alumni_reservations_controller.rb
-    @peaceprize_ceremony_count = 100 #AlumniReservation.where(:peaceprize_ceremony =>1).count
-    @hybel_friday_count = 100 #AlumniReservation.where(:hybel_friday => 1).count
-    @restaurant_count = 100 #AlumniReservation.where(:restaurant =>1).count
-    @hybel_saturday_count = 100 #AlumniReservation.where(:hybel_saturday =>1).count
+    @peaceprize_ceremony_count = AlumniReservation.where(:peaceprize_ceremony =>1).count
+    @hybel_friday_count = AlumniReservation.where(:hybel_friday => 1).count
+    @restaurant_count = AlumniReservation.where(:restaurant =>1).count
+    @hybel_saturday_count = AlumniReservation.where(:hybel_saturday =>1).count
    @alumni_reservation = AlumniReservation.new(params[:alumni_reservation])
     
     if @peaceprize_ceremony_count >= 100 && @alumni_reservation.peaceprize_ceremony
@@ -40,41 +39,6 @@ class AlumniReservationsController < ApplicationController
       @alumni_reservation.errors.add :restaurant, "er dessverre full."
       valid=false	
     end
-=======
-#    @peaceprice_ceremony_count=100
-#    @hybel_friday_count=100
-#    @restaurant_count=AlumniReservation.where(:restaurant =>1).count
-#    @hybel_saturday_count=AlumniReservation.where(:hybel_saturday =>1).count
-    @alumni_reservation = AlumniReservation.new(params[:alumni_reservation])
-
-    @peaceprice_ceremony_count=AlumniReservation.where(:peaceprize_ceremony =>1).count
-    @hybel_friday_count= AlumniReservation.where(:hybel_friday =>1).count
-    @restaurant_count=AlumniReservation.where(:restaurant =>1).count
-    @hybel_saturday_count=AlumniReservation.where(:hybel_saturday =>1).count
- 
-#    
-#    if @peaceprice_ceremony_count >= 100 && params[:alumni_reservation][:peaceprize_ceremony]
-#      @alumni_reservation.errors.add :peaceprize_ceremony, "The peaceprice ceremony is unfortunate fully booked."	
-#      valid=false     
-#
-#    end
-#
-#    if @hybel_friday_count >= 100 && params[:alumni_reservation][:hybel_friday]
-#      @alumni_reservation.errors.add :peaceprize_ceremony, "The hybel on friday is unfortunate fully booked."	
-#      valid=false      
-#	
-#    end
-#
-#    if @hybel_saturday_count >= 100 && params[:alumni_reservation][:hybel_saturday]
-#      @alumni_reservation.errors.add :peaceprize_ceremony, "The hybel on saturday is unfortunate fully booked."
-#      valid=false	
-#    end
-#
-#    if @restaurant_count >= 100 && params[:alumni_reservation][:restaurant_count]
-#      @alumni_reservation.errors.add :peaceprize_ceremony, "The restaurant is unfortunate fully booked."
-#      valid=false	
-#    end
->>>>>>> 2c38169250732aad823addd5e1628d1be9a6d9cf:app/controllers/alumni_reservations_controller.rb
 
  
     if valid && @alumni_reservation.save 
