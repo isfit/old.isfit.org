@@ -1,5 +1,5 @@
 <%content_for :head do %>
-  <meta property="og:title" content="<%if @page.title%><%end%>."/>
+  <meta property="og:title" content="<%if @page.title%><%=@page.title%><%end%>."/>
   <meta property="og:type" content="non_profit"/>
   <meta property="og:image" content="<%="http://www.isfit.org/images/isfitliten.png"%>"/>
   <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>"/>
