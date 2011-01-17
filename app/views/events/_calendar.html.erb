@@ -10,6 +10,7 @@
     prevyear = nil
 
     day = Time.now.day
+    today = Time.now
    nextyear = nil
    nextmonth = nil
    prevyear = nil
@@ -87,7 +88,7 @@
 			#keep going with days....
       for list_day in (1..days_in_month) do %>
 				<td class="calendar-day">
-          <%if list_day == day.to_i %>
+          <%if list_day == today.day.to_i && month == today.month.to_i && year == today.year.to_i %>
             <span class="calendar-day-today" style="border: #000 1px solid">
 						  <%= link_to list_day.to_s, url_for(:controller=>"events", :tab=>params[:tab], :year=> year.to_s, :month=> month.to_s, :day=> list_day.to_s) %></td>
             </span> 
