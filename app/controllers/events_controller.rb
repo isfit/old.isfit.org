@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  
+  
   def index
    now = Time.now.strftime("%Y-%m-%d %H:%M:%S")
     @categories = EventType.all
@@ -16,6 +18,12 @@ class EventsController < ApplicationController
     else
       @event_dates = EventDate.joins(:event).where("events.visible_at <= '"+now+"'")
     end
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => Event.where("events.visible_at <= '"+now+"'").to_xml(:include => :event_dates) }
+      format.json { render :json => Event.where("events.visible_at <= '"+now+"'").to_json(:include => :event_dates) }
+    end
+
   end
 
   def show
@@ -23,7 +31,13 @@ class EventsController < ApplicationController
     if params[:event_date_id]
       @event = EventDate.joins(:event).where(:id=>params[:event_date_id]).where("events.visible_at <= '"+now+"'").first
     elsif
-      @event = EventDate.joins(:event).where("events.id = "+params[:id]+" AND events.visible_at <= '"+now+"'").first  
+      @event = EventDate.joins(:event).where("events.id = "+params[:id]+" AND events.visible_at <= '"+now+"'").first
     end
+  
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @event.event.to_xml(:include => :event_dates) }
+      format.json { render :xml => @event.event.to_json(:include => :event_dates) }
+    end         
   end
 end
