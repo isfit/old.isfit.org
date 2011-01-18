@@ -1,6 +1,7 @@
 class AlumniReservationsController < ApplicationController
   respond_to :html
   def new
+    unless true
     @alumni_reservation = AlumniReservation.new
 
     @peaceprize_ceremony_count=AlumniReservation.where(:peaceprize_ceremony =>1).count
@@ -8,9 +9,11 @@ class AlumniReservationsController < ApplicationController
     @restaurant_count=AlumniReservation.where(:restaurant =>1).count
     @hybel_saturday_count=AlumniReservation.where(:hybel_saturday =>1).count
     respond_with(@alumni_reservation)
+    end
  
   end
   def create
+  unless true
     valid=true
     @peaceprize_ceremony_count = AlumniReservation.where(:peaceprize_ceremony =>1).count
     @hybel_friday_count = AlumniReservation.where(:hybel_friday => 1).count
@@ -48,5 +51,6 @@ class AlumniReservationsController < ApplicationController
       render :action => 'new'
     end  
     #    respond_with(@alumni_reservation, :location => new_alumni_reservation_path(params[:tab]))
+    end
   end
 end
