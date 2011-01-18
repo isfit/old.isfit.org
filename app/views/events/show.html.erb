@@ -24,7 +24,9 @@
 
     <b>Members:</b> <%= @event.event.price_member %> kr<br />
     <b>Others:</b> <%= @event.event.price_other %> kr<br /><br />
-<%=link_to (image_tag "buy_ticket.jpg"), "http://www.samfundet.no/arrangement/billetter/betal/"+@event.url, :target=>"_blank"%>
+<% unless @event.event.price_member == 0 && @event.event.price_other == 0 %>
+  <%=link_to (image_tag "buy_ticket.jpg"), "http://www.samfundet.no/arrangement/billetter/betal/"+@event.url, :target=>"_blank"%>
+<% end %>
 <div class="event-other-dates">
 <br />
 <% if @event.event.event_dates.count > 1 %>
