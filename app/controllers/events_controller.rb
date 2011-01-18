@@ -21,8 +21,8 @@ class EventsController < ApplicationController
     @event_dates = @event_dates.order(:date)
     respond_to do |format|
       format.html
-      format.xml { render :xml => Event.where("events.visible_at <= '"+now+"'").to_xml(:include => :event_dates, :include=>:event_places) }
-      format.json { render :json => Event.where("events.visible_at <= '"+now+"'").to_json(:include => :event_dates, :include=>:event_places) }
+      format.xml { render :xml => Event.where("events.visible_at <= '"+now+"'").to_xml(:include => :event_dates, :include=>:event_place) }
+      format.json { render :json => Event.where("events.visible_at <= '"+now+"'").to_json(:include => :event_dates, :include=>:event_place) }
     end
 
   end
