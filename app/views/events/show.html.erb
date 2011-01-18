@@ -16,14 +16,20 @@
 <div style="text-align:justify;">
 <div class="event_information" style="float:right;margin-left:15px;margin-bottom:10px;">
     <h4>Information</h4><br />
-    <b>Place:</b> <%= @event.event.place %><br />
-    <b>Time:</b> <%= @event.date.strftime("%a %e. %b kl. %R") %> <br />
+    <b>Place:</b>
+    <%if @event.event.event_place != nil %> 
+      <%= @event.event.event_place.title %><%unless @event.event.spec_place.blank? %>, <%= @event.event.spec_place %><%end%>
+    <%else%>
+      <%=@event.event.place%>
+    <%end%>
+    <br />
+    <b>Time:</b> <%if @event.date.strftime("%R") == "00:00"%><%=@event.date.strftime("%a %e. %b")%><%else%><%= @event.date.strftime("%a %e. %b kl. %R") %><%end%> <br />
     <b>What:</b> <%= @event.event.event_type.name %><%unless @event.event.event_type_text.blank?%> - <%=@event.event.event_type_text%><%end%><br />
     <br />
     
 
-    <b>Members:</b> <%= @event.event.price_member %> kr<br />
-    <b>Others:</b> <%= @event.event.price_other %> kr<br /><br />
+    <b>Members:</b> <%if@event.event.price_member == 0%>Free<%else%><%= @event.event.price_member %> kr<%end%><br />
+    <b>Others:</b> <%if@event.event.price_other == 0%>Free<%else%><%= @event.event.price_other %> kr<%end%><br /><br />
 <% unless @event.event.price_member == 0 && @event.event.price_other == 0 %>
   <%=link_to (image_tag "buy_ticket.jpg"), "http://www.samfundet.no/arrangement/billetter/betal/"+@event.url, :target=>"_blank"%>
 <% end %>
@@ -33,7 +39,8 @@
     <b>Other dates:</b><br>
         <% @event.event.event_dates.each do |edate| %>
           <% if edate.id != @event.id%>
-            <%= link_to edate.date.strftime("%a %e. %b kl. %R"),  event_date_path(params[:tab],edate.event.id,:event_date_id=>edate.id)%><br />
+            <%if edate.date.strftime("%R") == "00:00"%><% date=edate.date.strftime("%a %e. %b")%><%else%><% date = edate.date.strftime("%a %e. %b kl. %R") %><%end%>
+            <%= link_to date,  event_date_path(params[:tab],edate.event.id,:event_date_id=>edate.id)%><br />
           <% end %>
         <% end%>
     <%end%>
