@@ -211,8 +211,8 @@ link = page_path(sub.page, :tab=>current_tab.tag)
   <% count = 0
   SppArticle.find_five_latest.each do |article|%>
   <li><div style="float:left"><%if article.youtube_link.blank?%><%= link_to (image_tag  "spp_article_images/" + "#{article.id}_3.jpg", :width=>"50"), "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank"%>
-  <%else%><%= link_to (image_tag "http://www.studentpeaceprize.org/images/bilde3.png", :width=>"50"), "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank"%><%end%></div>
-  <div> <%=link_to article.title_en, "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank" %></div></li>
+  <%else%><%= link_to (image_tag "http://www.studentpeaceprize.org/images/spp_missing.jpg", :width=>"50"), "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank"%><%end%></div>
+  <div style="margin-left:5px;"> <%=link_to article.title_en, "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank" %></div></li>
    <%  count = count +1
 unless count == 5%>
   <hr style="margin-left:20px">
@@ -267,6 +267,7 @@ unless count == 5%>
             <div id="artists" class="grid_5 alpha omega" style="margin-bottom:10px;">
             <div class="boks">
             <h3>Program</h3>
+            <hr>
               <div style="padding:5px;">
               <%= render :partial => 'events/lineup' %>
               </div>
