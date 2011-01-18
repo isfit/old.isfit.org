@@ -18,6 +18,7 @@ class EventsController < ApplicationController
     else
       @event_dates = EventDate.joins(:event).where("events.visible_at <= '"+now+"'").order("event_dates.date")
     end
+    @event_dates = @event_dates.order(:date)
     respond_to do |format|
       format.html
       format.xml { render :xml => Event.where("events.visible_at <= '"+now+"'").to_xml(:include => :event_dates) }
