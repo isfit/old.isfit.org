@@ -452,15 +452,24 @@ height:auto;
 .photo_left {
   float:left;
   width:253px;
-  padding-right: 10px;
+  padding: 10px;
 }
 
 .photo_right {
   float:right;
   width:253px;
-  padding-left: 10px;
+  padding: 10px;
 }
 .black_left {
   float:right;
   color:black;
+}
+
+
+.boxheadline {
+  background: #8EC1DA;
+}
+
+.article {
+  background: #ffffff;
 }
