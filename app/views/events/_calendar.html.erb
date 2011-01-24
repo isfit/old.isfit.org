@@ -41,9 +41,9 @@
       prevyear = year
     end
 	  if month < 10
-      events = EventDate.find(:all, :conditions => "date LIKE '"+year.to_s+"-0"+month.to_s+"%'")
+      events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '"+year.to_s+"-0"+month.to_s+"%' AND events.deleted <> 1")
     elsif
-      events = EventDate.find(:all, :conditions => "date LIKE '"+year.to_s+"-"+month.to_s+"%'")
+      events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '"+year.to_s+"-"+month.to_s+"%' AND events.deleted <> 1")
     end
 
                 dates = Array.new(31)
