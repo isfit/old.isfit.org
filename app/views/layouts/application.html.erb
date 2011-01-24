@@ -188,7 +188,7 @@ link = page_path(sub.page, :tab=>current_tab.tag)
   <%#= image_tag ("chronicle-top.png")%>
   <div id="boksturkis" class="grid_5 alpha omega">
   <div class="boks" onclick="location.href='<%=chronicle_path(params[:tab], Chronicle.find_most_recent.first)%>'" style="cursor:pointer">
-  <h3>Kommentar</h3>
+  <h3 class="boxheadline">Kommentar</h3>
   <hr>
   <%= render :template =>'chronicles/index'%>
   </div>
@@ -206,7 +206,7 @@ link = page_path(sub.page, :tab=>current_tab.tag)
   <div id="boksrod_bg" class="grid_5 alpha omega"><!-- Start rød -->
   <div id="boksrod" class="grid_5 alpha omega">
   <div class="boks">
-  <h3><%= link_to "Student Peace Prize", "http://www.studentpeaceprize.org" %></h3><hr><br />
+  <h3 class="boxheadline"><%= link_to "Student Peace Prize", "http://www.studentpeaceprize.org" %></h3><hr><br />
   <ul style="list-style-type:none; margin: 0 0 0 -20px;">
   <% count = 0
   SppArticle.find_five_latest.each do |article|%>
@@ -266,7 +266,7 @@ unless count == 5%>
             
             <div id="artists" class="grid_5 alpha omega" style="margin-bottom:10px;">
             <div class="boks">
-            <h3>Program</h3>
+            <h3 class="boxheadline">Program</h3>
             <hr>
               <div style="padding:5px;">
               <%= render :partial => 'events/lineup' %>
@@ -326,7 +326,7 @@ new TWTR.Widget({
 <div id="boksoransje_bg" class="grid_5 alpha omega"><!-- Start oransje -->
   <div id="boksoransje" class="grid_5 alpha omega">
   <div class="boks" style="padding-bottom:50px">
-  <h3><%= link_to t("layout.media"), isfit_media_links_path(:tab=>:press) %></h3><br>
+  <h3 class="boxheadline"><%= link_to t("layout.media"), isfit_media_links_path(:tab=>:press) %></h3><br>
   <ul style="list-style-type:none; margin: 0 0 0 -20px;">
   <% count = 0
   IsfitMediaLink.find_five_latest.each do |link|%>
