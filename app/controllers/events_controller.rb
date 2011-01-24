@@ -10,7 +10,7 @@ class EventsController < ApplicationController
         @date = Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
         @event_dates = @category.event_dates.joins(:event).where("event_dates.date LIKE '"+@date.to_s+"%' AND events.visible_at <= '"+now+"' AND events.deleted <> 1")
       else
-        @event_dates = @category.event_dates.where("events.visible_at <= '"+now+"'").order("event_dates.date AND events.deleted <> 1")
+        @event_dates = @category.event_dates.where("events.visible_at <= '"+now+"' AND events.deleted <> 1").order("event_dates.date")
       end
     elsif params[:year] && params[:month] && params[:day]
       @date = Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
