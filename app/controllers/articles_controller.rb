@@ -9,11 +9,12 @@ class ArticlesController < ApplicationController
     else
       @articles.reject!{|x| x.title_no == "" }
     end
-    @articles = @articles[0..6]
+    @articles = @articles[0..10]
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @articles }
+      format.json { render :json => @articles }
     end
   end
 
@@ -24,7 +25,7 @@ class ArticlesController < ApplicationController
     else
       @articles.reject!{|x| x.title_no == "" }
     end
-    @articles = @articles[7..-1]
+    @articles = @articles[11..-1]
 
     respond_to do |format|
       format.html # index.html.erb

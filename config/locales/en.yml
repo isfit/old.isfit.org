@@ -58,6 +58,10 @@ en:
     phone_nor: "Phone"
     email: "Email address"
     email_ntnu: "Email address (at place of study)"
+  host:
+    registration: Registration form
+    optional: Optional Fields
+    mandatory: Mandatory Fields
   helpers:
     label:
       host:
@@ -68,7 +72,24 @@ en:
         email: "Email address"
         zipcode: "Zipcode"
         place: "Place"
-        age: Age
+        age: Your age
+        number: Number participants you would you like to host
+        where: Where will the participant(s) sleep?
+        arrival_before: Participant(s) may arrive one day earlier (February 10th)
+        leave_late: Participant(s) may stay one day longer (February 21th)
+        skies: Number of pairs of skies you have for participant(s) to loan
+        preferences: Preferences (e.g. gender, country, age, language, etc.)
+        vegetarian: Can the participant be vegetarian? 
+        smoker: Can the participant smoke?
+        pet: If you have animals, what kind of animals do you have? 
+        animal_number: If you have animals, how many do you have?   
+        language_speak: What languages do you speak?
+        before: Have been hosting for ISFiT before?
+        know_isfit: Have been hosting for ISFiT before?
+        member_name: Name of member (only if the option 'member of ISFiT' is chosen)
+        why: Why do you want to volunteer?
+        base: ""
+
   activerecord:
     errors:
       messages:

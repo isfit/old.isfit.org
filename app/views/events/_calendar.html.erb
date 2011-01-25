@@ -10,10 +10,13 @@
     prevyear = nil
 
     day = Time.now.day
-   
+    today = Time.now
    nextyear = nil
    nextmonth = nil
    prevyear = nil
+   if params[:day]
+    day = params[:day].to_i
+   end
    if params[:month] && params[:year]
       month = params[:month].to_i
       year = params[:year].to_i
@@ -38,15 +41,14 @@
       prevyear = year
     end
 	  if month < 10
-      events = Event.find(:all, :conditions => "date LIKE '"+year.to_s+"-0"+month.to_s+"%'")
+      events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '"+year.to_s+"-0"+month.to_s+"%' AND events.deleted <> 1")
     elsif
-      events = Event.find(:all, :conditions => "date LIKE '"+year.to_s+"-"+month.to_s+"%'")
+      events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '"+year.to_s+"-"+month.to_s+"%' AND events.deleted <> 1")
     end
 
                 dates = Array.new(31)
                 for e in events do
-                        day=e['date']
-                        dates[day.day] = 1
+                        dates[e.date.day] = 1
                 end
 		#days and weeks vars now ...
 		running_day = ((Date.new(year, 12, 1) << (12-month)).wday)
@@ -86,21 +88,18 @@
 			#keep going with days....
       for list_day in (1..days_in_month) do %>
 				<td class="calendar-day">
-					<%if dates[list_day] == 1%>
-						<u>
-						<%= link_to list_day.to_s, url_for(:controller=>"events", :tab=>params[:tab], :year=> year.to_s, :month=> month.to_s, :day=> list_day.to_s) %></td>
-						</u>
-					<%else
-            is_today = list_day == day.to_i
-            if is_today %>
-              <span class="calendar-day-today">
-            <% end %>
-						 <%= link_to list_day.to_s, url_for(:controller=>"events", :tab=>params[:tab], :year=> year.to_s, :month=> month.to_s, :day=> list_day.to_s) %></td>
-              <% if is_today %>
-              </span>
-            <% end %>
-             </td>
-					<%end%>
+          <%if list_day == today.day.to_i && month == today.month.to_i && year == today.year.to_i %>
+            <span class="calendar-day-today" style="border: #000 1px solid">
+						  <%= link_to list_day.to_s, url_for(:controller=>"events", :tab=>params[:tab], :year=> year.to_s, :month=> month.to_s, :day=> list_day.to_s) %></td>
+            </span> 
+          <%elsif dates[list_day] == 1%>
+					  <%= link_to list_day.to_s, url_for(:controller=>"events", :tab=>params[:tab], :year=> year.to_s, :month=> month.to_s, :day=> list_day.to_s), :style=>"text-decoration: underline" %></td>
+					<%else%>
+            <div style="color:#000">
+            <%=list_day.to_s%>
+            </div>
+          <% end %>
+        </td>
 				<% if running_day == 6 %>
 					</tr>
 					<% if (day_counter) != days_in_month %>
@@ -125,9 +124,9 @@
 			end 
 		%>
 		<tr class="calendar-row"><td style="color:#EAAE0D;text-transform:lowercase;" colspan=7>
-        [<%= link_to Date::ABBR_MONTHNAMES[prevmonth], url_for(:tab=>params[:tab], :year=>prevyear, :month=>prevmonth), :style=>"font-size:90%;color:#EAAE0D;text-transform:lowercase;" %>]
+        [<%= link_to Date::ABBR_MONTHNAMES[prevmonth], url_for(:id => nil, :action=>:index, :tab=>params[:tab], :year=>prevyear, :month=>prevmonth), :style=>"font-size:90%;color:#EAAE0D;text-transform:lowercase;" %>]
         [<%= Date::MONTHNAMES[month] %>]
-        [<%= link_to Date::ABBR_MONTHNAMES[nextmonth], url_for(:tab=>params[:tab], :year=>nextyear, :month=>nextmonth), :style=>"font-size:90%;color:#EAAE0D;text-transform:lowercase;" %>]
+        [<%= link_to Date::ABBR_MONTHNAMES[nextmonth], url_for(:id => nil, :action=>:index, :tab=>params[:tab], :year=>nextyear, :month=>nextmonth), :style=>"font-size:90%;color:#EAAE0D;text-transform:lowercase;" %>]
     </td></tr>
 
 		<!--final row -->

@@ -84,7 +84,7 @@ a:hover {
 .oflagg {
 	float: right;
 	margin: 0 3px 0 0;
-	padding-top: 4px;
+	padding-top: 0px;
 }
 
 #header {
@@ -204,6 +204,10 @@ a:hover {
 	height: auto;
 }
 
+#artists {
+  background:#fff;
+}
+
 #midtramme {
 	padding-top: 15px;
 }
@@ -253,15 +257,15 @@ div.field_without_errors textarea {
 
 
 div.field_with_errors input {
-  border: 1px solid red;
+  border: 1px solid red !important; 
 }
 
 div.field_with_errors select {
-  border: 1px solid red;
+  border: 1px solid red !important;
 }
 
 div.field_with_errors textarea {
-  border: 1px solid red;
+  border: 1px solid red !important;
 }
 #hoved_artikkel h3.overskrift {
   padding: 0 10px 10px 10px;
@@ -319,7 +323,9 @@ div.field_with_errors textarea {
 
 .event_category {
 	background: #fff;
-	margin: 5px;
+	margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 	padding: 5px;
 	text-align: center;
 }
@@ -347,18 +353,20 @@ div.field_with_errors textarea {
 	margin: 5px 20px 5px 5px;
 }
 .event_content {
-	width: 450px;
+	width: 530px;
 }
 .event_category_button {
 	margin: 0px 15px 0px 15px;
 	}
 	
 .event_information {
-	width: 400px;
+
+	width: 190px;
 	background: #EDEFF4;
-	border: 2px #00394A solid;
+	border: 1px #00394A solid;
 	float: left;
-	padding: 20px;
+  padding: 10px 0px 10px 10px;
+
 }
 	
 #event_infobox {
@@ -366,6 +374,7 @@ div.field_with_errors textarea {
 	padding: 10px;
 	float: left;
 	width: 530px;
+  padding-bottom:20px;
 }
 
 #hoyreramme {
@@ -389,7 +398,7 @@ div.field_with_errors textarea {
 
 #boksrod {
 	background: #fff; /* url(../images/boksrod.png) no-repeat;*/
-	height: 300px;
+	height: 500px;
 }
 
 #boksoransje_bg {
@@ -399,7 +408,7 @@ div.field_with_errors textarea {
 
 #boksoransje {
 /*	background: url(../images/boksoransje.png) no-repeat;*/
-	height: 218px;
+	height: 500px;
 }
 
 #boksgronn_bg {
@@ -442,21 +451,30 @@ height:auto;
 }
 
 .articleheight {
-	height: 250px;
+	height: 260px;
 }
 
 .photo_left {
   float:left;
   width:253px;
-  padding-right: 10px;
+  padding: 10px;
 }
 
 .photo_right {
   float:right;
   width:253px;
-  padding-left: 10px;
+  padding: 10px;
 }
 .black_left {
   float:right;
   color:black;
+}
+
+
+.boxheadline {
+  background: #8EC1DA;
+}
+
+.article {
+  background: #ffffff;
 }

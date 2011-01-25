@@ -4,6 +4,7 @@ xmlns:fb="http://www.facebook.com/2008/fbml">
 
 <head>
 <title>ISFiT 2011</title>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 <%= stylesheet_link_tag :all %>
 <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 <%= javascript_include_tag 'jquery','application', 'jquery.simplemodal-1.3.5.min', 'imgareaselect', 'jquery.nivo.slider'%>
@@ -97,8 +98,9 @@ link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
 
   <div id="slider-wrapper">
   <div id="slider" class="nivoSlider">
-  <%Slide.all.shuffle.each do |s|%>
-  <%if s.cropped %>
+  <%Slide.where("published_at <= '"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"'").shuffle.each do |s|%>
+  <%if s.cropped%>
+  
   <%=link_to (image_tag s.image.url, :title=>s.content), s.link%>
   <%end%>
   <%end%>
@@ -108,7 +110,7 @@ link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
 
   <script type="text/javascript">
   $(window).load(function() {
-      $('#slider').nivoSlider({effect:'fade',controlNav:false,pauseTime:10000});
+      $('#slider').nivoSlider({effect:'fade',controlNav:false,pauseTime:7000});
       });
 </script>
 </div><!-- Slutt header -->
@@ -177,16 +179,17 @@ link = page_path(sub.page, :tab=>current_tab.tag)
   <div id="venstreramme" class="grid_5"><!-- Start venstreramme -->
   <div id="boksgronn_bg" class="grid_5 alpha omega"><!-- Start grønn -->
   <div id="boksgronn" class="grid_5 alpha omega">
-  <%=link_to I18n.locale.to_s == 'en' ? image_tag("blivert_eng.png") : image_tag("blivert_tekst.png"), "http://www.isfit.org/host/hosts/new" %>
+  <%=link_to I18n.locale.to_s == 'en' ? image_tag("blivert_eng.png") : image_tag("blivert_tekst.png"), "http://www.isfit.org/info/hosts/new" %>
   <br /><br />
-  <%= link_to I18n.locale.to_s == 'en' ? image_tag("stott_deltaker_eng.png") : image_tag("stott_deltaker.png"), "http://www.isfit.org/donate/donations/donate" %>
+  <%= link_to I18n.locale.to_s == 'en' ? image_tag("stott_deltaker_eng.png") : image_tag("stott_deltaker.png"), "http://www.isfit.org/info/donations/donate" %>
   </div>
   </div><!-- Slutt grønn -->
   <div id="boksturkis_bg" class="grid_5 alpha omega"><!-- Start turkis -->
   <%#= image_tag ("chronicle-top.png")%>
   <div id="boksturkis" class="grid_5 alpha omega">
-  <div class="boks">
-  <span class="header-kommentar">Kommentar</span>
+  <div class="boks" onclick="location.href='<%=chronicle_path(params[:tab], Chronicle.find_most_recent.first)%>'" style="cursor:pointer">
+  <h3 class="boxheadline">Kommentar</h3>
+  <hr>
   <%= render :template =>'chronicles/index'%>
   </div>
   </div>
@@ -203,27 +206,36 @@ link = page_path(sub.page, :tab=>current_tab.tag)
   <div id="boksrod_bg" class="grid_5 alpha omega"><!-- Start rød -->
   <div id="boksrod" class="grid_5 alpha omega">
   <div class="boks">
-  <h3><%= link_to "Student Peace Prize", "http://www.studentpeaceprize.org" %></h3><br />
+  <h3 class="boxheadline"><%= link_to "Student Peace Prize", "http://www.studentpeaceprize.org" %></h3><hr><br />
   <ul style="list-style-type:none; margin: 0 0 0 -20px;">
-  <%
+  <% count = 0
   SppArticle.find_five_latest.each do |article|%>
-  <li><%=link_to( ((image_tag  "spp_article_images/" + "#{article.id}_3.jpg", :width=>"50") +  article.title_en), "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank" )%></li>
+  <li><div style="float:left"><%if article.youtube_link.blank?%><%= link_to (image_tag  "spp_article_images/" + "#{article.id}_3.jpg", :width=>"50"), "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank"%>
+  <%else%><%= link_to (image_tag "http://www.studentpeaceprize.org/images/spp_missing.jpg", :width=>"50"), "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank"%><%end%></div>
+  <div style="margin-left:55px;"> <%=link_to article.title_en, "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank" %></div></li>
+   <%  count = count +1
+unless count == 5%>
   <hr style="margin-left:20px">
+  <%end%>
   <% end %>
 
   </ul>
   </div>
   </div>
   </div><!-- Slutt rød -->
-  <div id="boksoransje_bg" class="grid_5 alpha omega"><!-- Start oransje -->
+<div id="boksoransje_bg" class="grid_5 alpha omega"><!-- Start oransje -->
   <div id="boksoransje" class="grid_5 alpha omega">
-  <div class="boks">
-  <h3><%= link_to t("layout.media"), isfit_media_links_path(:tab=>:press) %></h3><br>
+  <div class="boks" style="padding-bottom:50px">
+  <h3 class="boxheadline"><%= link_to t("layout.media"), isfit_media_links_path(:tab=>:press) %></h3><br>
   <ul style="list-style-type:none; margin: 0 0 0 -20px;">
-  <%
+  <% count = 0
   IsfitMediaLink.find_five_latest.each do |link|%>
   <li><%=link_to( link.short_desc, link.link, :target=>"_blank" )%></li>
-    <hr style="margin-left:20px">
+  <% count = count +1
+
+  unless count == 5%>
+  <hr style="margin-left:20px">
+  <%end%>
   <% end %>
 
   </ul>
@@ -231,7 +243,6 @@ link = page_path(sub.page, :tab=>current_tab.tag)
   </div>
   </div>
   </div><!-- Slutt oransje -->
-
   </div><!-- Slutt venstreramme -->
   <div id="midtramme" class="grid_14"><!-- Start midtramme -->
   <%
@@ -272,18 +283,26 @@ link = page_path(sub.page, :tab=>current_tab.tag)
           </div><!-- Slutt midtramme -->
           <div id="hoyreramme" class="grid_5"><!-- Start hoyreramme -->
             
-            <div id="artists" class="grid_5 alpha omega">
+            <div id="artists" class="grid_5 alpha omega" style="margin-bottom:10px;">
+            <div class="boks">
+            <h3 class="boxheadline">Program</h3>
+            <hr>
+              <div style="padding:5px;">
               <%= render :partial => 'events/lineup' %>
+              </div>
             </div>
+            </div>
+<br />&nbsp;
           <div id="tickets" class="grid_5 alpha omega">
           </div>
+          <br />
           <div id="boksbla_bg" class="grid_5 alpha omega">
               <div id="boksbla" class="grid_5 alpha omega">
                 <%= render :partial => 'events/calendar' %>
               </div>
             </div>
           <div id="facebook" class="grid_5 alpha omega">
-          <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/pages/ISFiT/11541693212" width="190" show_faces="true" stream="false" header="true"></fb:like-box>
+<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FISFiT%2F11541693212&amp;width=190&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=true&amp;height=300" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:190px; height:300px;" allowTransparency="true"></iframe>
           </div><br />&nbsp;<br />
           <div id="twitter" class="grid_5 alpha omega">
 <script src="http://widgets.twimg.com/j/2/widget.js"></script>

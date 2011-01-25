@@ -8,329 +8,185 @@
   <meta property="og:description" content="Become a host at ISFiT 2011"/>
 <%end%>
 <%=render "partials/error", :locals => {:model => @host}%>
-<% form_for @host, :url => hosts_path(params[:tab])  do |f| %>
 
 <% if Language.to_s == "en" %>
-<H1>Become a host for ISFiT!</H1>
+  <H1>Become a host for ISFiT!</H1>
 
-<p><b>Do you want to be a host?</b></p>
-<p>The 11th ISFiT festival starts at 11 February 2011. 450 participants from more than a hundred countries will come to spend ten days in Trondheim; here they will live in the homes of our host families. </p>
-<p>Do you wish to experience the festival in a different and exciting way? We need hosts for our participants from 11 February to 20 February 2011.</p>
-<p>During the day the participant will spend their time in workshops. The participants are signed up for 17 different workshops, who discuss the festival theme, Global Health, from different angles. At night ISFiT offers a large festival program with cultural events such as concerts, theatre, exhibitions and shows, as well as plenary sessions and lectures. The festival program is open for the participants, students and the rest of Trondheim’s population - this means for you as a host as well.</p>
-<p>The participants will spend a lot of time during both day and night at ISFiT’s events. ISFiT will provide the participants with lunch and dinner. You, as a host, will provide breakfast.</p>
+  <p><b>Do you want to be a host?</b></p>
+  <p>The 11th ISFiT festival starts at 11 February 2011. 450 participants from more than a hundred countries will come to spend ten days in Trondheim; here they will live in the homes of our host families. </p>
+  <p>Do you wish to experience the festival in a different and exciting way? We need hosts for our participants from 11 February to 20 February 2011.</p>
+  <p>During the day the participant will spend their time in workshops. The participants are signed up for 17 different workshops, who discuss the festival theme, Global Health, from different angles. At night ISFiT offers a large festival program with cultural events such as concerts, theatre, exhibitions and shows, as well as plenary sessions and lectures. The festival program is open for the participants, students and the rest of Trondheim’s population - this means for you as a host as well.</p>
+  <p>The participants will spend a lot of time during both day and night at ISFiT’s events. ISFiT will provide the participants with lunch and dinner. You, as a host, will provide breakfast.</p>
 
-<p>If you have any questions, please send a mail to verter[at]isfit.org or call 91 56 95 61</p>
+  <p>If you have any questions, please send a mail to verter[at]isfit.org or call 91 56 95 61</p>
 
-<p>On behalf of ISFiT 2011, thank you very much</p>
+  <p>On behalf of ISFiT 2011, thank you very much</p>
 
-<p>Marthe Asheim Underthun<br />
-Head of Recruiting</p>
-<br /><br />
-<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="recommend"></fb:like>
-<br />
-<h3>Registration form</h3>
-<p>
-Please fill in the following form and press the Submit button to submit your application.
-</p>
-<table>
-	<tr>
-		<td colspan="2"><b>Mandatory fields</b></td>
-	</tr>
-	<tr>
-		<td >First name: </td>
-		<td><%= f.text_field :first_name %></td>
-	</tr>
-	<tr>
-		<td>Last name: </td>
-		<td><%= f.text_field :last_name %></td>
-	</tr>
-	<tr>
-		<td>Address: </td>
-		<td><%= f.text_field :address %></td>
-	</tr>
-	<tr>
-		<td>Postal code: </td>
-		<td><%= f.text_field :zipcode %></td>
-	</tr>
-	<tr>
-		<td>Postal place: </td>
-		<td><%= f.text_field :place %></td>
-	</tr>
-	<tr>
-		<td>Phone number: </td>
-		<td><%= f.text_field :phone %></td>
-	</tr>
-	<tr>
-		<td>Email address: </td>
-		<td><%= f.text_field :email %></td>
-	</tr>
-	<tr>
-		<td>Your age: </td>
-		<%
-		ages = []
-		for i in 0..99
-			ages[i] = i
-		end
-		%>
-		<td><%= f.select :age , ages %></td>
-	</tr>	
-	<tr>
-		<td>Number participants you would you like to host:</td>
-		<% 
-		choices = []
-		for i in 0..9
-			choices[i] = i+1
-		end
-		 %>
-		<td><%= f.select :number , choices %></td>
-	</tr>
-	<tr>
-		<td colspan="2"><br /><b>Optional fields</b></td>
-	</tr>
-	<tr>
-		<td>Where will the participant(s) sleep?</td>
-		<td><%= f.text_field :where %></td>
-	</tr>
-	<tr>
-	<tr>
-		<td>Participant(s) may arrive one day earlier (February 10th):  </td>
-		<td><%= f.check_box :arrival_before %> </td>
-	</tr>
-	<tr>
-		<td>Participant(s) may stay one day longer (February 21th):</td>
-		<td><%= f.check_box :leave_late %> </td>
-	</tr>
-		<td>Number of pairs of skies you have for participant(s) to loan:</td>
-		<%
-				choice = []
-				for i in 0..9
-					choice[i] = i
-				end
-				%>
-		<td><%= f.select:skies, choice %> </td>
-	</tr>	
-	<tr>
-		<td>Preferences (e.g. gender, country, age, language, etc.):</td>
-		<td> <%= f.text_area :preference, :rows => 2 %> </td>
-	</tr>
-  <tr>
-		<td>Can the participant be vegetarian?</td>
-		<td> <%= f.check_box :vegetarian %> </td>
-	</tr>
-  <tr>
-		<td>Can the participant smoke?</td>
-		<td> <%= f.check_box :smoker %> </td>
-	</tr>
-
-	<tr>
-	 <td> If you have animals, what kind of animals do you have? </td>
-	 <td> <%= f.text_field :pet %></td>
-	</tr>
-  <tr>
-	 <td> If you have animals, how many do you have? </td>
-	 <td> <%= f.select :animal_number, choice %></td>
-	</tr>
-  <tr>
-	 <td> What languages do you speak?</td>
-	 <td> <%= f.text_field :language_speak %></td>
-	</tr>
-	<tr>
-		<td>Have been hosting for ISFiT before:</td>
-		<td><%= f.check_box :before %> </td>
-	</tr>
-	<tr>
-		<td>How did you hear about ISFiT?</td>
-		<td><%= f.select(:know_isfit, {'Written media' => 'Written media', 'E-mail' => 'E-mail', 'Friends' => 'Friends', 'Posters, screens, stands, flyers' => 'Posters, screens, stand, flyer', 'Other' => 'Other', 'Members of the ISFiT organization' => 'Members of the ISFiT organization'}) %></td>
-	</tr>
-	<tr>
-	 <td></td>
-	 <td>Name of member (only if the option "member of ISFiT" is chosen): <br>
-	   <%= f.text_field :member_name %>
-   </td>
-	</tr>
-	<tr>
-		<td>Why do you want to volunteer?</td>
-		<td><%= f.text_area :why , :rows => 2 %></td>
-	</tr>
-	<tr>
-		<TD colspan="2"><%= form_tag ({:action=> "done", :id => params[:id]} ) %>
-		<%= submit_tag "Submit" %><br>
-		</td>
-	</tr>
-	
-</table>
-
+  <p>Marthe Asheim Underthun<br />
+    Head of Recruiting</p>
+  <br /><br />
 <% else %>
 
-<h1>Bli ISFiT-vert!</h1>
+  <h1>Bli ISFiT-vert!</h1>
 
-<p>Den 11. februar setter vi igang med den 11. ISFiT festivalen. 450 deltakere
-kommer fra over 100 land for å tilbringe 10 dager i Trondheim der de skal bo
-hjemme hos våre verter. Ønsker du og oppleve festivalen på en ny og
-spennende måte?</p>
+  <p>Den 11. februar setter vi igang med den 11. ISFiT festivalen. 450 deltakere
+    kommer fra over 100 land for å tilbringe 10 dager i Trondheim der de skal bo
+    hjemme hos våre verter. Ønsker du og oppleve festivalen på en ny og
+    spennende måte?</p>
 
-<p>Vi trenger verter til våre deltakere fra 11. februar til 20. februar 2011.</p>
+  <p>Vi trenger verter til våre deltakere fra 11. februar til 20. februar 2011.</p>
 
-<p>På dagtid tilbringer deltakerne sin tid i Workshops. Det er 17 workshops i
-ISFiT 2011 som jobber med ulike tema under tittelen "Global helse". På
-kvelden tilbyr ISFiT et stort festivaltilbud med kulturarrangementer som
-konserter, teater, utstillinger og oppsetninger, samt møter og foredrag.
-Dette tilbudet er åpent for deltakerne, studenter og øvrige interesserte i
-Trondheim - det vil si også deg som vert!</p>
+  <p>På dagtid tilbringer deltakerne sin tid i Workshops. Det er 17 workshops i
+    ISFiT 2011 som jobber med ulike tema under tittelen "Global helse". På
+    kvelden tilbyr ISFiT et stort festivaltilbud med kulturarrangementer som
+    konserter, teater, utstillinger og oppsetninger, samt møter og foredrag.
+    Dette tilbudet er åpent for deltakerne, studenter og øvrige interesserte i
+    Trondheim - det vil si også deg som vert!</p>
 
-<p>Detakerene tilbringer mye tid både morgen og kveld på våre arrangementer.
-Dermed står ISFiT for lunsj og middag for deltakerne. Du som vert står for
-frokost.</p>
+  <p>Detakerene tilbringer mye tid både morgen og kveld på våre arrangementer.
+    Dermed står ISFiT for lunsj og middag for deltakerne. Du som vert står for
+    frokost.</p>
 
-<p>Hvis du har spørsmål kan du sende en
-mail til verter[at]isfit.org eller ringe 91 56 95 61</p>
-<br />
-Tusen Takk, på vegne av ISFiT 2011
-<br /><br />
-Marthe Asheim Underthun<br />
-Rekrutteringssjef
-<br /><br />
-
-<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="recommend"></fb:like>
-<br />
-<h3>Registreringsskjema</h3>
-<p>
-Vennligst fyll ut skjemaet under og trykk på Send-knappen for å sende inn skjemaet.
-</p>
-<table>
-	<tr>
-		<td colspan="2"><b>Obligatoriske felter</b></td>
-	</tr>
-	<tr>
-		<td>Fornavn: </td>
-		<td><%= f.text_field :first_name %></td>
-	</tr>
-	<tr>
-		<td>Etternavn: </td>
-		<td><%= f.text_field :last_name %></td>
-	</tr>
-	<tr>
-		<td>Adresse: </td>
-		<td><%= f.text_field :address %></td>
-	</tr>
-	<tr>
-		<td>Postnr: </td>
-		<td><%= f.text_field :zipcode %></td>
-	</tr>
-	<tr>
-		<td>Poststed: </td>
-		<td><%= f.text_field :place %></td>
-	</tr>
-	<tr>
-		<td>Tlf: </td>
-		<td><%= f.text_field :phone %></td>
-	</tr>
-	<tr>
-		<td>E-post: </td>
-		<td><%= f.text_field :email %></td>
-	</tr>
-	<tr>
-		<td>Din alder: </td>
-		<%
-		ages = []
-		for i in 0..99
-			ages[i] = i
-		end
-		%>
-		<td><%= f.select :age , ages %></td>
-	</tr>	
-	<tr>
-		<td>Antall deltakere som kan bo hos deg:</td>
-		<% 
-		choices = []
-		for i in 0..9
-			choices[i] = i
-		end
-		 %>
-		<td><%= f.select :number , choices %></td>
-	</tr>
-	<tr>
-		<td colspan="2"><br /><b>Valgfrie felter</b></td>
-	</tr>
-	<tr>
-		<td>Hvor vil deltakeren(e) sove? </td>
-		<td><%= f.text_field :where %></td>
-	</tr>
-	<tr>
-		<td>Deltakeren(e) kan komme en dag tidligere (10. februar):</td>
-		<td><%= f.check_box :arrival_before %> </td>
-	</tr>
-	<tr>
-		<td>Deltakeren(e) kan dra en dag senere (21. februar):</td>
-		<td><%= f.check_box :leave_late %> </td>
-	</tr>
-	<tr>
-		<td>Antall ski-par du kan låne bort til deltakeren(e):</td>
-		<%
-		choice = []
-		for i in 0..9
-			choice[i] = i
-		end
-		%>
-		<td><%= f.select :skies, choice %> </td>
-	</tr>	
-	<tr>
-		<td>Preferanser (f.eks. kjønn, land, alder, språk, etc.):</td>
-		<td> <%= f.text_area :preference, :rows => 2 %> </td>
-	</tr>
-  <tr>
-		<td>Kan deltakeren være vegetarianer?</td>
-		<td> <%= f.check_box :vegetarian %> </td>
-	</tr>
-  <tr>
-		<td>Kan deltakeren røyke?</td>
-		<td> <%= f.check_box :smoker %> </td>
-	</tr>
-
-	<tr>
-	 <td> Hvis du har husdyr, hvilke husdyr har du? </td>
-	 <td> <%= f.text_field :pet %></td>
-	</tr>
-  <tr>
-	 <td> Hvis du har husdyr, hvor mange husdyr har du? </td>
-	 <td> <%= f.select :animal_number, choice %></td>
-	</tr>
-  <tr>
-	 <td> Hvilke språk snakker du?</td>
-	 <td> <%= f.text_field :language_speak %></td>
-	</tr>
-
-	<tr>
-		<td>Har vært vert for ISFiT før:</td>
-		<td><%= f.check_box :before %> </td>
-	</tr>
-	<tr>
-	 
-		<td>Hvordan h&oslash;rte du om ISFiT?</td>
-		<td><%= f.select(:know_isfit, {'Skriftlig media' => 'Skriftlig media', 'E-Mail' => 'Mail', 'Venner' => 'Venner', 'Plakater, skjermer, stands, flyers' => 'Plakater, skjermer, stand, flyer', 'Annet' => 'Annet', 'Medlemmer av ISFiT organisasjonen' => 'Medlemmer av ISFiT organisasjonen'}) %></td>
-	</tr>
-		<tr>
-	 <td></td>
-	 <td>Navn på medlem (Besvares kun hvis "medlem av ISFiT" er valgt): <br>
-	   <%= f.text_field :member_name %>
-   </td>
-	</tr>
-	<tr>
-		<td>Hvorfor vil du v&aelig;re vert?</td>
-		<td><%= f.text_area :why , :rows => 3 %></td>
-	</tr>
-  <tr>
-    <td></td>
-    <td><%= raw recaptcha_tags %></td>
-	<tr>
-		<td colspan="2"><%= form_tag ({:action=> "done", :id => params[:id]} ) %>
-		<%= submit_tag "Send" %><br>
-		</td>
-	</tr>
-	
-</table>
+  <p>Hvis du har spørsmål kan du sende en
+    mail til verter[at]isfit.org eller ringe 91 56 95 61</p>
+  <p>
+  Vi skal også ha et informasjonsmøte den 2. februar klokka 18.00 på strossa
+  (på Studentersamfundet). Det er bare å møte opp hvis det er noe du lurer
+  på.
+  </p>
+  <br />
+  Tusen Takk, på vegne av ISFiT 2011
+  <br /><br />
+  Marthe Asheim Underthun<br />
+  Rekrutteringssjef
+  <br /><br />
 
 
 <% end %>
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="recommend"></fb:like>
+<h3><%= t('host.registration') %></h3>
+<% form_for @host, :html => { :class => "yform columnar" }, :url => hosts_path(params[:tab])  do |f| %>
+  <fieldset>
+    <legend><%= t('host.mandatory') %></legend>
+    <div class="type-text">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="type-text">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="type-text">
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+    <div class="type-text">
+      <%= f.label :zipcode %>
+      <%= f.text_field :zipcode %>
+    </div>
+    <div class="type-text">
+      <%= f.label :place %>
+      <%= f.text_field :place %>
+    </div>
+    <div class="type-text">
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+    </div>
+    <div class="type-text">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="type-select">
+      <%= f.label :age %>
+      <%
+        ages = []
+        for i in 18..110
+          ages << i
+        end
+      %>
+      <%= f.select :age , ages %>
+    </div>
+    <div class="type-select">
+      <%= f.label :number %>
+      <% 
+        choices = []
+        for i in 1..9
+          choices << i
+        end
+      %>
+      <%= f.select :number , choices %>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend><%= t('host.optional') %></legend>
+    <div class="type-text">
+      <%= f.label :where %>
+      <%= f.text_field :where %>
+    </div>
+    <div class="type-check">
+      <%= f.check_box :arrival_before %>
+      <%= f.label :arrival_before %>
+    </div>
+    <div class="type-check">
+      <%= f.check_box :leave_late %>
+      <%= f.label :leave_late %>
+    </div>
+    <div class="type-select">
+      <%= f.label :skies %>
+      <%
+        choice = []
+        for i in 0..9
+          choice << i
+        end
+      %>
+      <%= f.select:skies, choice %>
+    </div>
+    <div class="type-text">
+      <%= f.label :preference %>
+      <%= f.text_area :preference, :rows => 2 %>
+    </div>
+    <div class="type-check">
+      <%= f.check_box :vegetarian %>
+      <%= f.label :vegetarian %>
+    </div>
+    <div class="type-check">
+      <%= f.check_box :smoker %>
+      <%= f.label :smoker %>
+    </div>
+    <div class="type-text">
+      <%= f.label :pet %>
+      <%= f.text_field :pet %>
+    </div>
+    <div class="type-select">
+      <%= f.label :animal_number %>
+      <%= f.select :animal_number, choice %>
+    </div>
+    <div class="type-text">
+      <%= f.label :language_speak %>
+      <%= f.text_field :language_speak %>
+    </div>
+    <div class="type-check">
+      <%= f.check_box :before %>
+      <%= f.label :before %>
+    </div>
+    <div class="type-select">
+      <%= f.label :know_isfit %>
+      <%= f.select(:know_isfit, {'Written media' => 'Written media', 'E-mail' => 'E-mail', 'Friends' => 'Friends', 'Posters, screens, stands, flyers' => 'Posters, screens, stand, flyer', 'Other' => 'Other', 'Members of the ISFiT organization' => 'Members of the ISFiT organization'}) %>
+    </div>
+    <div class="type-text">
+      <%= f.label :member_name %>
+      <%= f.text_field :member_name %>
+    </div>
+    <div class="type-text">
+      <%= f.label :why %>
+      <%= f.text_area :why, :rows => 2 %>
+    </div>
+    <%= raw recaptcha_tags %>
+    <%= form_tag ({:action=> "done", :id => params[:id]} ) %>
+    <div class="type-button">
+      <%= submit_tag "Submit" %>
+    </div>
+  </fieldset>
+
 <% end %>
 

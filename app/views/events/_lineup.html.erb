@@ -1,6 +1,12 @@
-<table>
+<table style="width:100%;">
 <%now = Time.now.strftime("%Y-%m-%d %H:%M:%S")%>
-<%Event.where(:show_headline=>1).where("visible_at <= '"+now+"'").where(:visible => 1).order("weight DESC").each do |e|%>
-  <tr><td style="color:<%=e.color%>; font-size:<%=e.size%>px;"><b><%=e.title%></b></td></tr>
+<%Event.where(:show_headline=>1).where("visible_at <= '"+now+"' AND events.deleted <> 1").order("weight DESC").each do |e|%>
+  <tr><td>
+    <%if e.lineup_title.blank?%>
+      <b ><%=link_to e.title, {:tab => :program, :controller => :events, :action=>:show, :id => e.id}, :style => "color:#{e.color}; font-size:#{e.size}px;font-family:'Arial'"%></b>
+    <%else%>
+      <b ><%=link_to e.lineup_title, {:tab => :program, :controller => :events, :action=>:show, :id => e.id}, :style => "color:#{e.color}; font-size:#{e.size}px;font-family:'Arial'"%></b>
+    <%end%>
+  </td></tr>
 <%end%>
 </table>
