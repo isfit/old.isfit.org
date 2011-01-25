@@ -28,7 +28,7 @@
     <br />
     
 
-    <b>Members:</b> <%if@event.event.price_member == 0%>Free<%else%><%= @event.event.price_member %> kr<%end%><br />
+    <b><%= @event.event.event_place_id == 10 ? "Students" : "Members" %>:</b> <%if@event.event.price_member == 0%>Free<%else%><%= @event.event.price_member %> kr<%end%><br />
     <b>Others:</b> <%if@event.event.price_other == 0%>Free<%else%><%= @event.event.price_other %> kr<%end%><br /><br />
 <% unless @event.event.price_member == 0 && @event.event.price_other == 0 %>
   <% if not @event.url.blank? %>
