@@ -223,7 +223,26 @@ unless count == 5%>
   </div>
   </div>
   </div><!-- Slutt rød -->
-  
+<div id="boksoransje_bg" class="grid_5 alpha omega"><!-- Start oransje -->
+  <div id="boksoransje" class="grid_5 alpha omega">
+  <div class="boks" style="padding-bottom:50px">
+  <h3 class="boxheadline"><%= link_to t("layout.media"), isfit_media_links_path(:tab=>:press) %></h3><br>
+  <ul style="list-style-type:none; margin: 0 0 0 -20px;">
+  <% count = 0
+  IsfitMediaLink.find_five_latest.each do |link|%>
+  <li><%=link_to( link.short_desc, link.link, :target=>"_blank" )%></li>
+  <% count = count +1
+
+  unless count == 5%>
+  <hr style="margin-left:20px">
+  <%end%>
+  <% end %>
+
+  </ul>
+
+  </div>
+  </div>
+  </div><!-- Slutt oransje -->
   </div><!-- Slutt venstreramme -->
   <div id="midtramme" class="grid_14"><!-- Start midtramme -->
   <%
@@ -321,28 +340,6 @@ new TWTR.Widget({
 }).render().start();
 </script>
           </div>
-
-<br />&nbsp;
-<div id="boksoransje_bg" class="grid_5 alpha omega"><!-- Start oransje -->
-  <div id="boksoransje" class="grid_5 alpha omega">
-  <div class="boks" style="padding-bottom:50px">
-  <h3 class="boxheadline"><%= link_to t("layout.media"), isfit_media_links_path(:tab=>:press) %></h3><br>
-  <ul style="list-style-type:none; margin: 0 0 0 -20px;">
-  <% count = 0
-  IsfitMediaLink.find_five_latest.each do |link|%>
-  <li><%=link_to( link.short_desc, link.link, :target=>"_blank" )%></li>
-  <% count = count +1
-
-  unless count == 5%>
-  <hr style="margin-left:20px">
-  <%end%>
-  <% end %>
-
-  </ul>
-
-  </div>
-  </div>
-  </div><!-- Slutt oransje -->
 
           </div><!-- Slutt hoyreramme -->
           </div><!-- Slutt ramme -->
