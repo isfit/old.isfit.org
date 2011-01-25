@@ -15,9 +15,7 @@ a:hover {
 	color: #666;
 }
 
-.container_24 {
-	
-}
+
 
 #omeny {
 	background: #000 url(../images/omeny.png) repeat-x;
@@ -357,9 +355,10 @@ div.field_with_errors textarea {
 	
 .event_information {
 	width: 400px;
-	background: #DAF0F9;
-	border: 3px #00394A solid;
+	background: #EDEFF4;
+	border: 2px #00394A solid;
 	float: left;
+	padding: 20px;
 }
 	
 #event_infobox {
@@ -416,6 +415,11 @@ div.field_with_errors textarea {
 */
 height:auto;
 }
+
+#boxheadline {
+	background: #ccc;
+}
+
 
 #facebook { 
 	background: #fff;
