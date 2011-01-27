@@ -21,7 +21,10 @@ class EventsController < ApplicationController
     @event_dates = @event_dates.order(:date)
     respond_to do |format|
       format.html
-      @events = Event.where("events.visible_at <= '"+now+"' AND events.deleted <> 1") 
+      @events = Event.where("events.visible_at <= '"+now+"' AND events.deleted <> 1")
+      @events.each do |e|
+        e.description = e.description.gsub(/[\*]*/,'') 
+      end
       format.xml { render :xml => @events.to_xml(:include=>[:event_dates,:event_place,:event_type])}
       format.json { render :json => @events.to_xml(:include=>[:event_dates,:event_place,:event_type])}
    end
@@ -38,8 +41,10 @@ class EventsController < ApplicationController
   
     respond_to do |format|
       format.html
-      format.xml { render :xml => @event.event.to_xml(:include=>[:event_dates,:event_place,:event_type])}
-      format.json { render :json => @event.event.to_json(:include => :event_dates, :include=>:event_place, :include=>:event_type) }
+      @event_no_html = @event.clone
+      @event_no_html.event.description = @event_no_html.event.description.gsub(/[\*]*/,'') 
+      format.xml { render :xml => @event_no_html.event.to_xml(:include=>[:event_dates,:event_place,:event_type])}
+      format.json { render :json => @event_no_html.event.to_json(:include => :event_dates, :include=>:event_place, :include=>:event_type) }
     end         
   end
 end
