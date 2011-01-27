@@ -63,10 +63,15 @@ class Postoffice < ActionMailer::Base
   def host_add(mails)
     @recipients   = mails
     @from         = "ISFiT 2009 <noreply@isfit.org>"
-    @subject      = "Thanks for applying as ISFiT host"
+    @subject_en   = "Thanks for applying as ISFiT host"
+    @subject_no   = "Takk for at du meldte deg som ISFiT vert"
     @sent_on      = Time.now
     @content_type = "text/html"
-	  mail(:to => @recipients, :subject => @subject)
+    if I18n.locale.to_s == "no"
+  	  mail(:to => @recipients, :subject => @subject_no)
+    else
+      mail(:to => @recipients, :subject => @subject_en)
+    end  
   end
 end
 
