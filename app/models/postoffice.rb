@@ -59,5 +59,14 @@ class Postoffice < ActionMailer::Base
       end unless file.blank?
     end
   end
+
+  def host_add(mails)
+    @recipients   = mails
+    @from         = "ISFiT 2009 <noreply@isfit.org>"
+    @subject      = "Thanks for applying as ISFiT host"
+    @sent_on      = Time.now
+    @content_type = "text/html"
+	  mail(:to => @recipients, :subject => @subject)
+  end
 end
 

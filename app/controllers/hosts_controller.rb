@@ -8,6 +8,7 @@ class HostsController < ApplicationController
   def create
     @host = Host.new(params[:host])
     if @host.valid? && verify_recaptcha(:model=>@host, :message=>"Recaptcha verification failed") && @host.save
+      Postoffice.host_add(@host.email).deliver
       redirect_to :action => "done", :tab => params[:tab]
     else
       verify_recaptcha(:model=>@host, :message=>"Recaptcha verification failed")
@@ -17,14 +18,14 @@ class HostsController < ApplicationController
 
   def index
     redirect_to :action => :new, :tab=>params[:tab]
-#		if params[:host]
-#			@host = Host.new(params[:host])
-#			if @host.save
-#				redirect_to :action => "done"
-#			else
-#				flash[:warnings] = @host.errors
-#			end
-#		end	
+		if params[:host]
+			@host = Host.new(params[:host])
+			if @host.save
+				redirect_to :action => "done"
+			else
+				flash[:warnings] = @host.errors
+			end
+		end	
   end
 	
 	def done
