@@ -72,7 +72,6 @@ li {
 
 /* IT ER KUL */
 div.boks {
-  padding: 5px;
   color: black;
 }
 div.boks h1 {
@@ -86,6 +85,7 @@ div.boks-left {
 div.boks h3 {
   color: black;
   font-size:16px;
+  padding: 5px;
 }
 
 div.boks h4 {

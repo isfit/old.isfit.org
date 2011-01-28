@@ -15,9 +15,7 @@ a:hover {
 	color: #666;
 }
 
-.container_24 {
-	
-}
+
 
 #omeny {
 	background: #000 url(../images/omeny.png) repeat-x;
@@ -362,11 +360,13 @@ div.field_with_errors textarea {
 	}
 	
 .event_information {
+
 	width: 190px;
 	background: #EDEFF4;
 	border: 1px #00394A solid;
 	float: left;
   padding: 10px 0px 10px 10px;
+
 }
 	
 #event_infobox {
@@ -425,6 +425,11 @@ div.field_with_errors textarea {
 height:auto;
 }
 
+#boxheadline {
+	background: #ccc;
+}
+
+
 #facebook { 
 	background: #fff;
 }
@@ -452,13 +457,13 @@ height:auto;
 .photo_left {
   float:left;
   width:253px;
-  padding: 10px;
+  padding: 5px;
 }
 
 .photo_right {
   float:right;
   width:253px;
-  padding: 10px;
+  padding: 5px;
 }
 .black_left {
   float:right;
