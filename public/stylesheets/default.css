@@ -457,13 +457,13 @@ height:auto;
 .photo_left {
   float:left;
   width:253px;
-  padding: 10px;
+  padding: 5px;
 }
 
 .photo_right {
   float:right;
   width:253px;
-  padding: 10px;
+  padding: 5px;
 }
 .black_left {
   float:right;
