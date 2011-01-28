@@ -29,7 +29,7 @@ class Postoffice < ActionMailer::Base
   def fund(application, files, mails)
     #@recipients   = "leader.stiftelsen@isfit.org"
     @recipients   = mails
-    @from         = "ISFiT 2009 <noreply@isfit.org>"
+    @from         = "ISFiT 2011 <noreply@isfit.org>"
     @subject      = "New application for ISFiT funds"
     @sent_on      = Time.now
     @content_type = "text/html"
@@ -62,7 +62,7 @@ class Postoffice < ActionMailer::Base
 
   def host_add(mails)
     @recipients   = mails
-    @from         = "ISFiT 2009 <noreply@isfit.org>"
+    @from         = "ISFiT 2011 <verter@isfit.org>"
     @subject_en   = "Thanks for applying as ISFiT host"
     @subject_no   = "Takk for at du meldte deg som ISFiT vert"
     @sent_on      = Time.now
