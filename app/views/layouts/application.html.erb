@@ -23,7 +23,22 @@ _gaq.push(['_trackPageview']);
  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
  })();
 
+
 </script>
+<script type="text/javascript">
+$(function() {
+    $("#buyticketsbutton")
+      .mouseover(function() { 
+	var src = $(this).attr("src").replace(".png", "over.png");
+        $(this).attr("src", src);
+      })
+      .mouseout(function() {
+        var src = $(this).attr("src").replace("over", "");
+        $(this).attr("src", src);
+      });
+});
+</script>
+
 <%=yield :head%>
 </head>
 <body>
@@ -294,6 +309,7 @@ unless count == 5%>
             </div>
 <br />&nbsp;
           <div id="tickets" class="grid_5 alpha omega">
+            <%=link_to I18n.locale.to_s == 'en' ? image_tag("billettknapp-eng.png",:id=>"buyticketsbutton") : image_tag("billettknapp-no.png",:id=>"buyticketsbutton"), events_path %>
           </div>
           <br />
           <div id="boksbla_bg" class="grid_5 alpha omega">
