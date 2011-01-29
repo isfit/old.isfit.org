@@ -1,0 +1,8 @@
+<h1>Press releases</h1>
+<p>
+<ul>
+<% @press_releases.each do |pr|%>
+  <li><%=link_to pr.title, '/'+pr.attachment.url %></li>
+<%end%>
+<ul>
+</p>

@@ -68,9 +68,9 @@ class Postoffice < ActionMailer::Base
     @sent_on      = Time.now
     @content_type = "text/html"
     if I18n.locale.to_s == "no"
-  	  mail(:to => @recipients, :subject => @subject_no)
+  	  mail(:from => @from, :to => @recipients, :subject => @subject_no)
     else
-      mail(:to => @recipients, :subject => @subject_en)
+      mail(:from => @from, :to => @recipients, :subject => @subject_en)
     end  
   end
 end

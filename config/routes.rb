@@ -27,7 +27,7 @@ WwwIsfitOrg::Application.routes.draw do
     resources :pages
     resources :press_accreditations
     resources :isfit_media_links
-
+    resources :press_releases
     resources :articles do
       collection do
         get :new_pic
