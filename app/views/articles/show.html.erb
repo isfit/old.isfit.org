@@ -37,7 +37,7 @@
 </h3></p>
 
 <p>
-  <b><%=raw format(I18n.locale.to_s == 'no' ? @article.ingress_en : @article.ingress_no) %></b>
+  <b><%=raw format(I18n.locale.to_s == 'no' ? @article.ingress_no : @article.ingress_en) %></b>
 </p><hr>
 <p>Text: <%=raw @article.byline%><br />
 <%if @article.image_credits != ""%>Photo: <%=@article.image_credits%><%end%><br />
@@ -45,7 +45,7 @@ Date: <%=  @article.created_at.strftime("%F")%>
 </p><hr>
 
 <p style="text-align:justify">
-    <%= raw format( I18n.locale.to_s =='no' ? @article.body_en : @article.body_no) %>
+    <%= raw format( I18n.locale.to_s =='no' ? @article.body_no : @article.body_en) %>
 </p>
 
 
