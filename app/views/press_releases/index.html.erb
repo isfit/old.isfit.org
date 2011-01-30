@@ -1,4 +1,4 @@
-<h1>Press releases</h1>
+<h1><% if Language.to_s == "en" %>Press releases<%else%>Pressemeldinger<%end%></h1>
 <p>
 <ul>
 <% @press_releases.each do |pr|%>
