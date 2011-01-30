@@ -7,11 +7,10 @@ class HostsController < ApplicationController
 
   def create
     @host = Host.new(params[:host])
-    if @host.valid? && verify_recaptcha(:model=>@host, :message=>"Recaptcha verification failed") && @host.save
+    if @host.valid? && @host.save
       Postoffice.host_add(@host.email).deliver
       redirect_to :action => "done", :tab => params[:tab]
     else
-      verify_recaptcha(:model=>@host, :message=>"Recaptcha verification failed")
       render :new
     end
   end
