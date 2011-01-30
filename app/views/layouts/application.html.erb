@@ -309,7 +309,7 @@ unless count == 5%>
             </div>
 <br />&nbsp;
           <div id="tickets" class="grid_5 alpha omega">
-            <%=link_to I18n.locale.to_s == 'en' ? image_tag("billettknapp-eng.png",:id=>"buyticketsbutton") : image_tag("billettknapp-no.png",:id=>"buyticketsbutton"), events_path %>
+            <%=link_to I18n.locale.to_s == 'en' ? image_tag("billettknapp-eng.png",:id=>"buyticketsbutton") : image_tag("billettknapp-no.png",:id=>"buyticketsbutton"), events_path(:tab=>:program) %>
           </div>
           <br />
           <div id="boksbla_bg" class="grid_5 alpha omega">
