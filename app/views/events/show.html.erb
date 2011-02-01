@@ -27,7 +27,9 @@
     <b>What:</b> <%= @event.event.event_type.name %><%unless @event.event.event_type_text.blank?%> - <%=@event.event.event_type_text%><%end%><br />
     <br />
     
-
+    <%if @event.sold_out%>
+      <b>SOLD OUT</b>
+    <%else%>
     <b><%= @event.event.event_place_id == 10 ? "Students" : "Members" %>:</b> <%if@event.event.price_member == 0%>Free<%else%><%= @event.event.price_member %> kr<%end%><br />
     <b>Others:</b> <%if@event.event.price_other == 0%>Free<%else%><%= @event.event.price_other %> kr<%end%><br /><br />
 <% unless @event.event.price_member == 0 && @event.event.price_other == 0 %>
@@ -39,6 +41,7 @@
     Tickets are sold at Brukbar
   <% end %>
 <% end %>
+<%end%>
 <div class="event-other-dates">
 <br />
 <% if @event.event.event_dates.count > 1 %>
