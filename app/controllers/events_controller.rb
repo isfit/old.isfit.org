@@ -8,20 +8,20 @@ class EventsController < ApplicationController
       @category = EventType.where(:id => params[:category]).first
       if params[:year] && params[:month] && params[:day]
         @date = Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
-        @event_dates = @category.event_dates.joins(:event).where("event_dates.date LIKE '"+@date.to_s+"%' AND events.visible_at <= '"+now+"' AND events.deleted <> 1")
+        @event_dates = @category.event_dates.joins(:event).where("event_dates.date LIKE '"+@date.to_s+"%' AND events.visible_at <= '"+now+"' AND events.deleted <> 1 AND events.isfit = 1")
       else
-        @event_dates = @category.event_dates.where("events.visible_at <= '"+now+"' AND events.deleted <> 1").order("event_dates.date")
+        @event_dates = @category.event_dates.where("events.visible_at <= '"+now+"' AND events.deleted <> 1 AND event_dates.date > '"+now+"' AND events.isfit = 1").order("event_dates.date")
       end
     elsif params[:year] && params[:month] && params[:day]
       @date = Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
-      @event_dates = EventDate.joins(:event).where("event_dates.date LIKE '"+@date.to_s+"%' AND events.visible_at <= '"+now+"' AND events.deleted <> 1")
+      @event_dates = EventDate.joins(:event).where("event_dates.date LIKE '"+@date.to_s+"%' AND events.visible_at <= '"+now+"' AND events.deleted <> 1 AND events.isfit = 1")
     else
-      @event_dates = EventDate.joins(:event).where("events.visible_at <= '"+now+"' AND events.deleted <> 1").order("event_dates.date")
+      @event_dates = EventDate.joins(:event).where("events.visible_at <= '"+now+"' AND events.deleted <> 1 AND event_dates.date > '"+now+"' AND events.isfit = 1").order("event_dates.date")
     end
     @event_dates = @event_dates.order(:date)
     respond_to do |format|
       format.html
-      @events = Event.where("events.visible_at <= '"+now+"' AND events.deleted <> 1")
+      @events = Event.where("events.visible_at <= '"+now+"' AND events.deleted <> 1 AND events.isfit = 1")
       @events.each do |e|
         e.description = e.description.gsub(/[\*]*/,'') 
       end
@@ -34,9 +34,9 @@ class EventsController < ApplicationController
   def show
     now = Time.now.strftime("%Y-%m-%d %H:%M:%S")
     if params[:event_date_id]
-      @event = EventDate.joins(:event).where(:id=>params[:event_date_id]).where("events.visible_at <= '"+now+"' AND events.deleted <> 1").first
+      @event = EventDate.joins(:event).where(:id=>params[:event_date_id]).where("events.visible_at <= '"+now+"' AND events.deleted <> 1 AND events.isfit = 1").first
     elsif
-      @event = EventDate.joins(:event).where("events.id = "+params[:id]+" AND events.visible_at <= '"+now+"' AND events.deleted <> 1").first
+      @event = EventDate.joins(:event).where("events.id = "+params[:id]+" AND events.visible_at <= '"+now+"' AND events.deleted <> 1 AND events.isfit = 1").first
     end
   
     respond_to do |format|
