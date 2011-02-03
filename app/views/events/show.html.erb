@@ -25,7 +25,10 @@
     <br />
     <b>Time:</b> <%if @event.date.strftime("%R") == "00:00"%><%=@event.date.strftime("%a %e. %b")%><%else%><%= @event.date.strftime("%a %e. %b kl. %R") %><%end%> <br />
     <b>What:</b> <%= @event.event.event_type.name %><%unless @event.event.event_type_text.blank?%> - <%=@event.event.event_type_text%><%end%><br />
-    <br />
+	<%unless @event.event.speakers.blank? %>
+		<b>Speakers:</b> <%= @event.event.speakers %><br />
+	<%end%>
+	    <br />
     
     <%if @event.sold_out%>
       <b>SOLD OUT</b>
