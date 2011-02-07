@@ -1,3 +1,17 @@
+<script type="text/javascript">  
+  $(document).ready(function() {      
+    $('#event_search').keyup(function() {        
+      $.post("search.js", 
+      $(this).serialize(), null, "script");          
+      return false;        
+    });      
+  });
+</script>
+
+<% form_for :event, :url => { :action => "search", :tab=>params[:tab] }, :html => {:method => "get", :id=>"search"} do |f| %>
+  <%= f.text_field :search, :size=>25 %> <%= f.submit 'Search' %> 
+<% end %>
+
 <div class="event_category">
 <span class="event_category_button" id="All">
   <%params.delete(:category) %>
@@ -13,6 +27,7 @@
   </span>
 <% end %>
 </div>
+<div id="event_dates">
 <% @event_dates.each do |ed| %>
   <div class="event" id="event<%= ed.event.id %>">
     <div class="event_date">
@@ -30,3 +45,4 @@
     </div>
   </div>
 <% end %>
+</div>

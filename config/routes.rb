@@ -14,6 +14,8 @@ WwwIsfitOrg::Application.routes.draw do
     
     get "events/:year/:month/:day" => "events#index", :as => "events"
 
+    get "events/search" => "events#search", :as => "search_events"
+
     get "events/:category/:year/:month/:day" => "events#index", :as => "events_with_date_cat"
     
     get "events/:category" => "events#index", :as => "events_cat"
