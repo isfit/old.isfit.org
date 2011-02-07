@@ -388,7 +388,7 @@ div.field_with_errors textarea {
 
 #boksbla {
 /*	background: url(../images/boksbla.png) no-repeat;*/
-	height: 218px;
+	height: auto;
 }
 
 #boksrod_bg {

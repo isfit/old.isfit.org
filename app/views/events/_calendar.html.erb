@@ -42,14 +42,14 @@
     end
 	  if month < 10
       events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '"+year.to_s+"-0"+month.to_s+"%' AND events.deleted <> 1 AND events.isfit = 1")
-    elsif
+    else
       events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '"+year.to_s+"-"+month.to_s+"%' AND events.deleted <> 1 AND events.isfit = 1")
     end
 
-                dates = Array.new(31)
-                for e in events do
-                        dates[e.date.day] = 1
-                end
+    dates = Array.new(31)
+    for e in events do
+      dates[e.date.day] = 1
+    end
 		#days and weeks vars now ...
 		running_day = ((Date.new(year, 12, 1) << (12-month)).wday)
 		if running_day == 0
@@ -131,9 +131,34 @@
 
 		<!--final row -->
 		</tr>
+		<br />
+		<%@today = Time.new %>
+		<%	@todays_events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '" + @today.strftime("%Y-%m-%d") + "%' AND events.deleted <> 1 AND events.isfit = 1") %>
+		<% if @todays_events.size > 0 %>
+			<tr class="calendar-row"><td colspan=7>
+				I dag:
+			</tr>
+		<% end %>
+		<% @todays_events.each do |e| %>
+			<tr><td colspan=7>
+    		<%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#{e.event.color}; font-size:#{e.event.size}px;font-family:'Arial'" %>
+			</tr>
+		<% end %>
+		<%@tomorrow = @today+1.day %>
+		<%	@tomorrows_events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '" + @tomorrow.strftime("%Y-%m-%d") + "%' AND events.deleted <> 1 AND events.isfit = 1") %>
+		<% if @tomorrows_events.size > 0 %>
+			<tr><td colspan=7>
+				I morgen:
+			</tr>
+		<% end %>
+		<% @tomorrows_events.each do |e| %>
+			<tr><td colspan=7>
+    		<%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#{e.event.color}; font-size:#{e.event.size}px;font-family:'Arial'" %>
+			</tr>
+		<% end %>
 		<!--end the table-->
 		</table>
-		<br />
+		<%#=	debug @todays_events %>
 	<!--	<#%if @upcoming_events.size > 0 %>
 			<table border="0" cellspacing="0" cellpadding="0", style="margin-top:0px; margin-left:5px;">
 				<tr>
