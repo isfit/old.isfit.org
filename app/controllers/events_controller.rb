@@ -32,7 +32,7 @@ class EventsController < ApplicationController
   end
   def search
     @categories = EventType.all
-    @event_dates = EventDate.joins(:event).where("events.title LIKE '%"+params[:event][:search]+"%'")
+    @event_dates = EventDate.joins(:event).where("events.title LIKE ?", "%"+params[:event][:search]+"%")
     respond_to do |format|
       format.js
       format.html { render :index}
