@@ -1,0 +1,58 @@
+<%content_for :head do %>
+  <meta property="og:title" content="<%if @article.title_en != ""%><%=@article.title_en%><%else%><%=@article.title_no%><%end%>"/>
+  <meta property="og:type" content="non_profit"/>
+  <meta property="og:image" content="<%="http://www.isfit.org/images/workshop_images/"+@article.id.to_s + "_3.jpg"%>"/>
+  <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>"/>
+  <meta property="og:site_name" content="ISFiT 2011"/>
+  <meta property="fb:app_id" content="111446192243028"/>
+  <meta property="og:description" content="<%=@article.ingress%>"/>
+<%end%>
+
+<div style="background-color: #fff;">
+<% if @article.body == "" || @article.ingress == ""
+    in_language = false
+  else
+    in_language = true
+  end%>
+<div id="article">
+<% unless in_language%>
+<h4>We are sorry, but the following article is not available in your language</h4>
+<br />
+<br />
+<%end%>
+
+<p>
+<%=image_tag "workshop_images/"+@article.id.to_s + "_3.jpg"%><br>
+<% if I18n.locale.to_s == 'no' %>
+  <%=@article.image_text_no%>
+<%else%>
+  <%=@article.image_text_en%>
+<%end%></p>
+<p><h3>
+  <%if in_language%>
+    <%= @article.title %>
+  <%else%>
+    <%= I18n.locale.to_s == 'no' ? @article.title_en : @article.title_no%>
+  <%end%>
+</h3></p>
+
+<p>
+  <b><%=raw format(I18n.locale.to_s == 'no' ? @article.ingress_no : @article.ingress_en) %></b>
+</p><hr>
+<p>Text: <%=raw @article.byline%><br />
+<%if @article.image_credits != ""%>Photo: <%=@article.image_credits%><%end%><br />
+Date: <%=  @article.created_at.strftime("%F")%>
+</p><hr>
+
+<p style="text-align:justify">
+    <%= raw format( I18n.locale.to_s =='no' ? @article.body_no : @article.body_en) %>
+</p>
+
+
+<%if @article.got_comments%>
+<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=111446192243028&amp;xfbml=1"></script><fb:comments width="550"></fb:comments>
+<%end%>
+</div>
+</div>
+
+

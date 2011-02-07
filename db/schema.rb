@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110106123757) do
+ActiveRecord::Schema.define(:version => 20110204030845) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(:version => 20110106123757) do
   end
 
   create_table "chronicles", :id => false, :force => true do |t|
-    t.integer  "id",         :default => 0, :null => false
+    t.integer  "id",                      :default => 0, :null => false
     t.string   "title_en"
     t.string   "title_no"
     t.text     "ingress_en"
@@ -131,6 +131,11 @@ ActiveRecord::Schema.define(:version => 20110106123757) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "weight"
+    t.string   "main_photo_file_name"
+    t.string   "main_photo_content_type"
+    t.integer  "main_photo_file_size"
+    t.datetime "main_photo_updated_at"
+    t.boolean  "got_comments"
   end
 
   create_table "countries", :force => true do |t|
@@ -184,20 +189,65 @@ ActiveRecord::Schema.define(:version => 20110106123757) do
     t.integer "count", :default => 0, :null => false
   end
 
-  create_table "events", :force => true do |t|
-    t.string   "title",            :limit => 100,                    :null => false
-    t.string   "event_type",       :limit => 0,                      :null => false
-    t.datetime "date",                                               :null => false
-    t.string   "place",            :limit => 100,                    :null => false
-    t.integer  "price_member",                                       :null => false
-    t.integer  "price_other",                                        :null => false
-    t.string   "ingress",                                            :null => false
-    t.text     "description",                                        :null => false
+  create_table "event_dates", :id => false, :force => true do |t|
+    t.integer  "id",             :default => 0, :null => false
+    t.datetime "date"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "url"
+    t.string   "alt_ticket_url"
+    t.boolean  "sold_out"
+  end
+
+  create_table "event_places", :id => false, :force => true do |t|
+    t.integer  "id",         :default => 0, :null => false
+    t.string   "title"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_types", :id => false, :force => true do |t|
+    t.integer  "id",         :default => 0, :null => false
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", :id => false, :force => true do |t|
+    t.integer  "id",                                :default => 0, :null => false
+    t.string   "title",              :limit => 100
+    t.integer  "event_type_id"
+    t.datetime "date"
+    t.string   "place",              :limit => 100
+    t.integer  "price_member"
+    t.integer  "price_other"
+    t.text     "ingress"
+    t.text     "description"
     t.integer  "related_event_id"
-    t.boolean  "deleted",                         :default => false, :null => false
-    t.boolean  "important",                                          :null => false
-    t.boolean  "visible",                                            :null => false
-    t.string   "url",                                                :null => false
+    t.boolean  "deleted"
+    t.boolean  "important"
+    t.boolean  "visible"
+    t.string   "url"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "visible_at"
+    t.boolean  "show_headline"
+    t.integer  "weight"
+    t.string   "color"
+    t.integer  "size"
+    t.string   "event_type_text"
+    t.string   "facebook_url"
+    t.string   "lineup_title"
+    t.integer  "event_place_id"
+    t.string   "spec_place"
+    t.boolean  "isfit"
+    t.boolean  "spp"
+    t.string   "speakers"
   end
 
   create_table "events_backup", :force => true do |t|
@@ -458,6 +508,36 @@ ActiveRecord::Schema.define(:version => 20110106123757) do
     t.integer "infopackage_contact_type_id", :default => 1, :null => false
   end
 
+  create_table "photos", :id => false, :force => true do |t|
+    t.integer  "id",                                         :default => 0, :null => false
+    t.string   "image_text_en"
+    t.string   "image_text_no"
+    t.string   "description"
+    t.string   "credits"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "original_picture_file_name"
+    t.string   "original_picture_content_type"
+    t.integer  "original_picture_file_size"
+    t.datetime "original_picture_updated_at"
+    t.string   "half_article_picture_file_name"
+    t.string   "half_article_picture_content_type"
+    t.integer  "half_article_picture_file_size"
+    t.datetime "half_article_picture_updated_at"
+    t.string   "full_article_picture_file_name"
+    t.string   "full_article_picture_content_type"
+    t.integer  "full_article_picture_file_size"
+    t.datetime "full_article_picture_updated_at"
+    t.string   "spp_one_third_article_picture_file_name"
+    t.string   "spp_one_third_article_picture_content_type"
+    t.integer  "spp_one_third_article_picture_file_size"
+    t.datetime "spp_one_third_article_picture_updated_at"
+    t.string   "spp_full_article_picture_file_name"
+    t.string   "spp_full_article_picture_content_type"
+    t.integer  "spp_full_article_picture_file_size"
+    t.datetime "spp_full_article_picture_updated_at"
+  end
+
   create_table "positions", :id => false, :force => true do |t|
     t.integer "id"
     t.string  "title_en"
@@ -496,6 +576,17 @@ ActiveRecord::Schema.define(:version => 20110106123757) do
     t.datetime "updated_at"
   end
 
+  create_table "press_releases", :id => false, :force => true do |t|
+    t.integer  "id",                      :default => 0, :null => false
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
   create_table "questions", :force => true do |t|
     t.integer  "participant_id",                                :null => false
     t.datetime "question_datetime",                             :null => false
@@ -529,18 +620,22 @@ ActiveRecord::Schema.define(:version => 20110106123757) do
     t.string "name_en", :limit => 32, :null => false
   end
 
-  create_table "slides", :force => true do |t|
+  create_table "slides", :id => false, :force => true do |t|
+    t.integer  "id",                 :default => 0, :null => false
     t.string   "link"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "cropped"
+    t.datetime "published_at"
   end
 
   create_table "spp_articles", :id => false, :force => true do |t|
-    t.integer  "id"
+    t.integer  "id",             :default => 0, :null => false
     t.string   "title_en"
     t.string   "title_no"
     t.text     "ingress_en"
@@ -554,6 +649,11 @@ ActiveRecord::Schema.define(:version => 20110106123757) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "main_article"
+    t.integer  "weight"
+    t.boolean  "got_comments"
+    t.string   "youtube_link"
+    t.integer  "byline_func_id"
+    t.string   "byline"
   end
 
   create_table "sublinks", :id => false, :force => true do |t|
@@ -630,9 +730,32 @@ ActiveRecord::Schema.define(:version => 20110106123757) do
   end
 
   create_table "workshops", :force => true do |t|
-    t.string "name",        :limit => 64, :null => false
-    t.text   "description",               :null => false
-    t.string "location",                  :null => false
+    t.string   "name",           :limit => 64, :null => false
+    t.text     "description",                  :null => false
+    t.string   "location",                     :null => false
+    t.string   "title_en"
+    t.string   "tile_no"
+    t.text     "ingress_en"
+    t.text     "ingress_no"
+    t.text     "body_en"
+    t.text     "body_no"
+    t.boolean  "list"
+    t.integer  "weight"
+    t.string   "sub_title_no"
+    t.string   "sub_title_en"
+    t.string   "image_text_no"
+    t.string   "image_text_en"
+    t.boolean  "main_article"
+    t.boolean  "published"
+    t.string   "byline"
+    t.integer  "byline_func_id"
+    t.string   "image_credits"
+    t.integer  "mail_sent"
+    t.datetime "show_article"
+    t.boolean  "got_comments"
+    t.boolean  "deleted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
