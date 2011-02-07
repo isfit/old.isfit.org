@@ -1,7 +1,7 @@
 <script type="text/javascript">  
   $(document).ready(function() {      
     $('#event_search').keyup(function() {        
-      $.post("search.js", 
+      $.post("/program/events/search.js", 
       $(this).serialize(), null, "script");          
       return false;        
     });      
