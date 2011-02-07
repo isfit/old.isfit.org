@@ -8,8 +8,8 @@
   });
 </script>
 
-<% form_for :event, :url => { :action => "search", :tab=>params[:tab] }, :html => {:method => "get", :id=>"search"} do |f| %>
-  <%= f.text_field :search, :size=>25 %> <%= f.submit 'Search' %> 
+<% form_for :event, :url => { :action => "search", :tab=>params[:tab] }, :html => {:method => "get", :id=>"search", :class => "yform columnar"} do |f| %>
+  <div><div class="type-text" style="float:left"><%= f.text_field :search, :size=>40%></div><div class="type-button" style="float:right"><%= f.submit 'Search' %></div></div>
 <% end %>
 
 <div class="event_category">
