@@ -30,7 +30,14 @@ class EventsController < ApplicationController
    end
 
   end
-
+  def search
+    @categories = EventType.all
+    @event_dates = EventDate.joins(:event).where("events.title LIKE ?", "%"+params[:event][:search]+"%")
+    respond_to do |format|
+      format.js
+      format.html { render :index}
+    end
+  end
   def show
     now = Time.now.strftime("%Y-%m-%d %H:%M:%S")
     if params[:event_date_id]
