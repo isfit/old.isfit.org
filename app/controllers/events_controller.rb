@@ -31,8 +31,10 @@ class EventsController < ApplicationController
 
   end
   def search
+   now = Time.now.strftime("%Y-%m-%d %H:%M:%S")
     @categories = EventType.all
-    @event_dates = EventDate.joins(:event).where("events.title LIKE ?", "%"+params[:event][:search]+"%")
+    @event_dates = EventDate.joins(:event).where("events.title LIKE ?", "%"+params[:event][:search]+"%").where("events.visible_at <= '"+now+"' AND events.deleted <> 1 AND event_dates.date > '"+now+"' AND events.isfit = 1").order("event_dates.date")
+
     respond_to do |format|
       format.js
       format.html { render :index}
