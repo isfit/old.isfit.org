@@ -51,7 +51,7 @@ a:hover {
 .counter ul.countdown li{
 	height:10px;
 	margin: 0 6px 5px 0px;
-	padding-top: 0;
+	padding-top: 5px;
 	float: left;
 }
 .counter ul.countdown li div{
