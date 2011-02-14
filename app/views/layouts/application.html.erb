@@ -194,6 +194,16 @@ $(function() {
       </div><!-- Slutt submeny -->
       <div id="ramme" class="grid_25"><!-- Start ramme -->
       <div id="venstreramme" class="grid_5"><!-- Start venstreramme -->
+        <div class="boks">
+        <h3 class="boxheadline">The Globe</h3>
+        <%= link_to(image_tag('globe.jpg') , 'http://www.isfit.org/downloads/globe.pdf') %>
+        </div>
+      <div id="boksbla_bg" class="grid_5 alpha omega">
+      <div id="boksbla" class="grid_5 alpha omega">
+      </div>
+      </div>
+  
+
       <div id="boksgronn_bg" class="grid_5 alpha omega"><!-- Start grønn -->
       <div id="boksgronn" class="grid_5 alpha omega">
       <%= render :partial => 'events/calendar' %>
@@ -213,14 +223,7 @@ $(function() {
       </div><!-- Slutt turkis -->
 
 
-      <!--
-        <div id="boksbla_bg" class="grid_5 alpha omega">
-      <div id="boksbla" class="grid_5 alpha omega">
-      <#%=render :template => 'cal/index' %>
-    </div>
-  </div>
-  -->
-  <div id="boksrod_bg" class="grid_5 alpha omega"><!-- Start rød -->
+   <div id="boksrod_bg" class="grid_5 alpha omega"><!-- Start rød -->
     <div id="boksrod" class="grid_5 alpha omega">
       <div class="boks">
         <h3 class="boxheadline"><%= link_to "Student Peace Prize", "http://www.studentpeaceprize.org" %></h3><br />
