@@ -404,6 +404,7 @@ div.field_with_errors textarea {
 #boksoransje_bg {
 	background: #fff;  /* url(../images/boksoransjebg.png) repeat-y;*/
 	margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 #boksoransje {
