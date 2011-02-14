@@ -131,12 +131,11 @@
 
 		<!--final row -->
 		</tr>
-		<br />
 		<%@today = Time.new %>
 		<%	@todays_events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '" + @today.strftime("%Y-%m-%d") + "%' AND events.deleted <> 1 AND events.isfit = 1") %>
 		<% if @todays_events.size > 0 %>
 			<tr class="calendar-row"><td colspan=7>
-				I dag:
+				<h4><%=t('calender.today')%>:</h4>
 			</tr>
 		<% end %>
 		<% @todays_events.each do |e| %>
@@ -148,7 +147,7 @@
 		<%	@tomorrows_events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '" + @tomorrow.strftime("%Y-%m-%d") + "%' AND events.deleted <> 1 AND events.isfit = 1") %>
 		<% if @tomorrows_events.size > 0 %>
 			<tr><td colspan=7>
-				I morgen:
+				<h4><%=t('calender.tomorrow')%>:</h4>
 			</tr>
 		<% end %>
 		<% @tomorrows_events.each do |e| %>

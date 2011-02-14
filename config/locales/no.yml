@@ -59,6 +59,9 @@
     registration: Registrer verteskjema
     optional: Valgfrie felter
     mandatory: Obligatoriske felter
+  calender:
+    today: I dag
+    tomorrow: I morgen
   activerecord:
     errors:
       messages:

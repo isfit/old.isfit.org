@@ -62,6 +62,9 @@ en:
     registration: Registration form
     optional: Optional Fields
     mandatory: Mandatory Fields
+  calender:
+    today: Today
+    tomorrow: Tomorrow
   helpers:
     label:
       host:
