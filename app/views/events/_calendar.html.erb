@@ -71,7 +71,10 @@
         <tr class="calendar-head"><td colspan=7>
         <h3 class="boxheadline"><%= link_to t('calender.today'), events_date_path(:program, @today.year, @today.month, @today.day) %></h3>
         </tr>
+        <tr><td colspan=7><br></td></tr>
       <% end %>
+      
+
       <% @todays_events.each do |e| %>
         <tr class="calendar-head"><td colspan=7 style="padding-left:5px;padding-right:5px">
         <b><%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#{e.event.color}; font-size:#{e.event.size}px;font-family:'Arial'" %></b>
@@ -84,6 +87,7 @@
         <tr class="calendar-head"><td colspan=7>
         <h3 class="boxheadline"><%= link_to t('calender.tomorrow'), events_date_path(:program, @tomorrow.year, @tomorrow.month, @tomorrow.day) %></h3>
         </tr>
+      <tr><td colspan=7><br></td></tr>
       <% end %>
       
       <% @tomorrows_events.each do |e| %>
