@@ -303,9 +303,15 @@
             <%= yield %>
           </div><!-- Slutt midtramme -->
           <div id="hoyreramme" class="grid_5"><!-- Start hoyreramme -->
+        <div id="boksbla_bg" class="grid_5 alpha omega">
+              <div id="boksbla" class="grid_5 alpha omega">
+
             <div id="tickets" class="grid_5 alpha omega">
               <%=link_to I18n.locale.to_s == 'en' ? image_tag("billettknapp-eng.png",:id=>"buyticketsbutton") : image_tag("billettknapp-no.png",:id=>"buyticketsbutton"), events_path(:tab=>:program) %>
             </div>
+          </div>
+        </div>
+            <br />
             <br />
 
             <div id="artists" class="grid_5 alpha omega" style="margin-bottom:10px;">
@@ -319,12 +325,7 @@
               </div>
             </div>
             <br />&nbsp;
-            <div id="boksbla_bg" class="grid_5 alpha omega">
-              <div id="boksbla" class="grid_5 alpha omega">
-
-              </div>
-            </div>
-            <div id="facebook" class="grid_5 alpha omega">
+                         <div id="facebook" class="grid_5 alpha omega">
               <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FISFiT%2F11541693212&amp;width=190&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=true&amp;height=300" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:190px; height:300px;" allowTransparency="true"></iframe>
             </div><br />&nbsp;<br />
             <div id="twitter" class="grid_5 alpha omega">
