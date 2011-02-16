@@ -77,6 +77,7 @@
         <b><%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#00ADEF; font-size:14px;font-family:'Arial'" %></b>
         </tr>
       <% end %>
+      <tr><td colspan=7><br><br></td></tr>
       <%@tomorrow = @today+1.day %>
       <%	@tomorrows_events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '" + @tomorrow.strftime("%Y-%m-%d") + "%' AND events.deleted <> 1 AND events.isfit = 1 AND events.deleted = 0") %>
       <% if @tomorrows_events.size > 0 %>
@@ -84,7 +85,7 @@
         <h3 class="boxheadline"><%= link_to t('calender.tomorrow'), events_date_path(:program, @tomorrow.year, @tomorrow.month, @tomorrow.day) %></h3>
         </tr>
       <% end %>
-      <tr><td colspan=7><br><br></td></tr>
+      
       <% @tomorrows_events.each do |e| %>
         <tr class="calendar-head"><td colspan=7 style="padding-left:5px;padding-right:5px">
         <b><%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#00394A; font-size:14px;font-family:'Arial'" %></b>
