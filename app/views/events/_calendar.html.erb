@@ -74,7 +74,7 @@
       <% end %>
       <% @todays_events.each do |e| %>
         <tr class="calendar-head"><td colspan=7>
-        <b><%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#{e.event.color}; font-size:#{e.event.size}px;font-family:'Arial'" %></b>
+        <b><%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#{e.event.color}; font-size:#{e.event.size}px;font-family:'Arial';padding-left:5px;" %></b>
         </tr>
       <% end %>
       <%@tomorrow = @today+1.day %>
@@ -86,7 +86,7 @@
       <% end %>
       <% @tomorrows_events.each do |e| %>
         <tr class="calendar-head"><td colspan=7>
-        <b><%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#{e.event.color}; font-size:#{e.event.size}px;font-family:'Arial'" %></b>
+        <b><%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#{e.event.color}; font-size:#{e.event.size}px;font-family:'Arial';padding-left:5px;" %></b>
         </tr>
       <% end %>
 
