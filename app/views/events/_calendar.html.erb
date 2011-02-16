@@ -64,14 +64,39 @@
 		day_counter = 0
 		%>
 		<!--draw table-->
-		<table cellpadding="0" cellspacing="0" class="calendar">
-		<!--table headings-->
-		<% headings = ['Ma','Ti','On','To','Fr']
-			headingsw = ['L&oslash','S&oslash'] %>
-		<tr class="calendar-row-head">
-			<td class="calendar-day-head">Ma</td>
-			<td class="calendar-day-head">Ti</td>
-			<td class="calendar-day-head">On</td>
+    <table cellpadding="0" cellspacing="0" class="calendar">
+      <%@today = Time.new %>
+      <%	@todays_events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '" + @today.strftime("%Y-%m-%d") + "%' AND events.deleted <> 1 AND events.isfit = 1") %>
+      <% if @todays_events.size > 0 %>
+        <tr class="calendar-row"><td colspan=7>
+        <h3 class="boxheadline"><%= t('calender.today') %></h3>
+        </tr>
+      <% end %>
+      <% @todays_events.each do |e| %>
+        <tr class="calender-head"><td colspan=7>
+        <b><%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#{e.event.color}; font-size:#{e.event.size}px;font-family:'Arial'" %></b>
+        </tr>
+      <% end %>
+      <%@tomorrow = @today+1.day %>
+      <%	@tomorrows_events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '" + @tomorrow.strftime("%Y-%m-%d") + "%' AND events.deleted <> 1 AND events.isfit = 1") %>
+      <% if @tomorrows_events.size > 0 %>
+        <tr class="calendar-head"><td colspan=7>
+        <h3 class="boxheadline"><%= t('calender.tomorrow') %></h3>
+        </tr>
+      <% end %>
+      <% @tomorrows_events.each do |e| %>
+        <tr class="calendar-head"><td colspan=7>
+        <b><%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#{e.event.color}; font-size:#{e.event.size}px;font-family:'Arial'" %></b>
+        </tr>
+      <% end %>
+
+      <!--table headings-->
+      <% headings = ['Ma','Ti','On','To','Fr']
+      headingsw = ['L&oslash','S&oslash'] %>
+      <tr class="calendar-row-head">
+      <td class="calendar-day-head">Ma</td>
+      <td class="calendar-day-head">Ti</td>
+      <td class="calendar-day-head">On</td>
 			<td class="calendar-day-head">To</td>
 			<td class="calendar-day-head">Fr</td>
 			<td class="calendar-day-headw">L&oslash;</td>
@@ -131,31 +156,7 @@
 
 		<!--final row -->
 		</tr>
-		<%@today = Time.new %>
-		<%	@todays_events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '" + @today.strftime("%Y-%m-%d") + "%' AND events.deleted <> 1 AND events.isfit = 1") %>
-		<% if @todays_events.size > 0 %>
-			<tr class="calendar-row"><td colspan=7>
-				<h4><%=t('calender.today')%>:</h4>
-			</tr>
-		<% end %>
-		<% @todays_events.each do |e| %>
-			<tr><td colspan=7>
-    		<%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#{e.event.color}; font-size:#{e.event.size}px;font-family:'Arial'" %>
-			</tr>
-		<% end %>
-		<%@tomorrow = @today+1.day %>
-		<%	@tomorrows_events = EventDate.joins(:event).find(:all, :conditions => "event_dates.date LIKE '" + @tomorrow.strftime("%Y-%m-%d") + "%' AND events.deleted <> 1 AND events.isfit = 1") %>
-		<% if @tomorrows_events.size > 0 %>
-			<tr><td colspan=7>
-				<h4><%=t('calender.tomorrow')%>:</h4>
-			</tr>
-		<% end %>
-		<% @tomorrows_events.each do |e| %>
-			<tr><td colspan=7>
-    		<%= link_to e.event.title, event_date_path(params[:tab],e.event.id,:event_date_id=>e.id), :style => "color:#{e.event.color}; font-size:#{e.event.size}px;font-family:'Arial'" %>
-			</tr>
-		<% end %>
-		<!--end the table-->
+				<!--end the table-->
 		</table>
 		<%#=	debug @todays_events %>
 	<!--	<#%if @upcoming_events.size > 0 %>

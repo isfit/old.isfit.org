@@ -206,7 +206,7 @@
 
           <div id="boksgronn_bg" class="grid_5 alpha omega"><!-- Start grønn -->
             <div id="boksgronn" class="grid_5 alpha omega">
-              <%= render :partial => 'events/calendar' %>
+              
               <br>
               <%= link_to I18n.locale.to_s == 'en' ? image_tag("stott_deltaker_eng.png") : image_tag("stott_deltaker.png"), "http://www.isfit.org/info/donations/donate" %>
             </div>
@@ -282,21 +282,22 @@
             <%= yield %>
           </div><!-- Slutt midtramme -->
           <div id="hoyreramme" class="grid_5"><!-- Start hoyreramme -->
-
-            <div id="artists" class="grid_5 alpha omega" style="margin-bottom:10px;">
-              <div class="boks">
-                <h3 class="boxheadline"><%= link_to "Program", events_path(:program) %></h3>
-
-                <div style="padding:5px;">
-                  <%= render :partial => 'events/lineup' %>
-                </div>
-              </div>
-            </div>
-            <br />&nbsp;
             <div id="tickets" class="grid_5 alpha omega">
               <%=link_to I18n.locale.to_s == 'en' ? image_tag("billettknapp-eng.png",:id=>"buyticketsbutton") : image_tag("billettknapp-no.png",:id=>"buyticketsbutton"), events_path(:tab=>:program) %>
             </div>
             <br />
+
+            <div id="artists" class="grid_5 alpha omega" style="margin-bottom:10px;">
+              <div class="boks">
+                <!--<h3 class="boxheadline"><%#= link_to "Program", events_path(:program) %></h3>
+
+                <div style="padding:5px;">-->
+                  <%#= render :partial => 'events/lineup' %>
+                  <%= render :partial => 'events/calendar' %>
+                <!--</div>-->
+              </div>
+            </div>
+            <br />&nbsp;
             <div id="boksbla_bg" class="grid_5 alpha omega">
               <div id="boksbla" class="grid_5 alpha omega">
 
