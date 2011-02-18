@@ -58,6 +58,10 @@ en:
     phone_nor: "Phone"
     email: "Email address"
     email_ntnu: "Email address (at place of study)"
+  project_support:
+    contact_person: "Contact person"
+    project: "Project"
+    workshop: "If Workshop was chosen, specify name of workshop"
   host:
     registration: Registration form
     optional: Optional Fields
@@ -67,6 +71,15 @@ en:
     tomorrow: Tomorrow
   helpers:
     label:
+      project_support:
+        person_name: Name
+        person_mail: E-mail
+        person_age: Age
+        person_association: Association with ISFiT
+        country: Country
+        group_description: Description of organization or project group (maximum 1000 signs)
+        project_description: Description of the project idea (maximum 2000 signs)
+        funds_description: Overview of what the funds from ISFiT might cover (maximum 1000 signs)
       host:
         first_name: "First name"
         last_name: "Last name"

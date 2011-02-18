@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  person_name: MyString
+  person_age: 1
+  country_id: 1
+  person_mail: MyString
+  person_association: MyString
+  workshop: MyString
+  group_description: MyString
+  project_description: MyString
+  funds_description: MyString
+
+two:
+  person_name: MyString
+  person_age: 1
+  country_id: 1
+  person_mail: MyString
+  person_association: MyString
+  workshop: MyString
+  group_description: MyString
+  project_description: MyString
+  funds_description: MyString

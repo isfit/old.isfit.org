@@ -55,6 +55,10 @@
     phone_nor: "Telefonnummer, 8 siffer"
     email: "E-postadresse"
     email_ntnu: "Epostadresse (ved studiested)"
+  project_support:
+    contact_person: "Kontaktperson"
+    project: "Prosjekt"
+    workshop: "Hvis Workshop ble valgt, spesifiser navnet til workshopen"
   host:
     registration: Registrer verteskjema
     optional: Valgfrie felter
@@ -92,6 +96,15 @@
       alumni_reservation:
         create: Send reservasjon
     label:
+      project_support:
+        person_name: Navn
+        person_mail: E-post
+        person_age: Alder
+        person_association: Forbindelse med ISFiT
+        country: Land
+        group_description: Beskrivelse av organisasjon eller prosjektgruppe (maks 1000 tegn)
+        project_description: Beskrivelse av prosjektide (maks 2000 tegn)
+        funds_description: Oversikt over hva støtten fra ISFiT kan dekke (maks 1000 tegn)
       wop_proposition:
         firstname: Fornavn
         lastname: Etternavn

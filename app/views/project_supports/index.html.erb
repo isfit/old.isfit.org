@@ -1,0 +1,39 @@
+<h1>Listing project_supports</h1>
+
+<table>
+  <tr>
+    <th>Person name</th>
+    <th>Person age</th>
+    <th>Country</th>
+    <th>Person mail</th>
+    <th>Person association</th>
+    <th>Workshop</th>
+    <th>Group description</th>
+    <th>Project description</th>
+    <th>Funds description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @project_supports.each do |project_support| %>
+  <tr>
+    <td><%= project_support.person_name %></td>
+    <td><%= project_support.person_age %></td>
+    <td><%= project_support.country_id %></td>
+    <td><%= project_support.person_mail %></td>
+    <td><%= project_support.person_association %></td>
+    <td><%= project_support.workshop %></td>
+    <td><%= project_support.group_description %></td>
+    <td><%= project_support.project_description %></td>
+    <td><%= project_support.funds_description %></td>
+    <td><%= link_to 'Show', project_support %></td>
+    <td><%= link_to 'Edit', edit_project_support_path(project_support) %></td>
+    <td><%= link_to 'Destroy', project_support, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Project support', new_project_support_path %>

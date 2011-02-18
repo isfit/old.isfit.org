@@ -1,8 +1,14 @@
 WwwIsfitOrg::Application.routes.draw do  
+  resources :project_supports
+
     resources :tips_osses
   resources :isfit_media_links
 
   scope "(/:tab)" do
+
+
+    match 'project_supports/success' => "project_supports#success"
+    resources :project_supports
 
     resources :sublinks
     resources :hosts do 

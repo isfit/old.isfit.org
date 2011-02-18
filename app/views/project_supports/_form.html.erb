@@ -1,0 +1,60 @@
+<%= form_for(@project_support, :html => { :class => "yform columnar" }, :url => (@project_support.new_record? ? project_supports_path(params[:tab]) : project_support_path(params[:tab], @project_support) )) do |f| %>
+  <% if @project_support.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project_support.errors.count, "error") %> prohibited this project_support from being saved:</h2>
+
+      <ul>
+      <% @project_support.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend><%= t('project_support.contact_person') %></legend>
+  <div class="type-text">
+    <%= f.label :person_name %>
+    <%= f.text_field :person_name %>
+  </div>
+  <div class="type-select">
+    <%= f.label :person_age %>
+    <%= f.select :person_age, @age %>
+  </div>
+  <div class="type-select">
+    <%= f.label :country %>
+    <%= f.select :country_id, @countries.collect {|c| [ c.name, c.id ] } %>
+  </div>
+  <div class="type-text">
+    <%= f.label :person_mail %>
+    <%= f.text_field :person_mail %>
+  </div>
+  <div class="type-select">
+    <%= f.label :person_association %>
+    <%= f.select :person_association, @associations %>
+  </div>
+  <div class="type-select" id="workshop">
+    <label><%= t('project_support.workshop') %></label>
+    <%= f.select :workshop_id, @workshops.collect {|w| [w.name, w.id]} %>
+  </div>
+</fieldset>
+<fieldset>
+    <legend><%= t('project_support.project') %></legend>
+  <div class="type-text">
+    <%= f.label :group_description %>
+    <%= f.text_area :group_description, :maxlength=>"1000", :rows => "10" %>
+  </div>
+  <div class="type-text">
+    <%= f.label :project_description %>
+    <%= f.text_area :project_description, :maxlength=>"2000", :rows => "10" %>
+  </div>
+  <div class="type-text">
+    <%= f.label :funds_description %>
+    <%= f.text_area :funds_description, :maxlength=>"1000", :rows => "10" %>
+  </div>
+  <div class="type-button">
+    <script>setMaxLength();</script>
+    <%= f.submit "Send" %>
+  </div>
+</fieldset>
+<% end %>
