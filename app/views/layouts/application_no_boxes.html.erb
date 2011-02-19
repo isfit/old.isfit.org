@@ -25,53 +25,74 @@ _gaq.push(['_trackPageview']);
 <body>
 <div id="hovedramme" class="container_24"> <!-- Start hovedramme -->
 <div id="omeny" class="grid_25"> <!-- Start omeny -->
-<div id="olinker" class="grid_20"> <!-- Start olinker -->
-<%= link_to t('layout.internal'), "https://internal.isfit.org/", :class => "olink" %>
-<%
-current_tab = nil
-style = ""
-Tab.find(:all, :conditions => {:top_bar=>"1"}).each do |tab|
+<div id="olinker" class="grid_10"> <!-- Start olinker -->
+  <%= link_to t('layout.internal'), "https://internal.isfit.org/", :class => "olink" %>
+  <%
+    current_tab = nil
+    style = ""
+    Tab.find(:all, :conditions => {:top_bar=>"1"}).each do |tab|
 
-	if tab.tag == params[:tab] 
-		current_tab = tab
-		style = "selected"
-	else
-		style = ""
-	end
+      if tab.tag == params[:tab] 
+        current_tab = tab
+        style = "selected"
+      else
+        style = ""
+      end
 
-	link = nil
+      link = nil
 
-	if tab.sublinks.first.page_id == 0
-		if tab.sublinks.first.url != nil
-			arr = tab.sublinks.first.url.partition("#")
-			link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag) 
-		else
-			link = tab.sublinks.first.external_url
-		end
-	else
-		link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
-	end
+      if tab.sublinks.first.page_id == 0
+        if tab.sublinks.first.url != nil
+          arr = tab.sublinks.first.url.partition("#")
+          link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag) 
+        else
+          link = tab.sublinks.first.external_url
+        end
+      else
+        link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
+      end
 
-	if style == "" %>
-		<%= link_to tab.name, link, :class=>"olink" %>
-<%	else %>
-		<%= link_to tab.name, link,:id => style, :class=>"olink"%>
-<%	end
-end
-%>
+      if style == "" %>
+        <%= link_to tab.name, link, :class=>"olink" %>
+      <%	else %>
+        <%= link_to tab.name, link,:id => style, :class=>"olink"%>
+      <%	end
+    end
+  %>
 
-   
-      </div><!-- Slutt olinker -->
-      <div id="odiverse" class="grid_4"><!-- Start odiverse -->
 
-      <%= link_to (image_tag("gb.png"),{:tab=>params[:tab], :locale=>"en"}, :class=>"oflagg") %>
-      <%= link_to (image_tag("no.png"),{:tab=>params[:tab], :locale=>"no"}, :class=>"oflagg") %>
-      <%= link_to (image_tag("facebook.png"), "http://www.facebook.com/group.php?gid=116305974170&ref=ts", :target=>"_blank", :class=>"obilde")%>
-      <%= link_to (image_tag("twitter.png"), "http://twitter.com/isfit", :class=>"obilde", :target=>"_blank")%>
-      <!--<a href="#rss" class="obilde"><img src="images/rss.png"></a>-->
-      </div><!-- Slutt odiverse -->
-      </div><!-- Slutt omeny -->
-      <div id="header" class="grid_25" ><!-- Start header -->
+  </div><!-- Slutt olinker -->
+
+
+  <!--COUNTDOWN-->
+  <div id="counter" class="counter grid_10">
+
+  <ul class="countdown">
+  <li>  ISFiT has started!</li>
+  <!--<li><div class="countdown_num" id="countdown_day"></div><div id="Days"></div></li>
+  <li><div class="countdown_num" id="countdown_hour"></div><div id="Hours"></div></li>
+  <li><div class="countdown_num" id="countdown_min"></div><div id="Minutes"></div></li>
+  <li><div class="countdown_num" id="countdown_sec"></div><div id="Seconds"></div></li>-->
+  </ul>
+  </div>
+
+<!--  <script type="text/javascript">
+  countdown(2011, 2, 11);
+  </script>-->
+  <!--SLUTT COUNTDOWN-->
+
+  <div id="odiverse" class="grid_4"><!-- Start odiverse -->
+
+  <%= link_to (image_tag("gb.png"),{:tab=>params[:tab], :locale=>"en"}, :class=>"oflagg") %>
+  <%= link_to (image_tag("no.png"),{:tab=>params[:tab], :locale=>"no"}, :class=>"oflagg") %>
+  <%= link_to (image_tag("facebook.png"), "http://www.facebook.com/#!/pages/ISFiT/11541693212", :target=>"_blank", :class=>"obilde")%>
+  <%= link_to (image_tag("twitter.png"), "http://twitter.com/isfit", :class=>"obilde", :target=>"_blank")%>
+
+
+  <!--<a href="#rss" class="obilde"><img src="images/rss.png"></a>-->
+  </div><!-- Slutt odiverse -->
+  </div><!-- Slutt omeny -->     
+  <div id="header" class="grid_25" ><!-- Start header -->
 
   <div id="slider-wrapper">
     <div id="slider" class="nivoSlider">
@@ -122,25 +143,6 @@ end %>
 </div><!-- Slutt faner -->
 <div id="sok" class="grid_4"><!-- Start søk -->
 <!-- <input type="button" value="" class="btn"><input name="search" type="text" value="<%=t('layout.search')%>">-->
-  <ul class="countdown">
-  <li>  ISFiT has started!</li>
-  <!--<li><div class="countdown_num" id="countdown_day"></div><div id="Days"></div></li>
-  <li><div class="countdown_num" id="countdown_hour"></div><div id="Hours"></div></li>
-  <li><div class="countdown_num" id="countdown_min"></div><div id="Minutes"></div></li>
-  <li><div class="countdown_num" id="countdown_sec"></div><div id="Seconds"></div></li>-->
-  </ul>
-  </div>div id="counter" class="counter">
-		<ul class="countdown">
-			<li><div class="countdown_num" id="countdown_day"></div><div id="Days"></div></li>
-			<li><div class="countdown_num" id="countdown_hour"></div><div id="Hours"></div></li>
-			<li><div class="countdown_num" id="countdown_min"></div><div id="Minutes"></div></li>
-			<li><div class="countdown_num" id="countdown_sec"></div><div id="Seconds"></div></li>
-		</ul>
-	</div>
-	
-<!--	<script type="text/javascript">
-	countdown(2011, 2, 11);
-	</script>-->
 </div><!-- Slutt søk -->
 
 </div><!-- Slutt meny -->
