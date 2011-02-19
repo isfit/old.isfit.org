@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110204030845) do
+ActiveRecord::Schema.define(:version => 20110216230012) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -587,6 +587,20 @@ ActiveRecord::Schema.define(:version => 20110204030845) do
     t.datetime "attachment_updated_at"
   end
 
+  create_table "project_supports", :force => true do |t|
+    t.string   "person_name"
+    t.integer  "person_age"
+    t.integer  "country_id"
+    t.string   "person_mail"
+    t.string   "person_association"
+    t.string   "workshop"
+    t.string   "group_description"
+    t.string   "project_description"
+    t.string   "funds_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "questions", :force => true do |t|
     t.integer  "participant_id",                                :null => false
     t.datetime "question_datetime",                             :null => false
@@ -734,7 +748,7 @@ ActiveRecord::Schema.define(:version => 20110204030845) do
     t.text     "description",                  :null => false
     t.string   "location",                     :null => false
     t.string   "title_en"
-    t.string   "tile_no"
+    t.string   "title_no"
     t.text     "ingress_en"
     t.text     "ingress_no"
     t.text     "body_en"

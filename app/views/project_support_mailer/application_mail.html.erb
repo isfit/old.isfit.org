@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+          <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+            </head>
+              <body>
+                An application has been received.<br/><br />
+
+Contact person<br />
+===<br />
+Created at: <%= @project_support.created_at %><br />
+  Name: <%= @project_support.person_name %><br />
+  Age: <%= @project_support.person_age %><br />
+  E-mail: <%= @project_support.person_mail %><br />
+  Country: <%= @project_support.country.name %><br />
+  Association with ISFiT: <%= @project_support.person_association %><br />
+<% if @project_support.workshop %>
+  Workshop: <%= @project_support.workshop.name %><br />
+<% end %>
+===<br /><br />
+
+
+Description of organization or project group<br />
+===<br />
+<%= @project_support.group_description %><br />
+===<br /><br />
+
+
+Description of project idea<br />
+===<br />
+<%= @project_support.project_description %><br />
+===<br /><br />
+
+
+Overview of what the funds from ISFiT might cover<br />
+===<br />
+<%= @project_support.funds_description %><br />
+===
+
+</body>
+</html>

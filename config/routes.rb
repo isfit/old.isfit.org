@@ -1,8 +1,14 @@
 WwwIsfitOrg::Application.routes.draw do  
+  
     resources :tips_osses
   resources :isfit_media_links
 
   scope "(/:tab)" do
+#resources :project_supports
+
+
+    match 'project_supports/success' => "project_supports#success"
+    resources :project_supports
 
     resources :sublinks
     resources :hosts do 
@@ -13,6 +19,7 @@ WwwIsfitOrg::Application.routes.draw do
     resources :alumni_reservations
     
     get "events/:year/:month/:day" => "events#index", :as => "events"
+    get "events/:year/:month/:day" => "events#index", :as => "events_date"
 
     get "events/search" => "events#search", :as => "search_events"
 

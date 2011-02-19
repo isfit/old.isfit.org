@@ -404,6 +404,7 @@ div.field_with_errors textarea {
 #boksoransje_bg {
 	background: #fff;  /* url(../images/boksoransjebg.png) repeat-y;*/
 	margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 #boksoransje {
@@ -457,13 +458,13 @@ height:auto;
 .photo_left {
   float:left;
   width:253px;
-  padding: 5px;
+  padding: 5px 10px 5px 5px;
 }
 
 .photo_right {
   float:right;
   width:253px;
-  padding: 5px;
+  padding: 5px 5px 5px 10px;
 }
 .black_left {
   float:right;
@@ -473,6 +474,7 @@ height:auto;
 
 .boxheadline {
   background: #8EC1DA;
+/*  text-decoration:underline*/
 }
 
 .article {

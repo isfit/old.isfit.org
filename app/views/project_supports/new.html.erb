@@ -1,0 +1,70 @@
+<% content_for :script do%>
+  <script>
+  function setMaxLength() {
+    var x = document.getElementsByTagName('textarea');
+    var counter = document.createElement('div');
+    counter.className = 'counter';
+    for (var i=0;i<x.length;i++) {
+      if (x[i].getAttribute('maxlength')) {
+        var counterClone = counter.cloneNode(true);
+        counterClone.relatedElement = x[i];
+        counterClone.innerHTML = '<span>0</span>/'+x[i].getAttribute('maxlength');
+        x[i].parentNode.insertBefore(counterClone,x[i].nextSibling);
+        x[i].relatedElement = counterClone.getElementsByTagName('span')[0];
+
+        x[i].onkeyup = x[i].onchange = checkMaxLength;
+        x[i].onkeyup();
+      }
+    }
+  }
+
+  function checkMaxLength() {
+    var maxLength = this.getAttribute('maxlength');
+    var currentLength = this.value.length;
+    if (currentLength > maxLength)
+    this.relatedElement.className = 'toomuch';
+    else
+    this.relatedElement.className = '';
+    this.relatedElement.firstChild.nodeValue = currentLength;
+    // not innerHTML
+  }
+
+  function popup(url){
+    var mywin;
+    mywin = window.open(url, '1', 'width=400,height=400,left=0,top=10,scrollbars=yes,resizable=yes');
+    mywin.focus();
+  }
+</script>
+<%end%>
+
+<% if Language.to_s == "en" %>
+<h1>Post-ISFiT Grants</h1>
+
+<p>
+Project support is intended to promote international student culture by supporting projects that help to increase knowledge and understanding across cultural, political and professional boundaries.<br />
+The grant will help and encourage individuals, groups and organizations to increase their competence and ability to plan and implement their own projects arising out of ISFiT.<br /><br />
+
+Former and current ISFiT participants and functionaries can apply for funding.<br /><br />
+
+If you have any questions, contact us at: <i>post-isfit@isfit.org</i>.<br /><br />
+Make sure to <%= link_to "download the guidelines", "http://www.isfit.org/downloads/Guidelines for post_ISFiT Grants.pdf" %> for project support.
+</p>
+<% else %>
+<h1>Post-ISFiT Prosjektstøtte</h1>
+
+<p>
+Meningen med prosjektstøtte er å promotere internasjonal studentkultur ved å støtte prosjekter som bidrar til å øke kunnskap og forståelse på tvers av kulturelle, politiske og profesjonelle grenser.<br />
+Denne støtten vil hjelpe og oppmuntre individer, grupper og organisasjoner til å øke deres kompetanse og mulighet for å planlegge og implementere deres egne prosjekter som oppstår fra ISFiT.<br /><br /> 
+
+Tidligere og nåværende ISFiT-deltakere og funksjonærer kan søke om støtte.<br /><br />
+
+Stiftelsen ISFiT står bak tildelingen av post-ISFiT prosjektstøtten.<br />
+Hvis du har noen spørsmål, kontakt oss på: <i>post-isfit@isfit.org</i>.<br /><br />
+<%= link_to "Last også ned", "http://www.isfit.org/downloads/Retningslinjer for post-ISFiT_offentlig.pdf" %> retningslinjene for prosjektstøtte.
+</p>
+<% end %>
+
+<br />
+
+<%= render 'form' %>
+

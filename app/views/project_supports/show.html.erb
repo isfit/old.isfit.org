@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Person name:</b>
+  <%= @project_support.person_name %>
+</p>
+
+<p>
+  <b>Person age:</b>
+  <%= @project_support.person_age %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @project_support.country_id %>
+</p>
+
+<p>
+  <b>Person mail:</b>
+  <%= @project_support.person_mail %>
+</p>
+
+<p>
+  <b>Person association:</b>
+  <%= @project_support.person_association %>
+</p>
+
+<p>
+  <b>Workshop:</b>
+  <%= @project_support.workshop %>
+</p>
+
+<p>
+  <b>Group description:</b>
+  <%= @project_support.group_description %>
+</p>
+
+<p>
+  <b>Project description:</b>
+  <%= @project_support.project_description %>
+</p>
+
+<p>
+  <b>Funds description:</b>
+  <%= @project_support.funds_description %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_support_path(@project_support) %> |
+<%= link_to 'Back', project_supports_path %>
