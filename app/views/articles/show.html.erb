@@ -9,7 +9,7 @@
 <%end%>
 
 <div style="background-color: #fff;">
-<% if @article.body == "" || @article.ingress == ""
+<% if @article.body == "" && @article.ingress == ""
     in_language = false
   else
     in_language = true
