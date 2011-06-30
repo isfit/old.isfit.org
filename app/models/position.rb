@@ -5,7 +5,7 @@ class Position < ActiveRecord::Base
   lang_attr :title, :description
 
   def self.find_all_active_positions
-    positions = Position.find_all_by_admission_id(3)
+    positions = Position.find_all_by_admission_id(1)
     positions.sort_by {|x| [(x.group.section == nil ? "" :  x.group.section.name_no), x.group.name_no] }
     positions
   end
