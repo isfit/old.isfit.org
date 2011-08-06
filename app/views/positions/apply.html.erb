@@ -22,56 +22,58 @@
 <% end %>
 
 
-<h4>You can only apply as a voluenteer if you are a student in Trondheim. If you want to apply as a participant, please go <%=link_to("here", "http://www.isfit.org/participant/pages/36")%></h4>
-<br />
 <p><%= t("position.fill_in") %></p>
-<% form_for(@applicant, :url => {:controller => :positions, :action => :save}) do |f| %>
-  <p>  
-    <div style="float: left; margin-right: 10px">
-      <b><%= t("person.first_name")%>:</b><br />
+<% form_for(@applicant, :html => { :class => "yform columnar" }, :url => {:controller => :positions, :action => :save}) do |f| %>
+  <fieldset>
+    <legend><%= t("position.pers_info") %></legend>
+    <div class="type-text">
+      <%= f.label :firstname %>
       <%= f.text_field :firstname, :placeholder => t("person.first_name") %>
     </div>
-    <div>
-      <b><%= t("person.last_name") %>:</b><br />
+    <div class="type-text">
+      <%= f.label :lastname %>
       <%= f.text_field :lastname, :placeholder => t("person.last_name") %>
     </div>
-    <br />
-    <div style="float: left; margin-right: 10px">
-      <b><%= t("person.email_ntnu") %>:</b><br />
+    <div class="type-text">
+      <%= f.label :mail %>
       <%= f.text_field :mail, :placeholder => t("person.email_ntnu") %>
     </div>
-    <div>
-      <b><%= t("person.phone") %></b><br />
+    <div class="type-text">
+      <%= f.label :phone %>
       <%= f.text_field :phone, :placeholder => t("person.phone_nor") %>
     </div>
-  </p>
-  <br />
-  <p>
-    <b><%= t("position.first_choice")%>:</b> <i>(<%= t("position.obligatory")%>)</i><br>
-    <%= f.select 'position_id_1', @positions.to_select %>
-  </p>
-  <p>
-    <b><%= t("position.second_choice") %>:</b> <i>(frivillig)</i><br>
-    <%= f.select 'position_id_2', @positions.to_select %>
-  </p>
-  <p>
-    <b><%= t("position.third_choice") %>:</b> <i>(frivillig)</i><br>
-    <%= f.select 'position_id_3', @positions.to_select %>
-  </p>
-
-  <p>
-    <b><%= t("position.about_you")%>:</b><br />
-    <%= f.text_area("information",:cols => 63, :rows => 10) %>
-  </p>
-  <p>
-    <b><%= t("position.background")%>:</b><br />
-    <%= f.text_area(:background, :cols => 63,:rows => 10) %>
-  </p>
+  </fieldset>
+  <fieldset>
+    <legend><%= t("position.application") %></legend>
+    <div class="type-select">
+      <%= f.label :position_id_1 %>
+      <%= f.select :position_id_1, @positions.to_select %>
+    </div>
+    <div class="type-select">
+      <%= f.label :position_id_2 %>
+      <%= f.select :position_id_2, @positions.to_select %>
+    </div>
+    <div class="type-select">
+      <%= f.label :position_id_3 %>
+      <%= f.select :position_id_3, @positions.to_select %>
+    </div>
+    <div class="type-text">
+      <%= f.label :information %>
+      <%= f.text_area :information, :rows => 10 %>
+    </div>
+    <div class="type-text">
+      <%= f.label :background %>
+      <%= f.text_area :background, :rows => 10 %>
+    </div>
+    <!--
   <p>
     <b><%= t("position.hear_about") %>:</b><br>
     <%= f.text_area(:heardof,:cols => 63, :rows=>5)%><br>
-    <%= f.submit t("position.apply") %>
   </p>
+  -->
+  <div class="type-button">
+  <%= f.submit t("position.apply"), :class => "submit" %>
+</div>
 <% end %>
 
 
