@@ -11,6 +11,6 @@ class Position < ActiveRecord::Base
   end
 
   def self.find_all_active_positions_alfa #sorterer alfabetisk
-    positions = Position.find_all_by_admission_id(3, :order => "title_no")
+    positions = Position.where(:admission_id => 3).order("title_no ASC").all
   end
 end

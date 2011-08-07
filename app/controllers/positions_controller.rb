@@ -21,9 +21,8 @@ class PositionsController < ApplicationController
 
  def apply
    @applicant = Applicant.new
-   @positions = Position.find_all_active_positions_alfa
+   @positions = Position.find_all_active_positions_alfa.reverse
    @positions << Position.new
-   @positions.reverse
  end
  def save
     @applicant = Applicant.new(params[:applicant])
