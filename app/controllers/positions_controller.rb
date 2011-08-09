@@ -4,15 +4,6 @@ class PositionsController < ApplicationController
   # return
    # QUICKFIX, REMOVE THE ABOVE IN NOVEMBER; AND FIX POSITIONS IN CORE!!
   @positions = Position.find_all_active_positions
-  @temp = []
-  @positions.each do |p|
-    if p.group.section.name_en == "Theme Section"
-      @temp.unshift(p)
-    else
-      @temp << p
-    end
-  end
-  @positions = @temp
   end
  
  def show
