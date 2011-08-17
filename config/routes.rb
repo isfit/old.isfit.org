@@ -5,7 +5,7 @@ WwwIsfitOrg::Application.routes.draw do
 
   scope "(/:tab)" do
 #resources :project_supports
-
+    
 
     match 'project_supports/success' => "project_supports#success"
     resources :project_supports
@@ -67,6 +67,7 @@ WwwIsfitOrg::Application.routes.draw do
       collection do
         get :apply
         post :validate
+        post :save
       end
     end 
 

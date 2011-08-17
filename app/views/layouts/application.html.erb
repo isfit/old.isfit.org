@@ -47,7 +47,7 @@
              <div id="olinker" class="grid_10"> <!-- Start olinker -->
                <%= link_to t('layout.internal'), "https://internal.isfit.org/", :class => "olink" %>
                <%
-                 current_tab = nil
+                 current_tab = Tab.first
                  style = ""
                  Tab.find(:all, :conditions => {:top_bar=>"1"}).each do |tab|
 
@@ -196,6 +196,11 @@
       </div><!-- Slutt submeny -->
       <div id="ramme" class="grid_25"><!-- Start ramme -->
         <div id="venstreramme" class="grid_5"><!-- Start venstreramme -->
+          <div class="boks">
+            <h3 class="boxheadline">The ISFiT Way</h3>
+            <%= link_to(image_tag('final.png') , 'http://www.isfit.org/downloads/final.pdf') %>
+          </div>
+
           <div class="boks">
             <h3 class="boxheadline">The Globe 2</h3>
             <%= link_to(image_tag('2nd_globe.jpg') , 'http://www.isfit.org/downloads/theglobe_2nd.pdf') %>

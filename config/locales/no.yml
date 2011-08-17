@@ -47,6 +47,9 @@
     about_you: "Informasjon om deg"
     background: "Relevant bakgrunn"
     hear_about: "Hvordan fikk du høre om ISFiT?"
+    mail: "Epost-adresse"
+    pers_info: Personlig informasjon
+    application: Søkerinformasjon
   person:
     first_name: "Fornavn"
     last_name: "Etternavn"
@@ -60,9 +63,9 @@
     project: "Prosjekt"
     workshop: "Hvis Workshop ble valgt, spesifiser navnet til workshopen"
   host:
-    registration: Registrer verteskjema
-    optional: Valgfrie felter
-    mandatory: Obligatoriske felter
+    registration: "Registrer verteskjema"
+    optional: "Valgfrie felter"
+    mandatory: "Obligatoriske felter"
   calender:
     today: I dag
     tomorrow: I morgen
@@ -150,3 +153,13 @@
         member_name: Navn på medlem (Besvares kun hvis 'medlem av ISFiT' er valgt)
         why: Hvorfor vil du være vert?
         base: ""
+      applicant:
+        firstname: Fornavn
+        lastname: Etternavn
+        mail: Epostadresse (ved studiested)
+        phone: Telefonnummer (8 siffer)
+        position_id_1: Førstevalg (obligatorisk)
+        position_id_2: Andrevalg (frivillig)
+        position_id_3: Tredjevalg (frivillig)
+        information: Informasjon om deg
+        background: Relevant bakgrunn

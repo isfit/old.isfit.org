@@ -1,4 +1,4 @@
-<% if true %>
+<% if false %>
   <%if Language.to_s == "no"%>
     ISFiT har for øyeblikket ikke opptak. 
   <%else%>
@@ -11,7 +11,7 @@
   <% for position in @positions %>
     <% if not position.group == active_group %>
       </ul>
-    <% if position.group.section and not position.group.section == active_section %>
+    <% if position.group and position.group.section and not position.group.section == active_section %>
       </ul>
       <br>
       <h3><%=h position.group.section.name %></h3>
@@ -22,8 +22,8 @@
     <% end %>
     
     <li><%= link_to "#{position.title}", position_url(params[:tab], position) %></li>
-    <% active_group = position.group %> 
-    <% active_section = position.group.section %>
+    <%# active_group = position.group %> 
+    <%# active_section = position.group.section %>
   <%end%>
 <% end %>
 
