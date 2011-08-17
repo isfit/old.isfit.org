@@ -7,7 +7,7 @@ gem 'rails', '3.0.0'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem "recaptcha"
-gem 'mysql', "2.8.1"
+gem 'mysql2', '<0.3'
 
 gem "paperclip"
 #gem "imagemagick"
@@ -32,7 +32,6 @@ gem "bluecloth"
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  gem 'cucumber'
   gem 'rspec-rails'
   gem 'webrat'
   gem 'nifty-generators'

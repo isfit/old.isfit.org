@@ -103,10 +103,10 @@
 
                <div id="odiverse" class="grid_4"><!-- Start odiverse -->
 
-                 <%= link_to (image_tag("gb.png"),{:tab=>params[:tab], :locale=>"en"}, :class=>"oflagg") %>
-                 <%= link_to (image_tag("no.png"),{:tab=>params[:tab], :locale=>"no"}, :class=>"oflagg") %>
-                 <%= link_to (image_tag("facebook.png"), "http://www.facebook.com/#!/pages/ISFiT/11541693212", :target=>"_blank", :class=>"obilde")%>
-                 <%= link_to (image_tag("twitter.png"), "http://twitter.com/isfit", :class=>"obilde", :target=>"_blank")%>
+                 <%= link_to image_tag("gb.png"),{:tab => params[:tab], :locale => "en"}, :class => "oflagg"%>
+                 <%= link_to image_tag("no.png"),{:tab => params[:tab], :locale => "no"}, :class => "oflagg" %>
+                 <%= link_to image_tag("facebook.png"), "http://www.facebook.com/#!/pages/ISFiT/11541693212", :target=>"_blank", :class=>"obilde"%>
+                 <%= link_to image_tag("twitter.png"), "http://twitter.com/isfit", :class=>"obilde", :target=>"_blank"%>
 
 
                  <!--<a href="#rss" class="obilde"><img src="images/rss.png"></a>-->
@@ -114,7 +114,7 @@
              </div><!-- Slutt omeny -->
              <div id="header" class="grid_25" ><!-- Start header -->
                 <%#=link_to (image_tag("header_#{Language.to_s}.png", :class=>"isfitlogo"), root_path) %>
-                <%=link_to (image_tag("isfit.png", :class=>"isfitlogo"), root_path) %>
+                <%=link_to image_tag("isfit.png", :class=>"isfitlogo"), root_path %>
 
 <!--               <div id="slider-wrapper">
                  <div id="slider" class="nivoSlider">
