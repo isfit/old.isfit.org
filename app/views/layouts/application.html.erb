@@ -5,7 +5,7 @@
   <head>
     <title>ISFiT 2011</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <%= stylesheet_link_tag :all %>
+    <%= stylesheet_link_tag '960', :application, :debug => true %>
     <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
     <%= javascript_include_tag 'jquery','application', 'jquery.simplemodal-1.3.5.min', 'imgareaselect', 'jquery.nivo.slider'%>
     <%= yield :script %>
@@ -46,39 +46,7 @@
            <div id="omeny" class="grid_25"> <!-- Start omeny -->
              <div id="olinker" class="grid_10"> <!-- Start olinker -->
                <%= link_to t('layout.internal'), "https://internal.isfit.org/", :class => "olink" %>
-               <%
-                 current_tab = Tab.first
-                 style = ""
-                 Tab.where(top_bar:1).each do |tab|
-
-                   if tab.tag == params[:tab] 
-                     current_tab = tab
-                     style = "selected"
-                   else
-                     style = ""
-                   end
-
-                   link = nil
-
-                   if tab.sublinks.first && tab.sublinks.first.page_id == 0
-                     if tab.sublinks.first.url != nil
-                       arr = tab.sublinks.first.url.partition("#")
-                       link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag) 
-                     else
-                       link = tab.sublinks.first.external_url
-                     end
-                   else
-                     link = page_path(tab.sublinks.first.page, :tab=>tab.tag) if tab.sublinks.first
-                   end
-
-                   if style == "" %>
-                   <%= link_to tab.name, link, :class=>"olink" %>
-                 <%	else %>
-                   <%= link_to tab.name, link,:id => style, :class=>"olink"%>
-                 <%	end
-                 end
-               %>
-
+    
 
              </div><!-- Slutt olinker -->
 
@@ -136,30 +104,7 @@
   <div id="meny" class="grid_25"><!-- Start meny -->
     <div id="faner" class="grid_20">
       <!-- Start faner -->
-      <%
-        Tab.where(top_bar:0).order('weight').each do |tab|
-          if tab.name != ""
-            style = ""
-            if tab.tag == params[:tab]
-              current_tab = tab
-              style="selected"
-            else
-              style = ""
-            end
-            link = nil
-            if tab.sublinks.first && (tab.sublinks.first.page_id == 0 || tab.sublinks.first.page_id == nil)
-              if tab.sublinks.first.url != nil
-                arr = tab.sublinks.first.url.partition("#")
-                link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag)
-              end
-            else
-              link = page_path(tab.sublinks.first.page, :tab=>tab.tag) if tab.sublinks.first
-            end
-          %>
-          <%= link_to tab.name, link, :class => style%><%=image_tag("menyspacer.png", :class=>"menyspacer")%>
-        <%	end
-        end %>
-
+     
       </div><!-- Slutt faner -->
       <div id="sok" class="grid_4"><!-- Start søk -->
         <!-- <input type="button" value="" class="btn"><input name="search" type="text" value="<%=t('layout.search')%>">-->
@@ -168,31 +113,7 @@
 
     </div><!-- Slutt meny -->
     <div id="submeny" class="grid_25"><!-- Start submeny -->
-      <%
-        current_tab.sublinks.each do |sub|
-          active = false
-          link = nil
-
-          if sub.page_id == 0 or sub.page_id == nil
-            if sub.url != nil
-              arr = sub.url.partition("#")
-              link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>current_tab.tag)
-            elsif sub.external_url != nil
-              link = sub.external_url
-            end
-          else
-            link = page_path(sub.page, :tab=>current_tab.tag)
-          end
-
-          if request.request_uri == link
-            active = true
-          end
-
-          if link != nil %>
-          <%=link_to(sub.title, link, :class=> active ? "a_sublink" : "ina_sublink")%><%
-          end
-        end %>
-
+      
       </div><!-- Slutt submeny -->
       <div id="ramme" class="grid_25"><!-- Start ramme -->
         <div id="venstreramme" class="grid_5"><!-- Start venstreramme -->
@@ -229,17 +150,7 @@
               <div class="boks">
                 <h3 class="boxheadline"><%= link_to "Student Peace Prize", "http://www.studentpeaceprize.org" %></h3><br />
                 <ul style="list-style-type:none; margin: 0 0 0 -20px;">
-                  <% count = 0
-                  SppArticle.find_five_latest.each do |article|%>
-                    <li><div style="float:left"><%if article.youtube_link.blank?%><%= link_to (image_tag  "spp_article_images/" + "#{article.id}_3.jpg", :width=>"50"), "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank"%>
-                      <%else%><%= link_to (image_tag "http://www.studentpeaceprize.org/images/spp_missing.jpg", :width=>"50"), "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank"%><%end%></div>
-                      <div style="margin-left:55px;"> <%=link_to article.title_en, "http://www.studentpeaceprize.org/articles/#{article.id}?tab=home", :target=>"_blank" %></div></li>
-                      <%  count = count +1
-                      unless count == 5%>
-                      <hr style="margin-left:20px">
-                    <%end%>
-                  <% end %>
-
+                  
                 </ul>
               </div>
             </div>
@@ -357,16 +268,7 @@
               <div class="boks">
                 <h3 class="boxheadline"><%= link_to t("layout.media"), isfit_media_links_path(:tab=>:press) %></h3><br>
                 <ul style="list-style-type:none; margin: 0 0 0 -20px;">
-                  <% count = 0
-                  IsfitMediaLink.find_five_latest(I18n.locale.to_s == "en").each do |link|%>
-                    <li><%=link_to( link.short_desc, link.link, :target=>"_blank" )%></li>
-                    <% count = count +1
-
-                    unless count == 5%>
-                    <hr style="margin-left:20px">
-                  <%end%>
-                <% end %>
-
+                
               </ul>
 
             </div>

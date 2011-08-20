@@ -15,7 +15,7 @@ validates_format_of :email,
 
 validates_format_of :phone, 
                     :with => /^\d{8}$/,
-                    :message => "må bestå av nøyaktig 8 siffre"
+                    :message => "maa bestaa av noyaktig 8 siffre"
 
 
 end

@@ -11,6 +11,14 @@ gem 'mysql2'
 gem 'bluecloth'
 gem 'paperclip'
 
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0.rc"
+  gem 'coffee-rails', "~> 3.1.0.rc"
+  gem 'uglifier'
+end
+
+gem 'jquery-rails'
+gem 'therubyracer'
 # Deploy with Capistrano
 # gem 'capistrano'
 

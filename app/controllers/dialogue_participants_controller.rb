@@ -1,6 +1,4 @@
 class DialogueParticipantsController < ApplicationController
-  session :off
-
   def index
   	redirect_to :action => "new"
   end
