@@ -50,6 +50,7 @@
     mail: "Epost-adresse"
     pers_info: Personlig informasjon
     application: Søkerinformasjon
+    firstname: Fornavn
   person:
     first_name: "Fornavn"
     last_name: "Etternavn"
@@ -79,6 +80,10 @@
         not_a_number: må bestå av tall
         taken: er allerede registrert
       models:
+        applicant:
+          attributes:
+            position_id_1:
+              not_a_number: må være valgt
         host:
           attributes:
             age:

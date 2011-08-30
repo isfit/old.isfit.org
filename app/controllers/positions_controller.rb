@@ -1,4 +1,5 @@
 class PositionsController < ApplicationController
+  # coding:utf-8
  def index
    @positions = []
   # return
@@ -19,7 +20,7 @@ class PositionsController < ApplicationController
     @applicant = Applicant.new(params[:applicant])
     respond_to do |format|
       if @applicant.save
-        flash[:notice] = "Din søknad ble sendt."
+        flash[:notice] = "Din soknad ble sendt."
         @positions = Position.find_all_active_positions
         format.html { render :action => :index }
       else
