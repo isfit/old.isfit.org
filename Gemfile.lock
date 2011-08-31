@@ -163,6 +163,7 @@ DEPENDENCIES
   nifty-generators
   paperclip
   rails (= 3.1.0)
+  rake
   recaptcha
   rspec-rails
   sass-rails

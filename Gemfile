@@ -10,6 +10,7 @@ gem 'recaptcha'
 gem 'mysql2'
 gem 'bluecloth'
 gem 'paperclip'
+gem 'rake'
 
 group :assets do
   gem 'sass-rails'
