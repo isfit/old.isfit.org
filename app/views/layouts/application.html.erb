@@ -85,10 +85,34 @@
                    //  });
 </script>-->
   </div><!-- Slutt header -->
-  <div id="meny" class="grid_25"><!-- Start meny -->
+ <div id="meny" class="grid_25"><!-- Start meny -->
     <div id="faner" class="grid_20">
       <!-- Start faner -->
-     
+      <%
+        current_tab = Tab.where(:top_bar => 0).order('weight').first
+        Tab.where(:top_bar => 0).order('weight').each do |tab|
+          if tab.name != ""
+            style = ""
+            if tab.tag == params[:tab]
+              current_tab = tab
+              style="selected"
+            else
+              style = ""
+            end
+            link = nil
+            if tab.sublinks.first.page_id == 0 or tab.sublinks.first.page_id == nil
+              if tab.sublinks.first.url != nil
+                arr = tab.sublinks.first.url.partition("#")
+                link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag)
+              end
+            else
+              link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
+            end
+          %>
+          <%= link_to tab.name, link, :class => style%><%=image_tag("menyspacer.png", :class=>"menyspacer")%>
+        <%	end
+        end %>
+
       </div><!-- Slutt faner -->
       <div id="sok" class="grid_4"><!-- Start søk -->
         <!-- <input type="button" value="" class="btn"><input name="search" type="text" value="<%=t('layout.search')%>">-->
@@ -97,7 +121,31 @@
 
     </div><!-- Slutt meny -->
     <div id="submeny" class="grid_25"><!-- Start submeny -->
+      <%
+        current_tab.sublinks.each do |sub|
+          active = false
+          link = nil
+
+          if sub.page_id == 0 or sub.page_id == nil
+            if sub.url != nil
+              arr = sub.url.partition("#")
+              link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>current_tab.tag)
+            elsif sub.external_url != nil
+              link = sub.external_url
+            end
+          else
+            link = page_path(sub.page, :tab=>current_tab.tag)
+          end
       
+          #if fullpath == link
+          #  active = true
+          #end
+          
+          if link != nil %>
+            <%=link_to(sub.title, link, :class=> active ? "a_sublink" : "ina_sublink")%><%
+          end
+        end %>
+        
       </div><!-- Slutt submeny -->
       <div id="ramme" class="grid_25"><!-- Start ramme -->
         <div id="venstreramme" class="grid_5"><!-- Start venstreramme -->
