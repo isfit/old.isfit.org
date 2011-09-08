@@ -59,9 +59,9 @@ module ArticlesHelper
     pic_url = type == 1 ? picture.full_article_picture.url : picture.half_article_picture.url
     #Change on prod!
     if (link)
-      url = "<a href=/assets/#{picture.original_picture.url}><div class=#{style}><img src =/images/#{pic_url}  /><br /><i>Foto: #{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div></a>"
+      url = "<a href=/assets/#{picture.original_picture.url}><div class=#{style}><img src =/assets/#{pic_url}  /><br /><i>Foto: #{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div></a>"
     else
-      url = "<div class=#{style}><img src =/images/#{pic_url}  /><br /><i>Foto: #{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div>"
+      url = "<div class=#{style}><img src =/assets/#{pic_url}  /><br /><i>Foto: #{picture.credits}</i><br /><i>#{picture.image_text_en}</i></div>"
     end 
  end
 end
