@@ -31,17 +31,6 @@ namespace :deploy do
   end
   task :symlink_shared, :roles => :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    run "ln -s /srv/shared/article_images #{release_path}/public/assets/article_images"
-    run "ln -s /srv/shared/downloads #{release_path}/public/assets/downloads"
-    run "ln -s /srv/shared/events #{release_path}/public/assets/events"
-    run "ln -s /srv/shared/article #{release_path}/public/assets/article"
-    run "ln -s /srv/shared/page_images #{release_path}/public/assets/page_images"
-    run "ln -s /srv/shared/pages #{release_path}/public/assets/pages"
-    run "ln -s /srv/shared/press_release #{release_path}/public/assets/press_release"
-    run "ln -s /srv/shared/programme_images #{release_path}/public/assets/programme_images"
-    run "ln -s /srv/shared/slide #{release_path}/public/assets/slide"
-    run "ln -s /srv/shared/workshop_images #{release_path}/public/assets/workshop_images"
-    run "ln -s /srv/shared/workshops #{release_path}/public/assets/workshops"
   end
 end
 after 'deploy:update_code', 'deploy:symlink_shared'
