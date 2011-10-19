@@ -5,6 +5,7 @@ module ArticlesHelper
 
   def format(str)
     set_correct_tags(str)
+    yt_tag(str)
     reg = Regexp.new(/\[([\w ,:"]+)\]\(([A-Za-z0-9_:.=&+-?\/]+)\)/)
     str.gsub!(reg, "<a href=\"\\2\" target=\"_blank\">\\1</a>")
 
@@ -44,7 +45,18 @@ module ArticlesHelper
       url = article_image(img_id.to_i, img_type.to_i, true)
       text[t_start..t_end+5] = url
     end 
+  end
 
+  def yt_tag(text)
+    while text.index('##yt') != nil
+      t_start = text.index('##yt')
+      t_end = text.index('yt##')
+      reg = Regexp.new(/##yt (\w+) yt##/)
+      match = reg.match(text[t_start..t_end+3])
+      yt_id = match[1]
+      url = "<iframe width='530' height='302' src='http://www.youtube.com/embed/#{yt_id}' frameborder='0' allowfullscreen></iframe>"
+      text[t_start..t_end+3] = url
+    end
   end
 
   def article_image(picture_id, type, link)
