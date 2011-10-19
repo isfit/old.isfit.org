@@ -2,8 +2,6 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.xml
 
-  caches_page :index
-
   def index
     #@articles = Article.find(:all, :conditions=>"show_article <="+Time.now.to_s+" OR show_article IS NULL", :order => "weight DESC",:conditions=> {:deleted=>"0", :list=>"1"})
     @articles = Article.find(:all, :conditions=>"(show_article <='"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"' OR show_article IS NULL) AND deleted='0'AND list='1'", :order => "weight DESC")
