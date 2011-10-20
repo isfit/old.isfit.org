@@ -63,7 +63,7 @@ module ArticlesHelper
 
   def article_image(picture_id, type, link)
     picture = Photo.find_by_id(picture_id)
-    return "" unless picture
+#    return "" unless picture
     style = case type.to_s
             when "1" then "photo_full"
             when "2" then "photo_right"
