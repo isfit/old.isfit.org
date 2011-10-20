@@ -15,7 +15,7 @@ role :web, "nova.isfit.org"                           # Your HTTP server, Apache
 role :app, "nova.isfit.org"                           # This may be the same as your `Web` server
 role :db,  "nova.isfit.org", :primary => true         # This is where Rails migrations will run
 
-set :branch, "3.1-test"
+set :branch, "master"
 set :user, "passenger"
 set :use_sudo, false
 set :deploy_to, "/srv/www/www.isfit.org"
