@@ -1,15 +1,5 @@
-/*=================================*/
-/* Nivo Slider Demo
-/* November 2010
-/* By: Gilbert Pellegrom
-/* http://dev7studios.com
-/*=================================*/
 
-/*============================*/
-/*=== Custom Slider Styles ===*/
-/*============================*/
 #slider-wrapper {
-    /*background:url(../images/	slider.png) no-repeat;*/
     width:998px;
     height:392px;
     margin:0 auto;

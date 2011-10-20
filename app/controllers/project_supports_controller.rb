@@ -68,12 +68,9 @@ class ProjectSupportsController < ApplicationController
 
     respond_to do |format|
       if @project_support.save and ProjectSupportMailer.application_mail(@project_support).deliver and ProjectSupportMailer.verification_mail(@project_support.person_mail).deliver
-        format.html { redirect_to (:action=>"success", :tab=>params[:tab], :notice => 'Project support was successfully created.') }
-        format.xml  { render :xml => @project_support, :status => :created, :location => @project_support }
+        #format.html { redirect_to (:action=>"success", :tab=>params[:tab], :notice => 'Project support was successfully created.') }
       else
         #format.html { render :action => "new", :tab=>params[:tab] }
-        format.html { render (:action => "new", :tab=>params[:tab]) }
-        format.xml  { render :xml => @project_support.errors, :status => :unprocessable_entity }
       end
     end
   end

@@ -1,4 +1,5 @@
 class Chronicle < ActiveRecord::Base
+  set_primary_key 'id'
   lang_attr :title, :ingress, :body
 
   # Finner og returnerer den kronikken med høyest vekt
