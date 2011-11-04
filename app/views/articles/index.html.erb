@@ -1,20 +1,25 @@
 <%
-first = true
+    first = true
 @articles.each do |article| %>
-	<% if first %>
-		<div id="hoved_artikkel" class="grid_14 alpha omega">
+<% if first %>
+  <div id="hoved_artikkel" class="grid_14 alpha omega">
 
-	<%else%>
-		<%classtext = "artikkel grid_7 articleheight " + cycle("alpha","omega")%>
+  <%else%>
+    <%classtext = "artikkel grid_7 articleheight " + cycle("alpha","omega")%>
 
-		<div class="<%=classtext%>">
-	<%end%>
-	<a href="<%=article_url(params[:tab], article)%>">
-	<%=image_tag("article_images/"+article.id.to_s+"_"+ (first ? "1" : "2")+".jpg") %>
-	<h1><%=article.title%></h1>
-	<p><%=truncate(article.sub_title, :length=>150, :separator => ' ')%></p>
-	</a>
-	</div>
-	<% first = false if first %>
+    <div class="<%=classtext%>">
+    <%end%>
+
+    <a href="<%=article_url(params[:tab], article)%>">
+      <% if article.frontend_article_image? %>
+        <%=image_tag(first ? article.frontend_article_image.url(:front_large) : article.frontend_article_image.url(:front_small)) %>
+      <% else %>
+        <%=image_tag("article_images/"+article.id.to_s+"_"+ (first ? "1" : "2")+".jpg") %>
+      <% end %>
+      <h1><%=article.title%></h1>
+      <p><%=truncate(article.sub_title, :length=>150, :separator => ' ')%></p>
+    </a>
+  </div>
+  <% first = false if first %>
 <%end%>
 <%= link_to t('article.more'), all_articles_path(params[:tab]) %>
