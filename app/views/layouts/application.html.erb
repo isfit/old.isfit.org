@@ -151,31 +151,21 @@
         <div id="venstreramme" class="grid_5"><!-- Start venstreramme -->
           <div class="boks">
             <h3 class="boxheadline">The ISFiT Way</h3>
-            <%= link_to(image_tag('final.png') , 'http://www.isfit.org/downloads/final.pdf') %>
+            <%= link_to(image_tag('final.png') , 'http://www.isfit.org/assets/downloads/final.pdf') %>
           </div>
 
           <div class="boks">
             <h3 class="boxheadline">The Globe 2</h3>
-            <%= link_to(image_tag('2nd_globe.jpg') , 'http://www.isfit.org/downloads/theglobe_2nd.pdf') %>
+            <%= link_to(image_tag('2nd_globe.jpg') , 'http://www.isfit.org/assets/downloads/theglobe_2nd.pdf') %>
           </div>
           <div class="boks">
             <h3 class="boxheadline">The Globe</h3>
-            <%= link_to(image_tag('globe.jpg') , 'http://www.isfit.org/downloads/globe.pdf') %>
+            <%= link_to(image_tag('globe.jpg') , 'http://www.isfit.org/assets/downloads/globe.pdf') %>
           </div>
           <div id="boksbla_bg" class="grid_5 alpha omega">
             <div id="boksbla" class="grid_5 alpha omega">
             </div>
           </div>
-
-
-          <div id="boksgronn_bg" class="grid_5 alpha omega"><!-- Start grønn -->
-            <div id="boksgronn" class="grid_5 alpha omega">
-              
-              <br>
-              <%= link_to I18n.locale.to_s == 'en' ? image_tag("stott_deltaker_eng.png") : image_tag("stott_deltaker.png"), "http://www.isfit.org/info/donations/donate" %>
-            </div>
-          </div><!-- Slutt grønn -->
-          
 
           <div id="boksrod_bg" class="grid_5 alpha omega"><!-- Start rød -->
             <div id="boksrod" class="grid_5 alpha omega">
@@ -311,7 +301,7 @@
       </div><!-- Slutt ramme -->
       <div id="footer" class="grid_25"><!-- Start footer -->
         <%=link_to(image_tag("isfitliten.png", :class=>"footerlogo"), root_path)%>
-        <p style="color:pink; text-align:center;">Editor in Chief: Sanna Drogset Børstad, sannadro[at]isfit.org. <br />All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2011. </p>
+        <p style="color:pink; text-align:center;">Editor in Chief: Tobias Viken, tobias.viken[at]isfit.org. <br />All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2011. </p>
       </div><!-- Slutt footer -->
     </div><!-- Slutt hovedramme -->
 
