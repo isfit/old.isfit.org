@@ -8,29 +8,30 @@
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
     <%= csrf_meta_tag %>
+    <%=yield :head%>
 
-<!--     <script type="text/javascript">
-       $(function() {
-           $("#buyticketsbutton")
-           .mouseover(function() { 
-             var src = $(this).attr("src").replace(".png", "over.png");
-             $(this).attr("src", src);
-             })
-           .mouseout(function() {
-             var src = $(this).attr("src").replace("over", "");
-             $(this).attr("src", src);
-             });
-           });
-         </script>-->
+    <script type="text/javascript">
 
-         <%=yield :head%>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-18016792-1']);
+      _gaq.push(['_setDomainName', 'isfit.org']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+</script>
+
        </head>
        <body>
          <div id="hovedramme" class="container_24"> <!-- Start hovedramme -->
            <div id="omeny" class="grid_25"> <!-- Start omeny -->
              <div id="olinker" class="grid_10"> <!-- Start olinker -->
                <%= link_to t('layout.internal'), "https://internal.isfit.org/", :class => "olink" %>
-    
+
 
              </div><!-- Slutt olinker -->
 
@@ -40,15 +41,15 @@
 
                <ul class="countdown">
                  <li> </li>
-<!--                 <li><div class="countdown_num" id="countdown_day"></div><div id="Days"></div></li>
+                 <!--                 <li><div class="countdown_num" id="countdown_day"></div><div id="Days"></div></li>
                  <li><div class="countdown_num" id="countdown_hour"></div><div id="Hours"></div></li>
                  <li><div class="countdown_num" id="countdown_min"></div><div id="Minutes"></div></li>
                  <li><div class="countdown_num" id="countdown_sec"></div><div id="Seconds"></div></li>
--->
-              </ul>
+                 -->
+               </ul>
              </div>
 
-<!--               <script type="text/javascript">
+             <!--               <script type="text/javascript">
                countdown(2011, 2, 11);
                </script>-->
                <!--SLUTT COUNTDOWN-->
@@ -65,282 +66,249 @@
                </div><!-- Slutt odiverse -->
              </div><!-- Slutt omeny -->
              <div id="header" class="grid_25" ><!-- Start header -->
-                <%#=link_to (image_tag("header_#{Language.to_s}.png", :class=>"isfitlogo"), root_path) %>
-                <%=link_to image_tag("isfit.png", :class=>"isfitlogo"), root_path %>
+               <%#=link_to (image_tag("header_#{Language.to_s}.png", :class=>"isfitlogo"), root_path) %>
+               <%=link_to image_tag("isfit.png", :class=>"isfitlogo"), root_path %>
 
-<!--               <div id="slider-wrapper">
+               <!--               <div id="slider-wrapper">
                  <div id="slider" class="nivoSlider">
                    <%#Slide.where("published_at <= '"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"'").shuffle.each do |s|%>
                      <%#if s.cropped%>
 
-                       <%#=link_to (image_tag s.image.url, :title=>s.content), s.link%>
+                     <%#=link_to (image_tag s.image.url, :title=>s.content), s.link%>
                      <%#end%>
-                   <%#end%>
-                  </div>
-               </div>-->
+                     <%#end%>
+                   </div>
+                 </div>-->
 
-              <!--<script type="text/javascript">
-                 //$(window).load(function() {
-                 //    $('#slider').nivoSlider({effect:'fade',controlNav:false,pauseTime:7000});
+                 <!--<script type="text/javascript">
+                   //$(window).load(function() {
+                   //    $('#slider').nivoSlider({effect:'fade',controlNav:false,pauseTime:7000});
                    //  });
-</script>-->
-  </div><!-- Slutt header -->
- <div id="meny" class="grid_25"><!-- Start meny -->
-    <div id="faner" class="grid_20">
-      <!-- Start faner -->
-      <%
-        current_tab = Tab.where(:top_bar => 0).order('weight').first
-        Tab.where(:top_bar => 0).order('weight').each do |tab|
-          if tab.name != ""
-            style = ""
-            if tab.tag == params[:tab]
-              current_tab = tab
-              style="selected"
-            else
-              style = ""
-            end
-            link = nil
-            if tab.sublinks.first.page_id == 0 or tab.sublinks.first.page_id == nil
-              if tab.sublinks.first.url != nil
-                arr = tab.sublinks.first.url.partition("#")
-                link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag)
-              end
-            else
-              link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
-            end
-          %>
-          <%= link_to tab.name, link, :class => style%><%=image_tag("menyspacer.png", :class=>"menyspacer")%>
-        <%	end
-        end %>
+                 </script>-->
+               </div><!-- Slutt header -->
+               <div id="meny" class="grid_25"><!-- Start meny -->
+                 <div id="faner" class="grid_20">
+                   <!-- Start faner -->
+                   <%
+                       current_tab = Tab.where(:top_bar => 0).order('weight').first
+                   Tab.where(:top_bar => 0).order('weight').each do |tab|
+                     if tab.name != ""
+                       style = ""
+                       if tab.tag == params[:tab]
+                         current_tab = tab
+                         style="selected"
+                       else
+                         style = ""
+                       end
+                       link = nil
+                       if tab.sublinks.first.page_id == 0 or tab.sublinks.first.page_id == nil
+                         if tab.sublinks.first.url != nil
+                           arr = tab.sublinks.first.url.partition("#")
+                           link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>tab.tag)
+                         end
+                       else
+                         link = page_path(tab.sublinks.first.page, :tab=>tab.tag)
+                       end
+                     %>
+                   <%= link_to tab.name, link, :class => style%><%=image_tag("menyspacer.png", :class=>"menyspacer")%>
+                 <%	end
+                   end %>
 
-      </div><!-- Slutt faner -->
-      <div id="sok" class="grid_4"><!-- Start søk -->
-        <!-- <input type="button" value="" class="btn"><input name="search" type="text" value="<%=t('layout.search')%>">-->
+               </div><!-- Slutt faner -->
+               <div id="sok" class="grid_4"><!-- Start søk -->
+                 <!-- <input type="button" value="" class="btn"><input name="search" type="text" value="<%=t('layout.search')%>">-->
 
-      </div><!-- Slutt søk -->
+               </div><!-- Slutt søk -->
 
-    </div><!-- Slutt meny -->
-    <div id="submeny" class="grid_25"><!-- Start submeny -->
-      <%
-        current_tab.sublinks.each do |sub|
-          active = false
-          link = nil
+             </div><!-- Slutt meny -->
+             <div id="submeny" class="grid_25"><!-- Start submeny -->
+               <%
+                   current_tab.sublinks.each do |sub|
+                     active = false
+                     link = nil
 
-          if sub.page_id == 0 or sub.page_id == nil
-            if sub.url != nil
-              arr = sub.url.partition("#")
-              link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>current_tab.tag)
-            elsif sub.external_url != nil
-              link = sub.external_url
-            end
-          else
-            link = page_path(sub.page, :tab=>current_tab.tag)
-          end
-      
-          #if fullpath == link
-          #  active = true
-          #end
-          
-          if link != nil %>
-            <%=link_to(sub.title, link, :class=> active ? "a_sublink" : "ina_sublink")%><%
-          end
-        end %>
-        
-      </div><!-- Slutt submeny -->
-      <div id="ramme" class="grid_25"><!-- Start ramme -->
-        <div id="venstreramme" class="grid_5"><!-- Start venstreramme -->
-          <div class="boks">
-            <h3 class="boxheadline">The ISFiT Way</h3>
-            <%= link_to(image_tag('final.png') , 'http://www.isfit.org/assets/downloads/final.pdf') %>
-          </div>
+                     if sub.page_id == 0 or sub.page_id == nil
+                       if sub.url != nil
+                         arr = sub.url.partition("#")
+                         link =  url_for(:controller=>arr[0], :action=>arr[2], :tab=>current_tab.tag)
+                       elsif sub.external_url != nil
+                         link = sub.external_url
+                       end
+                     else
+                       link = page_path(sub.page, :tab=>current_tab.tag)
+                     end
 
-          <div class="boks">
-            <h3 class="boxheadline">The Globe 2</h3>
-            <%= link_to(image_tag('2nd_globe.jpg') , 'http://www.isfit.org/assets/downloads/theglobe_2nd.pdf') %>
-          </div>
-          <div class="boks">
-            <h3 class="boxheadline">The Globe</h3>
-            <%= link_to(image_tag('globe.jpg') , 'http://www.isfit.org/assets/downloads/globe.pdf') %>
-          </div>
-          <div id="boksbla_bg" class="grid_5 alpha omega">
-            <div id="boksbla" class="grid_5 alpha omega">
-            </div>
-          </div>
+                     #if fullpath == link
+                     #  active = true
+                     #end
 
-          <div id="boksrod_bg" class="grid_5 alpha omega"><!-- Start rød -->
-            <div id="boksrod" class="grid_5 alpha omega">
-              <div class="boks">
-                <h3 class="boxheadline"><%= link_to "Student Peace Prize", "http://www.studentpeaceprize.org" %></h3><br />
-                <ul style="list-style-type:none; margin: 0 0 0 -20px;">
-                  
-                </ul>
-              </div>
-            </div>
-          </div><!-- Slutt rød -->
-          
-      </div><!-- Slutt venstreramme -->
-      <div id="midtramme" class="grid_14"><!-- Start midtramme -->
-        <%
-          if flash[:notice] %>
-          <div id="notice">
-            <%= flash[:notice] %>
-          </div><%
-          end
+                     if link != nil %>
+                   <%=link_to(sub.title, link, :class=> active ? "a_sublink" : "ina_sublink")%><%
+                     end
+                   end %>
 
-          if flash[:warnings] %>
-          <div id="warning">
-            Your application could not be sent because of the following conditions:
-            <ul>
-              <% flash[:warnings].each { |attr,msg|  %>
-                  <li><%= msg %></li>
-                <% } %>
-              </ul>
-            </div> <%
-            end
+               </div><!-- Slutt submeny -->
+               <div id="ramme" class="grid_25"><!-- Start ramme -->
+                 <div id="venstreramme" class="grid_5"><!-- Start venstreramme -->
+                   <div class="boks">
+                     <h3 class="boxheadline">The ISFiT Way</h3>
+                     <%= link_to(image_tag('final.png') , 'http://www.isfit.org/assets/downloads/final.pdf') %>
+                   </div>
 
-            if flash[:warning] %>
-            <div id="warning">
-              <%= flash[:warning] %>
-            </div> <%
-            end
+                   <div class="boks">
+                     <h3 class="boxheadline">The Globe 2</h3>
+                     <%= link_to(image_tag('2nd_globe.jpg') , 'http://www.isfit.org/assets/downloads/theglobe_2nd.pdf') %>
+                   </div>
+                   <div class="boks">
+                     <h3 class="boxheadline">The Globe</h3>
+                     <%= link_to(image_tag('globe.jpg') , 'http://www.isfit.org/assets/downloads/globe.pdf') %>
+                   </div>
+                   <div id="boksbla_bg" class="grid_5 alpha omega">
+                     <div id="boksbla" class="grid_5 alpha omega">
+                     </div>
+                   </div>
 
-            if flash[:warnings2] %>
-            <div id="warning">
-              Your application could not be sent because of the following conditions:
-              <ul>
-                <% flash[:warnings2].each { |attr,msg|  %>
-                  <li><%= attr + " " + msg %></li>
-                <% } %>
-              </ul>
-            </div><%
-            end %>
-            <%= yield %>
-          </div><!-- Slutt midtramme -->
-          <div id="hoyreramme" class="grid_5"><!-- Start hoyreramme -->
-        <!--<div id="boksbla_bg" class="grid_5 alpha omega">
-          <div id="boksbla" class="grid_5 alpha omega">
-            <div id="tickets" class="grid_5 alpha omega">
-              <%#=link_to I18n.locale.to_s == 'en' ? image_tag("billettknapp-eng.png",:id=>"buyticketsbutton") : image_tag("billettknapp-no.png",:id=>"buyticketsbutton"), events_path(:tab=>:program) %>
-            </div>
-          </div>
-        </div>
-            <br />
-            <br />
-        <div id="artists" class="grid_5 alpha omega" style="margin-bottom:10px;">
-          <div class="boks">
-            <h3 class="boxheadline"><%#= link_to "Program", events_path(:program) %></h3>
-            <div style="padding:5px;">
-              <%#= render :partial => 'events/lineup' %>
-              <%#= render :partial => 'events/calendar' %>
-            </div>
-          </div>
-        </div>-->
-          <div id="boksturkis_bg" class="grid_5 alpha omega"><!-- Start turkis -->
-            <%#= image_tag ("chronicle-top.png")%>
-            <div id="boksturkis" class="grid_5 alpha omega">
-              <div class="boks" onclick="location.href='<%=chronicle_path(params[:tab], Chronicle.find_most_recent.first)%>'" style="cursor:pointer">
-                <h3 class="boxheadline">Kommentar</h3>
+                   <div id="boksrod_bg" class="grid_5 alpha omega"><!-- Start rød -->
+                     <div id="boksrod" class="grid_5 alpha omega">
+                       <div class="boks">
+                         <h3 class="boxheadline"><%= link_to "Student Peace Prize", "http://www.studentpeaceprize.org" %></h3><br />
+                         <ul style="list-style-type:none; margin: 0 0 0 -20px;">
 
-                <%= render :template =>'chronicles/index'%>
-              </div>
-            </div>
-          </div><!-- Slutt turkis -->
+                         </ul>
+                       </div>
+                     </div>
+                   </div><!-- Slutt rød -->
 
-          <div id="facebook" class="grid_5 alpha omega">
-              <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FISFiT%2F11541693212&amp;width=190&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=true&amp;height=300" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:190px; height:300px;" allowTransparency="true"></iframe>
-          </div><br />&nbsp;<br />
-          <div id="twitter" class="grid_5 alpha omega">
-            <script src="http://widgets.twimg.com/j/2/widget.js"></script>
-            <script>
-              new TWTR.Widget({
-                version: 2,
-                type: 'search',
-                search: '@isfit',
-                interval: 6000,
-                title: '',
-                subject: 'Twitter',
-                width: 'auto',
-                height: 0,
-                theme: {
-                  shell: {
-                    background: '#8ec1da',
-                    color: '250'
-                  },
-                  tweets: {
-                    background: '',
-                    color: 'blue',
-                    links: 'black'
-                  }
-                },
-                features: {
-                  scrollbar: false,
-                  loop: true,
-                  live: true,
-                  hashtags: true,
-                  timestamp: true,
-                  avatars: true,
-                  toptweets: true,
-                  behavior: 'default'
-                }
-              }).render().start();
-            </script>
-          </div>
-          <div id="boksoransje_bg" class="grid_5 alpha omega"><!-- Start oransje -->
-            <div id="boksoransje" class="grid_5 alpha omega">
-              <div class="boks">
-                <h3 class="boxheadline"><%= link_to t("layout.media"), isfit_media_links_path(:tab=>:press) %></h3><br>
-                <ul style="list-style-type:none; margin: 0 0 0 -20px;">
-                
-              </ul>
+                 </div><!-- Slutt venstreramme -->
+                 <div id="midtramme" class="grid_14"><!-- Start midtramme -->
+                   <%
+                       if flash[:notice] %>
+                     <div id="notice">
+                       <%= flash[:notice] %>
+                     </div><%
+                       end
 
-            </div>
-          </div> 
-        </div><!-- Slutt oransje -->
+                   if flash[:warnings] %>
+                 <div id="warning">
+                   Your application could not be sent because of the following conditions:
+                   <ul>
+                     <% flash[:warnings].each { |attr,msg|  %>
+                       <li><%= msg %></li>
+                     <% } %>
+                   </ul>
+                 </div> <%
+                   end
 
-        </div><!-- Slutt hoyreramme -->
-      </div><!-- Slutt ramme -->
-      <div id="footer" class="grid_25"><!-- Start footer -->
-        <%=link_to(image_tag("isfitliten.png", :class=>"footerlogo"), root_path)%>
-        <p style="color:pink; text-align:center;">Editor in Chief: Tobias Viken, tobias.viken[at]isfit.org. <br />All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2011. </p>
-      </div><!-- Slutt footer -->
-    </div><!-- Slutt hovedramme -->
+                   if flash[:warning] %>
+                 <div id="warning">
+                   <%= flash[:warning] %>
+                 </div> <%
+                   end
 
+                   if flash[:warnings2] %>
+                 <div id="warning">
+                   Your application could not be sent because of the following conditions:
+                   <ul>
+                     <% flash[:warnings2].each { |attr,msg|  %>
+                       <li><%= attr + " " + msg %></li>
+                     <% } %>
+                   </ul>
+                 </div><%
+                   end %>
+                 <%= yield %>
+               </div><!-- Slutt midtramme -->
+               <div id="hoyreramme" class="grid_5"><!-- Start hoyreramme -->
+                 <!--<div id="boksbla_bg" class="grid_5 alpha omega">
+                   <div id="boksbla" class="grid_5 alpha omega">
+                     <div id="tickets" class="grid_5 alpha omega">
+                       <%#=link_to I18n.locale.to_s == 'en' ? image_tag("billettknapp-eng.png",:id=>"buyticketsbutton") : image_tag("billettknapp-no.png",:id=>"buyticketsbutton"), events_path(:tab=>:program) %>
+                     </div>
+                   </div>
+                 </div>
+                 <br />
+                 <br />
+                 <div id="artists" class="grid_5 alpha omega" style="margin-bottom:10px;">
+                   <div class="boks">
+                     <h3 class="boxheadline"><%#= link_to "Program", events_path(:program) %></h3>
+                     <div style="padding:5px;">
+                       <%#= render :partial => 'events/lineup' %>
+                       <%#= render :partial => 'events/calendar' %>
+                     </div>
+                   </div>
+                 </div>-->
+                 <div id="boksturkis_bg" class="grid_5 alpha omega"><!-- Start turkis -->
+                   <%#= image_tag ("chronicle-top.png")%>
+                   <div id="boksturkis" class="grid_5 alpha omega">
+                     <div class="boks" onclick="location.href='<%=chronicle_path(params[:tab], Chronicle.find_most_recent.first)%>'" style="cursor:pointer">
+                       <h3 class="boxheadline">Kommentar</h3>
 
-    <%= javascript_include_tag 'application' %>
-    <%= yield :script %>
-    <!-- Google Analytics, LA STÅ til ISFiT 2013. Eier av konto er Dag-Inge Aas for ISFiT 2011 -->
-    <script type="text/javascript">
+                       <%= render :template =>'chronicles/index'%>
+                     </div>
+                   </div>
+                 </div><!-- Slutt turkis -->
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-18016792-1']);
-      _gaq.push(['_trackPageview']);
+                 <div id="facebook" class="grid_5 alpha omega">
+                   <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FISFiT%2F11541693212&amp;width=190&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=true&amp;height=300" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:190px; height:300px;" allowTransparency="true"></iframe>
+                 </div><br />&nbsp;<br />
+                 <div id="twitter" class="grid_5 alpha omega">
+                   <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+                   <script>
+                     new TWTR.Widget({
+                       version: 2,
+                       type: 'search',
+                       search: '@isfit',
+                       interval: 6000,
+                       title: '',
+                       subject: 'Twitter',
+                       width: 'auto',
+                       height: 0,
+                       theme: {
+                         shell: {
+                           background: '#8ec1da',
+                           color: '250'
+                         },
+                         tweets: {
+                           background: '',
+                           color: 'blue',
+                           links: 'black'
+                         }
+                       },
+                       features: {
+                         scrollbar: false,
+                         loop: true,
+                         live: true,
+                         hashtags: true,
+                         timestamp: true,
+                         avatars: true,
+                         toptweets: true,
+                         behavior: 'default'
+                       }
+                     }).render().start();
+                   </script>
+                 </div>
+                 <div id="boksoransje_bg" class="grid_5 alpha omega"><!-- Start oransje -->
+                   <div id="boksoransje" class="grid_5 alpha omega">
+                     <div class="boks">
+                       <h3 class="boxheadline"><%= link_to t("layout.media"), isfit_media_links_path(:tab=>:press) %></h3><br>
+                       <ul style="list-style-type:none; margin: 0 0 0 -20px;">
 
-      (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-       })();
+                       </ul>
 
+                     </div>
+                   </div> 
+                 </div><!-- Slutt oransje -->
 
-     </script>
+               </div><!-- Slutt hoyreramme -->
+             </div><!-- Slutt ramme -->
+             <div id="footer" class="grid_25"><!-- Start footer -->
+               <%=link_to(image_tag("isfitliten.png", :class=>"footerlogo"), root_path)%>
+               <p style="color:pink; text-align:center;">Editor in Chief: Tobias Viken, tobias.viken[at]isfit.org. <br />All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2011. </p>
+             </div><!-- Slutt footer -->
+           </div><!-- Slutt hovedramme -->
+
+</script>
 
   </body>
   <%= javascript_include_tag 'jquery','application', 'jquery.nivo.slider'%>
-    <%= yield :script %>
-        <!-- Google Analytics, LA STÅ til ISFiT 2013. Eier av konto er Dag-Inge Aas for ISFiT 2011 -->
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-18016792-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-       })();
-
-
-     </script>
-
+  <%= yield :script %>
 </html>
