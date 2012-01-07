@@ -1,4 +1,5 @@
 class Section < ActiveRecord::Base
+  set_primary_key 'id'
   lang_attr :name	
   has_many :groups
 

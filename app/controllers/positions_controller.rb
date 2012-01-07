@@ -1,31 +1,32 @@
 class PositionsController < ApplicationController
   # coding:utf-8
  def index
-   @positions = []
-  # return
-   # QUICKFIX, REMOVE THE ABOVE IN NOVEMBER; AND FIX POSITIONS IN CORE!!
-  @positions = Position.find_all_active_positions
+    @positions = Position.published
   end
  
  def show
    @position = Position.find_by_id(params[:id])
+   unless Position.published.all.include?(@position)
+     redirect_to :index
+   end
  end
 
  def apply
    @applicant = Applicant.new
-   @positions = Position.find_all_active_positions_alfa.reverse
+   @positions = Position.published.order(:title_en).reverse
    @positions << Position.new
  end
+
  def save
     @applicant = Applicant.new(params[:applicant])
     respond_to do |format|
       if @applicant.save
         flash[:notice] = "Din soknad ble sendt."
-        @positions = Position.find_all_active_positions
+        @positions = Position.published
         format.html { render :action => :index }
       else
         flash[:notice] = nil
-        @positions = Position.find_all_active_positions_alfa
+        @positions = Position.published
         @positions << Position.new
         @positions.reverse    
         format.html { render :action => :apply }

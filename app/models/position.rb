@@ -1,8 +1,13 @@
 class Position < ActiveRecord::Base
+  set_primary_key 'id'
   has_and_belongs_to_many :groups
   belongs_to :group
 
   lang_attr :title, :description
+
+  def group
+    self.groups.first
+  end
 
   def self.find_all_active_positions
     positions = Position.find_all_by_admission_id(5)
@@ -12,5 +17,9 @@ class Position < ActiveRecord::Base
 
   def self.find_all_active_positions_alfa #sorterer alfabetisk
     positions = Position.where(:admission_id => 5).order("title_no ASC").all
+  end
+
+  def self.published
+    Position.where("publish_from < '#{Time.now.strftime("%Y-%m-%d %H:%M") }' AND publish_to > '#{Time.now.strftime("%Y-%m-%d %H:%M")}'")
   end
 end

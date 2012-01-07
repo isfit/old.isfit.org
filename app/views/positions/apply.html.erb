@@ -1,4 +1,4 @@
-<%if Time.now > 1.day.ago # Use time to close applications%>
+<%if Position.published.count == 0 %>
   <%if Language.to_s == "no"%>
     ISFiT har for øyeblikket ikke opptak.
   <%else%>
@@ -12,9 +12,9 @@
 <%= render 'partials/error', :locals=> {:model => @applicant} %>
 
 <p><%= t("position.fill_in") %></p>
-<% form_for(@applicant, :html => { :class => "yform columnar" }, :url => {:controller => :positions, :action => :save}) do |f| %>
+<%= form_for(@applicant, :html => { :class => "yform columnar" }, :url => {:controller => :positions, :action => :save}) do |f| %>
   <fieldset>
-    <legend><%= t("position.pers_info") %></legend>
+    <legend><%= t("position.personal_info") %></legend>
     <div class="type-text">
       <%= f.label :firstname %>
       <%= f.text_field :firstname, :placeholder => t("person.first_name") %>

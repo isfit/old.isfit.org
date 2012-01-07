@@ -1,5 +1,5 @@
 <h1><%= @position.title %></h1>
-<p><%= raw @position.description.gsub("\n","<br />") %></p>
+<p><%=raw format(@position.description) %></p>
 <p>
 <h3><%= link_to t("position.apply"), apply_positions_path(params[:tab]) %></h3>
 <%= link_to t("layout.back"), positions_path(params[:tab]) %>
