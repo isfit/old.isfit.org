@@ -1,4 +1,7 @@
-<h1><%= @position.title %></h1>
+<h1>Administration</h1>
+<%= simple_format(@position.group.section.description) %>
+
+<h2><%= @position.title %></h2>
 <p><%=raw format(@position.description) %></p>
 <p>
 <h3><%= link_to t("position.apply"), apply_positions_path(params[:tab]) %></h3>

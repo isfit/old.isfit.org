@@ -1,6 +1,6 @@
 class Section < ActiveRecord::Base
   set_primary_key 'id'
-  lang_attr :name	
+  lang_attr :name, :description
   has_many :groups
 
 	def self.getAll(language)

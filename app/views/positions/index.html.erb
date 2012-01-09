@@ -5,7 +5,9 @@
 	ISFiT does not have any open positions at the moment.
   <%end%>
 <% else %>
-  <h1><%= t("position.new_positions") %></h1>
+  <h1><%= t("position.motivational") %></h1>
+  <%= raw format("##yt hxUO456dsLw yt##") %>
+  <%= raw format(t("position.new_positions")+":") %>
   <% active_group = nil %>
   <% active_section = nil %>
   <% for position in @positions %>
@@ -13,7 +15,6 @@
       <!--</ul> -->
       <% if position.group and position.group.section and not position.group.section == active_section %>
         </ul>
-        <br>
         <h3><%=h position.group.section.name %></h3>
         <ul>
         <% end %>
@@ -23,7 +24,7 @@
         -->
     <% end %>
     
-    <li><%= link_to "#{position.title}", position_url(params[:tab], position) %></li>
+    <li><%= link_to "#{position.title}", position_url(params[:tab], position), class: "position" %></li>
     <% active_group = position.groups.first %> 
     <% active_section = position.groups.first.section %>
   <%end%>

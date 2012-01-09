@@ -13,6 +13,10 @@ body {
 	line-height: 1.5;
 }
 
+a.position {
+  font-size: 1.5em;
+}
+
 a:focus {
 	outline: 1px dotted;
 }
