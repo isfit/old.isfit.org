@@ -40,6 +40,7 @@ en:
   position:
     no_new_positions: "We do not currently have any open positions for volunteers. Please check back later"
     new_positions: "Currently ISFiT has admissions for the following positions"
+    positions: "Positions"
     apply: "Volunteer now"
     form: "Application form"
     fill_in: "Fill out all the fields to apply."

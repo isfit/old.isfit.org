@@ -1,0 +1,10 @@
+<h1><%= @section.name %></h1>
+<%= simple_format(@section.description) %>
+<h2><%= t("position.positions") %></h2>
+<ul>
+  <% @section.groups.each do |g| %>
+    <% g.positions.each do |p| %>
+      <li><%= link_to p.title, position_path(p), class: "position" %></li>
+    <% end %>
+  <% end %>
+</ul>

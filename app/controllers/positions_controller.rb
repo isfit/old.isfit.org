@@ -11,6 +11,10 @@ class PositionsController < ApplicationController
    #end
  end
 
+ def section
+   @section = Section.find(params[:id])
+ end
+
  def apply
    @applicant = Applicant.new
    @positions = Position.published.order(:title_en).reverse

@@ -71,6 +71,8 @@ WwwIsfitOrg::Application.routes.draw do
       end
     end 
 
+    match 'section/:id' => "positions#section", :tab => "admission"
+
     get "donations/donate", :controller => "donations", :action => "donate"
 
     get "donations/thank_you", :controller => "donations", :action => "thank_you"
