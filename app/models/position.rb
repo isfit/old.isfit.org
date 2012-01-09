@@ -20,6 +20,6 @@ class Position < ActiveRecord::Base
   end
 
   def self.published
-    Position.where("publish_from < '#{(Time.now + (Time.now - 1.day.ago)).strftime("%Y-%m-%d %H:%M") }' AND publish_to > '#{Time.now.strftime("%Y-%m-%d %H:%M")}'")
+    Position.where("publish_from < '#{Time.now.strftime("%Y-%m-%d %H:%M") }' AND publish_to > '#{Time.now.strftime("%Y-%m-%d %H:%M")}'")
   end
 end
