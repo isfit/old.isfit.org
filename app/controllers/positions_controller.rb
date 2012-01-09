@@ -6,9 +6,9 @@ class PositionsController < ApplicationController
  
  def show
    @position = Position.find_by_id(params[:id])
-   unless Position.published.all.include?(@position)
-     redirect_to :index
-   end
+   #unless Position.published.all.include?(@position)
+   #  redirect_to opptak_path, :notice => "That position does not exist"
+   #end
  end
 
  def apply
