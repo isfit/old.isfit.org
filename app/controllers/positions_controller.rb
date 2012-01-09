@@ -1,7 +1,7 @@
 class PositionsController < ApplicationController
   # coding:utf-8
  def index
-    @positions = Position.published.order("title_no ASC")
+    @positions = Position.published
   end
  
  def show
