@@ -1,7 +1,7 @@
 class PositionsController < ApplicationController
   # coding:utf-8
  def index
-    @positions = Position.published
+    @positions = Position.published.joins(:groups).order("groups.section_id, positions.title_no")
   end
  
  def show

@@ -19,7 +19,5 @@ class Position < ActiveRecord::Base
     positions = Position.where(:admission_id => 5).order("title_no ASC").all
   end
 
-  def self.published
-    Position.where("publish_from < '#{Time.now.strftime("%Y-%m-%d %H:%M") }' AND publish_to > '#{Time.now.strftime("%Y-%m-%d %H:%M")}'")
-  end
+  scope :published, lambda { where("publish_from < ? AND publish_to > ?", Time.zone.now, Time.zone.now) }
 end
