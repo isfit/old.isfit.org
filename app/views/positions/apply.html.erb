@@ -36,15 +36,15 @@
     <legend><%= t("position.application") %></legend>
     <div class="type-select">
       <%= f.label :position_id_1 %>
-      <%= f.select :position_id_1, @positions.to_select_reverse %>
+      <%= f.collection_select :position_id_1, @positions, :id, :select_name, prompt: true %>
     </div>
     <div class="type-select">
       <%= f.label :position_id_2 %>
-      <%= f.select :position_id_2, @positions.to_select_reverse %>
+      <%= f.collection_select :position_id_2, @positions, :id, :select_name, prompt: true %>
     </div>
     <div class="type-select">
       <%= f.label :position_id_3 %>
-      <%= f.select :position_id_3, @positions.to_select_reverse %>
+      <%= f.collection_select :position_id_3, @positions, :id, :select_name, prompt: true %>
     </div>
     <div class="type-text">
       <%= f.label :information %>

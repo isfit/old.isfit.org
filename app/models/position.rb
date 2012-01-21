@@ -20,4 +20,8 @@ class Position < ActiveRecord::Base
   end
 
   scope :published, lambda { where("publish_from < ? AND publish_to > ?", Time.zone.now, Time.zone.now) }
+
+  def select_name
+    "#{self.title_en} - #{self.groups.first.name_en}"
+  end
 end

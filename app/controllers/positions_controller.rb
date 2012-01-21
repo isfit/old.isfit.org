@@ -17,8 +17,7 @@ class PositionsController < ApplicationController
 
  def apply
    @applicant = Applicant.new
-   @positions = Position.published.order(:title_en).reverse
-   @positions << Position.new
+   @positions = Position.published.order(:title_en)
  end
 
  def save
