@@ -30,8 +30,6 @@ class PositionsController < ApplicationController
       else
         flash[:notice] = nil
         @positions = Position.published
-        @positions << Position.new
-        @positions.reverse    
         format.html { render :action => :apply }
       end
     end
