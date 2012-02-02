@@ -4,6 +4,7 @@
 
   <head>
     <title>ISFiT 2013</title>
+    <meta name="description" content="ISFiT 2013 is the largest international student festival with a thematic focus in the world."/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
@@ -67,8 +68,7 @@
          </div><!-- Slutt odiverse -->
        </div><!-- Slutt omeny -->
        <div id="header" class="grid_25" ><!-- Start header -->
-         <%#=link_to image_tag("isfit.png", :class=>"isfitlogo"), root_path %>
-         <%=link_to image_tag("isfit_mellomleder.png", :class=>"isfitlogo"), opptak_path %>
+         <%=link_to image_tag("isfit.png", :class=>"isfitlogo"), root_path %>
        </div><!-- Slutt header -->
        <div id="meny" class="grid_25"><!-- Start meny -->
          <div id="faner" class="grid_20">
