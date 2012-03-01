@@ -1,7 +1,7 @@
 class PositionsController < ApplicationController
   # coding:utf-8
  def index
-    @positions = Position.published.joins(:groups).order("groups.section_id, groups.id, positions.title_no")
+    @positions = Position.published.includes(:groups).order("groups.section_id, groups.id, positions.title_no")
   end
  
  def show
@@ -17,7 +17,7 @@ class PositionsController < ApplicationController
 
  def apply
    @applicant = Applicant.new
-   @positions = Position.published.joins(:groups).order("groups.section_id, groups.id,positions.title_no")
+   @positions = Position.published.includes(:groups).order("groups.section_id, groups.id,positions.title_no")
  end
 
  def save
