@@ -13,16 +13,14 @@
   <% active_section = nil %>
   <% for position in @positions %>
     <% if not position.group == active_group %>
-      <!--</ul> -->
+      </ul>
       <% if position.group and position.group.section and not position.group.section == active_section %>
         </ul>
         <h3><%= link_to position.group.section.name, "/admission/section/"+ position.group.section.id.to_s %></h3>
         <ul>
         <% end %>
-      <!--
       <h4><%=h position.group.name %></h4>
       <ul>
-        -->
     <% end %>
     
     <li><%= link_to "#{position.title}", position_url(params[:tab], position), class: "position" %></li>
