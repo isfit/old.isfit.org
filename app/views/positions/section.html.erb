@@ -1,5 +1,5 @@
 <h1><%= @section.name %></h1>
-<%= simple_format(@section.description) %>
+<%= raw format(@section.description) %>
 <h2><%= t("position.positions") %></h2>
 <ul>
   <% @section.groups.each do |g| %>

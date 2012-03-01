@@ -17,7 +17,7 @@ class PositionsController < ApplicationController
 
  def apply
    @applicant = Applicant.new
-   @positions = Position.published.order(:title_en)
+   @positions = Position.published.joins(:groups).order("groups.section_id, groups.id,positions.title_no")
  end
 
  def save
