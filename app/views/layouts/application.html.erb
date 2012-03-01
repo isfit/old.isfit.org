@@ -1,3 +1,28 @@
+<!--
+ _____  _____ ______ _ _______   ___   ___  __ ____  
+|_   _|/ ____|  ____(_)__   __| |__ \ / _ \/_ |___ \ 
+  | | | (___ | |__   _   | |       ) | | | || | __) |
+  | |  \___ \|  __| | |  | |      / /| | | || ||__ < 
+ _| |_ ____) | |    | |  | |     / /_| |_| || |___) |
+|_____|_____/|_|    |_|  |_|    |____|\___/ |_|____/ 
+
+Hei!
+
+Er du interessert i kildekode? Kanskje i å programmere og?
+ISFiT har nå opptak av IT-funker, med spennende stillinger
+som driftsansvarlig, prosjektleder og utvikler. Det eneste
+du trenger å gjøre er å gå inn på: www.isfit.org/opptak og
+levere en søknad. Om du ikke har fått kuriositeten på kode
+tilfredstilt kan du titte litt rundt på vår kode hos 
+
+GitHub:  http://www.github.com/isfit
+
+P.S: V er smertelig klar over at kildekoden til denne
+siden er til tider horribel. Vil du være med å fikse det?
+
+Søk IT!
+
+-->
 <!DOCTYPE html>
 <html xmlns:og="http://opengraphprotocol.org/schema/"
   xmlns:fb="http://www.facebook.com/2008/fbml">
@@ -5,6 +30,7 @@
   <head>
     <title>ISFiT 2013</title>
     <meta name="description" content="ISFiT 2013 is the largest international student festival with a thematic focus in the world."/>
+    <meta name="og:description" content="ISFiT 2013 is the largest international student festival with a thematic focus in the world."/>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
@@ -239,7 +265,7 @@
    </div><!-- Slutt ramme -->
    <div id="footer" class="grid_25"><!-- Start footer -->
      <%=link_to(image_tag("isfitliten.png", :class=>"footerlogo"), root_path)%>
-     <p style="color:pink; text-align:center;">Editor in Chief: Synne Mari Pedersen, editor[at]isfit.org. <br />All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2011. </p>
+     <p style="color:pink; text-align:center;">Editor in Chief: Synne Mari Pedersen, editor[at]isfit.org. <br />All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2013. </p>
    </div><!-- Slutt footer -->
  </div><!-- Slutt hovedramme -->
 
