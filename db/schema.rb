@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -73,34 +74,11 @@ ActiveRecord::Schema.define(:version => 20110216230012) do
     t.string   "dn",                 :limit => 512
     t.integer  "has_account",        :limit => 1,   :default => 0,     :null => false
     t.integer  "is_notified",                       :default => 0,     :null => false
+    t.text     "comment"
   end
 
-  create_table "articles", :id => false, :force => true do |t|
-    t.integer  "id",                          :default => 0, :null => false
-    t.string   "title_en"
-    t.string   "title_no"
-    t.text     "ingress_en"
-    t.text     "ingress_no"
-    t.text     "body_en"
-    t.text     "body_no"
-    t.boolean  "list"
-    t.integer  "weight"
-    t.datetime "created_at"
-    t.boolean  "deleted"
-    t.integer  "press_release",  :limit => 1
-    t.string   "sub_title_no"
-    t.string   "sub_title_en"
-    t.string   "image_text_no"
-    t.string   "image_text_en"
-    t.boolean  "main_article"
-    t.boolean  "published"
-    t.string   "byline"
-    t.integer  "byline_func_id"
-    t.string   "image_credits"
-    t.integer  "mail_sent"
-    t.datetime "show_article"
-    t.boolean  "got_comments"
-  end
+# Could not dump table "articles" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'articles': SHOW CREATE TABLE `articles`
 
   create_table "articles_old", :force => true do |t|
     t.string   "title",                      :null => false
@@ -119,24 +97,8 @@ ActiveRecord::Schema.define(:version => 20110216230012) do
     t.datetime "created_at", :null => false
   end
 
-  create_table "chronicles", :id => false, :force => true do |t|
-    t.integer  "id",                      :default => 0, :null => false
-    t.string   "title_en"
-    t.string   "title_no"
-    t.text     "ingress_en"
-    t.text     "ingress_no"
-    t.text     "body_en"
-    t.text     "body_no"
-    t.string   "author"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "weight"
-    t.string   "main_photo_file_name"
-    t.string   "main_photo_content_type"
-    t.integer  "main_photo_file_size"
-    t.datetime "main_photo_updated_at"
-    t.boolean  "got_comments"
-  end
+# Could not dump table "chronicles" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'chronicles': SHOW CREATE TABLE `chronicles`
 
   create_table "countries", :force => true do |t|
     t.string  "name",      :null => false
@@ -189,66 +151,17 @@ ActiveRecord::Schema.define(:version => 20110216230012) do
     t.integer "count", :default => 0, :null => false
   end
 
-  create_table "event_dates", :id => false, :force => true do |t|
-    t.integer  "id",             :default => 0, :null => false
-    t.datetime "date"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "url"
-    t.string   "alt_ticket_url"
-    t.boolean  "sold_out"
-  end
+# Could not dump table "event_dates" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'event_dates': SHOW CREATE TABLE `event_dates`
 
-  create_table "event_places", :id => false, :force => true do |t|
-    t.integer  "id",         :default => 0, :null => false
-    t.string   "title"
-    t.float    "longitude"
-    t.float    "latitude"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "event_places" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'event_places': SHOW CREATE TABLE `event_places`
 
-  create_table "event_types", :id => false, :force => true do |t|
-    t.integer  "id",         :default => 0, :null => false
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "event_types" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'event_types': SHOW CREATE TABLE `event_types`
 
-  create_table "events", :id => false, :force => true do |t|
-    t.integer  "id",                                :default => 0, :null => false
-    t.string   "title",              :limit => 100
-    t.integer  "event_type_id"
-    t.datetime "date"
-    t.string   "place",              :limit => 100
-    t.integer  "price_member"
-    t.integer  "price_other"
-    t.text     "ingress"
-    t.text     "description"
-    t.integer  "related_event_id"
-    t.boolean  "deleted"
-    t.boolean  "important"
-    t.boolean  "visible"
-    t.string   "url"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.datetime "visible_at"
-    t.boolean  "show_headline"
-    t.integer  "weight"
-    t.string   "color"
-    t.integer  "size"
-    t.string   "event_type_text"
-    t.string   "facebook_url"
-    t.string   "lineup_title"
-    t.integer  "event_place_id"
-    t.string   "spec_place"
-    t.boolean  "isfit"
-    t.boolean  "spp"
-    t.string   "speakers"
-  end
+# Could not dump table "events" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'events': SHOW CREATE TABLE `events`
 
   create_table "events_backup", :force => true do |t|
     t.string   "title",            :limit => 100,                    :null => false
@@ -271,16 +184,28 @@ ActiveRecord::Schema.define(:version => 20110216230012) do
     t.text   "body",  :null => false
   end
 
-# Could not dump table "funds" because of following StandardError
-#   Unknown type 'year(4)' for column 'isfit_connection_year'
-
-  create_table "groups", :id => false, :force => true do |t|
-    t.integer "id",          :default => 0, :null => false
-    t.string  "name_en"
-    t.string  "name_no"
-    t.integer "section_id"
-    t.integer "festival_id"
+  create_table "funds", :force => true do |t|
+    t.string  "name",                                :null => false
+    t.string  "initiator",                           :null => false
+    t.string  "email",                               :null => false
+    t.string  "address",                             :null => false
+    t.string  "country",               :limit => 40, :null => false
+    t.string  "phone",                               :null => false
+    t.integer "isfit_connection",      :limit => 1,  :null => false
+    t.integer "isfit_connection_year",               :null => false
+    t.string  "amount",                :limit => 20, :null => false
+    t.text    "account_details",                     :null => false
+    t.text    "purpose_text"
+    t.text    "plans_text"
+    t.text    "further_funding_plan",                :null => false
+    t.text    "other_info",                          :null => false
   end
+
+# Could not dump table "groups" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'groups': SHOW CREATE TABLE `groups`
+
+# Could not dump table "groups_positions" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'groups_positions': SHOW CREATE TABLE `groups_positions`
 
   create_table "hosts", :force => true do |t|
     t.string   "first_name"
@@ -321,17 +246,8 @@ ActiveRecord::Schema.define(:version => 20110216230012) do
     t.timestamp "created_at",                   :null => false
   end
 
-  create_table "pages", :id => false, :force => true do |t|
-    t.integer "id",                      :default => 0, :null => false
-    t.string  "title_en",                               :null => false
-    t.string  "title_no",                               :null => false
-    t.text    "ingress_en",                             :null => false
-    t.text    "ingress_no",                             :null => false
-    t.text    "body_en",                                :null => false
-    t.text    "body_no",                                :null => false
-    t.string  "tag",                                    :null => false
-    t.integer "deleted",    :limit => 1, :default => 0, :null => false
-  end
+# Could not dump table "pages" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'pages': SHOW CREATE TABLE `pages`
 
   create_table "pages_old", :force => true do |t|
     t.string  "title_en",                               :null => false
@@ -508,47 +424,11 @@ ActiveRecord::Schema.define(:version => 20110216230012) do
     t.integer "infopackage_contact_type_id", :default => 1, :null => false
   end
 
-  create_table "photos", :id => false, :force => true do |t|
-    t.integer  "id",                                         :default => 0, :null => false
-    t.string   "image_text_en"
-    t.string   "image_text_no"
-    t.string   "description"
-    t.string   "credits"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "original_picture_file_name"
-    t.string   "original_picture_content_type"
-    t.integer  "original_picture_file_size"
-    t.datetime "original_picture_updated_at"
-    t.string   "half_article_picture_file_name"
-    t.string   "half_article_picture_content_type"
-    t.integer  "half_article_picture_file_size"
-    t.datetime "half_article_picture_updated_at"
-    t.string   "full_article_picture_file_name"
-    t.string   "full_article_picture_content_type"
-    t.integer  "full_article_picture_file_size"
-    t.datetime "full_article_picture_updated_at"
-    t.string   "spp_one_third_article_picture_file_name"
-    t.string   "spp_one_third_article_picture_content_type"
-    t.integer  "spp_one_third_article_picture_file_size"
-    t.datetime "spp_one_third_article_picture_updated_at"
-    t.string   "spp_full_article_picture_file_name"
-    t.string   "spp_full_article_picture_content_type"
-    t.integer  "spp_full_article_picture_file_size"
-    t.datetime "spp_full_article_picture_updated_at"
-  end
+# Could not dump table "photos" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'photos': SHOW CREATE TABLE `photos`
 
-  create_table "positions", :id => false, :force => true do |t|
-    t.integer "id"
-    t.string  "title_en"
-    t.string  "title_no"
-    t.integer "person_id"
-    t.text    "description_en"
-    t.text    "description_no"
-    t.string  "group_dn"
-    t.integer "admission_id"
-    t.integer "group_id"
-  end
+# Could not dump table "positions" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'positions': SHOW CREATE TABLE `positions`
 
   create_table "positions_bak", :force => true do |t|
     t.text    "title_no"
@@ -576,16 +456,8 @@ ActiveRecord::Schema.define(:version => 20110216230012) do
     t.datetime "updated_at"
   end
 
-  create_table "press_releases", :id => false, :force => true do |t|
-    t.integer  "id",                      :default => 0, :null => false
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
-    t.integer  "attachment_file_size"
-    t.datetime "attachment_updated_at"
-  end
+# Could not dump table "press_releases" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'press_releases': SHOW CREATE TABLE `press_releases`
 
   create_table "project_supports", :force => true do |t|
     t.string   "person_name"
@@ -593,10 +465,10 @@ ActiveRecord::Schema.define(:version => 20110216230012) do
     t.integer  "country_id"
     t.string   "person_mail"
     t.string   "person_association"
-    t.string   "workshop"
-    t.string   "group_description"
-    t.string   "project_description"
-    t.string   "funds_description"
+    t.integer  "workshop_id"
+    t.text     "group_description"
+    t.text     "project_description"
+    t.text     "funds_description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -622,65 +494,22 @@ ActiveRecord::Schema.define(:version => 20110216230012) do
     t.integer "version"
   end
 
-  create_table "sections", :id => false, :force => true do |t|
-    t.integer "id"
-    t.string  "name_en"
-    t.string  "name_no"
-    t.integer "festival_id"
-  end
+# Could not dump table "sections" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'sections': SHOW CREATE TABLE `sections`
 
   create_table "sections_bak", :force => true do |t|
     t.string "name_no", :limit => 64, :null => false
     t.string "name_en", :limit => 32, :null => false
   end
 
-  create_table "slides", :id => false, :force => true do |t|
-    t.integer  "id",                 :default => 0, :null => false
-    t.string   "link"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.boolean  "cropped"
-    t.datetime "published_at"
-  end
+# Could not dump table "slides" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'slides': SHOW CREATE TABLE `slides`
 
-  create_table "spp_articles", :id => false, :force => true do |t|
-    t.integer  "id",             :default => 0, :null => false
-    t.string   "title_en"
-    t.string   "title_no"
-    t.text     "ingress_en"
-    t.text     "ingress_no"
-    t.text     "body_en"
-    t.text     "body_no"
-    t.boolean  "press_release"
-    t.boolean  "deleted"
-    t.boolean  "visible"
-    t.string   "image_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "main_article"
-    t.integer  "weight"
-    t.boolean  "got_comments"
-    t.string   "youtube_link"
-    t.integer  "byline_func_id"
-    t.string   "byline"
-  end
+# Could not dump table "spp_articles" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'spp_articles': SHOW CREATE TABLE `spp_articles`
 
-  create_table "sublinks", :id => false, :force => true do |t|
-    t.integer "id",           :default => 0,     :null => false
-    t.integer "tab_id",                          :null => false
-    t.text    "title_en",                        :null => false
-    t.text    "title_no",                        :null => false
-    t.text    "url"
-    t.text    "external_url"
-    t.integer "order",                           :null => false
-    t.boolean "deleted",      :default => false, :null => false
-    t.integer "page_id",      :default => 0
-  end
+# Could not dump table "sublinks" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'sublinks': SHOW CREATE TABLE `sublinks`
 
   create_table "sublinks_old", :force => true do |t|
     t.integer "tab_id",                          :null => false
@@ -704,14 +533,8 @@ ActiveRecord::Schema.define(:version => 20110216230012) do
     t.integer "page_id",      :default => 0
   end
 
-  create_table "tabs", :id => false, :force => true do |t|
-    t.integer "id",                    :default => 0, :null => false
-    t.string  "name_en", :limit => 32,                :null => false
-    t.string  "name_no", :limit => 32,                :null => false
-    t.string  "tag",     :limit => 32,                :null => false
-    t.integer "weight",  :limit => 1,                 :null => false
-    t.boolean "top_bar"
-  end
+# Could not dump table "tabs" because of following ActiveRecord::StatementInvalid
+#   Mysql2::Error: SHOW VIEW command denied to user 'isfit11_public'@'localhost' for table 'tabs': SHOW CREATE TABLE `tabs`
 
   create_table "tabs_old", :force => true do |t|
     t.string  "name_en", :limit => 32, :null => false

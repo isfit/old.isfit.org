@@ -1,0 +1,59 @@
+<h1>Register as an ambassador</h1>
+<p>Do you want to be an international ambassador and distribute information for ISFiT 2013?</p>
+ 
+<p>ISFiT needs international ambassadors from all around the world to spread the word about ISFiT 2013. You can be an international ambassador by distributing information and placing posters in any university, library, student union building or other areas where students will have the best opportunity to learn about ISFiT.</p>
+ 
+<p>Fill out the registration form below, and we will send you a package free of charge, with posters and information about ISFiT 2013.</p>
+ 
+<p>Thank you in advance for supporting ISFiT.</p>
+
+
+<%= form_for(@ambassador, :html => { :class => "yform columnar" })  do |f| %>
+
+  <% if @ambassador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ambassador.errors.count, "error") %> prohibited this ambassador from being saved:</h2>
+
+      <ul>
+      <% @ambassador.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <fieldset>
+    <div class="type-text">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="type-text">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="type-text">
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+    <div class="type-text">
+      <%= f.label :zip_code %>
+      <%= f.text_field :zip_code %>
+    </div>
+    <div class="type-text">
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </div>
+    <div class="type-select">
+      <%= f.label :country %>
+      <%= f.collection_select :country_id, Country.order("name ASC"), :id, :name, :prompt => true %>
+    </div>
+    <div class="type-select">
+      <%= f.label :type %>
+      <%= f.select "infopackage_contact_type_id", @contact_types %>
+    </div>
+    <div class="type-button">
+      <%= f.submit "Register", class: "submit" %>
+    </div>
+<% end %>

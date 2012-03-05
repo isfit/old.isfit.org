@@ -1,5 +1,13 @@
 WwwIsfitOrg::Application.routes.draw do  
   
+  get "ambassadors" => "ambassadors#index"
+
+  get "ambassadors/new"
+
+  post "ambassadors" => "ambassadors#create"
+
+  get "ambassadors/thank_you"
+
     resources :tips_osses
   resources :isfit_media_links
 
