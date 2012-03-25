@@ -46,7 +46,7 @@
   <div style="width: 550px;">
   <div style="float: left; width: 450px;">
   <p>Text: <%=raw @article.byline%><br />
-  <%if @article.image_credits != ""%>Photo: <%=@article.image_credits%><%end%><br />
+  <%if @article.image_credits != ""%>Photo: <%=raw @article.image_credits%><%end%><br />
   Date: <%=  @article.created_at.strftime("%F")%>
 </p>
 </div>
