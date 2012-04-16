@@ -37,7 +37,7 @@
 </script>
 <%end%>
 <span style="text-align: right;float: right;"><%=link_to "Apply for ISFiT 2011 dialoguegroups here!", new_dialogue_participant_path(:tab => params[:tab])%></span><br />
-<%if true%>
+<%if false%>
   The deadline for the applications has passed. <br />
   Contact question@isfit.org for questions.
 <%else%>
@@ -72,7 +72,7 @@
   Deadline for submitting the application is the <b>30th of September 2010</b>.
 </p>
 
-<% form_for :participant, @participant, :url => { :tab=>params[:tab], :action => "create" } do |f| %>
+<%= form_for @participant do |f| %>
 
   <table>
     <tr valign="top">
