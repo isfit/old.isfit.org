@@ -1,62 +1,61 @@
 <% content_for :script do%>
-<script>
-  function setMaxLength() {
-    var x = document.getElementsByTagName('textarea');
-    var counter = document.createElement('div');
-    counter.className = 'counter';
-    for (var i=0;i<x.length;i++) {
-      if (x[i].getAttribute('maxlength')) {
-        var counterClone = counter.cloneNode(true);
-        counterClone.relatedElement = x[i];
-        counterClone.innerHTML = '<span>0</span>/'+x[i].getAttribute('maxlength');
-        x[i].parentNode.insertBefore(counterClone,x[i].nextSibling);
-        x[i].relatedElement = counterClone.getElementsByTagName('span')[0];
+  <script>
+    function setMaxLength() {
+      var x = document.getElementsByTagName('textarea');
+      var counter = document.createElement('div');
+      counter.className = 'counter';
+      for (var i=0;i<x.length;i++) {
+        if (x[i].getAttribute('maxlength')) {
+          var counterClone = counter.cloneNode(true);
+          counterClone.relatedElement = x[i];
+          counterClone.innerHTML = '<span>0</span>/'+x[i].getAttribute('maxlength');
+          x[i].parentNode.insertBefore(counterClone,x[i].nextSibling);
+          x[i].relatedElement = counterClone.getElementsByTagName('span')[0];
 
-        x[i].onkeyup = x[i].onchange = checkMaxLength;
-        x[i].onkeyup();
+          x[i].onkeyup = x[i].onchange = checkMaxLength;
+          x[i].onkeyup();
+        }
       }
     }
-  }
 
-  function checkMaxLength() {
-    var maxLength = this.getAttribute('maxlength');
-    var currentLength = this.value.length;
-    if (currentLength > maxLength)
-    this.relatedElement.className = 'toomuch';
-    else
-    this.relatedElement.className = '';
-    this.relatedElement.firstChild.nodeValue = currentLength;
-    // not innerHTML
-  }
+    function checkMaxLength() {
+      var maxLength = this.getAttribute('maxlength');
+      var currentLength = this.value.length;
+      if (currentLength > maxLength)
+      this.relatedElement.className = 'toomuch';
+      else
+      this.relatedElement.className = '';
+      this.relatedElement.firstChild.nodeValue = currentLength;
+      // not innerHTML
+    }
 
-  function popup(url){
-    var mywin;
-    mywin = window.open(url, '1', 'width=400,height=400,left=0,top=10,scrollbars=yes,resizable=yes');
-    mywin.focus();
-  }
-</script>
+    function popup(url){
+      var mywin;
+      mywin = window.open(url, '1', 'width=400,height=400,left=0,top=10,scrollbars=yes,resizable=yes');
+      mywin.focus();
+    }
+  </script>
 <%end%>
-<span style="text-align: right;float: right;"><%=link_to "Apply for ISFiT 2011 dialoguegroups here!", new_dialogue_participant_path(:tab => params[:tab])%></span><br />
-<%if false%>
+<span style="text-align: right;float: right;"><%=link_to "Apply for ISFiT 2013 dialoguegroups here!", new_dialogue_participant_path(:tab => params[:tab])%></span><br />
+<%if true%>
   The deadline for the applications has passed. <br />
   Contact question@isfit.org for questions.
 <%else%>
-<% if @participant.errors.any? %>
-  <div id="error_explanation">
-    <h4><%= pluralize(@participant.errors.count, "error") %> prohibited the application from being sent:</h4>
+  <% if @participant.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@participant.errors.count, "error") %> prohibited the application from being sent:</h4>
 
-    <ul>
-      <% @participant.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+      <ul>
+        <% @participant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 
-
-<h2>Application and travel support form</h2>
-<p>
+  <h2>Application Form</h2>
+  <p>
   If you are interested in participating in ISFiT 2013, you must fill in the 
   following form by the 30th of September 2012. Please note that you have to 
   be at least 18 years old and a student at the time of participation. Make 
@@ -69,217 +68,223 @@
   students. Due to limited capacity we cannot invite all applicants.
   </p><p>
   Deadline for submitting the application is the <b>30th of September 2012</b>.
-</p>
+  </p>
 
-<%= form_for @participant do |f| %>
+  <%= form_for @participant do |f| %>
 
-  <table>
-    <tr valign="top">
-      <td colspan="2">
-        <h3>Personal information:</h3>
-      </td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>First name: </b></td>
-      <td><%= f.text_field :first_name, :style => "width:97%" %> </td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Last name: </b></td>
-      <td><%= f.text_field :last_name, :style => "width:97%" %><br />
-        (Name must match passport name) <br />&nbsp;</td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right">
-        <b>Address 1: </b><br />
-      </td>
-      <td>
-        <%= f.text_field :address1, :style => "width:97%" %><br>
-        Street address, P.O. box, c/o 
-      </td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right">	
-        <b>ZIP code: </b>
-      </td>
-      <td><%= f.text_field :zipcode, :style => "width:97%" %></td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>City/Town: </b></td>
-      <td><%= f.text_field :city, :style => "width:97%" %></td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Country:</b></td>
-      <td>
-        <%=select("participant", "country_id", @countries.collect {|p| [ p.name, p.id ] })%>
-        <br />&nbsp;
-      </td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Telephone: </b></td>
-      <td>
-        <%= f.text_field :phone, :style => "width:97%" %><br />
-        (Remember the country code)
-      </td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Email address: </b></td>
-      <td><%= f.text_field :email, :style => "width:97%" %></td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Confirm email address:</b></td>
-      <td><%= text_field "participant", "email_confirmation", :style => "width:97%"%><br />&nbsp;</td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Date of birth: </b></td>
-      <td>
-        <%= date_select("participant", "birthdate",   :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1910, :end_year => 1993)	%>
-      </td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Sex:</b></td>
-      <td>
-        female <%= radio_button("participant", "sex", "f") %>
+    <table>
+      <tr valign="top">
+        <td colspan="2">
+          <h3>Personal Information:</h3>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align:right"><b>First name: </b></td>
+        <td><%= f.text_field :first_name, :style => "width:97%" %> </td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align:right"><b>Last name: </b></td>
+        <td><%= f.text_field :last_name, :style => "width:97%" %><br />
+          (Name must match passport name) <br />&nbsp;</td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align:right">
+          <b>Address: </b><br />
+        </td>
+        <td>
+          <%= f.text_field :address1, :style => "width:97%" %><br>
+          Street address, P.O. box, c/o 
+        </td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align:right">	
+          <b>ZIP code: </b>
+        </td>
+        <td><%= f.text_field :zipcode, :style => "width:97%" %></td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align:right"><b>City/Town: </b></td>
+        <td><%= f.text_field :city, :style => "width:97%" %></td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align:right"><b>Country:</b></td>
+        <td>
+          <%=select("participant", "country_id", @countries.collect {|p| [ p.name, p.id ] })%>
+          <br />&nbsp;
+        </td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align:right"><b>Telephone: </b></td>
+        <td>
+          <%= f.text_field :phone, :style => "width:97%" %><br />
+          (Remember the country code)
+        </td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align:right"><b>Email address: </b></td>
+        <td><%= f.text_field :email, :style => "width:97%" %></td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align:right"><b>Confirm email address:</b></td>
+        <td><%= text_field "participant", "email_confirmation", :style => "width:97%"%><br />&nbsp;</td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align:right"><b>Date of birth: </b></td>
+        <td>
+          <%= date_select("participant", "birthdate", :default => { :day => 1, :month => 1, :year => 1970 },  :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1910, :end_year => 1995)	%>
+          <br />&nbsp;
+        </td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align:right"><b>Sex:</b></td>
+        <td>
+          female <%= radio_button("participant", "sex", "f") %>
         male <%= radio_button("participant", "sex", "m") %>
-        <br />&nbsp;
+      <br />&nbsp;
+    </td>
+  </tr>
+  <tr valign="top">
+    <td style="text-align:right"><b>University: </b></td>
+    <td><%= f.text_field :university, :style => "width:97%" %>	</td>
+  </tr>
+  <tr valign="top">
+    <td style="text-align:right"><b>Field of study: </b></td>
+    <td><%= f.text_field :field_of_study, :style => "width:97%" %>	</td>
+  </tr>
+</table>
+
+<br />
+<br />
+
+<table width="580">
+  <tr>
+    <td colspan="2">
+      <h3>Workshops</h3>
+      Choose three workshops that you wish to attend, in prioritized order. 
+      Click on the links to read about each workshop. 
+      <table>
+        <tr>
+          <th width=20>1st</th><th width =20>2nd</th> <th width=20>3rd</th><th></th>
+          <tr>
+            <% 
+              workshops = Workshop.find(:all)
+              workshops.each do |workshop|
+            %>
+          <tr>
+            <td><%= radio_button("participant", "workshop1", "#{workshop.id}") %> </td>
+            <td> <%= radio_button("participant", "workshop2", "#{workshop.id}") %> </td>
+            <td>	<%= radio_button("participant", "workshop3", "#{workshop.id}") %> </td>
+            <td><a href="javascript:popup('http://www.isfit.org/participant/workshops#ws<%= workshop.id %>');">
+                WS<%= workshop.id < 10 ? "0#{workshop.id}" : "#{workshop.id}" %> 
+              <%= " - #{workshop.name}" %></a></td>
+        <%end%>
+      </table>
+      <br />
+      (If your browser cannot open the links above, you may use 
+      <a href="http://www.isfit.org/participant/workshops" target="_blank">this direct link to workshop descriptions</a>)
+      <br />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <h3>Essay 1 – General Essay</h3>
+      <p>
+      Write an essay (maximum 250 words) about yourself, your 
+      experiences, background and interests. Tell us about your 
+      studies and your motivation for participating in ISFiT 2013. 
+      </p>
+
+      <%= text_area(:participant, :essay1, {:size => "80x20", :maxlength => "2500"}) %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <h3>Essay 2 - Workshops  </h3>
+      <p>
+      Write an essay (maximum 250 words) about your motivation for 
+      your preferred workshops. What would you like to focus on 
+      within the presented topics? How will you use your experience 
+      from ISFiT 2013?
+      </p>
+      <%= text_area(:participant, :essay2, {:size => "80x20", :maxlength => "2500"}) %>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="2">
+      <h3>Apply for Travel Support  </h3>
+      <p>
+      ISFiT 2013 will be able to offer financial support to some of 
+      the participants. To apply for financial support, please fill 
+      in the form below.
+      </p>
+      <p>
+      Please note that ISFiT 2013 has a <b>limited amount of money</b> to 
+      offer, therefore we encourage you to search for alternative 
+      ways to finance your travel. Please be aware that travel 
+      funds are only meant to cover travel expenses to and from 
+      <b>Trondheim and your city of residence.</b>
+      </p>
+      <div style="width: 500px; text-align: center;">
+        <p style="border-top: 1px solid black; border-bottom: 1px solid black; 
+        margin-left: 45px; width: 450px; text-align: center;">
+        <br><strong>Important</strong><br><br>
+        <%= check_box("participant", "travel_apply", {}) %>
+        <em>Yes, I wish to apply for travel support</em><br><br>
+        </p>
+      </div>
+
+
+
+      <h3>Travel Support Essay  </h3>
+      <p>
+      Please write an essay (maximum 200 words) about why you 
+      should be granted travel support. If you are able to obtain 
+      travel support from other sources, please include this in 
+      your essay. 
+      </p>
+
+      <%= text_area(:participant, :travel_essay, {:size => "80x20", :maxlength => "2000"}) %>
+      <script>setMaxLength();</script>
+
+      <br /><br />
+      <table>
+        <tr>
+          <td>Amount of money that you are applying for:</td><td> 
+            <%= f.text_field :travel_amount, :style => "text-align:rigth; width:100px" %>&nbsp;US Dollars</td>
+          <tr>
+            <td colspan="2">If you <b>do not</b> receive travel support from ISFiT: </td>
+          </tr>
+          <tr>
+            <td valign="top">- Can you obtain financial support from other sources?</td>
+            <td valign="top">
+              yes<%= radio_button("participant", "travel_nosupport_other", "1") %>
+            no<%= radio_button("participant", "travel_nosupport_other", "0") %>
+        </td>
+        <tr>
+          <td valign="top">- Are you still able to attend the festival?</td>
+          <td valign="top">			
+            yes<%= radio_button("participant", "travel_nosupport_cancome", "1") %>
+          no<%= radio_button("participant", "travel_nosupport_cancome", "0") %>
+        <br />
+        <br />
       </td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>University: </b></td>
-      <td><%= f.text_field :university, :style => "width:97%" %>	</td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Field of study: </b></td>
-      <td><%= f.text_field :field_of_study, :style => "width:97%" %>	</td>
     </tr>
   </table>
-
-  <br />
-  <br />
-
-  <table width="580">
-    <tr>
-      <td colspan="2">
-        <h3>Workshops</h3>
-        Pick three workshops in prioritized order that you wish to attend. Click in the links to read about the workshops.<br /><br />
-        <table>
-          <tr>
-            <th width=20>1st</th><th width =20>2nd</th> <th width=20>3rd</th><th></th>
-            <tr>
-              <% 
-                workshops = Workshop.find(:all)
-                workshops.each do |workshop|
-                %>
-                <tr>
-                  <td><%= radio_button("participant", "workshop1", "#{workshop.id}") %> </td>
-                  <td> <%= radio_button("participant", "workshop2", "#{workshop.id}") %> </td>
-                  <td>	<%= radio_button("participant", "workshop3", "#{workshop.id}") %> </td>
-                  <td><a href="javascript:popup('http://www.isfit.org/participant/workshops#ws<%= workshop.id %>');">
-                      WS<%= workshop.id < 10 ? "0#{workshop.id}" : "#{workshop.id}" %> 
-                      <%= " - #{workshop.name}" %></a></td>
-                <%end%>
-              </table>
-              <br />
-              (If your browser can't open the links above, you can use this direct 
-              <a href="http://www.isfit.org/participant/workshops" target="_blank">link to workshop descriptions</a>.
-              Please remember to right-click and choose "<b>open link in new window</b>" to not lose the 
-              information you already have filled in.)
-              <br />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <h3>Essay 1 - Background  </h3>
-              <p>Write an essay (max 250 words) about yourself, your experiences and interests. Tell us about your studies and your motivation for participating in ISFiT 2011. How will you use your experience from ISFiT 2011? Have you participated in similar festivals before? Are you a member of a student organization? If yes, please specify.
-
-              </p>
-
-              <%= text_area(:participant, :essay1, {:size => "80x20", :maxlength => "1750"}) %>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <h3>Essay 2 - Workshops  </h3>
-              <p>Write an essay (max 300 words) about your thoughts and 
-                attitudes towards your three favorite workshops. What 
-                would you like to focus on within the topics presented? 
-                How do you think you could benefit from ISFiT 2011? How 
-                do you want to use your experiences from ISFiT 2011 in 
-                you community?
-              </p>
-              <%= text_area(:participant, :essay2, {:size => "80x20", :maxlength => "2200"}) %>
-            </td>
-          </tr>
-
-          <tr>
-            <td colspan="2">
-              <h3>Apply for travel support  </h3>
-              <p>ISFiT 2011 aims to have skilled participants with diverse backgrounds regarding geography, 
-                culture, class and gender. To achieve this goal, ISFiT 2011 will be able to offer some 
-                participants financial support. To apply for financial support, fill inn the fields below.
-              </p>
-              <p>Please note that ISFiT 2011 only has a limited sum to offer, so 
-                we encourage you to search for alternative ways of financing your travel. Please notice 
-                that travel funds are only meant to cover travel costs to and from Trondheim and your home 
-                city. We do not have the possibility to fund visa costs. There are a variety of scholarships 
-                and legacies you could apply for, or your university may be able to support you. Search, 
-                and you might be surprised of your possibilities.
-              </p>
-              <p>Travel support is only awarded to students who are invited and who attend the festival.</p>
-              <div style="width: 500px; text-align: center;">
-                <p style="border-top: 1px solid black; border-bottom: 1px solid black; 
-                  margin-left: 45px; width: 450px; text-align: center;">
-                  <br><strong>Important!</strong><br><br>
-                  <%= check_box("participant", "travel_apply", {}) %>
-                  <em>Yes, I want to apply for travel support</em><br><br>
-                </p>
-              </div>
-
-
-
-              <h3>Travel support essay  </h3>
-              <p>Please write a brief essay about why you should be granted travel support (200 words). 
-                If you are able to obtain travel support from other sources, please include this in your essay.</p>
-
-              <%= text_area(:participant, :travel_essay, {:size => "80x20", :maxlength => "1400"}) %>
-              --<script>setMaxLength();</script>
-
-              <br /><br />
-              <table>
-                <tr>
-                  <td>Amount of money that you are applying for:</td><td> 
-                    <%= f.text_field :travel_amount, :style => "text-align:rigth; width:100px" %>&nbsp;US Dollars</td>
-                  <tr>
-                    <td colspan="2">If you do not receive travel support from ISFiT: </td>
-                  </tr>
-                  <tr>
-                    <td valign="top">- can you obtain financial support from other sources?</td>
-                    <td valign="top">
-                      yes<%= radio_button("participant", "travel_nosupport_other", "1") %>
-                      no<%= radio_button("participant", "travel_nosupport_other", "0") %>
-                    </td>
-                    <tr>
-                      <td valign="top">- are you still able to come?</td>
-                      <td valign="top">			
-                        yes<%= radio_button("participant", "travel_nosupport_cancome", "1") %>
-                        no<%= radio_button("participant", "travel_nosupport_cancome", "0") %>
-                        <br />
-                        <br />
-                      </td>
-                    </tr>
-                  </table>
-                </td>
+</td>
               </tr>
               <tr>
                 <td colspan="2">
-                  <h3>Security code</h3>
+                  <h3>Security Code</h3>
                   <p>
-                    Please fill in the two words shown in the box below. If you have problems 
-                    reading the words, press the uppermost button to get a new security security code.
+                  Please fill in the two words shown in the box below. If 
+                  you have problems reading the words, press the uppermost 
+                  button to get a new security code. 
                   </p>
                   <p>
-                    <center><%#= get_captcha(:options => {:theme => 'clean'}) %><br /><br />
-                      <center> <%= raw recaptcha_tags %> <br /> <br />
-                        <%= submit_tag 'Submit',:value => "Submit application" %></center>
+                  <center><%#= get_captcha(:options => {:theme => 'clean'}) %><br /><br />
+                    <center> <%= raw recaptcha_tags %> <br /> <br />
+                      <%= submit_tag 'Submit',:value => "Submit application" %></center>
 
                     </p>
                   </td>
@@ -288,4 +293,4 @@
               </table>
             <% end %>
             <br />
-            <%end%>
+          <%end%>

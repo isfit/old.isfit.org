@@ -36,7 +36,7 @@ class ParticipantsController < ApplicationController
       flash[:notice] = "Your application was sent successfully. An email has been sent to the address you provided"
       render :action => "new", :tab => params[:tab]
     else
-      verify_recaptcha(:model=>@participant, :message=>"Recaptcha verification failed")
+      # verify_recaptcha(:model=>@participant, :message=>"Recaptcha verification failed")
       render :tab=>params[:tab], :action=>"new"
       flash[:notice] = nil
 
