@@ -2,17 +2,16 @@ class Postoffice < ActionMailer::Base
   # located in models/postoffice.rb
   # make note of the headers, content type, and time sent
   # these help prevent your email from being flagged as spam
-  default :from => "ISFiT 2011 <no-reply@isfit.org>"
+  default :from => "ISFiT 2013 <no-reply@isfit.org>"
   def registered(name, email)
     @recipients   = email
     @subject      = "Application registered"
     @sent_on      = Time.now
     @content_type = "text/plain"
 
-    body[:name]  = name
-    body[:email] = email
+    @name  = name
+    @email = email
     mail(:to => email, :subject => "Application registered")
-
   end
   
   def press_acc(id)
