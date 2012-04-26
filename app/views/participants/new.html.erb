@@ -37,7 +37,7 @@
 </script>
 <%end%>
 <span style="text-align: right;float: right;"><%=link_to "Apply for ISFiT 2011 dialoguegroups here!", new_dialogue_participant_path(:tab => params[:tab])%></span><br />
-<%if true%>
+<%if false%>
   The deadline for the applications has passed. <br />
   Contact question@isfit.org for questions.
 <%else%>
@@ -57,19 +57,18 @@
 
 <h2>Application and travel support form</h2>
 <p>
-  If you are interested in participating in ISFiT 2011 you should fill in 
-  the following form by the 30th of September 2010. Please note that you 
-  have to be at least 18 years old and a student on the time of participation. 
-  Also make sure that all information is correct and that you use the same name 
-  as in your passport.
+  If you are interested in participating in ISFiT 2013, you must fill in the 
+  following form by the 30th of September 2012. Please note that you have to 
+  be at least 18 years old and a student at the time of participation. Make 
+  sure that all your personal information is correct, and that you write your 
+  name as written in your passport.
   </p><p>
-  All applications will be read after the 30th of September, and those 
-  students who are selected will thereafter receive an invitation by e-mail. 
-  Instructions as for how to obtain a visa and other formalities will be given 
-  to the invited students. We are sorry that due to limited capacity we cannot 
-  invite all applicants, and we wish you luck on your application.
+  Applications will be read after the 30th of September, and those who are 
+  selected to participate will receive an invitation by e-mail. Instructions 
+  on how to obtain a visa and other formalities, will be given to the invited 
+  students. Due to limited capacity we cannot invite all applicants.
   </p><p>
-  Deadline for submitting the application is the <b>30th of September 2010</b>.
+  Deadline for submitting the application is the <b>30th of September 2012</b>.
 </p>
 
 <%= form_for @participant do |f| %>
@@ -85,10 +84,6 @@
       <td><%= f.text_field :first_name, :style => "width:97%" %> </td>
     </tr>
     <tr valign="top">
-      <td style="text-align:right"><b>Middle name: </b></td>
-      <td><%= f.text_field :middle_name, :style => "width:97%" %></td>
-    </tr>
-    <tr valign="top">
       <td style="text-align:right"><b>Last name: </b></td>
       <td><%= f.text_field :last_name, :style => "width:97%" %><br />
         (Name must match passport name) <br />&nbsp;</td>
@@ -100,15 +95,6 @@
       <td>
         <%= f.text_field :address1, :style => "width:97%" %><br>
         Street address, P.O. box, c/o 
-      </td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right">
-        <b>Address 2:</b> <br />
-      </td>
-      <td>
-        <%= f.text_field :address2, :style => "width:97%" %><br />
-        Apartment, building, floor, etc 
       </td>
     </tr>
     <tr valign="top">
@@ -136,23 +122,12 @@
       </td>
     </tr>
     <tr valign="top">
-      <td style="text-align:right"><b>Fax/facsimile: </b></td>
-      <td>
-        <%= f.text_field :fax, :style => "width:97%" %><br />
-        (Leave blank if you don't have one)<br />&nbsp;
-      </td>
-    </tr>
-    <tr valign="top">
       <td style="text-align:right"><b>Email address: </b></td>
       <td><%= f.text_field :email, :style => "width:97%" %></td>
     </tr>
     <tr valign="top">
       <td style="text-align:right"><b>Confirm email address:</b></td>
       <td><%= text_field "participant", "email_confirmation", :style => "width:97%"%><br />&nbsp;</td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Nationality: </b></td>
-      <td><%= f.text_field :nationality, :style => "width:97%" %></td>
     </tr>
     <tr valign="top">
       <td style="text-align:right"><b>Date of birth: </b></td>
@@ -176,64 +151,11 @@
       <td style="text-align:right"><b>Field of study: </b></td>
       <td><%= f.text_field :field_of_study, :style => "width:97%" %>	</td>
     </tr>
-    <tr valign="top">
-      <td colspan="2">
-        <br />
-        <h3>Are you a member of a student organization?</h3>
-      </td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Organization name:</b></td>
-      <td><%= f.text_field :org_name, :style => "width:97%" %></td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Your postion: </b></td>
-      <td><%= f.text_field :org_function, :style => "width:97%" %></td>
-    </tr>
   </table>
 
   <br />
   <br />
 
-  <h3>Where did you first hear about ISFiT?</h3>
-  <table>
-    <tr>
-      <td>
-        <%= radio_button("participant", "hear_about_isfit", "None") %> None
-      </td>
-      <td>
-        <%= radio_button("participant", "hear_about_isfit", "Internet") %> Internet
-      </td>
-    </tr>		
-    <tr>
-      <td>
-        <%= radio_button("participant", "hear_about_isfit" ,"Poster") %> Poster
-      </td>
-      <td>
-        <%= radio_button("participant", "hear_about_isfit" ,"Former participant") %> Former participant
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= radio_button("participant", "hear_about_isfit" ,"University") %> University
-      </td>
-      <td>
-        <%= radio_button("participant","hear_about_isfit" ,"Student union") %> Student union
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= radio_button("participant", "hear_about_isfit", "Embassy") %> Embassy
-      </td>
-      <td><%= radio_button("participant", "hear_about_isfit", "Mail") %> Mail
-      </td>
-    </tr>
-  </table>
-  <br />
-  <b>Other: </b> 
-  <%= f.text_field :hear_about_isfit_other %>
-
-  <br /><br />
   <table width="580">
     <tr>
       <td colspan="2">

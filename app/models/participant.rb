@@ -31,7 +31,7 @@ class Participant < ActiveRecord::Base
 	validates_presence_of :city
   validates_inclusion_of :country_id, :in => 1..201, :message => "not selected"
 	validates_presence_of :phone
-	validates_presence_of :nationality
+#	validates_presence_of :nationality
 	validates_presence_of :sex,  :message => "must be selected"	
 	validates_presence_of :university
 	validates_presence_of :field_of_study
@@ -66,7 +66,7 @@ class Participant < ActiveRecord::Base
 	#validate :check_birthdate
 
 	#Validate Self defined
-	validate :check_age
+	#validate :check_age
 	validate :check_workshops
 
 	#Validate travel support
@@ -134,18 +134,19 @@ class Participant < ActiveRecord::Base
 		:if => Proc.new {|part| part.respond_to?(:wizard_step) and part.wizard_step == 6},
 		:message => "Please indicate whether you will sign up for the ISFiT transportation or not."
 
-	def check_age
-		errors.add_to_base("Age should be between 18 and 100") unless birthdate != nil and 
-		Date.today.year - birthdate.year < 101 && ( 
-			2011 - birthdate.year > 18 or
-			(2011 - birthdate.year == 18 && birthdate.month == 1)  or
-			(2011 - birthdate.year == 18 && birthdate.month == 2 && birthdate.day < 11))
-	end
+#	def check_age
+#		errors[:base] << "Age should be between 18 and 100" unless birthdate != nil and 
+#		Date.today.year - birthdate.year < 101 && ( 
+#			2011 - birthdate.year > 18 or
+#			(2011 - birthdate.year == 18 && birthdate.month == 1)  or
+#			(2011 - birthdate.year == 18 && birthdate.month == 2 && birthdate.day < 11))
+#	end
 
-	def check_workshops
-		errors.add_to_base("Pleace choose different workshops") unless (workshop1 != workshop2 and workshop2 != workshop3 and workshop1 != workshop3)
+	def check_workshops	 
+    errors[:base] << "Pleace choose different workshops" unless (workshop1 != workshop2 and workshop2 != workshop3 and workshop1 != workshop3)
 	end	
-	def is_radio_button_date
+
+  def is_radio_button_date
 		if arrival_date.eql? Date::new(2009, 02, 18) \
 			or arrival_date.eql? Date::new(2009, 02, 19) \
 			or arrival_date.eql? Date::new(2009, 02, 20)
