@@ -11,6 +11,7 @@ gem 'mysql2'
 gem 'bluecloth'
 gem 'paperclip'
 gem 'rake'
+gem 'simple_form'
 
 group :assets do
   gem 'sass-rails'
