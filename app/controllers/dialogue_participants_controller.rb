@@ -22,7 +22,7 @@ class DialogueParticipantsController < ApplicationController
 		@dialogue_participant.registered_time = DateTime.now
 		if @dialogue_participant.valid? && verify_recaptcha(:model=>@dialogue_participant, :message=>"Recaptcha verification failed") && @dialogue_participant.save
 			Postoffice.registered(@dialogue_participant.first_name + " " + @dialogue_participant.last_name, @dialogue_participant.email).deliver
-			flash[:notice] = "Your application was sent successfully. You should receive an email as a conformation at the email you provided"
+			flash[:notice] = "Your application was sent successfully. You should receive an email as a confirmation at the email you provided"
                         render :action => "new"
 		else
       verify_recaptcha(:model=>@dialogue_participant, :message=>"Recaptcha verification failed")

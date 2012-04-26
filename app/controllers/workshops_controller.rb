@@ -2,7 +2,7 @@ class WorkshopsController < ApplicationController
   # GET /articles
   # GET /articles.xml
   def index
-        @articles = Workshop.where(:list => true).order("weight DESC")
+        @articles = Workshop.where(:published => true).order("number ASC")
     
     respond_to do |format|
       format.html # index.html.erb
