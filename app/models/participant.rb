@@ -43,10 +43,22 @@ class Participant < ActiveRecord::Base
 	# make model validate ok
 	validates_presence_of :essay1
 	validates_presence_of :essay2
-	validates_length_of :essay1, :maximum=>1900, :message => "Essay 1 too long"
-	validates_length_of :essay2, :maximum=>2300, :message => "Essay 2 too long"
-	validates_length_of :travel_essay, :maximum=>1500, :message => "Travel essay too long"
-	
+	validates_length_of :essay1, :maximum=>2500, :message => "Essay 1 too long"
+	validates_length_of :essay2, :maximum=>2500, :message => "Essay 2 too long"
+	validates_length_of :travel_essay, :maximum=>2000, :message => "Travel essay too long"
+
+  validates :essay1, :length => {
+    :maximum   => 260,
+    :tokenizer => lambda { |str| str.scan(/\s+|$/) },
+    :too_long  => " too long, maximum 250 words"
+    }
+
+  validates :essay2, :length => {
+    :maximum   => 260,
+    :tokenizer => lambda { |str| str.scan(/\s+|$/) },
+    :too_long  => "too long, maximum 250 words"
+    }
+
 	validates_presence_of :birthdate, :message => "not valid"
 
 	#Validate WSs
@@ -76,9 +88,15 @@ class Participant < ActiveRecord::Base
 			:if => Proc.new { |n| n.travel_apply > 0 }
 	validates_presence_of :travel_amount, 
 			:if => Proc.new { |n| n.travel_apply > 0 }
-	validates_numericality_of :travel_amount,
+	validates_numericality_of :travel_amount, :less_than => 10000,
 			:if => Proc.new { |n| n.travel_apply > 0 },
-            :message => "must be a number"
+            :message => "must be a number, less than 10000"
+
+  validates :travel_essay, :length => {
+    :maximum   => 210,
+    :tokenizer => lambda { |str| str.scan(/\s+|$/) },
+    :too_long  => "too long, maximum 200 words"
+    }
 
 	# Validate Wizard
 	# Step 1
