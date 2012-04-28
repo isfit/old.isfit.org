@@ -51,7 +51,7 @@ $(document).ready(function() {
 
 </script>
 <%end%>
-<%if true%>
+<%if false%>
   The deadline for the applications has passed. <br />
   Contact info-dialogue@isfit.org for questions.
 
@@ -112,7 +112,7 @@ $(document).ready(function() {
 <p>
   Deadline for submitting the application is on the <b>30th of September 2012.</b>
 </p>
-<%= form_for @dialogue_participant, :url => { :tab => params[:tab], :action => "new" } do |f| %>
+<%= form_for @dialogue_participant do |f| %>
     <table>
     <tr valign="top">
       <td colspan="2">

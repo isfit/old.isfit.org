@@ -37,7 +37,7 @@
   </script>
 <%end%>
 <span style="text-align: right;float: right;"><%=link_to "Apply for ISFiT 2013 dialoguegroups here!", new_dialogue_participant_path(:tab => params[:tab])%></span><br />
-<%if true%>
+<%if false%>
   The deadline for the applications has passed. <br />
   Contact question@isfit.org for questions.
 <%else%>
@@ -131,7 +131,7 @@
       <tr valign="top">
         <td style="text-align:right"><b>Date of birth: </b></td>
         <td>
-          <%= date_select("participant", "birthdate", :default => { :day => 1, :month => 1, :year => 1970 },  :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1910, :end_year => 1995)	%>
+          <%= date_select("participant", "birthdate", :default => { :day => 1, :month => 1, :year => 1970 },  :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1970, :end_year => 1995)	%>
           <br />&nbsp;
         </td>
       </tr>
@@ -174,14 +174,12 @@
             <td><%= radio_button("participant", "workshop1", "#{workshop.id}") %> </td>
             <td> <%= radio_button("participant", "workshop2", "#{workshop.id}") %> </td>
             <td>	<%= radio_button("participant", "workshop3", "#{workshop.id}") %> </td>
-            <td><a href="javascript:popup('http://www.isfit.org/participant/workshops#ws<%= workshop.id %>');">
-                WS<%= workshop.id < 10 ? "0#{workshop.id}" : "#{workshop.id}" %> 
-              <%= " - #{workshop.name}" %></a></td>
+            <td><%= link_to "Workshop #{workshop.id} - #{workshop.name}", workshop_path(params[:tab], workshop), target: "_blank" %></td>
         <%end%>
       </table>
       <br />
       (If your browser cannot open the links above, you may use 
-      <a href="http://www.isfit.org/participant/workshops" target="_blank">this direct link to workshop descriptions</a>)
+      <%= link_to "this direct link to workshop descriptions", workshops_path(params[:tab]), target: "_blank" %>
       <br />
     </td>
   </tr>

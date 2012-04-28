@@ -3,8 +3,8 @@
 
 		<div class="<%=classtext%>">
 	
-	<a href="<%=workshop_url(article)%>">
-	<%=image_tag(article.workshop_article.url(:original)) %>
+	<a href="<%=workshop_url(params[:tab],article)%>">
+	<%#=image_tag(article.workshop_image.url(:original)) %>
 	<h1><%=article.name%></h1>
 	<p><%=truncate(article.ingress, :length=>150, :separator => ' ')%></p>
 	</a>
