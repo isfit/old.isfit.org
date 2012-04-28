@@ -36,9 +36,9 @@ class ParticipantsController < ApplicationController
       flash[:notice] = "Your application was sent successfully. An email has been sent to the address you provided"
       render :action => "new", :tab => params[:tab]
     else
-      render :tab=>params[:tab], :action=>"new"
       flash[:notice] = nil
 
     end
+    render :tab=>params[:tab], :action=>"new"
   end
 end
