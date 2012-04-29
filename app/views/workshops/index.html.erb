@@ -1,12 +1,14 @@
 <% @articles.each do |article| %>
-			<%classtext = "artikkel grid_7 articleheight " + cycle("alpha","omega")%>
+  <%classtext = "artikkel grid_7 articleheight " + cycle("alpha","omega")%>
 
-		<div class="<%=classtext%>">
-	
-	<a href="<%=workshop_url(params[:tab],article)%>">
-	<%#=image_tag(article.workshop_image.url(:original)) %>
-	<h1><%=article.name%></h1>
-	<p><%=truncate(article.ingress, :length=>150, :separator => ' ')%></p>
-	</a>
-	</div>
-	<%end%>
+  <div class="<%=classtext%>">
+
+    <a href="<%=workshop_url(params[:tab],article)%>">
+      <% if article.workshop_image %>
+        <%=image_tag(article.workshop_image.url(:original)) %>
+      <% end %>
+      <h1><%=article.name%></h1>
+      <p><%=truncate(article.ingress, :length=>150, :separator => ' ')%></p>
+    </a>
+  </div>
+<%end%>
