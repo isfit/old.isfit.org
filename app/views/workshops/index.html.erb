@@ -5,7 +5,7 @@
 
     <a href="<%=workshop_url(params[:tab],article)%>">
       <% if article.workshop_image %>
-        <%=image_tag(article.workshop_image.url(:original)) %>
+        <%=image_tag(article.workshop_image.url(:thumb)) %>
       <% end %>
       <h1><%=article.name%></h1>
       <p><%=truncate(article.ingress, :length=>150, :separator => ' ')%></p>
