@@ -12,11 +12,15 @@ gem 'bluecloth'
 gem 'paperclip'
 gem 'rake'
 gem 'simple_form'
+gem 'sass-rails'
+gem 'bootstrap-sass'
+gem 'tabulous'
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem "paperclip"

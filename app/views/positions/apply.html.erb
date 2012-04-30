@@ -12,48 +12,70 @@
 <%= render 'partials/error', :locals=> {:model => @applicant} %>
 
 <p><%= t("position.fill_in") %></p>
-<%= form_for(@applicant, :html => { :class => "yform columnar" }, :url => {:controller => :positions, :action => :save}) do |f| %>
+
+<%= simple_form_for(@applicant, :input_html => { 
+  :class => 'form-horizontal' }, 
+  :url => {
+    :controller => :positions, 
+    :action => :save
+  }) do |f| %>
+
+
   <fieldset>
-    <legend><%= t("position.personal_info") %></legend>
-    <div class="type-text">
-      <%= f.label :firstname %>
-      <%= f.text_field :firstname, :placeholder => t("person.first_name") %>
-    </div>
-    <div class="type-text">
-      <%= f.label :lastname %>
-      <%= f.text_field :lastname, :placeholder => t("person.last_name") %>
-    </div>
-    <div class="type-text">
-      <%= f.label :mail %>
-      <%= f.text_field :mail, :placeholder => t("person.email_ntnu") %>
-    </div>
-    <div class="type-text">
-      <%= f.label :phone %>
-      <%= f.text_field :phone, :placeholder => t("person.phone_nor") %>
-    </div>
+    <legend>
+      <%= t('position.personal_info') %>
+    </legend>
+
+    <%= f.input :firstname, :input_html => {
+      :class => 'span5',
+      :placeholder => t('person.first_name')
+    } %>
+
+    <%= f.input :lastname, :input_html => {
+      :class => 'span5',
+      :placeholder => t('person.last_name')
+    } %>
+
+    <%= f.input :mail, :input_html => {
+      :type => 'email',
+      :class => 'span5',
+      :placeholder => t('person.email_ntnu')
+    } %>
+
+    <%= f.input :phone, :input_html => {
+      :type => 'tel', 
+      :class => 'span5',
+      :placeholder => t('person.phone_nor')
+    } %>
   </fieldset>
+
+
+
   <fieldset>
     <legend><%= t("position.application") %></legend>
-    <div class="type-select">
-      <%= f.label :position_id_1 %>
-      <%= f.collection_select :position_id_1, @positions, :id, :select_name, prompt: true %>
-    </div>
-    <div class="type-select">
-      <%= f.label :position_id_2 %>
-      <%= f.collection_select :position_id_2, @positions, :id, :select_name, prompt: true %>
-    </div>
-    <div class="type-select">
-      <%= f.label :position_id_3 %>
-      <%= f.collection_select :position_id_3, @positions, :id, :select_name, prompt: true %>
-    </div>
-    <div class="type-text">
-      <%= f.label :information %>
-      <%= f.text_area :information, :rows => 10 %>
-    </div>
-    <div class="type-text">
-      <%= f.label :background %>
-      <%= f.text_area :background, :rows => 10 %>
-    </div>
+
+    <%= f.input :position_id_1, :collection => @positions, :input_html => {
+        :class => 'span5'
+    } %>
+
+    <%= f.input :position_id_2, :collection => @positions, :input_html => {
+      :class => 'span5'
+    } %>
+
+    <%= f.input :position_id_3, :collection => @positions, :input_html => {
+      :class => 'span5'
+    } %>
+
+    <%= f.input :information, :input_html => {
+      :rows => 3,
+      :class => 'span5'
+    } %>
+
+    <%= f.input :background, :input_html => {
+      :rows => 3,
+      :class => 'span5'
+    } %>
+    
     <!--
   <p>
     <b><%= t("position.hear_about") %>:</b><br>
@@ -61,7 +83,7 @@
   </p>
   -->
   <div class="type-button">
-  <%= f.submit t("position.apply"), :class => "submit" %>
+  <%= f.button :submit %>
 </div>
 <% end %>
 
