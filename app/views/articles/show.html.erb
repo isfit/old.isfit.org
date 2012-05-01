@@ -8,62 +8,78 @@
   <meta property="og:description" content="<%=@article.ingress%>"/>
 <%end%>
 
-<div style="background-color: #fff;">
+<div id="article-wrapper">
   <% if @article.body == "" && @article.ingress == ""
        in_language = false
-  else
-    in_language = true
+    else
+      in_language = true
   end%>
-<div id="article">
-  <% unless in_language%>
-    <h4>We are sorry, but the following article is not available in your language</h4>
-    <br />
-    <br />
+
+
+  <article id="article">
+
+    <% unless in_language%>
+      <div class="alert">
+        <button class="close" data-dismiss="alert">×</button>
+        We are sorry, but the article is not available in your language.
+      </div>
+    <%end%>
+
+    
+    <header>
+      <figure>
+        <% if @article.frontend_article_image? %>
+          <%= image_tag @article.frontend_article_image.url(:front_large) %>
+        <% else %>
+          <%=image_tag "article_images/"+@article.id.to_s + "_3.jpg"%><br>
+        <% end %>
+
+        <caption>
+          <% if I18n.locale.to_s == 'no' %>
+            <%=@article.image_text_no%>
+          <%else%>
+            <%=@article.image_text_en%>
+          <%end%>
+        </caption>
+      </figure>
+
+      <h1>
+        <%if in_language%>
+          <%= @article.title %>
+        <%else%>
+          <%= I18n.locale.to_s == 'no' ? @article.title_en : @article.title_no%>
+        <%end%>
+      </h1>
+    </header>
+
+
+    <section class="article-ingress">
+      <p class="article-ingress-text">
+        <%=raw format(I18n.locale.to_s == 'no' ? @article.ingress_no : @article.ingress_en) %>
+      </p>
+    </section>
+
+
+    <section class="article-credits">
+      <p class="article-credits-text">Text: <%=raw @article.byline%></p>
+      <p class="article-credits-photo"><%if @article.image_credits != ""%>Photo: <%=raw @article.image_credits%><%end%></p>
+      <p class="article-credits-date">Date: <%=  @article.created_at.strftime("%F")%></p>
+
+      <div class="fb-like" data-send="false" data-layout="box_count" data-width="75" data-show-faces="true"></div>
+    </section>
+
+
+    <section class="article-text">
+      <%= raw format( I18n.locale.to_s =='no' ? @article.body_no : @article.body_en) %>
+    </section>
+
+  </article>
+
+
+  <%if @article.got_comments%>
+    <div class="fb-comments" data-href="<%= article_url(params[:tab], @article) %>" data-num-posts="2" data-width="550"></div>
   <%end%>
 
-  <p>
-  <% if @article.frontend_article_image? %>
-    <%= image_tag @article.frontend_article_image.url(:front_large) %>
-  <% else %>
-    <%=image_tag "article_images/"+@article.id.to_s + "_3.jpg"%><br>
-  <% end %>
-  <% if I18n.locale.to_s == 'no' %>
-    <%=@article.image_text_no%>
-  <%else%>
-    <%=@article.image_text_en%>
-  <%end%></p>
-  <p><h3>
-    <%if in_language%>
-      <%= @article.title %>
-    <%else%>
-      <%= I18n.locale.to_s == 'no' ? @article.title_en : @article.title_no%>
-    <%end%>
-  </h3></p>
-
-  <p>
-  <b><%=raw format(I18n.locale.to_s == 'no' ? @article.ingress_no : @article.ingress_en) %></b>
-  </p><hr>
-  <div style="width: 550px;">
-  <div style="float: left; width: 450px;">
-  <p>Text: <%=raw @article.byline%><br />
-  <%if @article.image_credits != ""%>Photo: <%=raw @article.image_credits%><%end%><br />
-  Date: <%=  @article.created_at.strftime("%F")%>
-</p>
-</div>
-<div class="fb-like" style="float: right;" data-send="false" data-layout="box_count" data-width="75" data-show-faces="true"></div>
-</div>
-
-<hr>
-
-<p style="text-align:justify">
-<%= raw format( I18n.locale.to_s =='no' ? @article.body_no : @article.body_en) %>
-</p>
-
-</div>
-
-<%if @article.got_comments%>
-  <div class="fb-comments" data-href="<%= article_url(params[:tab], @article) %>" data-num-posts="2" data-width="550"></div>
-<%end%>
 </div>
 
 
