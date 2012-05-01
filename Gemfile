@@ -12,8 +12,6 @@ gem 'bluecloth'
 gem 'paperclip'
 gem 'rake'
 gem 'simple_form'
-gem 'sass-rails'
-gem 'bootstrap-sass'
 gem 'tabulous'
 
 group :assets do

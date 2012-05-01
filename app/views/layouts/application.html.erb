@@ -59,9 +59,7 @@ html5boilerplate
 <body>
 
 
-  <header class="span12"><!-- Start header -->
-
-    <div class="navbar navbar-fixed-top"> <!-- Start tabs -->
+<div class="navbar navbar-fixed-top"> <!-- Start tabs -->
       <div class="navbar-inner">
         <div class="container">
           <%= tabs %>
@@ -74,18 +72,22 @@ html5boilerplate
       </div>
     </div><!-- End tabs -->
 
+
+<div class="row">
+
+  <header class="span12"><!-- Start header -->
     <div id="main-header-image">
-      <%=link_to image_tag("isfit.png", :class=>"isfitlogo"), root_path %>
+      <%=link_to image_tag("isfit.png", :class=>"header-logo", :style=>"max-width:100%"), root_path %>
     </div>
 
 
   </header><!-- End header -->
+</div>
 
-
-  <div id="main" role="main" class="span12"> <!-- Start main -->
+  <div role="main" class="row"> <!-- Start main -->
       
 
-      <div id="venstreramme" class="span2"><!-- Start venstreramme -->
+      <div id="venstreramme" class="span3"><!-- Start venstreramme -->
         <div class="boks">
           <h3 class="boxheadline">The ISFiT Way</h3>
            <%= link_to(image_tag('final.png') , 'http://www.isfit.org/assets/downloads/final.pdf') %>
@@ -145,40 +147,44 @@ html5boilerplate
          </ul>
        </div><%
          end %>
+
+
+
+
        <%= yield %>
 
      </div><!-- Slutt midtramme -->
-     <div id="hoyreramme" class="span3"><!-- Start hoyreramme -->
-      <div id="boksturkis_bg" class="alpha omega"><!-- Start turkis -->
-         <div id="boksturkis" class="alpha omega">
-           <div class="boks" onclick="location.href='<%=chronicle_path(params[:tab], Chronicle.find_most_recent.first)%>'" style="cursor:pointer">
-             <h3 class="boxheadline">Kommentar</h3>
-
-             <%= render :template =>'chronicles/index'%>
-           </div>
-         </div>
-       </div><!-- Slutt turkis -->
-
-       
+    
 
 
+    <div id="hoyreramme" class="span3"><!-- Start hoyreramme -->
+      
+      <div class="boks">
+        <h3 class="boxheadline">Kommentar</h3>
+        <%= render :template =>'chronicles/index'%>
+      </div>
 
-      </div><!-- Slutt hoyreramme -->
+    </div><!-- Slutt hoyreramme -->
 
 
   </div><!-- End main -->
 
+
+
+
+<div class="row">
   <footer class="span12"><!-- Start footer -->
-    <%=link_to(image_tag("isfitliten.png", :class=>"footerlogo"), root_path)%>
+    <%=link_to(image_tag("isfitliten.png", :class=>"footer-logo"), root_path)%>
     <p>
       Editor in Chief: Synne Mari Pedersen, editor[at]isfit.org. <br />
       All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2013.
     </p>
   </footer><!-- End footer -->
-
+</div>
 
 
 </script>
+
 
 
 <!-- JavaScript at the bottom for fast page loading -->
@@ -205,8 +211,6 @@ html5boilerplate
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
-
-
 
 </body>
 <%= javascript_include_tag 'jquery','application', 'jquery.nivo.slider'%>
