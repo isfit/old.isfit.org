@@ -1,9 +1,9 @@
 <!--
-_____  _____ ______ _ _______   ___   ___  __ ____  
+ _____  _____ ______ _ _______   ___   ___  __ ____  
 |_   _|/ ____|  ____(_)__   __| |__ \ / _ \/_ |___ \ 
-| | | (___ | |__   _   | |       ) | | | || | __) |
-| |  \___ \|  __| | |  | |      / /| | | || ||__ < 
-_| |_ ____) | |    | |  | |     / /_| |_| || |___) |
+  | | | (___ | |__   _   | |       ) | | | || | __) |
+  | |  \___ \|  __| | |  | |      / /| | | || ||__ < 
+ _| |_ ____) | |    | |  | |     / /_| |_| || |___) |
 |_____|_____/|_|    |_|  |_|    |____|\___/ |_|____/ 
 
 GitHub:  http://www.github.com/isfit
@@ -54,7 +54,7 @@ html5boilerplate
                 <%= link_to "ISFiT 2013", root_path, class: "brand" %>
                 <%= tabs %>
 
-                <form class="navbar-form pull-left">
+                <form class="navbar-form pull-right">
                   <input type="search" class="search-query" placeholder="Search">
                 </form>
 
@@ -70,8 +70,16 @@ html5boilerplate
               </div><!-- Slutt midtramme -->
                 <div id="sidebar" class="span4"><!-- Start hoyreramme -->
 
-                  <div class="boks">
-                    <h3 class="boxheadline">Kommentar</h3>
+                  <div class="promotional">
+                    <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
+                  </div>
+
+                  <div class="promotional">
+                    <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
+                  </div>
+
+                  <div class="well">
+                    <h1>Kommentar</h1>
                     <%= render :template =>'chronicles/index'%>
                   </div>
 
@@ -123,6 +131,6 @@ html5boilerplate
 </script>
 
 </body>
-<%= javascript_include_tag 'jquery','application', 'jquery.nivo.slider'%>
+<%= javascript_include_tag 'application'%>
 <%= yield :script %>
 </html>

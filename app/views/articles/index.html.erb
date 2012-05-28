@@ -3,11 +3,13 @@
   <div class="carousel-inner">
     <% @articles.each do |article| %>
       <div class="item <%= article == @articles.first ? "active":"" %>">
+        <a href="<%= article_path(params[:tab],article) %>">
         <img src="http://lorempixel.com/770/400/abstract/" alt="<%= article.title %>">
         <div class="carousel-caption">
-          <h4><%= article.title %></h1>
+          <h1><%= article.title %></h1>
           <p><%= article.sub_title %></p>
         </div>
+        </a>
       </div>
     <% end %>
   </div>
