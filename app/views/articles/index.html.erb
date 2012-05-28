@@ -1,25 +1,17 @@
-<%
-    first = true
-@articles.each do |article| %>
-<% if first %>
-  <div id="hoved_artikkel" class="grid_14 alpha omega">
-
-  <%else%>
-    <%classtext = "artikkel grid_7 articleheight " + cycle("alpha","omega")%>
-
-    <div class="<%=classtext%>">
-    <%end%>
-
-    <a href="<%=article_url(params[:tab], article)%>">
-      <% if article.frontend_article_image? %>
-        <%=image_tag(first ? article.frontend_article_image.url(:front_large) : article.frontend_article_image.url(:front_small)) %>
-      <% else %>
-        <%=image_tag("article_images/"+article.id.to_s+"_"+ (first ? "1" : "2")+".jpg") %>
-      <% end %>
-      <h1><%=article.title%></h1>
-      <p><%=truncate(article.sub_title, :length=>150, :separator => ' ')%></p>
-    </a>
+<div id="news-carousel" class="carousel">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <% @articles.each do |article| %>
+      <div class="item <%= article == @articles.first ? "active":"" %>">
+        <img src="http://lorempixel.com/770/400/abstract/" alt="<%= article.title %>">
+        <div class="carousel-caption">
+          <h4><%= article.title %></h1>
+          <p><%= article.sub_title %></p>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <% first = false if first %>
-<%end%>
-<%= link_to t('article.more'), all_articles_path(params[:tab]) %>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#news-carousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#news-carousel" data-slide="next">&rsaquo;</a>
+</div>

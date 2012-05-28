@@ -2,20 +2,18 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require_self
  *= require_tree . 
+ *= require_self
 */
 
-@import "bootstrap";
-
-
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'PT Sans';
-}
-p {
-  font-family: 'PT Serif';
+html {
+  // Enable webkits anti-alized font-smoothing on Mac.
+  -webkit-font-smoothing: antialiased;
 }
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+.carousel-control {
+  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+}
