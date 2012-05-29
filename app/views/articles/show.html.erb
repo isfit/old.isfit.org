@@ -64,10 +64,32 @@
       Date: <%=  @article.created_at.strftime("%F")%></span>
     </section>
 
+    <div class="row">
+      <div class="span5">
+        <section class="article-text">
+        <%= raw format( I18n.locale.to_s =='no' ? @article.body_no : @article.body_en) %>
+        </section>
+      </div>
+      <!-- Just playing around... -->
+      <div class="span3">
+        <blockquote>
+          <p>It is better to have loved and lost than never to have lost at all.</p>
+          <small>Samuel Butler</small>
+        </blockquote>
+        <div class="well">
+          <h1>Faktaboks</h1>
+          <ul>
+            <li>Dette er sample fakta</li>
+            <li>Dette er sample fakta</li>
+            <li>Dette er sample fakta</li>
+            <li>Dette er sample fakta</li>
+            <li>Dette er sample fakta</li>
+          </ul>
+        </div>
 
-    <section class="article-text">
-      <%= raw format( I18n.locale.to_s =='no' ? @article.body_no : @article.body_en) %>
-    </section>
+        <img src="http://lorempixel.com/270/400/people">
+      </div>
+    </div>
 
   </article>
 
