@@ -17,120 +17,124 @@ html5boilerplate
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="no"> <![endif]-->
-  <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="no"> <![endif]-->
-    <!--[if IE 8]>    <html class="no-js lt-ie9" lang="no"> <![endif]-->
-      <!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
-      <!--[if gt IE 8]><!--> <html class="no-js" lang="no"> <!--<![endif]-->
-        <head>
-          <title>ISFiT 2013</title>
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="no"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="no"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!-->
 
-          <meta charset="utf-8">
-          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-          <meta name="description" content="ISFiT 2013 is the largest international student festival with a thematic focus in the world."/>
-          <meta name="og:description" content="ISFiT 2013 is the largest international student festival with a thematic focus in the world."/>
-          <meta name="viewport" content="width=device-width">
-          <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<html class="no-js" lang="no"> <!--<![endif]-->
 
-          <script src="js/libs/modernizr-2.5.3.min.js"></script>
+<head>
+  <title>ISFiT 2013</title>
 
-          <%= stylesheet_link_tag 'application' %>
-          <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
-          <%= csrf_meta_tag %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="ISFiT 2013 is the largest international student festival with a thematic focus in the world."/>
+  <meta name="og:description" content="ISFiT 2013 is the largest international student festival with a thematic focus in the world."/>
+  <meta name="viewport" content="width=device-width">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  <script src="js/libs/modernizr-2.5.3.min.js"></script>
 
-          <!-- Typekit fonts. Yes, these are supposed to live in the head... -->
-          <script type="text/javascript" src="http://use.typekit.com/piu2mrs.js"></script>
-          <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <meta content="hello world">
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+  <%= csrf_meta_tag %>
 
-          <%=yield :head%>
-        </head>
+  <!-- Typekit fonts. Yes, these are supposed to live in the head... -->
+  <script type="text/javascript" src="http://use.typekit.com/piu2mrs.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
+  <%=yield :head%>
+</head>
 
-        <body>
-
-
-          <div class="navbar navbar-fixed-top"> <!-- Start tabs -->
-            <div class="navbar-inner">
-              <div class="container">
-                <%= link_to "ISFiT 2013", root_path, class: "brand" %>
-                <%= tabs %>
-
-                <form class="navbar-form pull-right">
-                  <input type="search" class="search-query" placeholder="Search">
-                </form>
-
-              </div>
-            </div>
-          </div><!-- End tabs -->
-
-          <div class="container">
-            <div role="main" class="row"> <!-- Start main -->
-              <div id="content" class="span8"><!-- Start midtramme -->
-                <!-- TODO sett inn notice og warnings her. Se på internal -->
-                <%= yield %>
-              </div><!-- Slutt midtramme -->
-                <div id="sidebar" class="span4"><!-- Start hoyreramme -->
-
-                  <div class="promotional">
-                    <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
-                  </div>
-
-                  <div class="promotional">
-                    <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
-                  </div>
-
-                  <div class="well">
-                    <h1>Kommentar</h1>
-                    <%= render :template =>'chronicles/index'%>
-                  </div>
-
-                </div><!-- Slutt hoyreramme -->
+<body>
 
 
-              </div><!-- End main -->
+  <div class="navbar navbar-fixed-top"> <!-- Start tabs -->
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "ISFiT 2013", root_path, class: "brand" %>
+        <%= tabs %>
+
+        <form class="navbar-form pull-right">
+          <input type="search" class="search-query" placeholder="Search">
+        </form>
+
+      </div>
+    </div>
+  </div><!-- End tabs -->
+
+  <div class="container">
+    
+    <div role="main" class="row"> <!-- Start main -->
+      <div id="content" class="span8"><!-- Start midtramme -->
+        <!-- TODO sett inn notice og warnings her. Se på internal -->
+        <%= yield %>
+      </div><!-- Slutt midtramme -->
+
+      <aside id="sidebar" class="span4"><!-- Start hoyreramme -->
+
+        <div class="promotional">
+          <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
+        </div>
+        
+        <div class="promotional">
+          <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
+        </div>
+
+        <div class="well">
+          <h1>Kommentar</h1>
+          <%= render :template =>'chronicles/index'%>
+        </div>
+
+      </aside><!-- Slutt hoyreramme -->
 
 
-
-
-              <div class="row">
-                <footer class="span12"><!-- Start footer -->
-                <%=link_to(image_tag("isfitliten.png", :class=>"footer-logo"), root_path)%>
-                <p>
-                Editor in Chief: Synne Mari Pedersen, editor[at]isfit.org. <br />
-                All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2013.
-                </p>
-                </footer><!-- End footer -->
-              </div>
-
-            </div>
+    </div><!-- End main -->
 
 
 
-            <!-- JavaScript at the bottom for fast page loading -->
 
-            <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-            <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+    <div class="row">
+      <footer class="span12"><!-- Start footer -->
+      <%=link_to(image_tag("isfitliten.png", :class=>"footer-logo"), root_path)%>
+      <p>
+      Editor in Chief: Synne Mari Pedersen, editor[at]isfit.org. <br />
+      All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2013.
+      </p>
+      </footer><!-- End footer -->
+    </div>
+  
+  </div><!-- End container -->
 
-              <!-- scripts concatenated and minified via build script -->
-              <script src="js/plugins.js"></script>
-              <script src="js/script.js"></script>
-              <!-- end scripts -->
 
-              <script type="text/javascript">
-                var _gaq = _gaq || [];
-                // _gaq.push(['_setAccount', 'UA-18016792-1']);
-                // _gaq.push(['_setDomainName', 'isfit.org']);
-                // _gaq.push(['_trackPageview']);
-                // _gaq.push(['_trackLoadTime']);
 
-                (function() {
-                 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-                 })();
-</script>
+  <!-- JavaScript at the bottom for fast page loading -->
 
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+  <!-- scripts concatenated and minified via build script -->
+  <script src="js/plugins.js"></script>
+  <script src="js/script.js"></script>
+  <!-- end scripts -->
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    // _gaq.push(['_setAccount', 'UA-18016792-1']);
+    // _gaq.push(['_setDomainName', 'isfit.org']);
+    // _gaq.push(['_trackPageview']);
+    // _gaq.push(['_trackLoadTime']);
+
+    (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+  </script>
+
+  <%= javascript_include_tag 'application'%>
+  <%= yield :script %>
 </body>
-<%= javascript_include_tag 'application'%>
-<%= yield :script %>
 </html>
