@@ -11,6 +11,25 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+html, body, div, aside, footer, header, span, h1, h2, h3, h4, h5, h6 {
+  box-sizing: border-box;
+}
+
+a {
+  color: rgb(216,52,21);
+  -webkit-transition: background .2s, color .2s;
+  -o-transition: background .2s, color .2s;
+  -moz-transition: background .2s, color .2s;
+  -ms-transition: background .2s, color .2s;
+  transition: background .2s, color .2s;
+
+}
+a:not(.brand):hover {
+  background: rgb(216,52,21);
+  color: white;
+  text-decoration: none;
+}
+
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
 
@@ -37,12 +56,6 @@ article header h1 {
   line-height: 1.2em;
 }
 
-.article-credits {
-  border-top: 1px solid #DDD;
-  border-bottom: 1px solid #DDD;
-  padding: 3px 10px;
-  margin-bottom: 1em;
-}
 
 .article-credits span {
   display: block;
@@ -57,8 +70,93 @@ article header h1 {
   text-align: justify;
 }
 
-article img {
+article header img {
+  max-width: 100%;
+  max-height: 25em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#article-header {
+  height: 30em;
+  padding: 0; margin: 0;
+  background: url('http://lorempixel.com/800/600/people') no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position:relative;
+  left: 0;
+  margin-bottom: 2em;
+  max-width: 100%;
+}
+
+.navbar-inner {
+  background: white;
+  border-top: 3px solid rgb(65,192,240);
+}
+
+a.brand,li.inactive a {
+  color: #000 !important;
+  text-shadow:none !important;
+}
+
+.nav .active > a, .navbar .nav .active > a:hover {
+  background-color: rgb(34,54,102) !important;
+}
+
+li.inactive a:hover {
+  color: white !important;
+}
+li.inactive:nth-child(odd) a:hover {
+   background: rgb(251, 188, 58) !important;
+}
+
+li.inactive:nth-child(even) a:hover {
+  background: rgb(4,129,185) !important;
+}
+
+.article-credits {
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  padding: 3px 10px;
+  margin-bottom: 1em;
+  height: 1.8em;
+  position:absolute;
+  bottom: -1.8em;
+  background: white;
+  z-index: 99;
+  width:100%;
+  box-sizing: border-box;
+}
+
+div.header-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  color: white;
+  background: rgba(0,0,0,.4);
+  text-shadow: 0 1px 0 #333;
+  box-sizing: border-box;
+  padding: 1em;
+
+  h1 {
+    font-size: 3.5em;
+    line-height: 1.1em;
+  }
+}
+
+/* temporary hack (hopefully) */
+@media (min-width: 979px) {
+  body {
+    padding-top: 44px;
+  }
+}
+
+.navbar-fixed-top {
+  margin-bottom: 0;
 }
 
 #sidebar img {

@@ -8,26 +8,16 @@
   <meta property="og:description" content="<%=@article.ingress%>"/>
 <%end%>
 
-<div id="article-wrapper">
-  <% if @article.body == "" && @article.ingress == ""
+
+<% if @article.body == "" && @article.ingress == ""
        in_language = false
     else
       in_language = true
   end%>
 
 
-  <article id="article">
-
-    <% unless in_language%>
-      <div class="alert">
-        <button class="close" data-dismiss="alert">×</button>
-        We are sorry, but the article is not available in your language.
-      </div>
-    <%end%>
-
-    
-    <header>
-      <img src="http://lorempixel.com/770/400/people">
+    <header class="span12 row" id="article-header">
+      
       <!-- Playing around...
         <% if @article.frontend_article_image? %>
           <%= image_tag @article.frontend_article_image.url(:front_large) %>
@@ -43,6 +33,8 @@
           <%end%>
         </caption>
 
+
+    <div class="header-text">
       <h1>
         <%if in_language%>
           <%= @article.title %>
@@ -50,19 +42,48 @@
           <%= I18n.locale.to_s == 'no' ? @article.title_en : @article.title_no%>
         <%end%>
       </h1>
-    </header>
 
 
-    <section class="article-ingress">
+      <section class="article-ingress">
         <%=raw format(I18n.locale.to_s == 'no' ? @article.ingress_no : @article.ingress_en) %>
-    </section>
-
+      </section>
+    </div>
 
     <section class="article-credits">
       <span>Text: <%=raw @article.byline%>
       <%if @article.image_credits != ""%>Photo: <%=raw @article.image_credits%><%end%>
       Date: <%=  @article.created_at.strftime("%F")%></span>
     </section>
+       
+    </header>
+
+    
+
+
+
+<div id="article-wrapper">
+  
+
+
+  <article id="article">
+
+    <% unless in_language%>
+      <div class="alert">
+        <button class="close" data-dismiss="alert">×</button>
+        We are sorry, but the article is not available in your language.
+      </div>
+    <%end%>
+
+    
+
+
+
+
+
+   
+
+
+
 
     <div class="row">
       <div class="span5">
@@ -71,11 +92,15 @@
         </section>
       </div>
       <!-- Just playing around... -->
+
+
       <div class="span3">
         <blockquote>
           <p>It is better to have loved and lost than never to have lost at all.</p>
           <small>Samuel Butler</small>
         </blockquote>
+
+        
         <div class="well">
           <h1>Faktaboks</h1>
           <ul>
