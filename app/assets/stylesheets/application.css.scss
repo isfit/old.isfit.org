@@ -15,6 +15,7 @@ html, body, div, aside, footer, header, span, h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
 }
 
+
 a {
   color: rgb(216,52,21);
   -webkit-transition: background .2s, color .2s;
@@ -23,6 +24,8 @@ a {
   -ms-transition: background .2s, color .2s;
   transition: background .2s, color .2s;
 }
+
+
 a:not(.brand):hover {
   background: rgb(216,52,21);
   color: white;
@@ -44,54 +47,14 @@ a:not(.brand):hover {
   margin-bottom: 20px;
 }
 
-.article-ingress p {
-  font-style: italic;
-  font-size: 1.4em;
-  line-height: 1.4em;
-}
 
-article header h1 {
-  font-size: 2.1em;
-  line-height: 1.2em;
-}
-
-
-.article-credits span {
-  display: block;
-  margin: auto;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.article-text p {
-  font-size: 1.15em;
-  line-height: 1.6em;
-  text-align: justify;
-}
-
-article header img {
-  max-width: 100%;
-  max-height: 25em;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-#article-header {
-  height: 42em;
-  padding: 0; margin: 0;
-  background: url('http://lorempixel.com/800/600/people') no-repeat center center; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  position:relative;
-  margin-bottom: 2em;
-  min-width: 100%;
-  position: absolute !important;
-  top: 40px;
-  left: 0;
-  z-index: -1;
+a {
+  color: rgb(216,52,21);
+  -webkit-transition: background .2s, color .2s;
+  -o-transition: background .2s, color .2s;
+  -moz-transition: background .2s, color .2s;
+  -ms-transition: background .2s, color .2s;
+  transition: background .2s, color .2s;
 }
 
 .navbar-inner {
@@ -156,5 +119,12 @@ div.header-text {
   font-size: 1.85em !important;
 }
 #article-wrapper {
-  margin-top: 43em;
 }
+
+footer.main-footer {
+  padding-top: 1em;
+  margin-top: 4em !important;
+  border-top: 1px dashed rgb(65,192,240);
+  text-align: center;
+}
+

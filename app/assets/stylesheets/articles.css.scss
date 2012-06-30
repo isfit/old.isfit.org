@@ -46,8 +46,7 @@ article header img {
 
 
 .article-credits {
-  border-top: 1px solid #DDD;
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px dashed rgb(65,192,240);
   padding: 3px 10px;
   margin-bottom: 1em;
   height: 1.8em;
@@ -59,4 +58,57 @@ article header img {
   box-sizing: border-box;
 }
 
+#article-wrapper figure img {
+  border-radius: 2px;
+}
 
+
+#article-wrapper figure {
+  box-sizing: border-box;
+  padding: .5em;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background: white;
+}
+#article-wrapper figure:hover {
+  border: 1px solid #ddd;
+  box-shadow: 0 0 3px #ccc;
+}
+#article-wrapper figure figcaption {
+  font-size: .8em;
+  font-style: italic;
+  font-color: #DDD;
+  margin-top: .5em;
+  text-align: center;
+}
+
+
+
+/* Experimental effect for no good reason*/
+.hover-zoom {
+  -webkit-transition-delay: 0s;
+  -webkit-transition: all .3s;
+}
+.hover-zoom:hover {
+  -webkit-transition-delay: .8s;
+  -webkit-transform: scale(1.1);
+}
+
+.share div.share-links {
+  opacity: 0;
+}
+
+.share:hover div.share-links {
+
+  opacity: 1;
+}
+.share {
+  -webkit-transition: all .3s;
+}
+.share:hover {
+  border: thin solid #DDD;
+  border-radius: 4px;
+  -webkit-transform: scale(1.3);
+  z-index: 99;
+  background: white;
+}
