@@ -79,7 +79,7 @@ article header img {
 }
 
 #article-header {
-  height: 30em;
+  height: 42em;
   padding: 0; margin: 0;
   background: url('http://lorempixel.com/800/600/people') no-repeat center center; 
   -webkit-background-size: cover;
@@ -87,9 +87,12 @@ article header img {
   -o-background-size: cover;
   background-size: cover;
   position:relative;
-  left: 0;
   margin-bottom: 2em;
-  max-width: 100%;
+  min-width: 100%;
+  position: absolute !important;
+  top: 40px;
+  left: 0;
+  z-index: -1;
 }
 
 .navbar-inner {
@@ -166,4 +169,7 @@ div.header-text {
 .brand {
   font-family: "apertura", "Helvetica Neue", Arial, sans-serif;
   font-size: 1.85em !important;
+}
+#article-wrapper {
+  margin-top: 43em;
 }
