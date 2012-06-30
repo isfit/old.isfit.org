@@ -65,12 +65,15 @@ html5boilerplate
   </div><!-- End tabs -->
 
   <div class="container">
+    <!-- TODO sett inn notice og warnings her. Se på internal -->
+    <div id="main-header">
+        <%= yield :header %>
+    </div>
     
     <div role="main" class="row"> <!-- Start main -->
-      <div id="content" class="span12"><!-- Start midtramme (span8) -->
-        <!-- TODO sett inn notice og warnings her. Se på internal -->
+      <div id="content" class="span8"><!-- Start header (span12) -->
         <%= yield %>
-      </div><!-- Slutt midtramme -->
+      </div><!-- Slutt header -->
 
       <aside id="sidebar" class="span4"><!-- Start hoyreramme -->
 

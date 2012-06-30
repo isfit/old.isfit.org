@@ -7,18 +7,16 @@
   <meta property="fb:app_id" content="111446192243028"/>
   <meta property="og:description" content="<%=@page.ingress%>"/>
 <%end%>
-<div id="article">
-<p>
+<div id="page">
+<header>
   <h1>
   <%= @page.title %>
   </h1>
-</p>
+</header>
 
-<p>
-<b>
+<div id="page-ingress">
   <%=raw format( @page.ingress )%>
-  </b>
-</p>
+</div>
 
 <p>
   <%=raw format ( @page.body ) %>
