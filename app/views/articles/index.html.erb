@@ -1,14 +1,34 @@
+<%= content_for :header do %>
+  <div class="hero-unit">
+      <div class="action-text">
+        <h1>Be the change you want to see in the world</h1>
+        <p>We need your help to create a better future for young people in the world.
+        The purpose of ISFiT is to grow and share innovative ideas for how we can
+        change and improve the future. We do this through uniting young minds from
+        all over the world in Trondheim, Norway next February. Apply now and become
+        a part of it all.</p>
+        <p>
+        <%= link_to "Apply now", new_participant_path(params[:tab]), class: "btn btn-primary btn-large" %>
+        <%= link_to "Learn more", page_path(params[:tab], 7), class: "btn btn-large" %>
+        </p>
+      </div>
+      <div class="media">
+        <iframe src="http://player.vimeo.com/video/23164000?color=b5a495" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+      </div>
+  </div>
+<% end %>
+
 <div id="news-carousel" class="carousel">
   <!-- Carousel items -->
   <div class="carousel-inner">
     <% @articles.each do |article| %>
       <div class="item <%= article == @articles.first ? "active":"" %>">
         <a href="<%= article_path(params[:tab],article) %>">
-        <img src="http://lorempixel.com/770/400/abstract/" alt="<%= article.title %>">
-        <div class="carousel-caption">
-          <h1><%= article.title %></h1>
-          <p><%= article.sub_title %></p>
-        </div>
+          <img src="http://lorempixel.com/770/400/abstract/" alt="<%= article.title %>">
+          <div class="carousel-caption">
+            <h1><%= article.title %></h1>
+            <p><%= article.sub_title %></p>
+          </div>
         </a>
       </div>
     <% end %>
