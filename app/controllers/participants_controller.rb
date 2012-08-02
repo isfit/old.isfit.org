@@ -8,6 +8,7 @@ class ParticipantsController < ApplicationController
   def new
     @participant = Participant.new
     @countries = Country.find(:all, :order=>"name")
+    @workshops = Workshop.all
   end
 
 
