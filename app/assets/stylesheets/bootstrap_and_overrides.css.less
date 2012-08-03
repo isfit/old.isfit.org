@@ -1,7 +1,7 @@
 @import "twitter/bootstrap/bootstrap";
 body { padding-top: 60px; }
 
-@import "twitter/bootstrap/responsive";
+//@import "twitter/bootstrap/responsive";
 
 // Set the correct sprite paths
 @iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
@@ -32,22 +32,35 @@ body { padding-top: 60px; }
 
 // Override hero unit
 .hero-unit {
+  padding: 30px;
   overflow: auto;
   padding-top: 35px;
+  background-color: rgba(255,255,255,0.8);
   .action-text {
-  width: 400px;
+  width: 300px;
   padding-right: 15px;
   float:left;
     h1 {
-      font-size: 36px;
+      font-size: 2em;
     }
     p {
-    margin: 0.8em 0;
+      margin: 0.8em 0;
+      font-size: 14px;
     }
   }
   .media {
     float: left;
-    width: 650px;
-    height: 365px;
+    width: 580px;
+    height: 325px;
+  }
+}
+
+.well {
+  background-color: rgba(255,255,255,0.8);
+}
+
+footer {
+  p {
+    color: @white;
   }
 }
