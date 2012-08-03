@@ -1,166 +1,170 @@
 <% content_for :script do%>
-<script>
-  function setMaxLength() {
-    var x = document.getElementsByTagName('textarea');
-    var counter = document.createElement('div');
-    counter.className = 'counter';
-    for (var i=0;i<x.length;i++) {
-      if (x[i].getAttribute('maxlength')) {
-        var counterClone = counter.cloneNode(true);
-        counterClone.relatedElement = x[i];
-        counterClone.innerHTML = '<span>0</span>/'+x[i].getAttribute('maxlength');
-        x[i].parentNode.insertBefore(counterClone,x[i].nextSibling);
-        x[i].relatedElement = counterClone.getElementsByTagName('span')[0];
+  <script>
+    function setMaxLength() {
+      var x = document.getElementsByTagName('textarea');
+      var counter = document.createElement('div');
+      counter.className = 'counter';
+      for (var i=0;i<x.length;i++) {
+        if (x[i].getAttribute('maxlength')) {
+          var counterClone = counter.cloneNode(true);
+          counterClone.relatedElement = x[i];
+          counterClone.innerHTML = '<span>0</span>/'+x[i].getAttribute('maxlength');
+          x[i].parentNode.insertBefore(counterClone,x[i].nextSibling);
+          x[i].relatedElement = counterClone.getElementsByTagName('span')[0];
 
-        x[i].onkeyup = x[i].onchange = checkMaxLength;
-        x[i].onkeyup();
+          x[i].onkeyup = x[i].onchange = checkMaxLength;
+          x[i].onkeyup();
+        }
       }
     }
-  }
 
-  function checkMaxLength() {
-    var maxLength = this.getAttribute('maxlength');
-    var currentLength = this.value.length;
-    if (currentLength > maxLength)
-    this.relatedElement.className = 'toomuch';
-    else
-    this.relatedElement.className = '';
-    this.relatedElement.firstChild.nodeValue = currentLength;
-    // not innerHTML
-  }
+    function checkMaxLength() {
+      var maxLength = this.getAttribute('maxlength');
+      var currentLength = this.value.length;
+      if (currentLength > maxLength)
+      this.relatedElement.className = 'toomuch';
+      else
+      this.relatedElement.className = '';
+      this.relatedElement.firstChild.nodeValue = currentLength;
+      // not innerHTML
+    }
 
-  function popup(url){
-    var mywin;
-    mywin = window.open(url, '1', 'width=400,height=400,left=0,top=10,scrollbars=yes,resizable=yes');
-    mywin.focus();
-  }
-</script>
+    function popup(url){
+      var mywin;
+      mywin = window.open(url, '1', 'width=400,height=400,left=0,top=10,scrollbars=yes,resizable=yes');
+      mywin.focus();
+    }
+  </script>
 <%end%>
 
+<div class="well">
 
-<span class="pull-right"><%=link_to "Apply for ISFiT 2011 dialoguegroups here!", new_dialogue_participant_path(:tab => params[:tab])%></span>
-<%if false%>
-  The deadline for the applications has passed. <br />
-  Contact question@isfit.org for questions.
-<%else%>
-<% if @participant.errors.any? %>
-  <div id="error_explanation">
-    <h4><%= pluralize(@participant.errors.count, "error") %> prohibited the application from being sent:</h4>
+  <span class="pull-right"><%=link_to "Apply for ISFiT 2011 dialoguegroups here!", new_dialogue_participant_path(:tab => params[:tab])%></span>
+  <%if false%>
+    The deadline for the applications has passed. <br />
+    Contact question@isfit.org for questions.
+  <%else%>
+    <% if @participant.errors.any? %>
+      <div id="error_explanation">
+        <h4><%= pluralize(@participant.errors.count, "error") %> prohibited the application from being sent:</h4>
 
-    <ul>
-      <% @participant.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+        <ul>
+          <% @participant.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
 
 
-<h2>Application and travel support form</h2>
-<p>
-If you are interested in participating in ISFiT 2013, you must fill in the 
-following form by the 30th of September 2012. Please note that you have to 
-be at least 18 years old and a student at the time of participation. Make 
-sure that all your personal information is correct, and that you write your 
-name as written in your passport.
-</p>
-<p>
-Applications will be read after the 30th of September, and those who are 
-selected to participate will receive an invitation by e-mail. Instructions 
-on how to obtain a visa and other formalities, will be given to the invited 
-students. Due to limited capacity we cannot invite all applicants.
-</p>
-<p>
-Deadline for submitting the application is the <b>30th of September 2012</b>.
-</p>
-
-<%= simple_form_for @participant, html: {class: "form-horizontal"} do |f| %>
-  <fieldset>
-    <legend><%= t('participant.personal_information') %></legend>
-    <%= f.input :first_name, input_html: {class: "span4"}, hint: t("participant.must_match_passport") %>
-    <%= f.input :last_name, input_html: {class: "span4"}, hint: t("participant.must_match_passport") %>
-    <%= f.input :email, input_html: {class: "span4"} %>
-    <%= f.input :email_confirmation, input_html: {class: "span4"} %>
-    <%= f.input :address1, input_html: {class: "span4"}, hint: t("participant.address_hint") %>
-    <%= f.input :zipcode, input_html: {class: "span4"} %>
-    <%= f.input :city, input_html: {class: "span4"} %>
-    <%= f.input "country_id",  collection: @countries.collect {|p| [ p.name, p.id ] }, prompt: "Select country"%>
-    <%= f.input :phone, input_html: {class: "span4"}, hint: t("participant.country_code") %>
-    <%= f.input :birthdate, :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1910, :end_year => 1993, input_html: {class: "span1"} %>
-    <%= f.collection_radio_buttons :sex, [["f", 'Female'] ,["m", 'male']], :first, :last %>
-    <%= f.input :university, input_html: {class: "span4"} %>
-    <%= f.input :field_of_study, input_html: {class: "span4"} %>
-  </fieldset>
-  <fieldset>
-    <legend>Workshops</legend>
+    <h2>Application and travel support form</h2>
     <p>
-    Pick three workshops in prioritized order that you wish to attend. Click in the links to read about the workshops.<br /><br />
+    If you are interested in participating in ISFiT 2013, you must fill in the 
+    following form by the 30th of September 2012. Please note that you have to 
+    be at least 18 years old and a student at the time of participation. Make 
+    sure that all your personal information is correct, and that you write your 
+    name as written in your passport.
     </p>
-    <%= f.input "workshop1",  collection: @workshops.collect {|p| [ "WS#{p.id} - #{p.name}", p.id ] }, prompt: "Select first priority"%>
-    <%= f.input "workshop2",  collection: @workshops.collect {|p| [ "WS#{p.id} - #{p.name}", p.id ] }, prompt: "Select second priority"%>
-    <%= f.input "workshop3",  collection: @workshops.collect {|p| [ "WS#{p.id} - #{p.name}", p.id ] }, prompt: "Select third priority"%>
-    <ul>
-      <% @workshops.each do |workshop| %>
-        <li><a href="javascript:popup('http://www.isfit.org/participant/workshops#ws<%= workshop.id %>');">WS<%= workshop.id < 10 ? "0#{workshop.id}" : "#{workshop.id}" %> <%= " - #{workshop.name}" %></a></li>
-      <%end%>
-    </ul>
-  </fieldset>
-  <fieldset>
-    <legend>Essay 1 - background</legend>
-    <p>Write an essay (max 250 words) about yourself, your
-    experiences and interests. Tell us about your studies and your
-    motivation for participating in ISFiT 2013. How will you use your
-    experience from ISFiT 2013? Have you participated in similar
-    festivals before? Are you a member of a student organization? If
-    yes, please specify.</p>
+    <p>
+    Applications will be read after the 30th of September, and those who are 
+    selected to participate will receive an invitation by e-mail. Instructions 
+    on how to obtain a visa and other formalities, will be given to the invited 
+    students. Due to limited capacity we cannot invite all applicants.
+    </p>
+    <p>
+    Deadline for submitting the application is the <b>30th of September 2012</b>.
+    </p>
 
-    <%= f.input :essay1, input_html: {:class => "span6", :maxlength => "1750"} %>
-    <legend>Essay 2 - Workshops</legend>
-    <p>Write an essay (max 300 words) about your thoughts and 
-    attitudes towards your three favorite workshops. What 
-    would you like to focus on within the topics presented? 
-    How do you think you could benefit from ISFiT 2013? How 
-    do you want to use your experiences from ISFiT 2013 in 
-    you community?
-    </p>
-    <%= f.input :essay2, input_html: {:class => "span6", :maxlength => "2200"} %>
-  </fieldset>
-  <fieldset>
-    <legend>Apply for travel support</legend>
-    <p>ISFiT 2013 aims to have skilled participants with diverse backgrounds regarding geography, 
-    culture, class and gender. To achieve this goal, ISFiT 2013 will be able to offer some 
-    participants financial support. To apply for financial support, fill inn the fields below.
-    </p>
-    <p>Please note that ISFiT 2013 only has a limited sum to offer, so 
-    we encourage you to search for alternative ways of financing your travel. Please notice 
-    that travel funds are only meant to cover travel costs to and from Trondheim and your home 
-    city. We do not have the possibility to fund visa costs. There are a variety of scholarships 
-    and legacies you could apply for, or your university may be able to support you. Search, 
-    and you might be surprised of your possibilities.
-    </p>
-    <p>Travel support is only awarded to students who are invited and who attend the festival.</p>
-    <%= f.check_box "travel_apply", {} %>
-    <em>Yes, I want to apply for travel support</em>
-    
-    <legend>Travel support essay</legend>
-    <p>Please write a brief essay about why you should be granted travel support (200 words). 
-    If you are able to obtain travel support from other sources, please include this in your essay.</p>
-    <%= f.input :travel_essay, input_html: {:class => "span6", :maxlength => "1400"} %>
-    <%= f.input :travel_amount, input_html: { class: "span4" }, hint: "In US dollars between 0 and 400 dollars." %>
-    <p>If you do not receive travel support form ISFiT, can you obtain financial support form other sources?</p>
-    <p>
-    <%= f.check_box "travel_nosupport_other" %> I can obtain travel support from other sources.<br>
-    <%= f.check_box "travel_nosupport_cancome" %> I can still come, even if I don't recieve travel support.
-    </p>
-  </fieldset>
-  <fieldset>
-    <legend>Security code</legend>
-    <p>
-    Please fill in the two words shown in the box below. If you have problems 
-    reading the words, press the uppermost button to get a new security security code.
-    </p>
-    <center> <%= raw recaptcha_tags %><br><br>
-    <%= f.button 'submit',:value => "Submit application", class: "btn btn-large btn-primary" %></center>
-<% end %>
-            <%end%>
+    <%= simple_form_for @participant, html: {class: "form"} do |f| %>
+      <fieldset>
+        <legend><%= t('participant.personal_information') %></legend>
+        <%= f.input :first_name, input_html: {class: "span4"}, hint: t("participant.must_match_passport") %>
+        <%= f.input :last_name, input_html: {class: "span4"}, hint: t("participant.must_match_passport") %>
+        <%= f.input :email, input_html: {class: "span4"} %>
+        <%= f.input :email_confirmation, input_html: {class: "span4"} %>
+        <%= f.input :address1, input_html: {class: "span4"}, hint: t("participant.address_hint") %>
+        <%= f.input :zipcode, input_html: {class: "span4"} %>
+        <%= f.input :city, input_html: {class: "span4"} %>
+        <%= f.input "country_id",  collection: @countries.collect {|p| [ p.name, p.id ] }, prompt: "Select country"%>
+        <%= f.input :phone, input_html: {class: "span4"}, hint: t("participant.country_code") %>
+        <%= f.input :birthdate, :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1910, :end_year => 1993, input_html: {class: "span1"} %>
+        <%= f.collection_radio_buttons :sex, [["f", 'Female'] ,["m", 'male']], :first, :last %>
+        <%= f.input :university, input_html: {class: "span4"} %>
+        <%= f.input :field_of_study, input_html: {class: "span4"} %>
+      </fieldset>
+      <fieldset>
+        <legend>Workshops</legend>
+        <p>
+        Pick three workshops in prioritized order that you wish to attend. Click in the links to read about the workshops.<br /><br />
+        </p>
+        <%= f.input "workshop1",  collection: @workshops.collect {|p| [ "WS#{p.id} - #{p.name}", p.id ] }, prompt: "Select first priority"%>
+        <%= f.input "workshop2",  collection: @workshops.collect {|p| [ "WS#{p.id} - #{p.name}", p.id ] }, prompt: "Select second priority"%>
+        <%= f.input "workshop3",  collection: @workshops.collect {|p| [ "WS#{p.id} - #{p.name}", p.id ] }, prompt: "Select third priority"%>
+        <ul>
+          <% @workshops.each do |workshop| %>
+            <li><a href="javascript:popup('http://www.isfit.org/participant/workshops#ws<%= workshop.id %>');">WS<%= workshop.id < 10 ? "0#{workshop.id}" : "#{workshop.id}" %> <%= " - #{workshop.name}" %></a></li>
+          <%end%>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>Essay 1 - background</legend>
+        <p>Write an essay (max 250 words) about yourself, your
+        experiences and interests. Tell us about your studies and your
+        motivation for participating in ISFiT 2013. How will you use your
+        experience from ISFiT 2013? Have you participated in similar
+        festivals before? Are you a member of a student organization? If
+        yes, please specify.</p>
+
+        <%= f.input :essay1, input_html: {:class => "span7", :maxlength => "1750"} %>
+        <legend>Essay 2 - Workshops</legend>
+        <p>Write an essay (max 300 words) about your thoughts and 
+        attitudes towards your three favorite workshops. What 
+        would you like to focus on within the topics presented? 
+        How do you think you could benefit from ISFiT 2013? How 
+        do you want to use your experiences from ISFiT 2013 in 
+        you community?
+        </p>
+        <%= f.input :essay2, input_html: {:class => "span7", :maxlength => "2200"} %>
+      </fieldset>
+      <fieldset>
+        <legend>Apply for travel support</legend>
+        <p>ISFiT 2013 aims to have skilled participants with diverse backgrounds regarding geography, 
+        culture, class and gender. To achieve this goal, ISFiT 2013 will be able to offer some 
+        participants financial support. To apply for financial support, fill inn the fields below.
+        </p>
+        <p>Please note that ISFiT 2013 only has a limited sum to offer, so 
+        we encourage you to search for alternative ways of financing your travel. Please notice 
+        that travel funds are only meant to cover travel costs to and from Trondheim and your home 
+        city. We do not have the possibility to fund visa costs. There are a variety of scholarships 
+        and legacies you could apply for, or your university may be able to support you. Search, 
+        and you might be surprised of your possibilities.
+        </p>
+        <p>Travel support is only awarded to students who are invited and who attend the festival.</p>
+        <%= f.check_box "travel_apply", {} %>
+        <em>Yes, I want to apply for travel support</em>
+
+        <legend>Travel support essay</legend>
+        <p>Please write a brief essay about why you should be granted travel support (200 words). 
+        If you are able to obtain travel support from other sources, please include this in your essay.</p>
+        <%= f.input :travel_essay, input_html: {:class => "span7", :maxlength => "1400"} %>
+        <%= f.input :travel_amount, input_html: { class: "span4" }, hint: "In US dollars between 0 and 400 dollars." %>
+        <p>If you do not receive travel support form ISFiT, can you obtain financial support form other sources?</p>
+        <p>
+        <%= f.check_box "travel_nosupport_other" %> I can obtain travel support from other sources.<br>
+        <%= f.check_box "travel_nosupport_cancome" %> I can still come, even if I don't recieve travel support.
+        </p>
+      </fieldset>
+      <fieldset>
+        <legend>Security code</legend>
+        <p>
+        Please fill in the two words shown in the box below. If you have problems 
+        reading the words, press the uppermost button to get a new security security code.
+        </p>
+        <center> <%= raw recaptcha_tags %><br><br>
+          <%= f.button 'submit',:value => "Submit application", class: "btn btn-large btn-primary" %></center>
+      </fieldset>
+    <% end %>
+  <%end%>
+
+</div>

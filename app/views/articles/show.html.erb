@@ -77,11 +77,32 @@ end%>
         </div>
       <%end%>
 
-      <div class="row">
        
 
-        <div class="span3">
-          <blockquote class="share">
+
+         <div>
+          <section class="well article-text">
+          <%= raw format( I18n.locale.to_s =='no' ? @article.body_no : @article.body_en) %>
+          </section>
+        </div>
+        <!-- Just playing around... -->
+
+
+
+
+
+
+      </article>
+
+
+      <%if @article.got_comments%>
+        <div class="fb-comments" data-href="<%= article_url(params[:tab], @article) %>" data-num-posts="2" data-width="550"></div>
+      <%end%>
+
+    </div>
+        <%= content_for :sidebar do %>
+        <div>
+          <blockquote class="well share">
             <p>It is better to have loved and lost than never to have lost at all.</p>
             <small>Samuel Butler</small>
             <div class="share-links">
@@ -100,30 +121,5 @@ end%>
               <li>Dette er sample fakta</li>
             </ul>
           </div>
-
-       </div>
-
-
-         <div class="span5">
-          <section class="article-text">
-          <%= raw format( I18n.locale.to_s =='no' ? @article.body_no : @article.body_en) %>
-          </section>
         </div>
-        <!-- Just playing around... -->
-
-
-
-
-
-      </div>
-
-      </article>
-
-
-      <%if @article.got_comments%>
-        <div class="fb-comments" data-href="<%= article_url(params[:tab], @article) %>" data-num-posts="2" data-width="550"></div>
-      <%end%>
-
-    </div>
-
-
+      <% end %>
