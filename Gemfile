@@ -31,6 +31,9 @@ gem 'therubyracer'
 # Deploy with Capistrano
 gem 'capistrano'
 
+# Profile with MiniProfiler
+gem 'rack-mini-profiler'
+
 # To use debugger
 # gem 'ruby-debug'
 
