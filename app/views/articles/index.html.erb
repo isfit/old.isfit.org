@@ -23,7 +23,7 @@
     <% @articles.each do |article| %>
       <div class="item <%= article == @articles.first ? "active":"" %>">
         <a href="<%= article_path(params[:tab],article) %>">
-          <img src="http://lorempixel.com/770/440/abstract/" alt="<%= article.title %>">
+          <%= image_tag article.frontend_article_image.url(:frontpage_large) %>
           <div class="carousel-caption">
             <h1><%= article.title %></h1>
             <p><%= article.sub_title %></p>

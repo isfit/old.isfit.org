@@ -1,3 +1,13 @@
+#news-carousel {
+  img {
+    height: 362px;
+    width: 620px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+  }
+}
+
 .article-ingress p {
   font-style: italic;
   font-size: 1.2em;
@@ -15,6 +25,7 @@ article header h1 {
   margin: auto;
   text-align: center;
   text-transform: uppercase;
+  font-size: 0.8em;
 }
 
 .article-text p {
@@ -33,7 +44,7 @@ article header img {
 #article-header {
   height: 30em;
   padding: 0; margin: 0;
-  background: url('http://lorempixel.com/800/600/people') no-repeat center center; 
+  //background: url('http://lorempixel.com/800/600/people') no-repeat center center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -42,21 +53,13 @@ article header img {
   left: 0;
   margin-bottom: 2em;
   max-width: 100%;
+  img {
+    width: 940px;
+    height: 480px;
+  }
 }
 
 
-.article-credits {
-  border-bottom: 1px dashed rgb(65,192,240);
-  padding: 3px 10px;
-  margin-bottom: 1em;
-  height: 1.8em;
-  position:absolute;
-  bottom: -1.8em;
-  background: white;
-  z-index: 99;
-  width:100%;
-  box-sizing: border-box;
-}
 
 #article-wrapper figure img {
   border-radius: 2px;

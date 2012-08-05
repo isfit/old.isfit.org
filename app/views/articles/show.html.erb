@@ -18,13 +18,11 @@ end%>
 <%= content_for :header do %>
 
   <header id="article-header">
-  <!-- Playing around...
   <% if @article.frontend_article_image? %>
-    <%= image_tag @article.frontend_article_image.url(:front_large) %>
+    <%= image_tag @article.frontend_article_image.url(:article_large) %>
   <% else %>
     <%=image_tag "article_images/"+@article.id.to_s + "_3.jpg"%><br>
   <% end %>
-  -->
   <caption>
     <% if I18n.locale.to_s == 'no' %>
       <%=@article.image_text_no%>
@@ -41,13 +39,11 @@ end%>
         <%= I18n.locale.to_s == 'no' ? @article.title_en : @article.title_no%>
       <%end%>
     </h1>
-
     <section class="article-ingress">
     <%=raw format(I18n.locale.to_s == 'no' ? @article.ingress_no : @article.ingress_en) %>
     </section>
-  </div>
 
-
+      
   <section class="article-credits">
     <span>Text: <%=raw @article.byline%>
     <%if @article.image_credits != ""%>
@@ -57,6 +53,12 @@ end%>
   </section>
 
 
+
+  </div>
+
+
+
+
 <% end %>
     </header>
 
@@ -64,7 +66,7 @@ end%>
 
 
 
-    <div id="article-wrapper">
+    <div id="article-wrapper" class="well">
 
 
 
@@ -81,7 +83,7 @@ end%>
 
 
          <div>
-          <section class="well article-text">
+          <section class="article-text">
           <%= raw format( I18n.locale.to_s =='no' ? @article.body_no : @article.body_en) %>
           </section>
         </div>
