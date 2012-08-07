@@ -57,7 +57,7 @@ Tabulous.setup do |config|
       #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
       #    TAB NAME                      |    DISPLAY TEXT               |    PATH                                                               |    VISIBLE?    |    ENABLED?    #
       #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
-      [    :articles_tab                 ,    'News'                 ,    root_path                                                          ,    true        ,    true        ],
+      [    :articles_tab                 ,    'News'                 ,    root_path                                                          ,    false        ,    false        ],
       [    :isfit_media_links_tab        ,    'Isfit Media Links'        ,    isfit_media_links_path                                             ,    false        ,    false        ],
       [    :project_supports_tab         ,    'Project Supports'         ,    project_supports_path                                              ,    false        ,    false        ],
       [    :hosts_tab                    ,    'Hosts'                    ,    hosts_path                                                         ,    false        ,    false        ],
@@ -65,17 +65,48 @@ Tabulous.setup do |config|
       [    :pages_tab                    ,    'Pages'                    ,    pages_path                                                         ,    false        ,    false        ],
       [    :press_accreditations_tab     ,    'Press Accreditations'     ,    press_accreditations_path                                          ,    false        ,    false        ],
       [    :isfit_media_links_tab        ,    'Isfit Media Links'        ,    url_for(:controller => 'isfit_media_links', :action => 'index')    ,    false        ,    false        ],
-      [    :press_releases_tab           ,    'Press Releases'           ,    press_releases_path                                                ,    true        ,    true        ],
-      [    :workshops_tab                ,    'Workshops'                ,    workshops_path                                                     ,    true        ,    true        ],
+      [    :press_releases_tab           ,    'Press Releases'           ,    press_releases_path                                                ,    false        ,    false        ],
+      [    :workshops_tab                ,    'Workshops'                ,    workshops_path                                                     ,    false        ,    false        ],
       [    :participants_tab             ,    'Participants'             ,    participants_path                                                  ,    false        ,    false        ],
       [    :dialogue_participants_tab    ,    'Dialogue Participants'    ,    dialogue_participants_path                                         ,    false        ,    false        ],
       [    :chronicles_tab               ,    'Chronicles'               ,    chronicles_path                                                    ,    false        ,    false       ],
-      [    :photos_tab                   ,    'Photos'                   ,    photos_path                                                        ,    false        ,    false        ],
+
+      [    :articles_tab                 ,    'News'                 ,    root_path                                                          ,    true        ,    true        ],
+      [    :articles_archive_subtab                 ,    'Archive'                 ,    root_path                                                          ,    true        ,    true        ],
+      [    :articles_galleries_subtab                 ,    'Galleries'                 ,    root_path                                                          ,    true        ,    true        ],
+
+      [    :theme_tab                   ,    'Theme 2013'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :theme_globaltrade_subtab                   ,    'Global Trade'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :theme_workshops_subtab                   ,    'Workshops'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :theme_tradeyourideas_subtab                   ,    'Trade Your Ideas'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :theme_themeblog_subtab                   ,    'Theme Blog'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :theme_previousthemes_subtab                   ,    'Previous Themes'                   ,    photos_path                                                        ,    true        ,    true        ],
+
+      [    :about_tab                   ,    'About'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :about_whatisisfit_subtab                   ,    'About'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :about_dialoguegroups_subtab                   ,    'Dialogue Groups'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :about_conflictareas_subtab                   ,    'Conflict Areas'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :about_studentpeaceprice_subtab                   ,    'Student Peace Price'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :about_walkofpeace_subtab                   ,    'Walk of Peace'                   ,    photos_path                                                        ,    true        ,    true        ],
+      
+      [    :info_tab                   ,    'Info'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :info_participant_subtab                   ,    'Participant'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :info_volunteer_subtab                   ,    'Volunteer'                   ,    positions_path                                                        ,    true        ,    true        ],
+      [    :info_press_subtab                   ,    'Press'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :info_donate_subtab                   ,    'Donate'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :info_contact_subtab                   ,    'Contact'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :info_faq_subtab                   ,    'FAQ'                   ,    photos_path                                                        ,    true        ,    true        ],
+
+      [    :events_tab                   ,    'Events'                   ,    photos_path                                                        ,    false        ,    false        ],
+      [    :events_program_subtab                   ,    'Events'                   ,    photos_path                                                        ,    false        ,    false        ],
       #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
       #    TAB NAME                      |    DISPLAY TEXT               |    PATH                                                               |    VISIBLE?    |    ENABLED?    #
       #----------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
     ]
   end
+
+
+
 
   #-------------
   #   ACTIONS
@@ -110,6 +141,7 @@ Tabulous.setup do |config|
       [    :dialogue_participants    ,    :all_actions    ,    :dialogue_participants_tab    ],
       [    :chronicles               ,    :all_actions    ,    :chronicles_tab               ],
       [    :photos                   ,    :all_actions    ,    :photos_tab                   ],
+      [    :positions                   ,    :all_actions    ,    :info_volunteer_subtab                  ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
       #--------------------------------------------------------------------------------------#
@@ -140,7 +172,7 @@ Tabulous.setup do |config|
 
   # By default, div elements are used in the tab markup.  When html5 is
   # true, nav elements are used instead.
-  config.html5 = false
+  config.html5 = true
 
   # This gives you control over what class the <ul> element that wraps the tabs
   # will have.  Good for interfacing with third-party code like Twitter
