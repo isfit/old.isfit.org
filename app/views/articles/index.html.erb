@@ -53,17 +53,24 @@
 </div>
 <div class="row">
   <div class="span4">
-    <div class="well facebook">
+    <div class="well social facebook">
       <div class="fb-like-box" data-href="http://www.facebook.com/pages/ISFiT/11541693212" data-width="300" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
     </div>
   </div>
   <div class="span4">
-    <div class="well">
+    <div class="well social">
       <a href="https://twitter.com/ISFiT" class="twitter-follow-button pull-right" data-show-count="false" data-size="large">Follow @ISFiT</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     </div>
   </div>
   <div class="span4">
-
+    <div class="well social">
+      <h1><%= t("articles.latest_articles") %></h1>
+      <ul>
+        <% @latest.each do |article| %>
+          <li><%= link_to article.title, article_path(params[:tab], article) %></li>
+        <%end%>
+      </ul>
+    </div>
   </div>
 </div>
