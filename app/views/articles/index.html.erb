@@ -1,38 +1,66 @@
 <%= content_for :header do %>
   <div class="hero-unit">
-      <div class="action-text">
-        <h1>Be the change you want to see in the world</h1>
-        <p>The purpose of ISFiT is to grow and share innovative ideas for how we can
-        change and improve the future. We do this through uniting young minds from
-        all over the world in Trondheim, Norway next February. Apply now and become
-        a part of it all.</p>
-        <p>
-        <%= link_to "Apply now", new_participant_path(params[:tab]), class: "btn btn-primary btn-large" %>
-        <%= link_to "Learn more", page_path(params[:tab], 7), class: "btn btn-large" %>
-        </p>
-      </div>
-      <div class="media">
-        <iframe src="http://player.vimeo.com/video/23164000?color=b5a495" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-      </div>
+    <div class="action-text">
+      <h1>Be the change you want to see in the world</h1>
+      <p>The purpose of ISFiT is to grow and share innovative ideas for how we can
+      change and improve the future. We do this through uniting young minds from
+      all over the world in Trondheim, Norway next February. Apply now and become
+      a part of it all.</p>
+      <p>
+      <%= link_to "Apply now", new_participant_path(params[:tab]), class: "btn btn-primary btn-large" %>
+      <%= link_to "Learn more", page_path(params[:tab], 7), class: "btn btn-large" %>
+      </p>
+    </div>
+    <div class="media">
+      <iframe src="http://player.vimeo.com/video/23164000?color=b5a495" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    </div>
   </div>
 <% end %>
-
-<div id="news-carousel" class="carousel">
-  <!-- Carousel items -->
-  <div class="carousel-inner">
-    <% @articles.each do |article| %>
-      <div class="item <%= article == @articles.first ? "active":"" %>">
-        <a href="<%= article_path(params[:tab],article) %>">
-          <%= image_tag article.frontend_article_image.url(:frontpage_large) %>
-          <div class="carousel-caption">
-            <h1><%= article.title %></h1>
-            <p><%= article.sub_title %></p>
+<div class="row">
+  <div class="span8">
+    <div id="news-carousel" class="carousel">
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <% @articles.each do |article| %>
+          <div class="item <%= article == @articles.first ? "active":"" %>">
+            <a href="<%= article_path(params[:tab],article) %>">
+              <%= image_tag article.frontend_article_image.url(:frontpage_large) %>
+              <div class="carousel-caption">
+                <h1><%= article.title %></h1>
+                <p><%= article.sub_title %></p>
+              </div>
+            </a>
           </div>
-        </a>
+        <% end %>
       </div>
-    <% end %>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#news-carousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#news-carousel" data-slide="next">&rsaquo;</a>
+    </div>
   </div>
-  <!-- Carousel nav -->
-  <a class="carousel-control left" href="#news-carousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#news-carousel" data-slide="next">&rsaquo;</a>
+  <div class="span4">
+      <aside id="sidebar" class="span4"><!-- Start hoyreramme -->
+        <div class="promotional">
+          <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
+        </div>
+        
+        <div class="promotional">
+          <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
+        </div>
+
+      </aside><!-- Slutt hoyreramme -->
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="well facebook">
+      <div class="fb-like-box" data-href="http://www.facebook.com/pages/ISFiT/11541693212" data-width="300" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
+    </div>
+  </div>
+  <div class="span4">
+
+  </div>
+  <div class="span4">
+
+  </div>
 </div>
