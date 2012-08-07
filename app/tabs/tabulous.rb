@@ -91,7 +91,7 @@ Tabulous.setup do |config|
       
       [    :info_tab                   ,    'Info'                   ,    photos_path                                                        ,    true        ,    true        ],
       [    :info_participant_subtab                   ,    'Participant'                   ,    photos_path                                                        ,    true        ,    true        ],
-      [    :info_volunteer_subtab                   ,    'Volunteer'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :info_volunteer_subtab                   ,    'Volunteer'                   ,    positions_path                                                        ,    true        ,    true        ],
       [    :info_press_subtab                   ,    'Press'                   ,    photos_path                                                        ,    true        ,    true        ],
       [    :info_donate_subtab                   ,    'Donate'                   ,    photos_path                                                        ,    true        ,    true        ],
       [    :info_contact_subtab                   ,    'Contact'                   ,    photos_path                                                        ,    true        ,    true        ],
@@ -141,6 +141,7 @@ Tabulous.setup do |config|
       [    :dialogue_participants    ,    :all_actions    ,    :dialogue_participants_tab    ],
       [    :chronicles               ,    :all_actions    ,    :chronicles_tab               ],
       [    :photos                   ,    :all_actions    ,    :photos_tab                   ],
+      [    :positions                   ,    :all_actions    ,    :info_volunteer_subtab                  ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
       #--------------------------------------------------------------------------------------#
