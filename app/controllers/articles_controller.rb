@@ -11,11 +11,8 @@ class ArticlesController < ApplicationController
       @articles.reject!{|x| x.title_no == "" }
     end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @articles }
-      format.json { render :json => @articles }
-    end
+    render layout: "application_no_boxes"
+
   end
 
   def all
