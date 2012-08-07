@@ -39,7 +39,7 @@
 
 <div class="well">
 
-  <span class="pull-right"><%=link_to "Apply for ISFiT 2011 dialoguegroups here!", new_dialogue_participant_path(:tab => params[:tab])%></span>
+  <span class="pull-right"><%=link_to "Apply for ISFiT 2013 dialoguegroups here!", new_dialogue_participant_path(:tab => params[:tab])%></span>
   <%if false%>
     The deadline for the applications has passed. <br />
     Contact question@isfit.org for questions.
@@ -83,13 +83,13 @@
         <%= f.input :last_name, input_html: {class: "span4"}, hint: t("participant.must_match_passport") %>
         <%= f.input :email, input_html: {class: "span4"} %>
         <%= f.input :email_confirmation, input_html: {class: "span4"} %>
-        <%= f.input :address1, input_html: {class: "span4"}, hint: t("participant.address_hint") %>
+        <%= f.input :address1, :label => "Address", input_html: {class: "span4"}, hint: t("participant.address_hint") %>
         <%= f.input :zipcode, input_html: {class: "span4"} %>
         <%= f.input :city, input_html: {class: "span4"} %>
         <%= f.input "country_id",  collection: @countries.collect {|p| [ p.name, p.id ] }, prompt: "Select country"%>
         <%= f.input :phone, input_html: {class: "span4"}, hint: t("participant.country_code") %>
-        <%= f.input :birthdate, :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1910, :end_year => 1993, input_html: {class: "span1"} %>
-        <%= f.collection_radio_buttons :sex, [["f", 'Female'] ,["m", 'male']], :first, :last %>
+        <%= f.input :birthdate, :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1910, :end_year => 1995, input_html: {class: "span1"} %>
+        <%= f.input :sex, :as => :radio_buttons, :collection => [["female", "f"], ["male", "m"]] %>
         <%= f.input :university, input_html: {class: "span4"} %>
         <%= f.input :field_of_study, input_html: {class: "span4"} %>
       </fieldset>
@@ -159,7 +159,7 @@
         <legend>Security code</legend>
         <p>
         Please fill in the two words shown in the box below. If you have problems 
-        reading the words, press the uppermost button to get a new security security code.
+        reading the words, press the uppermost button to get a new security code.
         </p>
         <center> <%= raw recaptcha_tags %><br><br>
           <%= f.button 'submit',:value => "Submit application", class: "btn btn-large btn-primary" %></center>

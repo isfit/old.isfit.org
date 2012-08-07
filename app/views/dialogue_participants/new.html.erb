@@ -57,7 +57,7 @@
 
 <%else%>
   <div class="well">
-    <h1>Application and travel support form for the Dialogue Groups 2011</h1>
+    <h1>Application form for the Dialogue Groups 2013</h1>
 
     <% if @dialogue_participant.errors.any? %>
       <div id="error_explanation">
@@ -70,19 +70,52 @@
       </div>
     <% end %>
 
-    <!-- TODO fix meg -->
     <p>
-    The ISFiT Dialogue Groups are an initiative to peace building in practice. In a conflict situation, communication and interaction across religious, ethnic or cultural lines are limited or even non-existent. The Dialogue Groups seek to create a space for participants from different sides of conflicts to meet on equal grounds to share experiences. </p>
+      The ISFiT Dialogue Groups is an initiative to build peace in practice. In a 
+      conflict situation, communication and interaction across religious, ethnic 
+      or cultural barriers are limited, or even non-existent. The Dialogue Groups 
+      aim to create a common ground where the participants can meet with opposing 
+      sides of the conflict areas and share experiences.
+    </p> 
+
     <p>
-    The Dialogue Groups 2011 invite students from Rwanda & Burundi, Northern Ireland and Armenia/Azerbaijan to apply for participation in the seminar. </p>
+      The Dialogue Groups 2013 invite students from Burundi, Sri Lanka, and 
+      Armenia and Azerbaijan to apply for participation in the dialogue seminar.
+    </p>
+
     <p>
-    Four representatives from each side of the three conflicts spend the week before ISFiT at a cabin in Røros. The following week the participants continue the seminar as a part of the International Student Festival in Trondheim. </p>
-    <div align=center><h3><b><i>The next ISFiT Dialogue Groups will be held from the 1st to the 20th of February 2011.</i></b></h3></div>
+      Four representatives from each side of the three conflicts will spend the 
+      week before ISFiT at a cabin in Røros. The following week, the participants 
+      will continue the seminar as a part of the International Student Festival 
+      in Trondheim.
+    </p>
+
+    <div align=center><h3><b><i>The next ISFiT Dialogue Groups will be held from the 28th of January to the 17th of February 2013.</i></b></h3></div>
     </br>
+
     <p>
-    If you are interested in participating in The Dialogue Groups 2011 you should fill in the following form by the 15th of October. Please note that you have to be at least 18 years old and a student on the time of participation. Also make sure that all information is correct and that you use the same name as in your passport. </br>
-    All applications will be read after the 15th of October, and those students who are selected will thereafter receive an invitation by e-mail. Instructions as for how to obtain a visa and other formalities will be given to the invited students. We are sorry that due to limited capacity we cannot invite all applicants, and we wish you luck on your application. </br>
-    Deadline for submitting the application is the <b>15th of October 2010.</b>
+      If you are interested in participating in The Dialogue Groups 2013 you will 
+      need to fill in the following form by the 30th of September. Please note 
+      that you have to be at least 18 years old and a student on the time of 
+      participation. Also, make sure that all your personal information is 
+      correct and that you fill in your name as written in your passport. 
+    </p>
+
+    <p>
+      All applications will be read after the 30th of September, and the students 
+      who are selected to participate, will receive an invitation by e-mail. 
+      Instructions on how to obtain a visa and other formalities, will be given 
+      to the invited students. All travel and living costs are covered for the 
+      participants of the Dialogue Groups.
+    </p>
+
+    <p>
+      We are sorry to inform that due to limited capacity we cannot invite all 
+      applicants, and we wish you luck on your application. 
+    </p>
+
+    <p>
+      Deadline for submitting the application is on the <b>30th of September 2012.</b>
     </p>
 
     <%= simple_form_for @dialogue_participant do |f| %>
@@ -93,23 +126,25 @@
         <%= f.input :email, input_html: {class: "span4"} %>
         <%= f.input :email_confirmation, input_html: {class: "span4"} %>
         <%= f.input :phone, input_html: {class: "span4"}, hint: t("participant.country_code") %>
-        <%= f.input :address1, input_html: { class: "span4" } %>
+        <%= f.input :address1, :label => "Address", input_html: { class: "span4" } %>
         <%= f.input :zipcode, input_html: { class: "span4" } %>
         <%= f.input :city, input_html: { class: "span4" } %>
         <%= f.input "country_id",  collection: @countries.collect {|p| [ p.name, p.id ] }, prompt: "Select country", hint: "If you can not find your country in the list, please contact us at info-dialogue@isfit.org" %>
         <%= f.input :nationality, input_html: { class: "span4" } %>
         <%= f.input :passport, input_html: { class: "span4" } %>
-        <%= f.input :birthdate, :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1910, :end_year => 1993, input_html: {class: "span1"} %>
-        <%= f.collection_radio_buttons :sex, [["f", 'Female'] ,["m", 'male']], :first, :last %>
+        <%= f.input :birthdate, :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1910, :end_year => 1995, input_html: {class: "span1"} %>
+        <%= f.input :sex, :as => :radio_buttons, :collection => [["female", "f"], ["male", "m"]] %>
         <%= f.input :university, input_html: {class: "span4"} %>
         <%= f.input :field_of_study, input_html: {class: "span4"} %>
       </fieldset>
       <fieldset>
         <legend>Essay 1 - Background</legend>
-        <p> Write an essay (max 300 words) about yourself, your experiences and
-        interests.  What do you study? What is your motivation for participating in
-        the Dialogue Groups 2011? Have you participated in similar seminars before?
-        Are you a member of a student organization?  If yes, please specify.</p>
+        <p>
+          Write an essay (max 300 words) about yourself, your experiences and interests. 
+          What do you study? What is your motivation for participating in the Dialogue Groups 2013? Have 
+          you participated in similar seminars before? Are you a member of a student organization? 
+          If yes, please specify.
+        </p>
         <%= f.input :essay1, input_html: {:class => "span7", :maxlength => "2100"} %>
       </fieldset>
       <fieldset>
@@ -141,7 +176,7 @@
       </fieldset>
       <fieldset>
         <legend>Other</legend>
-        <h2>Have you applied or will you apply for the ISFiT Workshops?</h2>
+        <b>Have you applied or will you apply for the ISFiT Workshops?</b>
         <p>
         (You can only be invited to one of the two, Workshop or Dialogue, but feel free
         to apply to both.)
@@ -150,7 +185,7 @@
         <legend>Security code</legend>
         <p>
         Please fill in the two words shown in the box below. If you have problems 
-        reading the words, press the uppermost button to get a new security security code.
+        reading the words, press the uppermost button to get a new security code.
         </p>
         <center> <%= raw recaptcha_tags %><br><br>
           <%= f.button 'submit',:value => "Submit application", class: "btn btn-large btn-primary" %></center>
