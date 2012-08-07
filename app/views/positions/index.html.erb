@@ -1,31 +1,32 @@
-<% if @positions.count == 0 %>
-  <%if Language.to_s == "no"%>
-    ISFiT har for øyeblikket ikke opptak. 
-  <%else%>
-	ISFiT does not have any open positions at the moment.
-  <%end%>
-<% else %>
-  <h1><%= t("position.motivational") %></h1>
-  <%= raw format("##yt hxUO456dsLw yt##") %>
-  <div class="fb-like" data-href="<%= positions_url %>" data-send="false" data-width="550" data-show-faces="true"></div>
-  <%= raw format(t("position.new_positions")+":") %>
-  <% active_group = nil %>
-  <% active_section = nil %>
-  <% for position in @positions %>
-    <% if not position.group == active_group %>
+<div class="well">
+  <% if @positions.count == 0 %>
+    <%if Language.to_s == "no"%>
+      ISFiT har for øyeblikket ikke opptak. 
+    <%else%>
+      ISFiT does not have any open positions at the moment.
+    <%end%>
+  <% else %>
+    <h1><%= t("position.motivational") %></h1>
+    <%= raw format("##yt hxUO456dsLw yt##") %>
+    <div class="fb-like" data-href="<%= positions_url %>" data-send="false" data-width="550" data-show-faces="true"></div>
+    <%= raw format(t("position.new_positions")+":") %>
+    <% active_group = nil %>
+    <% active_section = nil %>
+    <% for position in @positions %>
+      <% if not position.group == active_group %>
       </ul>
       <% if position.group and position.group.section and not position.group.section == active_section %>
-        </ul>
-        <h3><%= link_to position.group.section.name, "/admission/section/"+ position.group.section.id.to_s %></h3>
-        <ul>
-        <% end %>
+      </ul>
+      <h3><%= link_to position.group.section.name, "/admission/section/"+ position.group.section.id.to_s %></h3>
+      <ul>
+      <% end %>
       <h4><%=h position.group.name %></h4>
       <ul>
-    <% end %>
-    
-    <li><%= link_to "#{position.title}", position_url(params[:tab], position), class: "position" %></li>
-    <% active_group = position.groups.first %> 
-    <% active_section = position.groups.first.section %>
-  <%end%>
-<% end %>
+      <% end %>
 
+      <li><%= link_to "#{position.title}", position_url(params[:tab], position), class: "position" %></li>
+      <% active_group = position.groups.first %> 
+      <% active_section = position.groups.first.section %>
+    <%end%>
+  <% end %>
+</div>

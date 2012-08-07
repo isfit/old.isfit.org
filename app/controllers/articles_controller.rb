@@ -4,18 +4,18 @@ class ArticlesController < ApplicationController
   # GET /articles.xml
 
   def index
-    @articles = Article.where("(show_article <='"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"' OR show_article IS NULL)").where(deleted: 0).where(list: 1).order("weight DESC").limit(10).all
+    @articles = Article.where("(show_article <='"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"' OR show_article IS NULL)").where(deleted: 0).where(list: 1).order("weight DESC").limit(10)
+    @latest = @articles.limit(5)
     if Language.to_s =="en"
       @articles.reject!{|x| x.title_en == "" }
+      @latest.reject!{|x| x.title_en == "" }
     else
       @articles.reject!{|x| x.title_no == "" }
+      @latest.reject!{|x| x.title_no == "" }
     end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @articles }
-      format.json { render :json => @articles }
-    end
+    render layout: "application_no_boxes"
+
   end
 
   def all
