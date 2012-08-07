@@ -7,3 +7,11 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+
+// TABS
+$(document).ready(function(){
+	$('li.dropdown').hover(function(e) {
+		$(e.currentTarget).toggleClass('open');
+	});
+});
