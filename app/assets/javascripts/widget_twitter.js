@@ -1,6 +1,7 @@
 // When Twitter widget has loaded, do stuff
 
 var q = 'http://isfit.org';
+
 $('#widget-twitter').ready(function(){
 	var searchUrl = 'http://search.twitter.com/search.json?callback=?&q=';
 	var url = searchUrl + q;
@@ -15,15 +16,9 @@ $('#widget-twitter').ready(function(){
 });
 function callback(data) {
 	var tweets = data.results;
+  document.getElementById('widget-twitter-query').innerHTML = q;
 
 	// TODO: display all the tweets
-
-	var h4 = document.createElement('h4');
-	h4.innerHTML = 'Displaying tweets for <em>' + q + '</em>';
-	var header = document.createElement('header');
-	header.appendChild(h4);
-
-	document.getElementById('widget-twitter-results').parentElement.insertBefore(header, document.getElementById('widget-twitter-results'));
 
 	tweets.forEach(function(tweet){
     var div = document.createElement('div');
@@ -56,8 +51,10 @@ function callback(data) {
     pText.appendChild(cite);
 		tr.appendChild(tdCreatedAt);
 
-		document.getElementById('widget-twitter-results').parentElement.appendChild(div);
+		document.getElementById('widget-twitter-results').appendChild(div);
 	});
+  document.getElementById('widget-twitter').style.height = '400px';
+  document.getElementById('widget-twitter').style.overflowY = 'scroll';
 }
 
 
