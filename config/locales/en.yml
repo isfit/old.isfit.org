@@ -46,6 +46,10 @@ en:
   article:
     header: "NEWS"
     more: "More news"
+  participant:
+    must_match_passport: 'Name must match passport name'
+    address_hint: 'Hint for the address?'
+    country_code: 'Add the country code'
   position:
     no_new_positions: "We do not currently have any open positions for volunteers. Please check back later"
     new_positions: "Currently ISFiT has admissions for the following positions"
@@ -125,6 +129,49 @@ en:
         position_id_3: Tredjevalg (optional)
         information: About you
         background: Relevant background
+  simple_form:
+    labels:
+      participant:
+        first_name: 'First name'
+        last_name: 'Last name'
+        email: 'E-mail'
+        email_confirmation: 'E-mail confirmation'
+        address1: 'Address'
+        zipcode: 'Zipcode'
+        city: 'City'
+        country_id: 'Country'
+        phone: 'Phone'
+        birthdate: 'Birthdate'
+        sex: 'Sex'
+        university: 'University'
+        field_of_study: 'Field of study'
+        workshop1: '1st choice'
+        workshop2: '2nd choice'
+        workshop3: '3rd choice'
+        essay1: 'Essay 1'
+        essay2: 'Essay 2'
+        travel_essay: 'Travel essay'
+        travel_amount: 'Travel amount'
+      dialogue_participant:
+        first_name: 'First name'
+        last_name: 'Last name'
+        email: 'E-mail'
+        email_confirmation: 'E-mail confirmation'
+        address1: 'Address'
+        zipcode: 'Zipcode'
+        city: 'City'
+        country_id: 'Country'
+        nationality: 'Nationality'
+        passport: 'Passport'
+        phone: 'Phone'
+        birthdate: 'Birthdate'
+        sex: 'Sex'
+        university: 'University'
+        field_of_study: 'Field of study'
+        essay1: 'Essay 1'
+        essay2: 'Essay 2'
+        essay3: 'Essay 3'
+        essay4: 'Essay 4'
   activerecord:
     errors:
       messages:
