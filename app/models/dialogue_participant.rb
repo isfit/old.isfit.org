@@ -35,8 +35,31 @@ class DialogueParticipant < ActiveRecord::Base
 	validates_length_of :essay4, :maximum=>1200, :message => "Essay 4 too long"
 	validates_length_of :travel_essay, :maximum=>1500, :message => "Travel essay too long"
 	
-	
+  #Validate max words in eassy	
 
+  validates :essay1, :length => {
+    :maximum => 310,
+    :tokenizer => lambda { |str| str.scan(/\s+|$/) },
+    :too_long => " too long, maximum 300 words"
+    }
+
+  validates :essay2, :length => {
+    :maximum => 310,
+    :tokenizer => lambda { |str| str.scan(/\s+|$/) },
+    :too_long => " too long, maximum 300 words"
+    }
+
+  validates :essay3, :length => {
+    :maximum => 310,
+    :tokenizer => lambda { |str| str.scan(/\s+|$/) },
+    :too_long => " too long, maximum 300 words"
+    }
+
+  validates :essay4, :length => {
+    :maximum => 160,
+    :tokenizer => lambda { |str| str.scan(/\s+|$/) },
+    :too_long => " too long, maximum 150 words"
+    }
 
 	#Validate Email
     validates_format_of :email,
@@ -61,11 +84,8 @@ class DialogueParticipant < ActiveRecord::Base
             :message => "Travel amount must be a number"
 
 	def check_age
-      errors.add_to_base("Age should be between 18 and 100") unless birthdate != nil and
-				Date.today.year - birthdate.year < 101 && ( 
-					 2011 - birthdate.year > 18 or
-					(2011 - birthdate.year == 18 && birthdate.month == 1)  or
-					(2011 - birthdate.year == 18 && birthdate.month == 2 && birthdate.day < 11))
-				
-    end
+      errors[:base] << "You must be at least 18 years old on the time of participation" unless birthdate != nil and
+				(2013 - birthdate.year > 18 or
+				(2013 - birthdate.year == 18 && birthdate.month == 1 && birthdate.day < 29))
+  end
 end

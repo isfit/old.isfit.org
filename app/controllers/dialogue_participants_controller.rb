@@ -4,34 +4,34 @@ class DialogueParticipantsController < ApplicationController
   end
 
   def new
-	@countries = Country.find(:all, :order=>"name")
+  	@countries = Country.find(:all, :order=>"name")
+    @dialogue_participant = DialogueParticipant.new
+  end
 
-	if request.post?
-
-		begin
-			@dialogue_participant = DialogueParticipant.new(params[:dialogue_participant])
-
-		# Catch the exception from AR::Base
-		rescue ActiveRecord::MultiparameterAssignmentErrors => ex
-			# Iterarate over the exceptions and remove the invalid field components from the input
-			ex.errors.each { |err| params[:dialogue_participant].delete_if { |key, value| key =~ /^#{err.attribute}/ } }
-			# Recreate the Model with the bad input fields removed
-
-			@dialogue_participant = Participant.new(params[:dialogue_participant])
-		end
+  def create
+  	@countries = Country.find(:all, :order=>"name")
+		@dialogue_participant = DialogueParticipant.new(params[:dialogue_participant])
 		@dialogue_participant.registered_time = DateTime.now
-		if @dialogue_participant.valid? && verify_recaptcha(:model=>@dialogue_participant, :message=>"Recaptcha verification failed") && @dialogue_participant.save
+
+    begin
+      selected_day = params[:dialogue_participant]['birthdate(1i)'].to_i
+      selected_month = params[:dialogue_participant]['birthdate(2i)'].to_i
+      selected_year = params[:dialogue_participant]['birthdate(3i)'].to_i
+      Date.new(selected_day, selected_month, selected_year)
+    rescue ArgumentError
+      @dialogue_participant.errors.add(:birthdate, 'is an invalid date')
+      # Clear the birthdate, so it doesn't show the rolled-over date in the view.
+      @dialogue_participant.birthdate = nil
+    end
+    
+    if @dialogue_participant.valid? && verify_recaptcha(:model=>@dialogue_participant, :message=>"Recaptcha verification failed") && @dialogue_participant.save
 			Postoffice.registered(@dialogue_participant.first_name + " " + @dialogue_participant.last_name, @dialogue_participant.email).deliver
 			flash[:notice] = "Your application was sent successfully. You should receive an email as a conformation at the email you provided"
-                        render :action => "new"
+      render :action => "new"
 		else
       verify_recaptcha(:model=>@dialogue_participant, :message=>"Recaptcha verification failed")
+      render :action => "new"
       flash[:notice] = nil
-			#validate_recap(params, @dialogue_participant.errors)
-			#flash[:warnings] = @dialogue_participant.errors
 		end
-  else
-  @dialogue_participant = DialogueParticipant.new
-	end
   end
 end
