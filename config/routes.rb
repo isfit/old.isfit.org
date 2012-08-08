@@ -1,8 +1,5 @@
 WwwIsfitOrg::Application.routes.draw do  
-
-  get "articles" => "articles#index"
-  get "articles/all" => "articles#all"
-  get "articles/:id" => "articles#show"
+  resources :articles
 
   get "ambassadors" => "ambassadors#index"
 
