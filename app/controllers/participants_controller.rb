@@ -14,7 +14,7 @@ class ParticipantsController < ApplicationController
 
   def create
     @countries = Country.find(:all, :order=>"name")
-
+    @workshops = Workshop.all
     @participant = Participant.new(params[:participant])
     @participant.registered_time = DateTime.now
 
