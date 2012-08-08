@@ -99,7 +99,7 @@ end%>
 
 
       <%if @article.got_comments%>
-        <div class="fb-comments" data-href="<%= article_url(params[:tab], @article) %>" data-num-posts="2" data-width="550"></div>
+        <div class="fb-comments" data-href="<%= article_url(@article) %>" data-num-posts="2" data-width="550"></div>
       <%end%>
 
     </div>

@@ -1,14 +1,11 @@
 <%= content_for :header do %>
   <div class="hero-unit">
     <div class="action-text">
-      <h1>Be the change you want to see in the world</h1>
-      <p>The purpose of ISFiT is to grow and share innovative ideas for how we can
-      change and improve the future. We do this through uniting young minds from
-      all over the world in Trondheim, Norway next February. Apply now and become
-      a part of it all.</p>
+      <h1><%= t("call-to-action.header") %></h1>
+      <p><%= t("call-to-action.paragraph") %></p>
       <p>
-      <%= link_to "Apply now", new_participant_path(params[:tab]), class: "btn btn-primary btn-large" %>
-      <%= link_to "Learn more", page_path(params[:tab], 7), class: "btn btn-large" %>
+      <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
+      <%= link_to t("call-to-action.learn_more"), page_path(7), class: "btn btn-large" %>
       </p>
     </div>
     <div class="media">
@@ -23,7 +20,7 @@
       <div class="carousel-inner">
         <% @articles.each do |article| %>
           <div class="item <%= article == @articles.first ? "active":"" %>">
-            <a href="<%= article_path(params[:tab],article) %>">
+            <a href="<%= article_path(article) %>">
               <%= image_tag article.frontend_article_image.url(:frontpage_large) %>
               <div class="carousel-caption">
                 <h1><%= article.title %></h1>

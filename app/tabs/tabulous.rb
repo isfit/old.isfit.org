@@ -69,7 +69,6 @@ Tabulous.setup do |config|
       [    :workshops_tab                     ,    'Workshops'                ,    workshops_path                                                     ,    false       ,    false       ],
       [    :participants_tab                  ,    'Participants'             ,    participants_path                                                  ,    false       ,    false       ],
       [    :dialogue_participants_tab         ,    'Dialogue Participants'    ,    dialogue_participants_path                                         ,    false       ,    false       ],
-      [    :chronicles_tab                    ,    'Chronicles'               ,    chronicles_path                                                    ,    false       ,    false       ],
       [    :articles_tab                      ,    'News'                     ,    root_path                                                          ,    true        ,    true        ],
       [    :articles_archive_subtab           ,    'Archive'                  ,    root_path                                                          ,    true        ,    true        ],
       [    :articles_galleries_subtab         ,    'Galleries'                ,    root_path                                                          ,    true        ,    true        ],
