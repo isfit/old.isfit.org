@@ -84,6 +84,7 @@ Tabulous.setup do |config|
       [    :about_conflictareas_subtab        ,    'Conflict Areas'           ,    photos_path                                                        ,    true        ,    true        ],
       [    :about_studentpeaceprice_subtab    ,    'Student Peace Price'      ,    photos_path                                                        ,    true        ,    true        ],
       [    :about_walkofpeace_subtab          ,    'Walk of Peace'            ,    photos_path                                                        ,    true        ,    true        ],
+      [    :about_campaign_subtab          ,    'Rename me!'            ,    ideas_path                                                        ,    true        ,    true        ],
       [    :info_tab                          ,    'Info'                     ,    photos_path                                                        ,    true        ,    true        ],
       [    :info_participant_subtab           ,    'Participant'              ,    photos_path                                                        ,    true        ,    true        ],
       [    :info_volunteer_subtab             ,    'Volunteer'                ,    positions_path                                                     ,    true        ,    true        ],
@@ -136,6 +137,7 @@ Tabulous.setup do |config|
       [    :chronicles               ,    :all_actions    ,    :chronicles_tab               ],
       [    :photos                   ,    :all_actions    ,    :photos_tab                   ],
       [    :positions                ,    :all_actions    ,    :info_volunteer_subtab        ],
+      [    :ideas                ,    :all_actions    ,    :about_campaign_subtab        ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
       #--------------------------------------------------------------------------------------#
