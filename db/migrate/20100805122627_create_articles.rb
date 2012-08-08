@@ -5,9 +5,11 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title_no
       t.text :ingress_en
       t.text :ingress_no
+      t.string :byline
       t.text :body_en
       t.text :body_no
-      t.boolean :list
+      t.boolean :published
+      t.boolean :featured
       t.integer :weight
       t.boolean :deleted
       t.boolean :press_release
