@@ -1,5 +1,9 @@
 WwwIsfitOrg::Application.routes.draw do  
-  
+
+  get "articles" => "articles#index"
+  get "articles/all" => "articles#all"
+  get "articles/:id" => "articles#show"
+
   get "ambassadors" => "ambassadors#index"
 
   get "ambassadors/new"
@@ -8,87 +12,68 @@ WwwIsfitOrg::Application.routes.draw do
 
   get "ambassadors/thank_you"
 
-    resources :tips_osses
+  resources :tips_osses
   resources :isfit_media_links
 
-  scope "(/:tab)" do
-#resources :project_supports
-    
-
-    match 'project_supports/success' => "project_supports#success"
-    resources :project_supports
-
-    resources :sublinks
-    resources :hosts do 
-      collection do 
-        get :done
-      end
+  match 'project_supports/success' => "project_supports#success"
+  resources :project_supports
+  resources :sublinks
+  resources :hosts do 
+    collection do 
+      get :done
     end
-    resources :alumni_reservations
-    
-    get "events/:year/:month/:day" => "events#index", :as => "events"
-    get "events/:year/:month/:day" => "events#index", :as => "events_date"
-
-    get "events/search" => "events#search", :as => "search_events"
-
-    get "events/:category/:year/:month/:day" => "events#index", :as => "events_with_date_cat"
-    
-    get "events/:category" => "events#index", :as => "events_cat"
-
-    get "event/:id" => "events#show", :as => "event"
-
-    get "event/:id/:event_date_id" => "events#show", :as => "event_date"
-
-    resources :events
-    
-    resources :pages
-    resources :press_accreditations
-    resources :isfit_media_links
-    resources :press_releases
-    resources :articles do
-      collection do
-        get :new_pic
-        get :crop_main
-        get :all
-      end
-    end
-
-    resources :workshops
-
-    resources :participants
-
-    resources :dialogue_participants
-
-    resources :chronicles do
-      collection do
-        get :all
-      end
-    end
-
-    resources :photos do
-      member do
-        get :crop
-      end
-    end
-
-    resources :positions do
-      collection do
-        get :apply
-        post :validate
-        post :save
-      end
-    end 
-
-    match 'section/:id' => "positions#section", :tab => "admission"
-
-    get "donations/donate", :controller => "donations", :action => "donate"
-
-    get "donations/thank_you", :controller => "donations", :action => "thank_you"
-
-
-    resources :wop_propositions
   end
 
+  resources :alumni_reservations
+
+  get "events/:year/:month/:day" => "events#index", :as => "events"
+  get "events/:year/:month/:day" => "events#index", :as => "events_date"
+
+  get "events/search" => "events#search", :as => "search_events"
+
+  get "events/:category/:year/:month/:day" => "events#index", :as => "events_with_date_cat"
+
+  get "events/:category" => "events#index", :as => "events_cat"
+
+  get "event/:id" => "events#show", :as => "event"
+
+  get "event/:id/:event_date_id" => "events#show", :as => "event_date"
+
+  resources :events
+
+  resources :pages
+  resources :press_accreditations
+  resources :isfit_media_links
+  resources :press_releases
+
+  resources :workshops
+
+  resources :participants
+
+  resources :dialogue_participants
+
+  resources :photos do
+    member do
+      get :crop
+    end
+  end
+
+  resources :positions do
+    collection do
+      get :apply
+      post :validate
+      post :save
+    end
+  end 
+
+  match 'section/:id' => "positions#section", :tab => "admission"
+
+  get "donations/donate", :controller => "donations", :action => "donate"
+
+  get "donations/thank_you", :controller => "donations", :action => "thank_you"
+
+
+  resources :wop_propositions
 
 
   match 'opptak' => "positions#index", :tab => "admission"
@@ -151,7 +136,7 @@ WwwIsfitOrg::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
-  match ':tab(/:controller(/:action(:id)))', :id => /.*/
+  # match ':tab(/:controller(/:action(:id)))', :id => /.*/
 
 
 

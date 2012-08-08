@@ -2,6 +2,15 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  call-to-action:
+    header: Be the change you want to see in the world
+    paragraph: |
+      The purpose of ISFiT is to grow and share innovative ideas for how we can
+      change and improve the future. We do this through uniting young minds from
+      all over the world in Trondheim, Norway next February. Apply now and become
+      a part of it all.
+    apply_now: "Apply now"
+    learn_more: "Learn more"
   event:
     information: "Information"
     type: "Type"

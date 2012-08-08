@@ -1,4 +1,13 @@
 "no":
+  call-to-action:
+    header: "Det er gøy å være med på noe stort"
+    paragraph: |
+      The purpose of ISFiT is to grow and share innovative ideas for how we can
+      change and improve the future. We do this through uniting young minds from
+      all over the world in Trondheim, Norway next February. Apply now and become
+      a part of it all.
+    apply_now: "Søk nå"
+    learn_more: "Les mer"
   event:
     information: "Informasjon"
     type: "Type"
