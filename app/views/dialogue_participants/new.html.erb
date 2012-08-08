@@ -121,8 +121,8 @@
     <%= simple_form_for @dialogue_participant, html: {class: "form"} do |f| %>
       <fieldset>
         <legend><%= t("participants.personal_information") %></legend>
-        <%= f.input :first_name, input_html: { class: "span4" } , hint: "Name must match passport name"%>
-        <%= f.input :last_name, input_html: { class: "span4" }, hint: "Name must match passport name" %>
+        <%= f.input :first_name, input_html: { class: "span4" } , hint: t("participant.must_match_passport") %>
+        <%= f.input :last_name, input_html: { class: "span4" }, hint: t("participant.must_match_passport") %>
         <%= f.input :email, input_html: {class: "span4"} %>
         <%= f.input :email_confirmation, input_html: {class: "span4"} %>
         <%= f.input :phone, input_html: {class: "span4"}, hint: t("participant.country_code") %>
