@@ -1,0 +1,31 @@
+
+<div id="article-wrapper" class="well">
+
+	<% @ideas.each do |idea| %>
+	<article class="idea">
+		<%= idea.email %><br>
+		<%= idea.body %>
+
+		<div class="fb-like" data-href="http://isfit.org/ideas/<%= idea.id %>" data-send="true" data-layout="box_count" data-width="450" data-show-faces="false"></div>
+
+
+
+	</article>
+	<% } %>
+</div>
+
+
+
+
+
+
+
+
+<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/nb_NO/all.js#xfbml=1&appId=134691243236387";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
