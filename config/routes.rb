@@ -1,9 +1,9 @@
 WwwIsfitOrg::Application.routes.draw do  
   get "ideas" => 'ideas#index'
 
-  get "ideas/show"
+  get "ideas/:id" => 'ideas#show'
 
-  get "ideas/create"
+  post "ideas" => 'ideas#create'
 
   resources :articles
 

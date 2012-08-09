@@ -1,17 +1,47 @@
 
+
+
+
 <div id="article-wrapper" class="well">
+
+	<div id="submit-ideas-wrapper">
+		<header>
+			<h1>Submit your idea</h1>
+		</header>
+
+		<%= form_for @idea, :url=> {:action => 'create'} do |f| %>
+  			<%= f.text_area :body, :placeholder => 'Your idea' %>
+  			<%= f.text_field :email, :placeholder => 'Your email' %>
+  			Share on Twitter<input type="checkbox">
+  			Share on Facebook<input type="checkbox">
+  			<%= f.submit "Send" %>
+		<% end %>
+
+	</div>
+
+
+	<div id="ideas-wrapper">
+		<header>
+			<h1>Ideas</h1>
+		</header>
 
 	<% @ideas.each do |idea| %>
 	<article class="idea">
-		<%= idea.email %><br>
-		<%= idea.body %>
-
-		<div class="fb-like" data-href="http://isfit.org/ideas/<%= idea.id %>" data-send="true" data-layout="box_count" data-width="450" data-show-faces="false"></div>
+		<div id="ideas-fbwidget" class="fb-like" data-href="http://isfit.org/ideas/<%= idea.id %>" data-send="true" data-layout="box_count" data-width="450" data-show-faces="false"></div>
 
 
+		<p class="idea-body"><%= idea.body %></p>
+		<p class="idea-email">
+			<img src="http://lorempixel.com/48/48/people" />
+			<%= idea.email %>
+		</p>
+
+
+		<p><a href="/ideas/<%= idea.id %>" class="permalink">Permalink</a></p> <!-- TODO -->
 
 	</article>
 	<% end %>
+	</div>
 </div>
 
 
