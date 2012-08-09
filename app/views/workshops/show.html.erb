@@ -7,6 +7,18 @@
   <meta property="og:description" content="<%=@article.ingress%>"/>
 <%end%>
 
+<header id="article-header">
+  <%= image_tag "https://internal.isfit.org" +  @article.workshop_image.url(:original) %>
+  <br>
+  <div class="article-text">
+    <h1>WS<%= @article.number < 10 ? "0#{@article.number}" : "#{@article.number}" %> <%= " - #{@article.name}" %></h1>
+    <section class="article-ingress">
+      <p><%=truncate(@article.ingress, :length=>150, :separator => ' ')%></p>
+    </section>
+  </div>
+</header>  
+
+
 <div class="well">
   <div id="article">
     <% if @article.workshop_image %>
