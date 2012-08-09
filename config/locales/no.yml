@@ -43,6 +43,10 @@
   article:
     header: "NYHETER"
     more: "Flere saker"
+  participant:
+    must_match_passport: 'Name must match passport name'
+    address_hint: 'Hint for the address?'
+    country_code: 'Add the country code'
   position:
     no_new_positions: "Vi har dessverre ingen opptak for tiden, men følg med på nettsiden for nye oppdateringer"
     new_positions: "ISFiT har for øyeblikket opptak på følgende stillinger"
@@ -83,6 +87,17 @@
     tomorrow: I morgen
   simple_form:
     labels:
+      applicant:
+        firstname: 'Fornavn'
+        lastname: 'Etternavn'
+        mail: 'Epost-adresse'
+        phone: 'Telefonnummer'
+        position_id_1: 'Førstevalg'
+        position_id_2: 'Andrevalg (valgfritt)'
+        position_id_3: 'Tredjevalg (valgfritt)'
+        information: 'Informasjon om deg'
+        background: 'Relevant bakgrunn'
+        hear_about: 'Hvordan fikk du høre om ISFiT?'
       participant:
         first_name: 'Fornavn'
         last_name: 'Etternavn'
