@@ -1,13 +1,15 @@
 <div class="well">
   <% @articles.each do |article| %>
-    <%classtext = "artikkel grid_7 articleheight " + cycle("alpha","omega")%>
 
-    <div class="<%=classtext%>">
-      <a href="<%= workshop_path(article)%>">
-        <%=image_tag "https://internal.isfit.org" +  article.workshop_image.url(:original)%>
-        <h1><%=article.name%></h1>
-        <p><%=truncate(article.ingress, :length=>150, :separator => ' ')%></p>
-      </a>
-    </div>
+    <header id="image-header">
+      <%=link_to (image_tag "https://internal.isfit.org" +  article.workshop_image.url(:original)), workshop_path(article)%>
+      <br>
+      <div class="image-text">
+        <h1>WS<%= article.id < 10 ? "0#{article.id}" : "#{article.id}" %> <%= " - #{article.name}" %></h1>
+        <section class="image-ingress">
+          <p><%=truncate(article.ingress, :length=>150, :separator => ' ')%></p>
+        </section>
+      </div>
+    </header>
   <%end%>
 </div>

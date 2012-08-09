@@ -1,0 +1,43 @@
+#image-header {
+  padding: 0; margin: 0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position:relative;
+  left: 0;
+  margin-bottom: 2em;
+  max-width: 100%;
+  img {
+    width: 100%;
+  }}
+
+div.image-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  background: rgba(0,0,0,.4);
+  text-shadow: 0 1px 0 #333;
+  box-sizing: border-box;
+  padding: 0em;
+
+  h1 {
+    font-size: 2.2em;
+    line-height: 1.2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+}
+
+.image-ingress p {
+  font-style: italic;
+  font-size: 1.2em;
+  line-height: 1.4em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
