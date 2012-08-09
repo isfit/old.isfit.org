@@ -1,4 +1,12 @@
-
+<%= content_for :head do %>
+	<meta property="og:title" content="ISFiT 2013 - Trade Your Ideas" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://isfit.org/ideas/<%= @idea.id %>" />
+	<meta property="og:image" content="http://i.imgur.com/rPULN.png" />
+	<meta property="og:site_name" content="Isfit.org" />
+	<meta property="fb:admins" content="111446192243028" />
+	<meta property="description" content="<%= @idea.body %>" />
+<% end %>
 
 
 

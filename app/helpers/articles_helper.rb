@@ -18,8 +18,8 @@ module ArticlesHelper
   end
 
   def set_correct_tags(text)
-    text.gsub!(/##pic (\d+) (\d+) pic##/) {|match|  article_image($1, $2, false)}
-    text.gsub!(/#l#pic (\d+) (\d+) pic#l#/) {|match| article_image($1, $2, true)}
+    # text.gsub!(/##pic (\d+) (\d+) pic##/) {|match|  article_image($1, $2, false)}
+    # text.gsub!(/#l#pic (\d+) (\d+) pic#l#/) {|match| article_image($1, $2, true)}
   end
 
   def yt_tag(text)

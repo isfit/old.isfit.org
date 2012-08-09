@@ -119,18 +119,19 @@ en:
         member_name: Name of member (only if the option 'member of ISFiT' is chosen)
         why: Why do you want to volunteer?
         base: ""
-      applicant:
-        firstname: First name
-        lastname: Last name
-        mail: Email (at place of study)
-        phone: Phonenumber (8 numbers)
-        position_id_1: First choice (required)
-        position_id_2: Andrevalg (optional)
-        position_id_3: Tredjevalg (optional)
-        information: About you
-        background: Relevant background
   simple_form:
     labels:
+      applicant:
+        firstname: 'First name'
+        lastname: 'Last name'
+        mail: 'Email (at place of study)'
+        phone: 'Phonenumber (8 numbers)'
+        position_id_1: 'First choice (required)'
+        position_id_2: 'Second choice (optional)'
+        position_id_3: 'Third choice (optional)'
+        information: 'About you'
+        background: 'Relevant background'
+        hear_about: 'How did you hear about ISFiT?'
       participant:
         first_name: 'First name'
         last_name: 'Last name'

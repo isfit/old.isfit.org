@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808120414) do
+ActiveRecord::Schema.define(:version => 20120809162419) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -92,18 +92,33 @@ ActiveRecord::Schema.define(:version => 20120808120414) do
   end
 
   create_table "articles", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "user_id"
-    t.boolean  "sticky"
-    t.datetime "end_at"
-    t.boolean  "deleted"
+    t.string   "title_en"
+    t.string   "title_no"
+    t.text     "ingress_en"
+    t.text     "ingress_no"
+    t.text     "body_en"
+    t.text     "body_no"
+    t.boolean  "list"
+    t.integer  "weight"
     t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "article_image_file_name"
-    t.string   "article_image_content_type"
-    t.integer  "article_image_file_size"
-    t.datetime "article_image_updated_at"
+    t.boolean  "deleted"
+    t.integer  "press_release",                       :limit => 1
+    t.string   "sub_title_no"
+    t.string   "sub_title_en"
+    t.string   "image_text_no"
+    t.string   "image_text_en"
+    t.boolean  "main_article"
+    t.boolean  "published"
+    t.string   "byline"
+    t.integer  "byline_user_id"
+    t.string   "image_credits"
+    t.integer  "mail_sent"
+    t.datetime "show_article"
+    t.boolean  "got_comments",                                     :default => false
+    t.string   "frontend_article_image_file_name"
+    t.string   "frontend_article_image_content_type"
+    t.integer  "frontend_article_image_file_size"
+    t.datetime "frontend_article_image_updated_at"
   end
 
   create_table "countries", :force => true do |t|
@@ -158,6 +173,28 @@ ActiveRecord::Schema.define(:version => 20120808120414) do
     t.text   "body",  :null => false
   end
 
+  create_table "festivals", :id => false, :force => true do |t|
+    t.integer "id",   :default => 0, :null => false
+    t.integer "year"
+  end
+
+  create_table "groups", :id => false, :force => true do |t|
+    t.integer "id",                             :default => 0, :null => false
+    t.string  "name_en"
+    t.string  "name_no"
+    t.integer "section_id"
+    t.integer "festival_id"
+    t.string  "email",          :limit => 1000
+    t.string  "tag",                                           :null => false
+    t.text    "description_en"
+    t.text    "description_no"
+  end
+
+  create_table "groups_positions", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "position_id"
+  end
+
   create_table "hosts", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -192,6 +229,7 @@ ActiveRecord::Schema.define(:version => 20120808120414) do
     t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "like_count"
   end
 
   create_table "pages", :force => true do |t|
@@ -286,6 +324,21 @@ ActiveRecord::Schema.define(:version => 20120808120414) do
 
   add_index "participants", ["email"], :name => "email", :unique => true
 
+  create_table "positions", :id => false, :force => true do |t|
+    t.integer  "id",             :default => 0, :null => false
+    t.string   "title_en"
+    t.string   "title_no"
+    t.integer  "user_id"
+    t.text     "description_en"
+    t.text     "description_no"
+    t.string   "group_dn"
+    t.integer  "admission_id"
+    t.integer  "group_id"
+    t.integer  "number",         :default => 1, :null => false
+    t.datetime "publish_from"
+    t.datetime "publish_to"
+  end
+
   create_table "project_supports", :force => true do |t|
     t.string   "person_name"
     t.integer  "person_age"
@@ -304,8 +357,18 @@ ActiveRecord::Schema.define(:version => 20120808120414) do
     t.string "name", :limit => 64, :null => false
   end
 
-  create_table "workshops", :id => false, :force => true do |t|
-    t.integer  "id",                          :default => 0, :null => false
+  create_table "sections", :id => false, :force => true do |t|
+    t.integer "id",                             :default => 0, :null => false
+    t.string  "name_en"
+    t.string  "name_no"
+    t.integer "festival_id"
+    t.string  "email",          :limit => 1000
+    t.string  "tag",                                           :null => false
+    t.text    "description_en"
+    t.text    "description_no"
+  end
+
+  create_table "workshops", :force => true do |t|
     t.string   "name"
     t.text     "ingress"
     t.text     "body"
@@ -313,12 +376,14 @@ ActiveRecord::Schema.define(:version => 20120808120414) do
     t.integer  "user_id"
     t.boolean  "published"
     t.boolean  "got_comments"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.string   "workshop_image_file_name"
     t.string   "workshop_image_content_type"
     t.integer  "workshop_image_file_size"
     t.datetime "workshop_image_updated_at"
   end
+
+  add_index "workshops", ["user_id"], :name => "index_workshops_on_user_id"
 
 end
