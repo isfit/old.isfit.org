@@ -2,7 +2,7 @@ class IdeasController < ApplicationController
   def index
     puts 'hello world!'
     @idea  = Idea.new
-    @ideas = Idea.all(:order => "created_at DESC")
+    @ideas = Idea.order("like_count DESC").limit(5)
   end
 
   def show
@@ -30,8 +30,8 @@ class IdeasController < ApplicationController
 
     result = JSON.parse(open(url).read)[0]['like_count']
 
-    #@idea.like_count = result
-    #@idea.save
+    @idea.like_count = result
+    @idea.save
 
     puts result
 
