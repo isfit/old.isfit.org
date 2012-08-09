@@ -5,7 +5,7 @@
       <%=link_to (image_tag "https://internal.isfit.org" +  article.workshop_image.url(:original)), workshop_path(article)%>
       <br>
       <div class="image-text">
-        <h1>WS<%= article.id < 10 ? "0#{article.id}" : "#{article.id}" %> <%= " - #{article.name}" %></h1>
+        <h1>WS<%= article.number < 10 ? "0#{article.number}" : "#{article.number}" %> <%= " - #{article.name}" %></h1>
         <section class="image-ingress">
           <p><%=truncate(article.ingress, :length=>150, :separator => ' ')%></p>
         </section>
