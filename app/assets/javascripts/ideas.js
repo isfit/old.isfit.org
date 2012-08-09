@@ -29,6 +29,6 @@ function checkFacebook() {
 checkFacebook();
 
 function facebookExperiment(id) {
-	var url = 'http://localhost:3000/ideas/'+ id +'/update';
+	var url = 'http://beta.isfit.org/ideas/'+ id +'/update';
 	$.get(url, function(data){console.log('pinged!')});
 }

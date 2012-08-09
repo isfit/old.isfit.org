@@ -26,7 +26,7 @@ class IdeasController < ApplicationController
 
     puts '------------------------'
     @idea = Idea.find(params[:id])
-    url = "https://api.facebook.com/method/fql.query?query=select%20like_count%20from%20link_stat%20where%20url='http://isfit.org/ideas/"+params[:id]+"'&format=json"
+    url = "https://api.facebook.com/method/fql.query?query=select%20like_count%20from%20link_stat%20where%20url='http://beta.isfit.org/ideas/"+params[:id]+"'&format=json"
 
     result = JSON.parse(open(url).read)[0]['like_count']
 
