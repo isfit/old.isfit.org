@@ -4,7 +4,7 @@
 
     <div class="<%=classtext%>">
       <a href="<%= workshop_path(article)%>">
-        <%=image_tag("workshop_images/"+article.workshop_image_file_name) %>
+        <%=image_tag "https://internal.isfit.org" +  article.workshop_image.url(:original)%>
         <h1><%=article.name%></h1>
         <p><%=truncate(article.ingress, :length=>150, :separator => ' ')%></p>
       </a>
