@@ -16,7 +16,8 @@ function checkFacebook() {
 	if(window.FB!==undefined) {
 		FB.Event.subscribe('edge.create',
 		    function(response) {
-		        alert('You liked the URL: ' + response);
+		    	var temp = response.split('/');
+		    	facebookExperiment(temp[temp.length-1]);
 		    }
 		);
 	}
@@ -26,3 +27,8 @@ function checkFacebook() {
 }
 
 checkFacebook();
+
+function facebookExperiment(id) {
+	var url = 'http://localhost:3000/ideas/'+ id +'/update';
+	$.get(url, function(data){console.log('pinged!')});
+}
