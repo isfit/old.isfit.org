@@ -12,6 +12,8 @@
 		<%= form_for @idea, :url=> {:action => 'create'} do |f| %>
   			<%= f.text_area :body, :placeholder => 'Your idea' %>
   			<%= f.text_field :email, :placeholder => 'Your email' %>
+  			Share on Twitter<input type="checkbox">
+  			Share on Facebook<input type="checkbox">
   			<%= f.submit "Send" %>
 		<% end %>
 
@@ -28,11 +30,14 @@
 		<div id="ideas-fbwidget" class="fb-like" data-href="http://isfit.org/ideas/<%= idea.id %>" data-send="true" data-layout="box_count" data-width="450" data-show-faces="false"></div>
 
 
-		<%= idea.email %><br>
-		<%= idea.body %>
+		<p class="idea-body"><%= idea.body %></p>
+		<p class="idea-email">
+			<img src="http://lorempixel.com/48/48/people" />
+			<%= idea.email %>
+		</p>
 
 
-
+		<p><a href="/ideas/<%= idea.id %>" class="permalink">Permalink</a></p> <!-- TODO -->
 
 	</article>
 	<% end %>

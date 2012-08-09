@@ -14,7 +14,7 @@
 
 article.idea {
 	background: #eaeaea;
-	height: 92px;
+	min-height: 92px;
 	margin-bottom: 2em;
 	border-radius: 12px;
 	padding: 1em;
@@ -24,10 +24,27 @@ article.idea {
 		cursor: pointer;
 	}
 
-	div.fb-like {
-		float: right;
-		text-align: right;
+	.idea-body {
+		font-size: 2em;
+		line-height: 1.1em;
 	}
+
+	.idea-email {
+		font-style: italic;
+	}
+
+	// .permalink {
+	// 	opacity: 0;
+	// 	-o-transition: opacity .3s;
+	// 	-ms-transition: opacity .3s;
+	// 	-moz-transition: opacity .3s;
+	// 	-webkit-transition: opacity .3s;
+	// 	transition: opacity .3s;
+	// }
+
+	// &:hover .permalink {
+	// 	opacity: 1;
+	// }
 }
 
 #submit-ideas-wrapper {
