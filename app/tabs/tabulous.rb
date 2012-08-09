@@ -74,7 +74,7 @@ Tabulous.setup do |config|
       [    :articles_galleries_subtab         ,    'Galleries'                ,    root_path                                                          ,    true        ,    true        ],
       [    :theme_tab                         ,    'Theme 2013'               ,    photos_path                                                        ,    true        ,    true        ],
       [    :theme_globaltrade_subtab          ,    'Global Trade'             ,    photos_path                                                        ,    true        ,    true        ],
-      [    :theme_workshops_subtab            ,    'Workshops'                ,    photos_path                                                        ,    true        ,    true        ],
+      [    :theme_workshops_subtab            ,    'Workshops'                ,    workshops_path                                                        ,    true        ,    true        ],
       [    :theme_tradeyourideas_subtab       ,    'Trade Your Ideas'         ,    photos_path                                                        ,    true        ,    true        ],
       [    :theme_themeblog_subtab            ,    'Theme Blog'               ,    photos_path                                                        ,    true        ,    true        ],
       [    :theme_previousthemes_subtab       ,    'Previous Themes'          ,    photos_path                                                        ,    true        ,    true        ],
@@ -84,9 +84,9 @@ Tabulous.setup do |config|
       [    :about_conflictareas_subtab        ,    'Conflict Areas'           ,    photos_path                                                        ,    true        ,    true        ],
       [    :about_studentpeaceprice_subtab    ,    'Student Peace Price'      ,    photos_path                                                        ,    true        ,    true        ],
       [    :about_walkofpeace_subtab          ,    'Walk of Peace'            ,    photos_path                                                        ,    true        ,    true        ],
-      [    :about_campaign_subtab          ,    'Rename me!'            ,    ideas_path                                                        ,    true        ,    true        ],
+      [    :about_campaign_subtab             ,    'Rename me!'            ,    ideas_path                                                        ,    true        ,    true        ],
       [    :info_tab                          ,    'Info'                     ,    photos_path                                                        ,    true        ,    true        ],
-      [    :info_participant_subtab           ,    'Participant'              ,    photos_path                                                        ,    true        ,    true        ],
+      [    :info_participant_subtab           ,    'Participant'              ,    participants_path                                                        ,    true        ,    true        ],
       [    :info_volunteer_subtab             ,    'Volunteer'                ,    positions_path                                                     ,    true        ,    true        ],
       [    :info_press_subtab                 ,    'Press'                    ,    photos_path                                                        ,    true        ,    true        ],
       [    :info_donate_subtab                ,    'Donate'                   ,    photos_path                                                        ,    true        ,    true        ],
@@ -137,7 +137,7 @@ Tabulous.setup do |config|
       [    :chronicles               ,    :all_actions    ,    :chronicles_tab               ],
       [    :photos                   ,    :all_actions    ,    :photos_tab                   ],
       [    :positions                ,    :all_actions    ,    :info_volunteer_subtab        ],
-      [    :ideas                ,    :all_actions    ,    :about_campaign_subtab        ],
+      [    :ideas                    ,    :all_actions    ,    :about_campaign_subtab        ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
       #--------------------------------------------------------------------------------------#
