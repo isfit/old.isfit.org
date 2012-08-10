@@ -44,19 +44,6 @@
     The deadline for the applications has passed. <br />
     Contact question@isfit.org for questions.
   <%else%>
-    <% if @participant.errors.any? %>
-      <div id="error_explanation">
-        <h4><%= pluralize(@participant.errors.count, "error") %> prohibited the application from being sent:</h4>
-
-        <ul>
-          <% @participant.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-
 
     <h2>Application and travel support form</h2>
     <p>
@@ -77,6 +64,7 @@
     </p>
 
     <%= simple_form_for @participant, html: {class: "form"} do |f| %>
+      <%= f.error_notification %>
       <fieldset>
         <legend><%= t('participant.personal_information') %></legend>
         <%= f.input :first_name, input_html: {class: "span4"}, hint: t("participant.must_match_passport") %>
@@ -168,3 +156,4 @@
   <%end%>
 
 </div>
+

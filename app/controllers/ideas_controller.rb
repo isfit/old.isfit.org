@@ -20,20 +20,22 @@ class IdeasController < ApplicationController
   end
 
   def update
-    respond_to :json
     require 'open-uri'
     require 'json'
 
     puts '------------------------'
     @idea = Idea.find(params[:id])
-    url = "https://api.facebook.com/method/fql.query?query=select%20like_count%20from%20link_stat%20where%20url='http://beta.isfit.org/ideas/"+params[:id]+"'&format=json"
+    url = "https://api.facebook.com/method/fql.query?query=select%20share_count,like_count,comment_count,total_count%20from%20link_stat%20where%20url='http://beta.isfit.org/ideas/"+ params[:id] +"'&format=json"
 
-    result = JSON.parse(open(url).read)[0]['like_count']
+    result = JSON.parse(open(url).read)[0]['total_count']
+    puts '------------------------'
+    puts result
+    puts '------------------------'
 
     @idea.like_count = result
     @idea.save
 
-    puts result
+    @lol = @idea.like_count
 
   end
 end

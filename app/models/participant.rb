@@ -31,7 +31,6 @@ class Participant < ActiveRecord::Base
 	validates_presence_of :city
   validates_inclusion_of :country_id, :in => 1..201, :message => "not selected"
 	validates_presence_of :phone
-#	validates_presence_of :nationality
 	validates_presence_of :sex,  :message => "must be selected"	
 	validates_presence_of :university
 	validates_presence_of :field_of_study
@@ -43,10 +42,22 @@ class Participant < ActiveRecord::Base
 	# make model validate ok
 	validates_presence_of :essay1
 	validates_presence_of :essay2
-	validates_length_of :essay1, :maximum=>1900, :message => "Essay 1 too long"
-	validates_length_of :essay2, :maximum=>2300, :message => "Essay 2 too long"
-	validates_length_of :travel_essay, :maximum=>1500, :message => "Travel essay too long"
-	
+	validates_length_of :essay1, :maximum=>2500, :message => "Essay 1 too long"
+	validates_length_of :essay2, :maximum=>2500, :message => "Essay 2 too long"
+	validates_length_of :travel_essay, :maximum=>2000, :message => "Travel essay too long"
+
+  validates :essay1, :length => {
+    :maximum   => 260,
+    :tokenizer => lambda { |str| str.scan(/\s+|$/) },
+    :too_long  => " too long, maximum 250 words"
+    }
+
+  validates :essay2, :length => {
+    :maximum   => 260,
+    :tokenizer => lambda { |str| str.scan(/\s+|$/) },
+    :too_long  => "too long, maximum 250 words"
+    }
+
 	validates_presence_of :birthdate, :message => "not valid"
 
 	#Validate WSs
@@ -67,7 +78,6 @@ class Participant < ActiveRecord::Base
 
 	#Validate Self defined
 	#validate :check_age
-	validate :check_workshops
 
 	#Validate travel support
 
@@ -76,9 +86,15 @@ class Participant < ActiveRecord::Base
 			:if => Proc.new { |n| n.travel_apply > 0 }
 	validates_presence_of :travel_amount, 
 			:if => Proc.new { |n| n.travel_apply > 0 }
-	validates_numericality_of :travel_amount,
+	validates_numericality_of :travel_amount, :less_than => 10000,
 			:if => Proc.new { |n| n.travel_apply > 0 },
-            :message => "must be a number"
+            :message => "must be a number, less than 10000"
+
+  validates :travel_essay, :length => {
+    :maximum   => 210,
+    :tokenizer => lambda { |str| str.scan(/\s+|$/) },
+    :too_long  => "too long, maximum 200 words"
+    }
 
 	# Validate Wizard
 	# Step 1
@@ -142,9 +158,9 @@ class Participant < ActiveRecord::Base
 #			(2011 - birthdate.year == 18 && birthdate.month == 2 && birthdate.day < 11))
 #	end
 
-	def check_workshops	 
-    errors[:base] << "Pleace choose different workshops" unless (workshop1 != workshop2 and workshop2 != workshop3 and workshop1 != workshop3)
-	end	
+  validates_exclusion_of :workshop1, :in => lambda { |p| [p.workshop2, p.workshop3] }, :message => "Please choose different workshops"
+  validates_exclusion_of :workshop2, :in => lambda { |p| [p.workshop1, p.workshop3] }, :message => "Please choose different workshops"
+  validates_exclusion_of :workshop3, :in => lambda { |p| [p.workshop1, p.workshop2] }, :message => "Please choose different workshops"
 
   def is_radio_button_date
 		if arrival_date.eql? Date::new(2009, 02, 18) \
