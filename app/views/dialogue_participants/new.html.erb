@@ -58,18 +58,6 @@
 <%else%>
   <div class="well">
     <h1>Application form for the Dialogue Groups 2013</h1>
-
-    <% if @dialogue_participant.errors.any? %>
-      <div id="error_explanation">
-        <h4><%= pluralize(@dialogue_participant.errors.count, "error") %> prohibited the application from being sent:</h4>
-        <ul>
-          <% @dialogue_participant.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <p>
       The ISFiT Dialogue Groups is an initiative to build peace in practice. In a 
       conflict situation, communication and interaction across religious, ethnic 
@@ -119,6 +107,7 @@
     </p>
 
     <%= simple_form_for @dialogue_participant, html: {class: "form"} do |f| %>
+      <%=f.error_notification%>
       <fieldset>
         <legend><%= t("participants.personal_information") %></legend>
         <%= f.input :first_name, input_html: { class: "span4" } , hint: t("participant.must_match_passport") %>
