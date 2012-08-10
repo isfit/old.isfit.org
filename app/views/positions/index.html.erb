@@ -14,19 +14,22 @@
     <% active_section = nil %>
     <% for position in @positions %>
       <% if not position.group == active_group %>
-      </ul>
+        <% if not active_group.nil? %>
+        </table>
+      <% end %>
       <% if position.group and position.group.section and not position.group.section == active_section %>
-      </ul>
-      <h3><%= link_to position.group.section.name, "/admission/section/"+ position.group.section.id.to_s %></h3>
-      <ul>
       <% end %>
-      <h4><%=h position.group.name %></h4>
-      <ul>
+      <h2><%=h position.group.name %></h2>
+      <table class="table table-clickable table-striped">
       <% end %>
-
-      <li><%= link_to "#{position.title}", position_url(params[:tab], position), class: "position" %></li>
+      <tr>
+        <td>
+          <%= link_to "#{position.title}", position, class: "position", title: position.description %>
+        </td>
+      </tr>
       <% active_group = position.groups.first %> 
       <% active_section = position.groups.first.section %>
     <%end%>
-  <% end %>
+  </table>
+<% end %>
 </div>
