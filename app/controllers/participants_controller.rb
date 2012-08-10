@@ -42,6 +42,7 @@ class ParticipantsController < ApplicationController
       flash[:notice] = nil
 
     end
+    render :tab=>params[:tab], :action=>"new"
   end
 
   def registered
