@@ -44,8 +44,4 @@ class ParticipantsController < ApplicationController
     end
   end
 
-  def registered
-
-  end
-
 end
