@@ -65,8 +65,10 @@ html5boilerplate
         <%= link_to image_tag("logo.png"), root_path, class: "brand" %>
         <%= tabs %>
 
-        <form class="navbar-form pull-right">
-          <input type="search" class="search-query" placeholder="Search">
+          <div style="width:400px; height: 50px; position:relative;" class="pull-right">
+            <gcse:search></gcse:search>
+          </div>
+
         </form>
 
       </div>
@@ -147,5 +149,17 @@ html5boilerplate
 
   <%= javascript_include_tag 'application'%>
   <%= yield :script %>
+
+
+  <!-- TEMP LOCATION, GCS -->
+  <script>
+  (function() {
+    var cx = '012564548829188994020:nrzy0dvgxgk';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.no/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
 </body>
 </html>
