@@ -91,7 +91,7 @@
         <%= f.input "workshop3",  collection: @workshops.collect {|p| [ "WS#{p.id} - #{p.name}", p.id ] }, prompt: "Select third priority"%>
         <ul>
           <% @workshops.each do |workshop| %>
-            <li><a href="javascript:popup('<%= workshop_path(workshop) %>');">WS<%= workshop.number < 10 ? "0#{workshop.number}" : "#{workshop.number}" %> <%= " - #{workshop.name}" %></a></li>
+            <li><%= link_to "WS#{workshop.number < 10 ? "0#{workshop.number}" : "#{workshop.number}"} - #{workshop.name}", workshop_path(workshop), :target => "_blank" %></li>
           <%end%>
         </ul>
       </fieldset>
