@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   before_filter :miniprofiler
 
   # to keep UKA out...
-  #http_basic_authenticate_with :name => "isfit", :password => "betabeta"
+  http_basic_authenticate_with :name => "isfit", :password => "betabeta"
 
   def set_language
     unless session[:locale]
