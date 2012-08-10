@@ -17,37 +17,37 @@
     <%= simple_form_for(@applicant, :input_html => { 
       :class => 'form-horizontal' }, 
       :url => {
-      :controller => :positions, 
-      :action => :save
-    }) do |f| %>
+        :controller => :positions, 
+        :action => :save
+      }) do |f| %>
 
 
-    <fieldset>
-      <legend>
-        <%= t('position.personal_info') %>
-      </legend>
+      <fieldset>
+        <legend>
+          <%= t('position.personal_info') %>
+        </legend>
 
-      <%= f.input :firstname, :input_html => {
+        <%= f.input :firstname, :input_html => {
+          :class => 'span5',
+          :placeholder => t('person.first_name')
+        } %>
+
+      <%= f.input :lastname, :input_html => {
         :class => 'span5',
-        :placeholder => t('person.first_name')
+        :placeholder => t('person.last_name')
       } %>
 
-    <%= f.input :lastname, :input_html => {
+    <%= f.input :mail, :input_html => {
+      :type => 'email',
       :class => 'span5',
-      :placeholder => t('person.last_name')
+      :placeholder => t('person.email_ntnu')
     } %>
 
-  <%= f.input :mail, :input_html => {
-    :type => 'email',
+  <%= f.input :phone, :input_html => {
+    :type => 'tel', 
     :class => 'span5',
-    :placeholder => t('person.email_ntnu')
+    :placeholder => t('person.phone_nor')
   } %>
-
-<%= f.input :phone, :input_html => {
-  :type => 'tel', 
-  :class => 'span5',
-  :placeholder => t('person.phone_nor')
-} %>
   </fieldset>
 
   <fieldset>
