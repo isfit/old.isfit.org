@@ -14,6 +14,7 @@
 
 function checkFacebook() {
 	if(window.FB!==undefined) {
+		console.log('ready');
 		FB.Event.subscribe('edge.create',
 		    function(response) {
 		    	var temp = response.split('/');
@@ -22,6 +23,7 @@ function checkFacebook() {
 		);
 	}
 	else {
+		console.log('not ready');
 		window.setTimeout(checkFacebook, 20); // Resonable delay?
 	}
 }
@@ -29,6 +31,8 @@ function checkFacebook() {
 checkFacebook();
 
 function facebookExperiment(id) {
-	var url = 'http://beta.isfit.org/ideas/'+ id +'/update';
+	console.log('updating');
+
+	var url = 'beta.isfit.org/ideas/'+ id +'/update';
 	$.get(url, function(data){console.log('pinged!')});
 }
