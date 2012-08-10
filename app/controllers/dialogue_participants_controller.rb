@@ -29,9 +29,10 @@ class DialogueParticipantsController < ApplicationController
       flash[:notice] = "Your application was sent successfully. You should receive an email as a confirmation to #{@dialogue_participant.email}."
       redirect_to new_dialogue_participant_path
 		else
-      verify_recaptcha(:model=>@dialogue_participant, :message=>"Recaptcha verification failed")
+      if !verify_recaptcha(:model=>@dialogue_participant, :message=>"Recaptcha verification failed")
+        flash[:alert] = "Wrong Recaptcha"
+      end
       render :action => "new"
-      flash[:notice] = nil
 		end
   end
 end

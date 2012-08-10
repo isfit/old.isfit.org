@@ -7,10 +7,12 @@
   <meta property="og:description" content="<%=@article.ingress%>"/>
 <%end%>
 
+<%= content_for :header do %>
+
 <header id="article-header">
   <%= image_tag "https://internal.isfit.org" +  @article.workshop_image.url(:original) %>
-  <br>
-  <div class="article-text">
+ 
+  <div class="header-text">
     <h1>WS<%= @article.number < 10 ? "0#{@article.number}" : "#{@article.number}" %> <%= " - #{@article.name}" %></h1>
     <section class="article-ingress">
       <p><%=truncate(@article.ingress, :length=>150, :separator => ' ')%></p>
@@ -18,30 +20,20 @@
   </div>
 </header>  
 
-<div class="well">
-  <div id="article">
-    <% if @article.workshop_image %>
-      <%=image_tag "https://internal.isfit.org" +  @article.workshop_image.url(:original)%>
-    <% end %>
-    <h3>
-      <%= @article.name %>
-    </h3></p>
+<%end %>
 
-    <p>
-    <b><%=raw format(@article.ingress) %></b>
-    </p><hr>
-    Date: <%=  @article.created_at.strftime("%F")%>
-    </p><hr>
+<div id="article-wrapper" class="well">
+  <article id="article">
+    <div>
+      <section class="article-text">
+      <%= raw format(@article.body) %>
+      </section>
+    </div>
+  </article>
 
-    <p style="text-align:justify">
-    <%= raw format( @article.body) %>
-    </p>
-
-
-    <%if @article.got_comments%>
-      <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=111446192243028&amp;xfbml=1"></script><fb:comments width="550"></fb:comments>
-    <%end%>
-  </div>
+  <%if @article.got_comments%>
+    <div class="fb-comments" data-href="<%= workshop_url(@article) %>" data-num-posts="2" data-width="550"></div>
+  <%end%>
 </div>
 
 

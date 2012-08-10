@@ -37,11 +37,10 @@ class ParticipantsController < ApplicationController
       flash[:notice] = "Your application was sent successfully. An email has been sent to #{@participant.email}"
       redirect_to new_participant_path
     else
-      verify_recaptcha(:model=>@participant, :message=>"Recaptcha verification failed")
+      if !verify_recaptcha(:model=>@participant, :message=>"Recaptcha verification failed")
+        flash[:alert] = "Wrong Recaptcha"
+      end
       render :action=>"new"
-      flash[:notice] = nil
-
     end
   end
-
 end
