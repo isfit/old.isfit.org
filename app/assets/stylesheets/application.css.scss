@@ -54,7 +54,6 @@ a:not(.brand):hover {
   margin-bottom: 20px;
 }
 
-
 a {
   color: rgb(216,52,21);
   -webkit-transition: background .2s, color .2s;
@@ -64,14 +63,29 @@ a {
   transition: background .2s, color .2s;
 }
 
+.navbar {
+  border-top: 3px solid rgb(65,192,240);
+}
+
+#tabs > ul {
+  margin-left: 2em;
+  height: 55px;
+  padding-top: 5px;
+  box-sizing: border-box;
+}
+
+
 .navbar-inner {
   background: white;
-  border-top: 3px solid rgb(65,192,240);
 }
 
 a.brand,li.inactive a {
   color: #000 !important;
   text-shadow:none !important;
+}
+
+a.brand {
+  margin-top: 3px;
 }
 
 .nav .active > a, .navbar .nav .active > a:hover {
