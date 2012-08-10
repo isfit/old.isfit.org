@@ -67,7 +67,6 @@ class Participant < ActiveRecord::Base
 
 	#Validate Self defined
 	#validate :check_age
-	validate :check_workshops
 
 	#Validate travel support
 
@@ -142,9 +141,9 @@ class Participant < ActiveRecord::Base
 #			(2011 - birthdate.year == 18 && birthdate.month == 2 && birthdate.day < 11))
 #	end
 
-	def check_workshops	 
-    errors[:base] << "Pleace choose different workshops" unless (workshop1 != workshop2 and workshop2 != workshop3 and workshop1 != workshop3)
-	end	
+  validates_exclusion_of :workshop1, :in => lambda { |p| [p.workshop2, p.workshop3] }, :message => "Please choose different workshops"
+  validates_exclusion_of :workshop2, :in => lambda { |p| [p.workshop1, p.workshop3] }, :message => "Please choose different workshops"
+  validates_exclusion_of :workshop3, :in => lambda { |p| [p.workshop1, p.workshop2] }, :message => "Please choose different workshops"
 
   def is_radio_button_date
 		if arrival_date.eql? Date::new(2009, 02, 18) \
