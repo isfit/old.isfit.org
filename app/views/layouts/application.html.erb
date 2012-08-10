@@ -75,6 +75,12 @@ html5boilerplate
 
   <div class="container">
     <!-- TODO sett inn notice og warnings her. Se på internal -->
+    <% if notice or alert %>
+      <div class="alert alert-<%= notice ? "success":"error" %>">
+        <a href="#" class="close" data-dismiss="alert">x</a>
+        <strong><%= notice ? notice : raw(alert) %></strong>
+      </div>
+    <% end %>
     <div id="main-header">
         <%= yield :header %>
     </div>
