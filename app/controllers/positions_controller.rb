@@ -24,6 +24,7 @@ class PositionsController < ApplicationController
     @applicant = Applicant.new(params[:applicant])
     respond_to do |format|
       if @applicant.save
+        Postoffice.applicant_add(@applicant.firstname + " " + @applicant.lastname, @applicant.mail).deliver
         flash[:notice] = "Din soknad ble sendt."
         @positions = Position.published
         format.html { render :action => :index }
