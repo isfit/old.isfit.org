@@ -33,6 +33,6 @@ checkFacebook();
 function facebookExperiment(id) {
 	console.log('updating');
 
-	var url = 'beta.isfit.org/ideas/'+ id +'/update';
+	var url = 'http://beta.isfit.org/ideas/'+ id +'/update';
 	$.get(url, function(data){console.log('pinged!')});
 }
