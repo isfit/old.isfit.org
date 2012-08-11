@@ -14,19 +14,13 @@
 
     <p><%= t("position.fill_in") %></p>
 
-    <%= simple_form_for(@applicant, :input_html => { 
-      :class => 'form-horizontal' }, 
-      :url => {
-        :controller => :positions, 
-        :action => :save
-      }) do |f| %>
+    <%= simple_form_for(@applicant, :input_html => {:class => 'form-horizontal' }, url: {:controller => :positions, :action => :save}) do |f| %>
 
 
       <fieldset>
         <legend>
           <%= t('position.personal_info') %>
         </legend>
-
         <%= f.input :firstname, :input_html => {
           :class => 'span5',
           :placeholder => t('person.first_name')
@@ -51,39 +45,33 @@
   </fieldset>
 
   <fieldset>
-    <legend><%= t("position.application") %></legend>
+    <legend><%= t("position.positions") %></legend>
 
-    <%= f.input :position_id_1, :collection => @positions, :input_html => {
+    <%= f.input :position_id_1, :collection => @positions_collection, :input_html => {
       :class => 'span5'
     } %>
 
-  <%= f.input :position_id_2, :collection => @positions, :input_html => {
+  <%= f.input :position_id_2, :collection => @positions_collection, :input_html => {
     :class => 'span5'
   } %>
 
-<%= f.input :position_id_3, :collection => @positions, :input_html => {
+<%= f.input :position_id_3, :collection => @positions_collection, :input_html => {
   :class => 'span5'
 } %>
 
+    <legend><%= t("position.application") %></legend>
     <%= f.input :information, :input_html => {
-      :rows => 3,
-      :class => 'span5'
+      :rows => 10,
+      :class => 'span7'
     } %>
 
   <%= f.input :background, :input_html => {
-    :rows => 3,
-    :class => 'span5'
+    :rows => 10,
+    :class => 'span7'
   } %>
 
-<!--
-<p>
-<b><%= t("position.hear_about") %>:</b><br>
-<%= f.text_area(:heardof,:cols => 63, :rows=>5)%><br>
-</p>
--->
-<div class="type-button">
-  <%= f.button :submit %>
-</div>
+  <%= f.button 'submit',:value => "Submit application", class: "btn btn-large btn-primary" %></center>
+
 <% end %>
 
 <%end%>
