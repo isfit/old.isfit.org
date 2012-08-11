@@ -1,0 +1,29 @@
+<article class="widget-album-index">
+	<section class="metadata">
+		<p>This is sample metadata</p>
+		<p>Number of photos: a lot</p>
+		<p>Event: Awesomeday 2013</p>
+	</section>
+
+	<section class="image-wrapper">
+<%
+	require 'open-uri'
+    require 'json'
+
+	apiKey = 'e9d53f958f44f599b45f0605b38782b7' # Do I even need this?
+	imgurUrl = 'http://api.imgur.com/2/album/'
+
+
+	images = JSON.parse(open(imgurUrl+url +'.json').read)['album']['images']
+
+
+	images.each do |image|
+		%>
+
+		<%=image_tag(image['links']['small_square'])%>
+	<% end %>
+	</section>
+
+	<a class="permalink" href="#">See all</a>
+
+</article>
