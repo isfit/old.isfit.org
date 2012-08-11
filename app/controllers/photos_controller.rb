@@ -2,16 +2,13 @@ class PhotosController < ApplicationController
 
 
   def show
-    @picture = Photo.find(params[:id])
+    id = params[:id]
+    imgurUrl = 'http://api.imgur.com/2/album/'
 
+    @images = JSON.parse(open(imgurUrl+ id +'.json').read)['album']['images']
   end
   def index
-    @pictures = Photo.find(:all)
- 
-    respond_to do |format|
-      format.html
-      format.js
-    end
+  
   end
 
 

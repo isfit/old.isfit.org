@@ -70,6 +70,7 @@ Tabulous.setup do |config|
       [    :participants_tab                  ,    'Participants'             ,    participants_path                                                  ,    false       ,    false       ],
       [    :dialogue_participants_tab         ,    'Dialogue Participants'    ,    dialogue_participants_path                                         ,    false       ,    false       ],
       [    :articles_tab                      ,    'News'                     ,    root_path                                                          ,    true        ,    true        ],
+      [    :photos_subtab                      ,    'Photos'                     ,    root_path                                                          ,    true        ,    true        ],
       [    :articles_archive_subtab           ,    'Archive'                  ,    root_path                                                          ,    true        ,    true        ],
       [    :articles_galleries_subtab         ,    'Galleries'                ,    root_path                                                          ,    true        ,    true        ],
       [    :theme_tab                         ,    'Theme 2013'               ,    photos_path                                                        ,    true        ,    true        ],
@@ -135,7 +136,7 @@ Tabulous.setup do |config|
       [    :participants             ,    :all_actions    ,    :participants_tab             ],
       [    :dialogue_participants    ,    :all_actions    ,    :dialogue_participants_tab    ],
       [    :chronicles               ,    :all_actions    ,    :chronicles_tab               ],
-      [    :photos                   ,    :all_actions    ,    :photos_tab                   ],
+      [    :photos                   ,    :all_actions    ,    :photos_subtab                   ],
       [    :positions                ,    :all_actions    ,    :info_volunteer_subtab        ],
       [    :ideas                    ,    :all_actions    ,    :about_campaign_subtab        ],
       #--------------------------------------------------------------------------------------#
