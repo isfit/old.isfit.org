@@ -159,6 +159,12 @@ footer.main-footer {
 
 
 // GSC
+#navbar-search-wrapper {
+  max-width: 400px;
+  height: 50px;
+  position: relative;
+  top: 4px;
+}
 .gsc-control-cse {
   padding: 0 !important;
   height: 50px !important;
