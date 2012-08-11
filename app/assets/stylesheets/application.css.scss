@@ -64,7 +64,7 @@ a {
 }
 
 .navbar {
-  border-top: 3px solid rgb(65,192,240);
+//  border-top: 3px solid rgb(65,192,240);
 }
 
 #tabs > ul {
@@ -73,7 +73,6 @@ a {
   padding-top: 5px;
   box-sizing: border-box;
 }
-
 
 .navbar-inner {
   background: white;
@@ -145,7 +144,7 @@ div.header-text {
 footer.main-footer {
   padding-top: 1em;
   margin-top: 4em !important;
-  border-top: 1px dashed rgb(65,192,240);
+//  border-top: 1px dashed rgb(65,192,240);
   text-align: center;
 }
 
@@ -160,6 +159,10 @@ footer.main-footer {
 
 .social {
   height: 271px;
+}
+
+a.brand {
+  margin-left: 0 !important;
 }
 
 // GSC
