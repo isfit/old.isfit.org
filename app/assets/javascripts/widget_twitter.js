@@ -2,34 +2,29 @@
 
 var q = 'http://isfit.org';
 
-$('#widget-twitter').ready(function(){
-	var searchUrl = 'http://search.twitter.com/search.json?callback=?&q=';
-	var url = searchUrl + q;
-	var data = '';
+// $('#widget-twitter').ready(function(){
+// 	var searchUrl = 'http://search.twitter.com/search.json?callback=?&q=';
+// 	var url = searchUrl + q;
+// 	var data = '';
+	
+// 	$.ajax({
+// 		url: url,
+// 		dataType: 'jsonp',
+// 		data: data,
+// 		success: callback
+// 	});
+// });
 
-	$.ajax({
-		url: url,
-		dataType: 'jsonp',
-		data: data,
-		success: callback
-	});
-});
-function callback(data) {
-	var tweets = data.results;
-  document.getElementById('widget-twitter-query').innerHTML = q;
-
-	// TODO: display all the tweets
-
-	tweets.forEach(function(tweet){
-    var div = document.createElement('div');
+function createTweet(tweet) {
+	var div = document.createElement('div');
     div.className = 'widget-twitter-tweet';
 
-		var tr = document.createElement('tr');
-		var tdProfileImage = document.createElement('td');
-		var imgProfileImage = document.createElement('img');
-		imgProfileImage.src = tweet.profile_image_url;
-		var pText = document.createElement('p');
-		pText.innerHTML = processTweetLinks(tweet.text);
+	var tr = document.createElement('tr');
+	var tdProfileImage = document.createElement('td');
+	var imgProfileImage = document.createElement('img');
+	imgProfileImage.src = tweet.profile_image_url;
+	var pText = document.createElement('p');
+	pText.innerHTML = processTweetLinks(tweet.text);
 
     var cite = document.createElement('cite');
     var aFromUser = document.createElement('a');
@@ -42,20 +37,30 @@ function callback(data) {
     tdFromUser.appendChild(aFromUser);
 
 		
-		var tdCreatedAt = document.createElement('td');
-		tdCreatedAt.innerHTML = tweet.created_at;
+	var tdCreatedAt = document.createElement('td');
+	tdCreatedAt.innerHTML = tweet.created_at;
 
-		tr.appendChild(tdProfileImage);
-		tr.appendChild(tdFromUser);
-		div.appendChild(pText);
+	tr.appendChild(tdProfileImage);
+	tr.appendChild(tdFromUser);
+	div.appendChild(pText);
     pText.appendChild(cite);
-		tr.appendChild(tdCreatedAt);
+	tr.appendChild(tdCreatedAt);
 
-		document.getElementById('widget-twitter-results').appendChild(div);
-	});
-  document.getElementById('widget-twitter').style.height = '400px';
-  document.getElementById('widget-twitter').style.overflowY = 'scroll';
+	return div;
 }
+
+// function callback(data) {
+// 	var tweets = data.results;
+//   document.getElementById('widget-twitter-query').innerHTML = q;
+
+// 	// TODO: display all the tweets
+
+// 	tweets.forEach(function(tweet){
+// 		document.getElementById('widget-twitter-results').appendChild(createTweet(tweet));
+// 	});
+//   document.getElementById('widget-twitter').style.height = '400px';
+//   document.getElementById('widget-twitter').style.overflowY = 'scroll';
+// }
 
 
 // Source: http://stackoverflow.com/questions/8020739/regex-how-to-replace-twitter-links

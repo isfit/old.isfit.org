@@ -29,3 +29,50 @@
   	}
   }
 }
+
+
+#widget-twitter-fp {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  .twitter-widget-fp-content {
+    width: 10000px;
+    z-index: 1337;
+    position: relative;
+    top: 0;
+    left: 0;
+    left: -558px;
+
+    -o-transition: left .6s;
+    -ms-transition: left .6s;
+    -moz-transition: left .6s;
+    -webkit-transition: left .6s;
+    transition: left .6s;
+  }
+
+  .tweet {
+    display: inline-block;
+    width: 255px;
+    margin: 0;
+    margin-right: 24px;
+    background: #f1f1f1;
+    border-radius: 7px;
+    vertical-align: top;
+    padding: .5em;
+    box-sizing: border-box;
+  }
+
+  img {
+    float: left;
+    margin-right: .5em;
+    margin-bottom: .5em;
+  }
+
+  cite {
+    display: block;
+    font-style: italic;
+    text-align: right;
+    line-height: 2em;
+  }
+}

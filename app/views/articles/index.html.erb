@@ -1,3 +1,4 @@
+
 <%= content_for :header do %>
   <div class="hero-unit">
     <div class="action-text">
@@ -55,8 +56,14 @@
     </div>
   </div>
   <div class="span4">
-    <div class="well social">
-      <a href="https://twitter.com/ISFiT" class="twitter-follow-button pull-right" data-show-count="false" data-size="large">Follow @ISFiT</a>
+    <div class="well social" id="widget-twitter-fp">
+      <header>
+        <a href="https://twitter.com/ISFiT" class="twitter-follow-button pull-right" data-show-count="false" data-size="large">Follow @ISFiT</a>
+      </header>
+
+      <section class="twitter-widget-fp-content">
+      </section>
+
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     </div>
   </div>
