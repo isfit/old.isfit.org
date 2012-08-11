@@ -72,5 +72,18 @@ class Postoffice < ActionMailer::Base
       mail(:from => @from, :to => @recipients, :subject => @subject_en)
     end  
   end
-end
 
+  def applicant_add(name, email)
+    @recipients     = email
+    @from           = "Unknown"
+    @subject_en     = "Unknown"
+    @subject_no     = "Ukjent"
+    @sent_on        = Time.now
+    @content_type   = "text/html"
+    if I18n.locale.to_s == "no"
+      mail(:from => @from, :to => @recipients, :subject => @subject_no) 
+    else
+      mail(:from => @from, :to => @recipients, :subject => @subject_en) 
+    end
+  end
+end
