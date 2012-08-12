@@ -61,8 +61,9 @@ class Participant < ActiveRecord::Base
 	validates_presence_of :birthdate, :message => "not valid"
 
 	#Validate WSs
-	validates_numericality_of :workshop1,:greater_than => 0, :message => " not selected"
+	validates_numericality_of :workshop1,:greater_than => 0, :message => "not selected"
 	validates_numericality_of :workshop2,:greater_than => 0, :message => "not selected"
+	validates_numericality_of :workshop3,:greater_than => 0, :message => "not selected"
 
 	#Validate Email
   validates_format_of :email,
