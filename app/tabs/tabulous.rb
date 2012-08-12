@@ -90,7 +90,7 @@ Tabulous.setup do |config|
       [    :info_participant_subtab           ,    'Participant'              ,    participants_path                                                        ,    true        ,    true        ],
       [    :info_volunteer_subtab             ,    'Volunteer'                ,    positions_path                                                     ,    true        ,    true        ],
       [    :info_press_subtab                 ,    'Press'                    ,    photos_path                                                        ,    true        ,    true        ],
-      [    :info_donate_subtab                ,    'Donate'                   ,    photos_path                                                        ,    true        ,    true        ],
+      [    :info_donate_subtab                ,    'Donate'                   ,    url_for(:controller => "donations", :action => 'donate')                                                        ,    true        ,    true        ],
       [    :info_contact_subtab               ,    'Contact'                  ,    photos_path                                                        ,    true        ,    true        ],
       [    :info_faq_subtab                   ,    'FAQ'                      ,    photos_path                                                        ,    true        ,    true        ],
       [    :events_tab                        ,    'Events'                   ,    photos_path                                                        ,    false       ,    false       ],
@@ -136,9 +136,10 @@ Tabulous.setup do |config|
       [    :participants             ,    :all_actions    ,    :participants_tab             ],
       [    :dialogue_participants    ,    :all_actions    ,    :dialogue_participants_tab    ],
       [    :chronicles               ,    :all_actions    ,    :chronicles_tab               ],
-      [    :photos                   ,    :all_actions    ,    :photos_subtab                   ],
+      [    :photos                   ,    :all_actions    ,    :photos_subtab                ],
       [    :positions                ,    :all_actions    ,    :info_volunteer_subtab        ],
-      [    :ideas                    ,    :all_actions    ,    :about_campaign_subtab        ],
+      [    :donations                ,    :all_actions    ,    :about_campaign_subtab        ],
+      [    :ideas                    ,    :all_actions    ,    :info_donate_subtab           ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
       #--------------------------------------------------------------------------------------#
