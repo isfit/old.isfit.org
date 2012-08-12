@@ -37,9 +37,14 @@
   </script>
 <%end%>
 
+  <%= content_for :sidebar do %>
+    <div class="well">
+      <h4><%= t("derp.dialogue_groups") %></h4>
+      <%=link_to t("derp.apply_dialogue"), new_dialogue_participant_path, class: "btn btn-primary btn-large"%></div>
+  <% end %>
+
 <div class="well">
 
-  <span class="pull-right"><%=link_to "Apply for ISFiT 2013 dialoguegroups here!", new_dialogue_participant_path(:tab => params[:tab])%></span>
   <%if false%>
     The deadline for the applications has passed. <br />
     Contact question@isfit.org for questions.
