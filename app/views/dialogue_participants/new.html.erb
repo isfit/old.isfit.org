@@ -51,6 +51,14 @@
 
   </script>
 <%end%>
+
+  <%= content_for :sidebar do %>
+    <div class="well">
+      <h4><%= t("derp.participant") %></h4>
+      <%=link_to t("derp.apply_participant"), new_dialogue_participant_path, class: "btn btn-primary btn-large"%></div>
+  <% end %>
+
+
 <%if false%>
   The deadline for the applications has passed. <br />
   Contact info-dialogue@isfit.org for questions.

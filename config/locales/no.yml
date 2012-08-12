@@ -1,4 +1,9 @@
 "no":
+  derp:
+    dialogue_groups: "Leter du etter dialoggruppene?"
+    participant: "Leter du etter deltakersøknader?"
+    apply_dialogue: "Apply for the ISFiT 2013 Dialogue Groups"
+    apply_participant: "Søk om å bli deltaker i ISFiT 2013 her"
   call-to-action:
     header: "Det er gøy å være med på noe stort"
     paragraph: |
