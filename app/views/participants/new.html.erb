@@ -141,7 +141,7 @@
         <p>Please write a brief essay about why you should be granted travel support (200 words). 
         If you are able to obtain travel support from other sources, please include this in your essay.</p>
         <%= f.input :travel_essay, input_html: {:class => "span7", :maxlength => "1400"} %>
-        <%= f.input :travel_amount, input_html: { class: "span4" }, hint: "In US dollars between 0 and 400 dollars." %>
+        <%= f.input :travel_amount, input_html: { class: "span4" }, hint: t("participant.travel_amount_hint") %>
         <p>If you do not receive travel support form ISFiT, can you obtain financial support form other sources?</p>
         <p>
         <%= f.check_box "travel_nosupport_other" %> I can obtain travel support from other sources.<br>

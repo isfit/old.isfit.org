@@ -52,6 +52,7 @@
     must_match_passport: 'Name must match passport name'
     address_hint: 'Hint for the address?'
     country_code: 'Add the country code'
+    travel_amount_hint: 'Amount of money that you are applying for(maximum $3000)'
   position:
     no_new_positions: "Vi har dessverre ingen opptak for tiden, men følg med på nettsiden for nye oppdateringer"
     new_positions: "ISFiT har for øyeblikket opptak på følgende stillinger"
