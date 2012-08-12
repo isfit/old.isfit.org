@@ -86,9 +86,9 @@ class Participant < ActiveRecord::Base
 			:if => Proc.new { |n| n.travel_apply > 0 }
 	validates_presence_of :travel_amount, 
 			:if => Proc.new { |n| n.travel_apply > 0 }
-	validates_numericality_of :travel_amount, :less_than => 10000,
-			:if => Proc.new { |n| n.travel_apply > 0 },
-            :message => "must be a number, less than 10000"
+	validates_numericality_of :travel_amount, :less_than_or_equal_to => 3000, :greater_than => 0,
+      :if => Proc.new { |n| n.travel_apply > 0 || !n.travel_amount.empty? },
+      :message => "must be a number, between 0 and 3000"
 
   validates :travel_essay, :length => {
     :maximum   => 210,
