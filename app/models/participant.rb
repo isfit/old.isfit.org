@@ -29,7 +29,7 @@ class Participant < ActiveRecord::Base
 	validates_presence_of :address1
 	validates_presence_of :zipcode
 	validates_presence_of :city
-  validates_inclusion_of :country_id, :in => 1..201, :message => "not selected"
+  validates_inclusion_of :country_id, :in => 1..210, :message => "not selected"
 	validates_presence_of :phone
 	validates_presence_of :sex,  :message => "must be selected"	
 	validates_presence_of :university
@@ -63,8 +63,6 @@ class Participant < ActiveRecord::Base
 	#Validate WSs
 	validates_numericality_of :workshop1,:greater_than => 0, :message => " not selected"
 	validates_numericality_of :workshop2,:greater_than => 0, :message => "not selected"
-  validates_numericality_of :workshop3,:greater_than => 0, :message => "not selected"
-
 
 	#Validate Email
   validates_format_of :email,
@@ -73,11 +71,8 @@ class Participant < ActiveRecord::Base
 	validates_confirmation_of :email, :message => "address should match confirmation."
 	validates_uniqueness_of :email, :message => " address is already in use."
 
-	#Validate birthdate
-	#validate :check_birthdate
-
-	#Validate Self defined
-	#validate :check_age
+  validates_inclusion_of :birthdate, :in => Date.new(1911)..Date.new(1995,2,7), 
+    :message => "You need to be 18 years old when the festival starts"
 
 	#Validate travel support
 
@@ -149,14 +144,6 @@ class Participant < ActiveRecord::Base
 		:in => [true, false],
 		:if => Proc.new {|part| part.respond_to?(:wizard_step) and part.wizard_step == 6},
 		:message => "Please indicate whether you will sign up for the ISFiT transportation or not."
-
-#	def check_age
-#		errors[:base] << "Age should be between 18 and 100" unless birthdate != nil and 
-#		Date.today.year - birthdate.year < 101 && ( 
-#			2011 - birthdate.year > 18 or
-#			(2011 - birthdate.year == 18 && birthdate.month == 1)  or
-#			(2011 - birthdate.year == 18 && birthdate.month == 2 && birthdate.day < 11))
-#	end
 
   validates_exclusion_of :workshop1, :in => lambda { |p| [p.workshop2, p.workshop3] }, :message => "Please choose different workshops"
   validates_exclusion_of :workshop2, :in => lambda { |p| [p.workshop1, p.workshop3] }, :message => "Please choose different workshops"
