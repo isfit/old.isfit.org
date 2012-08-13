@@ -137,7 +137,7 @@ Tabulous.setup do |config|
       [    :chronicles               ,    :all_actions    ,    :chronicles_tab               ],
       [    :photos                   ,    :all_actions    ,    :photos_subtab                ],
       [    :positions                ,    :all_actions    ,    :info_volunteer_subtab        ],
-      [    :donations                ,    :all_actions    ,    :about_campaign_subtab        ],
+      [    :donations                ,    :all_actions    ,    :info_donate_subtab        ],
       [    :ideas                    ,    :all_actions    ,    :info_donate_subtab           ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
