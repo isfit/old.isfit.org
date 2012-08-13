@@ -77,7 +77,12 @@ a {
 }
 
 .navbar-inner {
-  background: white;
+  background-color: white !important;
+  -webkit-background-image: none;
+  -moz-background-image: none;
+  -ms-background-image: none;
+  background-image: none;
+  filter: none !important;
 }
 
 a.brand,li.inactive a {

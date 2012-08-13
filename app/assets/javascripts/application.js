@@ -6,7 +6,11 @@
 //
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
+//= require ambassadors
+//= require bootstrap
+//= require widget_twitter
+//= require widget_twitter_article
+//= require widget_twitter_fp
 
 
 // TABS
