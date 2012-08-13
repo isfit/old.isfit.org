@@ -1,0 +1,12 @@
+development: &development
+  mode: test
+  login: "eribe_1344778092_biz@isfit.org"
+  password: "12345678"
+  signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AMWk1LWCY0zL5p-gB90vv5IxB7b1"
+#  application_id: "APP-80W284485P519543T"
+
+production:
+  <<: *development
+
+test:
+  <<: *development

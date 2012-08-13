@@ -13,6 +13,7 @@ gem 'paperclip'
 gem 'rake'
 gem 'simple_form'
 gem 'tabulous'
+gem 'activemerchant'
 
 group :assets do
   gem 'sass-rails'
