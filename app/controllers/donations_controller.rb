@@ -1,4 +1,8 @@
 class DonationsController < ApplicationController
+  def new
+    @payment = Donation.new
+  end
+  
   def donate
   end
 
