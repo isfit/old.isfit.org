@@ -12,6 +12,7 @@ html {
 }
 
 html, body, div, aside, footer, header, span, h1, h2, h3, h4, h5, h6 {
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -71,6 +72,7 @@ a {
   margin-left: 2em;
   height: 55px;
   padding-top: 5px;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -110,6 +112,7 @@ div.header-text {
   color: white;
   background: rgba(0,0,0,.4);
   text-shadow: 0 1px 0 #333;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 1em;
 
