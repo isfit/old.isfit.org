@@ -1,4 +1,32 @@
 "no":
+  tabs:
+    articles:
+      main: 'News'
+      photos: 'Photos'
+      archive: 'Archive'
+      galleries: 'Galleries'
+    theme:
+      main: 'Theme 2013'
+      globaltrade: 'Global Trade'
+      workshops: 'Workshops'
+      tradeyourideas: 'Trade Your Ideas'
+      themeblog: 'Theme Blog'
+      previousthemes: 'Previous Themes'
+    about:
+      main: 'About'
+      whatisisfit: 'What is ISFiT?'
+      dialoguegroups: 'Dialogue Groups'
+      conflictareas: 'Conflict Areas'
+      studentpeaceprice: 'Student Peace Price'
+      walkofpeace: 'Walk of Peace'
+    info:
+      main: 'Info'
+      participant: 'Participant'
+      volunteer: 'Volunteer'
+      press: 'Press'
+      donate: 'Donate'
+      contact: 'Contact'
+      faq: 'FAQ'
   derp:
     dialogue_groups: "Leter du etter dialoggruppene?"
     participant: "Leter du etter deltakersøknader?"

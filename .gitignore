@@ -19,3 +19,5 @@ public/.htaccess
 public/images/slide/*
 public/images/spp_article_images/*
 *.swp
+.redcar/
+

@@ -30,6 +30,37 @@
   }
 }
 
+#widget-twitter-article {
+
+  // After tweets are loaded, the height is set to auto through JavaScript. If Javascript is
+  // disabled, or some error occurs, nothing is displayed.
+  overflow: hidden;
+
+  .widget-twitter-tweet {
+  	margin-bottom: 1em;
+
+    header {
+      height: 2em;
+      position: fixed;
+    }
+
+  	img {
+  		height: 48px !important;
+      width: 48px !important;
+  	  float: left;
+  	  margin-right: .5em;
+  	  margin-bottom: .2em;
+  	}
+
+  	cite {
+  	  display: block;
+  	  width: 100%;
+  	  text-align: right;
+  	  font-size: .8em;	
+  	}
+  }
+}
+
 
 #widget-twitter-fp {
   overflow: hidden;
@@ -69,6 +100,62 @@
   }
 
   cite {
+    display: block;
+    font-style: italic;
+    text-align: right;
+    line-height: 2em;
+  }
+}
+
+#widget-twitter-article {
+  overflow: hidden;
+  position: relative;
+
+  .twitter-widget-article-content {
+    width: 10000px;
+    position: relative;
+    top: 0;
+    left: -558px;
+    left: 0;
+
+    -o-transition: left .6s;
+    -ms-transition: left .6s;
+    -moz-transition: left .6s;
+    -webkit-transition: left .6s;
+    transition: left .6s;
+  }
+
+  .tweet {
+    display: inline-block;
+    width: 255px;
+    margin: 0;
+    margin-right: 24px;
+    background: #f1f1f1;
+    border-radius: 7px;
+    vertical-align: top;
+    padding: .5em;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  p {
+    width: 75%;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  img {
+    width: 20% !important;
+    float: left;
+    margin-right: .5em;
+    margin-bottom: .5em;
+  }
+
+  cite {
+    width: 100%;
+    height: 2em;
+    text-overflow: ellipsis;
+    overflow: hidden;
     display: block;
     font-style: italic;
     text-align: right;
