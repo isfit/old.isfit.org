@@ -78,7 +78,14 @@ html5boilerplate
         <%= link_to image_tag("logo.png"), root_path, class: "brand" %>
         <%= tabs %>
 
-          <div id="navbar-search-wrapper" class="pull-right">
+
+          <div id="fb-connect-topbar" class="pull-right">
+            <% if session[:user].nil? %>
+              <p><a href="https://www.facebook.com/dialog/oauth?client_id=111446192243028&redirect_uri=http://localhost:3000/oauth/callback&state=lolololololololol" target="_blank">Log in</a></p>
+            <% else %>
+              <%= session[:user].name %> 
+            <% end %>
+
           </div>
 
       </div>

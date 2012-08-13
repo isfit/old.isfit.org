@@ -10,6 +10,9 @@ WwwIsfitOrg::Application.routes.draw do
 
   get "ambassadors" => "ambassadors#index"
 
+  get 'oauth/start'
+  get 'oauth/callback'
+
   get "ambassadors/new"
 
   post "ambassadors" => "ambassadors#create"

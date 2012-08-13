@@ -1,6 +1,10 @@
 .DS_Store
 config/database.yml
+<<<<<<< HEAD
+config/oauth.yml
+=======
 config/gateway.yml
+>>>>>>> e93a16ceeb967de9d1c3d2b5ef766c5b1cebe76d
 .bundle
 db/*.sqlite3
 log/*.log
@@ -21,4 +25,3 @@ public/images/slide/*
 public/images/spp_article_images/*
 *.swp
 .redcar/
-
