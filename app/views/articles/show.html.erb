@@ -104,9 +104,13 @@ end%>
 
     </div>
         <%= content_for :sidebar do %>
+          <aside id="widget-twitter-article" class="well">
+          	<header>
+	          	<h4>Displaying tweets for <em id="widget-twitter-query">loading...</em></h4>
+          	</header>
+           	<div id="widget-twitter-results"></div>
+          </aside>
 
-          <%= render "shared/twitter" %>
-        
         <div>
           <blockquote class="well share">
             <p>It is better to have loved and lost than never to have lost at all.</p>
