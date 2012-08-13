@@ -39,19 +39,7 @@ html5boilerplate
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
   <%= csrf_meta_tag %>
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-18016792-1']);
-    _gaq.push(['_setDomainName', 'isfit.org']);
-    _gaq.push(['_trackPageview']);
-    _gaq.push(['_trackLoadTime']);
 
-    (function() {
-     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
-  </script>
 
   <!-- Typekit fonts. Yes, these are supposed to live in the head... -->
   <script type="text/javascript" src="http://use.typekit.com/piu2mrs.js"></script>
@@ -78,7 +66,19 @@ html5boilerplate
         <%= link_to image_tag("logo.png"), root_path, class: "brand" %>
         <%= tabs %>
 
-          <div id="navbar-search-wrapper" class="pull-right">
+          <div id="fb-connect-topbar" class="pull-right">
+            <% if session[:user].nil? %>
+              <p><a href="https://www.facebook.com/dialog/oauth?client_id=111446192243028&redirect_uri=http://localhost:3000/oauth/callback&state=lolololololololol" target="_blank">Log in with Facebook</a></p>
+            <% else %>
+              <p class="facebook-user-name"><%= session[:user].name %> </p>
+            <% end %>
+
+            <div id="navbar-icons">
+                <a href="http://twitter.com/isfit" target="_blank"><img src="http://i.imgur.com/Sk5wZ.png" alt=""></a>
+                <a href="http://www.facebook.com/pages/ISFiT/11541693212" target="_blank"><img src="http://i.imgur.com/jfl7M.png" alt=""></a>
+                <a href="#" id="search-button"><img src="http://i.imgur.com/XdcJl.png" alt=""></a>
+            </div>
+
           </div>
 
       </div>
@@ -106,13 +106,21 @@ html5boilerplate
 
         <%= yield :sidebar %>
 
-        <div class="promotional">
-          <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
-        </div>
+    <div class="promotional">
+      <%if Language.to_s == "no"%>
+          <a href="/ideas"><img src="http://i.imgur.com/c3wsd.png" alt="promotional"></a>
+        <% else %>
+          <a href="/ideas"><img src="http://i.imgur.com/c3wsd.png" alt="promotional"></a>
+        <% end %>
+    </div>
         
-        <div class="promotional">
-          <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
-        </div>
+    <div class="promotional">
+      <%if Language.to_s == "no"%>
+          <a href="/ideas"><img src="http://i.imgur.com/c3wsd.png" alt="promotional"></a>
+        <% else %>
+          <a href="/ideas"><img src="http://i.imgur.com/c3wsd.png" alt="promotional"></a>
+        <% end %>
+    </div>
 
       </aside><!-- Slutt hoyreramme -->
 
@@ -126,8 +134,8 @@ html5boilerplate
       <footer class="main-footer span12"><!-- Start footer -->
       <%=link_to(image_tag("isfitliten.png", :class=>"footer-logo"), root_path)%>
       <p>
-      Editor in Chief: Synne Mari Pedersen, editor[at]isfit.org. <br />
-      All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2013.
+      <%= t("footer.editor") %>: Synne Mari Pedersen, editor[at]isfit.org. <br />
+      <%= t("footer.copyright") %>
       </p>
       </footer><!-- End footer -->
     </div>

@@ -13,16 +13,15 @@ $('#widget-twitter-article').ready(function(){
   });
   function callback(data) {
     var tweets = data.results;
-    document.getElementById('widget-twitter-query').innerHTML = q;
+    $('#widget-twitter-query').html(q);
 
     // TODO: display all the tweets
-    console.log(tweets);
     tweets.forEach(function(tweet){
-      document.getElementById('widget-twitter-results').appendChild(createTweet(tweet));
+      $('#widget-twitter-results').append(createTweet(tweet));
     });
     
-    document.getElementById('widget-twitter-article').style.height = '400px';
-    document.getElementById('widget-twitter-article').style.overflowY = 'scroll';
+    $('#widget-twitter-article').css("height", "400px");
+    $('#widget-twitter-article').css("overflowY", 'scroll');
   }
 
 });

@@ -1,46 +1,52 @@
 "no":
+  footer:
+    editor: "Redaktør"
+    copyright: Alt av skriftlig materiale og ISFiT-logoen er kopibeskyttet Stiftelsen ISFiT.
   tabs:
     articles:
-      main: 'News'
-      photos: 'Photos'
-      archive: 'Archive'
-      galleries: 'Galleries'
+      main: 'Nyheter'
+      photos: 'Foto'
+      archive: 'Arkiv'
+      galleries: 'Galleri'
     theme:
-      main: 'Theme 2013'
-      globaltrade: 'Global Trade'
-      workshops: 'Workshops'
+      main: 'Tema 2013'
+      globaltrade: 'Global Handel'
+      workshops: 'Workshoper'
       tradeyourideas: 'Trade Your Ideas'
-      themeblog: 'Theme Blog'
-      previousthemes: 'Previous Themes'
+      themeblog: 'Temablogg'
+      previousthemes: 'Tidligere temaer'
     about:
-      main: 'About'
-      whatisisfit: 'What is ISFiT?'
-      dialoguegroups: 'Dialogue Groups'
-      conflictareas: 'Conflict Areas'
-      studentpeaceprice: 'Student Peace Price'
+      main: 'Om ISFiT'
+      whatisisfit: 'Hva er ISFiT?'
+      dialoguegroups: 'Dialoggruppene'
+      conflictareas: 'Konfliktområdene'
+      studentpeaceprice: 'Studentenes fredspris'
       walkofpeace: 'Walk of Peace'
     info:
-      main: 'Info'
-      participant: 'Participant'
-      volunteer: 'Volunteer'
-      press: 'Press'
-      donate: 'Donate'
-      contact: 'Contact'
-      faq: 'FAQ'
+      main: 'Informasjon'
+      participant: 'Deltakere'
+      volunteer: 'Frivillige'
+      press: 'Presse'
+      donate: 'Støtt en deltaker'
+      contact: 'Kontakt oss'
+      faq: 'Ofte stilte spørsmål'
+    languages:
+      main: 'Languages'
   derp:
     dialogue_groups: "Leter du etter dialoggruppene?"
     participant: "Leter du etter deltakersøknader?"
-    apply_dialogue: "Apply for the ISFiT 2013 Dialogue Groups"
-    apply_participant: "Søk om å bli deltaker i ISFiT 2013 her"
-    isfit: "Vil du være en frivillig?"
-    apply_isfit: "Søk om å være frivillig i ISFiT 2013"
+    apply_dialogue: "Søk om å bli med i dialoggruppene"
+    apply_participant: "Søk om å bli deltaker på ISFiT 2013 her"
+    isfit: "Vil du være frivillig?"
+    apply_isfit: "Søk om å være frivillig på ISFiT 2013"
   call-to-action:
     header: "Det er gøy å være med på noe stort"
     paragraph: |
-      The purpose of ISFiT is to grow and share innovative ideas for how we can
-      change and improve the future. We do this through uniting young minds from
-      all over the world in Trondheim, Norway next February. Apply now and become
-      a part of it all.
+      Som frivillig på ISFiT får være med å planlegge og gjennomføre 
+      det som blir verdens største internasjonale studentfestival.
+      ISFiT er en av gjengene på [Studentersamfundet](http://www.samfundet.no)
+      og du får nyte godt av godene det medbringer.  
+      Vi lover at det blir sosialt, gøy og engasjerende. Lover du å søke?
     apply_now: "Søk nå"
     learn_more: "Les mer"
   event:
@@ -81,14 +87,14 @@
     header: "NYHETER"
     more: "Flere saker"
   participant:
-    must_match_passport: 'Name must match passport name'
-    address_hint: 'Hint for the address?'
-    country_code: 'Add the country code'
-    travel_amount_hint: 'Amount of money that you are applying for(maximum $3000)'
+    must_match_passport: 'Navnet må stemme overens med navnet i passet ditt'
+    address_hint: ''
+    country_code: 'Husk landskoden'
+    travel_amount_hint: 'Beløpet du søker om (maksimum 3000 USD)'
   position:
     no_new_positions: "Vi har dessverre ingen opptak for tiden, men følg med på nettsiden for nye oppdateringer"
     new_positions: "ISFiT har for øyeblikket opptak på følgende stillinger"
-    motivational: "Vil du være med å skape ISFiT 2013?"
+    motivational: "Det er gøy å være med på noe stort"
     positions: "Stillinger"
     apply: "Søk nå"
     form: "Søknadsskjema"
@@ -111,7 +117,7 @@
     phone: "Telefonnummer"
     phone_nor: "Telefonnummer, 8 siffer"
     email: "E-postadresse"
-    email_ntnu: "Epostadresse (ved studiested)"
+    email_ntnu: "E-postadresse (ved studiested)"
   project_support:
     contact_person: "Kontaktperson"
     project: "Prosjekt"
@@ -128,7 +134,7 @@
       applicant:
         firstname: 'Fornavn'
         lastname: 'Etternavn'
-        mail: 'Epost-adresse'
+        mail: 'E-postadresse'
         phone: 'Telefonnummer'
         position_id_1: 'Førstevalg'
         position_id_2: 'Andrevalg (valgfritt)'
@@ -185,7 +191,7 @@
     errors:
       messages:
         blank: må fylles ut
-        format: Tullball
+        format: er i feil format
         inclusion: må være valgt i gyldig mengde
         invalid: har ikke riktig format
         not_a_number: må bestå av tall
@@ -272,7 +278,7 @@
       applicant:
         firstname: Fornavn
         lastname: Etternavn
-        mail: Epostadresse (ved studiested)
+        mail: E-postadresse (ved studiested)
         phone: Telefonnummer (8 siffer)
         position_id_1: Førstevalg (obligatorisk)
         position_id_2: Andrevalg (frivillig)

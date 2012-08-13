@@ -101,13 +101,6 @@ a.brand {
 li.inactive a:hover {
   color: white !important;
 }
-li.inactive:nth-child(odd) a:hover {
-   background: rgb(251, 188, 58) !important;
-}
-
-li.inactive:nth-child(even) a:hover {
-  background: rgb(4,129,185) !important;
-}
 
 div.header-text {
   position: absolute;
@@ -128,10 +121,8 @@ div.header-text {
 }
 
 /* temporary hack (hopefully) */
-@media (min-width: 979px) {
-  body {
-    padding-top: 65px;
-  }
+body {
+  padding-top: 85px;
 }
 
 .navbar-fixed-top {
@@ -194,4 +185,10 @@ a.brand {
 }
 .gsc-above-wrapper-area {
   display: none;
+}
+
+.promotional img {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }

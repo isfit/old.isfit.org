@@ -1,6 +1,6 @@
 class DonationsController < ApplicationController
   protect_from_forgery :except => [:create]
-
+  
   def donate
     @donation = Donation.new
   end

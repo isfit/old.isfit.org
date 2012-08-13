@@ -13,3 +13,15 @@
     </header>
   <%end%>
 </div>
+
+<%= content_for :sidebar do %>
+  <div class="well">
+    <h4><%= t("derp.participant") %></h4>
+    <%=link_to t("derp.apply_participant"), new_participant_path, class: "btn btn-primary btn-large"%>
+  </div>
+
+  <div class="well">
+    <h4><%= t("derp.dialogue_groups") %></h4>
+    <%=link_to t("derp.apply_dialogue"), new_dialogue_participant_path, class: "btn btn-primary btn-large btn-side"%>
+  </div>
+<% end %>

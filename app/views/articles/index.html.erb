@@ -3,7 +3,7 @@
   <div class="hero-unit">
     <div class="action-text">
       <h1><%= t("call-to-action.header") %></h1>
-      <p><%= t("call-to-action.paragraph") %></p>
+      <p><%= raw format t("call-to-action.paragraph") %></p>
       <p>
         <%if Language.to_s == "no"%>
           <%= link_to t("call-to-action.apply_now"), positions_path, class: "btn btn-primary btn-large" %>
@@ -20,13 +20,13 @@
 <% end %>
 <div class="row">
   <div class="span8">
-    <div id="news-carousel" class="carousel">
+    <div id="news-carousel" class="carousel slide">
       <!-- Carousel items -->
       <div class="carousel-inner">
         <% @articles.each do |article| %>
           <div class="item <%= article == @articles.first ? "active":"" %>">
             <a href="<%= article_path(article) %>">
-              <%= image_tag article.frontend_article_image.url(:frontpage_large) %>
+              <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px" %>
               <div class="carousel-caption">
                 <h1><%= article.title %></h1>
                 <p><%= article.sub_title %></p>
@@ -43,11 +43,15 @@
   <div class="span4">
     <aside id="sidebar"><!-- Start hoyreramme -->
     <div class="promotional">
-      <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
+      <img src="http://i.imgur.com/c3wsd.png" alt="promotional">
     </div>
 
     <div class="promotional">
-      <img src="http://placehold.it/370x190&text=Promotional+Space" alt="promotional">
+      <%if Language.to_s == "no"%>
+          <a href="/ideas"><img src="http://i.imgur.com/c3wsd.png" alt="promotional"></a>
+        <% else %>
+          <a href="/ideas"><img src="http://i.imgur.com/c3wsd.png" alt="promotional"></a>
+        <% end %>
     </div>
 
     </aside><!-- Slutt hoyreramme -->

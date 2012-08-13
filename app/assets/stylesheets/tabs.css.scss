@@ -22,13 +22,41 @@
 		margin-right: 2px;
 		line-height: 14px;
 
+		cursor: default;
+
 		&:hover {
 			background: #0481B9;
 			color: white;
 		}
 	}
+
+	ul.nav > li:last-child{
+		margin-left: 1em;
+		padding-left: 1em;
+		border-left: 1px solid #666;
+	}
+	.facebook-user-name {
+		height: 1em; overflow: hidden;
+	}
+}
+#fb-connect-topbar {
+	text-align:right;
+	margin-top: 2px;
+	max-width:23em;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .navbar .dropdown-menu {
 	margin-top: 7px;
 }
+
+#navbar-icons {
+	margin-top: -7px;
+	display: inline-block;
+}
+
+#search-button {
+	margin-left:1em;
+}
+
