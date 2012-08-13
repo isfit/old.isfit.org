@@ -13,7 +13,7 @@ class Postoffice < ActionMailer::Base
     @email = email
     mail(:to => email, :subject => "Application registered")
   end
-  
+
   def press_acc(id)
     @recipients   = "boxaspen@isfit.org"
     @subject      = "Ny presseakkreditering"
@@ -74,17 +74,14 @@ class Postoffice < ActionMailer::Base
   end
 
   def applicant_add(name, email)
-    @recipients     = email
-    @from           = "Unknown"
-    @subject_en     = "Unknown"
-    @subject_no     = "Ukjent"
-    @sent_on        = Time.now
-    @content_type   = "text/html"
-    if I18n.locale.to_s == "no"
-      mail(:from => @from, :to => @recipients, :subject => @subject_no) 
-    else
-      mail(:from => @from, :to => @recipients, :subject => @subject_en) 
-    end
+    @recipients   = email
+    @subject      = "ISFiT 2013"
+    @sent_on      = Time.now
+    @content_type = "text/plain"
+
+    @name  = name
+    @email = email
+    mail(:to => email, :subject => "ISFIT 2013")
   end
 
   def donation(name, email)
