@@ -1,5 +1,12 @@
 <div class="well">
 
+
+  <% if @order.success?  %>
+    <p>The transaction is successfully completed</p>
+  <% else %>
+    <p> The transaction failed</p>
+  <% end %>
+
   <h1>Thank you for your contribution</h1>
   <% if  Language.to_s == 'no' %>
     <!-- Norsk versjon -->
