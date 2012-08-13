@@ -101,13 +101,6 @@ a.brand {
 li.inactive a:hover {
   color: white !important;
 }
-li.inactive:nth-child(odd) a:hover {
-   background: rgb(251, 188, 58) !important;
-}
-
-li.inactive:nth-child(even) a:hover {
-  background: rgb(4,129,185) !important;
-}
 
 div.header-text {
   position: absolute;
