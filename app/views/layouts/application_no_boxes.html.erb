@@ -39,6 +39,20 @@ html5boilerplate
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
   <%= csrf_meta_tag %>
 
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18016792-1']);
+    _gaq.push(['_setDomainName', 'isfit.org']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackLoadTime']);
+
+    (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+  </script>
+
   <!-- Typekit fonts. Yes, these are supposed to live in the head... -->
   <script type="text/javascript" src="http://use.typekit.com/piu2mrs.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -104,23 +118,7 @@ html5boilerplate
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
-
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    // _gaq.push(['_setAccount', 'UA-18016792-1']);
-    // _gaq.push(['_setDomainName', 'isfit.org']);
-    // _gaq.push(['_trackPageview']);
-    // _gaq.push(['_trackLoadTime']);
-
-    (function() {
-     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
-  </script>
-
   <%= javascript_include_tag 'application'%>
-  <%= javascript_include_tag 'gsc' %>
   <%= yield :script %>
 </body>
 </html>
