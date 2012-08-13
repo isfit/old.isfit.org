@@ -14,7 +14,7 @@ $('widget-twitter-fp').ready(function() {
 		success: callback
 	});
 
-	//window.setTimeout(moveLeft, displayTimeout);
+	window.setTimeout(moveLeft, displayTimeout);
 });
 
 function callback(data) {

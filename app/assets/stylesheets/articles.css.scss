@@ -72,6 +72,7 @@ article header img {
 
 
 #article-wrapper figure {
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: .5em;
   border: 1px solid #eee;
