@@ -75,13 +75,13 @@ class Postoffice < ActionMailer::Base
 
   def applicant_add(name, email)
     @recipients   = email
-    @subject      = "Søknad registrert"
+    @subject      = "ISFiT 2013"
     @sent_on      = Time.now
     @content_type = "text/plain"
 
     @name  = name
     @email = email
-    mail(:to => email, :subject => "Søknad registrert")
+    mail(:to => email, :subject => "ISFIT 2013")
   end
 
   def donation(name, email)
