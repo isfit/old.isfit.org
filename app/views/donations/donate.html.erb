@@ -9,12 +9,8 @@
 <%end%>
 <div class="well">
   <h1><%= t('donations.donate') %></h1>
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="2ELUQS6A2KTTS">
-    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-    <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-  </form>
+
+  <%= link_to t("donations.donation_button"), new_donation_path, class: "btn btn-primary btn-large" %>
 
   <% if  Language.to_s == 'no' %>
     <!-- Norsk versjon -->

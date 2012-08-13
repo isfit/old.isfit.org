@@ -65,6 +65,8 @@
     remarks: "Merknader:"
     submit: "Send"
   donations:
+    amount: "Beløpet du vil donere i NOK"
+    donation_button: "Doner!"
     donate: "Støtt en deltaker"
   layout:
     contact: "Kontakt"
@@ -134,6 +136,10 @@
         information: 'Informasjon om deg'
         background: 'Relevant bakgrunn'
         hear_about: 'Hvordan fikk du høre om ISFiT?'
+      donation:
+        name: "Navn"
+        email: "E-post"
+        amount: "Beløp"
       participant:
         first_name: 'Fornavn'
         last_name: 'Etternavn'
