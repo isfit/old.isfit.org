@@ -68,6 +68,8 @@ en:
     remarks: "Remarks:"
     submit: "Submit"
   donations:
+    amount: "Amount you want to donate in NOK"
+    donation_button: "Donate!"
     donate: "Support a participant"
   layout:
     contact: "Contact"
@@ -168,6 +170,10 @@ en:
         information: 'About you'
         background: 'Relevant background'
         hear_about: 'How did you hear about ISFiT?'
+      donation:
+        name: "Name"
+        email: "E-mail"
+        amount: "Amount"
       participant:
         first_name: 'Given name'
         last_name: 'Family name'

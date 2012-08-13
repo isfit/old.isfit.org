@@ -1,7 +1,7 @@
 WwwIsfitOrg::Application.routes.draw do  
   get "ideas" => 'ideas#index'
 
-  get "ideas/:id" => 'ideas#show'
+  get "ideas/:id" => 'ideas#show', as: "idea"
   get "ideas/:id/update" => 'ideas#update'
 
   post "ideas" => 'ideas#create'
@@ -9,6 +9,9 @@ WwwIsfitOrg::Application.routes.draw do
   resources :articles
 
   get "ambassadors" => "ambassadors#index"
+
+  get 'oauth/start'
+  get 'oauth/callback'
 
   get "ambassadors/new"
 
@@ -72,13 +75,17 @@ WwwIsfitOrg::Application.routes.draw do
 
   match 'section/:id' => "positions#section", :tab => "admission"
 
-  get "donations/donate", :controller => "donations", :action => "donate"
+  resources :donations do
+    collection do
+      get :donate
+    end
+  end
 
-  get "donations/thank_you", :controller => "donations", :action => "thank_you"
-
+  match '/donation/paypal/:id/confirm', :to => 'donations#paypal', :as => :confirm_paypal 
+  match '/donation/paypal/:id', :to => 'donations#checkout', :as => :billing 
+  match '/donation/thank_you/:id', :to => 'donations#checkout', :as => :billing_thank_you
 
   resources :wop_propositions
-
 
   match 'opptak' => "positions#index", :tab => "admission"
   match 'apply/position' => "positions#index", :tab => "admission"

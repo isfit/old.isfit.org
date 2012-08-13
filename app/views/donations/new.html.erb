@@ -1,5 +1,9 @@
+<div class="well">
 
-
-<%= form_for @payment ||= Payment.new, :url => pay_bill_url, :html => {:id => :payForm} do |p|%> 
-  <%= p.text_field :amount%>
-  <%= p.submit 'Pay'%>
+  <%= simple_form_for @payment, html: {class: "form"} do |f| %> 
+    <%= f.input :name, :input_html => { :class => 'span4' } %>
+    <%= f.input :email, :input_html => { :class => 'span4' } %>
+    <%= f.input :amount, :input_html => { :class => 'span2' }, hint: t('donations.amount')  %>
+    <%= f.submit 'Pay'%>
+  <% end %>
+</div>
