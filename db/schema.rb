@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120809162419) do
+ActiveRecord::Schema.define(:version => 20120813150434) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -168,6 +168,16 @@ ActiveRecord::Schema.define(:version => 20120809162419) do
 
   add_index "dialogue_participants", ["email"], :name => "email", :unique => true
 
+  create_table "donations", :force => true do |t|
+    t.string   "status"
+    t.float    "amount"
+    t.string   "transaction_number"
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
   create_table "faqs", :force => true do |t|
     t.string "title", :null => false
     t.text   "body",  :null => false
@@ -230,6 +240,14 @@ ActiveRecord::Schema.define(:version => 20120809162419) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "like_count"
+  end
+
+  create_table "oauth_users", :force => true do |t|
+    t.string   "token"
+    t.string   "facebook_id"
+    t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "pages", :force => true do |t|

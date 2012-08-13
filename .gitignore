@@ -1,5 +1,6 @@
 .DS_Store
 config/database.yml
+config/oauth.yml
 .bundle
 db/*.sqlite3
 log/*.log
@@ -20,4 +21,3 @@ public/images/slide/*
 public/images/spp_article_images/*
 *.swp
 .redcar/
-
