@@ -1,4 +1,7 @@
 en:
+  footer:
+    editor: "Editor in Chief"
+    copyright: All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2013.
   tabs:
     articles:
       main: 'News'
@@ -17,7 +20,7 @@ en:
       whatisisfit: 'What is ISFiT?'
       dialoguegroups: 'Dialogue Groups'
       conflictareas: 'Conflict Areas'
-      studentpeaceprice: 'Student Peace Price'
+      studentpeaceprice: 'Student Peace Prize'
       walkofpeace: 'Walk of Peace'
     info:
       main: 'Info'
@@ -32,8 +35,8 @@ en:
     participant: "Looking for the participant applications?"
     apply_dialogue: "Apply for the ISFiT 2013 Dialogue Groups"
     apply_participant: "Apply to be a participant in ISFiT 2013"
-    isfit: "Want to volunteer?"
-    apply_isfit: "Apply to be a volunteer in ISFiT 2012"
+    isfit: "Do you want to volunteer?"
+    apply_isfit: "Apply to be a volunteer in ISFiT 2013"
   call-to-action:
     header: Be the change you want to see in the world
     paragraph: |
@@ -84,7 +87,7 @@ en:
     country_code: 'Add the country code'
     travel_amount_hint: 'Amount of money that you are applying for(maximum $3000)'
   position:
-    no_new_positions: "We do not currently have any open positions for volunteers. Please check back later"
+    no_new_positions: "We do not currently have any open positions for volunteers. Please check back later."
     new_positions: "Currently ISFiT has admissions for the following positions"
     positions: "Positions"
     apply: "Volunteer now"
@@ -98,11 +101,11 @@ en:
     background: "Relevant background"
     hear_about: "How did you hear about ISFiT?"
   person:
-    first_name: "First name"
-    last_name: "Last name"
+    first_name: "Given name"
+    last_name: "Family name"
     address: "Address"
-    phone: "Phone"
-    phone_nor: "Phone"
+    phone: "Phone number"
+    phone_nor: "Phone number"
     email: "Email address"
     email_ntnu: "Email address (at place of study)"
   project_support:
@@ -120,7 +123,7 @@ en:
     label:
       project_support:
         person_name: Name
-        person_mail: E-mail
+        person_mail: Email
         person_age: Age
         person_association: Association with ISFiT
         country: Country
@@ -155,10 +158,10 @@ en:
   simple_form:
     labels:
       applicant:
-        firstname: 'First name'
-        lastname: 'Last name'
+        firstname: 'Given name'
+        lastname: 'Family name'
         mail: 'Email (at place of study)'
-        phone: 'Phonenumber (8 numbers)'
+        phone: 'Phone number (8 numbers)'
         position_id_1: 'First choice (required)'
         position_id_2: 'Second choice (optional)'
         position_id_3: 'Third choice (optional)'
@@ -166,16 +169,16 @@ en:
         background: 'Relevant background'
         hear_about: 'How did you hear about ISFiT?'
       participant:
-        first_name: 'First name'
-        last_name: 'Last name'
-        email: 'E-mail'
-        email_confirmation: 'E-mail confirmation'
+        first_name: 'Given name'
+        last_name: 'Family name'
+        email: 'Email address'
+        email_confirmation: 'Confirm email address'
         address1: 'Address'
         zipcode: 'Zipcode'
         city: 'City'
         country_id: 'Country'
-        phone: 'Phone'
-        birthdate: 'Birthdate'
+        phone: 'Phone number'
+        birthdate: 'Date of birth'
         sex: 'Sex'
         university: 'University'
         field_of_study: 'Field of study'
@@ -189,16 +192,16 @@ en:
       dialogue_participant:
         first_name: 'First name'
         last_name: 'Last name'
-        email: 'E-mail'
-        email_confirmation: 'E-mail confirmation'
+        email: 'Email address'
+        email_confirmation: 'Confirm email address'
         address1: 'Address'
         zipcode: 'Zipcode'
         city: 'City'
         country_id: 'Country'
         nationality: 'Nationality'
         passport: 'Passport'
-        phone: 'Phone'
-        birthdate: 'Birthdate'
+        phone: 'Phone number'
+        birthdate: 'Date of birth'
         sex: 'Sex'
         university: 'University'
         field_of_study: 'Field of study'

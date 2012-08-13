@@ -39,19 +39,7 @@ html5boilerplate
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
   <%= csrf_meta_tag %>
 
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-18016792-1']);
-    _gaq.push(['_setDomainName', 'isfit.org']);
-    _gaq.push(['_trackPageview']);
-    _gaq.push(['_trackLoadTime']);
 
-    (function() {
-     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
-  </script>
 
   <!-- Typekit fonts. Yes, these are supposed to live in the head... -->
   <script type="text/javascript" src="http://use.typekit.com/piu2mrs.js"></script>
@@ -126,8 +114,8 @@ html5boilerplate
       <footer class="main-footer span12"><!-- Start footer -->
       <%=link_to(image_tag("isfitliten.png", :class=>"footer-logo"), root_path)%>
       <p>
-      Editor in Chief: Synne Mari Pedersen, editor[at]isfit.org. <br />
-      All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2013.
+      <%= t("footer.editor") %>: Synne Mari Pedersen, editor[at]isfit.org. <br />
+      <%= t("footer.copyright") %>
       </p>
       </footer><!-- End footer -->
     </div>

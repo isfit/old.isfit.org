@@ -18,10 +18,7 @@
       ISFiT does not have any open positions at the moment.
     <%end%>
   <% else %>
-    <h1><%= t("position.motivational") %></h1>
-    <%= raw format("##yt hxUO456dsLw yt##") %>
-    <div class="fb-like" data-href="<%= positions_url %>" data-send="false" data-width="550" data-show-faces="true"></div>
-    <%= raw format(t("position.new_positions")+":") %>
+    <h1 class="page-header"><%= t("position.new_positions") %></h1>
     <% active_group = nil %>
     <% active_section = nil %>
     <% for position in @positions %>
@@ -44,4 +41,5 @@
     <%end%>
   </table>
 <% end %>
+<img src="http://i.imgur.com/PeXSj.jpg">
 </div>
