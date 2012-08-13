@@ -10,7 +10,7 @@
 <div class="well">
   <h1><%= t('donations.donate') %></h1>
 
-  <%= link_to t("donations.donation_button"), new_donation_path, class: "btn btn-primary btn-large" %>
+  <%= link_to t("donations.donation_button"), @donation.paypal_url(thank_you_donations_url, donations_url), class: "btn btn-primary btn-large" %>
 
   <% if  Language.to_s == 'no' %>
     <!-- Norsk versjon -->
