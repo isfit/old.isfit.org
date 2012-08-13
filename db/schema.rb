@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120813150434) do
+ActiveRecord::Schema.define(:version => 20120813183646) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -237,9 +237,11 @@ ActiveRecord::Schema.define(:version => 20120813150434) do
   create_table "ideas", :force => true do |t|
     t.string   "email"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "like_count"
+    t.string   "submitted_by_name"
+    t.string   "submitted_by_id"
   end
 
   create_table "oauth_users", :force => true do |t|

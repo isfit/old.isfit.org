@@ -16,14 +16,17 @@
 		<header>
 			<h1>Submit your idea</h1>
 		</header>
-
-		<%= form_for @idea, :url=> {:action => 'create'} do |f| %>
-  			<%= f.text_area :body, :placeholder => 'Your idea' %>
-  			<%= f.text_field :email, :placeholder => 'Your email' %>
-  			Share on Twitter<input type="checkbox">
-  			Share on Facebook<input type="checkbox">
-  			<%= f.submit "Send" %>
+		<% if session[:user].nil? %>
+			<p>You need to be logged in to submit ideas</p>
+		<% else %>
+			<p>Posting idea as <%=session[:user].name%></p>
+			<%= form_for @idea, :url=> {:action => 'create'} do |f| %>
+	  			<%= f.text_area :body, :placeholder => 'Your idea' %>
+	  			<%= f.hidden_field :email, :value => session[:user].token %>
+	  			<%= f.submit "Send" %>
+			<% end %>
 		<% end %>
+
 
 	</div>
 

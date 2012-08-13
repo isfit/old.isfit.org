@@ -1,7 +1,7 @@
 WwwIsfitOrg::Application.routes.draw do  
   get "ideas" => 'ideas#index'
 
-  get "ideas/:id" => 'ideas#show'
+  get "ideas/:id" => 'ideas#show', as: "idea"
   get "ideas/:id/update" => 'ideas#update'
 
   post "ideas" => 'ideas#create'
