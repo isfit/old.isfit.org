@@ -93,8 +93,8 @@ Tabulous.setup do |config|
       [    :info_contact_subtab               ,    t('tabs.info.contact')                  ,    photos_path                                                        ,    true        ,    true        ],
       [    :info_faq_subtab                   ,    t('tabs.info.faq' )                     ,    photos_path                                                        ,    true        ,    true        ],
       [    :languages_tab                   ,    t('tabs.languages.main' )                     ,    photos_path                                                        ,    true        ,    false        ],
-      [    :languages_norsk_subtab                   ,    'Norsk'                     ,    photos_path                                                        ,    true        ,    true        ],
-      [    :languages_english_subtab                   ,    'English'                     ,    photos_path                                                        ,    true        ,    true        ],
+      [    :languages_norsk_subtab                   ,    'Norsk'                     ,    '?locale=no'                                                        ,    true        ,    true        ],
+      [    :languages_english_subtab                   ,    'English'                     ,    '?locale=en'                                                        ,    true        ,    true        ],
       [    :events_tab                        ,    'Events'                   ,    photos_path                                                        ,    false       ,    false       ],
       [    :events_program_subtab             ,    'Events'                   ,    photos_path                                                        ,    false       ,    false       ],
       #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
