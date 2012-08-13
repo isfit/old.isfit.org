@@ -91,6 +91,9 @@ Tabulous.setup do |config|
       [    :info_donate_subtab                ,    t('tabs.info.donate' )                  ,    page_path(60)                                                        ,    true        ,    true        ],
       [    :info_contact_subtab               ,    t('tabs.info.contact')                  ,    page_path(27)                                                        ,    true        ,    true        ],
       [    :info_faq_subtab                   ,    t('tabs.info.faq' )                     ,    page_path(55)                                                        ,    true        ,    true        ],
+      [    :languages_tab                   ,    t('tabs.languages.main' )                     ,    photos_path                                                        ,    true        ,    false        ],
+      [    :languages_norsk_subtab                   ,    'Norsk'                     ,    '?locale=no'                                                        ,    true        ,    true        ],
+      [    :languages_english_subtab                   ,    'English'                     ,    '?locale=en'                                                        ,    true        ,    true        ],
       [    :events_tab                        ,    'Events'                   ,    photos_path                                                        ,    false       ,    false       ],
       [    :events_program_subtab             ,    'Events'                   ,    photos_path                                                        ,    false       ,    false       ],
       #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#

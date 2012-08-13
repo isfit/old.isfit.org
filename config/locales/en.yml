@@ -30,6 +30,8 @@ en:
       donate: 'Donate'
       contact: 'Contact'
       faq: 'FAQ'
+    languages:
+      main: 'Languages'
   derp:
     dialogue_groups: "Looking for the Dialogue Groups?"
     participant: "Looking for the participant applications?"

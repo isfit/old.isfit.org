@@ -30,6 +30,8 @@
       donate: 'Støtt en deltaker'
       contact: 'Kontakt oss'
       faq: 'Ofte stilte spørsmål'
+    languages:
+      main: 'Languages'
   derp:
     dialogue_groups: "Leter du etter dialoggruppene?"
     participant: "Leter du etter deltakersøknader?"
