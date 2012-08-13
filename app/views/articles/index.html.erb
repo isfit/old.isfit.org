@@ -43,11 +43,16 @@
   <div class="span4">
     <aside id="sidebar"><!-- Start hoyreramme -->
     <div class="promotional">
-      <img src="http://placehold.it/370x211&text=Promotional+Space" alt="promotional">
+      <img src="http://i.imgur.com/c3wsd.png" alt="promotional">
     </div>
 
     <div class="promotional">
-      <img src="http://placehold.it/370x211&text=Promotional+Space" alt="promotional">
+      <%if Language.to_s == "no"%>
+          <a href="/ideas"><img src="http://i.imgur.com/c3wsd.png" alt="promotional"></a>
+        <% else %>
+          <a href="/ideas"><img src="http://i.imgur.com/c3wsd.png" alt="promotional"></a>
+        <% end %>
+
     </div>
 
     </aside><!-- Slutt hoyreramme -->
