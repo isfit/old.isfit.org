@@ -13,11 +13,33 @@
 <div id="article-wrapper" class="well">
 
 	<div id="submit-ideas-wrapper">
-		<header>
-			<h1>Submit your idea</h1>
+		<header class="page-header">
+			<h1>Trade Your Ideas</h1>
 		</header>
+		<div class="lead">
+			<p>
+				På ISFiT utveksles ideer, både før, under og etter festivalen. Både deltakere, frivillige og andre studenter verden over kan gjennom ISFiT uttrykke sine tanker, ideer og meninger &mdash; og få noe tilbake.
+			</p>
+			<p>
+			<strong>Nå vil vi utveksle ideer med deg! Vinn to <em>Gullbilletter</em>* til festivalen 7.-17. februar 2013 ved å dele din idé!</strong><br>
+			<small>* Gullbillett dekker alle enkeltarrangement under festivalen 7.-17- februar 2013 som det selges billetter til.</small>
+			</p>
+		</div>
+			<p>
+				Ideen må være et svar på dette spørsmålet:
+			</p>
+			<h1>Hva skal til for at ISFiT 2013 blir din drømmefestival?</h1>
+			<br>
+			<p><strong>Svareksempler</strong><br>
+			"ISFiT ville blitt fantastisk om Aung San Suu Kyi kom!"<br>
+			"Festivalen bør arrangere kanefart gjennom byen til åpningsseremonien"
+			</p>
+			<p>Her er det bare fantasien som setter begrensninger. Det mest populære bidraget stikker av med premien. For å vinne må bidraget ditt ha flest "likes" og "shares". Lykke til!</p>
+			<p class="lead">
+				<small>ISFiT forbeholder seg retten til videre bruk av ideene som sendes inn.</small>
+			</p>
 		<% if session[:user].nil? %>
-			<p>You need to be logged in to submit ideas</p>
+			<p>Du må være logget inn for å sende inn ideer.</p>
 		<% else %>
 			<p>Posting idea as <%=session[:user].name%></p>
 			<%= form_for @idea, :url=> {:action => 'create'} do |f| %>
