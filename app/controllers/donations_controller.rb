@@ -12,13 +12,14 @@ class DonationsController < ApplicationController
   end
   
   def create
-    @donation = Donation.new params[:payment]
+    @donation = Donation.new params[:donation]
     
     if @donation.save
       ## Paypal Checkout page
-      redirect_to billing_url
+      redirect_to billing_path
     else
-     render :action => :new
+      @payment = Donation.new
+      render :action => :new
     end
   end
 
@@ -33,7 +34,7 @@ class DonationsController < ApplicationController
   def paypal
     @donation = @donation.purchase(:token => params[:token], :payer_id => params[:PayerID], :ip => request.remote_ip)
     @donation.save
-    redirect_to thank_you_billing_url(@order)
+    redirect_to billing_thank_you_url(@order)
   end
 
   private

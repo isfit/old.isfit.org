@@ -75,12 +75,14 @@ WwwIsfitOrg::Application.routes.draw do
   resources :donations do
     collection do
       get :donate
-      get :thank_you
     end
   end
 
-  resources :wop_propositions
+  match '/donation/paypal/:id/confirm', :to => 'donations#paypal', :as => :confirm_paypal 
+  match '/donation/paypal/:id', :to => 'donations#checkout', :as => :billing 
+  match '/donation/thank_you/:id', :to => 'donations#checkout', :as => :billing_thank_you
 
+  resources :wop_propositions
 
   match 'opptak' => "positions#index", :tab => "admission"
   match 'apply/position' => "positions#index", :tab => "admission"
