@@ -5,7 +5,11 @@
       <h1><%= t("call-to-action.header") %></h1>
       <p><%= t("call-to-action.paragraph") %></p>
       <p>
-      <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
+        <%if Language.to_s == "no"%>
+          <%= link_to t("call-to-action.apply_now"), positions_path, class: "btn btn-primary btn-large" %>
+        <% else %>
+          <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
+        <% end %>
       <%= link_to t("call-to-action.learn_more"), page_path(7), class: "btn btn-large" %>
       </p>
     </div>
