@@ -88,7 +88,7 @@
         <%= f.input "country_id",  collection: @countries.collect {|p| [ p.name, p.id ] }, prompt: "Select country"%>
         <%= f.input :phone, input_html: {class: "span4"}, hint: t("participant.country_code") %>
         <%= f.input :birthdate, :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1910, :end_year => 1995, input_html: {class: "span1"} %>
-        <%= f.input :sex, :as => :radio_buttons, :collection => [["female", "f"], ["male", "m"]] %>
+        <%= f.input :sex, :as => :radio_buttons, :collection => [["Female", "f"], ["Male", "m"]] %>
         <%= f.input :university, input_html: {class: "span4"} %>
         <%= f.input :field_of_study, input_html: {class: "span4"} %>
       </fieldset>

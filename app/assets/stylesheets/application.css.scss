@@ -121,10 +121,8 @@ div.header-text {
 }
 
 /* temporary hack (hopefully) */
-@media (min-width: 979px) {
-  body {
-    padding-top: 65px;
-  }
+body {
+  padding-top: 85px;
 }
 
 .navbar-fixed-top {
