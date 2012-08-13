@@ -15,6 +15,7 @@ class DonationsController < ApplicationController
                      :amount => params[:payment_gross],
                      :name => "#{params[:first_name]} #{params[:last_name]}",
                      :email => params[:receiver_email])
+    #Add postoffice
     render :nothing => true
   end
 end
