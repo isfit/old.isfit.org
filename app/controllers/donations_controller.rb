@@ -2,7 +2,7 @@ class DonationsController < ApplicationController
   before_filter :get_donation, :only => [:checkout, :paypal, :thank_you]
 
   def new
-    @payment = Donation.new
+    @donation = Donation.new
   end
   
   def donate
