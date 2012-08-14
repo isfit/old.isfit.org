@@ -10,9 +10,6 @@ class ApplicationController < ActionController::Base
   before_filter  :set_language
   before_filter :miniprofiler
 
-  # to keep UKA out...
-  http_basic_authenticate_with :name => "isfit", :password => "betabeta"
-
   def set_language
     unless session[:locale]
       country_code = get_country_code_by_id(request.remote_ip)
