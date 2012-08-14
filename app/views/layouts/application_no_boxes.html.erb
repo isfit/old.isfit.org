@@ -81,7 +81,7 @@ html5boilerplate
 
           <div id="fb-connect-topbar" class="pull-right">
             <% if session[:user].nil? %>
-              <p><a href="https://www.facebook.com/dialog/oauth?client_id=111446192243028&redirect_uri=http://localhost:3000/oauth/callback&state=lolololololololol" target="_blank">Log in with Facebook</a></p>
+              <p><a href="https://www.facebook.com/dialog/oauth?client_id=111446192243028&redirect_uri=http://www.isfit.org/oauth/callback&state=lolololololololol" target="_blank">Log in with Facebook</a></p>
             <% else %>
               <p class="facebook-user-name"><%= session[:user].name %> </p>
             <% end %>
