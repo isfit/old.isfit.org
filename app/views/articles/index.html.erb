@@ -86,7 +86,7 @@
       <h1><%= t("articles.latest_articles") %></h1>
       <ul>
         <% @latest.each do |article| %>
-          <li><%= link_to article.title, article_path(params[:tab], article) %></li>
+          <li><%= link_to article.title, article_path(article) %></li>
         <%end%>
       </ul>
     </div>
