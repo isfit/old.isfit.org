@@ -9,8 +9,10 @@
 <%end%>
 <div class="well">
   <h1><%= t('donations.donate') %></h1>
-
-  <%= link_to t("donations.donation_button"), @donation.paypal_url(thank_you_donations_url, donations_url), class: "btn btn-primary btn-large" %>
+  
+  <% if false %>
+    <%= link_to t("donations.donation_button"), @donation.paypal_url(thank_you_donations_url, donations_url), class: "btn btn-primary btn-large" %>
+  <% end %>
 
   <% if  Language.to_s == 'no' %>
     <!-- Norsk versjon -->
