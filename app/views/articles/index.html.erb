@@ -43,14 +43,18 @@
   <div class="span4">
     <aside id="sidebar"><!-- Start hoyreramme -->
     <div class="promotional">
-      <img src="http://i.imgur.com/c3wsd.png" alt="promotional">
+      <%if Language.to_s == "no"%>
+          <a href="/ideas"><img src="http://i.imgur.com/jewrP.gif" alt="promotional"></a>
+        <% else %>
+          <a href="/ideas"><img src="http://i.imgur.com/IDszW.gif" alt="promotional"></a>
+        <% end %>
     </div>
 
     <div class="promotional">
       <%if Language.to_s == "no"%>
           <a href="/ideas"><img src="http://i.imgur.com/c3wsd.png" alt="promotional"></a>
         <% else %>
-          <a href="/ideas"><img src="http://i.imgur.com/c3wsd.png" alt="promotional"></a>
+          <a href="/ideas"><img src="http://i.imgur.com/awmIo.png" alt="promotional"></a>
         <% end %>
     </div>
 

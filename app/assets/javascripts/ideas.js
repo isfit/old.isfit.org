@@ -14,7 +14,6 @@
 
 function checkFacebook() {
 	if(window.FB!==undefined) {
-		console.log('ready');
 		FB.Event.subscribe('edge.create',
 		    function(response) {
 		    	var temp = response.split('/');
@@ -31,8 +30,6 @@ function checkFacebook() {
 checkFacebook();
 
 function facebookExperiment(id) {
-	console.log('updating');
-
-	var url = 'http://beta.isfit.org/ideas/'+ id +'/update';
+	var url = 'http://www.isfit.org/ideas/'+ id +'/update';
 	$.get(url, function(data){console.log('pinged!')});
 }
