@@ -1,0 +1,194 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_tree . 
+ *= require_self
+*/
+
+html {
+  // Enable webkits anti-alized font-smoothing on Mac.
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body, div, aside, footer, header, span, h1, h2, h3, h4, h5, h6 {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: url(http://i.imgur.com/rT9dk.jpg) no-repeat !important;
+  background-attachment: fixed!important;
+  -moz-background-size: cover!important;
+  background-size: cover!important;
+}
+
+
+a {
+  color: rgb(216,52,21);
+  -webkit-transition: background .2s, color .2s;
+  -o-transition: background .2s, color .2s;
+  -moz-transition: background .2s, color .2s;
+  -ms-transition: background .2s, color .2s;
+  transition: background .2s, color .2s;
+}
+
+
+p a:hover {
+  background: rgb(216,52,21);
+  color: white;
+  text-decoration: none;
+}
+
+::-moz-selection { background: #D63416; color: #fff; text-shadow: none; }
+::selection { background: #D63416; color: #fff; text-shadow: none; }
+
+.carousel-control {
+  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+}
+
+.carousel a {
+  color: white;
+}
+
+#sidebar div.promotional {
+  margin-bottom: 20px;
+}
+
+a {
+  color: rgb(216,52,21);
+  -webkit-transition: background .2s, color .2s;
+  -o-transition: background .2s, color .2s;
+  -moz-transition: background .2s, color .2s;
+  -ms-transition: background .2s, color .2s;
+  transition: background .2s, color .2s;
+}
+
+.navbar {
+//  border-top: 3px solid rgb(65,192,240);
+}
+
+#tabs > ul {
+  margin-left: 2em;
+  height: 55px;
+  padding-top: 5px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.navbar-inner {
+  background-color: white !important;
+  -webkit-background-image: none;
+  -moz-background-image: none;
+  -ms-background-image: none;
+  background-image: none;
+  filter: none !important;
+}
+
+a.brand,li.inactive a {
+  color: #000 !important;
+  text-shadow:none !important;
+}
+
+a.brand {
+  margin-top: 3px;
+}
+
+.nav .active > a, .navbar .nav .active > a:hover {
+  background-color: rgb(34,54,102) !important;
+}
+
+li.inactive a:hover {
+  color: white !important;
+}
+
+div.header-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  background: rgba(0,0,0,.4);
+  text-shadow: 0 1px 0 #333;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 1em;
+
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.2em;
+  }
+}
+
+/* temporary hack (hopefully) */
+body {
+  padding-top: 85px;
+}
+
+.navbar-fixed-top {
+  margin-bottom: 0;
+}
+
+#sidebar img {
+  width: 100%;
+}
+
+.brand {
+  font-family: "apertura", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.85em !important;
+}
+#article-wrapper {
+}
+
+footer.main-footer {
+  padding-top: 1em;
+  margin-top: 4em !important;
+//  border-top: 1px dashed rgb(65,192,240);
+  text-align: center;
+}
+
+.facebook {
+  padding: 5px 0;
+}
+
+.fb-like-box {
+  width: 294px;
+  overflow: hidden;
+}
+
+.social {
+  height: 271px;
+}
+
+a.brand {
+  margin-left: 0 !important;
+}
+
+// GSC
+#navbar-search-wrapper {
+  max-width: 400px;
+  height: 50px;
+  position: relative;
+  top: 4px;
+}
+.gsc-control-cse {
+  padding: 0 !important;
+  height: 50px !important;
+}
+.gsc-resultsbox-visible {
+  position: absolute;
+  width:  400px;
+  background: white;
+  height: 400px;
+  overflow-y: scroll;
+  margin-top: -1em;
+}
+.gsc-above-wrapper-area {
+  display: none;
+}
+
+.promotional img {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}

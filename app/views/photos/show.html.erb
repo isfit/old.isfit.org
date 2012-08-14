@@ -1,9 +1,36 @@
-<h1>The picture!</h1>
+<div id="article-wrapper" class="well photo-gallery">
+	<% counter = 1 %>
+	<% @images.each do |image| %>
 
-<%=@picture.image_text_no%>
-<br />
-<%= image_tag @picture.original_picture.url%>
-<br />
-<br />
-<br />
-<%= debug @picture%>
+		<article class="photo-full" id="<%= counter %>">
+			<header>
+				<h1><%= image['image']['title'] %></h1>
+			</header>
+			<%=image_tag image['links']['original'] %>
+			<p><%= image['image']['caption'] %></p>
+		</article>
+
+	<% counter += 1 %>
+	<% end %>
+
+</div>
+
+<% content_for :sidebar do %>
+	<section id="album-overview" class="well">
+		<% counter = 1 %>
+		<% @images.each do |image| %>
+
+			<a class="experimental" href="#<%= counter %>" onclick="window.setTimeout(function(){window.scrollTo(0);},0);">
+			<%= image_tag image['links']['small_square'], :class=>'photo-thumbnail' %>
+			</a>
+
+		<% counter += 1 %>
+		<% end %>
+	</section>
+<% end %>
+
+<script type="text/javascript">
+	if(window.location.hash===''){
+		window.location.hash = 1;
+	}
+</script>

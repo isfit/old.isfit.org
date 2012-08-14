@@ -1,6 +1,8 @@
-<h2><%= @position.title %></h2>
-<p><%=raw format(@position.description) %></p>
-<p>
-<h3><%= link_to t("position.apply"), apply_positions_path(params[:tab]) %></h3>
-<%= link_to t("layout.back"), positions_path(params[:tab]) %>
-</p>
+<div class="well">
+  <h2><%= @position.title %></h2>
+  <p><%=raw format(@position.description) %></p>
+  <p>
+  <h3><%= link_to t("position.apply"), apply_positions_path(params[:tab]) %></h3>
+  <%= link_to t("layout.back"), positions_path(params[:tab]) %>
+  </p>
+</div>

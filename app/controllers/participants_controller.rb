@@ -8,12 +8,13 @@ class ParticipantsController < ApplicationController
   def new
     @participant = Participant.new
     @countries = Country.find(:all, :order=>"name")
+    @workshops = Workshop.all
   end
 
 
   def create
     @countries = Country.find(:all, :order=>"name")
-
+    @workshops = Workshop.all
     @participant = Participant.new(params[:participant])
     @participant.registered_time = DateTime.now
 
@@ -33,11 +34,13 @@ class ParticipantsController < ApplicationController
 
     if @participant.valid? && verify_recaptcha(:model=>@participant, :message=>"Recaptcha verification failed") &&  @participant.save
       Postoffice.registered(@participant.first_name + " " + @participant.last_name, @participant.email).deliver
-      flash[:notice] = "Your application was sent successfully. An email has been sent to the address you provided"
+      flash[:notice] = "Your application was sent successfully. An email has been sent to #{@participant.email}"
+      redirect_to new_participant_path
     else
-      flash[:notice] = nil
-
+      if !verify_recaptcha(:model=>@participant, :message=>"Recaptcha verification failed")
+        flash[:alert] = "Wrong Recaptcha"
+      end
+      render :action=>"new"
     end
-    render :tab=>params[:tab], :action=>"new"
   end
 end

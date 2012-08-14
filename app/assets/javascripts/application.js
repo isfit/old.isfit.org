@@ -4,6 +4,18 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require twitter/bootstrap
+//= require ambassadors
+//= require bootstrap
+//= require widget_twitter
+//= require widget_twitter_article
+//= require widget_twitter_fp
+
+
+// TABS
+$(document).ready(function(){
+	$('li.dropdown').hover(function(e) {
+		$(e.currentTarget).toggleClass('open');
+	});
+});

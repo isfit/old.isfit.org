@@ -1,31 +1,45 @@
-<% if @positions.count == 0 %>
-  <%if Language.to_s == "no"%>
-    ISFiT har for øyeblikket ikke opptak. 
-  <%else%>
-	ISFiT does not have any open positions at the moment.
-  <%end%>
-<% else %>
-  <h1><%= t("position.motivational") %></h1>
-  <%= raw format("##yt hxUO456dsLw yt##") %>
-  <div class="fb-like" data-href="<%= positions_url %>" data-send="false" data-width="550" data-show-faces="true"></div>
-  <%= raw format(t("position.new_positions")+":") %>
-  <% active_group = nil %>
-  <% active_section = nil %>
-  <% for position in @positions %>
-    <% if not position.group == active_group %>
-      </ul>
-      <% if position.group and position.group.section and not position.group.section == active_section %>
-        </ul>
-        <h3><%= link_to position.group.section.name, "/admission/section/"+ position.group.section.id.to_s %></h3>
-        <ul>
-        <% end %>
-      <h4><%=h position.group.name %></h4>
-      <ul>
-    <% end %>
-    
-    <li><%= link_to "#{position.title}", position_url(params[:tab], position), class: "position" %></li>
-    <% active_group = position.groups.first %> 
-    <% active_section = position.groups.first.section %>
-  <%end%>
+<%= content_for :sidebar do %>
+  <div class="well">
+    <h4><%= t("derp.participant") %></h4>
+    <%=link_to t("derp.apply_participant"), new_participant_path, class: "btn btn-primary btn-large"%>
+  </div>
+
+  <div class="well">
+    <h4><%= t("derp.dialogue_groups") %></h4>
+    <%=link_to t("derp.apply_dialogue"), new_dialogue_participant_path, class: "btn btn-primary btn-large btn-side"%>
+  </div>
 <% end %>
 
+<div class="well">
+  <% if @positions.count == 0 %>
+    <%if Language.to_s == "no"%>
+      ISFiT har for øyeblikket ikke opptak. 
+    <%else%>
+      ISFiT does not have any open positions at the moment.
+    <%end%>
+  <% else %>
+    <h1 class="page-header"><%= t("position.new_positions") %></h1>
+    <% active_group = nil %>
+    <% active_section = nil %>
+    <% for position in @positions %>
+      <% if not position.group == active_group %>
+        <% if not active_group.nil? %>
+        </table>
+      <% end %>
+      <% if position.group and position.group.section and not position.group.section == active_section %>
+      <% end %>
+      <h2><%=h position.group.name %></h2>
+      <table class="table table-clickable table-striped">
+      <% end %>
+      <tr>
+        <td>
+          <p><%= link_to "#{position.title}", position, class: "position", title: position.description %></p>
+        </td>
+      </tr>
+      <% active_group = position.groups.first %> 
+      <% active_section = position.groups.first.section %>
+    <%end%>
+  </table>
+<% end %>
+<img src="http://i.imgur.com/PeXSj.jpg">
+</div>

@@ -1,304 +1,199 @@
 <% content_for :script do%>
-<script>
-  function setMaxLength() {
-    var x = document.getElementsByTagName('textarea');
-    var counter = document.createElement('div');
-    counter.className = 'counter';
-    for (var i=0;i<x.length;i++) {
-      if (x[i].getAttribute('maxlength')) {
-        var counterClone = counter.cloneNode(true);
-        counterClone.relatedElement = x[i];
-        counterClone.innerHTML = '<span>0</span>/'+x[i].getAttribute('maxlength');
-        x[i].parentNode.insertBefore(counterClone,x[i].nextSibling);
-        x[i].relatedElement = counterClone.getElementsByTagName('span')[0];
+  <script>
+    function setMaxLength() {
+      var x = document.getElementsByTagName('textarea');
+      var counter = document.createElement('div');
+      counter.className = 'counter';
+      for (var i=0;i<x.length;i++) {
+        if (x[i].getAttribute('maxlength')) {
+          var counterClone = counter.cloneNode(true);
+          counterClone.relatedElement = x[i];
+          counterClone.innerHTML = '<span>0</span>/'+x[i].getAttribute('maxlength');
+          x[i].parentNode.insertBefore(counterClone,x[i].nextSibling);
+          x[i].relatedElement = counterClone.getElementsByTagName('span')[0];
 
-        x[i].onkeyup = x[i].onchange = checkMaxLength;
-        x[i].onkeyup();
+          x[i].onkeyup = x[i].onchange = checkMaxLength;
+          x[i].onkeyup();
+        }
       }
     }
-  }
 
-  function checkMaxLength() {
-    var maxLength = this.getAttribute('maxlength');
-    var currentLength = this.value.length;
-    if (currentLength > maxLength)
-    this.relatedElement.className = 'toomuch';
-    else
-    this.relatedElement.className = '';
-    this.relatedElement.firstChild.nodeValue = currentLength;
-    // not innerHTML
-  }
-
-  function popup(url){
-    var mywin;
-    mywin = window.open(url, '1', 'width=400,height=400,left=0,top=10,scrollbars=yes,resizable=yes');
-    mywin.focus();
-  }
-
-$(document).ready(function() {
-  $('#dialogue_participant_country_id').change(function() {
-    var c_id = $('#dialogue_participant_country_id').val();
-    if (c_id != 8 && c_id != 11 && c_id != 29 && c_id != 164) {
-    alert('The country you have selected is not one of the conflict areas. Please make sure you want to participate in the dialogue groups and not in the workshops');
-    var country = $('#dialogue_participant_country_id :selected').text();
-    $('#country_info').html(country + " is not in one of the conflict areas. Please make sure you want to participate in the dialogue groups and not in the workshops'.<br /> If you have any questions, please contact us at info-dialogue@isfit.org");
+    function checkMaxLength() {
+      var maxLength = this.getAttribute('maxlength');
+      var currentLength = this.value.length;
+      if (currentLength > maxLength)
+      this.relatedElement.className = 'toomuch';
+      else
+      this.relatedElement.className = '';
+      this.relatedElement.firstChild.nodeValue = currentLength;
+      // not innerHTML
     }
-     else {
-    $('#country_info').html("If your country is not on the list, please contact us at info-dialogue@isfit.org");
+
+    function popup(url){
+      var mywin;
+      mywin = window.open(url, '1', 'width=400,height=400,left=0,top=10,scrollbars=yes,resizable=yes');
+      mywin.focus();
     }
+
+    $(document).ready(function() {
+      $('#dialogue_participant_country_id').change(function() {
+        var c_id = $('#dialogue_participant_country_id').val();
+        if (c_id != 8 && c_id != 11 && c_id != 29 && c_id != 164) {
+          alert('The country you have selected is not one of the conflict areas. Please make sure you want to participate in the dialogue groups and not in the workshops');
+          var country = $('#dialogue_participant_country_id :selected').text();
+          $('#country_info').html(country + " is not in one of the conflict areas. Please make sure you want to participate in the dialogue groups and not in the workshops'.<br /> If you have any questions, please contact us at info-dialogue@isfit.org");
+        }
+        else {
+          $('#country_info').html("If your country is not on the list, please contact us at info-dialogue@isfit.org");
+        }
+      });
     });
-});
 
-</script>
+  </script>
 <%end%>
+
+  <%= content_for :sidebar do %>
+    <div class="well">
+      <h4><%= t("derp.participant") %></h4>
+      <%=link_to t("derp.apply_participant"), new_participant_path, class: "btn btn-primary btn-large"%>
+    </div>
+
+    <div class="well">
+      <h4><%= t("derp.isfit") %></h4>
+      <%=link_to t("derp.apply_isfit"), positions_path, class: "btn btn-primary btn-large"%>
+    </div>
+  <% end %>
+
+
 <%if false%>
   The deadline for the applications has passed. <br />
   Contact info-dialogue@isfit.org for questions.
 
 <%else%>
-  <h1>Application Form for the Dialogue Groups 2013</h1>
+  <div class="well">
+    <h1 class="page-header">Application Form for the Dialogue Groups 2013</h1>
+    <p>
+      The ISFiT Dialogue Groups is an initiative to build peace in practice. In a 
+      conflict situation, communication and interaction across religious, ethnic 
+      or cultural barriers are limited, or even non-existent. The Dialogue Groups 
+      aim to create a common ground where the participants can meet with opposing 
+      sides of the conflict areas and share experiences.
+    </p> 
 
-<% if @dialogue_participant.errors.any? %>
-    <div id="error_explanation">
-      <h4><%= pluralize(@dialogue_participant.errors.count, "error") %> prohibited the application from being sent:</h4>
-      <ul>
-      <% @dialogue_participant.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <p>
+      The Dialogue Groups 2013 invite students from Burundi, Sri Lanka, and 
+      Armenia and Azerbaijan to apply for participation in the dialogue seminar.
+    </p>
 
-  <!-- TODO fix meg -->
-<p>
-  The ISFiT Dialogue Groups is an initiative to build peace in practice. In a 
-  conflict situation, communication and interaction across religious, ethnic 
-  or cultural barriers are limited, or even non-existent. The Dialogue Groups 
-  aim to create a common ground where the participants can meet with opposing 
-  sides of the conflict areas and share experiences.
-</p> 
+    <p>
+      Four representatives from each side of the three conflicts will spend the 
+      week before ISFiT at a cabin in Røros. The following week, the participants 
+      will continue the seminar as a part of the International Student Festival 
+      in Trondheim.
+      <br>
+    </p>
 
-<p>
-  The Dialogue Groups 2013 invite students from Burundi, Sri Lanka, and 
-  Armenia and Azerbaijan to apply for participation in the dialogue seminar.
-</p>
+    <div class="lead" align=center><h3><b><i>The next ISFiT Dialogue Groups will be held from the 28th of January to the 17th of February 2013.</i></b></h3></div>
+    </br>
 
-<p>
-  Four representatives from each side of the three conflicts will spend the 
-  week before ISFiT at a cabin in Røros. The following week, the participants 
-  will continue the seminar as a part of the International Student Festival 
-  in Trondheim.
-  </p>
-  <div align=center><h3><b><i>The next ISFiT Dialogue Groups will be held from the 28th of January to the 17th of February 2013.</i></b></h3></div>
-</br>
-<p>
-  If you are interested in participating in The Dialogue Groups 2013 you will 
-  need to fill in the following form by the 30th of September. Please note 
-  that you have to be at least 18 years old and a student on the time of 
-  participation. Also, make sure that all your personal information is 
-  correct and that you fill in your name as written in your passport. 
-</p>
-<p>
-  All applications will be read after the 30th of September, and the students 
-  who are selected to participate, will receive an invitation by e-mail. 
-  Instructions on how to obtain a visa and other formalities, will be given 
-  to the invited students. All travel and living costs are covered for the 
-  participants of the Dialogue Groups.
-</p>
-<p>
-  We are sorry to inform that due to limited capacity we cannot invite all 
-  applicants, and we wish you luck on your application. 
-</p>
-<p>
-  Deadline for submitting the application is on the <b>30th of September 2012.</b>
-</p>
-<%= form_for @dialogue_participant do |f| %>
-    <table>
-    <tr valign="top">
-      <td colspan="2">
-        <h3>Personal information:</h3>
-      </td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>First name: </b></td>
-      <td><%= f.text_field :first_name, :style => "width:97%" %> </td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Last name: </b></td>
-      <td><%= f.text_field :last_name, :style => "width:97%" %><br />
-        (Name must match passport name) <br />&nbsp;</td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right">
-        <b>Address</b><br />
-      </td>
-      <td>
-        <%= f.text_field :address1, :style => "width:97%" %><br>
-        Street address, P.O. box, c/o 
-      </td>
-    </tr>
-   <tr valign="top">
-      <td style="text-align:right">	
-        <b>ZIP code: </b>
-      </td>
-      <td><%= f.text_field :zipcode, :style => "width:97%" %></td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>City/Town: </b></td>
-      <td><%= f.text_field :city, :style => "width:97%" %></td>
-    </tr>
-    <!-- TODO fix me -->
-    <tr valign="top">
-      <td style="text-align:right"><b>Country:</b></td>
-      <td>
-      <%=select("dialogue_participant", 
-          "country_id", @countries.collect {|p| [ p.name, p.id ] }) %>
-      <br />&nbsp;
-      </td>
-    </tr>
-   <tr valign="top">
-      <td style="text-align:right"></td>
-      <td id="country_info" style="color:red">If you can not find your country in the list, please contact us at info-dialogue@isfit.org</td>
-    </tr>
-    <tr valign="top">
-      <td style="text-align:right"><b>Telephone: </b></td>
-      <td>
-  <%= f.text_field :phone, :style => "width:97%" %><br />
-(Remember the country code)
-      </td>
-    </tr>
- <tr valign="top">
-  <td style="text-align:right"><b>Email address: </b></td>
-  <td><%= f.text_field :email, :style => "width:97%" %></td>
-  </tr>
-  <tr valign="top">
-  <td style="text-align:right"><b>Confirm email address:</b></td>
-  <td><%= text_field "dialogue_participant", "email_confirmation", :style => "width:97%"%><br />&nbsp;</td>
-  </tr>
-  <tr valign="top">
-  <td style="text-align:right"><b>Nationality: </b></td>
-  <td><%= f.text_field :nationality, :style => "width:97%" %></td>
-  </tr>
-  <tr valign="top">
-  <td style="text-align:right"><b>Passport number: </b></td>
-  <td><%= f.text_field :passport, :style => "width:97%" %></td>
-  </tr>
-  <tr valign="top">
-  <td style="text-align:right"><b>Date of birth: </b></td>
-  <td>
-    <%= date_select("dialogue_participant", "birthdate",
-      :default => { :day => 1, :month => 1, :year => 1970 },
-      :order => [:year, :month, :day], :use_month_numbers => true, 
-      :start_year => 1900, :end_year => 1995)	%>
-  </td>
-  </tr>
-  <tr valign="top">
-  <td style="text-align:right"><b>Sex:</b></td>
-  <td>
-  female <%= radio_button("dialogue_participant", "sex", "f") %>
-  male <%= radio_button("dialogue_participant", "sex", "m") %>
-  <br />&nbsp;
-  </td>
-  </tr>
-  <tr valign="top">
-  <td style="text-align:right"><b>University: </b></td>
-  <td><%= f.text_field :university, :style => "width:97%" %>	</td>
-  </tr>
-  <tr valign="top">
-  <td style="text-align:right"><b>Field of study: </b></td>
-  <td><%= f.text_field :field_of_study, :style => "width:97%" %>	</td>
-  </tr>
- </table>
+    <p>
+      If you are interested in participating in The Dialogue Groups 2013 you will 
+      need to fill in the following form by the 30th of September. Please note 
+      that you have to be at least 18 years old and a student on the time of 
+      participation. Also, make sure that all your personal information is 
+      correct and that you fill in your name as written in your passport. 
+    </p>
 
-  <br />
-  <br />
+    <p>
+      All applications will be read after the 30th of September, and the students 
+      who are selected to participate, will receive an invitation by e-mail. 
+      Instructions on how to obtain a visa and other formalities, will be given 
+      to the invited students. All travel and living costs are covered for the 
+      participants of the Dialogue Groups.
+    </p>
 
-  <table width="580">
-  <tr>
-  <td colspan="2">
-  <h3>Essay 1 - Background  </h3>
-  <p>
-  Write an essay (max 300 words) about yourself, your experiences and interests. 
-  What do you study? What is your motivation for participating in the Dialogue Groups 2013? Have 
-  you participated in similar seminars before? Are you a member of a student organization? 
-  If yes, please specify.</p>
+    <p>
+      We are sorry to inform that due to limited capacity we cannot invite all 
+      applicants, and we wish you luck on your application. 
+    </p>
 
-  <%= text_area(:dialogue_participant, :essay1, {:size => "80x20", :maxlength => "2100"}) %>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  <h3>Essay 2 - The Conflict  </h3>
-  <p>
-  Write an essay (maximum 300 words) about the conflict in your country/region. 
-  How do you experience the conflict? How does it affect your day-to-day life?
-  </p>
-  <%= text_area(:dialogue_participant, :essay2, {:size => "80x20", :maxlength => "2100"}) %>
-  </td>
-  </tr>
+    <p>
+      Deadline for submitting the application is on the <b>30th of September 2012.</b>
+    </p>
 
-  <tr>
-  <td colspan="2">
-  <h3>Essay 3 - Visions for your country  </h3>
-  <p>
-  Write an essay (maximum 300 words) on what 
-  visions you have for your country/region. 
-  What do you wish to achieve? How do you want 
-  your country or region to develop? 
-  How can participation in the Dialogue Groups 
-  help you achieve it?
-  </p>
-  <%= text_area(:dialogue_participant, :essay3, {:size => "80x20", :maxlength => "2100"}) %>
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  <h3>Essay 4 - Reflection  </h3>
-  <p>
-  Please reflect on (one or more of) the following terms (maximum 150 words all together):
-    <ul>
-     <li>dialogue</li>
-     <li>conflict</li>
-     <li>resources</li>
-     </ul>
-
-     </p>
-     <%= text_area(:dialogue_participant, :essay4, {:size => "80x20", :maxlength => "1100"}) %>
-     </td>
-     </tr>
-     <tr>
-    <td colspan="2">
-  <h3>Have you applied or will you apply for ISFiT Workshop?</h3>
-(You can only be invited to one of the two, Workshop or Dialogue, but feel free to apply to both.)
-  </td>
-  </tr>
-  <tr>
-  <td valign="top" style="text_align:center">			
-  yes<%= radio_button("dialogue_participant", "apply_workshop", "1") %>
-  no<%= radio_button("dialogue_participant", "apply_workshop", "0") %>
-  <br />
-  <br />
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  <h3>Security code</h3>
-  <p>
-  Please fill in the two words shown in the box below. If you have problems 
-  reading the words, press the uppermost button to get a new security security code.
-  </p>
-  <p>
-  <center><%#= get_captcha(:options => {:theme => 'clean'}) %>
-  <%=raw recaptcha_tags%>
-  <br /><br />
-  <%= submit_tag 'Submit',:value => "Submit application" %></center>
-  </p>
-  </td>
-  </tr>
-
-  </table>
-  <% end %>
-  <br />
-  <br />
-  <br />
-<%end%>
+    <%= simple_form_for @dialogue_participant, html: {class: "form"} do |f| %>
+      <%=f.error_notification%>
+      <fieldset>
+        <legend><%= t("participants.personal_information") %></legend>
+        <%= f.input :first_name, input_html: { class: "span4" } , hint: t("participant.must_match_passport") %>
+        <%= f.input :last_name, input_html: { class: "span4" }, hint: t("participant.must_match_passport") %>
+        <%= f.input :email, input_html: {class: "span4"} %>
+        <%= f.input :email_confirmation, input_html: {class: "span4"} %>
+        <%= f.input :phone, input_html: {class: "span4"}, hint: t("participant.country_code") %>
+        <%= f.input :address1, :label => "Address", input_html: { class: "span4" } %>
+        <%= f.input :zipcode, input_html: { class: "span4" } %>
+        <%= f.input :city, input_html: { class: "span4" } %>
+        <%= f.input "country_id",  collection: @countries.collect {|p| [ p.name, p.id ] }, prompt: "Select country", hint: "If you can not find your country in the list, please contact us at info-dialogue@isfit.org" %>
+        <%= f.input :nationality, input_html: { class: "span4" } %>
+        <%= f.input :passport, input_html: { class: "span4" } %>
+        <%= f.input :birthdate, :order => [:year, :month, :day], :use_month_numbers => true, :start_year => 1910, :end_year => 1995, input_html: {class: "span1"} %>
+        <%= f.input :sex, :as => :radio_buttons, :collection => [["female", "f"], ["male", "m"]] %>
+        <%= f.input :university, input_html: {class: "span4"} %>
+        <%= f.input :field_of_study, input_html: {class: "span4"} %>
+      </fieldset>
+      <fieldset>
+        <legend>Essay 1 - Background</legend>
+        <p>
+          Write an essay (max 300 words) about yourself, your experiences and interests. 
+          What do you study? What is your motivation for participating in the Dialogue Groups 2013? Have 
+          you participated in similar seminars before? Are you a member of a student organization? 
+          If yes, please specify.
+        </p>
+        <%= f.input :essay1, input_html: {:class => "span7", :maxlength => "2100"} %>
+      </fieldset>
+      <fieldset>
+        <legend>Essay 2 - The Conflict</legend>
+        <p>Write an essay (maximum 300 words) about the conflict in your
+        country/region.  How do you experience the conflict? How does it affect
+        your day-to-day life?</p>
+        <%= f.input :essay2, input_html: {:class => "span7", :maxlength => "2100"} %>
+      </fieldset>
+      <fieldset>
+        <legend>Essay 3 - Visions for your contry</legend>
+        <p>Write an essay (maximum 300 words) on what visions you have for your
+        country/region.  What do you wish to achieve? How do you want your country or
+        region to develop?  How can participation in the Dialogue Groups help you
+        achieve it?</p>
+        <%= f.input :essay3, input_html: {:class => "span7", :maxlength => "2100"} %>
+      </fieldset>
+      <fieldset>
+        <legend>Essay 4 - Reflection</legend>
+        <p>
+        Please reflect on (one or more of) the following terms (maximum 150 words all together):
+        </p>
+        <ul>
+          <li>dialogue</li>
+          <li>conflict</li>
+          <li>resources</li>
+        </ul>
+        <%= f.input :essay4, input_html: {:class => "span7", :maxlength => "2100"} %>
+      </fieldset>
+      <fieldset>
+        <legend>Other</legend>
+        <b>Have you applied or will you apply for the ISFiT Workshops?</b>
+        <p>
+        (You can only be invited to one of the two, Workshop or Dialogue, but feel free
+        to apply to both.)
+        </p>
+        <%= f.check_box "apply_workshop" %> I have applied, or intend to apply, for the ISFiT Workshops.
+        <legend>Security code</legend>
+        <p>
+        Please fill in the two words shown in the box below. If you have problems 
+        reading the words, press the uppermost button to get a new security code.
+        </p>
+        <center> <%= raw recaptcha_tags %><br><br>
+          <%= f.button 'submit',:value => "Submit application", class: "btn btn-large btn-primary" %></center>
+      </fieldset>
+    <% end %>
+  <%end%>
+</div>
