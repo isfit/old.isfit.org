@@ -1,0 +1,21 @@
+<%= content_for :head do %>
+	<meta property="og:title" content="ISFiT 2013 - Trade Your Ideas" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://isfit.org/ideas/<%= @idea.id %>" />
+	<meta property="og:image" content="http://i.imgur.com/rPULN.png" />
+	<meta property="og:site_name" content="Isfit.org" />
+	<meta property="fb:admins" content="111446192243028" />
+	<meta property="description" content="<%= @idea.body %>" />
+<% end %>
+
+
+<div id="article-wrapper" class="well">
+	<div id="ideas-fbwidget" class="fb-like" data-href="http://www.isfit.org/ideas/<%= @idea.id %>" data-send="true" data-layout="box_count" data-width="450" data-show-faces="false"></div>
+
+
+	<header><h1>Idea #<%=@idea.id%></h1></header>
+
+	<p><%= @idea.body %></p>
+
+	<p>Submitted by <em><%= @idea.submitted_by_name %></em></p>
+</div>

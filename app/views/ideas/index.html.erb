@@ -1,0 +1,93 @@
+<%= content_for :head do %>
+	<meta property="og:title" content="ISFiT 2013 - Trade Your Ideas" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="http://isfit.org/ideas/<%= @idea.id %>" />
+	<meta property="og:image" content="http://i.imgur.com/rPULN.png" />
+	<meta property="og:site_name" content="Isfit.org" />
+	<meta property="fb:admins" content="111446192243028" />
+	<meta property="description" content="<%= @idea.body %>" />
+<% end %>
+
+
+
+<div id="article-wrapper" class="well">
+
+	<div id="submit-ideas-wrapper">
+		<header class="page-header">
+			<h1>Trade Your Ideas</h1>
+		</header>
+		<div class="lead">
+			<p>
+				På ISFiT utveksles ideer, både før, under og etter festivalen. Både deltakere, frivillige og andre studenter verden over kan gjennom ISFiT uttrykke sine tanker, ideer og meninger &mdash; og få noe tilbake.
+			</p>
+			<p>
+			<strong>Nå vil vi utveksle ideer med deg! Vinn to <em>Gullbilletter</em>* til festivalen 7.-17. februar 2013 ved å dele din idé!</strong><br>
+			</p>
+		</div>
+			<h1>Hva skal til for at ISFiT 2013 blir din drømmefestival?</h1>
+			<br>
+			<p><strong>Svareksempler</strong><br>
+			"ISFiT ville blitt fantastisk om Aung San Suu Kyi kom!"<br>
+			"Festivalen bør arrangere kanefart gjennom byen til åpningsseremonien"
+			</p>
+			<p>Her er det bare fantasien som setter begrensninger. Det mest populære bidraget stikker av med premien. For å vinne må bidraget ditt ha flest "likes" og "shares". Lykke til!</p>
+			<p class="lead">
+				<small>ISFiT forbeholder seg retten til videre bruk av ideene som sendes inn.</small><br>
+				<small>* Gullbillett dekker alle enkeltarrangement under festivalen 7.-17- februar 2013 som det selges billetter til.</small>
+
+			</p>
+		<% if session[:user].nil? %>
+			<p>Du må være logget inn for å sende inn ideer.</p>
+			<p><a href="https://www.facebook.com/dialog/oauth?client_id=111446192243028&redirect_uri=http://www.isfit.org/oauth/callback&state=lolololololololol" target="_blank">Log in with Facebook</a></p>
+		<% else %>
+			<p>Posting idea as <%=session[:user].name%></p>
+			<%= form_for @idea, :url=> {:action => 'create'} do |f| %>
+	  			<%= f.text_area :body, :placeholder => 'Your idea' %>
+	  			<%= f.hidden_field :email, :value => session[:user].token %>
+	  			<%= f.submit "Send" %>
+			<% end %>
+		<% end %>
+
+
+	</div>
+
+
+	<div id="ideas-wrapper">
+		<header>
+			<h1>Ideas</h1>
+		</header>
+
+	<% @ideas.each do |idea| %>
+	<article class="idea">
+		<div id="ideas-fbwidget" class="fb-like" data-href="http://www.isfit.org/ideas/<%= idea.id %>" data-send="true" data-layout="box_count" data-width="450" data-show-faces="false"></div>
+
+
+		<p class="idea-body"><%= idea.body %></p>
+		<p class="idea-email">
+			<img src="http://lorempixel.com/48/48/people" />
+			<%= idea.email %>
+		</p>
+
+
+		<p><a href="/ideas/<%= idea.id %>" class="permalink">Permalink</a></p> <!-- TODO -->
+
+	</article>
+	<% end %>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/nb_NO/all.js#xfbml=1&appId=134691243236387";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>

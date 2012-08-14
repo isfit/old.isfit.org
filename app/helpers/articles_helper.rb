@@ -18,12 +18,12 @@ module ArticlesHelper
   end
 
   def set_correct_tags(text)
-    text.gsub!(/##pic (\d+) (\d+) pic##/) {|match|  article_image($1, $2, false)}
-    text.gsub!(/#l#pic (\d+) (\d+) pic#l#/) {|match| article_image($1, $2, true)}
+    # text.gsub!(/##pic (\d+) (\d+) pic##/) {|match|  article_image($1, $2, false)}
+    # text.gsub!(/#l#pic (\d+) (\d+) pic#l#/) {|match| article_image($1, $2, true)}
   end
 
   def yt_tag(text)
-    text.gsub!(/##yt (\w+) yt##/, "<iframe width='530' height='302' src='http://www.youtube.com/embed/\\1' frameborder='0' allowfullscreen></iframe>")
+    text.gsub!(/##yt (\w+) yt##/, "<iframe id='ytplayer' type='text/html' width='580' height='302' src='http://www.youtube.com/embed/\\1?showinfo=0&controls=0' frameborder='0' allowfullscreen></iframe>")
   end
 
   def article_image(picture_id, type, link)

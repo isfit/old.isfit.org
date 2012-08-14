@@ -3,9 +3,11 @@ class Article < ActiveRecord::Base
   lang_attr :title, :ingress, :body, :sub_title
 
   has_attached_file :frontend_article_image, styles:  {
-    front_large: {geometry: "530x196#", processors: [:cropper] },
-    front_small: {geometry: "250x120#", processors: [:cropper_half] },
-    article: {geometry: "447x346#", processors: [:cropper_spp_one_third] }
-  }
+    frontpage_large: {geometry: "620x362#", processors: [:cropper] },
+    article_large: {geometry: "940x480#", processors: [:cropper_half] }
+  },
+  url: "/system/frontend_articles/:attachment/:id_partition/:style/:filename",
+  path: ":rails_root/public/system/frontend_articles/:attachment/:id_partition/:style/:filename"
+
 
 end

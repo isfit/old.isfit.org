@@ -1,7 +1,53 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
+  footer:
+    editor: "Editor in Chief"
+    copyright: All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2013.
+  tabs:
+    articles:
+      main: 'News'
+      photos: 'Photos'
+      archive: 'Archive'
+      galleries: 'Galleries'
+    theme:
+      main: 'Theme 2013'
+      globaltrade: 'Global Trade'
+      workshops: 'Workshops'
+      tradeyourideas: 'Trade Your Ideas'
+      themeblog: 'Theme Blog'
+      previousthemes: 'Previous Themes'
+    about:
+      main: 'About'
+      whatisisfit: 'What is ISFiT?'
+      dialoguegroups: 'Dialogue Groups'
+      conflictareas: 'Conflict Areas'
+      studentpeaceprice: 'Student Peace Prize'
+      walkofpeace: 'Walk of Peace'
+    info:
+      main: 'Info'
+      participant: 'Participant'
+      volunteer: 'Volunteer'
+      press: 'Press'
+      donate: 'Donate'
+      contact: 'Contact'
+      faq: 'FAQ'
+    languages:
+      main: 'Languages'
+  derp:
+    dialogue_groups: "Looking for the Dialogue Groups?"
+    participant: "Looking for the participant applications?"
+    apply_dialogue: "Apply for the ISFiT 2013 Dialogue Groups"
+    apply_participant: "Apply to be a participant in ISFiT 2013"
+    isfit: "Do you want to volunteer?"
+    apply_isfit: "Apply to be a volunteer in ISFiT 2013"
+  call-to-action:
+    header: Be the change you want to see in the world
+    paragraph: |
+      The purpose of ISFiT is to create and share innovative ideas of how we can
+      change and improve the future. We do this by uniting young minds from
+      all over the world in [Trondheim, Norway](http://goo.gl/maps/4eLUZ), next February. Apply now, and become
+      a part of it all.
+    apply_now: "Apply now"
+    learn_more: "Learn more"
   event:
     information: "Information"
     type: "Type"
@@ -24,6 +70,8 @@ en:
     remarks: "Remarks:"
     submit: "Submit"
   donations:
+    amount: "Amount you want to donate in NOK"
+    donation_button: "Donate!"
     donate: "Support a participant"
   layout:
     contact: "Contact"
@@ -37,8 +85,13 @@ en:
   article:
     header: "NEWS"
     more: "More news"
+  participant:
+    must_match_passport: 'Name must match passport name'
+    address_hint: 'Hint for the address?'
+    country_code: 'Add the country code'
+    travel_amount_hint: 'Amount of money that you are applying for(maximum $3000)'
   position:
-    no_new_positions: "We do not currently have any open positions for volunteers. Please check back later"
+    no_new_positions: "We do not currently have any open positions for volunteers. Please check back later."
     new_positions: "Currently ISFiT has admissions for the following positions"
     positions: "Positions"
     apply: "Volunteer now"
@@ -52,11 +105,11 @@ en:
     background: "Relevant background"
     hear_about: "How did you hear about ISFiT?"
   person:
-    first_name: "First name"
-    last_name: "Last name"
+    first_name: "Given name"
+    last_name: "Family name"
     address: "Address"
-    phone: "Phone"
-    phone_nor: "Phone"
+    phone: "Phone number"
+    phone_nor: "Phone number"
     email: "Email address"
     email_ntnu: "Email address (at place of study)"
   project_support:
@@ -74,7 +127,7 @@ en:
     label:
       project_support:
         person_name: Name
-        person_mail: E-mail
+        person_mail: Email
         person_age: Age
         person_association: Association with ISFiT
         country: Country
@@ -106,16 +159,64 @@ en:
         member_name: Name of member (only if the option 'member of ISFiT' is chosen)
         why: Why do you want to volunteer?
         base: ""
+  simple_form:
+    labels:
       applicant:
-        firstname: First name
-        lastname: Last name
-        mail: Email (at place of study)
-        phone: Phonenumber (8 numbers)
-        position_id_1: First choice (required)
-        position_id_2: Andrevalg (optional)
-        position_id_3: Tredjevalg (optional)
-        information: About you
-        background: Relevant background
+        firstname: 'Given name'
+        lastname: 'Family name'
+        mail: 'Email (at place of study)'
+        phone: 'Phone number (8 numbers)'
+        position_id_1: 'First choice (required)'
+        position_id_2: 'Second choice (optional)'
+        position_id_3: 'Third choice (optional)'
+        information: 'About you'
+        background: 'Relevant background'
+        hear_about: 'How did you hear about ISFiT?'
+      donation:
+        name: "Name"
+        email: "E-mail"
+        amount: "Amount"
+      participant:
+        first_name: 'Given name'
+        last_name: 'Family name'
+        email: 'Email address'
+        email_confirmation: 'Confirm email address'
+        address1: 'Address'
+        zipcode: 'Zipcode'
+        city: 'City'
+        country_id: 'Country'
+        phone: 'Phone number'
+        birthdate: 'Date of birth'
+        sex: 'Sex'
+        university: 'University'
+        field_of_study: 'Field of study'
+        workshop1: '1st choice'
+        workshop2: '2nd choice'
+        workshop3: '3rd choice'
+        essay1: 'Essay 1'
+        essay2: 'Essay 2'
+        travel_essay: 'Travel essay'
+        travel_amount: 'Travel amount'
+      dialogue_participant:
+        first_name: 'First name'
+        last_name: 'Last name'
+        email: 'Email address'
+        email_confirmation: 'Confirm email address'
+        address1: 'Address'
+        zipcode: 'Zipcode'
+        city: 'City'
+        country_id: 'Country'
+        nationality: 'Nationality'
+        passport: 'Passport'
+        phone: 'Phone number'
+        birthdate: 'Date of birth'
+        sex: 'Sex'
+        university: 'University'
+        field_of_study: 'Field of study'
+        essay1: 'Essay 1'
+        essay2: 'Essay 2'
+        essay3: 'Essay 3'
+        essay4: 'Essay 4'
   activerecord:
     errors:
       messages:

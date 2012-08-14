@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   before_filter  :set_language
+  before_filter :miniprofiler
+
+  # to keep UKA out...
+  http_basic_authenticate_with :name => "isfit", :password => "betabeta"
 
   def set_language
     unless session[:locale]
@@ -38,6 +42,16 @@ class ApplicationController < ActionController::Base
       output.gets[8..-1].strip.downcase
     rescue
       "en"
+    end
+  end
+
+
+
+  private
+
+  def miniprofiler
+    if params[:profile] == "yes"
+      Rack::MiniProfiler.authorize_request
     end
   end
 end

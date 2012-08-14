@@ -1,14 +1,27 @@
-<% @articles.each do |article| %>
-  <%classtext = "artikkel grid_7 articleheight " + cycle("alpha","omega")%>
+<div class="well">
+  <% @articles.each do |article| %>
 
-  <div class="<%=classtext%>">
+    <header id="image-header">
+      <%=link_to (image_tag "https://internal.isfit.org" +  article.workshop_image.url(:original)), workshop_path(article)%>
+      <br>
+      <div class="image-text">
+        <h1>WS<%= article.number < 10 ? "0#{article.number}" : "#{article.number}" %> <%= " - #{article.name}" %></h1>
+        <section class="image-ingress">
+          <p><%=truncate(article.ingress, :length=>150, :separator => ' ')%></p>
+        </section>
+      </div>
+    </header>
+  <%end%>
+</div>
 
-    <a href="<%=workshop_url(params[:tab],article)%>">
-      <% if article.workshop_image %>
-        <%=image_tag(article.workshop_image.url(:thumb)) %>
-      <% end %>
-      <h1><%=article.name%></h1>
-      <p><%=truncate(article.ingress, :length=>150, :separator => ' ')%></p>
-    </a>
+<%= content_for :sidebar do %>
+  <div class="well">
+    <h4><%= t("derp.participant") %></h4>
+    <%=link_to t("derp.apply_participant"), new_participant_path, class: "btn btn-primary btn-large"%>
   </div>
-<%end%>
+
+  <div class="well">
+    <h4><%= t("derp.dialogue_groups") %></h4>
+    <%=link_to t("derp.apply_dialogue"), new_dialogue_participant_path, class: "btn btn-primary btn-large btn-side"%>
+  </div>
+<% end %>

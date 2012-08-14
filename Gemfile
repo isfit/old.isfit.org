@@ -12,11 +12,14 @@ gem 'bluecloth'
 gem 'paperclip'
 gem 'rake'
 gem 'simple_form'
+gem 'tabulous'
+gem 'activemerchant'
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem "paperclip"
@@ -28,6 +31,9 @@ gem 'therubyracer'
 
 # Deploy with Capistrano
 gem 'capistrano'
+
+# Profile with MiniProfiler
+gem 'rack-mini-profiler'
 
 # To use debugger
 # gem 'ruby-debug'

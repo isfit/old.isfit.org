@@ -18,12 +18,15 @@ class PositionsController < ApplicationController
  def apply
    @applicant = Applicant.new
    @positions = Position.published.includes(:groups).order("groups.section_id, groups.id,positions.title_no")
+   @positions_collection = []
+   @positions.each { |p| @positions_collection << ["#{p.groups.first.name} - #{p.title}", p.id]} 
  end
 
  def save
     @applicant = Applicant.new(params[:applicant])
     respond_to do |format|
       if @applicant.save
+        Postoffice.applicant_add(@applicant.firstname + " " + @applicant.lastname, @applicant.mail).deliver
         flash[:notice] = "Din soknad ble sendt."
         @positions = Position.published
         format.html { render :action => :index }

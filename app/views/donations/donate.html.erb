@@ -3,58 +3,61 @@
   <meta property="og:type" content="non_profit"/>
   <meta property="og:image" content="<%="http://www.isfit.org/images/isfitliten.png"%>"/>
   <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>"/>
-  <meta property="og:site_name" content="ISFiT 2011"/>
+  <meta property="og:site_name" content="ISFiT 2013"/>
   <meta property="fb:app_id" content="111446192243028"/>
-  <meta property="og:description" content="Support at participant at ISFiT 2011"/>
+  <meta property="og:description" content="Support at participant at ISFiT 2013"/>
 <%end%>
-<h1><%= t('donations.donate') %></h1>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <input type="hidden" name="cmd" value="_s-xclick">
-  <input type="hidden" name="hosted_button_id" value="2ELUQS6A2KTTS">
-  <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-  <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
+<div class="well">
+  <h1><%= t('donations.donate') %></h1>
+  
+  <% if false %>
+    <%= link_to t("donations.donation_button"), @donation.paypal_url(thank_you_donations_url, donations_url), class: "btn btn-primary btn-large" %>
+  <% end %>
 
+  <% if  Language.to_s == 'no' %>
+    <!-- Norsk versjon -->
+    <p>
+      ISFiT 2013 tar sikte på å ha den mest mangfoldige og inkluderende representasjonen
+      av deltakere så langt i festivalens historie. Vårt mål er å bringe over 450 deltakere fra
+      tilsammen over 100 forskjellige land til Trondheim. Dette er mulig å oppnå med din
+      hjelp! Deltakerne vi inviterer er blant de mest engasjerte, men ikke nødvendigvis de
+      mest privilegerte, studentene i verden. Mange av dem er totalt avhengige av at ISFiT
+      deler ut reisestøtte, og denne støtten kan du bidra til. ISFiT 2013 tar imot donasjoner
+      som går til å finansiere reisestøtte for de deltakerne som trenger det mest.
+    </p>
+    <p>
+      På denne nettsiden har du muligheten til å donere direkte til vårt program
+      for reisestøtte. Dette gjør du ved å fylle ut en sum av ditt eget valg i den sikre
+      betalingsløsningen nedenfor. Ved å oppgi din e-postadresse vil du motta et takkebrev fra
+      ISFiT 2013, og et nytt brev med en oppsummering av festivalen når det hele er over.
+    </p>
+    <p>
+      Takk for din støtte; ditt bidrag betyr mye for både deltakerne og for festivalen som
+      helhet.
+    </p>
+  <% else %>
+    <!-- English version -->
+    <p>
+      One of the goals of ISFiT 2013 is to have the most diverse and welcoming representation of
+      participants in the history of the festival. We aim at bringing more than 450 participants
+      from over 100 different countries to Trondheim. This is possible to achieve with your help!
+      The participants who are invited are among the most committed, but not necessarily the
+      most privileged, students in the world. Many of them are entirely dependent upon the
+      ISFiT 2013 Travel Support Fund. This is where you can contribute. ISFiT 2013 is accepting
+      donations that will finance travel support for those participants who need it the most.
+    </p>
+    <p>
+      You can make a direct donation to our Travel Support Fund through this website.
+      Donations are made by filling out the amount of your choice into the safe payment system
+      below. By submitting your e-mail address, you will receive a letter of appreciation from
+      ISFiT 2013, and a new letter summarizing the festival when ISFiT 2013 is at an end.
+    </p>
+    <p>
+      Thank you for your support; your contribution means a lot for both the participants and
+      the festival in its entirety.
+    </p>  
+  <% end %>
+  <div class=photo_full><img src =/images/article/photos/full_article_pictures/8/original_image_data.jpg?1281996015  /><br /><i>Foto: Fotogjengen ved Studentersamfundet i Trondhjem</i><br /><i>Participants from ISFiT 2009</i></div>
 
-<% if  Language.to_s == 'no' %>
-<!-- Norsk versjon -->
-<p>
-  ISFiT 2011 tar sikte på å ha den mest mangfoldige og inkluderende representasjonen av deltakere
-  så langt i festivalens historie. Vårt mål er å bringe over 400 deltakere fra til sammen over 100
-  forskjellige land til Trondheim. Dette er mulig å oppnå med din hjelp! Deltakerne vi har invitert er
-  blant de mest engasjerte men også de minst priviligerte studentene i verden. Mange av dem er totalt
-  avhengige av ISFiTs mulighet for å dele ut reisestøtte, og dette arbeidet kan du bidra til. ISFiT 2011
-  tar imot donasjoner som går uavkortet mot å finansiere reisestøtte for de deltakerne som trenger det
-  mest.
-</p>
-<p>
-  På denne nettsiden har du muligheten til å donere direkte til vårt program for reisestøtte. Dette gjør
-  du ved å fyll ut en sum av ditt eget valg i den sikre betalingsløsningen nedenfor. Ved å oppgi din e-
-  postadresse vil du motta et takkebrev fra ISFiT 2011 og vil kunne følge med på hva som skjer under
-  festivalen. Vi sier det her også: Takk for din støtte, den vil bety all verdens forskjell for mange
-  mennesker.
-</p>
-
-<% else %>
-
-<!-- English version -->
-<p>
-  One of the goals of ISFiT 2011 is to have the most diverse and inclusive representation of
-  participants ever in the history of the festival. We aim at bringing 400 participants from over 100
-  different countries and nationalities to Trondheim. This is possible to achieve with your help! The
-  participants who have been invited to ISFiT 2011 are among the most committed and yet least
-  privileged students in the world. Many of them are entirely dependent on the ISFiT 2011 travel
-  support fund. This is where you can contribute. ISFiT 2011 is accepting donations that will go
-  unabridged towards financing travel support for those participants who need it the most.
-</p>
-<p>
-  You can make a direct donations to our travel support fund through this website. This is done by
-  filling out the amount of your choice into the safe payment system below. By submitting your e-
-  mail address you will receive a letter of appreciation from ISFiT 2011 and be able to keep updated
-  on what is happening during the festival. We will say it here as well: Thank you for your support, it
-  will mean the world for a whole lot of people.
-</p>
-<% end %>
-<div class=photo_full><img src =/images/article/photos/full_article_pictures/8/original_image_data.jpg?1281996015  /><br /><i>Foto: Fotogjengen ved Studentersamfundet i Trondhjem</i><br /><i>Participants from ISFiT 2009</i></div>
-
-<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="recommend"></fb:like>
+  <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="recommend"></fb:like>
+</div>

@@ -1,25 +1,90 @@
-<%
-    first = true
-@articles.each do |article| %>
-<% if first %>
-  <div id="hoved_artikkel" class="grid_14 alpha omega">
 
-  <%else%>
-    <%classtext = "artikkel grid_7 articleheight " + cycle("alpha","omega")%>
-
-    <div class="<%=classtext%>">
-    <%end%>
-
-    <a href="<%=article_url(params[:tab], article)%>">
-      <% if article.frontend_article_image? %>
-        <%=image_tag(first ? article.frontend_article_image.url(:front_large) : article.frontend_article_image.url(:front_small)) %>
-      <% else %>
-        <%=image_tag("article_images/"+article.id.to_s+"_"+ (first ? "1" : "2")+".jpg") %>
-      <% end %>
-      <h1><%=article.title%></h1>
-      <p><%=truncate(article.sub_title, :length=>150, :separator => ' ')%></p>
-    </a>
+<%= content_for :header do %>
+  <div class="hero-unit">
+    <div class="action-text">
+      <h1><%= t("call-to-action.header") %></h1>
+      <p><%= raw format t("call-to-action.paragraph") %></p>
+      <p>
+        <%if Language.to_s == "no"%>
+          <%= link_to t("call-to-action.apply_now"), positions_path, class: "btn btn-primary btn-large" %>
+        <% else %>
+          <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
+        <% end %>
+      <%= link_to t("call-to-action.learn_more"), page_path(7), class: "btn btn-large" %>
+      </p>
+    </div>
+    <div class="media">
+      <iframe src="http://player.vimeo.com/video/47441322?title=0&amp;byline=0&amp;portrait=0&amp;color=d6351a" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    </div>
   </div>
-  <% first = false if first %>
-<%end%>
-<%= link_to t('article.more'), all_articles_path(params[:tab]) %>
+<% end %>
+<div class="row">
+  <div class="span8">
+    <div id="news-carousel" class="carousel slide">
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <% @articles.each do |article| %>
+          <div class="item <%= article == @articles.first ? "active":"" %>">
+            <a href="<%= article_path(article) %>">
+              <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px" %>
+              <div class="carousel-caption">
+                <h1><%= article.title %></h1>
+                <p><%= article.sub_title %></p>
+              </div>
+            </a>
+          </div>
+        <% end %>
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#news-carousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#news-carousel" data-slide="next">&rsaquo;</a>
+    </div>
+  </div>
+  <div class="span4">
+    <aside id="sidebar"><!-- Start hoyreramme -->
+    <div class="promotional">
+      <%if Language.to_s == "no"%>
+          <a href="/ideas"><img src="http://i.imgur.com/jewrP.gif" alt="promotional"></a>
+        <% else %>
+          <a href="/ideas"><img src="http://i.imgur.com/IDszW.gif" alt="promotional"></a>
+        <% end %>
+    </div>
+
+    <div class="promotional">
+      <%if Language.to_s == "no"%>
+          <a href="/ideas"><img src="http://i.imgur.com/c3wsd.png" alt="promotional"></a>
+        <% else %>
+          <a href="/ideas"><img src="http://i.imgur.com/awmIo.png" alt="promotional"></a>
+        <% end %>
+    </div>
+
+    </aside><!-- Slutt hoyreramme -->
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="well social facebook">
+      <div class="fb-like-box" data-href="http://www.facebook.com/pages/ISFiT/11541693212" data-width="300" data-show-faces="true" data-border-color="#fff" data-stream="false" data-header="false"></div>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="well social twitter" id="widget-twitter-fp">
+      <header>
+        <h1>Twitter</h1>
+      </header>
+      <section class="twitter-widget-fp-content">
+      </section>
+      <a href="https://twitter.com/ISFiT" class="btn twitter-follow-button pull-right" data-show-count="false" data-size="large">Follow @ISFiT</a>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="well social articles">
+      <h1><%= t("articles.latest_articles") %></h1>
+      <ul>
+        <% @latest.each do |article| %>
+          <li><%= link_to article.title, article_path(params[:tab], article) %></li>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+</div>

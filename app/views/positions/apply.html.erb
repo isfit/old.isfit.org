@@ -1,69 +1,78 @@
-<%if Position.published.count == 0 %>
-  <%if Language.to_s == "no"%>
-    ISFiT har for øyeblikket ikke opptak.
+<div class="well">
+  <%if Position.published.count == 0 %>
+    <%if Language.to_s == "no"%>
+      ISFiT har for øyeblikket ikke opptak.
+    <%else%>
+      ISFiT does not have any open positions at the moment.
+    <%end%>
   <%else%>
-	ISFiT does not have any open positions at the moment.
-  <%end%>
-<%else%>
-<% content_for :script do %>
-  <%= javascript_include_tag 'new_applicant' %>
-<%end%>
-<h1><%= t("position.form")%></h1>
-<%= render 'partials/error', :locals=> {:model => @applicant} %>
+    <% content_for :script do %>
+      <%= javascript_include_tag 'new_applicant' %>
+    <%end%>
+    <h1><%= t("position.form")%></h1>
+    <%= render 'partials/error', :locals=> {:model => @applicant} %>
 
-<p><%= t("position.fill_in") %></p>
-<%= form_for(@applicant, :html => { :class => "yform columnar" }, :url => {:controller => :positions, :action => :save}) do |f| %>
-  <fieldset>
-    <legend><%= t("position.personal_info") %></legend>
-    <div class="type-text">
-      <%= f.label :firstname %>
-      <%= f.text_field :firstname, :placeholder => t("person.first_name") %>
-    </div>
-    <div class="type-text">
-      <%= f.label :lastname %>
-      <%= f.text_field :lastname, :placeholder => t("person.last_name") %>
-    </div>
-    <div class="type-text">
-      <%= f.label :mail %>
-      <%= f.text_field :mail, :placeholder => t("person.email_ntnu") %>
-    </div>
-    <div class="type-text">
-      <%= f.label :phone %>
-      <%= f.text_field :phone, :placeholder => t("person.phone_nor") %>
-    </div>
+    <p><%= t("position.fill_in") %></p>
+
+    <%= simple_form_for(@applicant, :input_html => {:class => 'form-horizontal' }, url: {:controller => :positions, :action => :save}) do |f| %>
+
+
+      <fieldset>
+        <legend>
+          <%= t('position.personal_info') %>
+        </legend>
+        <%= f.input :firstname, :input_html => {
+          :class => 'span5',
+          :placeholder => t('person.first_name')
+        } %>
+
+      <%= f.input :lastname, :input_html => {
+        :class => 'span5',
+        :placeholder => t('person.last_name')
+      } %>
+
+    <%= f.input :mail, :input_html => {
+      :type => 'email',
+      :class => 'span5',
+      :placeholder => t('person.email_ntnu')
+    } %>
+
+  <%= f.input :phone, :input_html => {
+    :type => 'tel', 
+    :class => 'span5',
+    :placeholder => t('person.phone_nor')
+  } %>
   </fieldset>
+
   <fieldset>
+    <legend><%= t("position.positions") %></legend>
+
+    <%= f.input :position_id_1, :collection => @positions_collection, :input_html => {
+      :class => 'span5'
+    } %>
+
+  <%= f.input :position_id_2, :collection => @positions_collection, :input_html => {
+    :class => 'span5'
+  } %>
+
+<%= f.input :position_id_3, :collection => @positions_collection, :input_html => {
+  :class => 'span5'
+} %>
+
     <legend><%= t("position.application") %></legend>
-    <div class="type-select">
-      <%= f.label :position_id_1 %>
-      <%= f.collection_select :position_id_1, @positions, :id, :select_name, prompt: true %>
-    </div>
-    <div class="type-select">
-      <%= f.label :position_id_2 %>
-      <%= f.collection_select :position_id_2, @positions, :id, :select_name, prompt: true %>
-    </div>
-    <div class="type-select">
-      <%= f.label :position_id_3 %>
-      <%= f.collection_select :position_id_3, @positions, :id, :select_name, prompt: true %>
-    </div>
-    <div class="type-text">
-      <%= f.label :information %>
-      <%= f.text_area :information, :rows => 10 %>
-    </div>
-    <div class="type-text">
-      <%= f.label :background %>
-      <%= f.text_area :background, :rows => 10 %>
-    </div>
-    <!--
-  <p>
-    <b><%= t("position.hear_about") %>:</b><br>
-    <%= f.text_area(:heardof,:cols => 63, :rows=>5)%><br>
-  </p>
-  -->
-  <div class="type-button">
-  <%= f.submit t("position.apply"), :class => "submit" %>
-</div>
+    <%= f.input :information, :input_html => {
+      :rows => 10,
+      :class => 'span7'
+    } %>
+
+  <%= f.input :background, :input_html => {
+    :rows => 10,
+    :class => 'span7'
+  } %>
+
+  <%= f.button 'submit',:value => "Submit application", class: "btn btn-large btn-primary" %></center>
+
 <% end %>
 
-
 <%end%>
+</div>
