@@ -10,7 +10,11 @@
         <% else %>
           <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
         <% end %>
-      <%= link_to t("call-to-action.learn_more"), page_path(7), class: "btn btn-large" %>
+        <%if Language.to_s == "no"%>
+          <%= link_to t("call-to-action.learn_more"), page_path(62), class: "btn btn-large" %>
+        <% else %>
+          <%= link_to t("call-to-action.learn_more"), page_path(61), class: "btn btn-large" %>
+        <% end %>
       </p>
     </div>
     <div class="media">
