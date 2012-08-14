@@ -19,6 +19,11 @@
     <%end%>
   <% else %>
     <h1 class="page-header"><%= t("position.new_positions") %></h1>
+    
+    <div class="pull-right">
+      <%=link_to t("position.form"), apply_positions_path, class: "btn btn-primary btn-large"%>
+    </div>
+    
     <% active_group = nil %>
     <% active_section = nil %>
     <% for position in @positions %>
