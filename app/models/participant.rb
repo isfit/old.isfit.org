@@ -42,20 +42,20 @@ class Participant < ActiveRecord::Base
 	# make model validate ok
 	validates_presence_of :essay1
 	validates_presence_of :essay2
-	validates_length_of :essay1, :maximum=>2500, :message => "Essay 1 too long"
-	validates_length_of :essay2, :maximum=>2500, :message => "Essay 2 too long"
+	validates_length_of :essay1, :maximum=>3000, :message => "Essay 1 too long"
+	validates_length_of :essay2, :maximum=>3000, :message => "Essay 2 too long"
 	validates_length_of :travel_essay, :maximum=>2000, :message => "Travel essay too long"
 
   validates :essay1, :length => {
     :maximum   => 260,
     :tokenizer => lambda { |str| str.scan(/\s+|$/) },
-    :too_long  => " too long, maximum 250 words"
+    :too_long  => " too long, maximum 300 words"
     }
 
   validates :essay2, :length => {
-    :maximum   => 260,
+    :maximum   => 310,
     :tokenizer => lambda { |str| str.scan(/\s+|$/) },
-    :too_long  => "too long, maximum 250 words"
+    :too_long  => "too long, maximum 300 words"
     }
 
 	validates_presence_of :birthdate, :message => "not valid"
