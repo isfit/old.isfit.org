@@ -18,11 +18,13 @@
       ISFiT does not have any open positions at the moment.
     <%end%>
   <% else %>
-    <h1 class="page-header"><%= t("position.new_positions") %></h1>
-    
-    <div class="pull-right">
+    <h1 class="page-header"><%= t("position.motivational") %></h1>
+
+    <div class="pull-right" style="margin-left: 1em;">
       <%=link_to t("position.form"), apply_positions_path, class: "btn btn-primary btn-large"%>
     </div>
+
+    <div class="lead"><%= raw format("Som frivillig på ISFiT får du være med å planlegge og gjennomføre det som blir verdens største internasjonale studentfestival. ISFiT er en av gjengene på [Studentersamfundet](http://www.samfundet.no) og du får være med på all moroa det medbringer. Vi lover at det blir sosialt, gøy og engasjerende.<br>Lover du å søke?<br> <br>__Søknadsfrist 29. august klokken 23:59.__") %></div>
     
     <% active_group = nil %>
     <% active_section = nil %>
