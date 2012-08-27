@@ -14,6 +14,7 @@ gem 'rake'
 gem 'simple_form'
 gem 'tabulous'
 gem 'activemerchant'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails'
