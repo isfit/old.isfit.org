@@ -86,9 +86,9 @@ class Postoffice < ActionMailer::Base
 
   def donation(name, email)
     @recipients     = email
-    @from           = "Unknown"
-    @subject_en     = "Unknown"
-    @subject_no     = "Ukjent"
+    @from           = "kari.strandjord@isfit.org"
+    @subject_en     = "Thank you for your contribution!"
+    @subject_no     = "Tusen takk for ditt bidrag!"
     @sent_on        = Time.now
     @content_type   = "text/html"
     if I18n.locale.to_s == "no"
