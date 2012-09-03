@@ -6,7 +6,7 @@ class DonationsController < ApplicationController
 
   def donate
     @donation = Donation.new
-    #redirect_to page_path(60)
+    redirect_to @donation.paypal_url(thank_you_donations_url, donations_url) 
   end
 
   def thank_you
@@ -33,7 +33,7 @@ class DonationsController < ApplicationController
   private
 
   def verify?(params)
-    paypal_uri = URI.parse("https://www.sandbox.paypal.com/cgi-bin/webscr")
+    paypal_uri = URI.parse("https://www.paypal.com/cgi-bin/webscr")
     http = Net::HTTP.new(paypal_uri.host, paypal_uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
