@@ -1,13 +1,23 @@
+<div class="well">
+
 <% counter = 0 %>
 <% @articles.each do |article| %>
   <%classtext = "artikkel grid_7 articleheight "+  (counter%2 == 0 ? "alpha" : "omega") 
   counter +=1%>
   <div class="<%=classtext%>">
     <a href="<%=article_path(article, :tab=>params[:tab])%>">
-      <%=image_tag("article_images/"+article.id.to_s+"_2.jpg") %>
       <h1><%=article.title%></h1>
       <p><%=article.sub_title%></p>
+      <p><%=article.created_at%>
     </a>
   </div>
-
 <%end%>
+
+<div class="pagination pagination-centered">
+  <div class="page_info">
+    <%= page_entries_info @articles %>
+  </div>
+  <%= will_paginate @articles, :container => false %>
+</div>
+
+</div>
