@@ -15,6 +15,8 @@ gem 'simple_form'
 gem 'tabulous'
 gem 'activemerchant'
 gem 'newrelic_rpm'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :assets do
   gem 'sass-rails'

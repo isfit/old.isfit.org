@@ -6,6 +6,7 @@ WwwIsfitOrg::Application.routes.draw do
 
   post "ideas" => 'ideas#create'
 
+  get "articles/all" => 'articles#all'
   resources :articles
 
   get "ambassadors" => "ambassadors#index"
