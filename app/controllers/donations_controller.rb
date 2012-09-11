@@ -21,7 +21,7 @@ class DonationsController < ApplicationController
     if params[:payment_status] == "Completed" && @exist.nil? && verify?(params)
       Donation.create!(:status => params[:payment_status], 
                        :transaction_number => params[:txn_id], 
-                       :amount => params[:payment_gross],
+                       :amount => params[:mc_gross],
                        :name => "#{params[:first_name]} #{params[:last_name]}",
                        :email => params[:payer_email])
       Postoffice.donation("#{params[:first_name]} #{params[:last_name]}", params[:payer_email]).deliver
