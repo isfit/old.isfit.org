@@ -40,8 +40,12 @@ en:
     isfit: "Do you want to volunteer?"
     apply_isfit: "Apply to be a volunteer in ISFiT 2013"
   call-to-action:
-    header: Be the change you want to see in the world
+    header: The Student Peace Prize
+    header1: Be the change you want to see in the world
     paragraph: |
+      For thirteen years the Student Peace Prize has been a way to support students all over the world who are doing important work to promote peace, human rights and democracy. 
+      The winner will be announced on UN's International Peace Day, Friday 21st of September. The event will be streamed live. 
+    test: | 
       The purpose of ISFiT is to create and share innovative ideas to
       change and improve the future. We do this by uniting young minds from
       all over the world in [Trondheim, Norway](http://goo.gl/maps/4eLUZ), next February. 
