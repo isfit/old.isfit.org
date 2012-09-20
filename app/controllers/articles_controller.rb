@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   require 'will_paginate/array'
+
+  caches_page :index
   
   # GET /articles
   # GET /articles.xml
