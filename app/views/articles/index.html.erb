@@ -8,25 +8,17 @@
         <%if Language.to_s == "no"%>
           <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
         <% else %>
-          <%= link_to "Watch the stream live", "http://www.stv.no/live/student-peace-prize-announcement/", class: "btn btn-primary btn-large" %>
-          <!--
           <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
-          -->
         <% end %>
-        <!--
         <%if Language.to_s == "no"%>
           <%= link_to t("call-to-action.learn_more"), page_path(61), class: "btn btn-large" %>
         <% else %>
           <%= link_to t("call-to-action.learn_more"), page_path(61), class: "btn btn-large" %>
         <% end %>
-        -->
       </p>
     </div>
     <div class="media">
-      <a href="http://www.studentpeaceprize.org"><img src="http://www.studentpeaceprize.org/assets/spp_scene-388589b5a19dce189d4610f29dcc6707.jpg"></a>
-      <!--
       <iframe src="http://player.vimeo.com/video/47441322?title=0&amp;byline=0&amp;portrait=0&amp;color=d6351a" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-      -->
     </div>
   </div>
 <% end %>
