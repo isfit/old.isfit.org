@@ -95,6 +95,7 @@ Tabulous.setup do |config|
       [    :languages_english_subtab                   ,    'English'                     ,    '?locale=en'                                                        ,    true        ,    true        ],
       [    :events_tab                        ,    'Events'                   ,    photos_path                                                        ,    false       ,    false       ],
       [    :events_program_subtab             ,    'Events'                   ,    photos_path                                                        ,    false       ,    false       ],
+      [    :stats_tab             ,    'Stats'                   ,    stats_path                                                        ,    false       ,    true       ],
       #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
       #    TAB NAME                           |    DISPLAY TEXT               |    PATH                                                               |    VISIBLE?    |    ENABLED?    #
       #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
@@ -138,8 +139,9 @@ Tabulous.setup do |config|
       [    :chronicles               ,    :all_actions    ,    :chronicles_tab               ],
       [    :photos                   ,    :all_actions    ,    :photos_subtab                ],
       [    :positions                ,    :all_actions    ,    :info_volunteer_subtab        ],
-      [    :donations                ,    :all_actions    ,    :info_donate_subtab        ],
+      [    :donations                ,    :all_actions    ,    :info_donate_subtab           ],
       [    :ideas                    ,    :all_actions    ,    :info_donate_subtab           ],
+      [    :stats                    ,    :all_actions    ,    :stats_tab                    ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
       #--------------------------------------------------------------------------------------#

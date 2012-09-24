@@ -1,6 +1,8 @@
 WwwIsfitOrg::Application.routes.draw do  
   get "ideas" => 'ideas#index'
 
+  get "stats" => 'stats#index'
+
   get "ideas/:id" => 'ideas#show', as: "idea"
   get "ideas/:id/update" => 'ideas#update'
 

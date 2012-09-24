@@ -1,0 +1,42 @@
+<div role="main" class="row">
+
+	<div id="content" class="span8">
+		<div id="page" class="well">
+			<h1>Statistics</h1>
+
+			<div id="map" style="width: 580px; height: 400px"></div>
+		</div>
+	</div>
+</div>
+
+<%= content_for :script do %>
+	<script type="text/javascript" src="./js/ajquery.jvectormap.js"></script>
+	<script type="text/javascript" src="./js/jquery-jvectormap-world-en.js"></script>
+  <script>
+    participants = {
+      <% @countries.each do |c| %>
+        "<%= c.code %>": <%= @country_count[c.id].nil? ? 0 : @country_count[c.id] %>,
+      <% end %>
+    }
+  </script>
+
+  <script>
+    $(function(){
+      $('#map').vectorMap({
+        map: 'world_en',
+        scaleColors: ['#DDDDFF', '#0071A4'],
+        values: participants,
+        hoverOpacity: 0.7,
+        hoverColor: false,
+        onLabelShow: function(environment, el, code) {
+          el.html(el.html() + ': ' + participants[code]);
+        }
+      });
+    });
+  </script>
+
+<% end %>
+
+<% content_for :head do %>
+	<link rel="stylesheet" href="./css/jquery.jvectormap.css">
+<% end %>
