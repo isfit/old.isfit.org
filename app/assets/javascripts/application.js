@@ -19,3 +19,8 @@ $(document).ready(function(){
 		$(e.currentTarget).toggleClass('open');
 	});
 });
+
+function loadVideo() {
+	var video = '<iframe src="http://player.vimeo.com/video/47441322?title=0&amp;byline=0&amp;portrait=0&amp;color=d6351a" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+	$('#video-replacement').replaceWith(video);
+}
