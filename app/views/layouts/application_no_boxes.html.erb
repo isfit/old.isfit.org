@@ -81,15 +81,16 @@ html5boilerplate
 
 
           <div id="fb-connect-topbar" class="pull-right">
-            <% if session[:user].nil? %>
+            <% if false %>
               <p><a href="https://www.facebook.com/dialog/oauth?client_id=111446192243028&redirect_uri=http://www.isfit.org/oauth/callback&state=lolololololololol" target="_blank">Log in with Facebook</a></p>
-            <% else %>
+            <% # else %>
               <p class="facebook-user-name"><%= session[:user].name %> </p>
             <% end %>
 
             <div id="navbar-icons">
-                <a href="http://twitter.com/isfit" target="_blank"><img src="http://i.imgur.com/Sk5wZ.png" alt=""></a>
-                <a href="http://www.facebook.com/pages/ISFiT/11541693212" target="_blank"><img src="http://i.imgur.com/jfl7M.png" alt=""></a>
+              <p style="color: black; margin-top: 1.4em">7<span class="superscript">th</span> – 17<span class="superscript">th</span> February</p>
+                <!-- <a href="http://twitter.com/isfit" target="_blank"><img src="http://i.imgur.com/Sk5wZ.png" alt=""></a>
+                <a href="http://www.facebook.com/pages/ISFiT/11541693212" target="_blank"><img src="http://i.imgur.com/jfl7M.png" alt=""></a> -->
             </div>
 
           </div>
