@@ -77,7 +77,6 @@
     <%= simple_form_for @participant, html: {class: "form"} do |f| %>
       <%= f.error_notification %>
       <fieldset>
-      <% cache do %>
         <legend><%= t('participant.personal_information') %></legend>
         <%= f.input :first_name, input_html: {class: "span4"}, hint: t("participant.must_match_passport") %>
         <%= f.input :last_name, input_html: {class: "span4"}, hint: t("participant.must_match_passport") %>
@@ -165,7 +164,6 @@
           <%= f.button 'submit',:value => "Submit application", class: "btn btn-large btn-primary" %></center>
           <% end %>
       </fieldset>
-    <% end %>
   <%end%>
 
 </div>
