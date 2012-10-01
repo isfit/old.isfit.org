@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   require 'will_paginate/array'
+
   
   # GET /articles
   # GET /articles.xml
