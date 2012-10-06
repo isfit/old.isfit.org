@@ -4,6 +4,10 @@ require "net/http"
 class DonationsController < ApplicationController
   protect_from_forgery :except => [:create]
 
+  def index
+    redirect_to page_path(60)
+  end
+
   def donate
     @donation = Donation.new
     redirect_to @donation.paypal_url(thank_you_donations_url, donations_url) 
