@@ -1,26 +1,27 @@
-
-<%= content_for :header do %>
-  <div class="hero-unit">
-    <div class="action-text">
-      <h1><%= t("call-to-action.header") %></h1>
-      <p><%= raw format t("call-to-action.paragraph") %></p>
-      <p>
-        <%if Language.to_s == "no"%>
-          <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
-        <% else %>
-          <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
-        <% end %>
-        <%if Language.to_s == "no"%>
-          <%= link_to t("call-to-action.learn_more"), page_path(61), class: "btn btn-large" %>
-        <% else %>
-          <%= link_to t("call-to-action.learn_more"), page_path(61), class: "btn btn-large" %>
-        <% end %>
-      </p>
+<% if Language.to_s == "no" %>
+  <%= content_for :header do %>
+    <div class="hero-unit">
+      <div class="action-text">
+        <h1><%= t("call-to-action.header") %></h1>
+        <p><%= raw format t("call-to-action.paragraph") %></p>
+        <p>
+          <%if Language.to_s == "no"%>
+            <!-- Knapp -->
+          <% else %>
+            <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
+          <% end %>
+          <%if Language.to_s == "no"%>
+            <%= link_to t("call-to-action.learn_more"), page_path(60), class: "btn btn-large btn-primary" %>
+          <% else %>
+            <%= link_to t("call-to-action.learn_more"), page_path(61), class: "btn btn-large" %>
+          <% end %>
+        </p>
+      </div>
+      <div class="media">
+        <%= link_to image_tag("http://i.imgur.com/5Trb3.png"), page_path(60) %>
+      </div>
     </div>
-    <div class="media">
-      <img src="video.png" id="video-replacement" onclick="loadVideo()" alt="" style="cursor:pointer;">
-    </div>
-  </div>
+  <% end %>
 <% end %>
 <div class="row">
   <div class="span8">
@@ -56,9 +57,9 @@
 
     <div class="promotional">
       <%if Language.to_s == "no"%>
-          <a href="/pages/60"><img src="http://i.imgur.com/t0voi.png" alt="promotional"></a>
+          <a href="/pages/60"><img src="http://i.imgur.com/8b50v.png" alt="promotional"></a>
         <% else %>
-          <a href="/pages/60"><img src="http://i.imgur.com/15ZNW.png" alt="promotional"></a>
+          <a href="/pages/60"><img src="http://i.imgur.com/sNMfL.png" alt="promotional"></a>
         <% end %>
     </div>
 
