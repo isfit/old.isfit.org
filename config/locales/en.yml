@@ -30,6 +30,10 @@ en:
       donate: 'Donate'
       contact: 'Contact'
       faq: 'FAQ'
+    blogs:
+      main: 'Blogs'
+      theme: 'Theme blog'
+      festival: 'Festival blog'
     languages:
       main: 'Languages'
   derp:

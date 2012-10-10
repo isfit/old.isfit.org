@@ -30,6 +30,10 @@
       donate: 'Støtt en deltaker'
       contact: 'Kontakt oss'
       faq: 'Ofte stilte spørsmål'
+    blogs:
+      main: 'Blogger'
+      theme: 'Temablogg'
+      festival: 'Festivalblogg'
     languages:
       main: 'Languages'
   derp:
