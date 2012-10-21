@@ -24,11 +24,9 @@
       <% end %>
       <% if position.group and position.group.section and not position.group.section == active_section %>
         <h1><%= position.group.section.name %></h1>
-        <div class="lead">
         <%= position.group.section.description %>
-        </div>
       <% end %>
-      <h2><%=h position.group.name %></h2>
+      <h3><%=h position.group.name %></h3>
       <table class="table table-clickable table-striped">
       <% end %>
       <tr>
@@ -42,4 +40,5 @@
   </table>
 <% end %>
 <img src="http://i.imgur.com/PeXSj.jpg">
+<small>fotogjengen.samfundet.no</small>
 </div>
