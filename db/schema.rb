@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121022164627) do
+ActiveRecord::Schema.define(:version => 20121022194627) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -179,23 +179,6 @@ ActiveRecord::Schema.define(:version => 20121022164627) do
     t.datetime "updated_at",         :null => false
   end
 
-  create_table "events", :force => true do |t|
-    t.string   "title"
-    t.string   "event_type"
-    t.date     "date"
-    t.integer  "price_member"
-    t.integer  "price_other"
-    t.text     "ingress"
-    t.text     "description"
-    t.integer  "related_evend_id"
-    t.boolean  "deleted"
-    t.boolean  "important"
-    t.boolean  "visible"
-    t.string   "url"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
   create_table "faqs", :force => true do |t|
     t.string "title", :null => false
     t.text   "body",  :null => false
@@ -245,6 +228,24 @@ ActiveRecord::Schema.define(:version => 20121022164627) do
     t.integer  "like_count"
     t.string   "submitted_by_name"
     t.string   "submitted_by_id"
+  end
+
+  create_table "isfit_events", :force => true do |t|
+    t.string   "title"
+    t.string   "event_type"
+    t.date     "date"
+    t.integer  "price_member"
+    t.integer  "price_other"
+    t.text     "ingress"
+    t.text     "description"
+    t.integer  "related_evend_id"
+    t.boolean  "deleted"
+    t.boolean  "important"
+    t.boolean  "visible"
+    t.string   "ticket_url"
+    t.string   "spotify"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "oauth_users", :force => true do |t|
