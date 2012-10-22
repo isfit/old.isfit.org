@@ -122,8 +122,9 @@ ActiveRecord::Schema.define(:version => 20120813183646) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string  "name",      :null => false
-    t.integer "region_id", :null => false
+    t.string  "name",                   :null => false
+    t.integer "region_id",              :null => false
+    t.string  "code",      :limit => 4, :null => false
   end
 
   create_table "dialogue_participants", :force => true do |t|
@@ -213,25 +214,10 @@ ActiveRecord::Schema.define(:version => 20120813183646) do
     t.string   "address"
     t.integer  "zipcode"
     t.string   "place"
-    t.integer  "age"
-    t.boolean  "before"
-    t.text     "why"
-    t.string   "where"
     t.integer  "number"
-    t.integer  "skies"
-    t.boolean  "arrival_before"
-    t.boolean  "leave_late"
-    t.text     "preference"
-    t.string   "pet"
-    t.text     "know_isfit"
-    t.string   "member_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "vegetarian"
-    t.boolean  "smoker"
-    t.string   "animal"
-    t.integer  "animal_number"
-    t.string   "language_speak"
+    t.text     "other"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ideas", :force => true do |t|

@@ -1,69 +1,35 @@
-<%content_for :head do %>
-  <meta property="og:title" content="<%unless @event.event.title.blank?%><%=@event.event.title%><%else%>.<%end%>"/>
-  <meta property="og:type" content="non_profit"/>
-  <meta property="og:image" content="<%="http://www.isfit.org/images/"+@event.event.image.url%>"/>
-  <meta property="og:url" content="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>"/>
-  <meta property="og:site_name" content="ISFiT 2011"/>
-  <meta property="fb:app_id" content="111446192243028"/>
-  <meta property="og:description" content="<%=@event.event.description%>"/>
-<%end%>
-<div id="event_infobox">
-<h1><%= @event.event.title %></h1>
-<div class="event_image">
-  <%= image_tag @event.event.image.url %>
-  <br /><br />
-</div>
-<div style="text-align:justify;">
-<div class="event_information" style="float:right;margin-left:15px;margin-bottom:10px;">
-    <h4>Information</h4><br />
-    <b>Place:</b>
-    <%if @event.event.event_place != nil %> 
-      <%= @event.event.event_place.title %><%unless @event.event.spec_place.blank? %>, <%= @event.event.spec_place %><%end%>
-    <%else%>
-      <%=@event.event.place%>
-    <%end%>
-    <br />
-    <b>Time:</b> <%if @event.date.strftime("%R") == "00:00"%><%=@event.date.strftime("%a %e. %b")%><%else%><%= @event.date.strftime("%a %e. %b kl. %R") %><%end%> <br />
-    <b>What:</b> <%= @event.event.event_type.name %><%unless @event.event.event_type_text.blank?%> - <%=@event.event.event_type_text%><%end%><br />
-	<%unless @event.event.speakers.blank? %>
-		<b>Speakers:</b> <%= @event.event.speakers %><br />
-	<%end%>
-	    <br />
-    
-    <%if @event.sold_out%>
-      <b>SOLD OUT</b>
-    <%else%>
-    <b><%= @event.event.event_place_id == 10 ? "Students" : "Members" %>:</b> <%if@event.event.price_member == 0%>Free<%else%><%= @event.event.price_member %> kr<%end%><br />
-    <b>Others:</b> <%if@event.event.price_other == 0%>Free<%else%><%= @event.event.price_other %> kr<%end%><br /><br />
-<% unless @event.event.price_member == 0 && @event.event.price_other == 0 %>
-  <% if not @event.url.blank? %>
-    <%=link_to (image_tag "buy_ticket.jpg"), "http://www.samfundet.no/arrangement/billetter/betal/"+@event.url, :target=>"_blank"%> 
-  <% elsif not @event.alt_ticket_url.blank? %>
-    <%=link_to (image_tag "buy_ticket.jpg"), @event.alt_ticket_url, :target=>"_blank"%>
-  <% else %>
-    Tickets are sold at Brukbar
-  <% end %>
+
+<%= content_for :header do %>
+  <header id="article-header">
+    <img src="http://i.imgur.com/Nlrqa.jpg" alt="">
+    <div class="header-text">
+      <h1><%=@event.title%></h1>
+    </div>
+  </header>
 <% end %>
-<%end%>
-<div class="event-other-dates">
-<br />
-<% if @event.event.event_dates.count > 1 %>
-    <b>Other dates:</b><br>
-        <% @event.event.event_dates.each do |edate| %>
-          <% if edate.id != @event.id%>
-            <%if edate.date.strftime("%R") == "00:00"%><% date=edate.date.strftime("%a %e. %b")%><%else%><% date = edate.date.strftime("%a %e. %b kl. %R") %><%end%>
-            <%= link_to date,  event_date_path(params[:tab],edate.event.id,:event_date_id=>edate.id)%><br />
-          <% end %>
-        <% end%>
-    <%end%>
-</div>
-</div>
 
-  <%= raw format @event.event.description %>
-	<p>
-	For questions about your ticket, please contact <a href="mailto:tickets@isfit.org">tickets@isfit.org</a>
-	</p>
-</div>
-<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="like"></fb:like>
+
+<div class="well">
+  <article>
+
+    <div id="page-ingress" class="lead">
+      <p><%=@event.ingress%></p></div>
+
+    <section class="body"><%=@event.description%></section>
+
+  </article>
 
 </div>
+
+<%= content_for :sidebar do %>
+
+<div class="tickets well">
+  <p>Medlemmer: <%=@event.price_member%></p>
+  <p>Ikke-medlemmer: <%=@event.price_other%></p>
+  <em>Utsolgt</em>  
+</div>
+
+<div class="spotify-embed">
+  <iframe src="https://embed.spotify.com/?uri=<%=@event.spotify%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+</div>
+<% end %>

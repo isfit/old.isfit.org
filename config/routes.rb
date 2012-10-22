@@ -36,18 +36,22 @@ WwwIsfitOrg::Application.routes.draw do
 
   resources :alumni_reservations
 
-  get "events/:year/:month/:day" => "events#index", :as => "events"
-  get "events/:year/:month/:day" => "events#index", :as => "events_date"
+  #get "events/:year/:month/:day" => "events#index", :as => "events"
+  #get "events/:year/:month/:day" => "events#index", :as => "events_date"
+  get 'events' => 'events#index'
 
-  get "events/search" => "events#search", :as => "search_events"
+  #get "events/search" => "events#search", :as => "search_events"
 
-  get "events/:category/:year/:month/:day" => "events#index", :as => "events_with_date_cat"
+  #get "events/:category/:year/:month/:day" => "events#index", :as => "events_with_date_cat"
 
-  get "events/:category" => "events#index", :as => "events_cat"
+  #get "events/:category" => "events#index", :as => "events_cat"
 
-  get "event/:id" => "events#show", :as => "event"
+  #get "event/:id" => "events#show", :as => "event"
+  #get "events/:id" => "events#show"
 
-  get "event/:id/:event_date_id" => "events#show", :as => "event_date"
+  #get "event/:id/:event_date_id" => "events#show", :as => "event_date"
+
+  get 'events/:id' => 'events#show'
 
   resources :events
 

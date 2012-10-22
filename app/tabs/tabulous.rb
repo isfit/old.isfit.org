@@ -96,7 +96,7 @@ Tabulous.setup do |config|
       [    :languages_tab                   ,    t('tabs.languages.main' )                     ,    photos_path                                                        ,    true        ,    false        ],
       [    :languages_norsk_subtab                   ,    'Norsk'                     ,    '?locale=no'                                                        ,    true        ,    true        ],
       [    :languages_english_subtab                   ,    'English'                     ,    '?locale=en'                                                        ,    true        ,    true        ],
-      [    :events_tab                        ,    'Events'                   ,    photos_path                                                        ,    false       ,    false       ],
+      [    :events_tab                        ,    'Events'                   ,    events_path                                                        ,    false       ,    false       ],
       [    :events_program_subtab             ,    'Events'                   ,    photos_path                                                        ,    false       ,    false       ],
       [    :stats_tab             ,    'Stats'                   ,    stats_path                                                        ,    false       ,    true       ],
       #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
@@ -145,6 +145,7 @@ Tabulous.setup do |config|
       [    :donations                ,    :all_actions    ,    :info_donate_subtab           ],
       [    :ideas                    ,    :all_actions    ,    :info_donate_subtab           ],
       [    :stats                    ,    :all_actions    ,    :stats_tab                    ],
+      [    :events                   ,    :all_actions    ,    :events_tab                   ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
       #--------------------------------------------------------------------------------------#
