@@ -7,171 +7,54 @@
   <meta property="fb:app_id" content="111446192243028"/>
   <meta property="og:description" content="Become a host at ISFiT 2011"/>
 <%end%>
+<div class="well">
 <%=render "partials/error", :locals => {:model => @host}%>
 
-<% if Language.to_s == "en" %>
-  <H1>Become a host for ISFiT!</H1>
-
-  <p><b>Do you want to be a host?</b></p>
-  <p>The 11th ISFiT festival starts at 11 February 2011. 450 participants from more than a hundred countries will come to spend ten days in Trondheim; here they will live in the homes of our host families. </p>
-  <p>Do you wish to experience the festival in a different and exciting way? We need hosts for our participants from 11 February to 20 February 2011.</p>
-  <p>During the day the participant will spend their time in workshops. The participants are signed up for 17 different workshops, who discuss the festival theme, Global Health, from different angles. At night ISFiT offers a large festival program with cultural events such as concerts, theatre, exhibitions and shows, as well as plenary sessions and lectures. The festival program is open for the participants, students and the rest of Trondheim’s population - this means for you as a host as well.</p>
-  <p>The participants will spend a lot of time during both day and night at ISFiT’s events. ISFiT will provide the participants with lunch and dinner. You, as a host, will provide breakfast.</p>
-
-  <p>If you have any questions, please send a mail to verter[at]isfit.org or call 91 56 95 61</p>
-
-  <p>On behalf of ISFiT 2011, thank you very much</p>
-
-  <p>Marthe Asheim Underthun<br />
-    Head of Recruiting</p>
-  <br /><br />
-<% else %>
 
 <h1>Bli ISFiT-vert!</h1>
 
-<p>Den 11. februar sparker vi igang den 11. ISFiT festivalen. Mer enn 500 deltakere kommer fra over 100 land for å tilbringe 10 dager i Trondheim der de skal bo hjemme hos våre verter. Ønsker du å oppleve festivalen på en ny og spennende måte?</p>
+<p>Den 7. februar 2013 sparker vi i gang med verdens største internasjonale
+studentfestival, nemlig ISFiT - Internasjonal Studentfestival i Trondheim! Mer
+enn 450 deltakere kommer fra hele verden for å tilbringe ti dager i
+Trondheim der de skal bo hjemme hos våre verter. Ønsker du å oppleve
+festivalen på en ny og spennende måte, og gjøre en forskjell? Da kan du
+melde deg som ISFiT-vert, med virke i perioden 7. – 17. februar.</p>
 
-<p>Vi trenger verter til våre deltakere fra 11. februar til 20. februar 2011.</p>
+<p>ISFiT tilbyr 17 ulike workshops som jobber med ulike tema knyttet til årets
+tema global handel, og på dagtid vil deltakerne delta på disse.
+På kveldstid har ISFiT et stort kulturprogram, som konserter,
+teater, utstillinger og oppsetninger, i tillegg til møter og foredrag.
+Dette tilbudet er åpent for deltakerne, studenter og øvrige interesserte i
+Trondheim - det vil si også deg som vert! Deltakerne tilbringer mye tid
+både morgen og kveld på våre arrangementer, og ISFiT står for lunsj og
+middag for deltakerne. Det eneste du må stå for som vert er en enkel
+frokost og en sengeplass, sofaen funker!</p>
 
-<p>På dagtid tilbringer deltakerne tid i workshops. ISFiT tilbyr 17 ulike workshops som jobber med ulike tema under tittelen "Global Helse". På
-kveldstid tilbyr ISFiT et stort kulturprogram, som konserter, teater, utstillinger og oppsetninger, samt møter og foredrag.
-Dette tilbudet er åpent for deltakerne, studenter og øvrige interesserte i Trondheim - det vil si også deg som vert!
-Deltakerene tilbringer mye tid både morgen og kveld på våre arrangementer, og ISFiT står for lunsj og middag for deltakerne. Du som vert står for en enkel frokost. Har du ingen plass deltakeren kan sove, men har 2 kvadratmeter gulvplass, kan vi bistå med madrasser.</p>
+<p>Har du spørsmål om det å være vert? Ta kontakt med Anne Norvik Finstad på
+annenf@isfit.org eller Karoline Angen på karoange@isfit.org.</p>
 
 
-  <p><a href="http://www.isfit.org/info/pages/51" target ="_blank">Ofte stilte spørsmål</a>
-	<br>Hvis du har øvrige spørsmål eller ønsker å låne madreass kan du sende en mail til verter[at]isfit.org eller ringe 91 56 95 61</p>
-  <br />
-  Tusen Takk, på vegne av ISFiT 2011
-  <br /><br />
-  Marthe Asheim Underthun<br />
-  Rekrutteringssjef
-  <br /><br />  
+<p>Tusen takk på vegne av ISFiT 2013!</p>
 
-<% end %>
-<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%=(request.url).match(/([A-Za-z0-9:._\/]+)/)[1]%>" action="recommend"></fb:like>
 <h3><%= t('host.registration') %></h3>
-<% form_for @host, :html => { :class => "yform columnar" }, :url => hosts_path(params[:tab])  do |f| %>
+<%= simple_form_for @host, :html => { :class => "form" } do |f| %>
   <fieldset>
     <legend><%= t('host.mandatory') %></legend>
-    <div class="type-text">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
-    </div>
-    <div class="type-text">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
-    </div>
-    <div class="type-text">
-      <%= f.label :address %>
-      <%= f.text_field :address %>
-    </div>
-    <div class="type-text">
-      <%= f.label :zipcode %>
-      <%= f.text_field :zipcode %>
-    </div>
-    <div class="type-text">
-      <%= f.label :place %>
-      <%= f.text_field :place %>
-    </div>
-    <div class="type-text">
-      <%= f.label :phone %>
-      <%= f.text_field :phone %>
-    </div>
-    <div class="type-text">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </div>
-    <div class="type-select">
-      <%= f.label :age %>
-      <%
-        ages = []
-        for i in 18..110
-          ages << i
-        end
-      %>
-      <%= f.select :age , ages %>
-    </div>
-    <div class="type-select">
-      <%= f.label :number %>
-      <% 
-        choices = []
-        for i in 1..9
-          choices << i
-        end
-      %>
-      <%= f.select :number , choices %>
-    </div>
+    <%= f.input :first_name, input_html: {class: "span4"} %>
+    <%= f.input :last_name, input_html: {class: "span4"} %>
+    <%= f.input :address, input_html: {class: "span4"} %>
+    <%= f.input :zipcode, input_html: {class: "span4"} %>
+    <%= f.input :place, input_html: {class: "span4"} %>
+    <%= f.input :phone, input_html: {class: "span4"} %>
+    <%= f.input :email, input_html: {class: "span4"} %>
+    <%= f.input :number, input_html: {class: "span4"}, :collection => 1..9 %>
+
   </fieldset>
   <fieldset>
     <legend><%= t('host.optional') %></legend>
-    <div class="type-text">
-      <%= f.label :where %>
-      <%= f.text_field :where %>
-    </div>
-    <div class="type-check">
-      <%= f.check_box :arrival_before %>
-      <%= f.label :arrival_before %>
-    </div>
-    <div class="type-check">
-      <%= f.check_box :leave_late %>
-      <%= f.label :leave_late %>
-    </div>
-    <div class="type-select">
-      <%= f.label :skies %>
-      <%
-        choice = []
-        for i in 0..9
-          choice << i
-        end
-      %>
-      <%= f.select:skies, choice %>
-    </div>
-    <div class="type-text">
-      <%= f.label :preference %>
-      <%= f.text_area :preference, :rows => 2 %>
-    </div>
-    <div class="type-check">
-      <%= f.check_box :vegetarian %>
-      <%= f.label :vegetarian %>
-    </div>
-    <div class="type-check">
-      <%= f.check_box :smoker %>
-      <%= f.label :smoker %>
-    </div>
-    <div class="type-text">
-      <%= f.label :pet %>
-      <%= f.text_field :pet %>
-    </div>
-    <div class="type-select">
-      <%= f.label :animal_number %>
-      <%= f.select :animal_number, choice %>
-    </div>
-    <div class="type-text">
-      <%= f.label :language_speak %>
-      <%= f.text_field :language_speak %>
-    </div>
-    <div class="type-check">
-      <%= f.check_box :before %>
-      <%= f.label :before %>
-    </div>
-    <div class="type-select">
-      <%= f.label :know_isfit %>
-      <%= f.select(:know_isfit, {'Written media' => 'Written media', 'E-mail' => 'E-mail', 'Friends' => 'Friends', 'Posters, screens, stands, flyers' => 'Posters, screens, stand, flyer', 'Other' => 'Other', 'Members of the ISFiT organization' => 'Members of the ISFiT organization'}) %>
-    </div>
-    <div class="type-text">
-      <%= f.label :member_name %>
-      <%= f.text_field :member_name %>
-    </div>
-    <div class="type-text">
-      <%= f.label :why %>
-      <%= f.text_area :why, :rows => 2 %>
-    </div>
-    <%= form_tag ({:action=> "done", :id => params[:id]} ) %>
-    <div class="type-button">
-      <%= submit_tag "Submit" %>
-    </div>
+    <%= f.input :other, input_html: {class: "span6", rows: 4} %>
   </fieldset>
+  <%= f.button 'submit', value: t("host.registration"), class: "btn btn-large btn-primary" %></center>
 
 <% end %>
-
+</div>
