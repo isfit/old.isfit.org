@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120813183646) do
+ActiveRecord::Schema.define(:version => 20121022164627) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -122,8 +122,9 @@ ActiveRecord::Schema.define(:version => 20120813183646) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string  "name",      :null => false
-    t.integer "region_id", :null => false
+    t.string  "name",                   :null => false
+    t.integer "region_id",              :null => false
+    t.string  "code",      :limit => 4, :null => false
   end
 
   create_table "dialogue_participants", :force => true do |t|
@@ -178,6 +179,23 @@ ActiveRecord::Schema.define(:version => 20120813183646) do
     t.datetime "updated_at",         :null => false
   end
 
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.string   "event_type"
+    t.date     "date"
+    t.integer  "price_member"
+    t.integer  "price_other"
+    t.text     "ingress"
+    t.text     "description"
+    t.integer  "related_evend_id"
+    t.boolean  "deleted"
+    t.boolean  "important"
+    t.boolean  "visible"
+    t.string   "url"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "faqs", :force => true do |t|
     t.string "title", :null => false
     t.text   "body",  :null => false
@@ -203,35 +221,6 @@ ActiveRecord::Schema.define(:version => 20120813183646) do
   create_table "groups_positions", :id => false, :force => true do |t|
     t.integer "group_id"
     t.integer "position_id"
-  end
-
-  create_table "hosts", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "phone"
-    t.string   "address"
-    t.integer  "zipcode"
-    t.string   "place"
-    t.integer  "age"
-    t.boolean  "before"
-    t.text     "why"
-    t.string   "where"
-    t.integer  "number"
-    t.integer  "skies"
-    t.boolean  "arrival_before"
-    t.boolean  "leave_late"
-    t.text     "preference"
-    t.string   "pet"
-    t.text     "know_isfit"
-    t.string   "member_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "vegetarian"
-    t.boolean  "smoker"
-    t.string   "animal"
-    t.integer  "animal_number"
-    t.string   "language_speak"
   end
 
   create_table "ideas", :force => true do |t|

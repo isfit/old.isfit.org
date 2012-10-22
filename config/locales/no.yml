@@ -129,7 +129,7 @@
     project: "Prosjekt"
     workshop: "Hvis Workshop ble valgt, spesifiser navnet til workshopen"
   host:
-    registration: "Registrer verteskjema"
+    registration: "Registrer deg som vert!"
     optional: "Valgfrie felter"
     mandatory: "Obligatoriske felter"
   calender:
@@ -193,6 +193,32 @@
         essay2: 'Essay 2'
         essay3: 'Essay 3'
         essay4: 'Essay 4'
+      host:
+        first_name: Fornavn
+        last_name: Etternavn
+        address: Adresse
+        zipcode: Postnummer
+        place: Poststed
+        phone: Tlf
+        email: E-post
+        age: Din alder
+        number: Antall deltakere som kan bo hos deg
+        where: Hvor vil deltakeren(e) sove?
+        arrival_before: Deltakeren(e) kan komme en dag før (10. februar)
+        leave_late: Deltakeren(e) kan dra en dag senere (21. februar)
+        skies: Antall ski-par du kan låne bort til deltakeren(e)
+        preference: Preferanser (f.eks. kjønn, land, alder, språk, etc.)
+        vegetarian: Kan deltakeren(e) være vegetarianer?
+        smoker: Kan deltakeren(e) røyke?
+        pet: Hvis du har husdyr, hvilke husdyr har du?
+        animal_number: Hvis du har husdyr, hvor mange husdyr har du? 
+        language_speak: Hvilke språk snakker du?
+        before: Har du vært vert for ISFiT før?
+        know_isfit: Hvordan hørte du om ISFiT?
+        member_name: Navn på medlem (Besvares kun hvis 'medlem av ISFiT' er valgt)
+        other: Annen informasjon vi trenger å vite?
+        base: ""
+        submit: "Registrer verteskjema"
   activerecord:
     errors:
       messages:

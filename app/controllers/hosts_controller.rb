@@ -9,14 +9,14 @@ class HostsController < ApplicationController
     @host = Host.new(params[:host])
     if @host.valid? && @host.save
       Postoffice.host_add(@host.email).deliver
-      redirect_to :action => "done", :tab => params[:tab]
+      redirect_to :action => "done"
     else
       render :new
     end
   end
 
   def index
-    redirect_to :action => :new, :tab=>params[:tab]
+    redirect_to :action => :new
 		if params[:host]
 			@host = Host.new(params[:host])
 			if @host.save
