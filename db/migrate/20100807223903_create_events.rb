@@ -2,7 +2,7 @@ class CreateEvents < ActiveRecord::Migration
   def self.up
     create_table :events do |t|
       t.string :title
-      t.id :event_type_id
+      t.integer :event_type_id
       t.date :date
       t.integer :price_member
       t.integer :price_other
