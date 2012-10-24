@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
   def index
-    @events = IsfitEvent.all
+    @events = Event.all
   end
 
   def show
-    @event = IsfitEvent.find(params[:id])
+    @event = Event.find(params[:id])
   end
 end

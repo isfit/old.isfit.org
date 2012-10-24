@@ -1,4 +1,4 @@
-class IsfitEvent < ActiveRecord::Base
+class Event < ActiveRecord::Base
   belongs_to :event_type
   has_many :event_dates
   belongs_to :event_place
