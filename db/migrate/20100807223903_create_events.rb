@@ -14,8 +14,6 @@ class CreateEvents < ActiveRecord::Migration
       t.boolean :visible
       t.string :ticket_url
       t.string :spotify
-
-
       t.timestamps
     end
   end
