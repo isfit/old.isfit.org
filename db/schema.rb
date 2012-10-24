@@ -249,24 +249,6 @@ ActiveRecord::Schema.define(:version => 20121024163740) do
     t.string   "submitted_by_id"
   end
 
-  create_table "isfit_events", :force => true do |t|
-    t.string   "title"
-    t.string   "event_type"
-    t.date     "date"
-    t.integer  "price_member"
-    t.integer  "price_other"
-    t.text     "ingress"
-    t.text     "description"
-    t.integer  "related_evend_id"
-    t.boolean  "deleted"
-    t.boolean  "important"
-    t.boolean  "visible"
-    t.string   "ticket_url"
-    t.string   "spotify"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
   create_table "oauth_users", :force => true do |t|
     t.string   "token"
     t.string   "facebook_id"
