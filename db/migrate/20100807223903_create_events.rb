@@ -2,7 +2,7 @@ class CreateEvents < ActiveRecord::Migration
   def self.up
     create_table :events do |t|
       t.string :title
-      t.string :event_type
+      t.id :event_type_id
       t.date :date
       t.integer :price_member
       t.integer :price_other
@@ -12,7 +12,9 @@ class CreateEvents < ActiveRecord::Migration
       t.boolean :deleted
       t.boolean :important
       t.boolean :visible
-      t.string :url
+      t.string :ticket_url
+      t.string :spotify
+
 
       t.timestamps
     end
