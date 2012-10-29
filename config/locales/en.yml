@@ -30,6 +30,7 @@ en:
       donate: 'Donate'
       contact: 'Contact'
       faq: 'FAQ'
+      host: 'Host'
     blogs:
       main: 'Blogs'
       theme: 'Theme blog'
