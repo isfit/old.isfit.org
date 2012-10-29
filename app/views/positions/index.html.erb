@@ -11,9 +11,25 @@
     <div class="pull-right" style="margin-left: 1em;">
       <%=link_to t("position.form"), apply_positions_path, class: "btn btn-primary btn-large"%>
     </div>
-
+    <% if Language.to_s == "no" %>
     <div class="lead"><%= raw format("Som frivillig på ISFiT får du være med å planlegge og gjennomføre det som blir verdens største internasjonale studentfestival. ISFiT er en av gjengene på [Studentersamfundet](http://www.samfundet.no) og du får være med på all moroa det medbringer. Vi lover at det blir sosialt, gøy og engasjerende.<br>Lover du å søke?<br> <br>__Søknadsfrist 31. oktober klokken 23:59.__") %></div>
     <div class="lead"><p>Vil du vite mer?</p><p><a href="http://www.facebook.com/events/250978661691492/">Kom på infomøte den 29. oktober kl. 16:00 på Samfundet</a>.</p></div>
+  <% else %>
+    <div class="lead"><%= raw format("As a volunteer at ISFiT, you will contribute to make the world's largest international student festival a true success. We promise that you will make new friendships, meet other dedicated students and have a lot of fun!") %></div>
+    <div class="lead"><p>
+    Be a part of something great and trade your ideas with us.
+    </p></div>
+
+
+    <div class="lead"><p>
+      <strong>Application deadline: 31st of October at 23:59 (11:59 pm).</strong>
+    </p></div>
+
+    <div class="lead"><p>
+    In order to apply, you need to be a student in Trondheim, Norway. 
+    The descriptions of the available positions are written in Norwegian. 
+    </p></div>
+  <% end %>
     
     <% active_group = nil %>
     <% active_section = nil %>
