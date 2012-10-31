@@ -1,20 +1,40 @@
 
 <%= content_for :header do %>
-  <header id="article-header">
+  <header id="event-header">
     <img src="http://i.imgur.com/0VGH9.jpg" alt="">
     <div class="header-text">
       <h1><%=@event.title%></h1>
+
+      <div>
+        <%=@event.ingress%>
+      </div>
+
+
+
+      <div class="tickets">
+        <table>
+          <tr>
+            <td>Medlemmer</td>
+            <td><%=@event.price_member%>,-</td>
+          </tr>
+          <tr>
+            <td>Ikke-medlemmer</td>
+            <td><%=@event.price_other%>,-</td>
+          </tr>
+        </table>
+        <div id="testdump" class="event-button round">Kjøp billett</div>
+      </div>
+
     </div>
   </header>
-<div class="well">Facebook-greie? Annet?</div>
+<div class="well">
+  <h1><%=@resultat%></h1>
+</div>
 <% end %>
 
 
 <div class="well">
   <article>
-
-    <div id="page-ingress" class="lead">
-      <p><%=@event.ingress%></p></div>
 
     <section class="body"><%=@event.description%></section>
 
@@ -22,13 +42,21 @@
 
 </div>
 
+<%= content_for :script do %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $.get("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22https%3A%2F%2Fsamfundet.no%2Farrangement%2Fvis%2F2441%22%20and%20xpath%3D'%2F%2Fdiv%5B%40class%3D%22eventbox%22%5D%2Fp%5Blast()%5D'&format=json&callback=cbfunc");
+  });
+    var cbfunc = function(result) {
+      document.getElementById('testdump').innerHTML = result.query.results.p;
+      document.getElementById('testdump').className += ' disabled';
+    }
+</script>
+<% end %>
+
 <%= content_for :sidebar do %>
 
-<div class="tickets well">
-  <p>Medlemmer: <%=@event.price_member%></p>
-  <p>Ikke-medlemmer: <%=@event.price_other%></p>
-  <em>Utsolgt</em>  
-</div>
+<%= yield :sidebar %>
 
 <div class="spotify-embed">
   <iframe src="https://embed.spotify.com/?uri=<%=@event.spotify%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>

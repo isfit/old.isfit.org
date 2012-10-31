@@ -200,3 +200,87 @@ a.brand {
   margin-top: -0.4em;
   vertical-align: top;
 }
+
+
+
+
+
+
+#event-header {
+  height: 30em;
+  padding: 0; margin: 0;
+  //background: url('http://lorempixel.com/800/600/people') no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position:relative;
+  right: 0;
+  margin-bottom: 2em;
+  max-width: 100%;
+
+  img {
+    width: 940px;
+    height: 480px;
+  }
+}
+
+
+#event-header .header-text {
+  position: absolute;
+  top: 0;
+  left: 65%;
+  width: 35%;
+  height: 100%;
+  color: white;
+  background: rgba(0,0,0,.7);
+  text-shadow: 0 1px 0 #333;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 1em;
+  overflow: hidden;
+
+  -webkit-transition: width .3s;
+  -o-transition: width .3s;
+  -ms-transition: width .3s;
+  -moz-transition: width .3s;
+  transition: width .3s;
+
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.2em;
+  }
+}
+
+div.event-button.round {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+  margin: auto;
+  cursor: pointer;
+  padding: 2.5em 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+div.event-button.round.disabled {
+  opacity: .6;
+}
+
+.tickets {
+  margin: 1em 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.tickets table {
+  margin: 1em 0;
+}
+
+.tickets table td:first-of-type {
+  font-weight: bold;
+  width: 10em;
+}
