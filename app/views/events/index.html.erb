@@ -1,15 +1,48 @@
 <div class="well">
 
 
-<h1>Hello world</h1>
+<h1>Verdens kuleste eventsystem</h1>
 
 <% @events.each do |event| %>
 
 <a href="<%=event_path(event)%>">
   <article class="event">
     <header><%=event.title%></header>
+    <p><%=event.date%></p>
   </article>
 </a>
+
+<% end %>
+
+<%= content_for :script do %>
+	<script type="text/javascript" src="/assets/underscore.js"></script>
+	<script type="text/javascript" src="/assets/backbone.js"></script>
+
+
+
+
+	<script type="text/javascript">
+
+	var Event = Backbone.Model.extend({
+	});
+
+	var Events = Backbone.Collection.extend();
+	var e = new Events();
+
+	e.on('change:title', function(){
+		alert('yo!');
+	});
+
+	<% @events.each do |event| %>
+		e.add(new Event({
+			title: '<%= event.title %>',
+			date: '<%= event.date %>'
+		}));
+	<% end %>
+	</script>
+
+
+
 
 <% end %>
 
