@@ -44,12 +44,22 @@
 
 <%= content_for :script do %>
 <script type="text/javascript">
+  var samfundetId = '3003';
+  var samfundetId = '2441';
+
   $(document).ready(function(){
-    $.get("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22https%3A%2F%2Fsamfundet.no%2Farrangement%2Fvis%2F2441%22%20and%20xpath%3D'%2F%2Fdiv%5B%40class%3D%22eventbox%22%5D%2Fp%5Blast()%5D'&format=json&callback=cbfunc");
+    $.get("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22https%3A%2F%2Fsamfundet.no%2Farrangement%2Fvis%2F" + samfundetId + "%22%20and%20xpath%3D'%2F%2Fdiv%5B%40class%3D%22eventbox%22%5D%2Fp%5Blast()%5D'&format=json&callback=cbfunc");
   });
     var cbfunc = function(result) {
-      document.getElementById('testdump').innerHTML = result.query.results.p;
-      document.getElementById('testdump').className += ' disabled';
+      var r = result.query.results.p;
+      if(r=='Utsolgt'){
+        document.getElementById('testdump').innerHTML = result.query.results.p;
+        document.getElementById('testdump').className += ' disabled';
+      }
+      else {
+        alert('rawr');
+      }
+
     }
 </script>
 <% end %>
