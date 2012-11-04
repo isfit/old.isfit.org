@@ -3,23 +3,28 @@
     <div class="hero-unit">
       <div class="action-text">
         <h1><%= t("call-to-action.header") %></h1>
-        <p><%= raw format t("call-to-action.paragraph") %></p>
+        <p><%= raw format t("call-to-action.host_paragraph") %></p>
         <p>
           <%if Language.to_s == "no"%>
             <!-- Knapp -->
-            <%= link_to t("call-to-action.apply_now"), positions_path, class: "btn btn-primary btn-large" %>
+            <%= link_to "Bli vert", hosts_path, class: "btn btn-primary btn-large" %>
           <% else %>
             <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
           <% end %>
           <%if Language.to_s == "no"%>
+            <!--
             <%= link_to t("call-to-action.learn_more"), page_path(62), class: "btn btn-large" %>
+            -->
           <% else %>
             <%= link_to t("call-to-action.learn_more"), page_path(61), class: "btn btn-large" %>
           <% end %>
         </p>
       </div>
       <div class="media">
+        <!--
         <iframe src="http://player.vimeo.com/video/47441322?title=0&amp;byline=0&amp;portrait=0&amp;color=d6351a" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        -->
+        <%= image_tag 'host.png' %>
       </div>
    </div>
   <% end %>
