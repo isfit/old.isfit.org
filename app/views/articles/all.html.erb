@@ -7,7 +7,7 @@
 <a href="<%=article_path(article, :tab=>params[:tab])%>" style="margin: 0; padding: 0;">
   <article style="height: 387px; position: relative; margin: 1em 0; box-sizing: border-box;">
     <div style="position: absolute; bottom: 0; width: 100%;">
-      <img src="<%= article.frontend_article_image.url %>">
+      <img src="<%= article.frontend_article_image.url(:article_large) %>">
       <div class="image-text" style="padding: 1em;">
         <h1 style="margin:0; padding: 0;"><%=article.title%></h1>
         <section class="image-ingress" style="margin:0; padding: 0;">

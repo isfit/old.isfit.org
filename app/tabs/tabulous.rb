@@ -70,6 +70,7 @@ Tabulous.setup do |config|
       [    :participants_tab                  ,    'Participants'             ,    participants_path                                                  ,    false       ,    false       ],
       [    :dialogue_participants_tab         ,    'Dialogue Participants'    ,    dialogue_participants_path                                         ,    false       ,    false       ],
       [    :articles_tab                      ,    t('tabs.articles.main')                     ,    root_path                                                          ,    true        ,    false        ],
+      [    :articles_archive_subtab              ,    t('tabs.articles.archive')        ,    url_for(:controller => 'articles', :action => 'all')                                                          ,    true        ,    true        ],
       [    :articles_galleries_subtab         ,    t('tabs.articles.galleries')                ,    page_path(65)                                                          ,    true        ,    true        ],
       [    :theme_tab                         ,    t('tabs.theme.main')             ,    photos_path                                                        ,    true        ,    false        ],
       [    :theme_globaltrade_subtab          ,    t('tabs.theme.globaltrade')             ,    page_path(52)                                                        ,    true        ,    true        ],
