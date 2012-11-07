@@ -22,6 +22,7 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'twitter-bootstrap-rails'
+  gem 'less-rails'
 end
 
 gem "paperclip"
