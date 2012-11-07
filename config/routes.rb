@@ -1,6 +1,5 @@
 WwwIsfitOrg::Application.routes.draw do  
   get "ideas" => 'ideas#index'
-  get 'archive' => 'articles#all'
 
   get "stats" => 'stats#index'
 
