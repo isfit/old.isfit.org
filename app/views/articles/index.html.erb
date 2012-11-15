@@ -28,6 +28,21 @@
       </div>
    </div>
   <% end %>
+<% else %>
+  <%= content_for :header do %>
+    <div class="hero-unit">
+      <div class="action-text">
+        <h1><%= t("call-to-action.blogs_header") %></h1>
+        <p><%= raw format t("call-to-action.blogs_paragraph") %></p>
+      </div>
+      <div class="media">
+        <!--
+        <iframe src="http://player.vimeo.com/video/47441322?title=0&amp;byline=0&amp;portrait=0&amp;color=d6351a" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        -->
+        <%= image_tag('blogs-english.png') %>
+      </div>
+   </div>
+  <% end %>
 <% end %>
 <div class="row">
   <div class="span8">

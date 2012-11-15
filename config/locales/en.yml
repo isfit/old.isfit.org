@@ -53,6 +53,8 @@ en:
       Apply now, and become a part of it all.
     apply_now: "Apply now"
     learn_more: "Learn more"
+    blogs_header: "Have you read our blogs?"
+    blogs_paragraph: "Read more about what happens behind the scenes in ISFiT on <a href='http://isfit2013eng.blogspot.no/''>The Festival Blog</a>, and more about global trade on <a href='http://isfit.github.com/blog/en.html'>The Theme Blog</a>."
   event:
     information: "Information"
     type: "Type"
