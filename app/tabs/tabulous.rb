@@ -86,7 +86,7 @@ Tabulous.setup do |config|
       [    :about_walkofpeace_subtab          ,    t('tabs.about.walkofpeace')            ,    page_path(59)                                                        ,    true        ,    true        ],
       [    :info_tab                          ,    t('tabs.info.main')                     ,    photos_path                                                        ,    true        ,    false        ],
       [    :info_participant_subtab           ,    t('tabs.info.participant')              ,    page_path(61)                                                        ,    true        ,    true        ],
-      [    :info_volunteer_subtab             ,    t('tabs.info.volunteer')                ,    page_path(62)                                                     ,    true        ,    true        ],
+      [    :info_volunteer_subtab             ,    t('tabs.info.volunteer')                ,    page_path(62)                                                     ,    false        ,    false        ],
       [    :info_press_subtab                 ,    t('tabs.info.press')                    ,    page_path(54)                                                        ,    true        ,    true        ],
       [    :info_donate_subtab                ,    t('tabs.info.donate' )                  ,    page_path(60)                                                        ,    true        ,    true        ],
       [    :info_contact_subtab               ,    t('tabs.info.contact')                  ,    page_path(27)                                                        ,    true        ,    true        ],
