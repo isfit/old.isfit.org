@@ -91,6 +91,7 @@ class Postoffice < ActionMailer::Base
     @subject_no     = "Tusen takk for ditt bidrag!"
     @sent_on        = Time.now
     @content_type   = "text/html"
+    attachments["julebrev.pdf"] = File.read(Rails.root.join("public", "Julebrev.pdf"))
     if I18n.locale.to_s == "no"
       mail(:from => @from, :to => @recipients, :subject => @subject_no) 
     else

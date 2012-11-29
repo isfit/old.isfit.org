@@ -29,7 +29,6 @@ class DonationsController < ApplicationController
                        :name => "#{params[:first_name]} #{params[:last_name]}",
                        :email => params[:payer_email])
       mail = Postoffice.donation("#{params[:first_name]} #{params[:last_name]}", params[:payer_email])
-      mail.attachments["julebrev.pdf"] = File.read(Rails.root.join("public", "Julebrev.pdf"))
       mail.deliver!
     end
    
