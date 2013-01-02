@@ -6,11 +6,6 @@
 	<li><a href="http://isfit.github.com/blog/2012/sosial-forandring-er-ogsa-en-inntekt/">Sosial forandring er ogsa en inntekt!</a></li>
 	<li><a href="http://isfit.github.com/blog/2012/fairtrade-verdt-pengene/">Fairtrade – Verdt pengene?</a></li>
 </ul>
-
-<h2>Festivalblogg</h2>
-<ul>
-	<li><a href="http://isfit2013.blogspot.no/">Besøk vår Festivalblogg!</a></li>
-</ul>
 <% else %>
 <h2>Theme blog</h2>
 <ul>
@@ -18,11 +13,83 @@
 	<li><a href="http://isfit.github.com/blog/2012/social-development-is-also-currency/">Social development is also currency!</a></li>
 	<li><a href="http://isfit.github.com/blog/2012/fairtrade-worth-what-you-pay/">Fairtrade – Worth what you pay?</a></li>
 </ul>
-
-<h2>Festival blog</h2>
-<ul>
-	<li><a href="http://isfit2013eng.blogspot.no/">Visit the Festival Blog!</a></li>
-</ul>
-
-
 <% end %>
+
+<div id="festival-blog">	
+	<h2>Festivalblogg</h2>
+	<ul id="blog-destination"></ul>
+</div>
+
+<% content_for :script do%>
+  <script type="text/javascript" src="/assets/underscore.js"></script>
+  <script type="text/javascript" src="/assets/backbone.js"></script>
+
+
+	<script>
+    $(function(){
+      _.templateSettings = {
+        interpolate : /\{\{(.+?)\}\}/g
+      };
+
+      var Post = Backbone.Model.extend({
+      });
+
+      var Blog = Backbone.Collection.extend({
+        model: Post,
+
+      });
+
+      var Posts = new Blog;
+
+      var PostView = Backbone.View.extend({
+        tagName:  'li',
+        template: _.template($('#blogpost-template').html()),
+        render: function() {
+          this.$el.html(this.template(this.model));
+          return this;
+        },
+      })
+
+      var AppView = Backbone.View.extend({
+        $el: $('#blog-destination'),
+
+        render: function() {
+
+        },
+
+        initialize: function() {
+        },
+
+        renderPosts: function(posts) {
+          _.each(posts, function(post){
+            var view = new PostView({model: post});
+            this.$("#blog-destination").append(view.render().el);
+          });
+        }
+      });
+
+
+      var App;
+
+      // Fetches the RSS feed
+      var url = 'http://localhost:3000/blogs/festival/'
+      $.ajax({
+        url: url,
+        success: function(data) {
+          App = new AppView;
+          App.renderPosts(data);
+        },
+        dataType: 'json',
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log(errorThrown.toString());
+          console.log(jqXHR);
+        }
+      });
+    });
+  </script>
+
+  <script type="text/template" id="blogpost-template">
+      <a href="{{ link }}">{{ title }}</a>
+  </script>
+
+<%end%>
