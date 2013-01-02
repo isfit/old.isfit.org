@@ -1,21 +1,11 @@
-<div id="festival-blog">  
+<div id="theme-blog">  
   <h2><%= t('tabs.blogs.theme') %></h2>
-  <ul>
-    <% if Language.to_s == "no"%>
-    	<li><a href="http://isfit.github.com/blog/2012/hvor-mange-slaver-jobber-for-deg/">Hvor mange slaver jobber for deg?</a></li>
-    	<li><a href="http://isfit.github.com/blog/2012/sosial-forandring-er-ogsa-en-inntekt/">Sosial forandring er ogsa en inntekt!</a></li>
-    	<li><a href="http://isfit.github.com/blog/2012/fairtrade-verdt-pengene/">Fairtrade – Verdt pengene?</a></li>
-    <% else %>
-    	<li><a href="http://isfit.github.com/blog/2012/how-many-slaves-are-working-for-you/">How many slaves are working for you?</a></li>
-    	<li><a href="http://isfit.github.com/blog/2012/social-development-is-also-currency/">Social development is also currency!</a></li>
-    	<li><a href="http://isfit.github.com/blog/2012/fairtrade-worth-what-you-pay/">Fairtrade – Worth what you pay?</a></li>
-    <% end %>
-  </ul>
+  <ul></ul>
 </div>
 
 <div id="festival-blog">	
 	<h2><%= t('tabs.blogs.festival') %></h2>
-	<ul id="blog-destination"></ul>
+	<ul></ul>
 </div>
 
 <% content_for :script do%>
@@ -48,34 +38,59 @@
         },
       })
 
-      var AppView = Backbone.View.extend({
-        $el: $('#blog-destination'),
+      var ThemeBlogView = Backbone.View.extend({
+        $el: $('#theme-blog ul'),
 
-        render: function() {
-
+        render: function(posts){
+          _.each(posts, function(post){
+            var view = new PostView({model: post});
+            this.$('#theme-blog ul').append(view.render().el);
+          });
         },
 
         initialize: function() {
         },
+      });
+      var FestivalBlogView = Backbone.View.extend({
+        $el: $('#festival-blog ul'),
 
-        renderPosts: function(posts) {
+        render: function(posts){
           _.each(posts, function(post){
             var view = new PostView({model: post});
-            this.$("#blog-destination").append(view.render().el);
+            this.$('#festival-blog ul').append(view.render().el);
           });
+        },
+
+        initialize: function() {
+        },
+      });
+
+      var FestivalBlog;
+      var ThemeBlog;
+
+      // Fetches the blog feeds
+
+      // FESTIVAL BLOG
+      $.ajax({
+        url: window.location.origin + '/blogs/festival/',
+        success: function(data) {
+          FestivalBlog = new FestivalBlogView;
+          FestivalBlog.render(data);
+        },
+        dataType: 'json',
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log(errorThrown.toString());
+          console.log(jqXHR);
         }
       });
 
 
-      var App;
-
-      // Fetches the RSS feed
-      var url = 'http://localhost:3000/blogs/festival/'
+      // THEME BLOG
       $.ajax({
-        url: url,
+        url: window.location.origin + '/blogs/theme/',
         success: function(data) {
-          App = new AppView;
-          App.renderPosts(data);
+          ThemeBlog = new ThemeBlogView;
+          ThemeBlog.render(data);
         },
         dataType: 'json',
         error: function(jqXHR, textStatus, errorThrown) {
