@@ -1,22 +1,20 @@
-<% if Language.to_s == "no"%>
-
-<h2>Temablogg</h2>
-<ul>
-	<li><a href="http://isfit.github.com/blog/2012/hvor-mange-slaver-jobber-for-deg/">Hvor mange slaver jobber for deg?</a></li>
-	<li><a href="http://isfit.github.com/blog/2012/sosial-forandring-er-ogsa-en-inntekt/">Sosial forandring er ogsa en inntekt!</a></li>
-	<li><a href="http://isfit.github.com/blog/2012/fairtrade-verdt-pengene/">Fairtrade – Verdt pengene?</a></li>
-</ul>
-<% else %>
-<h2>Theme blog</h2>
-<ul>
-	<li><a href="http://isfit.github.com/blog/2012/how-many-slaves-are-working-for-you/">How many slaves are working for you?</a></li>
-	<li><a href="http://isfit.github.com/blog/2012/social-development-is-also-currency/">Social development is also currency!</a></li>
-	<li><a href="http://isfit.github.com/blog/2012/fairtrade-worth-what-you-pay/">Fairtrade – Worth what you pay?</a></li>
-</ul>
-<% end %>
+<div id="festival-blog">  
+  <h2><%= t('tabs.blogs.theme') %></h2>
+  <ul>
+    <% if Language.to_s == "no"%>
+    	<li><a href="http://isfit.github.com/blog/2012/hvor-mange-slaver-jobber-for-deg/">Hvor mange slaver jobber for deg?</a></li>
+    	<li><a href="http://isfit.github.com/blog/2012/sosial-forandring-er-ogsa-en-inntekt/">Sosial forandring er ogsa en inntekt!</a></li>
+    	<li><a href="http://isfit.github.com/blog/2012/fairtrade-verdt-pengene/">Fairtrade – Verdt pengene?</a></li>
+    <% else %>
+    	<li><a href="http://isfit.github.com/blog/2012/how-many-slaves-are-working-for-you/">How many slaves are working for you?</a></li>
+    	<li><a href="http://isfit.github.com/blog/2012/social-development-is-also-currency/">Social development is also currency!</a></li>
+    	<li><a href="http://isfit.github.com/blog/2012/fairtrade-worth-what-you-pay/">Fairtrade – Worth what you pay?</a></li>
+    <% end %>
+  </ul>
+</div>
 
 <div id="festival-blog">	
-	<h2><%= t('layout.festival_blog') %></h2>
+	<h2><%= t('tabs.blogs.festival') %></h2>
 	<ul id="blog-destination"></ul>
 </div>
 

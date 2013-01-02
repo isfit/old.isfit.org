@@ -95,7 +95,6 @@
     media: "ISFiT i media"
     back: "Tilbake"
     show_all: "Vis alle"
-    festival_blog: 'Festivalblogg'
   article:
     header: "NYHETER"
     more: "Flere saker"
