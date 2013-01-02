@@ -1,10 +1,12 @@
 <div id="festival-blog">	
 	<h2><%= t('tabs.blogs.festival') %></h2>
+  <img class="loading-gif" src="/loading_white.gif">
 	<ul></ul>
 </div>
 
 <div id="theme-blog">  
   <h2><%= t('tabs.blogs.theme') %></h2>
+  <img class="loading-gif" src="/loading_white.gif">
   <ul></ul>
 </div>
 
@@ -47,6 +49,8 @@
             var view = new PostView({model: post});
             this.$('#theme-blog ul').append(view.render().el);
           });
+          $('#theme-blog .loading-gif').remove();
+
 
 
           // Corny animation
@@ -72,6 +76,8 @@
             this.$('#festival-blog ul').append(view.render().el);
 
           });
+
+          $('#festival-blog .loading-gif').remove();
 
           // Corny animation
           // element = $('#festival-blog');
