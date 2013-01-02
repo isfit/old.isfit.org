@@ -201,6 +201,31 @@ a.brand {
   vertical-align: top;
 }
 
+#festival-blog, #theme-blog {
+  ul {
+    display: block;
+    margin: 0;
+
+    li {
+      display: block;
+
+      p {
+        line-height: 1em;
+      }
+    }
+  }
+
+ // opacity: 0;
+ // -webkit-transition: height .3s;
+ // -moz-transition: height .3s;
+ // -ms-transition: height .3s;
+ // -o-transition: height .3s;
+ // transition: height .3s;
+
+ // overflow: hidden;
+}
+
+
 
 
 

@@ -1,12 +1,13 @@
+<div id="festival-blog">	
+	<h2><%= t('tabs.blogs.festival') %></h2>
+	<ul></ul>
+</div>
+
 <div id="theme-blog">  
   <h2><%= t('tabs.blogs.theme') %></h2>
   <ul></ul>
 </div>
 
-<div id="festival-blog">	
-	<h2><%= t('tabs.blogs.festival') %></h2>
-	<ul></ul>
-</div>
 
 <% content_for :script do%>
   <script type="text/javascript" src="/assets/underscore.js"></script>
@@ -46,6 +47,17 @@
             var view = new PostView({model: post});
             this.$('#theme-blog ul').append(view.render().el);
           });
+
+
+          // Corny animation
+
+          // element = $('#theme-blog');
+          // var h = element.height();
+          // element.css('height', 0).css('opacity', 1);
+
+          // window.setTimeout(function(){
+          //   element.css('height', h);
+          // }, 300);
         },
 
         initialize: function() {
@@ -58,7 +70,17 @@
           _.each(posts, function(post){
             var view = new PostView({model: post});
             this.$('#festival-blog ul').append(view.render().el);
+
           });
+
+          // Corny animation
+          // element = $('#festival-blog');
+          // var h = element.height();
+          // element.css('height', 0).css('opacity', 1);
+
+          // window.setTimeout(function(){
+          //   element.css('height', h);
+          // }, 300);
         },
 
         initialize: function() {
@@ -102,7 +124,7 @@
   </script>
 
   <script type="text/template" id="blogpost-template">
-      <a href="{{ link }}">{{ title }}</a>
+      <p><a href="{{ link }}">{{ title }}</a></p>
   </script>
 
 <%end%>

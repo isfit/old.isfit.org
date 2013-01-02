@@ -53,7 +53,7 @@ class BlogsController < ApplicationController
       end  
     end
 
-    respond_with(@posts)
+    respond_with(@posts[0,3])
 
   end
 
