@@ -84,6 +84,7 @@ Tabulous.setup do |config|
       [    :about_conflictareas_subtab        ,    t('tabs.about.conflictareas')           ,    page_path(57)                                                        ,    true        ,    true        ],
       [    :about_studentpeaceprice_subtab    ,    t('tabs.about.studentpeaceprice')      ,    page_path(42)                                                        ,    true        ,    true        ],
       [    :about_walkofpeace_subtab          ,    t('tabs.about.walkofpeace')            ,    page_path(59)                                                        ,    true        ,    true        ],
+      [    :about_partners_subtab                   ,    t('tabs.about.partners' )                     ,    page_path(69)                                                        ,    true        ,    true        ],
       [    :info_tab                          ,    t('tabs.info.main')                     ,    photos_path                                                        ,    true        ,    false        ],
       [    :info_participant_subtab           ,    t('tabs.info.participant')              ,    page_path(61)                                                        ,    true        ,    true        ],
       [    :info_volunteer_subtab             ,    t('tabs.info.volunteer')                ,    page_path(62)                                                     ,    false        ,    false        ],
