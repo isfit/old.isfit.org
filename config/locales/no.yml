@@ -225,6 +225,7 @@
         member_name: Navn på medlem (Besvares kun hvis 'medlem av ISFiT' er valgt)
         other: Annen informasjon vi trenger å vite?
         base: ""
+        student: "Kryss av om du er student"
         submit: "Registrer verteskjema"
   activerecord:
     errors:
