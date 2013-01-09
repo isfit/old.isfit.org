@@ -97,7 +97,7 @@
     back: "Tilbake"
     show_all: "Vis alle"
     counter: 
-      event_countdown: 'Snikprogramslipp'
+      event_countdown: 'Programslipp'
       minutes: 'min'
       seconds: 'sek'
       hours: 'timer'
