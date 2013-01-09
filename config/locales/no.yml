@@ -97,7 +97,7 @@
     back: "Tilbake"
     show_all: "Vis alle"
     counter: 
-      event_countdown: 'Programslipp'
+      event_countdown: 'Førslipp'
       minutes: 'min'
       seconds: 'sek'
       hours: 'timer'
