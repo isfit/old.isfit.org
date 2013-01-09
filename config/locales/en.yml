@@ -90,6 +90,12 @@ en:
     media: "ISFiT in the media"
     back: "Back"
     show_all: "Show all"
+    counter: 
+      event_countdown: 'Sneak peak at the program'
+      minutes: 'min'
+      seconds: 'sec'
+      hours: 'hours'
+      days: 'days'
   article:
     header: "NEWS"
     more: "More news"

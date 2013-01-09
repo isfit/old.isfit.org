@@ -96,6 +96,12 @@
     media: "ISFiT i media"
     back: "Tilbake"
     show_all: "Vis alle"
+    counter: 
+      event_countdown: 'Snikprogramslipp'
+      minutes: 'min'
+      seconds: 'sek'
+      hours: 'timer'
+      days: 'dager'
   article:
     header: "NYHETER"
     more: "Flere saker"

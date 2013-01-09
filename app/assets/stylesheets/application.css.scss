@@ -320,3 +320,27 @@ div.event-button.round.disabled {
   text-align: center;
   height: 92px;
 }
+
+
+
+
+#event-countdown-wrapper {
+  text-align: center;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .counter {
+    display: inline-block;
+    width: 22%;
+  }
+
+  #event-countdown-counters {
+    .number {
+      font-size: 3em;
+      line-height: 1em;
+      margin-bottom: 0;
+    }
+  }
+}

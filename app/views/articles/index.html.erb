@@ -72,11 +72,7 @@
   <div class="span4">
     <aside id="sidebar"><!-- Start hoyreramme -->
     <div class="promotional">
-      <%if Language.to_s == "no"%>
-          <a href="http://www.studentpeaceprize.org"><img src="http://i.imgur.com/0JiyF.png" alt="promotional"></a>
-        <% else %>
-          <a href="http://www.studentpeaceprize.org"><img src="http://i.imgur.com/OOtBz.png" alt="promotional"></a>
-        <% end %>
+      <%= render 'shared/event_countdown' %>
     </div>
 
     <div class="promotional">
@@ -97,6 +93,7 @@
     </div>
   </div>
   <div class="span4">
+    <!-- Twitter widget -->
     <div class="well social twitter" id="widget-twitter-fp">
       <header>
         <h1>Twitter</h1>
@@ -105,6 +102,9 @@
       </section>
       <a href="https://twitter.com/ISFiT" class="btn twitter-follow-button pull-right" data-show-count="false" data-size="large">Follow @ISFiT</a>
     </div>
+    <% content_for :script do %>
+      <script type="text/javascript" src="/assets/widget_twitter.js"></script>
+    <% end %>
   </div>
   <div class="span4">
     <div class="well social articles">
