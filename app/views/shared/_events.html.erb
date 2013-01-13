@@ -1,22 +1,55 @@
-<div>
-  
+<div class="well" id="event-well">
 </div>
 
 <% content_for :script do %>
+
+<script type="text/javascript" id="event-template">
+  <a href="http://events.isfit.org/2013/{{ id }}">
+    <article class="event-preview">
+      <div class="decor type{{ event.event_type_id }}">
+        <p>{{ datetime.substr(8,2) }} FEB</p>
+        <p>{{ datetime.substr(11,5) }}</p>
+      </div>
+      <img src="http://events.isfit.org/system/events/image_fronts/000/000/00{{ event.id }}/cover/{{ event.image_front_file_name }}" alt="">
+      <p class="title">{{ event.title }}</p>
+    </article>
+  </a>
+</script>
+
+
 <script type="text/javascript">
 
-function dothing() {
-      $('#event-countdown-wrapper').text('rawr');
+$(function(){
+  _.templateSettings = {
+    interpolate : /\{\{(.+?)\}\}/g
+  };
+  var template = _.template($('#event-template').html());
+
+  var eventData = {};
   $.ajax({
     url: 'http://events.isfit.org/events/index.json',
     success: function(data){
-      document.write(data);
+      eventData.eventList = data;
+      _.each(data, function(element){
+        if(element.length>0){
+          _.each(element, function(ev){
+            console.log(ev);
+            $('#event-well').append(template(ev));
+          });
+        }
+      })
+
     },
     error: function(){
       alert('fail!');
     },
     dataType: 'json'
   });
+
+});
+
+function dothing() {
+      $('#event-countdown-wrapper').text('rawr');
 }
 
 $(function(){

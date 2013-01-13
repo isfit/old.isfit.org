@@ -325,6 +325,86 @@ div.event-button.round.disabled {
 
 
 
+#event-well {
+  a {
+    text-decoration: none;
+  }
+  .event-preview {
+    position: relative;
+    overflow: hidden;
+
+    p.title {
+      background: #111;
+      color: white;
+      text-transform: uppercase;
+      text-align: right;
+      padding: .2em .5em;
+      margin: 0;
+    }
+
+    img {
+      border-radius: 0;
+    }
+
+    .decor {
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      position: absolute;
+      top: -2em;
+      left: -2em;
+      background: #D83415;
+      color: white;
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+      padding-left: 2.5em;
+      padding-top: 2.3em;
+
+
+      &.type1 {
+        background: rgb(56,192,240);
+      }
+
+      &.type2 {
+        background: rgb(4,129,185);
+      }
+
+      &.type3 {
+        background: rgb(34,54,102);
+      }
+
+      &.type4 {
+        background: rgb(216,52,21);
+      }
+
+      &.type5 {
+        background: rgb(251,188,58);
+      }
+
+      p {
+        margin: 0;
+        text-shadow: 0 1px 0 #333;
+      }
+    }
+  }
+}
+
+.attention {
+  color: white;
+  background: #111;
+  border: 0;
+  border-radius: 0;
+
+  h3 {
+    text-transform: uppercase;
+  }
+}
+
+.well {
+  border-radius: 0;
+}
+
+
 
 #event-countdown-wrapper {
   text-align: center;
@@ -346,3 +426,6 @@ div.event-button.round.disabled {
     }
   }
 }
+
+
+

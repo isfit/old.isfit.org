@@ -1,5 +1,18 @@
 <% if Language.to_s == "no" %>
   <%= content_for :header do %>
+
+<% if Time.now > Time.new(2013,01,14,07,00) %>
+  <div class="row">
+    <div class="span12 well attention">
+      <%if Language.to_s == "no"%>
+        <h3>VI HAR SLUPPET ARTISTER AND STUFF!</h3>
+      <% else %>
+        <h3>THE SAME TEXT IN ENGLISH</h3>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
     <div class="hero-unit">
       <div class="action-text">
         <h1><%= t("call-to-action.header") %></h1>
@@ -72,16 +85,22 @@
   <div class="span4">
     <aside id="sidebar"><!-- Start hoyreramme -->
     <div class="promotional">
-      <%= render 'shared/event_countdown' %>
+      <% if Time.now < Time.new(2013,01,14,07,00) %>
+        <%= render 'shared/event_countdown' %>
+      <% else %>
+        <%= render 'shared/events' %>
+      <% end %>
     </div>
 
-    <div class="promotional">
-      <%if Language.to_s == "no"%>
-          <a href="/pages/60"><img src="http://i.imgur.com/ZbQe5.png" alt="promotional"></a>
-        <% else %>
-          <a href="/pages/60"><img src="http://i.imgur.com/yEZbX.png" alt="promotional"></a>
-        <% end %>
-    </div>
+    <% if Time.now < Time.new(2013,01,14,07,00) %>
+      <div class="promotional">
+        <%if Language.to_s == "no"%>
+            <a href="/pages/60"><img src="http://i.imgur.com/ZbQe5.png" alt="promotional"></a>
+          <% else %>
+            <a href="/pages/60"><img src="http://i.imgur.com/yEZbX.png" alt="promotional"></a>
+          <% end %>
+      </div>
+    <% end %>
 
     </aside><!-- Slutt hoyreramme -->
   </div>
@@ -113,4 +132,3 @@
   </div>
 </div>
 
-<% render "shared/events" %>
