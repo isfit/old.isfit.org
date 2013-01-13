@@ -400,8 +400,9 @@ div.event-button.round.disabled {
   }
 }
 
-.well {
-  border-radius: 0;
+// TODO: do this properly
+*:not(.carousel-control) {
+  border-radius: 0 !important;
 }
 
 
