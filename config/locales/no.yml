@@ -102,6 +102,7 @@
       seconds: 'sek'
       hours: 'timer'
       days: 'dager'
+    event_alertbox: 'Førslipp av festivalprogram'
   article:
     header: "NYHETER"
     more: "Flere saker"

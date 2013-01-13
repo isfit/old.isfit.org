@@ -398,6 +398,15 @@ div.event-button.round.disabled {
   h3 {
     text-transform: uppercase;
   }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+  }
 }
 
 // TODO: do this properly
