@@ -21,6 +21,7 @@
           <%if Language.to_s == "no"%>
             <!-- Knapp -->
             <%= link_to "Bli vert", hosts_path, class: "btn btn-primary btn-large" %>
+            <%= link_to "Les mer", "http://vert.isfit.org", class: "btn btn-large" %>
           <% else %>
             <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
           <% end %>
