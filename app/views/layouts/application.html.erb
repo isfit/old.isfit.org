@@ -123,13 +123,18 @@ html5boilerplate
 
         <%= yield :sidebar %>
 
+        <div class="promotional">
+              <%= render 'shared/events' %>
+        </div>
+
      <div class="promotional">
       <%if Language.to_s == "no"%>
           <a href="http://www.studentpeaceprize.org"><img src="http://i.imgur.com/0JiyF.png" alt="promotional"></a>
-        <% else %>
+      <% else %>
           <a href="http://www.studentpeaceprize.org"><img src="http://i.imgur.com/OOtBz.png" alt="promotional"></a>
-        <% end %>
+      <% end %>
     </div>
+
 
     <div class="promotional">
       <%if Language.to_s == "no"%>
@@ -138,6 +143,7 @@ html5boilerplate
           <a href="/pages/60"><img src="http://i.imgur.com/yEZbX.png" alt="promotional"></a>
         <% end %>
     </div>
+
 
       </aside><!-- Slutt hoyreramme -->
 

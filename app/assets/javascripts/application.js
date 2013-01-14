@@ -8,6 +8,8 @@
 //= require twitter/bootstrap
 //= require ambassadors
 //= require bootstrap
+//= require underscore
+//= require backbone
 
 
 // TABS
