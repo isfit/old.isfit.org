@@ -1,18 +1,222 @@
-<div class="well">
 
 
-<h1>Verdens kuleste eventsystem</h1>
 
-<% @events.each do |event| %>
 
-<a href="<%=event_path(event)%>">
-  <article class="event">
-    <header><%=event.title%></header>
-    <p><%=event.date%></p>
+
+
+
+<style type="text/css">
+	article.event {
+    width: 720px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+	}
+
+  div.meta {
+    background: #0481B9;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    color: white;
+    position: absolute;
+    bottom: -3em;
+    left: -3em;
+    padding-left: 1em;
+    padding-top: 2em;
+    text-align: center;
+  }
+
+  div.meta p {
+    margin: 0;
+  }
+
+  div.meta div {
+    margin: .5em 0;
+  }
+
+  h1.name {
+    position: absolute;
+    bottom: .2em;
+    margin: 0;
+    right: 0;
+    padding: 0.2em 1.2em;
+    background: black;
+    color: white;
+    text-transform: uppercase;
+    font-family: Helvetica Neue, Helvetica,"apertura", sans-serif;
+  }
+
+  table.price {
+    margin-left: 3em;
+    text-align: left;
+  }
+
+  span.date {
+    display: block;
+    width: 100%;
+    text-align: center;
+    height: 80%;
+    font-size: 11em;
+    line-height: 1em;
+  }
+  span.month {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 4em;
+  }
+  article.dateblock {
+    background: white;
+    margin-right: -20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 200px;
+
+    position: fixed;
+  }
+</style>
+
+
+
+<div class="wel row" id="eventwell">
+  <article class="dateblock span2">
+    <span class="date">10</span><span class="month">feb</span>
   </article>
-</a>
 
-<% end %>
+	<article class="span8 event offset2" style="background:url(http://i.imgur.com/MVbvb.png)">
+    <h1 class="name">The Pixies</h1>
+
+    <div class="meta">
+      <div class="location">
+        <p>Klubben</p>
+        <p>21:00</p>
+      </div>
+
+      <table class="price">
+          <tr>
+            <td>Medl.</td>
+            <td>150,-</td>
+          </tr>
+          <tr>
+            <td>Ikke medl.</td>
+            <td>160,-</td>
+          </tr>
+        </table>
+    </div>
+
+  </article>
+
+  <article class=" span8 offset2 event" style="background:url(http://i.imgur.com/xAEM1.png);">
+    <h1 class="name">Radiohead</h1>
+
+    <div class="meta">
+      <div class="location">
+        <p>Bodegaen</p>
+        <p>21:00</p>
+      </div>
+
+      <table class="price">
+          <tr>
+            <td>Medl.</td>
+            <td>150,-</td>
+          </tr>
+          <tr>
+            <td>Ikke medl.</td>
+            <td>160,-</td>
+          </tr>
+        </table>
+    </div>
+
+	</article>
+
+  <article class=" span8 offset2 event" style="background:url(http://i.imgur.com/x4cJM.png)">
+    <h1 class="name">Min Ko Naing</h1>
+
+    <div class="meta" style="background:rgb(254,184,68)">
+      <div class="location">
+        <p>Storsalen</p>
+        <p>19:00</p>
+      </div>
+
+      <table class="price">
+          <tr>
+            <td>Medl.</td>
+            <td>Gratis</td>
+          </tr>
+          <tr>
+            <td>Ikke medl.</td>
+            <td>40,-</td>
+          </tr>
+        </table>
+    </div>
+
+  </article>
+
+  <article class=" span8 offset2 event" style="background:url(http://i.imgur.com/MVbvb.png)">
+    <h1 class="name">The Pixies</h1>
+
+    <div class="meta">
+      <div class="location">
+        <p>Klubben</p>
+        <p>21:00</p>
+      </div>
+
+      <table class="price">
+          <tr>
+            <td>Medl.</td>
+            <td>150,-</td>
+          </tr>
+          <tr>
+            <td>Ikke medl.</td>
+            <td>160,-</td>
+          </tr>
+        </table>
+    </div>
+
+  </article>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="well" id="eventwell2" style="display:none;">
+<div style="height: 80px; margin-bottom: 2em;">
+	<input type="search" placeholder="Search">
+
+	<nav id="event-type-selector">
+		<ul>
+			<li onclick="findEventsType(1)">Concert</li>
+			<li>Theatre</li>
+			<li>Burlesque</li>
+		</ul>
+	</nav>
+</div>
+<!--
+<div style="position:relative; overflow: hidden; height: 235px; width: 100%;">
+<div style="position: absolute; top: 0; left:0;">
+	 -->
+	 
+<article class="date">
+	<span class="date">10</span><span class="month">feb</span>
+</article>
+<ul style="display: inline; text-align: right;" id="eventul">
+
+</ul>
+</div>
+
+
 
 <%= content_for :script do %>
 	<script type="text/javascript" src="/assets/underscore.js"></script>
@@ -22,23 +226,82 @@
 
 
 	<script type="text/javascript">
+	// Mustache.js style templating
+	_.templateSettings = {
+  		interpolate : /\{\{(.+?)\}\}/g
+	};
 
-	var Event = Backbone.Model.extend({
+	function viewEvent() {
+		alert('test');
+	}
+
+	var EventModel = Backbone.Model.extend({
 	});
 
-	var Events = Backbone.Collection.extend();
-	var e = new Events();
+	var EventCollection = Backbone.Collection.extend({
+		model: EventModel,
+	});
+	
+	var events = new EventCollection;
 
-	e.on('change:title', function(){
-		alert('yo!');
+	var EventViewSmall = Backbone.View.extend({
+		tagName: 'li',
+		events: {
+			'click' : function(){alert(this.model.id)}
+		},
+		smallViewTemplate: _.template('<article class="event"><img src="http://placekitten.com/235/235" alt=""><div class="meta blue"><h1>{{title}}</h1></div><div class="meta2"><p>Other: {{price_other}}</p><p>Member: {{price_member}}</p><p>{{date}}</p></div></article>'),
+		render: function(){
+			console.log(this);
+			this.$el.html(this.smallViewTemplate(this.model));
+			return this;
+		}
 	});
 
-	<% @events.each do |event| %>
-		e.add(new Event({
-			title: '<%= event.title %>',
-			date: '<%= event.date %>'
-		}));
-	<% end %>
+	var EventViewLarge = Backbone.View.extend({
+    //TODO
+	});
+
+	var EventIndex = Backbone.View.extend({
+		el: $("#eventul"),
+
+		initialize: function() {
+			var json = <%= @json.html_safe %>;
+			_.forEach(json, function(element){
+				events.add(new Event(element));
+				console.log(element);
+				
+				var view = new EventViewSmall({model: element});
+      	this.$("#eventul").append(view.render().el);
+			});
+    },
+
+    render: function() {
+      console.log('rawr');
+			_.forEach(e, function(element){
+			});
+    }
+	});
+
+	
+			
+	
+
+	var index = new EventIndex;
+	
+	function clear() {
+		$('#eventul').empty();
+	}
+
+
+	function findEventsType(type) {
+		clear();
+
+		_.forEach(e.where({event_type_id: 1}), function(ev){
+			var view = new EventViewSmall({model: ev.attributes});
+      		this.$("#eventul").append(ev.render().el);
+		});
+	}
+
 	</script>
 
 
@@ -47,3 +310,151 @@
 <% end %>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% if false %>
+  <style type="text/css">
+  article {
+    width: 215px;
+    height: 215px;
+    display: inline-block;
+    position: relative;
+    -webkit-transition: all .3s;
+    vertical-align: top;
+    margin: .5em;
+
+    border-radius: 50%;
+  }
+  article.date {
+    float: left;
+  }
+
+  article.event {
+    cursor: pointer;
+    overflow: hidden;
+  }
+  article.event img {
+    display: inline-block;
+    border-radius: 50%;
+  }
+  article.event:hover .meta {
+    /*-webkit-transform: scale(1.1);
+    z-index: 99;*/
+  }
+
+  #eventwell {
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    text-align: left;
+  }
+
+  .meta {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    color: white;
+    width: 100%;
+    background: rgba(0,0,0,.7);
+    -webkit-transition: all .3s;
+    border-radius: 50% 0 0 50%;
+  }
+
+  .meta2 {
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    height: 100%;
+    color: white;
+    width: 100%;
+    background: rgba(0,0,0,.7);
+    -webkit-transition: all .3s;
+    border-radius: 0 50% 50% 0;
+    text-align: center;
+    padding: 2em 0;
+  }
+  .meta2 {
+    font-size: 1.5em;
+  }
+  article.event:hover {
+    border-radius: 50%;
+  }
+
+  article.event:hover .meta {
+    right: 100%;
+  }
+
+  article.event:hover .meta2 {
+    left: 0;
+  }
+
+  .meta.red {
+    background: rgba(214, 52, 22,.7);
+  }
+
+  .meta.blue {
+    background: rgba(4, 129, 185, .7);
+  }
+  .meta.yellow {
+
+  }
+
+  h1 {
+    font-size: 2em;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 40%;
+  }
+
+  span.date {
+    display: block;
+    width: 100%;
+    text-align: center;
+    height: 80%;
+    font-size: 11em;
+    line-height: 1em;
+  }
+  span.month {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 4em;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
+
+  #event-type-selector {
+    display: inline-block;
+  }
+  #event-type-selector li {
+    height: 75px;
+    width: 75px;
+    background: red;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+</style>
+<% end %>

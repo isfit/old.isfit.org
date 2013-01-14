@@ -22,6 +22,7 @@
       conflictareas: 'Konfliktområdene'
       studentpeaceprice: 'Studentenes fredspris'
       walkofpeace: 'Walk of Peace'
+      partners: 'Samarbeidspartnere'
     info:
       main: 'Informasjon'
       participant: 'Deltakere'
@@ -95,6 +96,13 @@
     media: "ISFiT i media"
     back: "Tilbake"
     show_all: "Vis alle"
+    counter: 
+      event_countdown: 'Førslipp'
+      minutes: 'min'
+      seconds: 'sek'
+      hours: 'timer'
+      days: 'dager'
+    event_alertbox: 'Førslipp av festivalprogram'
   article:
     header: "NYHETER"
     more: "Flere saker"
@@ -224,6 +232,7 @@
         member_name: Navn på medlem (Besvares kun hvis 'medlem av ISFiT' er valgt)
         other: Annen informasjon vi trenger å vite?
         base: ""
+        student: "Kryss av om du er student"
         submit: "Registrer verteskjema"
   activerecord:
     errors:

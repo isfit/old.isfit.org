@@ -22,6 +22,7 @@ en:
       conflictareas: 'Conflict Areas'
       studentpeaceprice: 'Student Peace Prize'
       walkofpeace: 'Walk of Peace'
+      partners: 'Partners'
     info:
       main: 'Info'
       participant: 'Participant'
@@ -53,6 +54,8 @@ en:
       Apply now, and become a part of it all.
     apply_now: "Apply now"
     learn_more: "Learn more"
+    blogs_header: "Have you read our blogs?"
+    blogs_paragraph: "Read more about what happens behind the scenes in ISFiT on <a href='http://isfit2013eng.blogspot.no/''>The Festival Blog</a>, and more about global trade on <a href='http://isfit.github.com/blog/en.html'>The Theme Blog</a>."
   event:
     information: "Information"
     type: "Type"
@@ -87,6 +90,13 @@ en:
     media: "ISFiT in the media"
     back: "Back"
     show_all: "Show all"
+    counter: 
+      event_countdown: 'Sneak peek of the programme'
+      minutes: 'min'
+      seconds: 'sec'
+      hours: 'hours'
+      days: 'days'
+    event_alertbox: 'Sneak peek of the festival programme'
   article:
     header: "NEWS"
     more: "More news"

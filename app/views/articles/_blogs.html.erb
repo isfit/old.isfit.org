@@ -1,30 +1,134 @@
-<% if Language.to_s == "no"%>
+<div id="festival-blog">	
+	<h2><%= t('tabs.blogs.festival') %></h2>
+  <img class="loading-gif" src="/loading_white.gif">
+	<ul></ul>
+</div>
 
-<h2>Temablogg</h2>
-<ul>
-	<li><a href="http://isfit.github.com/blog/2012/fairtrade-verdt-pengene/">Fairtrade – Verdt pengene?</a></li>
-	<li><a href="http://isfit.github.com/blog/2012/den-europeiske-drommen/">Den europeiske drømmen</a></li>
-	<li><a href="http://isfit.github.com/blog/2012/norge-fredsnasjon-og-vaapeneksportoer/">Norge – Fredsnasjon og våpeneksportør</a></li>
-</ul>
-
-<h2>Festivalblogg</h2>
-<ul>
-	<li><a href="http://isfit2013.blogspot.no/2012/10/filmvitenskap.html">Filmvitenskap</a></li>
-	<li><a href="http://isfit2013.blogspot.no/2012/10/les-til-krampa-tar-deg.html">Les til krampa tar deg</a></li>
-</ul>
-<% else %>
-<h2>Theme blog</h2>
-<ul>
-	<li><a href="http://isfit.github.com/blog/2012/fairtrade-worth-what-you-pay/">Fairtrade – Worth what you pay?</a></li>
-	<li><a href="http://isfit.github.com/blog/2012/the-european-dream/">The European dream</a></li>
-	<li><a href="http://isfit.github.com/blog/2012/norway-a-nation-of-peace-and-of-weapons-export/">Norway – A nation of peace and of weapons export</a></li>
-</ul>
-
-<h2>Festival blog</h2>
-<ul>
-	<li><a href="http://isfit2013eng.blogspot.no/2012/10/a-day-at-movies.html">A Day at the Movies</a></li>
-	<li><a href="http://isfit2013eng.blogspot.no/2012/10/read-read-read.html">Read, read, read!</a></li>
-</ul>
+<div id="theme-blog">  
+  <h2><%= t('tabs.blogs.theme') %></h2>
+  <img class="loading-gif" src="/loading_white.gif">
+  <ul></ul>
+</div>
 
 
-<% end %>
+<% content_for :script do%>
+
+
+	<script>
+    $(function(){
+      _.templateSettings = {
+        interpolate : /\{\{(.+?)\}\}/g
+      };
+
+      var Post = Backbone.Model.extend({
+      });
+
+      var Blog = Backbone.Collection.extend({
+        model: Post,
+
+      });
+
+      var Posts = new Blog;
+
+      var PostView = Backbone.View.extend({
+        tagName:  'li',
+        template: _.template($('#blogpost-template').html()),
+        render: function() {
+          this.$el.html(this.template(this.model));
+          return this;
+        },
+      })
+
+      var ThemeBlogView = Backbone.View.extend({
+        $el: $('#theme-blog ul'),
+
+        render: function(posts){
+          _.each(posts, function(post){
+            var view = new PostView({model: post});
+            this.$('#theme-blog ul').append(view.render().el);
+          });
+          $('#theme-blog .loading-gif').remove();
+
+
+
+          // Corny animation
+
+          // element = $('#theme-blog');
+          // var h = element.height();
+          // element.css('height', 0).css('opacity', 1);
+
+          // window.setTimeout(function(){
+          //   element.css('height', h);
+          // }, 300);
+        },
+
+        initialize: function() {
+        },
+      });
+      var FestivalBlogView = Backbone.View.extend({
+        $el: $('#festival-blog ul'),
+
+        render: function(posts){
+          _.each(posts, function(post){
+            var view = new PostView({model: post});
+            this.$('#festival-blog ul').append(view.render().el);
+
+          });
+
+          $('#festival-blog .loading-gif').remove();
+
+          // Corny animation
+          // element = $('#festival-blog');
+          // var h = element.height();
+          // element.css('height', 0).css('opacity', 1);
+
+          // window.setTimeout(function(){
+          //   element.css('height', h);
+          // }, 300);
+        },
+
+        initialize: function() {
+        },
+      });
+
+      var FestivalBlog;
+      var ThemeBlog;
+
+      // Fetches the blog feeds
+
+      // FESTIVAL BLOG
+      $.ajax({
+        url: 'http://www.isfit.org/blogs/festival/',
+        success: function(data) {
+          FestivalBlog = new FestivalBlogView;
+          FestivalBlog.render(data);
+        },
+        dataType: 'json',
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log(errorThrown.toString());
+          console.log(jqXHR);
+        }
+      });
+
+
+      // THEME BLOG
+      $.ajax({
+        url: 'http://www.isfit.org/blogs/theme/',
+        success: function(data) {
+          ThemeBlog = new ThemeBlogView;
+          ThemeBlog.render(data);
+        },
+        dataType: 'json',
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log(errorThrown.toString());
+          console.log(jqXHR);
+        }
+      });
+    });
+  </script>
+
+  <script type="text/template" id="blogpost-template">
+      <p><a href="{{ link }}">{{ title }}</a></p>
+  </script>
+
+<%end%>

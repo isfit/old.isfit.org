@@ -42,6 +42,9 @@ html5boilerplate
 
  <script type="text/javascript">
     var _gaq = _gaq || [];
+    var pluginUrl = 
+     '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+     _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
     _gaq.push(['_setAccount', 'UA-18016792-1']);
     _gaq.push(['_setDomainName', 'isfit.org']);
     _gaq.push(['_trackPageview']);
@@ -120,13 +123,18 @@ html5boilerplate
 
         <%= yield :sidebar %>
 
+        <div class="promotional">
+              <%= render 'shared/events' %>
+        </div>
+
      <div class="promotional">
       <%if Language.to_s == "no"%>
           <a href="http://www.studentpeaceprize.org"><img src="http://i.imgur.com/0JiyF.png" alt="promotional"></a>
-        <% else %>
+      <% else %>
           <a href="http://www.studentpeaceprize.org"><img src="http://i.imgur.com/OOtBz.png" alt="promotional"></a>
-        <% end %>
+      <% end %>
     </div>
+
 
     <div class="promotional">
       <%if Language.to_s == "no"%>
@@ -135,6 +143,7 @@ html5boilerplate
           <a href="/pages/60"><img src="http://i.imgur.com/yEZbX.png" alt="promotional"></a>
         <% end %>
     </div>
+
 
       </aside><!-- Slutt hoyreramme -->
 
@@ -151,6 +160,8 @@ html5boilerplate
       <%= t("footer.editor") %>: Synne Mari Pedersen, editor[at]isfit.org. <br />
       <%= t("footer.copyright") %>
       </p>
+      <img src="/eco-logo-<%= Language.to_s %>.jpg" alt="EcoLighthouse logo" id="eco-logo">
+      
       </footer><!-- End footer -->
     </div>
   

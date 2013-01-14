@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121024163740) do
+ActiveRecord::Schema.define(:version => 20130106122957) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -193,9 +193,13 @@ ActiveRecord::Schema.define(:version => 20121024163740) do
     t.boolean  "visible"
     t.string   "ticket_url"
     t.string   "spotify"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "facebook_event_id"
+    t.string   "promo_file_name"
+    t.string   "promo_content_type"
+    t.integer  "promo_file_size"
+    t.datetime "promo_updated_at"
   end
 
   create_table "faqs", :force => true do |t|
@@ -237,6 +241,7 @@ ActiveRecord::Schema.define(:version => 20121024163740) do
     t.text     "other"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "student"
   end
 
   create_table "ideas", :force => true do |t|
@@ -247,6 +252,24 @@ ActiveRecord::Schema.define(:version => 20121024163740) do
     t.integer  "like_count"
     t.string   "submitted_by_name"
     t.string   "submitted_by_id"
+  end
+
+  create_table "isfit_events", :force => true do |t|
+    t.string   "title"
+    t.string   "event_type"
+    t.date     "date"
+    t.integer  "price_member"
+    t.integer  "price_other"
+    t.text     "ingress"
+    t.text     "description"
+    t.integer  "related_evend_id"
+    t.boolean  "deleted"
+    t.boolean  "important"
+    t.boolean  "visible"
+    t.string   "ticket_url"
+    t.string   "spotify"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "oauth_users", :force => true do |t|

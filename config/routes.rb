@@ -6,6 +6,11 @@ WwwIsfitOrg::Application.routes.draw do
 
   get "stats" => 'stats#index'
 
+  get 'blogs/festival' => 'blogs#festival'
+  get 'blogs/theme' => 'blogs#theme'
+  # get 'blogs/:type/:lang' => 'blogs#index'
+  # get 'blogs/' => 'blogs#index'
+
   get "ideas/:id" => 'ideas#show', as: "idea"
   get "ideas/:id/update" => 'ideas#update'
 

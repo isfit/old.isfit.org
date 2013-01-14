@@ -42,6 +42,9 @@ html5boilerplate
 
   <script type="text/javascript">
     var _gaq = _gaq || [];
+    var pluginUrl = 
+     '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+     _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
     _gaq.push(['_setAccount', 'UA-18016792-1']);
     _gaq.push(['_setDomainName', 'isfit.org']);
     _gaq.push(['_trackPageview']);
@@ -119,6 +122,7 @@ html5boilerplate
       Editor in Chief: Synne Mari Pedersen, editor[at]isfit.org. <br />
       All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2013.
       </p>
+      <img src="/eco-logo-<%= Language.to_s %>.jpg" alt="EcoLighthouse logo" id="eco-logo">
       </footer><!-- End footer -->
     </div>
   

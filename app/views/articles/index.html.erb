@@ -1,5 +1,18 @@
+<%= content_for :header do %>
+<% if Time.now > Time.new(2013,01,14,07,01) %>
+  <div class="row">
+    <div class="span12 well attention">
+      <a href="http://events.isfit.org"><h3><%= t('layout.event_alertbox') %></h3></a>
+    </div>
+  </div>
+<% end %>
+
+<% end %>
+
 <% if Language.to_s == "no" %>
   <%= content_for :header do %>
+
+
     <div class="hero-unit">
       <div class="action-text">
         <h1><%= t("call-to-action.header") %></h1>
@@ -8,6 +21,7 @@
           <%if Language.to_s == "no"%>
             <!-- Knapp -->
             <%= link_to "Bli vert", hosts_path, class: "btn btn-primary btn-large" %>
+            <%= link_to "Les mer", "http://vert.isfit.org", class: "btn btn-large" %>
           <% else %>
             <%= link_to t("call-to-action.apply_now"), new_participant_path, class: "btn btn-primary btn-large" %>
           <% end %>
@@ -24,11 +38,29 @@
         <!--
         <iframe src="http://player.vimeo.com/video/47441322?title=0&amp;byline=0&amp;portrait=0&amp;color=d6351a" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         -->
-        <%= image_tag 'host.png' %>
+        <%= link_to image_tag('host.png'), hosts_path %>
+      </div>
+   </div>
+  <% end %>
+<% else %>
+  <%= content_for :header do %>
+    <div class="hero-unit">
+      <div class="action-text">
+        <h1><%= t("call-to-action.blogs_header") %></h1>
+        <p><%= raw format t("call-to-action.blogs_paragraph") %></p>
+      </div>
+      <div class="media">
+        <!--
+        <iframe src="http://player.vimeo.com/video/47441322?title=0&amp;byline=0&amp;portrait=0&amp;color=d6351a" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        -->
+        <%= image_tag('blogs-english.png') %>
       </div>
    </div>
   <% end %>
 <% end %>
+
+<%= render "shared/ads" %>
+
 <div class="row">
   <div class="span8">
     <div id="news-carousel" class="carousel slide">
@@ -54,20 +86,22 @@
   <div class="span4">
     <aside id="sidebar"><!-- Start hoyreramme -->
     <div class="promotional">
-      <%if Language.to_s == "no"%>
-          <a href="http://www.studentpeaceprize.org"><img src="http://i.imgur.com/0JiyF.png" alt="promotional"></a>
-        <% else %>
-          <a href="http://www.studentpeaceprize.org"><img src="http://i.imgur.com/OOtBz.png" alt="promotional"></a>
-        <% end %>
+      <% if Time.now < Time.new(2013,01,14,07,01) %>
+        <%= render 'shared/event_countdown' %>
+      <% else %>
+        <%= render 'shared/events' %>
+      <% end %>
     </div>
 
-    <div class="promotional">
-      <%if Language.to_s == "no"%>
-          <a href="/pages/60"><img src="http://i.imgur.com/ZbQe5.png" alt="promotional"></a>
-        <% else %>
-          <a href="/pages/60"><img src="http://i.imgur.com/yEZbX.png" alt="promotional"></a>
-        <% end %>
-    </div>
+    <% if Time.now < Time.new(2013,01,14,07,01) %>
+      <div class="promotional">
+        <%if Language.to_s == "no"%>
+            <a href="/pages/60"><img src="http://i.imgur.com/ZbQe5.png" alt="promotional"></a>
+          <% else %>
+            <a href="/pages/60"><img src="http://i.imgur.com/yEZbX.png" alt="promotional"></a>
+          <% end %>
+      </div>
+    <% end %>
 
     </aside><!-- Slutt hoyreramme -->
   </div>
@@ -79,6 +113,7 @@
     </div>
   </div>
   <div class="span4">
+    <!-- Twitter widget -->
     <div class="well social twitter" id="widget-twitter-fp">
       <header>
         <h1>Twitter</h1>
@@ -87,6 +122,9 @@
       </section>
       <a href="https://twitter.com/ISFiT" class="btn twitter-follow-button pull-right" data-show-count="false" data-size="large">Follow @ISFiT</a>
     </div>
+    <% content_for :script do %>
+      <script type="text/javascript" src="/assets/widget_twitter.js"></script>
+    <% end %>
   </div>
   <div class="span4">
     <div class="well social articles">
@@ -94,3 +132,4 @@
     </div>
   </div>
 </div>
+

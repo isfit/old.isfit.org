@@ -61,9 +61,9 @@ class Postoffice < ActionMailer::Base
 
   def host_add(mails)
     @recipients   = mails
-    @from         = "ISFiT 2011 <verter@isfit.org>"
-    @subject_en   = "Thanks for applying as ISFiT host"
-    @subject_no   = "Takk for at du meldte deg som ISFiT vert"
+    @from         = "ISFiT 2013 <verter@isfit.org>"
+    @subject_en   = "Thank you for applying as an ISFiT host"
+    @subject_no   = "Takk for at du meldte deg som ISFiT-vert"
     @sent_on      = Time.now
     @content_type = "text/html"
     if I18n.locale.to_s == "no"
@@ -91,6 +91,7 @@ class Postoffice < ActionMailer::Base
     @subject_no     = "Tusen takk for ditt bidrag!"
     @sent_on        = Time.now
     @content_type   = "text/html"
+    attachments["julebrev.pdf"] = File.read(Rails.root.join("public", "Julebrev.pdf"))
     if I18n.locale.to_s == "no"
       mail(:from => @from, :to => @recipients, :subject => @subject_no) 
     else

@@ -20,6 +20,10 @@ class ArticlesController < ApplicationController
 
   end
 
+  def archive
+    @articles.all
+  end
+
   # GET /articles/all
   # GET /articles/all.xml
   def all

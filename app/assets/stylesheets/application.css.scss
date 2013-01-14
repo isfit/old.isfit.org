@@ -17,10 +17,16 @@ html, body, div, aside, footer, header, span, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  background: url(http://i.imgur.com/fZYG2.jpg) center center no-repeat !important;
-  background-attachment: fixed!important;
-  -moz-background-size: cover!important;
-  background-size: cover!important;
+  // background: url(http://i.imgur.com/fZYG2.jpg) center center no-repeat !important;
+  // background-attachment: fixed!important;
+  // -moz-background-size: cover!important;
+  // background-size: cover!important;
+
+  background: rgb(34,54,102);
+}
+
+.hero-unit {
+  border-radius: 0px !important;
 }
 
 
@@ -201,6 +207,36 @@ a.brand {
   vertical-align: top;
 }
 
+#festival-blog, #theme-blog {
+  ul {
+    display: block;
+    margin: 0;
+
+    li {
+      display: block;
+
+      p {
+        line-height: 1em;
+      }
+    }
+  }
+
+ // opacity: 0;
+ // -webkit-transition: height .3s;
+ // -moz-transition: height .3s;
+ // -ms-transition: height .3s;
+ // -o-transition: height .3s;
+ // transition: height .3s;
+
+ // overflow: hidden;
+}
+
+
+#eco-logo {
+  height: 120px;
+  margin-top: 2em;
+  border-radius: 12px;
+}
 
 
 
@@ -284,3 +320,128 @@ div.event-button.round.disabled {
   font-weight: bold;
   width: 10em;
 }
+
+
+.partners {
+  text-align: center;
+  height: 92px;
+}
+
+
+
+#event-well {
+  a {
+    text-decoration: none;
+  }
+  .event-preview {
+    position: relative;
+    overflow: hidden;
+    height: 121px;
+
+    p.title {
+      background: #111;
+      color: white;
+      text-transform: uppercase;
+      text-align: right;
+      padding: .2em .5em;
+      margin: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 244px;
+    }
+
+    img {
+      border-radius: 0;
+      min-height: 100%;
+    }
+
+    .decor {
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      position: absolute;
+      top: -2em;
+      left: -2em;
+      background: #D83415;
+      color: white;
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+      padding-left: 2.5em;
+      padding-top: 2.3em;
+
+
+      &.type1 {
+        background: rgb(56,192,240);
+      }
+
+      &.type2 {
+        background: rgb(4,129,185);
+      }
+
+      &.type3 {
+        background: rgb(34,54,102);
+      }
+
+      &.type4 {
+        background: rgb(216,52,21);
+      }
+
+      &.type5 {
+        background: rgb(251,188,58);
+      }
+
+      p {
+        margin: 0;
+        text-shadow: 0 1px 0 #333;
+      }
+    }
+  }
+}
+
+.attention {
+  color: white;
+  background: #111;
+  border: 0;
+  border-radius: 0;
+
+  h3 {
+    text-transform: uppercase;
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+
+
+
+#event-countdown-wrapper {
+  text-align: center;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .counter {
+    display: inline-block;
+    width: 22%;
+  }
+
+  #event-countdown-counters {
+    .number {
+      font-size: 3em;
+      line-height: 1em;
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+

@@ -1,23 +1,34 @@
+
+
 <div class="well">
 
-<% counter = 0 %>
 <% @articles.each do |article| %>
-  <%classtext = "artikkel grid_7 articleheight "+  (counter%2 == 0 ? "alpha" : "omega") 
-  counter +=1%>
-  <div class="<%=classtext%>">
-    <a href="<%=article_path(article, :tab=>params[:tab])%>">
-      <h1><%=article.title%></h1>
-      <p><%=article.sub_title%></p>
-      <p><%=article.created_at%>
-    </a>
-  </div>
+
+<a href="<%=article_path(article, :tab=>params[:tab])%>" style="margin: 0; padding: 0;">
+  <article style="height: 387px; position: relative; margin: 1em 0; box-sizing: border-box;">
+    <div style="position: absolute; bottom: 0; width: 100%;">
+      <img src="<%= article.frontend_article_image.url(:article_large) %>">
+      <div class="image-text" style="padding: 1em;">
+        <h1 style="margin:0; padding: 0;"><%=article.title%></h1>
+        <section class="image-ingress" style="margin:0; padding: 0;">
+          <p style="margin:0; padding: 0;"><%=article.sub_title%></p>
+        </section>
+      </div>
+    </div>
+
+  </article>
+</a>
 <%end%>
 
-<div class="pagination pagination-centered">
-  <div class="page_info">
-    <%= page_entries_info @articles %>
+<div style="margin-top: 2em;">
+    <div class="page_info" style="text-align: center;">
+      <%= page_entries_info @articles %>
+    </div>
+  <div class="pagination pagination-centered">
+    <ul>
+      <%= will_paginate @articles, :container => false %>
+    </ul>
   </div>
-  <%= will_paginate @articles, :container => false %>
 </div>
 
 </div>

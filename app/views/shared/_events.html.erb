@@ -1,0 +1,152 @@
+<div id="event-well">
+</div>
+
+<% content_for :script do %>
+
+<script type="text/javascript" id="event-template">
+  <a href="http://events.isfit.org/2013/{{ id }}">
+    <article class="event-preview">
+      <div class="decor type{{ event.event_type_id }}">
+        <p>{{ datetime.substr(8,2) }} FEB</p>
+        <p>{{ datetime.substr(11,5) }}</p>
+      </div>
+      <img src="http://events.isfit.org/system/events/image_fronts/000/000/00{{ event.id }}/cover/{{ event.image_front_file_name }}" alt="">
+      <p class="title">{{ event.title }}</p>
+    </article>
+  </a>
+</script>
+
+
+<script type="text/javascript">
+
+$(function(){
+  _.templateSettings = {
+    interpolate : /\{\{(.+?)\}\}/g
+  };
+  var template = _.template($('#event-template').html());
+
+  var eventData = {};
+  $.ajax({
+    url: 'http://events.isfit.org/events/index.json',
+    success: function(data){
+      eventData.eventList = data;
+      _.each(data, function(element){
+        if(element.length>0){
+          _.each(element, function(ev){
+            console.log(ev);
+            $('#event-well').append(template(ev));
+          });
+        }
+      })
+
+    },
+    error: function(){
+      alert('fail!');
+    },
+    dataType: 'json'
+  });
+
+});
+
+function dothing() {
+      $('#event-countdown-wrapper').text('rawr');
+}
+
+$(function(){
+  $('#event-countdown-hours').dblclick(dothing);
+});
+
+
+
+
+// jQuery.XDomainRequest.js
+// Author: Jason Moon - @JSONMOON
+// IE8+
+if (!jQuery.support.cors && window.XDomainRequest) {
+  var httpRegEx = /^https?:\/\//i;
+  var getOrPostRegEx = /^get|post$/i;
+  var sameSchemeRegEx = new RegExp('^'+location.protocol, 'i');
+  var jsonRegEx = /\/json/i;
+  var xmlRegEx = /\/xml/i;
+  
+  // ajaxTransport exists in jQuery 1.5+
+  jQuery.ajaxTransport('text html xml json', function(options, userOptions, jqXHR){
+    // XDomainRequests must be: asynchronous, GET or POST methods, HTTP or HTTPS protocol, and same scheme as calling page
+    if (options.crossDomain && options.async && getOrPostRegEx.test(options.type) && httpRegEx.test(userOptions.url) && sameSchemeRegEx.test(userOptions.url)) {
+      var xdr = null;
+      var userType = (userOptions.dataType||'').toLowerCase();
+      return {
+        send: function(headers, complete){
+          xdr = new XDomainRequest();
+          if (/^\d+$/.test(userOptions.timeout)) {
+            xdr.timeout = userOptions.timeout;
+          }
+          xdr.ontimeout = function(){
+            complete(500, 'timeout');
+          };
+          xdr.onload = function(){
+            var allResponseHeaders = 'Content-Length: ' + xdr.responseText.length + '\r\nContent-Type: ' + xdr.contentType;
+            var status = {
+              code: 200,
+              message: 'success'
+            };
+            var responses = {
+              text: xdr.responseText
+            };
+            /*
+            if (userType === 'html') {
+              responses.html = xdr.responseText;
+            } else
+            */
+            try {
+              if ((userType === 'json') || ((userType !== 'text') && jsonRegEx.test(xdr.contentType))) {
+                try {
+                  responses.json = $.parseJSON(xdr.responseText);
+                } catch(e) {
+                  status.code = 500;
+                  status.message = 'parseerror';
+                  //throw 'Invalid JSON: ' + xdr.responseText;
+                }
+              } else if ((userType === 'xml') || ((userType !== 'text') && xmlRegEx.test(xdr.contentType))) {
+                var doc = new ActiveXObject('Microsoft.XMLDOM');
+                doc.async = false;
+                try {
+                  doc.loadXML(xdr.responseText);
+                } catch(e) {
+                  doc = undefined;
+                }
+                if (!doc || !doc.documentElement || doc.getElementsByTagName('parsererror').length) {
+                  status.code = 500;
+                  status.message = 'parseerror';
+                  throw 'Invalid XML: ' + xdr.responseText;
+                }
+                responses.xml = doc;
+              }
+            } catch(parseMessage) {
+              throw parseMessage;
+            } finally {
+              complete(status.code, status.message, responses, allResponseHeaders);
+            }
+          };
+          xdr.onerror = function(){
+            complete(500, 'error', {
+              text: xdr.responseText
+            });
+          };
+          var postData = (userOptions.data && $.param(userOptions.data)) || '';
+          xdr.open(options.type, options.url);
+          xdr.send(postData);
+        },
+        abort: function(){
+          if (xdr) {
+            xdr.abort();
+          }
+        }
+      };
+    }
+  });
+}
+
+
+</script>
+<% end %>

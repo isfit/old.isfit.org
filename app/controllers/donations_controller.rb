@@ -28,7 +28,8 @@ class DonationsController < ApplicationController
                        :amount => params[:mc_gross],
                        :name => "#{params[:first_name]} #{params[:last_name]}",
                        :email => params[:payer_email])
-      Postoffice.donation("#{params[:first_name]} #{params[:last_name]}", params[:payer_email]).deliver
+      mail = Postoffice.donation("#{params[:first_name]} #{params[:last_name]}", params[:payer_email])
+      mail.deliver!
     end
    
     render :nothing => true
