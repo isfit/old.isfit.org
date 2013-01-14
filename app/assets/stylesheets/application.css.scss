@@ -332,6 +332,7 @@ div.event-button.round.disabled {
   .event-preview {
     position: relative;
     overflow: hidden;
+    height: 121px;
 
     p.title {
       background: #111;
@@ -340,6 +341,10 @@ div.event-button.round.disabled {
       text-align: right;
       padding: .2em .5em;
       margin: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 244px;
     }
 
     img {
@@ -409,10 +414,6 @@ div.event-button.round.disabled {
   }
 }
 
-// TODO: do this properly
-*:not(.carousel-control) {
-  border-radius: 0 !important;
-}
 
 
 
