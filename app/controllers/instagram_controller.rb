@@ -27,14 +27,16 @@ class InstagramController < ApplicationController
   	end
 
 	def map
-		@liste = []
-		hash = ["isfit","isfit2013","tradeyourideas"]
+		cache("instagram", :expires_in => 1.hour) do
+			@liste = []
+			hash = ["isfit","isfit2013","tradeyourideas"]
 
-		hash.each do |tag|
-			tags = Instagram.tag_recent_media(tag, :access_token =>"243186201.1fb234f.bb46792029d849d4ac1ede4d35ce6abc")
-			tags.data.each do |obj|
-				if obj.location != nil
-					@liste.push(obj)
+			hash.each do |tag|
+				tags = Instagram.tag_recent_media(tag, :access_token =>"243186201.1fb234f.bb46792029d849d4ac1ede4d35ce6abc")
+				tags.data.each do |obj|
+					if obj.location != nil
+						@liste.push(obj)
+					end
 				end
 			end
 		end

@@ -132,4 +132,49 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="span12">
+    <div class="well">
+      <h1>#isfit - Instagram</h1>
+      <div id="instamap" style="height: 500px;">
+        <%= content_for :script do %>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.2.30/gmaps.min.js"></script>
+          <script>
+          $(document).ready(function() {
+            var map = new GMaps({
+              div: '#instamap',
+              lat: 63.4226,
+              lng: 10.3949,
+              zoom: 13
+            });
+
+            $.getJSON('/instagram.json', function(data) {
+              $.each(data, function(key, imagedata) {
+                map.addMarker({
+                  lat: imagedata.location.latitude,
+                  lng: imagedata.location.longitude,
+                  title: 'Test',
+                  click: function() {
+                    var htmlStreng = "<a href='" + imagedata.link + "'><img src='" + imagedata.images.standard_resolution.url + "'></a>";
+                    $("#instagram-image .modal-body").html(htmlStreng);
+                    $('#instagram-image').modal('show');
+                  }
+                });
+              });
+            });
+          }); 
+          </script>
+        <% end %>
+      </div>
+      <div id="instagram-image" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
