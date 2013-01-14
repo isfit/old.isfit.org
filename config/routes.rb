@@ -1,4 +1,7 @@
 WwwIsfitOrg::Application.routes.draw do  
+  get "instagram/map"
+  get "instagram" => "instagram#map"
+
   get "ideas" => 'ideas#index'
 
   get "stats" => 'stats#index'
