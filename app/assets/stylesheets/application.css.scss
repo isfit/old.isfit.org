@@ -407,10 +407,17 @@ div.event-button.round.disabled {
 
   h3 {
     text-transform: uppercase;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
   }
 
   a {
     color: white;
+    display: block;
+    padding: .5em;
 
     &:hover {
       color: white;
@@ -425,8 +432,13 @@ div.event-button.round.disabled {
 #event-countdown-wrapper {
   text-align: center;
 
-  h2 {
-    margin-top: 0;
+  float: right;
+  width: 300px;
+
+  h4 {
+    margin: 0;
+    font-size: 1em;
+    margin: 0 0 .5em 0;
   }
 
   .counter {
@@ -436,7 +448,7 @@ div.event-button.round.disabled {
 
   #event-countdown-counters {
     .number {
-      font-size: 3em;
+      font-size: 1.5em;
       line-height: 1em;
       margin-bottom: 0;
     }

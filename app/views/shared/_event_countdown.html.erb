@@ -1,30 +1,29 @@
-<div class="well">
-  <div id="event-countdown-wrapper" style="opacity: 0;">
-    <h2><%= t('layout.counter.event_countdown') %></h2>
+<div id="event-countdown-wrapper" style="opacity: 0;">
+  <h4><%= t('layout.counter.event_countdown') %></h4>
 
-    <div id="event-countdown-counters">
-      <div class="counter">
-          <p class="number"><span id="event-countdown-days">??</span></p>
-          <p class="denominators"><%= t('layout.counter.days') %></p>
-        </div>
-        
-        <div class="counter">
-          <p class="number"><span id="event-countdown-hours">??</span></p>
-          <p class="denominators"><%= t('layout.counter.hours') %></p>
-        </div>
-        
-        <div class="counter">
-          <p class="number"><span id="event-countdown-minutes">??</span></p>
-          <p class="denominators"><%= t('layout.counter.minutes') %></p>
-        </div>
-        
-        <div class="counter">
-          <p class="number"><span id="event-countdown-seconds">??</span></p>
-          <p class="denominators"><%= t('layout.counter.seconds') %></p>
-        </div>
+  <div id="event-countdown-counters">
+    <div class="counter">
+        <p class="number"><span id="event-countdown-days">??</span></p>
+        <p class="denominators"><%= t('layout.counter.days') %></p>
       </div>
-  </div>
+      
+      <div class="counter">
+        <p class="number"><span id="event-countdown-hours">??</span></p>
+        <p class="denominators"><%= t('layout.counter.hours') %></p>
+      </div>
+      
+      <div class="counter">
+        <p class="number"><span id="event-countdown-minutes">??</span></p>
+        <p class="denominators"><%= t('layout.counter.minutes') %></p>
+      </div>
+      
+      <div class="counter">
+        <p class="number"><span id="event-countdown-seconds">??</span></p>
+        <p class="denominators"><%= t('layout.counter.seconds') %></p>
+      </div>
+    </div>
 </div>
+
 
 <% content_for :script do %>
 

@@ -97,12 +97,14 @@
     back: "Tilbake"
     show_all: "Vis alle"
     counter: 
-      event_countdown: 'Førslipp'
+      event_countdown: 'Hovedprogramslipp'
       minutes: 'min'
       seconds: 'sek'
       hours: 'timer'
       days: 'dager'
-    event_alertbox: 'Førslipp av festivalprogram'
+    event_alertbox: 
+      header: 'Førslipp av festivalprogram'
+      subtitle: 'Les mer her!'
   article:
     header: "NYHETER"
     more: "Flere saker"

@@ -91,12 +91,14 @@ en:
     back: "Back"
     show_all: "Show all"
     counter: 
-      event_countdown: 'Sneak peek of the programme'
+      event_countdown: 'Main programme release'
       minutes: 'min'
       seconds: 'sec'
       hours: 'hours'
       days: 'days'
-    event_alertbox: 'Sneak peek of the festival programme'
+    event_alertbox:
+      header: 'Sneak peek of the festival programme'
+      subtitle: 'Read more here!'
   article:
     header: "NEWS"
     more: "More news"
