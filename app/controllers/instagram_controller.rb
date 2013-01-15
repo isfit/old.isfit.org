@@ -2,6 +2,8 @@ class InstagramController < ApplicationController
 	before_filter :cors_preflight_check
 	after_filter :cors_set_access_control_headers
 
+	caches_page :map
+
 	def cors_set_access_control_headers
 	  headers['Access-Control-Allow-Origin'] = '*'
 	  headers['Access-Control-Allow-Methods'] = 'GET'
@@ -27,20 +29,18 @@ class InstagramController < ApplicationController
   	end
 
 	def map
-		cache("instagram", :expires_in => 1.hour) do
-			@liste = []
-			hash = ["isfit","isfit2013","tradeyourideas"]
+		@liste = []
+		hash = ["isfit","isfit2013","tradeyourideas"]
 
-			hash.each do |tag|
-				tags = Instagram.tag_recent_media(tag, :access_token =>"243186201.1fb234f.bb46792029d849d4ac1ede4d35ce6abc")
-				tags.data.each do |obj|
-					if obj.location != nil
-						@liste.push(obj)
-					end
+		hash.each do |tag|
+			tags = Instagram.tag_recent_media(tag, :access_token =>"243186201.1fb234f.bb46792029d849d4ac1ede4d35ce6abc")
+			tags.data.each do |obj|
+				if obj.location != nil
+					@liste.push(obj)
 				end
 			end
-			render :json => @liste
 		end
+		render :json => @liste
 		
 	end
 end
