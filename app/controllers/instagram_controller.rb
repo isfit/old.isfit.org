@@ -39,7 +39,8 @@ class InstagramController < ApplicationController
 					end
 				end
 			end
+			render :json => @liste
 		end
-		render :json => @liste
+		
 	end
 end
