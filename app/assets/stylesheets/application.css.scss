@@ -327,8 +327,6 @@ div.event-button.round.disabled {
   height: 92px;
 }
 
-
-
 #event-well {
   a {
     text-decoration: none;
@@ -455,5 +453,29 @@ div.event-button.round.disabled {
   }
 }
 
+#photo-contest {
+  margin: 0;
+  padding: 0;
+  position: relative;
 
+  .meta {
+    position: absolute;
+    width: 100%;
+    text-align: right;
+    color: white;
+    background: rgba(0,0,0,.4);
+    bottom: 0;
+    left: 0;
+    padding-right: 1em;
+
+    p {
+      margin: 0;
+      text-shadow: 0 1px 0 #333;
+    }
+
+    span.theme {
+      font-style: italic;
+    }
+  }
+}
 

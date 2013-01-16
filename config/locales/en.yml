@@ -99,6 +99,10 @@ en:
     event_alertbox:
       header: 'Sneak peek of the festival programme'
       subtitle: 'Read more here!'
+    photo_contest:
+      title: 'The winner of the photo challenge:'
+      theme: 'friendship'
+      name: 'Chathuraka Kaushalya'
   article:
     header: "NEWS"
     more: "More news"

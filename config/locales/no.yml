@@ -105,6 +105,10 @@
     event_alertbox: 
       header: 'Førslipp av festivalprogram'
       subtitle: 'Les mer her!'
+    photo_contest:
+      title: 'Vinneren av fotokonkurransen:'
+      theme: 'vennskap'
+      name: 'Chathuraka Kaushalya'      
   article:
     header: "NYHETER"
     more: "Flere saker"

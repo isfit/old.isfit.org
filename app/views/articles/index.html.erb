@@ -15,6 +15,10 @@
 
 <% end %>
 
+
+<%# this is a hack. will fix later. maybe %>
+<% if false %>
+
 <% if Language.to_s == "no" %>
   <%= content_for :header do %>
 
@@ -64,6 +68,37 @@
    </div>
   <% end %>
 <% end %>
+
+<%# hack to facilitate the photo contest %>
+<% end %>
+
+
+
+<%= content_for :header do %>
+  <div class="hero-unit">
+    <div class="action-text">
+      <% if Language.to_s == 'no' %>
+        <h1><%= t("call-to-action.header") %></h1>
+        <p><%= raw format t("call-to-action.host_paragraph") %></p>
+      <% else %>
+        <h1><%= t("call-to-action.blogs_header") %></h1>
+        <p><%= raw format t("call-to-action.blogs_paragraph") %></p>
+      <% end %>
+    </div>
+    <div class="media">
+      <figure id="photo-contest">
+        <%= image_tag('photo_contest_winner_1.jpg') %>
+        <div class="meta">
+          <p><span class="title"><%= t('layout.photo_contest.title') %></span> <span class="theme"><%= t('layout.photo_contest.theme') %></span></p>
+          <p>&copy; <span class="name"><%= t('layout.photo_contest.name') %></span><p>
+        </div>
+      </figure>
+    </div>
+  </div>
+<% end %>
+
+
+
 
 <%= render "shared/ads" %>
 
