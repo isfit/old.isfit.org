@@ -91,7 +91,7 @@ en:
     back: "Back"
     show_all: "Show all"
     counter: 
-      event_countdown: 'Main programme release'
+      event_countdown: 'Countdown to programme release'
       minutes: 'min'
       seconds: 'sec'
       hours: 'hours'

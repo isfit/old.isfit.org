@@ -2,9 +2,7 @@
 <% if Time.now > Time.new(2013,01,14,07,01) %>
   <div class="row">
     <div class="span12 well attention">
-      <% if false %>
-        <%= render 'shared/event_countdown' %>
-      <% end %>
+      <%= render 'shared/event_countdown' %>
 
       <a href="http://events.isfit.org">
         <h3><%= t('layout.event_alertbox.header') %></h3>
