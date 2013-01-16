@@ -80,6 +80,10 @@
       <% if Language.to_s == 'no' %>
         <h1><%= t("call-to-action.header") %></h1>
         <p><%= raw format t("call-to-action.host_paragraph") %></p>
+        <p>
+          <%= link_to "Bli vert", hosts_path, class: "btn btn-primary btn-large" %>
+          <%= link_to "Les mer", "http://vert.isfit.org", class: "btn btn-large" %>
+        </p>
       <% else %>
         <h1><%= t("call-to-action.blogs_header") %></h1>
         <p><%= raw format t("call-to-action.blogs_paragraph") %></p>
