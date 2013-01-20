@@ -28,18 +28,14 @@ $(function(){
 
   var eventData = {};
   $.ajax({
-    url: 'http://localhost:4000/events/index.json?limit=3',
-    // url: 'http://events.isfit.org/events/index.json',
+    // url: 'http://localhost:4000/events/index.json?limit=3',
+    url: 'http://events.isfit.org/events/index.json',
     success: function(data){
+      debugger;
       eventData.eventList = data;
       _.each(data, function(element){
-        if(element.length>0){
-          _.each(element, function(ev){
-            $('#event-well').append(template(ev));
-          });
-        }
-      })
-
+        $('#event-well').append(template(element));
+      });
     },
     error: function(){
       $('#event-well').append('<div class="alert alert-error"><p>Failed to fetch events.</p><p>Please visit <a href="http://events.isfit.org" style="color:black;">our events page</a> for the latest events.</p></div>')
