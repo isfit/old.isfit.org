@@ -28,10 +28,8 @@ $(function(){
 
   var eventData = {};
   $.ajax({
-    // url: 'http://localhost:4000/events/index.json?limit=3',
-    url: 'http://events.isfit.org/events/index.json',
+    url: 'http://events.isfit.org/events/api.json?limit=3',
     success: function(data){
-      debugger;
       eventData.eventList = data;
       _.each(data, function(element){
         $('#event-well').append(template(element));
