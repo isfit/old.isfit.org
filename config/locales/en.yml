@@ -97,8 +97,12 @@ en:
       hours: 'hours'
       days: 'days'
     event_alertbox:
-      header: 'Sneak peek of the festival programme'
-      subtitle: 'Read more here!'
+      teaser:
+        header: 'Sneak peek of the festival programme'
+        subtitle: 'Read more here!'
+      release: 
+        header: 'Festival programme release'
+        subtitle: 'Read more here!'
     photo_contest:
       title: 'The winner of the photo challenge:'
       theme: 'friendship'

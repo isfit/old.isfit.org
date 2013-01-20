@@ -1,17 +1,36 @@
 <%= content_for :header do %>
-<% if Time.now > Time.new(2013,01,14,07,01) %>
+
   <div class="row">
     <div class="span12 well attention">
-      <%= render 'shared/event_countdown' %>
+      
+      <% if params.has_key?(:elise) %>
 
-      <a href="http://events.isfit.org">
-        <h3><%= t('layout.event_alertbox.header') %></h3>
-        <p><%= t('layout.event_alertbox.subtitle') %></p>
-      </a>
+        <a href="http://events.isfit.org">
+          <h3><%= t('layout.event_alertbox.elise.header') %></h3>
+          <p><%= t('layout.event_alertbox.elise.subtitle') %></p>
+        </a>
+        <% else %>
 
+      <%# WAT? %>
+
+
+      <% if Time.now < Time.new(2013,01,21,07,00)+1.hour %>
+        <%= render 'shared/event_countdown' %>
+
+        <a href="http://events.isfit.org">
+          <h3><%= t('layout.event_alertbox.teaser.header') %></h3>
+          <p><%= t('layout.event_alertbox.teaser.subtitle') %></p>
+        </a>
+      <% else %>
+        <a href="http://events.isfit.org">
+          <h3><%= t('layout.event_alertbox.release.header') %></h3>
+          <p><%= t('layout.event_alertbox.release.subtitle') %></p>
+        </a>
+      <% end %>
+
+    <% end %>
     </div>
   </div>
-<% end %>
 
 <% end %>
 
@@ -131,11 +150,7 @@
   <div class="span4">
     <aside id="sidebar"><!-- Start hoyreramme -->
     <div class="promotional">
-      <% if Time.now < Time.new(2013,01,14,07,01) %>
-        <%= render 'shared/event_countdown' %>
-      <% else %>
-        <%= render 'shared/events' %>
-      <% end %>
+      <%= render 'shared/events' %>
     </div>
 
     <% if Time.now < Time.new(2013,01,14,07,01) %>

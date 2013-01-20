@@ -103,8 +103,15 @@
       hours: 'timer'
       days: 'dager'
     event_alertbox: 
-      header: 'Førslipp av festivalprogram'
-      subtitle: 'Les mer her!'
+      teaser:
+        header: 'Førslipp av festivalprogram'
+        subtitle: 'Les mer her!'
+      release: 
+        header: 'Programslipp'
+        subtitle: 'Les mer her!'
+      elise:
+        header: 'Sug kuk'
+        subtitle: 'og dø'
     photo_contest:
       title: 'Vinneren av fotokonkurransen:'
       theme: 'vennskap'
