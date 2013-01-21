@@ -3,6 +3,18 @@
 
 <% content_for :script do %>
 
+  <script>
+    function zeroFill( number, width )
+    {
+      width -= number.toString().length;
+      if ( width > 0 )
+      {
+        return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+      }
+      return number + ""; // always return a string
+    }
+  </script>
+
 <script type="text/javascript" id="event-template">
   <a href="http://events.isfit.org/2013/{{ id }}">
     <article class="event-preview">
@@ -10,7 +22,7 @@
         <p>{{ start_at.substr(8,2) }} FEB</p>
         <p>{{ start_at.substr(11,5) }}</p>
       </div>
-      <img src="http://events.isfit.org/system/events/image_fronts/000/000/{{ "%03d" % event.id }}/cover/{{ event.image_front_file_name }}" alt="">
+      <img src="http://events.isfit.org/system/events/image_fronts/000/000/{{ zeroFill(event.id, 3) }}/cover/{{ event.image_front_file_name }}" alt="">
       <p class="title">{{ event.title }}</p>
     </article>
   </a>
