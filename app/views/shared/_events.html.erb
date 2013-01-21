@@ -10,7 +10,7 @@
         <p>{{ datetime.substr(8,2) }} FEB</p>
         <p>{{ datetime.substr(11,5) }}</p>
       </div>
-      <img src="http://events.isfit.org/system/events/image_fronts/000/000/00{{ event.id }}/cover/{{ event.image_front_file_name }}" alt="">
+      <img src="http://events.isfit.org/system/events/image_fronts/000/000/{{ "%03d" % event.id }}/cover/{{ event.image_front_file_name }}" alt="">
       <p class="title">{{ event.title }}</p>
     </article>
   </a>
