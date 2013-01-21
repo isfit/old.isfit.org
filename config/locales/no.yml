@@ -97,12 +97,25 @@
     back: "Tilbake"
     show_all: "Vis alle"
     counter: 
-      event_countdown: 'Førslipp'
+      event_countdown: 'Nedtelling til programavduking'
       minutes: 'min'
       seconds: 'sek'
       hours: 'timer'
       days: 'dager'
-    event_alertbox: 'Førslipp av festivalprogram'
+    event_alertbox: 
+      teaser:
+        header: 'Førslipp av festivalprogram'
+        subtitle: 'Les mer her!'
+      release: 
+        header: 'Programslipp'
+        subtitle: 'Les mer her!'
+      elise:
+        header: 'Sug kuk'
+        subtitle: 'og dø'
+    photo_contest:
+      title: 'Vinneren av fotokonkurransen:'
+      theme: 'vennskap'
+      name: 'Chathuraka Kaushalya'      
   article:
     header: "NYHETER"
     more: "Flere saker"

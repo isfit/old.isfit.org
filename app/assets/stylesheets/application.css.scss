@@ -327,8 +327,6 @@ div.event-button.round.disabled {
   height: 92px;
 }
 
-
-
 #event-well {
   a {
     text-decoration: none;
@@ -407,10 +405,17 @@ div.event-button.round.disabled {
 
   h3 {
     text-transform: uppercase;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
   }
 
   a {
     color: white;
+    display: block;
+    padding: .5em;
 
     &:hover {
       color: white;
@@ -425,8 +430,13 @@ div.event-button.round.disabled {
 #event-countdown-wrapper {
   text-align: center;
 
-  h2 {
-    margin-top: 0;
+  float: right;
+  width: 300px;
+
+  h4 {
+    margin: 0;
+    font-size: 1em;
+    margin: 0 0 .5em 0;
   }
 
   .counter {
@@ -436,12 +446,36 @@ div.event-button.round.disabled {
 
   #event-countdown-counters {
     .number {
-      font-size: 3em;
+      font-size: 1.5em;
       line-height: 1em;
       margin-bottom: 0;
     }
   }
 }
 
+#photo-contest {
+  margin: 0;
+  padding: 0;
+  position: relative;
 
+  .meta {
+    position: absolute;
+    width: 100%;
+    text-align: right;
+    color: white;
+    background: rgba(0,0,0,.4);
+    bottom: 0;
+    left: 0;
+    padding-right: 1em;
+
+    p {
+      margin: 0;
+      text-shadow: 0 1px 0 #333;
+    }
+
+    span.theme {
+      font-style: italic;
+    }
+  }
+}
 

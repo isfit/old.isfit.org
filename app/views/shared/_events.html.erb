@@ -7,8 +7,8 @@
   <a href="http://events.isfit.org/2013/{{ id }}">
     <article class="event-preview">
       <div class="decor type{{ event.event_type_id }}">
-        <p>{{ datetime.substr(8,2) }} FEB</p>
-        <p>{{ datetime.substr(11,5) }}</p>
+        <p>{{ start_at.substr(8,2) }} FEB</p>
+        <p>{{ start_at.substr(11,5) }}</p>
       </div>
       <img src="http://events.isfit.org/system/events/image_fronts/000/000/{{ "%03d" % event.id }}/cover/{{ event.image_front_file_name }}" alt="">
       <p class="title">{{ event.title }}</p>
@@ -20,6 +20,7 @@
 <script type="text/javascript">
 
 $(function(){
+  // Mustache-style templating
   _.templateSettings = {
     interpolate : /\{\{(.+?)\}\}/g
   };
@@ -27,21 +28,15 @@ $(function(){
 
   var eventData = {};
   $.ajax({
-    url: 'http://events.isfit.org/events/index.json',
+    url: 'http://events.isfit.org/events/api.json?limit=3',
     success: function(data){
       eventData.eventList = data;
       _.each(data, function(element){
-        if(element.length>0){
-          _.each(element, function(ev){
-            console.log(ev);
-            $('#event-well').append(template(ev));
-          });
-        }
-      })
-
+        $('#event-well').append(template(element));
+      });
     },
     error: function(){
-      alert('fail!');
+      $('#event-well').append('<div class="alert alert-error"><p>Failed to fetch events.</p><p>Please visit <a href="http://events.isfit.org" style="color:black;">our events page</a> for the latest events.</p></div>')
     },
     dataType: 'json'
   });

@@ -91,12 +91,22 @@ en:
     back: "Back"
     show_all: "Show all"
     counter: 
-      event_countdown: 'Sneak peek of the programme'
+      event_countdown: 'Countdown to programme release'
       minutes: 'min'
       seconds: 'sec'
       hours: 'hours'
       days: 'days'
-    event_alertbox: 'Sneak peek of the festival programme'
+    event_alertbox:
+      teaser:
+        header: 'Sneak peek of the festival programme'
+        subtitle: 'Read more here!'
+      release: 
+        header: 'Festival programme release'
+        subtitle: 'Read more here!'
+    photo_contest:
+      title: 'The winner of the photo challenge:'
+      theme: 'friendship'
+      name: 'Chathuraka Kaushalya'
   article:
     header: "NEWS"
     more: "More news"
