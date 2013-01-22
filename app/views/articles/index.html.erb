@@ -2,33 +2,33 @@
 
   <div class="row">
     <div class="span12 well attention">
-      
+
       <% if params.has_key?(:elise) %>
 
         <a href="http://events.isfit.org">
           <h3><%= t('layout.event_alertbox.elise.header') %></h3>
           <p><%= t('layout.event_alertbox.elise.subtitle') %></p>
         </a>
-        <% else %>
-
-      <%# WAT? %>
-
-
-      <% if Time.now < Time.new(2013,01,21,07,00)+1.hour %>
-        <%= render 'shared/event_countdown' %>
-
-        <a href="http://events.isfit.org">
-          <h3><%= t('layout.event_alertbox.teaser.header') %></h3>
-          <p><%= t('layout.event_alertbox.teaser.subtitle') %></p>
-        </a>
       <% else %>
-        <a href="http://events.isfit.org">
-          <h3><%= t('layout.event_alertbox.release.header') %></h3>
-          <p><%= t('layout.event_alertbox.release.subtitle') %></p>
-        </a>
-      <% end %>
 
-    <% end %>
+        <%# WAT? %>
+
+
+        <% if Time.now < Time.new(2013,01,21,07,00)+1.hour %>
+          <%= render 'shared/event_countdown' %>
+
+          <a href="http://events.isfit.org">
+            <h3><%= t('layout.event_alertbox.teaser.header') %></h3>
+            <p><%= t('layout.event_alertbox.teaser.subtitle') %></p>
+          </a>
+        <% else %>
+          <a href="http://events.isfit.org">
+            <h3><%= t('layout.event_alertbox.release.header') %></h3>
+            <p><%= t('layout.event_alertbox.release.subtitle') %></p>
+          </a>
+        <% end %>
+
+      <% end %>
     </div>
   </div>
 
@@ -38,15 +38,15 @@
 <%# this is a hack. will fix later. maybe %>
 <% if false %>
 
-<% if Language.to_s == "no" %>
-  <%= content_for :header do %>
+  <% if Language.to_s == "no" %>
+    <%= content_for :header do %>
 
 
-    <div class="hero-unit">
-      <div class="action-text">
-        <h1><%= t("call-to-action.header") %></h1>
-        <p><%= raw format t("call-to-action.host_paragraph") %></p>
-        <p>
+      <div class="hero-unit">
+        <div class="action-text">
+          <h1><%= t("call-to-action.header") %></h1>
+          <p><%= raw format t("call-to-action.host_paragraph") %></p>
+          <p>
           <%if Language.to_s == "no"%>
             <!-- Knapp -->
             <%= link_to "Bli vert", hosts_path, class: "btn btn-primary btn-large" %>
@@ -61,34 +61,34 @@
           <% else %>
             <%= link_to t("call-to-action.learn_more"), page_path(61), class: "btn btn-large" %>
           <% end %>
-        </p>
+          </p>
+        </div>
+        <div class="media">
+          <!--
+          <iframe src="http://player.vimeo.com/video/47441322?title=0&amp;byline=0&amp;portrait=0&amp;color=d6351a" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+          -->
+          <%= link_to image_tag('host.png'), hosts_path %>
+        </div>
       </div>
-      <div class="media">
-        <!--
-        <iframe src="http://player.vimeo.com/video/47441322?title=0&amp;byline=0&amp;portrait=0&amp;color=d6351a" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-        -->
-        <%= link_to image_tag('host.png'), hosts_path %>
+    <% end %>
+  <% else %>
+    <%= content_for :header do %>
+      <div class="hero-unit">
+        <div class="action-text">
+          <h1><%= t("call-to-action.blogs_header") %></h1>
+          <p><%= raw format t("call-to-action.blogs_paragraph") %></p>
+        </div>
+        <div class="media">
+          <!--
+          <iframe src="http://player.vimeo.com/video/47441322?title=0&amp;byline=0&amp;portrait=0&amp;color=d6351a" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+          -->
+          <%= image_tag('blogs-english.png') %>
+        </div>
       </div>
-   </div>
+    <% end %>
   <% end %>
-<% else %>
-  <%= content_for :header do %>
-    <div class="hero-unit">
-      <div class="action-text">
-        <h1><%= t("call-to-action.blogs_header") %></h1>
-        <p><%= raw format t("call-to-action.blogs_paragraph") %></p>
-      </div>
-      <div class="media">
-        <!--
-        <iframe src="http://player.vimeo.com/video/47441322?title=0&amp;byline=0&amp;portrait=0&amp;color=d6351a" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-        -->
-        <%= image_tag('blogs-english.png') %>
-      </div>
-   </div>
-  <% end %>
-<% end %>
 
-<%# hack to facilitate the photo contest %>
+  <%# hack to facilitate the photo contest %>
 <% end %>
 
 
@@ -100,8 +100,8 @@
         <h1><%= t("call-to-action.header") %></h1>
         <p><%= raw format t("call-to-action.host_paragraph") %></p>
         <p>
-          <%= link_to "Bli vert", hosts_path, class: "btn btn-primary btn-large" %>
-          <%= link_to "Les mer", "http://vert.isfit.org", class: "btn btn-large" %>
+        <%= link_to "Bli vert", hosts_path, class: "btn btn-primary btn-large" %>
+        <%= link_to "Les mer", "http://vert.isfit.org", class: "btn btn-large" %>
         </p>
       <% else %>
         <h1><%= t("call-to-action.blogs_header") %></h1>
@@ -110,11 +110,11 @@
     </div>
     <div class="media">
       <figure id="photo-contest">
-        <%= image_tag('photo_contest_winner_1.jpg') %>
-        <div class="meta">
-          <p><span class="title"><%= t('layout.photo_contest.title') %></span> <span class="theme"><%= t('layout.photo_contest.theme') %></span></p>
-          <p>&copy; <span class="name"><%= t('layout.photo_contest.name') %></span><p>
-        </div>
+      <%= image_tag('photo_contest_winner_1.jpg') %>
+      <div class="meta">
+        <p><span class="title"><%= t('layout.photo_contest.title') %></span> <span class="theme"><%= t('layout.photo_contest.theme') %></span></p>
+        <p>&copy; <span class="name"><%= t('layout.photo_contest.name') %></span><p>
+      </div>
       </figure>
     </div>
   </div>
@@ -156,10 +156,10 @@
     <% if Time.now < Time.new(2013,01,14,07,01) %>
       <div class="promotional">
         <%if Language.to_s == "no"%>
-            <a href="/pages/60"><img src="http://i.imgur.com/ZbQe5.png" alt="promotional"></a>
-          <% else %>
-            <a href="/pages/60"><img src="http://i.imgur.com/yEZbX.png" alt="promotional"></a>
-          <% end %>
+          <a href="/pages/60"><img src="http://i.imgur.com/ZbQe5.png" alt="promotional"></a>
+        <% else %>
+          <a href="/pages/60"><img src="http://i.imgur.com/yEZbX.png" alt="promotional"></a>
+        <% end %>
       </div>
     <% end %>
 
@@ -176,7 +176,7 @@
     <!-- Twitter widget -->
     <div class="well social twitter" id="widget-twitter-fp">
       <header>
-        <h1>Twitter</h1>
+      <h1>Twitter</h1>
       </header>
       <section class="twitter-widget-fp-content">
       </section>
@@ -198,51 +198,51 @@
       <h1>#isfit2013 - Instagram</h1>
       <div id="instamap" style="height: 500px;">
         <%= content_for :script do %>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.2.30/gmaps.min.js"></script>
+          <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+          <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.2.30/gmaps.min.js"></script>
           <script>
-          $(document).ready(function() {
-            var map = new GMaps({
-              div: '#instamap',
-              lat: 63.4226,
-              lng: 10.3949,
-              zoom: 13
-            });
+            $(document).ready(function() {
+              var map = new GMaps({
+                div: '#instamap',
+                lat: 63.4226,
+                lng: 10.3949,
+                zoom: 13
+              });
 
-            $.getJSON('/instagram.json', function(data) {
-              $.each(data, function(key, imagedata) {
-                var tagList = imagedata.tags;
-                console.log(tagList);
-                var tagStreng = "";
-                for(var tag in tagList){
-                  tagStreng += "#" + tagList[tag] + " ";
-                }
-
-                console.log(tagStreng);
-
-                var image = new google.maps.MarkerImage(
-                    imagedata.images.thumbnail.url,
-                    new google.maps.Size(70,70),    // size of the image
-                    new google.maps.Point(0,0), // origin, in this case top-left corner
-                    new google.maps.Point(12.5, 12.5),    // anchor, i.e. the point half-way along the bottom of the image
-                    new google.maps.Size(70,70) // scaledSize
-                );
-
-                map.addMarker({
-                  lat: imagedata.location.latitude,
-                  lng: imagedata.location.longitude,
-                  title: imagedata.user.username,
-                  icon: image,
-                  click: function() {
-                    var htmlStreng = "<p><a href='" + imagedata.link + "' target='_blank'><img src='" + imagedata.images.standard_resolution.url + "'></a></p>";
-                    $("#instagram-image .modal-body").html(htmlStreng);
-                    $('#instagram-image').modal('show');
-                    $(".modal-footer").html("<p class='pull-left'>" + tagStreng + "</p><button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>");
+              $.getJSON('/instagram.json', function(data) {
+                $.each(data, function(key, imagedata) {
+                  var tagList = imagedata.tags;
+                  console.log(tagList);
+                  var tagStreng = "";
+                  for(var tag in tagList){
+                    tagStreng += "#" + tagList[tag] + " ";
                   }
+
+                  console.log(tagStreng);
+
+                  var image = new google.maps.MarkerImage(
+                  imagedata.images.thumbnail.url,
+                  new google.maps.Size(70,70),    // size of the image
+                  new google.maps.Point(0,0), // origin, in this case top-left corner
+                  new google.maps.Point(12.5, 12.5),    // anchor, i.e. the point half-way along the bottom of the image
+                  new google.maps.Size(70,70) // scaledSize
+                  );
+
+                  map.addMarker({
+                    lat: imagedata.location.latitude,
+                    lng: imagedata.location.longitude,
+                    title: imagedata.user.username,
+                    icon: image,
+                    click: function() {
+                      var htmlStreng = "<p><a href='" + imagedata.link + "' target='_blank'><img src='" + imagedata.images.standard_resolution.url + "'></a></p>";
+                      $("#instagram-image .modal-body").html(htmlStreng);
+                      $('#instagram-image').modal('show');
+                      $(".modal-footer").html("<p class='pull-left'>" + tagStreng + "</p><button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>");
+                    }
+                  });
                 });
               });
-            });
-          }); 
+            }); 
           </script>
         <% end %>
       </div>

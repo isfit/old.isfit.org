@@ -131,6 +131,7 @@ Tabulous.setup do |config|
       #    CONTROLLER                |    ACTION          |    TAB                           #
       #--------------------------------------------------------------------------------------#
       [    :articles                 ,    :all_actions    ,    :articles_tab                 ],
+      [    :marketing                ,    :all_actions    ,    :articles_tab                 ],
       [    :isfit_media_links        ,    :all_actions    ,    :isfit_media_links_tab        ],
       [    :project_supports         ,    :all_actions    ,    :project_supports_tab         ],
       [    :hosts                    ,    :all_actions    ,    :hosts_tab                    ],
