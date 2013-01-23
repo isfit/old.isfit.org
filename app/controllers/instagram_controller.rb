@@ -30,7 +30,7 @@ class InstagramController < ApplicationController
 
 	def map
 		@liste = []
-		hash = ["isfit","isfit2013","tradeyourideas"]
+		hash = ["isfit","isfit2013","ISFiT2013","ISFiT","tradeyourideas","TradeYourIdeas","Tradeyourideas","Isfit","Isfit2013"]
 
 		hash.each do |tag|
 			tags = Instagram.tag_recent_media(tag, :access_token =>"243186201.1fb234f.bb46792029d849d4ac1ede4d35ce6abc")
