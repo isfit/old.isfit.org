@@ -10,6 +10,10 @@ $art: #223366;
 $varbox: hsl(293, 100%, 31%);
 $varbox: #D83415;
 
+.tyi-header {
+  font-size: 2.5em !important;
+}
+
 .promo-row a:hover {
   text-decoration: none;
 }
@@ -86,6 +90,10 @@ $varbox: #D83415;
   margin-top: 20px;
 }
 
+.programme h1 {
+  font-size: 1.7em !important;
+} 
+
 // TOP
 // -------------------
 
@@ -103,6 +111,11 @@ $varbox: #D83415;
   p {
     font-size: 1.2em;
     line-height: 1.5em;
+  }
+  .globe {
+    font-size: 10em;
+    margin-top: 60px;
+    margin-left: 250px;
   }
 }
 
@@ -148,7 +161,7 @@ $varbox: #D83415;
 // -----------------------
 
 #middle-right {
-  background: url(http://i.imgur.com/5YAYQLo.jpg) #101010 top no-repeat;
+  background: url(http://i.imgur.com/ZRKN4j5.jpg) #101010 top no-repeat;
   background-size: cover;
   height: 460px;
   color: white;
@@ -165,9 +178,8 @@ $varbox: #D83415;
 }
 
 #middle-left-up {
-  //background: url(http://i.imgur.com/su3Vzbx.jpg) #101010 top no-repeat;
-  //background-size: cover;
-  background: #222;
+  background: url(http://i.imgur.com/dFlg1DZ.jpg) #101010 top no-repeat;
+  background-size: cover;
 }
 
 #middle-left-up {
@@ -181,9 +193,8 @@ $varbox: #D83415;
 }
 
 #middle-left-down {
-  //background: url(http://i.imgur.com/su3Vzbx.jpg) #101010 top no-repeat;
-  //background-size: cover;
-  background: #222;
+  background: url(http://i.imgur.com/vKyTMXf.jpg) #101010 top no-repeat;
+  background-size: cover;
   color: white;
   h1 {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, .75);
@@ -194,7 +205,7 @@ $varbox: #D83415;
 }
 
 #middle-left-down1 {
-  background: url(http://i.imgur.com/UQhXEmy.jpg) #101010 top no-repeat;
+  background: url(http://i.imgur.com/vKyTMXf.jpg) #101010 top no-repeat;
   background-size: cover;
   color: white;
   h1 {
