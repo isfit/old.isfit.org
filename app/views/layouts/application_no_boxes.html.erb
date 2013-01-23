@@ -66,6 +66,8 @@ html5boilerplate
 
 <body>
 
+  <div class="content-wrapper">
+
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -113,7 +115,8 @@ html5boilerplate
     </div><!-- End main -->
 
 
-
+</div>
+</div>
 
     <div class="row">
       <footer class="main-footer span12"><!-- Start footer -->
@@ -138,5 +141,7 @@ html5boilerplate
 
   <%= javascript_include_tag 'application'%>
   <%= yield :script %>
+
+
 </body>
 </html>

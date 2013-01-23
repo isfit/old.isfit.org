@@ -68,6 +68,8 @@ html5boilerplate
 
 <body>
 
+  <div class="content-wrapper">
+  
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -78,29 +80,30 @@ html5boilerplate
     }(document, 'script', 'facebook-jssdk'));</script>
 
 
-  <div class="navbar navbar-fixed-top"> <!-- Start tabs -->
-    <div class="navbar-inner">
-      <div class="container">
-        <%= link_to image_tag("logo.png"), root_path, class: "brand" %>
-        <%= tabs %>
 
-          <div id="fb-connect-topbar" class="pull-right">
-            <% if false %>
-            <!-- In case we should ever need this in the future -->
-              <p><a href="https://www.facebook.com/dialog/oauth?client_id=111446192243028&redirect_uri=http://www.isfit.org/oauth/callback&state=lolololololololol" target="_blank">Log in with Facebook</a></p>
-            <% # else %>
-              <p class="facebook-user-name"><%= session[:user].name %> </p>
-            <% end %>
+    <div class="navbar navbar-fixed-top"> <!-- Start tabs -->
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to image_tag("logo.png"), root_path, class: "brand" %>
+          <%= tabs %>
 
-            <div id="navbar-icons">
-                <p style="color: black; margin-top: 1.4em">7<span class="superscript">th</span> – 17<span class="superscript">th</span> February</p>
+            <div id="fb-connect-topbar" class="pull-right">
+              <% if false %>
+              <!-- In case we should ever need this in the future -->
+                <p><a href="https://www.facebook.com/dialog/oauth?client_id=111446192243028&redirect_uri=http://www.isfit.org/oauth/callback&state=lolololololololol" target="_blank">Log in with Facebook</a></p>
+              <% # else %>
+                <p class="facebook-user-name"><%= session[:user].name %> </p>
+              <% end %>
+
+              <div id="navbar-icons">
+                  <p style="color: black; margin-top: 1.4em">7<span class="superscript">th</span> – 17<span class="superscript">th</span> February</p>
+              </div>
+
             </div>
 
-          </div>
-
+        </div>
       </div>
-    </div>
-  </div><!-- End tabs -->
+    </div><!-- End tabs -->
 
   <div class="container">
     <!-- TODO sett inn notice og warnings her. Se på internal -->
@@ -114,6 +117,7 @@ html5boilerplate
         <%= yield :header %>
     </div>
     
+
     <div role="main" class="row"> <!-- Start main -->
       <div id="content" class="span8"><!-- Start header (span12) -->
         <%= yield %>
@@ -150,7 +154,7 @@ html5boilerplate
 
     </div><!-- End main -->
 
-
+  </div>
 
 
     <div class="row">
@@ -164,10 +168,6 @@ html5boilerplate
       
       </footer><!-- End footer -->
     </div>
-  
-  </div><!-- End container -->
-
-
 
   <!-- JavaScript at the bottom for fast page loading -->
 
