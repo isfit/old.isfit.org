@@ -104,7 +104,7 @@ WwwIsfitOrg::Application.routes.draw do
   match 'opptak' => "positions#index", :tab => "admission"
   match 'apply/position' => "positions#index", :tab => "admission"
   match 'wop' => redirect("http://www.isfit.org/wop/wop_propositions/new")
-  root :to => "articles#index" , :tab=>"news"
+  root :to => "marketing#frontpage"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
