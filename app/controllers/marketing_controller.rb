@@ -9,4 +9,8 @@ class MarketingController < ApplicationController
 
     render layout: "application_no_boxes"
   end
+
+  def world_map
+    render layout: "application_clean"
+  end
 end
