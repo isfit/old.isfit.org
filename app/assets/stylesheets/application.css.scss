@@ -559,6 +559,14 @@ $videobox-height: 500px;
   padding: 1em;
   background: #222;
 
+  h1 {
+    color: white;
+
+    &:hover {
+      color: white;
+    }
+  }
+
 
   #videobox {
     height: 0;
