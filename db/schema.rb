@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106122957) do
+ActiveRecord::Schema.define(:version => 20130204184427) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -239,9 +239,10 @@ ActiveRecord::Schema.define(:version => 20130106122957) do
     t.string   "place"
     t.integer  "number"
     t.text     "other"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.boolean  "student"
+    t.boolean  "deleted",    :default => false
   end
 
   create_table "ideas", :force => true do |t|
@@ -414,6 +415,16 @@ ActiveRecord::Schema.define(:version => 20130106122957) do
     t.string  "tag",                                           :null => false
     t.text    "description_en"
     t.text    "description_no"
+  end
+
+  create_table "streams", :force => true do |t|
+    t.string   "title"
+    t.datetime "publish_at"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.string   "embed_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "workshops", :force => true do |t|

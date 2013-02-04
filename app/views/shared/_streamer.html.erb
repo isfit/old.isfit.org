@@ -1,21 +1,52 @@
+
+<% unless @stream.nil? %>
+
 <div class="row promo-row">
+
+  <% if @stream.start_at < Time.now %>
+
+  
   <a href="#videobox" title="Watch">
   <div class="span12 varbox streambox">
-    <h1>Now streaming</h1>
+    <h1>Now streaming <em><%= @stream.title %></em></h1>
     <p>Watch</p>
 
     <div id="videobox">
-      
       <div class="video-wrapper">
-
-        <iframe width="750" height="470" src="http://www.youtube.com/embed/fBmRNxX_TqA" frameborder="0" allowfullscreen></iframe>
-
+        <%= raw @stream.embed_id %>
         <p><a href="#">Close</a></p>
-
       </div>
-
     </div>
   </div>
   </a>
 
+  <% else %>
+
+  <div class="span12 varbox streambox">
+    <h1>Next stream: <em><%= @stream.title %></em></h1>
+    <p>See it here <%= @stream.start_at.strftime('%H:%M') %></p>
+  </div>
+
+  <% end %>
+
 </div>
+
+
+<% content_for :script do %>
+<script>
+
+  // todo. if i'm feeling particulary masochistic
+
+  // $(function(){
+  //   var hours = <%= @stream.start_at.strftime('%H').to_i - Time.now.strftime('%H').to_i %>;
+  //   var minutes = <%= @stream.start_at.strftime('%M').to_i - Time.now.strftime('%M').to_i %>;
+    
+  //   $('#stream-countdown-hours').text(hours);
+  //   $('#stream-countdown-minutes').text(minutes);
+    
+  // });
+
+</script>
+
+<% end %>
+<% end %>
