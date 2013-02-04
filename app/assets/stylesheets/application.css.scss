@@ -549,3 +549,51 @@ body {
   padding-top: 0;
 }
 
+
+
+$videobox-height: 500px;
+
+
+.streambox {
+  color: white;
+  padding: 1em;
+  background: #222;
+
+
+  #videobox {
+    height: 0;
+    overflow: hidden;
+
+    -webkit-transition: height .5s;
+    -moz-transition: height .5s;
+    -ms-transition: height .5s;
+    -o-transition: height .5s;
+    transition: height .5s;
+
+
+    &:target {
+      padding-top: 5em;
+      height: 580px;
+    }
+
+    iframe {
+      margin: auto;
+    }
+  }
+
+
+
+
+
+  .video-wrapper {
+
+    height: $videobox-height;
+    width: 720px;
+
+    margin: auto;
+    color: black;
+
+
+  }
+
+}
