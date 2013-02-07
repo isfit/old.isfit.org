@@ -28,7 +28,7 @@
   <div class="span12 varbox streambox">
     <div class="clickwrapper">
       <h1>Next stream: <em><%= @stream.title %></em></h1>
-      <p>See it here <%= @stream.start_at.strftime('%H:%M') %></p>
+      <p>Stream starts in <span id="stream-counter-hours">??</span>:<span id="stream-counter-minutes">??</span>:<span id="stream-counter-seconds">??</span></p>
     </div>
   </div>
 
@@ -42,14 +42,38 @@
 
   // todo. if i'm feeling particulary masochistic
 
-  // $(function(){
-  //   var hours = <%= @stream.start_at.strftime('%H').to_i - Time.now.strftime('%H').to_i %>;
-  //   var minutes = <%= @stream.start_at.strftime('%M').to_i - Time.now.strftime('%M').to_i %>;
+  $(function(){
+    var seconds = <%= @stream.start_at.to_i - (Time.now+1.hour).to_i %>;
     
-  //   $('#stream-countdown-hours').text(hours);
-  //   $('#stream-countdown-minutes').text(minutes);
-    
-  // });
+    var sCounter = $('#stream-counter-seconds');
+    var mCounter = $('#stream-counter-minutes');
+    var hCounter = $('#stream-counter-hours');
+
+    window.setInterval(function(){
+      seconds--;
+
+      if(seconds == 0 ){
+        window.location.reload();
+      }
+
+      var minutes = Math.floor(seconds/60);
+      var hours = Math.floor(minutes/60);
+
+      hCounter.text(hours);
+      mCounter.text(leadingZero(minutes-(hours*60)));
+      sCounter.text(leadingZero(seconds-(minutes*60)));
+    }, 1000);
+
+    function leadingZero(tall) {
+      if(String(tall).length == 1) {
+        return '0' + tall;
+      }
+      else {
+        return tall;
+      }
+    }
+
+  });
 
 </script>
 
