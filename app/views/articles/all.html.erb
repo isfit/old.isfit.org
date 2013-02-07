@@ -2,6 +2,8 @@
 
 <div class="well">
 
+  <h1><%= t('article.header') %></h1>
+
 <% @articles.each do |article| %>
 
 <a href="<%=article_path(article, :tab=>params[:tab])%>" style="margin: 0; padding: 0;">

@@ -112,6 +112,7 @@ en:
   article:
     header: "NEWS"
     more: "More news"
+    header: "News archive"
   participant:
     must_match_passport: 'Name must match passport name'
     address_hint: 'Hint for the address?'
