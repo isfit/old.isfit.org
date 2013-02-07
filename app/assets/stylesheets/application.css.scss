@@ -556,16 +556,35 @@ $videobox-height: 500px;
 
 .streambox {
   color: white;
-  padding: 1em;
+  padding: 0;
   background: #222;
 
   h1 {
     color: white;
 
+
     &:hover {
       color: white;
     }
   }
+
+  .clickwrapper {
+    margin-top: -10px;
+
+
+    padding: 10px 1em 10px 1em;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  // h1, p, em {
+  //   margin: 0;
+  //   margin-top: -10px;
+
+  //   padding: 1em;
+  //   padding-top: ;
+  // }
 
 
   #videobox {

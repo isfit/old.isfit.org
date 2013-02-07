@@ -6,10 +6,14 @@
   <% if @stream.start_at < Time.now %>
 
   
-  <a href="#videobox" title="Watch">
   <div class="span12 varbox streambox">
-    <h1>Now streaming <em><%= @stream.title %></em></h1>
-    <p>Watch</p>
+    
+    <a href="#videobox" title="Watch">
+      <div class="clickwrapper">
+        <h1>Now streaming <em><%= @stream.title %></em></h1>
+        <p>Watch</p>
+      </div>
+    </a>
 
     <div id="videobox">
       <div class="video-wrapper">
@@ -18,7 +22,6 @@
       </div>
     </div>
   </div>
-  </a>
 
   <% else %>
 
