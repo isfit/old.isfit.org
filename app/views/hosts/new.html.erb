@@ -10,52 +10,55 @@
 <div class="well">
 <%=render "partials/error", :locals => {:model => @host}%>
 
+<% if true %>
+  Verteregistreringen er stengt for denne gang. Ses i 2015!
+<% else %>
+  <h1>Bli ISFiT-vert!</h1>
 
-<h1>Bli ISFiT-vert!</h1>
+  <p>Den 7. februar 2013 sparker vi i gang med verdens største internasjonale
+  studentfestival, nemlig ISFiT - Internasjonal Studentfestival i Trondheim! Mer
+  enn 450 deltakere kommer fra hele verden for å tilbringe ti dager i
+  Trondheim der de skal bo hjemme hos våre verter. Ønsker du å oppleve
+  festivalen på en ny og spennende måte, og gjøre en forskjell? Da kan du
+  melde deg som ISFiT-vert, med virke i perioden 7. – 17. februar.</p>
 
-<p>Den 7. februar 2013 sparker vi i gang med verdens største internasjonale
-studentfestival, nemlig ISFiT - Internasjonal Studentfestival i Trondheim! Mer
-enn 450 deltakere kommer fra hele verden for å tilbringe ti dager i
-Trondheim der de skal bo hjemme hos våre verter. Ønsker du å oppleve
-festivalen på en ny og spennende måte, og gjøre en forskjell? Da kan du
-melde deg som ISFiT-vert, med virke i perioden 7. – 17. februar.</p>
+  <p>ISFiT tilbyr 17 ulike workshops som jobber med ulike tema knyttet til årets
+  tema global handel, og på dagtid vil deltakerne delta på disse.
+  På kveldstid har ISFiT et stort kulturprogram, som konserter,
+  teater, utstillinger og oppsetninger, i tillegg til møter og foredrag.
+  Dette tilbudet er åpent for deltakerne, studenter og øvrige interesserte i
+  Trondheim - det vil si også deg som vert! Deltakerne tilbringer mye tid
+  både morgen og kveld på våre arrangementer, og ISFiT står for lunsj og
+  middag for deltakerne. Det eneste du må stå for som vert er en enkel
+  frokost og en sengeplass, sofaen funker!</p>
 
-<p>ISFiT tilbyr 17 ulike workshops som jobber med ulike tema knyttet til årets
-tema global handel, og på dagtid vil deltakerne delta på disse.
-På kveldstid har ISFiT et stort kulturprogram, som konserter,
-teater, utstillinger og oppsetninger, i tillegg til møter og foredrag.
-Dette tilbudet er åpent for deltakerne, studenter og øvrige interesserte i
-Trondheim - det vil si også deg som vert! Deltakerne tilbringer mye tid
-både morgen og kveld på våre arrangementer, og ISFiT står for lunsj og
-middag for deltakerne. Det eneste du må stå for som vert er en enkel
-frokost og en sengeplass, sofaen funker!</p>
-
-<p>Har du spørsmål om det å være vert? Ta kontakt med Anne Norvik Finstad på
-annenf@isfit.org eller Karoline Angen på karoange@isfit.org.</p>
+  <p>Har du spørsmål om det å være vert? Ta kontakt med Anne Norvik Finstad på
+  annenf@isfit.org eller Karoline Angen på karoange@isfit.org.</p>
 
 
-<p>Tusen takk på vegne av ISFiT 2013!</p>
+  <p>Tusen takk på vegne av ISFiT 2013!</p>
 
-<h3><%= t('host.registration') %></h3>
-<%= simple_form_for @host, :html => { :class => "form" } do |f| %>
-  <fieldset>
-    <legend><%= t('host.mandatory') %></legend>
-    <%= f.input :first_name, input_html: {class: "span4"} %>
-    <%= f.input :last_name, input_html: {class: "span4"} %>
-    <%= f.input :address, input_html: {class: "span4"} %>
-    <%= f.input :zipcode, input_html: {class: "span4"} %>
-    <%= f.input :place, input_html: {class: "span4"} %>
-    <%= f.input :phone, input_html: {class: "span4"} %>
-    <%= f.input :email, input_html: {class: "span4"} %>
-    <%= f.input :student, input_html: {class: "span4"} %>
-    <%= f.input :number, input_html: {class: "span4"}, :collection => 1..9 %>
+  <h3><%= t('host.registration') %></h3>
+  <%= simple_form_for @host, :html => { :class => "form" } do |f| %>
+    <fieldset>
+      <legend><%= t('host.mandatory') %></legend>
+      <%= f.input :first_name, input_html: {class: "span4"} %>
+      <%= f.input :last_name, input_html: {class: "span4"} %>
+      <%= f.input :address, input_html: {class: "span4"} %>
+      <%= f.input :zipcode, input_html: {class: "span4"} %>
+      <%= f.input :place, input_html: {class: "span4"} %>
+      <%= f.input :phone, input_html: {class: "span4"} %>
+      <%= f.input :email, input_html: {class: "span4"} %>
+      <%= f.input :student, input_html: {class: "span4"} %>
+      <%= f.input :number, input_html: {class: "span4"}, :collection => 1..9 %>
 
-  </fieldset>
-  <fieldset>
-    <legend><%= t('host.optional') %></legend>
-    <%= f.input :other, input_html: {class: "span6", rows: 4} %>
-  </fieldset>
-  <%= f.button 'submit', value: t("host.registration"), class: "btn btn-large btn-primary" %></center>
+    </fieldset>
+    <fieldset>
+      <legend><%= t('host.optional') %></legend>
+      <%= f.input :other, input_html: {class: "span6", rows: 4} %>
+    </fieldset>
+    <%= f.button 'submit', value: t("host.registration"), class: "btn btn-large btn-primary" %></center>
 
+  <% end %>
 <% end %>
 </div>
