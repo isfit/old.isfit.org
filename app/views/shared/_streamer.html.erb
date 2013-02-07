@@ -3,7 +3,7 @@
 
 <div class="row promo-row">
 
-  <% if @stream.start_at < Time.now %>
+  <% if @stream.start_at <= (Time.now+1.hour) %>
 
   
   <div class="span12 varbox streambox">
@@ -26,8 +26,10 @@
   <% else %>
 
   <div class="span12 varbox streambox">
-    <h1>Next stream: <em><%= @stream.title %></em></h1>
-    <p>See it here <%= @stream.start_at.strftime('%H:%M') %></p>
+    <div class="clickwrapper">
+      <h1>Next stream: <em><%= @stream.title %></em></h1>
+      <p>See it here <%= @stream.start_at.strftime('%H:%M') %></p>
+    </div>
   </div>
 
   <% end %>
