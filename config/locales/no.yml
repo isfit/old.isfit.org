@@ -121,7 +121,7 @@
   article:
     header: "NYHETER"
     more: "Flere saker"
-    header: "Nyhetsarkiv"
+    header: "Siste nyheter"
   participant:
     must_match_passport: 'Navnet må stemme overens med navnet i passet ditt'
     address_hint: ''
