@@ -77,6 +77,7 @@ Tabulous.setup do |config|
       [    :theme_workshops_subtab            ,    t('tabs.theme.workshops')                ,    page_path(53)                                                        ,    true        ,    true        ],
       [    :theme_tradeyourideas_subtab       ,    t('tabs.theme.tradeyourideas')         ,    ideas_path                                                        ,    false        ,    true        ],
       [    :theme_themeblog_subtab            ,    t('tabs.theme.themeblog')               ,    page_path(66)                                                        ,    false        ,    false        ],
+      [    :theme_map_subtab       ,    t('tabs.theme.map')          ,    '/world-map/'                                                        ,    true        ,    true        ],
       [    :theme_previousthemes_subtab       ,    t('tabs.theme.previousthemes')          ,    page_path(58)                                                        ,    true        ,    true        ],
       [    :about_tab                         ,    t('tabs.about.main')                    ,    photos_path                                                        ,    true        ,    false        ],
       [    :about_whatisisfit_subtab          ,    t('tabs.about.whatisisfit')                    ,    page_path(7)                                                        ,    true        ,    true        ],
