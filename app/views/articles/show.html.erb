@@ -10,7 +10,7 @@
 
 
 <% if @article.body == "" && @article.ingress == ""
-     in_language = false
+in_language = false
 else
   in_language = true
 end%>
@@ -43,14 +43,14 @@ end%>
     <%=raw format(I18n.locale.to_s == 'no' ? @article.ingress_no : @article.ingress_en) %>
     </section>
 
-      
-  <section class="article-credits">
+
+    <section class="article-credits">
     <span>Text: <%=raw @article.byline%>
-    <%if @article.image_credits != ""%>
-      Photo: <%=raw @article.image_credits%>
-    <%end%>
-    Date: <%=  @article.created_at.strftime("%F")%></span>
-  </section>
+      <%if @article.image_credits != ""%>
+        Photo: <%=raw @article.image_credits%>
+      <%end%>
+      Date: <%=  @article.created_at.strftime("%F")%></span>
+    </section>
 
 
 
@@ -60,48 +60,51 @@ end%>
 
 
 <% end %>
-    </header>
+</header>
 
 
 
 
 
-    <div id="article-wrapper" class="well">
+<div id="article-wrapper" class="well">
 
 
 
-      <article id="article">
+  <article id="article">
 
-      <% unless in_language%>
-        <div class="alert">
-          <button class="close" data-dismiss="alert">×</button>
-          We are sorry, but the article is not available in your language.
-        </div>
-      <%end%>
-
-       
-
-
-         <div>
-          <section class="article-text">
-          <div class="fb-like pull-right" data-href="<%= article_url(@article) %>" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false"></div>
-          <%= raw format( I18n.locale.to_s =='no' ? @article.body_no : @article.body_en) %>
-          </section>
-        </div>
-        <!-- Just playing around... -->
-
-
-
-
-
-
-      </article>
-
-
-      <%if @article.got_comments%>
-        <div class="fb-comments" data-href="<%= article_url(@article) %>" data-num-posts="2" data-width="550"></div>
-      <%end%>
-
+  <% unless in_language%>
+    <div class="alert">
+      <button class="close" data-dismiss="alert">×</button>
+      We are sorry, but the article is not available in your language.
     </div>
-        <%= content_for :sidebar do %>
-      <% end %>
+  <%end%>
+
+
+
+
+  <div>
+    <section class="article-text">
+    <div class="fb-like pull-right" data-href="<%= article_url(@article) %>" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false"></div>
+    <%= raw format( I18n.locale.to_s =='no' ? @article.body_no : @article.body_en) %>
+    </section>
+  </div>
+  <!-- Just playing around... -->
+
+
+
+
+
+
+  </article>
+
+
+  <%if @article.got_comments%>
+    <div class="fb-comments" data-href="<%= article_url(@article) %>" data-num-posts="2" data-width="550"></div>
+  <%end%>
+
+</div>
+<% if @article.sidebar %>
+  <%= content_for :sidebar do %>
+    <%= format @article.sidebar %>
+  <% end %>
+<% end %>
