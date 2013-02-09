@@ -209,7 +209,7 @@ $varbox: #D83415;
 // -----------------------
 
 #middle-right {
-  background: url(http://i.imgur.com/U8cc53W.jpg) #101010 top no-repeat;
+  background: url(http://i.imgur.com/PK7oQ00.jpg) #101010 top no-repeat;
   background-size: cover;
   height: 460px;
   color: white;
@@ -221,6 +221,13 @@ $varbox: #D83415;
     font-size: 1em;
     span {
       font-size: 2.5em;
+    }
+
+    a {
+      color: inherit;
+      &:hover {
+        background: inherit;
+      }
     }
   }
 }
