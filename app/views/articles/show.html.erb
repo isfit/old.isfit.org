@@ -105,6 +105,6 @@ end%>
 </div>
 <% if @article.sidebar %>
   <%= content_for :sidebar do %>
-    <%= format @article.sidebar %>
+    <%= raw @article.sidebar %>
   <% end %>
 <% end %>
