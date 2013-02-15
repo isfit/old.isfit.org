@@ -152,24 +152,16 @@ $varbox: #D83415;
 }
 
 #top-right-down1 {
-  background: url(http://i.imgur.com/UQhXEmy.jpg) #101010 top no-repeat;
+  //background: url(http://i.imgur.com/UQhXEmy.jpg) #101010 top no-repeat;
+  background-color: #222;
   background-size: cover;
   color: white;
-  
-  color: white;
-  text-align: left;
-
+  text-align: center;
   position: relative;
-
-
   h1 {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, .75);
-    line-height: 1.1em;
+    line-height: 200px;
     font-size: 2em;
-
-    position: absolute;
-    bottom: 0.2em;
-    left: 1em;
   }
   p {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, .75);
