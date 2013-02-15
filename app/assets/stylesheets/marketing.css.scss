@@ -136,16 +136,14 @@ $varbox: #D83415;
 }
 
 #top-right-up {
-  background: url(http://i.imgur.com/QGdffVX.jpg) #101010 top no-repeat;
-  background: #222;
+  background: rgb(250,250,250);
 }
 
 #top-right-up {
-  color: white;
+  color: #222;
   h1 {
-    margin-bottom: 7%;
+    text-transform: uppercase;
     font-size: 3em;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.75);
     text-align: center;
     line-height: 210px;
   }
