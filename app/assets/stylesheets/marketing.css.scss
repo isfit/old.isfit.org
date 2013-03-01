@@ -136,13 +136,12 @@ $varbox: #D83415;
 }
 
 #top-right-up {
-  background: rgb(250,250,250);
+  background: #222;
 }
 
 #top-right-up {
-  color: #222;
+  color: white;
   h1 {
-    text-transform: uppercase;
     font-size: 2.5em;
     text-align: center;
     line-height: 210px;
@@ -157,8 +156,8 @@ $varbox: #D83415;
   text-align: center;
   position: relative;
   h1 {
+    padding-top: 25%;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, .75);
-    line-height: 200px;
     font-size: 2em;
   }
   p {
@@ -172,19 +171,16 @@ $varbox: #D83415;
 
 #top-right-down2 {
 
-  background: url(http://i.imgur.com/EnGGdws.jpg) #101010 top no-repeat;
+  //background: url(http://i.imgur.com/EnGGdws.jpg) #101010 top no-repeat;
+  background-color: #222;
   color: white;
   text-align: center;
   position: relative;
 
   h1 {
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, .75);
-    font-size: 2em;
-  
+    padding-top: 25%;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.75);
     font-size: 2em;
-    position: absolute;
-    bottom: 0.2em;
   }
 
   p {
