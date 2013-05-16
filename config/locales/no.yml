@@ -100,6 +100,7 @@
     media: "ISFiT i media"
     back: "Tilbake"
     show_all: "Vis alle"
+    date: "Februar 2015"
     counter: 
       event_countdown: 'Nedtelling til festivalstart'
       minutes: 'min'
