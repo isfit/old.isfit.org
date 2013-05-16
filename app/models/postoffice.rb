@@ -84,6 +84,16 @@ class Postoffice < ActionMailer::Base
     mail(:to => email, :subject => "ISFIT 2013")
   end
 
+  def subscription_mailing_list(email)
+    @recipients     = email
+    @from           = "no-reply@isfit.org"
+    @subject        = "[ISFiT] subscription registered"
+    @sent_on        = Time.now
+    @content_type   = "text/html"
+    
+    mail(:from => @from, :to => @recipients, :subject => @subject) 
+  end
+
   def donation(name, email)
     @recipients     = email
     @from           = "kari.strandjord@isfit.org"
