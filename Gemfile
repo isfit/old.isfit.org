@@ -17,6 +17,7 @@ gem 'newrelic_rpm'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'instagram'
+gem 'pry'
 
 group :assets do
   gem 'sass-rails'
