@@ -232,8 +232,10 @@ a.brand {
 
 
 #eco-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   height: 120px;
-  margin-top: 2em;
   border-radius: 12px;
 }
 
@@ -348,6 +350,12 @@ div.event-button.round.disabled {
   .small {
     margin-bottom: 1em;
     height: 132px;
+  }
+
+  .center img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .mini {
@@ -545,13 +553,17 @@ div.event-button.round.disabled {
 
 body {
   background: url(http://i.imgur.com/mU7FI.png);
-  padding-bottom: 300px;
+  padding-bottom: 100px;
   padding-top: 0;
 }
 
 
 
 $videobox-height: 500px;
+
+.height-matching {
+  height: 160px;
+}
 
 
 .streambox {

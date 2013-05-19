@@ -1,35 +1,5 @@
 <%= render 'shared/streamer' %>
 
-<div class="row promo-row">
-    <a href="http://events.isfit.org">
-      <div class="span6 plenary" id="top-left">
-        <img src="/assets/promo-program-en.png" alt="">
-      </div>
-    </a>
-  <div id="top-right" class="span6 one-up-two-down">
-    <a href="/articles/all">
-      <div id="top-right-up" class="up varbox">
-        <h1>Siste nyheter</h1>
-      </div>
-    </a>
-    <div class="row">
-      <a href="/pages/76">
-        <div id="top-right-down1" class="span3 down varbox">
-          <h1>Filmer fra ISFiT 2013</h1>
-        </div>
-      </a>
-      <a href="/pages/65">
-        <div id="top-right-down2" class="span3 down varbox">
-          <h1>Bilder fra  ISFiT 2013</h1>
-        </div>
-      </div>
-    </a>
-  </div>
-
-</div><div class="promo-row">
-  <%= render "shared/ads" %>
-</div>
-
 <div class="row">
   <div class="span8">
     <div id="news-carousel" class="carousel slide">
@@ -54,43 +24,24 @@
   </div>
   <div class="span4">
     <aside id="sidebar"><!-- Start hoyreramme -->
-      <div class="promotional">
-        <%= render 'shared/events' %>
+      <div class="well">
+        <h3>
+          Vil du gjenoppleve ISFiT 2013? Besøk
+          <%= link_to "2013.isfit.org", "http://2013.isfit.org" %>
+        </h3>
       </div>
-
+      <div class="well height-matching">
+        <h3>
+          Interessert i styret 2015? <%= link_to "Kontakt", page_path(27) %> Marius Jones.
+        </h3>
+      </div>
     </aside><!-- Slutt hoyreramme -->
   </div>
 </div>
 
 
-<div class="row">
-  <div id="middle-left" class="span6 one-up-two-down">
-    <a href="http://isfit.github.com/blog/en.html">
-      <div id="middle-left-up" class="up plenary">
-        <h1>Temablogg</h1>
-      </div>
-    </a>
-    <a href="http://isfit2013eng.blogspot.no/">
-      <div class="down performing" id="middle-left-down">
-        <h1>Festivalblogg</h1>
-      </div>
-    </a>
-  </div>
-  <div class="span6 concert" id="middle-right">
-    <h1>
-      <span>Moddi</span><br>
-      © <a href="http://fotogjengen.samfundet.no">Fotogjengen</a>
-    </h1>
-  </div>
-</div>
-
-<div class="row">
-  <div id="lower-left" class="span6 one-up-two-down">
-    <a href="/2013/10">
-      <div id="lower-left-up" class="up concert hide">
-        <h1>Stein Torleif Bjella</h1>
-      </div>
-    </a>
+<div class="row promo-row">
+  <div id="top-right" class="span12 one-up-two-down">
     <div class="row">
       <a href="http://www.facebook.com/pages/ISFiT/11541693212">
         <div id="lower-left-down1" class="span3 down">
@@ -102,33 +53,19 @@
           <h1><i class="icon-twitter"></i></h1>
         </div>
       </a>
-    </div>
-  </div>
-  <div id="lower-right" class="span6 one-up-two-down">
-      <div id="lower-right-up" class="down plenary">
-        <h1>
-          ISFiT er over for denne gang. Kom tilbake i 2015!
-        </h1>
+      <a href="/pages/76">
+        <div id="top-right-down1" class="span3 down varbox">
+          <h1>Filmer fra ISFiT 2013</h1>
+        </div>
+      </a>
+      <a href="/pages/65">
+        <div id="top-right-down2" class="span3 down varbox">
+          <h1>Bilder fra  ISFiT 2013</h1>
+        </div>
       </div>
-    <div class="row">
-      <a href="/2013/27">
-        <div id="lower-right-down1" class="span3 down concert hide">
-          <h1>Sea Change</h1>
-        </div>
-      </a>
-      <a href="/2013/22">
-        <div id="lower-right-down2" class="span3 down concert hide">
-          <h1>Sun in Sound</h1>
-        </div>
-      </a>
-    </div>
+    </a>
   </div>
+
+</div><div class="promo-row">
+  <%= render "shared/ads" %>
 </div>
-
-<div class="row">
-  <div class="span12">
-    <%= link_to image_tag("http://i.imgur.com/JNiFsWn.png", style: "margin: 20px 0"), 'http://www.studentpeaceprize.org', target: '_blank' %>
-  </div>
-</div>
-
-
