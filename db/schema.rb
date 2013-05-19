@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204184427) do
+ActiveRecord::Schema.define(:version => 20130501170626) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -42,11 +42,11 @@ ActiveRecord::Schema.define(:version => 20130204184427) do
   add_index "ambassadors", ["country_id"], :name => "index_ambassadors_on_country_id"
 
   create_table "answers", :force => true do |t|
-    t.integer "attend",               :limit => 1,                          :null => false
-    t.string  "visa",                 :limit => 0,                          :null => false
-    t.string  "stay_with",            :limit => 0, :default => "NO_MATTER", :null => false
-    t.integer "smoke",                :limit => 1, :default => 0,           :null => false
-    t.integer "handicap",             :limit => 1, :default => 0,           :null => false
+    t.integer "attend",               :limit => 1,                           :null => false
+    t.string  "visa",                 :limit => 25,                          :null => false
+    t.string  "stay_with",            :limit => 9,  :default => "NO_MATTER", :null => false
+    t.integer "smoke",                :limit => 1,  :default => 0,           :null => false
+    t.integer "handicap",             :limit => 1,  :default => 0,           :null => false
     t.text    "handicap_description"
     t.text    "food_description"
     t.integer "no_special",           :limit => 1
@@ -114,11 +114,12 @@ ActiveRecord::Schema.define(:version => 20130204184427) do
     t.string   "image_credits"
     t.integer  "mail_sent"
     t.datetime "show_article"
-    t.boolean  "got_comments",                                     :default => false
+    t.boolean  "got_comments"
     t.string   "frontend_article_image_file_name"
     t.string   "frontend_article_image_content_type"
     t.integer  "frontend_article_image_file_size"
     t.datetime "frontend_article_image_updated_at"
+    t.text     "sidebar"
   end
 
   create_table "countries", :force => true do |t|
@@ -271,6 +272,12 @@ ActiveRecord::Schema.define(:version => 20130204184427) do
     t.string   "spotify"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "mailing_lists", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "oauth_users", :force => true do |t|

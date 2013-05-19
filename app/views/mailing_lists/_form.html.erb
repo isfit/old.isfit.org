@@ -1,0 +1,6 @@
+<%= simple_form_for(:mailing_list) do |f| %>
+  <%= f.input :email %>
+
+  <%= f.button :submit, "Subscribe", class: "btn btn-primary" %>
+  <%= f.button :submit, "Unsubscribe", class: "btn btn-primary" %>
+<% end %>

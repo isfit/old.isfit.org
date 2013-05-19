@@ -32,6 +32,9 @@ WwwIsfitOrg::Application.routes.draw do
 
   get "ambassadors/thank_you"
 
+  get "mailing_lists" => "mailing_lists#index"
+  post "mailing_lists" => "mailing_lists#subscription"
+
   resources :tips_osses
   resources :isfit_media_links
 

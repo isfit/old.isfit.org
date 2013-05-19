@@ -106,6 +106,7 @@ Tabulous.setup do |config|
       [    :events_tab                        ,    'Events'                   ,    events_path                                                        ,    false       ,    false       ],
       [    :events_program_subtab             ,    'Events'                   ,    photos_path                                                        ,    false       ,    false       ],
       [    :stats_tab             ,    'Stats'                   ,    stats_path                                                        ,    false       ,    true       ],
+      [    :mailing_lists_tab     ,     t('tabs.mailing_lists')  ,    mailing_lists_path, false, false ],
       #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
       #    TAB NAME                           |    DISPLAY TEXT               |    PATH                                                               |    VISIBLE?    |    ENABLED?    #
       #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
@@ -154,6 +155,7 @@ Tabulous.setup do |config|
       [    :ideas                    ,    :all_actions    ,    :info_donate_subtab           ],
       [    :stats                    ,    :all_actions    ,    :stats_tab                    ],
       [    :events                   ,    :all_actions    ,    :events_tab                   ],
+      [    :mailing_lists            ,    :all_actions    ,    :mailing_lists_tab            ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
       #--------------------------------------------------------------------------------------#

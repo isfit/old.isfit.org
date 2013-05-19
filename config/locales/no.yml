@@ -3,6 +3,7 @@
     editor: "Redaktør"
     copyright: Alt av skriftlig materiale og ISFiT-logoen er kopibeskyttet Stiftelsen ISFiT.
   tabs:
+    mailing_lists: 'Maillister'
     articles:
       main: 'Nyheter'
       photos: 'Foto'

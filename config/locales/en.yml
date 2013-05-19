@@ -3,6 +3,7 @@ en:
     editor: "Editor in Chief"
     copyright: All written material and the ISFiT logo is copyrighted the ISFiT Foundation © 2013.
   tabs:
+    mailing_lists: 'Mailing list'
     articles:
       main: 'News'
       photos: 'Photos'
