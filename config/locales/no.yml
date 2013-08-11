@@ -149,6 +149,7 @@
       vil bli vektlagt i opptaksprosessen.<br/><br/>
       Fyll ut samtlige felter under og klikk
       på 'Søk nå!' for å levere søknaden.
+    submit: 'Søk nå!'
     first_choice: "Førstevalg"
     second_choice: "Andrevalg"
     third_choice: "Tredjevalg"
