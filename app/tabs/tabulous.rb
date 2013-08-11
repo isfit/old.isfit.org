@@ -73,6 +73,7 @@ Tabulous.setup do |config|
       [    :articles_archive_subtab              ,    t('tabs.articles.archive')        ,    url_for(:controller => 'articles', :action => 'all')                                                          ,    true        ,    true        ],
       [    :articles_galleries_subtab         ,    t('tabs.articles.galleries')                ,    page_path(65)                                                          ,    true        ,    true        ],
       [    :positions_tab                     ,    t('tabs.positions.main')        ,   root_path, Language.to_s.eql?('no'), false],
+      [    :positions_more_info_subtab        ,    t('tabs.positions.more_info') , page_path(80), true, true],
       [    :positions_form_subtab             ,    t('tabs.positions.form')   ,   page_path(82), true, true],
       [    :positions_info_subtab             ,    t('tabs.positions.info')   ,   page_path(81), true, true],
       [    :theme_tab                         ,    t('tabs.theme.main')             ,    photos_path                                                        ,    true        ,    false        ],
