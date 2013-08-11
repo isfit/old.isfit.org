@@ -9,10 +9,10 @@
     <% content_for :script do %>
       <%= javascript_include_tag 'new_applicant' %>
     <%end%>
-    <h1><%= t("position.form")%></h1>
+    <h2><%= t("position.form")%></h2>
     <%= render 'partials/error', :locals=> {:model => @applicant} %>
 
-    <p><%= t("position.fill_in") %></p>
+    <p><%= raw t("position.fill_in") %></p>
 
     <%= simple_form_for(@applicant, :input_html => {:class => 'form-horizontal' }, url: {:controller => :positions, :action => :save}) do |f| %>
 
@@ -29,6 +29,14 @@
       <%= f.input :lastname, :input_html => {
         :class => 'span5',
         :placeholder => t('person.last_name')
+      } %>
+      <%= f.input :birthyear, :input_html => {
+        :class => 'span5',
+        :placeholder => t('person.birthyear')
+      } %>
+      <%= f.input :place_of_study, :input_html => {
+        :class => 'span5',
+        :placeholder => t('person.place_of_study')
       } %>
 
     <%= f.input :mail, :input_html => {
@@ -66,6 +74,11 @@
     } %>
 
   <%= f.input :background, :input_html => {
+    :rows => 10,
+    :class => 'span7'
+  } %>
+
+  <%= f.input :heardof, :input_html => {
     :rows => 10,
     :class => 'span7'
   } %>

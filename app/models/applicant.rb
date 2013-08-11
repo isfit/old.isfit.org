@@ -6,6 +6,7 @@ class Applicant < ActiveRecord::Base
   validates_format_of :phone, :with => /^\d{8}$/
   validates_presence_of :information 
   validates_presence_of :background 
+  validates_presence_of :heardof
   validates_numericality_of :position_id_1, :greater_than => 0
 
 

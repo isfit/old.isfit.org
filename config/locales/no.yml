@@ -142,17 +142,22 @@
     motivational: "Det er gøy å være med på noe stort"
     positions: "Stillinger"
     apply: "Søk nå"
-    form: "Søknadsskjema"
-    fill_in: "Fyll ut samtlige felter under og klikk på 'Søk nå!' for å levere søknaden."
+    form: "Søknad på styreverv ISFiT 2015"
+    fill_in: |
+      Søknaden er for at vi skal bli litt kjent med deg.
+      Alle søkere vil bli innkalt til intervju og intervjuet
+      vil bli vektlagt i opptaksprosessen.<br/><br/>
+      Fyll ut samtlige felter under og klikk
+      på 'Søk nå!' for å levere søknaden.
     first_choice: "Førstevalg"
     second_choice: "Andrevalg"
     third_choice: "Tredjevalg"
     obligatory: "Obligatorisk"
-    about_you: "Informasjon om deg"
-    background: "Relevant bakgrunn"
+    about_you: "Kan du fortelle litt om deg selv?"
+    background: "Har du tidligere hatt frivillige verv?"
     hear_about: "Hvordan fikk du høre om ISFiT?"
     mail: "Epost-adresse"
-    pers_info: Personlig informasjon
+    personal_info: Personlig informasjon
     application: Søkerinformasjon
     firstname: Fornavn
   person:
@@ -161,8 +166,10 @@
     address: "Adresse"
     phone: "Telefonnummer"
     phone_nor: "Telefonnummer, 8 siffer"
-    email: "E-postadresse"
+    email: "E-postadresse (ved studiested)"
     email_ntnu: "E-postadresse (ved studiested)"
+    birthyear: 'Fødselsår'
+    place_of_study: 'Universitet/høyskole'
   project_support:
     contact_person: "Kontaktperson"
     project: "Prosjekt"
@@ -179,14 +186,16 @@
       applicant:
         firstname: 'Fornavn'
         lastname: 'Etternavn'
-        mail: 'E-postadresse'
+        birthyear: 'Fødselsår'
+        place_of_study: 'Universitet/høyskole'
+        mail: 'E-postadresse (ved studiested)'
         phone: 'Telefonnummer'
         position_id_1: 'Førstevalg'
         position_id_2: 'Andrevalg (valgfritt)'
         position_id_3: 'Tredjevalg (valgfritt)'
-        information: 'Informasjon om deg'
-        background: 'Relevant bakgrunn'
-        hear_about: 'Hvordan fikk du høre om ISFiT?'
+        information: 'Kan du fortelle litt om deg selv?'
+        background: 'Har du tidligere hatt frivillige verv?'
+        heardof: 'Hva er din motivasjon for å søke ISFiT-styret?'
       donation:
         name: "Navn"
         email: "E-post"
@@ -357,3 +366,4 @@
         position_id_3: Tredjevalg (frivillig)
         information: Informasjon om deg
         background: Relevant bakgrunn
+        heardof: Motivasjon

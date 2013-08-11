@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130501170626) do
+ActiveRecord::Schema.define(:version => 20130811210303) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(:version => 20130501170626) do
     t.string   "dn",                 :limit => 512
     t.integer  "has_account",        :limit => 1,   :default => 0,     :null => false
     t.integer  "is_notified",                       :default => 0,     :null => false
+    t.string   "birthyear"
+    t.string   "place_of_study"
   end
 
   create_table "articles", :force => true do |t|
