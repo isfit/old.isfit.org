@@ -9,6 +9,10 @@
       photos: 'Foto'
       archive: 'Arkiv'
       galleries: 'Galleri'
+    positions:
+      main: 'Opptak'
+      info: 'Informasjon fra styret 2013'
+      form: 'Søk ISFiT 2015'
     theme:
       main: 'Tema 2015'
       globaltrade: 'Global Handel'
