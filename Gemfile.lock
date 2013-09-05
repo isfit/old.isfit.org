@@ -97,7 +97,7 @@ GEM
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    newrelic_rpm (3.5.0)
+    newrelic_rpm (3.6.6.147)
     nifty-generators (0.4.6)
     nokogiri (1.5.5)
     paperclip (3.3.0)
