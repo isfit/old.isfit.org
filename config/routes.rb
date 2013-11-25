@@ -68,7 +68,7 @@ WwwIsfitOrg::Application.routes.draw do
 
   resources :events
 
-  resources :pages
+  resources :pages, except: :index
   resources :press_accreditations
   resources :isfit_media_links
   resources :press_releases
