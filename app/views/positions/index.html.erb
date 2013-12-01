@@ -9,10 +9,10 @@
     <h1 class="page-header"><%= t("position.motivational") %></h1>
 
     <div class="pull-right" style="margin-left: 1em;">
-      <%=link_to t("position.form"), apply_positions_path, class: "btn btn-primary btn-large"%>
+      <%#= link_to t("position.form"), apply_positions_path, class: "btn btn-primary btn-large"%>
     </div>
     <% if Language.to_s == "no" %>
-    <div class="lead"><%= raw format("Som frivillig på ISFiT får du være med å planlegge og gjennomføre det som blir verdens største internasjonale studentfestival. ISFiT er en av gjengene på [Studentersamfundet](http://www.samfundet.no) og du får være med på all moroa det medbringer. Vi lover at det blir sosialt, gøy og engasjerende.<br>Lover du å søke?<br> <br>__Søknadsfrist 30. august klokken 23:59.__") %></div>
+    <div class="lead"><%= raw format("Her finner du alle stillingsbeskrivelser for mellomlederopptaket 3. februar. Ved å klikke deg inn på den enkelte seksjon får du info om seksjonen samt de tilhørende stillingsbeskrivelsene.") %></div>
   <% else %>
     <div class="lead"><%= raw format("As a volunteer at ISFiT, you will contribute to make the world's largest international student festival a true success. We promise that you will make new friendships, meet other dedicated students and have a lot of fun!") %></div>
     <div class="lead"><p>
@@ -35,25 +35,20 @@
     <% for position in @positions %>
       <% if not position.group == active_group %>
         <% if not active_group.nil? %>
-        </table>
+          </table>
+        <% end %>
+        <% if position.group and position.group.section and not position.group.section == active_section %>
+          </ul><h3><%= link_to position.group.section.name, positions_section_path(position.group.section.id) %></h3>
+          <ul>
+          <%# position.group.section.description %>
+        <% end %>
       <% end %>
-      <% if position.group and position.group.section and not position.group.section == active_section %>
-        <h1><%= position.group.section.name %></h1>
-        <%= position.group.section.description %>
-      <% end %>
-      <h3><%=h position.group.name %></h3>
-      <table class="table table-clickable table-striped">
-      <% end %>
-      <tr>
-        <td>
-          <p><%= link_to "#{position.title}", position, class: "position", title: position.description %></p>
-        </td>
-      </tr>
+      <li>
+        <%= "#{position.group.name} - #{position.title}" %>
+      </li>
       <% active_group = position.groups.first %> 
       <% active_section = position.group.section %>
     <%end%>
-  </table>
-<% end %>
-<img src="http://i.imgur.com/PeXSj.jpg">
-<small>fotogjengen.samfundet.no</small>
+  <% end %>
+  </ul>
 </div>

@@ -93,7 +93,7 @@ WwwIsfitOrg::Application.routes.draw do
     end
   end 
 
-  match 'section/:id' => "positions#section", :tab => "admission"
+  match 'section/:id' => "positions#section", :tab => "admission", as: "positions_section"
 
   resources :donations do
     collection do

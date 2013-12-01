@@ -5,7 +5,7 @@
   <ul>
     <% @section.groups.each do |g| %>
       <% g.positions.published.each do |p| %>
-        <li><%= link_to p.title, position_path(params[:tab],p.id), class: "position" %></li>
+        <li><%= link_to p.title, position_path(p.id), class: "position" %></li>
       <% end %>
     <% end %>
   </ul>

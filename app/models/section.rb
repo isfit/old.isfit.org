@@ -18,4 +18,7 @@ class Section < ActiveRecord::Base
 		Position.find(:all, :conditons =>"section_id = #{self.id}  AND deleted = 0 AND NOT title_#{language} IS NULL AND opptaknr = #{nr}", :order => "weight asc, title_en asc")
 	end
 
+	def description
+		Language.to_s.eql?("no") ? self.description_no : self.description_en
+	end
 end

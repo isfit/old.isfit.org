@@ -11,8 +11,8 @@
       galleries: 'Galleri'
     positions:
       main: 'Opptak'
-      info: 'Informasjon fra styret 2013'
-      form: 'Søk ISFiT 2015'
+      info: 'Kontakt styret'
+      form: 'Stillingsbeskrivelser'
       more_info: 'Informasjon'
     theme:
       main: 'Tema 2015'
@@ -139,7 +139,7 @@
   position:
     no_new_positions: "Vi har dessverre ingen opptak for tiden, men følg med på nettsiden for nye oppdateringer"
     new_positions: "ISFiT har for øyeblikket opptak på følgende stillinger"
-    motivational: "Det er gøy å være med på noe stort"
+    motivational: "Lyst til å lede noe stort?"
     positions: "Stillinger"
     apply: "Søk nå"
     form: "Søknad på styreverv ISFiT 2015"
