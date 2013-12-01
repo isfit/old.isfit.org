@@ -1,6 +1,6 @@
 class Section < ActiveRecord::Base
   set_primary_key 'id'
-  lang_attr :name, :description
+  #lang_attr :name, :description
   has_many :groups
 
 	def self.getAll(language)
@@ -20,5 +20,9 @@ class Section < ActiveRecord::Base
 
 	def description
 		Language.to_s.eql?("no") ? self.description_no : self.description_en
+	end
+
+	def name
+		Language.to_s.eql?("no") ? self.name_no : self.name_en
 	end
 end
