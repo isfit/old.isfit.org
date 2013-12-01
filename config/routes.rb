@@ -87,7 +87,7 @@ WwwIsfitOrg::Application.routes.draw do
 
   resources :positions do
     collection do
-      get :apply
+      #get :apply
       post :validate
       post :save
     end
