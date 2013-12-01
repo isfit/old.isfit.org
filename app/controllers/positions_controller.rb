@@ -1,7 +1,8 @@
 class PositionsController < ApplicationController
   # coding:utf-8
  def index
-    @positions = Position.published.includes(:groups).order("groups.section_id, groups.id, positions.title_no")
+    #@positions = Position.published.includes(:groups).order("groups.section_id, groups.id, positions.title_no")
+    @positions = Position.all_ordered_by_section_name_position_name
   end
  
  def show
