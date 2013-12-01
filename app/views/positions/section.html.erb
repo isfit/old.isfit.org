@@ -1,6 +1,8 @@
 <div class="well">
   <h1><%= @section.name %></h1>
-  <%= raw format(@section.description) %>
+  <div class="justified">
+    <%= raw format(@section.description) %>
+  </div>
   <h2><%= t("position.positions") %></h2>
   <ul>
     <% @section.groups.each do |g| %>
