@@ -1,5 +1,5 @@
 class Section < ActiveRecord::Base
-  set_primary_key 'id'
+  self.primary_key = 'id'
   #lang_attr :name, :description
   has_many :groups
 
