@@ -9,5 +9,18 @@ class Article < ActiveRecord::Base
   url: "/system/frontend_articles/:attachment/:id_partition/:style/:filename",
   path: ":rails_root/public/system/frontend_articles/:attachment/:id_partition/:style/:filename"
 
+   def self.frontpage_articles language
+		articles = Article
+			.where("(show_article <='"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"' OR show_article IS NULL)")
+			.where(deleted: 0)
+			.where(list: 1)
 
+    if language.eql? "en"
+      articles = articles.where("title_en > ''")
+    else
+      articles = articles.where("title_no > ''")
+    end
+
+    @articles = articles.order("weight DESC").limit(3)
+  end
 end
