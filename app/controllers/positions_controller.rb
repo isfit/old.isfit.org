@@ -14,6 +14,8 @@ class PositionsController < ApplicationController
 
  def section
    @section = Section.find(params[:id])
+
+   @positions = @section.positions
  end
 
  def apply

@@ -7,6 +7,23 @@ class Section < ActiveRecord::Base
 		find(:all, :order => "name_#{language} asc")
 	end
 
+	def positions
+		positions = []
+		self.groups.each {|g| positions << g.positions.published.to_a }
+    positions.flatten!
+    positions.sort! do |a,b|
+	    result = a.title_no.starts_with?("Nestleder") ? -1 : 0
+	    if result.eql?(-1)
+	      result = b.title_no.starts_with?("Nestleder") ? 0 : -1
+	    else
+	      result = b.title_no.starts_with?("Nestleder") ? 1 : 0
+	    end
+	    result = a.title_no <=> b.title_no if result.eql? 0
+	    result
+	  end
+	  positions
+	end
+
 	def getPositions(language)
 		Position.find(:all, 
 			:conditions => "section_id = #{self.id} AND deleted = 0 AND admission_id=1 AND
