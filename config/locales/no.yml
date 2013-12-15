@@ -139,6 +139,8 @@
   position:
     no_new_positions: "Vi har dessverre ingen opptak for tiden, men følg med på nettsiden for nye oppdateringer"
     new_positions: "ISFiT har for øyeblikket opptak på følgende stillinger"
+    back_button_positions: "Tilbake til alle stillinger"
+    back_button_sections: "Tilbake til seksjon"
     motivational: "Lyst til å lede noe stort?"
     positions: "Stillinger"
     apply: "Søk nå"

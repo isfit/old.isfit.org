@@ -1,4 +1,9 @@
 <div class="well">
+	<div class="pull-right">
+		<%= link_to t('position.back_button_sections'), positions_section_path(@position.group.section_id), :class => "btn btn-info" %>
+	</div>
+
+
   <h2><%= @position.title %></h2>
   <div class="justified"><%=raw format(@position.description_no) %></div>
   <p>
