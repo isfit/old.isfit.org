@@ -18,10 +18,20 @@ role :db,  "nova.isfit.org", :primary => true         # This is where Rails migr
 set :branch, "master"
 set :user, "passenger"
 set :use_sudo, false
-set :deploy_to, "/srv/www/www.isfit.org"
-set :deploy_via, :remote_cache
+
 default_run_options[:pty] = true  # Must be set for the password prompt from git to work
 ssh_options[:forward_agent] = true
+
+task :production do
+  set :deploy_to, "/srv/www/www.isfit.org"
+  set :deploy_via, :remote_cache
+end
+
+task :staging do
+  set :deploy_to, "/srv/www/staging.isfit.org"
+  set :deploy_via, :copy
+end
+
 
 namespace :deploy do
   task :start do ; end
