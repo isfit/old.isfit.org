@@ -1,0 +1,5 @@
+<% if @taken %>
+	<h4>Email er allerede registrert</h4>
+	<p>Gå til <%= link_to "glemt passord", forgotten_password_path %> om du trenger et nytt passord.</p>
+	<p>Gå til <%= link_to "innlogging", signin_path %> for å logge inn.</p>
+<% end %>

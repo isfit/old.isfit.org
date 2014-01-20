@@ -79,15 +79,31 @@ WwwIsfitOrg::Application.routes.draw do
 
   resources :dialogue_participants
 
+  get 'applicant/:id' => 'positions#update'
+
   resources :photos do
     member do
       get :crop
     end
   end
 
+  get "/signin", to: "sessions#new"
+  post "/signin", to: "sessions#create"
+
+  get "/forgotten_password", to: "sessions#forgotten_password"
+  post "/forgotten_password", to: "sessions#new_password"
+
+  get "logout", to: "sessions#destroy"
+
+  resources :applicant_users, except: [ :show, :destroy ]
+
+  get "/applicant_user", to: "applicant_users#show", as: :show_applicant_user
+
+  get "/positions/edit/:id", to: "positions#edit"
+
   resources :positions do
     collection do
-      #get :apply
+      get :apply
       post :validate
       post :save
     end

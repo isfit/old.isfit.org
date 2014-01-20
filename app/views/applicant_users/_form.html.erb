@@ -1,0 +1,8 @@
+<%= simple_form_for(:applicant_user, url: { controller: 'applicant_users', action: 'create'} , method: :post, :html => { :class => "form" }) do |f| %>
+	<fieldset>
+		<%= f.input :mail, label: 'Epost:' %>
+	</fieldset>
+	<%= render 'error_handling' if @applicant_user && @applicant_user.errors.any? %>
+
+  <%= f.button :submit, "Gå videre", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,12 @@
+<div class="well">
+	<div class="pull-right">
+		<%= link_to t("position.login"), signin_path, class: "btn btn-primary" %>
+	</div>
+	<h3>Velkommen som ISFiT-søker!</h3>
+
+	<p>Skriv inn epost-adressen din for å starte søkeprosessen:</p>
+
+	<%= render 'form' %>
+
+	<%= link_to "Se søknadsskjema uten å registrere deg her.", apply_positions_path, class: "blue-link" %>
+</div>
