@@ -45,6 +45,18 @@ class ApplicationController < ActionController::Base
 
 
   private
+  def require_signin!
+    if current_user.nil?
+      flash[:error] = "You have to be logged in to access this page"
+      redirect_to signin_path
+    end
+  end
+  helper_method :require_signing!
+
+  def current_user
+    @current_user ||= ApplicantUser.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
 
   def miniprofiler
     if params[:profile] == "yes"
