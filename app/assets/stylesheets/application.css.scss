@@ -38,6 +38,10 @@ a {
   transition: background .2s, color .2s;
 }
 
+a.blue-link {
+  color: #333333;
+}
+
 .justified {
   text-align: justify;
 }
@@ -565,8 +569,12 @@ body {
 
 $videobox-height: 500px;
 
-.height-matching {
+.height-matching-no {
   height: 172px;
+}
+
+.height-matching-en {
+  height: 160px;
 }
 
 
