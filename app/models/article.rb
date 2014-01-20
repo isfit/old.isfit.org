@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  set_primary_key 'id'
+  self.primary_key = 'id'
   lang_attr :title, :ingress, :body, :sub_title
 
   has_attached_file :frontend_article_image, styles:  {

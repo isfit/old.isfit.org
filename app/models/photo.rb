@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  set_primary_key 'id'
+  self.primary_key = 'id'
  has_attached_file :original_picture, :path =>":rails_root/public/images/article/:class/:attachment/:id/:style.:extension", 
                                   :url => "article/:class/:attachment/:id/:style.:extension",
                                   :styles => {:thumb=> "100x100#"}
