@@ -2,8 +2,8 @@
 	<h1>Logg inn</h1>
 	<%= simple_form_for :signin, method: "POST", :html => { :class => "form" } do |f| %>
 		<fieldset>
-			<%= f.input :mail %>
-			<%= f.input :password %>
+			<%= f.input :mail, label: "Epost" %>
+			<%= f.input :password, label: "Passord (sendt på mail)" %>
 		</fieldset>
 
 		<%= f.button :submit, "Gå videre", class: "btn btn-primary" %>

@@ -1,4 +1,32 @@
 <h3>Din søknad</h3>
 <b>Navn:</b>
-<%= @applicant.full_name %>
+<p><%= @applicant.full_name %></p>
+<b>Fødselsår:</b>
+<p><%= @applicant.birthyear %></p>
+<b>Universitet/høyskole:</b>
+<p><%= @applicant.place_of_study %></p>
+<b>E-postadresse (ved studiested)</b>
+<p><%= @applicant.mail %></p>
+<b>Telefonnummer</b>
+<p><%= @applicant.phone %></p>
 
+<h3>Stillinger</h3>
+<b>Førstevalg:</b>
+<p><%= Position.find(@applicant.position_id_1).title_no %></p>
+
+<% if @applicant.position_id_2 %>
+<b>Andrevalg:</b>
+<p><%= Position.find(@applicant.position_id_1).title_no %></p>
+<% end %>
+
+<% if @applicant.position_id_3 %>
+<b>Tredjevalg:</b>
+<p><%= Position.find(@applicant.position_id_1).title_no %></p>
+<% end %>
+
+<b>Kan du fortelle litt om deg selv?</b>
+<p><%= simple_format @applicant.information %></p>
+<b>Har du tidligere hatt frivillige verv?</b>
+<p><%= simple_format @applicant.background %></p>
+<b>Hva er din motivasjon for å søke ISFiT-styret?</b>
+<p><%= simple_format @applicant.heardof %></p>

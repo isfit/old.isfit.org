@@ -1,6 +1,6 @@
 <div class="well">
 	<div class="pull-right"><%= link_to "Logg ut", logout_path, class: "btn btn-primary" %></div>
-	<%= @applicant_user.mail %>
+	<b>Brukernavn:</b> <%= @applicant_user.mail %>
 
 	<%= link_to('Rediger søknad', edit_position_path(@applicant_user.applicant.id), class: "btn pull-right") if @applicant %>
 
