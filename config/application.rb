@@ -45,5 +45,8 @@ module WwwIsfitOrg
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    # HTTPS/SSL
+    config.force_ssl = true
   end
 end
