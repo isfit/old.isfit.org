@@ -1,4 +1,9 @@
 <div class="well">
+	<div class="pull-right">
+		<%= link_to "Glemt passord", forgotten_password_path, class: "btn" %>
+		<%= link_to "Start søkeprosess", new_applicant_user_path, class: "btn" %>
+	</div>
+
 	<h1>Logg inn</h1>
 	<%= simple_form_for :signin, method: "POST", :html => { :class => "form" } do |f| %>
 		<fieldset>

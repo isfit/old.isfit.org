@@ -199,7 +199,7 @@
         position_id_3: 'Tredjevalg (valgfritt)'
         information: 'Kan du fortelle litt om deg selv?'
         background: 'Har du tidligere hatt frivillige verv?'
-        heardof: 'Hva er din motivasjon for å søke ISFiT-styret?'
+        heardof: 'Hva er din motivasjon for å søke ISFiT?'
       donation:
         name: "Navn"
         email: "E-post"

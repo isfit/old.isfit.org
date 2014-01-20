@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Tabulous gives you an easy way to set up tabs for your Rails application.
 #
 #   1. Configure this file.
@@ -78,6 +79,7 @@ Tabulous.setup do |config|
       [    :positions_more_info_subtab        ,    t('tabs.positions.more_info') , article_path(288), true, true],
       [    :positions_form_subtab             ,    t('tabs.positions.form')   ,   positions_path, true, true],
       [    :positions_info_subtab             ,    t('tabs.positions.info')   ,   page_path(84), true, true],
+      [    :positions_apply_subtab            ,    'Søk nå'                   ,   new_applicant_user_path,                                            Language.to_s.eql?('no') && current_user.nil?, true ],
       [    :applicant_user_signin_subtab      ,    'Logg inn'                 ,   url_for(controller: 'sessions', action: 'new')                      , Language.to_s.eql?('no') && current_user.nil?, true],
       [    :applicant_user_subtab             ,    'Din konto'                ,   url_for(:controller => 'applicant_users', action: 'show'), Language.to_s.eql?('no') && !current_user.nil?, true],
       [    :theme_tab                         ,    t('tabs.theme.main')             ,    photos_path                                                        ,    true        ,    false        ],

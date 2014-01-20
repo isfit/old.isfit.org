@@ -37,7 +37,7 @@
   <fieldset>
     <legend><%= t("position.positions") %></legend>
 
-    <%= f.input :position_id_1, :collection => @positions_collection, :input_html => {
+    <%= f.input :position_id_1, :collection => @positions_collection, selected: @referral_position, :input_html => {
       :class => 'span5'
     } %>
 

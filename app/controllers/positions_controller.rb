@@ -38,6 +38,7 @@ end
 def apply
   @applicant = Applicant.new
   @positions_collected = positions_collected
+  @referral_position = params[:referral_position]
 end
 
  def save
