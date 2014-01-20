@@ -9,7 +9,7 @@
     <h1 class="page-header"><%= t("position.motivational") %></h1>
 
     <div class="pull-right" style="margin-left: 1em;">
-      <%#= link_to t("position.form"), apply_positions_path, class: "btn btn-primary btn-large"%>
+      <%= link_to t("position.form"), new_applicant_user_path, class: "btn btn-primary btn-large"%>
     </div>
     <% if Language.to_s == "no" %>
     <div class="lead"><%= raw format("Her finner du alle stillingsbeskrivelser for mellomlederopptaket 3. februar. Ved å klikke deg inn på den enkelte seksjon får du info om seksjonen samt de tilhørende stillingsbeskrivelsene.") %></div>

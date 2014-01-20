@@ -1,0 +1,21 @@
+<div class="well">
+	<h1>Logg inn</h1>
+	<%= simple_form_for :signin, method: "POST", :html => { :class => "form" } do |f| %>
+		<fieldset>
+			<%= f.input :mail %>
+			<%= f.input :password %>
+		</fieldset>
+
+		<%= f.button :submit, "Gå videre", class: "btn btn-primary" %>
+	<% end %>
+
+	<% if @wrong_password %>
+		<h4>Du har tastet inn galt passord.</h4>
+		<p>
+			Gå til <%= link_to "registrering", new_applicant_user_path %> for å starte søkeprosessen.
+		</p>
+		<p>
+			Hvis du allerede er registrert gå til <%= link_to "glemt passord", forgotten_password_path %> for å få tilsendt nytt passord.
+		</p>
+	<% end %>
+</div>

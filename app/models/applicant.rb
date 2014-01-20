@@ -1,4 +1,6 @@
 class Applicant < ActiveRecord::Base
+  belongs_to :applicant_user
+
   validates_presence_of :firstname
   validates_presence_of :lastname
   validates_format_of :mail, 
@@ -18,5 +20,9 @@ class Applicant < ActiveRecord::Base
     else
       ajaxResponse = {:valid => true}
     end
+  end
+
+  def full_name
+    "#{firstname} #{lastname}"
   end
 end

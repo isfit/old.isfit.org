@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Postoffice < ActionMailer::Base
   # located in models/postoffice.rb
   # make note of the headers, content type, and time sent
@@ -75,13 +76,48 @@ class Postoffice < ActionMailer::Base
 
   def applicant_add(name, email)
     @recipients   = email
-    @subject      = "ISFiT 2013"
+    @subject      = "ISFiT 2015"
     @sent_on      = Time.now
-    @content_type = "text/plain"
+    @content_type = "text/html"
 
     @name  = name
     @email = email
-    mail(:to => email, :subject => "ISFIT 2013")
+    mail(:to => email, :subject => @subject)
+  end
+
+  def applicant_add_with_new_user(name, email, password)
+    @recipients   = email
+    @subject      = "ISFiT 2015"
+    @sent_on      = Time.now
+    @content_type = "text/html"
+
+    @name     = name
+    @email    = email
+    @password = password
+    mail(to: @email, subject: @subject)
+  end
+
+  def new_applicant_user(email, password)
+    @recipients   = email
+    @subject      = "Søker ISFiT 2015"
+    @sent_on      = Time.now
+    @content_type = "text/html"
+
+    @email    = email
+    @password = password
+
+    mail(to: @recipients, subject: @subject)
+  end
+
+  def new_password(email, password)
+    @recipients   = email
+    @subject      = "Nytt passord til isfit.org"
+    @sent_on      = Time.now
+    @content_type = "text/html"
+
+    @password = password
+
+    mail(to: @recipients, subject: @subject)
   end
 
   def subscription_mailing_list(email)

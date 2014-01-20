@@ -144,7 +144,8 @@
     motivational: "Lyst til å lede noe stort?"
     positions: "Stillinger"
     apply: "Søk nå"
-    form: "Søknad på styreverv ISFiT 2015"
+    form: "Søk nå!"
+    login: 'Logg inn'
     fill_in: |
       Søknaden er for at vi skal bli litt kjent med deg.
       Alle søkere vil bli innkalt til intervju og intervjuet
