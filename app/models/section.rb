@@ -18,6 +18,8 @@ class Section < ActiveRecord::Base
 	    else
 	      result = b.title_no.starts_with?("Nestleder") ? 1 : 0
 	    end
+	    result =  1 if a.title_no.eql?("Prosjektansvarlig i IT")
+	    result = -1 if b.title_no.eql?("Prosjektansvarlig i IT")
 	    result = a.title_no <=> b.title_no if result.eql? 0
 	    result
 	  end

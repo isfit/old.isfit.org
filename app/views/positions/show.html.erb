@@ -1,7 +1,7 @@
 <div class="well">
 	<div class="pull-right">
 		<%= link_to "Søk på denne stillingen", { controller: :positions, action: :apply, referral_position: @position.id }, class: "btn btn-primary" %>
-		<%= link_to t('position.back_button_sections'), positions_section_path(@position.group.section_id), :class => "btn btn-info" %>
+		<%= link_to t('position.back_button_sections'), positions_section_path(@position.group.section_id), :class => "btn btn-info" if !@position.group.section_id.nil? %>
 	</div>
 
   <h2><%= @position.title %></h2>

@@ -29,18 +29,15 @@
     The descriptions of the available positions are written in Norwegian. 
     </p></div>
   <% end %>
-
     <% active_group = nil %>
     <% active_section = nil %>
-    <% for position in @positions %>
+    <% @positions.each_with_index do |position, i| %>
       <% if not position.group == active_group %>
-        <% if not active_group.nil? %>
-          </table>
-        <% end %>
-        <% if position.group and position.group.section and not position.group.section == active_section %>
+        <% if i.eql? 0 %>
+          <h3><%= link_to position.group.section.name, positions_section_path(position.group.section.id) %></h3><ul>
+        <% elsif position.group and position.group.section and not position.group.section == active_section %>
           </ul><h3><%= link_to position.group.section.name, positions_section_path(position.group.section.id) %></h3>
           <ul>
-          <%# position.group.section.description %>
         <% end %>
       <% end %>
       <li>
@@ -50,5 +47,12 @@
       <% active_section = position.group.section %>
     <%end%>
   <% end %>
+  </ul>
+  <hr>
+  <h3><%= link_to @research_group.name_no, positions_group_path(@research_group.id) %></h3>
+  <ul>
+    <% @research_group.positions.each do |position| %>
+    <li><%= position.title %></li>
+    <% end %>
   </ul>
 </div>

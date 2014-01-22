@@ -1,0 +1,17 @@
+<div class="well">
+  <div class="pull-right">
+    <%= link_to t('position.back_button_positions'), positions_path, :class => "btn btn-info" %>
+  </div>
+
+
+  <h1><%= @group.name_no %></h1>
+  <div class="justified">
+    <%= raw format(@group.description_no) %>
+  </div>
+  <h2><%= t("position.positions") %></h2>
+  <ul>
+    <% @positions.each do |p| %>
+      <li><%= link_to p.title, position_path(p.id), class: "position" %></li>
+    <% end %>
+  </ul>
+</div>

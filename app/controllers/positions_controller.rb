@@ -3,6 +3,7 @@ class PositionsController < ApplicationController
  def index
     #@positions = Position.published.includes(:groups).order("groups.section_id, groups.id, positions.title_no")
     @positions = Position.all_ordered_by_section_name_position_name
+    @research_group = Group.find(159)
   end
  
   def show
@@ -30,10 +31,14 @@ class PositionsController < ApplicationController
   end
 
   def section
-  @section = Section.find(params[:id])
+    @section = Section.find(params[:id])
+    @positions = @section.positions
+  end
 
-  @positions = @section.positions
-end
+  def group
+    @group = Group.find(params[:id])
+    @positions = @group.positions
+  end
 
 def apply
   @applicant = Applicant.new
