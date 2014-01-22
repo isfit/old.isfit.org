@@ -48,11 +48,13 @@
     <%end%>
   <% end %>
   </ul>
-  <hr>
-  <h3><%= link_to @research_group.name_no, positions_group_path(@research_group.id) %></h3>
-  <ul>
-    <% @research_group.positions.each do |position| %>
-    <li><%= position.title %></li>
-    <% end %>
-  </ul>
+  <% if @research_group %>
+    <hr>
+    <h3><%= link_to @research_group.name_no, positions_group_path(@research_group.id) %></h3>
+    <ul>
+      <% @research_group.positions.each do |position| %>
+      <li><%= position.title %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
