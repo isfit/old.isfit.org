@@ -16,12 +16,12 @@
 
 <% if @applicant.position_id_2 %>
 <b>Andrevalg:</b>
-<p><%= Position.find(@applicant.position_id_1).title_no %></p>
+<p><%= Position.find(@applicant.position_id_2).title_no %></p>
 <% end %>
 
 <% if @applicant.position_id_3 %>
 <b>Tredjevalg:</b>
-<p><%= Position.find(@applicant.position_id_1).title_no %></p>
+<p><%= Position.find(@applicant.position_id_3).title_no %></p>
 <% end %>
 
 <b>Kan du fortelle litt om deg selv?</b>
