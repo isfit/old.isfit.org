@@ -106,6 +106,7 @@ Tabulous.setup do |config|
       [    :info_faq_subtab                   ,    t('tabs.info.faq' )                     ,    page_path(55)                                                        ,    false        ,    true        ],
       [    :info_hosts_subtab                   ,    t('tabs.info.host' )                     ,    hosts_path                                                        ,    false        ,    true        ],
       [    :info_movies_subtab                   ,    t('tabs.info.movies' )                     ,    page_path(76)                                                        ,    true        ,    true        ],
+      [    :info_images_subtab                 ,      t('tabs.info.images')                 ,         page_path(65)                                                 ,  true, true],
       [    :info_media_subtab                   ,    t('tabs.info.media' )                     ,    page_path(77)                                                        ,    true        ,    true        ],
       [    :blogs_tab                   ,    t('tabs.blogs.main' )                     ,    photos_path                                                        ,    false        ,    false        ],
       [    :blogs_theme_subtab                   ,    t('tabs.blogs.theme' )                     ,   Language.to_s == 'no' ? 'http://isfit.github.com/blog/' : 'http://isfit.github.com/blog/en.html'                                                         ,    true        ,    true        ],
