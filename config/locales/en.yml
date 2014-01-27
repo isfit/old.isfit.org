@@ -12,11 +12,11 @@ en:
     theme:
       main: 'Theme 2015'
       globaltrade: 'Global Trade'
-      coming: 'Coming Soon'
       workshops: 'Workshops'
       tradeyourideas: 'Trade Your Ideas'
       themeblog: 'Theme Blog'
       previousthemes: 'Previous Themes'
+      corruption: 'Coming Soon'
       map: 'World Map'
     about:
       main: 'About'

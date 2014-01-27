@@ -15,13 +15,13 @@
       form: 'Stillingsbeskrivelser'
       more_info: 'Informasjon'
     theme:
-      main: 'Tema 2015'
+      main: 'Tema: Korrupsjon'
       globaltrade: 'Global Handel'
-      coming: 'Kommer snart'
       workshops: 'Workshoper'
       tradeyourideas: 'Trade Your Ideas'
       themeblog: 'Temablogg'
       previousthemes: 'Tidligere temaer'
+      corruption: 'Generelt'
       map: 'Verdenskart'
     about:
       main: 'Om ISFiT'
