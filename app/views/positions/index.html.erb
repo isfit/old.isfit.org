@@ -9,7 +9,7 @@
     <h1 class="page-header"><%= t("position.motivational") %></h1>
 
     <div class="pull-right" style="margin-left: 1em;">
-      <%= link_to t("position.form"), new_applicant_user_path, class: "btn btn-primary btn-large"%>
+      <%# link_to t("position.form"), new_applicant_user_path, class: "btn btn-primary btn-large"%>
     </div>
     <% if Language.to_s == "no" %>
     <div class="lead"><%= raw format("Her finner du alle stillingsbeskrivelser for mellomlederopptaket 3. februar. Ved å klikke deg inn på den enkelte seksjon får du info om seksjonen samt de tilhørende stillingsbeskrivelsene.") %></div>
@@ -48,13 +48,4 @@
     <%end%>
   <% end %>
   </ul>
-  <% if @research_group %>
-    <hr>
-    <h3><%= link_to @research_group.name_no, positions_group_path(@research_group.id) %></h3>
-    <ul>
-      <% @research_group.positions.each do |position| %>
-      <li><%= position.title %></li>
-      <% end %>
-    </ul>
-  <% end %>
 </div>

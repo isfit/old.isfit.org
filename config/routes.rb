@@ -87,25 +87,25 @@ WwwIsfitOrg::Application.routes.draw do
     end
   end
 
-  get "/signin", to: "sessions#new"
-  post "/signin", to: "sessions#create"
+  #get "/signin", to: "sessions#new"
+  #post "/signin", to: "sessions#create"
 
-  get "/forgotten_password", to: "sessions#forgotten_password"
-  post "/forgotten_password", to: "sessions#new_password"
+  #get "/forgotten_password", to: "sessions#forgotten_password"
+  #post "/forgotten_password", to: "sessions#new_password"
 
-  get "logout", to: "sessions#destroy"
+  #get "logout", to: "sessions#destroy"
 
-  resources :applicant_users, except: [ :show, :destroy ]
+  #resources :applicant_users, except: [ :show, :destroy ]
 
-  get "/applicant_user", to: "applicant_users#show", as: :show_applicant_user
+  #get "/applicant_user", to: "applicant_users#show", as: :show_applicant_user
 
-  get "/positions/edit/:id", to: "positions#edit"
+  #get "/positions/edit/:id", to: "positions#edit"
 
   resources :positions do
     collection do
-      get :apply
-      post :validate
-      post :save
+      #get :apply
+      #post :validate
+      #post :save
     end
   end 
 
