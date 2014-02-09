@@ -22,6 +22,11 @@ set :use_sudo, false
 default_run_options[:pty] = true  # Must be set for the password prompt from git to work
 ssh_options[:forward_agent] = true
 
+if ARGV.include?("deploy") && !(ARGV.include?("production") || ARGV.include?("staging"))
+  puts "\nInvoke deploy with 'cap staging deploy' or 'cap production deploy'\n\n"
+  exit
+end
+
 task :production do
   set :deploy_to, "/srv/www/www.isfit.org"
   set :deploy_via, :remote_cache
