@@ -34,7 +34,7 @@
             <a href="<%= article_path(article) %>">
               <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px", class: "lower-row-img" %>
               <div class="carousel-caption">
-                <h1><%= truncate(article.title, length: 12, seperator: '...') %></h1>
+                <h4><%= truncate(article.title, length: 30, seperator: '...') %></h4>
             </div>
             </a>
           </div>
@@ -44,6 +44,6 @@
 </div>
 <div class="row promo-row">
   <div class="span12">
-  <iframe src="//player.vimeo.com/video/84474484" width="900" height="506" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="//player.vimeo.com/video/84474484" width="940" height="506" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </div>
 </div>
