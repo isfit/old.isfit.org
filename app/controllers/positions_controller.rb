@@ -3,7 +3,7 @@ class PositionsController < ApplicationController
   before_filter :require_signin!, only: [:edit, :update, :lock, :locked]
 
  def index
-    redirect_to "https://opptak.isfit.org", status: 303
+    redirect_to "https://opptak.isfit.org", status: 302
   end
  
   def show
