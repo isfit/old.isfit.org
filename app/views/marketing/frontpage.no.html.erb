@@ -11,7 +11,7 @@
 </div>
 <div class="row">
   <% @articles.each_with_index do |article, i| %>
-    <% if i < 2 %>
+    <% if i.eql? 0 %>
         <div id="news-carousel" class="carousel span6">
           <div class="item active">
             <a href="<%= article_path(article) %>">
@@ -23,12 +23,12 @@
             </a>
           </div>
         </div>
-      
-    <% else %>
-      <% if i == 2 %>
+        <div class="span6">
+          <iframe src="//player.vimeo.com/video/88811933" width="460" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
-        <div class="row">
-      <% end %>
+      </div>
+      <div class="row">
+    <% else %>
         <div id="news-carousel lower-row" class="carousel slide span4">
           <div class="item active">
             <a href="<%= article_path(article) %>">
@@ -41,9 +41,5 @@
         </div>
     <% end %>
   <% end %>
-</div>
-<div class="row promo-row">
-  <div class="span12">
-  <iframe src="//player.vimeo.com/video/84474484" width="940" height="506" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </div>
 </div>
