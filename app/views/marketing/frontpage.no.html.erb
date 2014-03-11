@@ -1,12 +1,14 @@
 <%= render 'shared/streamer' %>
 
+
+
+
 <div class="row">
-  <div class="span8">
-    <div id="news-carousel" class="carousel slide">
-      <!-- Carousel items -->
-      <div class="carousel-inner">
-        <% @articles.each do |article| %>
-          <div class="item <%= article == @articles.first ? "active":"" %>">
+  <div class="row">
+  <% @articles.each_with_index do |article, i| %>
+    <% if i < 2 %>
+        <div id="news-carousel" class="carousel span6">
+          <div class="item active">
             <a href="<%= article_path(article) %>">
               <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px" %>
               <div class="carousel-caption">
@@ -15,27 +17,28 @@
               </div>
             </a>
           </div>
-        <% end %>
-      </div>
-      <!-- Carousel nav -->
-      <a class="carousel-control left" href="#news-carousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#news-carousel" data-slide="next">&rsaquo;</a>
-    </div>
-  </div>
-  <div class="span4">
-    <aside id="sidebar"><!-- Start hoyreramme -->
-      <div class="well height-matching-no">
-        <h3>
-          Lyst til å lede noe stort? Les mer om opptaket
-          <%= link_to "her", article_path(288) %>
-        </h3>
-      </div>
-      <div class="board-thumbnail">
-        <%= link_to image_tag("board2015_thumb.png", height: "50px"), page_path(84) %>
-      </div>
-    </aside><!-- Slutt hoyreramme -->
+        </div>
+      
+    <% else %>
+      <% if i == 2 %>
+        </div>
+        <div class="row">
+      <% end %>
+        <div id="news-carousel" class="carousel slide span4">
+          <div class="item active">
+            <a href="<%= article_path(article) %>">
+              <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px" %>
+              <div class="carousel-caption">
+                <h1><%= truncate(article.title, length: 12, seperator: '...') %></h1>
+            </div>
+            </a>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
   </div>
 </div>
+
 
 <div class="row promo-row span12">
   <iframe src="//player.vimeo.com/video/84474484" width="900" height="506" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
