@@ -5,6 +5,19 @@
   }
 }
 
+#news-carousel.lower-row {
+  img {
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+  }
+}
+
+.lower-row-img {
+  height: 200px;
+  width: 620px;
+}
+
 .fb-like {
   padding-left: 1em;
   padding-bottom: 1em;

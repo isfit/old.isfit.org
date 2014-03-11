@@ -1,10 +1,15 @@
 <%= render 'shared/streamer' %>
 
 
-
-
+<div class ="row">
+  <div class="span12" id="opptaks_banner">
+    <%= link_to image_tag("skapisfit_banner_sokher_web.gif"), 'https://opptak.isfit.org' %>
+  </div>
+</div>
 <div class="row">
-  <div class="row">
+
+</div>
+<div class="row">
   <% @articles.each_with_index do |article, i| %>
     <% if i < 2 %>
         <div id="news-carousel" class="carousel span6">
@@ -24,10 +29,10 @@
         </div>
         <div class="row">
       <% end %>
-        <div id="news-carousel" class="carousel slide span4">
+        <div id="news-carousel lower-row" class="carousel slide span4">
           <div class="item active">
             <a href="<%= article_path(article) %>">
-              <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px" %>
+              <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px", class: "lower-row-img" %>
               <div class="carousel-caption">
                 <h1><%= truncate(article.title, length: 12, seperator: '...') %></h1>
             </div>
@@ -36,10 +41,9 @@
         </div>
     <% end %>
   <% end %>
-  </div>
 </div>
-
-
-<div class="row promo-row span12">
+<div class="row promo-row">
+  <div class="span12">
   <iframe src="//player.vimeo.com/video/84474484" width="900" height="506" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
 </div>
