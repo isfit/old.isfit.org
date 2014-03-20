@@ -15,7 +15,6 @@ role :web, "nova.isfit.org"                           # Your HTTP server, Apache
 role :app, "nova.isfit.org"                           # This may be the same as your `Web` server
 role :db,  "nova.isfit.org", :primary => true         # This is where Rails migrations will run
 
-set :branch, "master"
 set :user, "passenger"
 set :use_sudo, false
 
@@ -30,11 +29,13 @@ end
 task :production do
   set :deploy_to, "/srv/www/www.isfit.org"
   set :deploy_via, :remote_cache
+  set :branch, "master"
 end
 
 task :staging do
   set :deploy_to, "/srv/www/staging.isfit.org"
   set :deploy_via, :copy
+  set :branch, "staging"
 end
 
 
