@@ -6,7 +6,7 @@ class AmbassadorsController < ApplicationController
 
   def new
 
-    render text: "Registrations for International Ambassadors has closed", layout: true
+    #render text: "Registrations for International Ambassadors has closed", layout: true
 
     @ambassador = Ambassador.new
     @contact_types = { "Person" => 1,
