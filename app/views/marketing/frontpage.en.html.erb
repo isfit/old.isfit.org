@@ -1,8 +1,20 @@
 <%= render 'shared/streamer' %>
 
 <div class="row">
+  <iframe src="//player.vimeo.com/video/91442987" class="span12" height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+  </iframe>
+</div>
+
+<br/>
+<div class="row">
+  <p class="span12 well">
+    <a href="http://vimeo.com/91442987">Call for nominations: Student Peace Prize 2015</a> from <a href="http://vimeo.com/user12652193">ISFiT</a> on <a href="https://vimeo.com">Vimeo</a>.
+  </p>
+</div>
+
+<div class="row">
   <div class="span8">
-    <div id="news-carousel" class="carousel slide">
+    <div id="news-carousel-en" class="carousel slide">
       <!-- Carousel items -->
       <div class="carousel-inner">
         <% @articles.each do |article| %>

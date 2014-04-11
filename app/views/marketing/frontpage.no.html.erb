@@ -1,18 +1,11 @@
 <%= render 'shared/streamer' %>
-
-
-<div class ="row">
-  <div class="span12" id="opptaks_banner">
-    <%= link_to image_tag("skapisfit_banner_sokher_web.gif"), 'https://opptak.isfit.org' %>
-  </div>
-</div>
 <div class="row">
-
+  <iframe src="//player.vimeo.com/video/91442987" class="span12" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/91442987">Call for nominations: Student Peace Prize 2015</a> from <a href="http://vimeo.com/user12652193">ISFiT</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 </div>
 <div class="row">
   <% @articles.each_with_index do |article, i| %>
-    <% if i.eql? 0 %>
-        <div id="news-carousel" class="carousel span6">
+    <% if i < 2 %>
+        <div id="news-carousel-no" class="carousel span6">
           <div class="item active">
             <a href="<%= article_path(article) %>">
               <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px" %>
@@ -23,11 +16,10 @@
             </a>
           </div>
         </div>
-        <div class="span6">
-          <iframe src="//player.vimeo.com/video/88811933" width="460" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      <% if i.eql?(1) %>
         </div>
-      </div>
-      <div class="row">
+        <div class="row">
+      <% end %>
     <% else %>
         <div id="news-carousel lower-row" class="carousel slide span4">
           <div class="item active">
@@ -41,5 +33,9 @@
         </div>
     <% end %>
   <% end %>
+  <div class="span4">
+    <iframe src="//player.vimeo.com/video/88811933" width="300" height="200" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
+</div>
 </div>
 </div>
