@@ -50,6 +50,11 @@ html5boilerplate
     _gaq.push(['_trackPageview']);
     _gaq.push(['_trackLoadTime']);
 
+    setTimeout("_gaq.push(['_trackEvent', '10_seconds', 'read'])", 10000);
+    // Adjusts the bounce-measure to not count visits longer than
+    // 10 seconds as bounces.
+    // See: http://drawingablank.me/blog/fix-your-bounce-rate.html
+
     (function() {
      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
