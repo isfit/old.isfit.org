@@ -1,18 +1,28 @@
+<div class="well">
+<% if Language.to_s == 'en' %>
 <h1>Register as an ambassador</h1>
-<p>Do you want to be one of our international ambassadors and distribute
-information for ISFiT 2013?</p>
-
-<p>ISFiT needs ambassadors from all around the world to spread the word about
-ISFiT 2013. You can be an international ambassador of ISFiT by distributing
-information and placing posters in any university, library, student union
-building or other areas where students will have the best opportunity to
-learn about ISFiT.</p>
-
-<p>Fill out the registration form below, and we will send you a package free
-of charge, with posters and information about ISFiT 2013.</p>
-
-
+<p>Do you dream about a world with less corruption?
+<br>
+Do you wish to share your ISFit stories to inspire others?<br>
+You now have the oppertunity to be a part of out blog, movies, or other projects.
+<br>
+Your face and stories can go worldwide to inspire people in the name of ISFit<p>
+<p>Fill out the registration form below, and join the network of international ambassadors for ISFiT 2015.</p>
 <p>Thank you in advance for supporting ISFiT.</p>
+<% else %>
+<h1>Registrer deg som ambassadør</h1>
+<p>
+  Har du en drøm om en verden med midre korrupsjon?
+  <br>
+  Har du lyst til å dele dine historier om ISFiT for å inspirere andre?
+  <br>
+  Ditt ansikt og historier kan verden rundt for å inspirere mennesker i ISFiT sitt navn
+</p>
+<p>Fyll ut skjemaet nedenfor, og bli med i nettverket av internasjonale ambassadører for ISFiT 2015.</p>
+<p>På forhånd takk for din støtte til ISFiT.</p>
+<% end %>
+  
+
 
 <%= form_for(@ambassador, :html => { :class => "yform columnar" })  do |f| %>
 
@@ -40,6 +50,10 @@ of charge, with posters and information about ISFiT 2013.</p>
       <%= f.text_field :email %>
     </div>
     <div class="type-text">
+      <%= f.label :email_confirmation %>
+      <%= f.text_field :email_confirmation %>
+    </div>
+    <div class="type-text">
       <%= f.label :address %>
       <%= f.text_field :address %>
     </div>
@@ -62,4 +76,6 @@ of charge, with posters and information about ISFiT 2013.</p>
     <div class="type-button">
       <%= f.submit "Register", class: "submit" %>
     </div>
+  </fieldset>
 <% end %>
+</div>
