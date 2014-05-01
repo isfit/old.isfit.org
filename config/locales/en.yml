@@ -28,7 +28,7 @@ en:
       partners: 'Partners'
     info:
       main: 'Info'
-      participant: 'Participant'
+      participant: 'Participant application'
       volunteer: 'Volunteer'
       press: 'Press'
       donate: 'Support a participant'
@@ -44,6 +44,9 @@ en:
       festival: 'Festival blog'
     languages:
       main: 'Languages'
+    ambassadors:
+      apply: 'Apply'
+      ambassadors: 'Ambassadors'
   derp:
     dialogue_groups: "Looking for the Dialogue Groups?"
     participant: "Looking for the participant applications?"
