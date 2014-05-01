@@ -30,11 +30,12 @@ group :assets do
   gem 'less-rails'
 end
 
-gem "paperclip"
+#gem "paperclip"
 #gem "imagemagick"
 #gem "rmagick"
 gem "bluecloth"
 gem 'jquery-rails'
+#gem 'execjs'
 gem 'therubyracer'
 
 # Deploy with Capistrano

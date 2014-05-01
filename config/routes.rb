@@ -1,4 +1,6 @@
 WwwIsfitOrg::Application.routes.draw do  
+  get "workshops_public/index"
+
   get "marketing/frontpage"
 
   get "instagram/map"

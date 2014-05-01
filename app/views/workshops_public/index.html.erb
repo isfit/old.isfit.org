@@ -1,0 +1,20 @@
+<div class="mainsection">
+	<ul class="ch-grid">
+	<% @workshops.each do |workshop| %>
+		<li>
+			<div class="ch-item ch-img-1">				
+				<div class="ch-info-wrap">
+					<div class="ch-info">
+						<div class="ch-info-front ch-img-1"></div>
+							<div class="ch-info-back">
+								<h3><%= workshop.name%></h3>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</li>
+		<li>
+	<% end %>
+	</ul>
+
+</div>

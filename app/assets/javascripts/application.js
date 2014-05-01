@@ -10,6 +10,7 @@
 //= require bootstrap
 //= require underscore
 //= require backbone
+//= require workshops_public
 
 
 // TABS
