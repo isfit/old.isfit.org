@@ -104,7 +104,7 @@ Tabulous.setup do |config|
       [    :festival_participant_subtab       ,    t('tabs.info.participant')              ,    'https://participant.isfit.org'                                                ,    true       ,    true       ],
 #      [    :festival_workshop_subtab          ,    'Workshops'                             ,    workshops_path                                                  ,    true       ,    true       ],
       [    :info_tab                          ,    t('tabs.info.main')                     ,    photos_path                                                        ,    true        ,    false        ],
-      [    :info_participant_subtab           ,    t('tabs.info.participant')              ,    page_path(61)                                                        ,    true        ,    true        ],
+      [    :info_participant_subtab           ,    t('tabs.info.participant')              ,    article_path(304)                                                        ,    true        ,    true        ],
       [    :info_volunteer_subtab             ,    t('tabs.info.volunteer')                ,    page_path(62)                                                     ,    false        ,    false        ],
       [    :info_press_subtab                 ,    t('tabs.info.press')                    ,    page_path(54)                                                        ,    false        ,    true        ],
 #      [    :info_donate_subtab                ,    t('tabs.info.donate' )                  ,    page_path(60)                                                        ,    true        ,    true        ],
