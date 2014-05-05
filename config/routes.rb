@@ -1,5 +1,6 @@
 WwwIsfitOrg::Application.routes.draw do  
-  get "workshops_public/index"
+  get "workshops/" => "workshops_public#index"
+  get "workshops/:id" => "workshops_public#show"
 
   get "marketing/frontpage"
 
