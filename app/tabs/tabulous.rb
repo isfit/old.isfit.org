@@ -125,6 +125,7 @@ Tabulous.setup do |config|
       [    :stats_tab             ,    'Stats'                   ,    stats_path                                                        ,    false       ,    true       ],
       #[    :sessions_tab          ,    'Signin'                   ,    signin_path,     false, false ],
       [    :mailing_lists_tab     ,     t('tabs.mailing_lists')  ,    mailing_lists_path, false, false ],
+      [    :isfit_onlines_tab     ,     'ISFiT Online'           ,    online_path, true, false],
       #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
       #    TAB NAME                           |    DISPLAY TEXT               |    PATH                                                               |    VISIBLE?    |    ENABLED?    #
       #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
@@ -177,6 +178,7 @@ Tabulous.setup do |config|
       [    :stats                    ,    :all_actions    ,    :stats_tab                    ],
       [    :events                   ,    :all_actions    ,    :events_tab                   ],
       [    :mailing_lists            ,    :all_actions    ,    :mailing_lists_tab            ],
+      [    :isfit_onlines            ,    :all_actions    ,    :isfit_onlines_tab            ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
       #--------------------------------------------------------------------------------------#

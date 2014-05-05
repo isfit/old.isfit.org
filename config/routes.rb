@@ -1,4 +1,6 @@
 WwwIsfitOrg::Application.routes.draw do  
+  get "online" => "isfit_onlines#show", as: "online"
+
   get "marketing/frontpage"
 
   get "instagram/map"
