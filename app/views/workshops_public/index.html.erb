@@ -1,8 +1,8 @@
 <div class="mainsection">
-	<ul class="ch-grid">
+	<ul class="ch-grid list-inline">
 	<% @workshops.each do |workshop| %>
 		<li>
-			<div class="ch-item ch-img-1">				
+			<div class="ch-item ch-img-1" rank='<%=workshop.rank%>'>				
 				<div class="ch-info-wrap">
 					<div class="ch-info">
 						<div class="ch-info-front ch-img-1"></div>
@@ -12,8 +12,7 @@
 						</div>
 					</div>
 				</div>
-			</li>
-		<li>
+		</li>
 	<% end %>
 	</ul>
 
