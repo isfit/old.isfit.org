@@ -1,5 +1,5 @@
 class WorkshopsPublicController < ApplicationController
   def index
-  	@workshops = Workshop.all
+  	@workshops = Workshop.order("rank ASC").all
   end
 end

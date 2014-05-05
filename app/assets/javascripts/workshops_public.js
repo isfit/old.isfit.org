@@ -5,31 +5,59 @@ $(document).ready(function(){
 
     
 
-	$( ".ch-item" ).each(function(){
+	$( ".outer" ).each(function(){
 
-    var color = '#'+ Math.round(0xffffff * Math.random()).toString(16);
+    //var color = '#'+ Math.round(0xffffff * Math.random()).toString(16);
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    var counter = 0;
+    for (var i = 0; i < 6; i++ ) {
+        var colorLetter = letters[Math.round(Math.random() * 15)];
+        if((color.indexOf('F') != -1 && colorLetter === 'F') || ((i === 0 || i === 1)&& color.indexOf('F') != -1)){
+            var newLetters = '0123456789ABCDE'.split('');
+            var colorLetter = letters[Math.round(Math.random() * 15)];
+        }
+        color += colorLetter;
 
 
-   var rank = 1/$(this).attr('rank');
-   var width = $(this).width() * rank;
-   var height = $(this).height() * rank;
-   var width1 = $(this).parent().width() * rank;
-   var height1 = $(this).parent().height() * rank;
+    }
 
-    $(this).parent().css({
-        'height': height1,
-        'width': width1    
-    });
 
-    var posx = (Math.random() * ($('.mainsection').width() - 200));
-    var posy = (Math.random() * ($('.mainsection').height() - 200));
+
+    var tempRank = $(this).attr('rank');
+   
+    //if(tempRank > 10){
+        
+    var rank = ((18-$(this).attr('rank'))/18) + 0.3;
+        //var tempReSize = ((18-$(this).attr('rank'))/18) + 0.8;
+    //}
+    //else{
+        //var rank = tempReSize;
+    //}
+    var width = $(this).width() * rank;
+    var height = $(this).height() * rank;
+    var workshopNameLength = $(this).children().text().length;
+
+    if(workshopNameLength > 20 && width < 150){
+        width +=100;
+        height +=100;
+    }
+   //var width1 = $(this).parent().width() * rank;
+   //var height1 = $(this).parent().height() * rank;
+
+
+
+    var posx = (Math.random() * ($('.well').width() - 400));
+    var posy = (Math.random() * (600));
+
     
     $(this).css({
-        //'left':posx+'px',
-        //'margin-top':posy+'px',
         'background-color': color,
+        //'left':posx+'px',
+        //'bottom':posy+'px',
         'height': height,
-        'width': width
+        'width': width,
+        'line-height': height + 'px'
 
     });
     posx = 0;
