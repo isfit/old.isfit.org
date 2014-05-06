@@ -16,16 +16,26 @@
 <% if @isfit_online %>
   <h1>ISFiT Online</h1>
   <h2>#tradeyourideas</h2>
+  <% if Language.to_s.eql?('en') %>
   <%= raw @isfit_online.description %>
+  <% else %>
+  <%= raw @isfit_online.description_no %>
+  <% end %>
   <%= raw @isfit_online.embed_code %>
 <% else %>
   <h1>ISFiT Online</h1>
   <h2>#tradeyourideas</h2>
   <p>
+    <% if Language.to_s.eql?('en') %>
     The next ISFiT Online will be held on May 9th. This will be
     an oppourtunity for everyone to see what is happening in the
     ISFiT organization right now, as well as getting you questions
     answered by the organizers.
+    <% else %>
+    Neste ISFiT Online vil bli holdt 9. mai. Dette vil bli en mulighet
+    for alle til å se hva som skjer i ISFIT-organisasjonen akkurat nå, i tillegg
+    til å få spørsmålene sine besvart av de frivillige som arrangerer ISFiT.
+    <% end %>
   </p>
 <% end %>
 </div>
