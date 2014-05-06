@@ -47,6 +47,7 @@ en:
     ambassadors:
       apply: 'Apply'
       ambassadors: 'Ambassadors'
+      ambassadors_new: 'Ambassador application'
   derp:
     dialogue_groups: "Looking for the Dialogue Groups?"
     participant: "Looking for the participant applications?"
