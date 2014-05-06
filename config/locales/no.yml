@@ -33,7 +33,7 @@
       partners: 'Samarbeidspartnere'
     info:
       main: 'Informasjon'
-      participant: 'Deltakersøknader'
+      participant: 'Deltakersøknad'
       volunteer: 'Frivillige'
       press: 'Presse'
       donate: 'Støtt en deltaker'
@@ -52,6 +52,7 @@
     ambassadors:
       apply: 'Søk'
       ambassadors: 'Ambassadører'
+      ambassadors_new: 'Ambassadørsøknad'
   derp:
     dialogue_groups: "Leter du etter dialoggruppene?"
     participant: "Leter du etter deltakersøknader?"
