@@ -10,4 +10,5 @@ class Ambassador < ActiveRecord::Base
   validates_presence_of :zip_code
   validates_presence_of :city
   validates_presence_of :infopackage_contact_type_id
+  validates_presence_of :motivation
 end

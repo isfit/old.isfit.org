@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140505183044) do
+ActiveRecord::Schema.define(:version => 20140506132751) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20140505183044) do
     t.integer  "infopackage_contact_type_id"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+    t.text     "motivation"
   end
 
   add_index "ambassadors", ["country_id"], :name => "index_ambassadors_on_country_id"
