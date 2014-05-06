@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140505162912) do
+ActiveRecord::Schema.define(:version => 20140505183044) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -288,8 +288,11 @@ ActiveRecord::Schema.define(:version => 20140505162912) do
 
   create_table "isfit_onlines", :force => true do |t|
     t.text     "embed_code"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text     "description"
   end
 
   create_table "mailing_lists", :force => true do |t|

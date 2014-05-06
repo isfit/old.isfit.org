@@ -1,5 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<div class="well">
+<% content_for :script do %>
+<script>
+  $(document).ready(function() {
+    console.log("lol");
+    $('#content').removeClass("span8");
+    $('#content').addClass("span12");
+    $('#sidebar').remove();
+  });
+</script>
+<% end %>
+
+
+<div class="well" style="text-align: center;">
+<% if @isfit_online %>
+  <h1>ISFiT Online</h1>
+  <h2>#tradeyourideas</h2>
+  <%= raw @isfit_online.description %>
   <%= raw @isfit_online.embed_code %>
+<% else %>
+  <h1>ISFiT Online</h1>
+  <h2>#tradeyourideas</h2>
+  <p>
+    The next ISFiT Online will be held on May 9th. This will be
+    an oppourtunity for everyone to see what is happening in the
+    ISFiT organization right now, as well as getting you questions
+    answered by the organizers.
+  </p>
+<% end %>
 </div>
