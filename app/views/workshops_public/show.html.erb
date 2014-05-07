@@ -9,7 +9,9 @@
 <div class="col-md-8 ingress"> <h5> <%= @workshop.ingress %> </h5> </div>
 </div>
 <div class ="body">
-<p><%= @workshop.body %></p>
+<p><%= raw @workshop.body %></p>
+<p>
+  Do you have any ideas about what this workshop can be? Please join us and trade your ideas below.
 </div> 
 	<div id="disqus_thread"></div>
 	<script type="text/javascript">
