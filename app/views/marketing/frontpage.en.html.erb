@@ -1,23 +1,9 @@
 <%= render 'shared/streamer' %>
-
 <div class="row">
-  <iframe src="//player.vimeo.com/video/91442987" class="span12" height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
-  </iframe>
-</div>
-<div style="margin-top:20px;"></div>
-<div class="row">
-  <p class="span12 well">
-    <a href="http://vimeo.com/91442987">Call for nominations: Student Peace Prize 2015</a> from <a href="http://vimeo.com/user12652193">ISFiT</a> on <a href="https://vimeo.com">Vimeo</a>.
-  </p>
-</div>
-
-<div class="row">
-  <div class="span8">
-    <div id="news-carousel-en" class="carousel slide">
-      <!-- Carousel items -->
-      <div class="carousel-inner">
-        <% @articles.each do |article| %>
-          <div class="item <%= article == @articles.first ? "active":"" %>">
+  <% @articles.each_with_index do |article, i| %>
+    <% if i < 2 %>
+        <div id="news-carousel-no" class="carousel span6">
+          <div class="item active">
             <a href="<%= article_path(article) %>">
               <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px" %>
               <div class="carousel-caption">
@@ -26,41 +12,40 @@
               </div>
             </a>
           </div>
-        <% end %>
-      </div>
-      <!-- Carousel nav -->
-      <a class="carousel-control left" href="#news-carousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#news-carousel" data-slide="next">&rsaquo;</a>
-    </div>
-  </div>
+        </div>
+      <% if i.eql?(1) %>
+        </div>
+        <div class="row">
+      <% end %>
+    <% else %>
+        <div id="news-carousel lower-row" class="carousel slide span4">
+          <div class="item active">
+            <a href="<%= article_path(article) %>">
+              <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px", class: "lower-row-img" %>
+              <div class="carousel-caption">
+                <h4><%= truncate(article.title, length: 30, seperator: '...') %></h4>
+            </div>
+            </a>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
   <div class="span4">
-    <aside id="sidebar"><!-- Start hoyreramme -->
-      <div class="well">
-        <h3>
-          Want to relive the festival? Visit
-          <%= link_to "2013.isfit.org", "http://2013.isfit.org" %>
-        </h3>
-      </div>
-      <div class="well height-matching-en">
-        <h3>
-          <%= link_to "Subscribe to our mailing list", mailing_lists_path %>
-        </h3>
-      </div>
-    </aside><!-- Slutt hoyreramme -->
+    <iframe src="//player.vimeo.com/video/93283594" width="300" height="200" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   </div>
 </div>
 
 <div class="row">
   <div id="lower-left" class="span12 one-up-two-down">
     <div class="row">
-      <a href="http://www.facebook.com/pages/ISFiT/11541693212">
-        <div id="lower-left-down1" class="span3 down">
-          <h1><i class="icon-facebook"></i></h1>
+      <a href="http://2013.isfit.org">
+        <div id="top-right-down1" class="span3 down varbox">
+            <h1>Want to relive the 2013 festival?</h1>
         </div>
       </a>
-      <a href="https://twitter.com/isfit">
-        <div id="lower-left-down2" class="span3 down">
-          <h1><i class="icon-twitter"></i></h1>
+      <a href="/mailing_lists">
+        <div id="top-right-down1" class="span3 down varbox">
+          <h1>Subscribe to our mailing list</h1>
         </div>
       </a>
       <a href="/pages/76">

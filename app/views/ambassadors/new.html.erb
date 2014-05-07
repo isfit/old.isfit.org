@@ -1,18 +1,29 @@
-<h1>Register as an ambassador</h1>
-<p>Do you want to be one of our international ambassadors and distribute
-information for ISFiT 2013?</p>
-
-<p>ISFiT needs ambassadors from all around the world to spread the word about
-ISFiT 2013. You can be an international ambassador of ISFiT by distributing
-information and placing posters in any university, library, student union
-building or other areas where students will have the best opportunity to
-learn about ISFiT.</p>
-
-<p>Fill out the registration form below, and we will send you a package free
-of charge, with posters and information about ISFiT 2013.</p>
-
-
+<div class="well">
+<% if Language.to_s.eql?('en') %>
+<h1>Apply as an ambassador</h1>
+<p>Do you dream about a world with less corruption?</p>
+<p>
+Do you wish to share your ISFit stories to inspire others?<br>
+You now have the oppertunity to be a part of out blog, movies, or other projects.
+</p>
+<p>
+Your face and stories can go worldwide to inspire people in the name of ISFiT</p>
+<p>Fill out the application form below, and join the network of international ambassadors for ISFiT 2015.</p>
 <p>Thank you in advance for supporting ISFiT.</p>
+<% else %>
+<h1>Registrer deg som ambassadør</h1>
+<p>
+  Har du en drøm om en verden med mindre korrupsjon?
+  <br>
+  Har du lyst til å dele dine historier om ISFiT for å inspirere andre?
+  <br>
+  Ditt ansikt og historier kan nå verden rundt for å inspirere mennesker sammen med ISFiT.
+</p>
+<p>Fyll ut skjemaet nedenfor, og bli med i nettverket av internasjonale ambassadører for ISFiT 2015.</p>
+<p>På forhånd takk for din støtte til ISFiT.</p>
+<% end %>
+  
+
 
 <%= form_for(@ambassador, :html => { :class => "yform columnar" })  do |f| %>
 
@@ -33,23 +44,35 @@ of charge, with posters and information about ISFiT 2013.</p>
   <fieldset>
     <div class="type-text">
       <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: "span7" %>
     </div>
     <div class="type-text">
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, class: "span7" %>
+    </div>
+    <div class="type-text">
+      <%= f.label :email_confirmation %>
+      <%= f.text_field :email_confirmation, class: "span7" %>
     </div>
     <div class="type-text">
       <%= f.label :address %>
-      <%= f.text_field :address %>
+      <%= f.text_field :address, class: "span7" %>
     </div>
     <div class="type-text">
       <%= f.label :zip_code %>
-      <%= f.text_field :zip_code %>
+      <%= f.text_field :zip_code, class: "span7" %>
     </div>
     <div class="type-text">
       <%= f.label :city %>
-      <%= f.text_field :city %>
+      <%= f.text_field :city, class: "span7" %>
+    </div>
+    <p>
+      Please write a few sentences about your motivation<br>
+      for being an ISFiT International ambassador.
+    </p>
+    <div class="type-text">
+      <%= f.label :motivation %>
+      <%= f.text_area :motivation, rows: 5, class: "span7" %>
     </div>
     <div class="type-select">
       <%= f.label :country %>
@@ -59,7 +82,10 @@ of charge, with posters and information about ISFiT 2013.</p>
       <%= f.label :type %>
       <%= f.select "infopackage_contact_type_id", @contact_types %>
     </div>
+    <br>
     <div class="type-button">
-      <%= f.submit "Register", class: "submit" %>
+      <%= f.submit "Apply now!", class: "submit btn btn-success btn-large" %>
     </div>
+  </fieldset>
 <% end %>
+</div>

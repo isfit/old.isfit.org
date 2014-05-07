@@ -33,7 +33,7 @@
       partners: 'Samarbeidspartnere'
     info:
       main: 'Informasjon'
-      participant: 'Deltakere'
+      participant: 'Deltakersøknad'
       volunteer: 'Frivillige'
       press: 'Presse'
       donate: 'Støtt en deltaker'
@@ -49,6 +49,10 @@
       festival: 'Festivalblogg'
     languages:
       main: 'Languages'
+    ambassadors:
+      apply: 'Søk'
+      ambassadors: 'Ambassadører'
+      ambassadors_new: 'Ambassadørsøknad'
   derp:
     dialogue_groups: "Leter du etter dialoggruppene?"
     participant: "Leter du etter deltakersøknader?"
@@ -282,6 +286,7 @@
         invalid: har ikke riktig format
         not_a_number: må bestå av tall
         taken: er allerede registrert
+        confirmation: stemmer ikke
       models:
         applicant:
           attributes:

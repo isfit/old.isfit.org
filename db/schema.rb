@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140108152228) do
+ActiveRecord::Schema.define(:version => 20140506134626) do
 
   create_table "alumni_reservations", :force => true do |t|
     t.string   "firstname"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20140108152228) do
     t.integer  "infopackage_contact_type_id"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+    t.text     "motivation"
   end
 
   add_index "ambassadors", ["country_id"], :name => "index_ambassadors_on_country_id"
@@ -99,9 +100,11 @@ ActiveRecord::Schema.define(:version => 20140108152228) do
     t.string   "birthyear"
     t.string   "place_of_study"
     t.integer  "applicant_user_id"
+    t.boolean  "locked",                            :default => false
   end
 
-  create_table "articles", :force => true do |t|
+  create_table "articles", :id => false, :force => true do |t|
+    t.integer  "id",                                               :default => 0, :null => false
     t.string   "title_en"
     t.string   "title_no"
     t.text     "ingress_en"
@@ -284,6 +287,16 @@ ActiveRecord::Schema.define(:version => 20140108152228) do
     t.datetime "updated_at",       :null => false
   end
 
+  create_table "isfit_onlines", :force => true do |t|
+    t.text     "embed_code"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text     "description"
+    t.text     "description_no"
+  end
+
   create_table "mailing_lists", :force => true do |t|
     t.string   "email"
     t.datetime "created_at", :null => false
@@ -298,15 +311,16 @@ ActiveRecord::Schema.define(:version => 20140108152228) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "pages", :force => true do |t|
-    t.string  "title_en",                      :null => false
-    t.string  "title_no",                      :null => false
-    t.text    "ingress_en",                    :null => false
-    t.text    "ingress_no",                    :null => false
-    t.text    "body_en",                       :null => false
-    t.text    "body_no",                       :null => false
-    t.string  "tag",                           :null => false
-    t.boolean "deleted",    :default => false, :null => false
+  create_table "pages", :id => false, :force => true do |t|
+    t.integer "id",         :default => 0,     :null => false
+    t.string  "title_en"
+    t.string  "title_no"
+    t.text    "ingress_en"
+    t.text    "ingress_no"
+    t.text    "body_en"
+    t.text    "body_no"
+    t.string  "tag"
+    t.boolean "deleted",    :default => false
   end
 
   create_table "participants", :force => true do |t|
@@ -444,7 +458,8 @@ ActiveRecord::Schema.define(:version => 20140108152228) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "workshops", :force => true do |t|
+  create_table "workshops", :id => false, :force => true do |t|
+    t.integer  "id",                          :default => 0, :null => false
     t.string   "name"
     t.text     "ingress"
     t.text     "body"
@@ -452,14 +467,13 @@ ActiveRecord::Schema.define(:version => 20140108152228) do
     t.integer  "user_id"
     t.boolean  "published"
     t.boolean  "got_comments"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.integer  "rank",                        :default => 1, :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.string   "workshop_image_file_name"
     t.string   "workshop_image_content_type"
     t.integer  "workshop_image_file_size"
     t.datetime "workshop_image_updated_at"
   end
-
-  add_index "workshops", ["user_id"], :name => "index_workshops_on_user_id"
 
 end

@@ -99,8 +99,14 @@ Tabulous.setup do |config|
       [    :about_walkofpeace_subtab          ,    t('tabs.about.walkofpeace')            ,    page_path(59)                                                        ,    true        ,    true        ],
       [    :about_partners_subtab                   ,    t('tabs.about.partners' )                     ,    page_path(69)                                                        ,    false        ,    true        ],
       [    :about_blog_subtab                 ,    'Blogg'                                 ,    page_path(86)                                                        , Language.to_s.eql?('no')  , true ],
+      [    :festival_tab                      ,    'Festival'                              ,    root_path                                              , true, false ],
+      [    :festival_ambassadors_subtab       ,    t('tabs.ambassadors.ambassadors')       ,    page_path(88),                                      Language.to_s.eql?('en'), true],
+      [    :festival_new_subtab               ,    t('tabs.ambassadors.ambassadors_new')       ,    ambassadors_new_path, true ,true],
+      [    :festival_participant_subtab       ,    t('tabs.info.participant')              ,    'https://participant.isfit.org'                                                ,    true       ,    true       ],
+      [    :festival_onlines_subtab     ,     'ISFiT Online'           ,    online_path, true, true],
+#      [    :festival_workshop_subtab          ,    'Workshops'                             ,    workshops_path                                                  ,    true       ,    true       ],
       [    :info_tab                          ,    t('tabs.info.main')                     ,    photos_path                                                        ,    true        ,    false        ],
-      [    :info_participant_subtab           ,    t('tabs.info.participant')              ,    page_path(61)                                                        ,    true        ,    true        ],
+      [    :info_participant_subtab           ,    t('tabs.info.participant')              ,    article_path(304)                                                        ,    Language.to_s.eql?('en')        ,    true        ],
       [    :info_volunteer_subtab             ,    t('tabs.info.volunteer')                ,    page_path(62)                                                     ,    false        ,    false        ],
       [    :info_press_subtab                 ,    t('tabs.info.press')                    ,    page_path(54)                                                        ,    false        ,    true        ],
      [    :participant_public_tab          ,    'Participant'         ,    root_path           ,    true        ,    false        ],
@@ -160,6 +166,7 @@ Tabulous.setup do |config|
       [    :project_supports         ,    :all_actions    ,    :project_supports_tab         ],
       [    :hosts                    ,    :all_actions    ,    :hosts_tab                    ],
       [    :alumni_reservations      ,    :all_actions    ,    :alumni_reservations_tab      ],
+      [    :ambassadors              ,    :all_actions    ,    :festival_tab                 ],
       [    :pages                    ,    :all_actions    ,    :pages_tab                    ],
       [    :applicant_users          ,    :all_actions    ,    :applicant_users_tab          ],
       [    :press_accreditations     ,    :all_actions    ,    :press_accreditations_tab     ],
@@ -178,8 +185,7 @@ Tabulous.setup do |config|
       [    :events                   ,    :all_actions    ,    :events_tab                   ],
       [    :mailing_lists            ,    :all_actions    ,    :mailing_lists_tab            ],
       [    :workshops_public         ,    :all_actions    ,    :participant_public_subtab         ],
-
-
+      [    :isfit_onlines            ,    :all_actions    ,    :festival_onlines_subtab            ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
       #--------------------------------------------------------------------------------------#
