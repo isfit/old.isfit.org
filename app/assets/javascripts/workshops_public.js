@@ -38,6 +38,16 @@ $(document).ready(function(){
     var height = $(this).height() * rank;
     var workshopNameLength = $(this).children().text().length;
 
+    if($(this).children().text().trim() == "The Picture") {
+        width += 50;
+        height += 50;
+    }
+
+    if($(this).children().text().trim() == "?") {
+        width += 150;
+        height += 150;
+    }
+
     if(workshopNameLength > 20 && width < 150){
         width +=100;
         height +=100;
