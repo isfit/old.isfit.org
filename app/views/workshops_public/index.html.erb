@@ -1,0 +1,20 @@
+<% content_for :script do %>
+        <%= javascript_include_tag "workshops_public.js" %>
+<% end %>
+
+<div class="well">
+	<h1>ISFiT Workshops 2015:</h1>
+	<% @workshops.each do |workshop| %>
+		<div class="outer" rank="<%=workshop.rank%>">
+			<div class="inntertext">
+				<p><%= link_to workshop.name , workshop_path(workshop.id), :class => "workshopclass" %></p>
+			</div>
+		</div>
+	<% end %>
+
+	<script type="text/javascript">
+	    $('body aside').remove();
+    	$('#content').attr('class', 'span12');
+    </script>
+
+</div>

@@ -75,7 +75,7 @@ Tabulous.setup do |config|
       [    :articles_galleries_subtab         ,    t('tabs.articles.galleries')                ,    page_path(65)                                     ,    true        ,    true        ],
       #[    :applicant_users_tab               ,    'Applicant Users'                ,    applicant_users_path                                         ,   false        ,    false       ],
       #[    :applicant_users_new_subtab         ,    'New Applicant user'       ,    new_applicant_user_path                                            ,   false        ,    false       ],
-      [    :positions_tab                     ,    t('tabs.positions.main')        ,   root_path                                                      , false,    false       ],
+      [    :positions_tab                     ,    t('tabs.positions.main')        ,   root_path                                                        , false,    false       ],
       [    :positions_more_info_subtab        ,    t('tabs.positions.more_info') , article_path(288), true, true],
       [    :positions_form_subtab             ,    t('tabs.positions.form')   ,   positions_path, true, true],
       [    :positions_info_subtab             ,    t('tabs.positions.info')   ,   page_path(84), true, true],
@@ -104,11 +104,13 @@ Tabulous.setup do |config|
       [    :festival_new_subtab               ,    t('tabs.ambassadors.ambassadors_new')       ,    ambassadors_new_path, true ,true],
       [    :festival_participant_subtab       ,    t('tabs.info.participant')              ,    'https://participant.isfit.org'                                                ,    true       ,    true       ],
       [    :festival_onlines_subtab     ,     'ISFiT Online'           ,    online_path, true, true],
+      [    :festival_workshops_subtab          ,    'Workshops'         ,    workshops_public_index_path           ,    Language.to_s.eql?('en')        ,    true        ],
 #      [    :festival_workshop_subtab          ,    'Workshops'                             ,    workshops_path                                                  ,    true       ,    true       ],
       [    :info_tab                          ,    t('tabs.info.main')                     ,    photos_path                                                        ,    true        ,    false        ],
       [    :info_participant_subtab           ,    t('tabs.info.participant')              ,    article_path(304)                                                        ,    Language.to_s.eql?('en')        ,    true        ],
       [    :info_volunteer_subtab             ,    t('tabs.info.volunteer')                ,    page_path(62)                                                     ,    false        ,    false        ],
       [    :info_press_subtab                 ,    t('tabs.info.press')                    ,    page_path(54)                                                        ,    false        ,    true        ],
+
 #      [    :info_donate_subtab                ,    t('tabs.info.donate' )                  ,    page_path(60)                                                        ,    true        ,    true        ],
       [    :info_contact_subtab               ,    t('tabs.info.contact')                  ,    page_path(27)                                                        ,    true        ,    true        ],
       [    :info_faq_subtab                   ,    t('tabs.info.faq' )                     ,    page_path(55)                                                        ,    false        ,    true        ],
@@ -122,11 +124,13 @@ Tabulous.setup do |config|
       [    :languages_tab                   ,    t('tabs.languages.main' )                     ,    photos_path                                                        ,    true        ,    false        ],
       [    :languages_norsk_subtab                   ,    'Norsk'                     ,    '?locale=no'                                                        ,    true        ,    true        ],
       [    :languages_english_subtab                   ,    'English'                     ,    '?locale=en'                                                        ,    true        ,    true        ],
+
       [    :events_tab                        ,    'Events'                   ,    events_path                                                        ,    false       ,    false       ],
       [    :events_program_subtab             ,    'Events'                   ,    photos_path                                                        ,    false       ,    false       ],
       [    :stats_tab             ,    'Stats'                   ,    stats_path                                                        ,    false       ,    true       ],
       #[    :sessions_tab          ,    'Signin'                   ,    signin_path,     false, false ],
       [    :mailing_lists_tab     ,     t('tabs.mailing_lists')  ,    mailing_lists_path, false, false ],
+
       #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
       #    TAB NAME                           |    DISPLAY TEXT               |    PATH                                                               |    VISIBLE?    |    ENABLED?    #
       #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
@@ -179,6 +183,7 @@ Tabulous.setup do |config|
       [    :stats                    ,    :all_actions    ,    :stats_tab                    ],
       [    :events                   ,    :all_actions    ,    :events_tab                   ],
       [    :mailing_lists            ,    :all_actions    ,    :mailing_lists_tab            ],
+      [    :workshops_public         ,    :all_actions    ,    :festival_workshops_subtab         ],
       [    :isfit_onlines            ,    :all_actions    ,    :festival_onlines_subtab            ],
       #--------------------------------------------------------------------------------------#
       #    CONTROLLER                |    ACTION          |    TAB                           #
