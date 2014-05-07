@@ -1,6 +1,6 @@
 class WorkshopsPublicController < ApplicationController
   def index
-  	@workshops = Workshop.order("rank ASC").all
+    @workshops = Workshop.where(published: true).order("rank ASC").all
   end
 
   def show
