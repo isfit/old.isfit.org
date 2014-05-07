@@ -1,5 +1,5 @@
 WwwIsfitOrg::Application.routes.draw do
-  get "workshops/" => "workshops_public#index"
+  get "workshops/" => "workshops_public#index", as: "workshops_public_index"
   get "workshops/:id" => "workshops_public#show"
 
   get "online" => "isfit_onlines#show", as: "online"
