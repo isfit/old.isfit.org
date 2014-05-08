@@ -1,4 +1,25 @@
 <%= render 'shared/streamer' %>
+<div class="divider-line">
+  <h2 class="divider-text">Get involved</h2>
+  <hr>
+</div>
+<div class="frontpage-buttons">
+  <div class="row">
+      <div class="span4">
+        <%= image_tag "blogs-english.png", height: "363px", class: "lower-row-img" %>
+      </div>
+      <div class="span4">
+        <%= image_tag "blogs-english.png", height: "363px", class: "lower-row-img" %>
+      </div>
+      <div class="span4">
+        <%= image_tag "blogs-english.png", height: "363px", class: "lower-row-img" %>
+      </div>
+  </div>
+</div>
+<div class="divider-line">
+  <h2 class="divider-text">Articles</h2>
+  <hr>
+</div>
 <div class="row">
   <% @articles.each_with_index do |article, i| %>
     <% if i < 2 %>
