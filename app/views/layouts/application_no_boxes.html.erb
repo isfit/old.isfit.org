@@ -110,7 +110,7 @@ html5boilerplate
     <% if notice or alert %>
       <div class="alert alert-<%= notice ? "success":"error" %>">
         <a href="#" class="close" data-dismiss="alert">x</a>
-        <strong><%= notice ? notice : raw(alert) %></strong>
+        <strong><%= raw notice ? notice : raw(alert) %></strong>
       </div>
     <% end %>
 
