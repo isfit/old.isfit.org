@@ -40,6 +40,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def blog
+    @blog_posts = Article.blog_articles(Language.to_s)
+
+    render layout: "application_no_boxes"
+  end
+
   # GET /articles/1
   # GET /articles/1.xml
   def show
