@@ -1,0 +1,32 @@
+<div class="row">
+  <% @blog_posts.each_with_index do |article, i| %>
+    <% if i < 2 %>
+        <div id="news-carousel-no" class="carousel span6">
+          <div class="item active">
+            <a href="<%= article_path(article) %>">
+              <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px" %>
+              <div class="carousel-caption">
+                <h1><%= article.title %></h1>
+                <p><%= article.sub_title %></p>
+              </div>
+            </a>
+          </div>
+        </div>
+      <% if i.eql?(1) %>
+        </div>
+        <div class="row">
+      <% end %>
+    <% else %>
+        <div id="news-carousel lower-row" class="carousel slide span4">
+          <div class="item active">
+            <a href="<%= article_path(article) %>">
+              <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px", class: "lower-row-img" %>
+              <div class="carousel-caption">
+                <h4><%= truncate(article.title, length: 30, seperator: '...') %></h4>
+            </div>
+            </a>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
+<div>
