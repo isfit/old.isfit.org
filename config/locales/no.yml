@@ -53,6 +53,10 @@
       apply: 'Søk'
       ambassadors: 'Ambassadører'
       ambassadors_new: 'Ambassadørsøknad'
+    blog:
+      main: 'Blogg'
+      latest: 'Les den nyeste'
+      all: 'Alle bloggposter'    
   derp:
     dialogue_groups: "Leter du etter dialoggruppene?"
     participant: "Leter du etter deltakersøknader?"

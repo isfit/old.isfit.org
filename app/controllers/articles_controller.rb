@@ -40,6 +40,15 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def latest_blogpost
+    @article = Article.where(blog: 1).order("created_at").last
+
+    respond_to do |format|
+      format.html{render 'show'} # show.html.erb
+      format.xml  { render :xml => @article }
+    end
+  end 
+
   def blog
     @blog_posts = Article.blog_articles(Language.to_s)
 

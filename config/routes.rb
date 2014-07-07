@@ -16,6 +16,8 @@ WwwIsfitOrg::Application.routes.draw do
   get 'blog' => 'articles#blog'
   get 'blogg', to: redirect('/blog')
 
+  get 'latest_blogpost' => 'articles#latest_blogpost'
+
   get 'blogs/festival' => 'blogs#festival'
   get 'blogs/theme' => 'blogs#theme'
   # get 'blogs/:type/:lang' => 'blogs#index'

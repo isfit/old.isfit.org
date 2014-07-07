@@ -10,7 +10,7 @@ class Article < ActiveRecord::Base
   path: ":rails_root/public/system/frontend_articles/:attachment/:id_partition/:style/:filename"
 
   def self.frontpage_articles language
-		articles = visible_articles
+		articles = visible_articles.where(blog: 0)
 
     if language.eql? "en"
       articles = articles.where("title_en > ''")
@@ -22,7 +22,7 @@ class Article < ActiveRecord::Base
   end
 
   def self.blog_articles language
-    articles = visible_articles#.where(blog: 1)
+    articles = visible_articles.where(blog: 1)
 
     if language.eql? "en"
       articles = articles.where("title_en > ''")
