@@ -107,13 +107,14 @@ Tabulous.setup do |config|
       [    :festival_workshops_subtab          ,    'Workshops'         ,    workshops_public_index_path           ,    true        ,    true        ],
 #      [    :festival_workshop_subtab          ,    'Workshops'                             ,    workshops_path                                                  ,    true       ,    true       ],
       [    :info_tab                          ,    t('tabs.info.main')                     ,    photos_path                                                        ,    true        ,    false        ],
+
       [    :info_participant_subtab           ,    t('tabs.info.participant')              ,    article_path(304)                                                        ,    Language.to_s.eql?('en')        ,    true        ],
       [    :info_volunteer_subtab             ,    t('tabs.info.volunteer')                ,    page_path(62)                                                     ,    false        ,    false        ],
       [    :info_press_subtab                 ,    t('tabs.info.press')                    ,    page_path(54)                                                        ,    false        ,    true        ],
 
 #      [    :info_donate_subtab                ,    t('tabs.info.donate' )                  ,    page_path(60)                                                        ,    true        ,    true        ],
       [    :info_contact_subtab               ,    t('tabs.info.contact')                  ,    page_path(27)                                                        ,    true        ,    true        ],
-      [    :info_faq_subtab                   ,    t('tabs.info.faq' )                     ,    page_path(55)                                                        ,    false        ,    true        ],
+      [    :info_faq_subtab                   ,    t('tabs.info.faq' )                     ,    page_path(55)                                                        ,    true        ,    true        ],
       [    :info_hosts_subtab                   ,    t('tabs.info.host' )                     ,    hosts_path                                                        ,    false        ,    true        ],
       [    :info_movies_subtab                   ,    t('tabs.info.movies' )                     ,    page_path(76)                                                        ,    true        ,    true        ],
       [    :info_images_subtab                 ,      t('tabs.info.images')                 ,         page_path(65)                                                 ,  true, true],
