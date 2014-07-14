@@ -86,7 +86,6 @@ Tabulous.setup do |config|
       [    :theme_globaltrade_subtab          ,    t('tabs.theme.globaltrade')             ,    page_path(52)                                                        ,    false        ,    true        ],
       [    :theme_labour_subtab          ,    t('tabs.theme.corruption')             ,    page_path(83)                                                        ,    true        ,    true        ],
       [    :theme_video_subtab                ,    t('tabs.theme.video')              , page_path(85)                                                          ,   Language.to_s.eql?('no'), true],
-      [    :theme_workshops_subtab            ,    t('tabs.theme.workshops')                ,    page_path(53)                                                        ,    false        ,    true        ],
       [    :theme_tradeyourideas_subtab       ,    t('tabs.theme.tradeyourideas')         ,    ideas_path                                                        ,    false        ,    true        ],
       [    :theme_themeblog_subtab            ,    t('tabs.theme.themeblog')               ,    page_path(66)                                                        ,    false        ,    false        ],
       [    :theme_map_subtab       ,    t('tabs.theme.map')          ,    '/world-map/'                                                        ,    false        ,    true        ],
@@ -105,6 +104,7 @@ Tabulous.setup do |config|
       [    :festival_participant_subtab       ,    t('tabs.info.participant')              ,    'https://participant.isfit.org'                                                ,    true       ,    true       ],
       [    :festival_onlines_subtab     ,     'ISFiT Online'           ,    online_path, true, true],
       [    :festival_workshops_subtab          ,    'Workshops'         ,    workshops_public_index_path           ,    true        ,    true        ],
+      [    :festival_workshop_info_subtab            ,    'Workshop Info'                ,    page_path(53)        ,    true        ,    true        ],
 #      [    :festival_workshop_subtab          ,    'Workshops'                             ,    workshops_path                                                  ,    true       ,    true       ],
       [    :info_tab                          ,    t('tabs.info.main')                     ,    photos_path                                                        ,    true        ,    false        ],
 
