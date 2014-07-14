@@ -35,7 +35,7 @@ end
 task :staging do
   set :deploy_to, "/srv/www/staging.isfit.org"
   set :deploy_via, :copy
-  set :branch, "staging"
+  set :branch, "blog"
 end
 
 
