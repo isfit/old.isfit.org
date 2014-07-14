@@ -102,7 +102,7 @@ Tabulous.setup do |config|
       [    :about_walkofpeace_subtab          ,    t('tabs.about.walkofpeace')            ,    page_path(59)                                                        ,    true        ,    true        ],
       [    :about_partners_subtab                   ,    t('tabs.about.partners' )                     ,    page_path(69)                                                        ,    false        ,    true        ],
       [    :about_blog_subtab                 ,    'Blogg'                                 ,    page_path(86)                                                        , Language.to_s.eql?('no')  , true ],
-      [    :festival_tab                      ,    'Festival'                              ,    root_path                                              , true, false ],
+      [    :festival_tab                      ,    t('tabs.info.main')                              ,    root_path                                              , true, false ],
       [    :festival_ambassadors_subtab       ,    t('tabs.ambassadors.ambassadors')       ,    page_path(88),                                      Language.to_s.eql?('en'), true],
       [    :festival_new_subtab               ,    t('tabs.ambassadors.ambassadors_new')       ,    ambassadors_new_path, true ,true],
       [    :festival_participant_subtab       ,    t('tabs.info.participant')              ,    'https://participant.isfit.org'                                                ,    true       ,    true       ],
