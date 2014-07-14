@@ -110,7 +110,7 @@ Tabulous.setup do |config|
       [    :festival_workshops_subtab          ,    'Workshops'         ,    workshops_public_index_path           ,    true        ,    true        ],
       [    :festival_workshop_info_subtab            ,    'Workshop Info'                ,    page_path(53)        ,    true        ,    true        ],
 #      [    :festival_workshop_subtab          ,    'Workshops'                             ,    workshops_path                                                  ,    true       ,    true       ],
-      [    :info_tab                          ,    t('tabs.info.main')                     ,    photos_path                                                        ,    true        ,    false        ],
+      #[    :info_tab                          ,    t('tabs.info.main')                     ,    photos_path                                                        ,    true        ,    false        ],
       [    :info_participant_subtab           ,    t('tabs.info.participant')              ,    article_path(304)                                                        ,    Language.to_s.eql?('en')        ,    true        ],
       [    :info_volunteer_subtab             ,    t('tabs.info.volunteer')                ,    page_path(62)                                                     ,    false        ,    false        ],
       [    :info_press_subtab                 ,    t('tabs.info.press')                    ,    page_path(54)                                                        ,    false        ,    true        ],
