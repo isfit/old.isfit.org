@@ -1,3 +1,11 @@
+<div class="divider-line">
+  <%if Language.to_s == "no"%>
+    <h2 class="divider-text">Blogg</h2>
+  <% else %>
+    <h2 class="divider-text">Blog</h2>
+  <% end %>
+  <hr>
+</div>
 <div class="row">
   <% @blog_posts.each_with_index do |article, i| %>
     <% if i < 2 %>
@@ -29,4 +37,4 @@
         </div>
     <% end %>
   <% end %>
-<div>
+</div>
