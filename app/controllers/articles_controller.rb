@@ -43,10 +43,7 @@ class ArticlesController < ApplicationController
   def latest_blogpost
     @article = Article.where(blog: 1).order("created_at").last
 
-    respond_to do |format|
-      format.html{render 'show'} # show.html.erb
-      format.xml  { render :xml => @article }
-    end
+    redirect_to @article
   end 
 
   def blog
