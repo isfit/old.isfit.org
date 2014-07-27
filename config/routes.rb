@@ -17,6 +17,7 @@ WwwIsfitOrg::Application.routes.draw do
   get 'blogg', to: redirect('/blog')
 
   get 'latest_blogpost' => 'articles#latest_blogpost'
+  get 'blog/latest' => 'articles#latest_blogpost', as: 'blog_latest'
 
 
   get 'blogs/festival' => 'blogs#festival'
