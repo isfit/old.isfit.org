@@ -41,12 +41,14 @@ class ArticlesController < ApplicationController
   end
 
   def latest_blogpost
-    @article = Article.where(blog: 1).order("created_at").last
+    @article = Article
+      .where(list: true)
+      .where(deleted: false)
+      .where(blog: true)
+      .order("weight")
+      .last
 
-    respond_to do |format|
-      format.html{render 'show'} # show.html.erb
-      format.xml  { render :xml => @article }
-    end
+    redirect_to blog_path(@article)
   end 
 
   def blog

@@ -13,10 +13,13 @@ WwwIsfitOrg::Application.routes.draw do
 
   get "stats" => 'stats#index'
 
-  get 'blog' => 'articles#blog'
+  get 'blog' => 'articles#blog', as: 'blog_root'
   get 'blogg', to: redirect('/blog')
 
   get 'latest_blogpost' => 'articles#latest_blogpost'
+  get 'blog/latest' => 'articles#latest_blogpost', as: 'blog_latest'
+
+  get 'blog/:id' => "articles#show", as: 'blog'
 
   get 'blogs/festival' => 'blogs#festival'
   get 'blogs/theme' => 'blogs#theme'

@@ -74,8 +74,8 @@ Tabulous.setup do |config|
       [    :articles_archive_subtab              ,    t('tabs.articles.archive')        ,    url_for(:controller => 'articles', :action => 'all')     ,    true        ,    true        ],
       [    :articles_galleries_subtab         ,    t('tabs.articles.galleries')                ,    page_path(65)                                     ,    true        ,    true        ],
       [    :blog_tab                      ,    t('tabs.blog.main')                     ,    root_path                                         ,    true        ,    false       ],
-      [    :blog_latest_subtab         ,    t('tabs.blog.latest')                ,    latest_blogpost_path                                     ,    true        ,    true        ],
-      [    :blog_all_subtab         ,    t('tabs.blog.all')                ,    blog_path                                     ,    true        ,    true        ],
+      [    :blog_latest_subtab         ,    t('tabs.blog.latest')                ,    blog_latest_path                                     ,    true        ,    true        ],
+      [    :blog_all_subtab         ,    t('tabs.blog.all')                ,    blog_root_path                                     ,    true        ,    true        ],
 
       #[    :applicant_users_tab               ,    'Applicant Users'                ,    applicant_users_path                                         ,   false        ,    false       ],
       #[    :applicant_users_new_subtab         ,    'New Applicant user'       ,    new_applicant_user_path                                            ,   false        ,    false       ],
