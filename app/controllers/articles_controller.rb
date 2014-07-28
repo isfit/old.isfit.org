@@ -41,9 +41,14 @@ class ArticlesController < ApplicationController
   end
 
   def latest_blogpost
-    @article = Article.where(blog: 1).order("weight").last
+    @article = Article
+      .where(list: true)
+      .where(deleted: false)
+      .where(blog: true)
+      .order("weight")
+      .last
 
-    redirect_to @article
+    redirect_to blog_path(@article)
   end 
 
   def blog

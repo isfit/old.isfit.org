@@ -103,35 +103,4 @@ end%>
   <%end%>
 
 </div>
-<% if @article.blog %>
-  <%= content_for :sidebar do %>
-    <%if Language.to_s == "no"%>
-      <div id="content" class="well">
-        <h2>Om Marius</h2>
-        <hr id="blog_info_bar">
-        <p>Test1</p>
-      </div>
-      <div id="content" class="well">
-        <h2>Om bloggen</h2>
-        <hr id="blog_info_bar">
-        <p>Test1</p>
-      </div>
-    <% else %>
-      <div id="content" class="well">
-        <h2>About Marius</h2>
-        <hr id="blog_info_bar">
-        <p>Test1</p>
-      </div>
-      <div id="content" class="well">
-        <h2>About the blog</h2>
-        <hr id="blog_info_bar">
-        <p>Test1</p>
-      </div>
-    <%end%>
-  <% end %>
-<%end%>
-<%# if @article.sidebar %>
-  <%#= content_for :sidebar do %>
-    <%#= raw @article.sidebar %>
-  <%# end %>
-<%# end %>
+<%= render 'sidebar' %>
