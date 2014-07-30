@@ -101,7 +101,6 @@ Tabulous.setup do |config|
       [    :about_studentpeaceprice_subtab    ,    t('tabs.about.studentpeaceprice')      ,    page_path(42)                                                        ,    true        ,    true        ],
       [    :about_walkofpeace_subtab          ,    t('tabs.about.walkofpeace')            ,    page_path(59)                                                        ,    true        ,    true        ],
       [    :about_partners_subtab                   ,    t('tabs.about.partners' )                     ,    page_path(69)                                                        ,    false        ,    true        ],
-      [    :about_blog_subtab                 ,    'Blogg'                                 ,    page_path(86)                                                        , Language.to_s.eql?('no')  , true ],
       [    :festival_tab                      ,    t('tabs.info.main')                              ,    root_path                                              , true, false ],
       [    :festival_ambassadors_subtab       ,    t('tabs.ambassadors.ambassadors')       ,    page_path(88),                                      Language.to_s.eql?('en'), true],
       [    :festival_new_subtab               ,    t('tabs.ambassadors.ambassadors_new')       ,    ambassadors_new_path, true ,true],
