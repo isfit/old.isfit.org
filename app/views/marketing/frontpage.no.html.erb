@@ -9,18 +9,7 @@
       <%= link_to image_tag("http://i.imgur.com/QLk0iSk.gif"), 'https://opptak.isfit.org' %>
     </div>
   </div>
-  <div class="row">
-      <div class="span4">
-        <%= link_to (image_tag "Knapp_ambassador_norsk.jpg", height: "363px", class: "lower-row-img frontpage-button"),
-        'ambassadors/new' %>
-      </div>
-      <div class="span4">
-        <%= link_to (image_tag "Knapp_participant_norsk.jpg", height: "363px", class: "lower-row-img frontpage-button"), 'https://participant.isfit.org/' %>
-      </div>
-      <div class="span4">
-        <%= link_to (image_tag "Knapp_workshop_norsk.jpg", height: "363px", class: "lower-row-img frontpage-button"), 'workshops' %>
-      </div>
-  </div>
+
 </div>
 <div class="divider-line">
   <h2 class="divider-text">Nyheter</h2>
@@ -29,36 +18,54 @@
 
 <div class="row">
   <% @articles.each_with_index do |article, i| %>
-    <% if i < 1 %>
-        <div id="news-carousel-no" class="carousel span6">
-          <div class="item active">
-            <a href="<%= article_path(article) %>">
-              <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px" %>
-              <div class="carousel-caption">
-                <h1><%= article.title %></h1>
-                <p><%= article.sub_title %></p>
-              </div>
-            </a>
-          </div>
+  <% if i < 1 %>
+  <div id="news-carousel-no" class="carousel span6">
+    <div class="item active">
+      <a href="<%= article_path(article) %>">
+        <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px" %>
+        <div class="carousel-caption">
+          <h1><%= article.title %></h1>
+          <p><%= article.sub_title %></p>
         </div>
-        <div class="span6">
-          <iframe src="//player.vimeo.com/video/103222976" width="460" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </a>
+    </div>
+  </div>
+  <div class="span6">
+    <iframe src="//player.vimeo.com/video/103222976" width="460" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
+  <%# if i.eql?(1) %>
+</div>
+<div class="row">
+  <%# end %>
+  <% else %>
+  <div id="news-carousel lower-row" class="carousel slide span4">
+    <div class="item active">
+      <a href="<%= article_path(article) %>">
+        <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px", class: "lower-row-img" %>
+        <div class="carousel-caption">
+          <h4><%= truncate(article.title, length: 30, seperator: '...') %></h4>
         </div>
-        <%# if i.eql?(1) %>
-        </div>
-        <div class="row">
-        <%# end %>
-    <% else %>
-        <div id="news-carousel lower-row" class="carousel slide span4">
-          <div class="item active">
-            <a href="<%= article_path(article) %>">
-              <%= image_tag article.frontend_article_image.url(:frontpage_large), height: "363px", class: "lower-row-img" %>
-              <div class="carousel-caption">
-                <h4><%= truncate(article.title, length: 30, seperator: '...') %></h4>
-            </div>
-            </a>
-          </div>
-        </div>
-    <% end %>
+      </a>
+    </div>
+  </div>
+  <% end %>
   <% end %>
 </div>
+<div class="divider-line">
+  <h2 class="divider-text">Søk</h2>
+  <hr>
+</div>
+<div class="row">
+  <div class="span4">
+    <%= link_to (image_tag "Knapp_ambassador_norsk.jpg", height: "363px", class: "lower-row-img frontpage-button"),
+    'ambassadors/new' %>
+  </div>
+  <div class="span4">
+    <%= link_to (image_tag "Knapp_participant_norsk.jpg", height: "363px", class: "lower-row-img frontpage-button"), 'https://participant.isfit.org/' %>
+  </div>
+  <div class="span4">
+    <%= link_to (image_tag "Knapp_workshop_norsk.jpg", height: "363px", class: "lower-row-img frontpage-button"), 'workshops' %>
+  </div>
+</div>
+<br>
+<br>
