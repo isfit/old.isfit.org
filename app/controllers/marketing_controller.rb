@@ -17,9 +17,15 @@ class MarketingController < ApplicationController
   private
   def world_tour_notice
     if Language.to_s.eql?("en")
+      if Time.now < Time.parse("2014-09-01 04:00")
+        "<p style='text-align: center'>Want to be a volunteer in Trondheim? " +
+        "Visit <a href=\"https://opptak.isfit.org/?locale=en\">" +
+        "opptak.isfit.org</a>.</p>"
+      else
       "<p style='text-align: center'>ISFiT is now on a World Tour. " +
       "Read more about it on the <a href=\"http://isfit-ambassadors.blogspot.no\">" +
       "ISFiT Ambassador blog</a>.</p>"
+      end
     else
       "<p style='text-align: center'>ISFiT er på verdensturné. " +
       "Les mer på <a href=\"http://isfit-ambassadors.blogspot.no\">" +
