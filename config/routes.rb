@@ -41,7 +41,7 @@ WwwIsfitOrg::Application.routes.draw do
 
   get "ambassadors/new"
 
-  post "ambassadors" => "ambassadors#create"
+  #post "ambassadors" => "ambassadors#create"
 
   get "ambassadors/thank_you"
 
